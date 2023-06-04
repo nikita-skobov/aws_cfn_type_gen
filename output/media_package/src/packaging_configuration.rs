@@ -2,6 +2,7 @@
 ///
 /// The packaging configuration represents a single delivery point for an asset. It determines the format and setting for the egressing content. Specify only one package format per configuration, such as HlsPackage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPackagingConfiguration {
     ///
     /// Parameters for CMAF packaging.
@@ -12,7 +13,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmafPackage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cmaf_package: Option<CmafPackage>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashPackage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dash_package: Option<DashPackage>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsPackage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hls_package: Option<HlsPackage>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MssPackage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mss_package: Option<MssPackage>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnPackagingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -129,6 +130,7 @@ impl cfn_resources::CfnResource for CfnPackagingConfiguration {
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CmafEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -160,6 +162,7 @@ impl cfn_resources::CfnResource for CmafEncryption {
 
 /// Parameters for a packaging configuration that uses Common Media Application Format (CMAF) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CmafPackage {
     ///
     /// Parameters for encrypting content.
@@ -170,7 +173,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<CmafEncryption>,
 
     ///
@@ -193,7 +196,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeEncoderConfigurationInSegments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_encoder_configuration_in_segments: Option<bool>,
 
     ///
@@ -205,7 +208,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_duration_seconds: Option<i64>,
 }
 
@@ -229,6 +232,7 @@ impl cfn_resources::CfnResource for CmafPackage {
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DashEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -260,6 +264,7 @@ impl cfn_resources::CfnResource for DashEncryption {
 
 /// Parameters for a DASH manifest.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DashManifest {
     ///
     /// Determines the position of some tags in the Media Presentation Description (MPD). When set to FULL, elements like SegmentTemplate and       ContentProtection are included in each Representation. When set to COMPACT, duplicate elements are combined and presented at the     AdaptationSet level.
@@ -270,7 +275,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manifest_layout: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +287,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -294,7 +299,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinBufferTimeSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_buffer_time_seconds: Option<i64>,
 
     ///
@@ -306,7 +311,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -322,7 +327,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScteMarkersSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scte_markers_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -334,7 +339,7 @@ pub struct DashManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_selection: Option<StreamSelection>,
 }
 
@@ -358,6 +363,7 @@ impl cfn_resources::CfnResource for DashManifest {
 
 /// Parameters for a packaging configuration that uses Dynamic Adaptive Streaming over HTTP (DASH) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DashPackage {
     ///
     /// A list of DASH manifest configurations that are available from this endpoint.
@@ -379,7 +385,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<DashEncryption>,
 
     ///
@@ -391,7 +397,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeEncoderConfigurationInSegments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_encoder_configuration_in_segments: Option<bool>,
 
     ///
@@ -403,7 +409,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeIframeOnlyStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_iframe_only_stream: Option<bool>,
 
     ///
@@ -419,7 +425,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodTriggers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period_triggers: Option<Vec<String>>,
 
     ///
@@ -431,7 +437,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -443,7 +449,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentTemplateFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_template_format: Option<cfn_resources::StrVal>,
 }
 
@@ -469,6 +475,7 @@ impl cfn_resources::CfnResource for DashPackage {
 ///
 /// Note the following considerations when using        encryptionContractConfiguration:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionContractConfiguration {}
 
 impl cfn_resources::CfnResource for EncryptionContractConfiguration {
@@ -487,6 +494,7 @@ impl cfn_resources::CfnResource for EncryptionContractConfiguration {
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HlsEncryption {
     ///
     /// A 128-bit, 16-byte hex value represented by a 32-character string, used with the key for encrypting blocks. If you don't specify a constant initialization vector (IV),       AWS Elemental MediaPackage periodically rotates the IV.
@@ -497,7 +505,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -509,7 +517,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -542,6 +550,7 @@ impl cfn_resources::CfnResource for HlsEncryption {
 
 /// Parameters for an HLS manifest.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HlsManifest {
     ///
     /// This setting controls ad markers in the packaged content.
@@ -556,7 +565,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
@@ -568,7 +577,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeIframeOnlyStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_iframe_only_stream: Option<bool>,
 
     ///
@@ -580,7 +589,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -596,7 +605,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimeIntervalSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub program_date_time_interval_seconds: Option<i64>,
 
     ///
@@ -608,7 +617,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepeatExtXKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repeat_ext_xkey: Option<bool>,
 
     ///
@@ -620,7 +629,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_selection: Option<StreamSelection>,
 }
 
@@ -644,6 +653,7 @@ impl cfn_resources::CfnResource for HlsManifest {
 
 /// Parameters for a packaging configuration that uses HTTP Live Streaming (HLS) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HlsPackage {
     ///
     /// Parameters for encrypting content.
@@ -654,7 +664,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<HlsEncryption>,
 
     ///
@@ -677,7 +687,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDvbSubtitles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_dvb_subtitles: Option<bool>,
 
     ///
@@ -689,7 +699,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -701,7 +711,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAudioRenditionGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_audio_rendition_group: Option<bool>,
 }
 
@@ -725,6 +735,7 @@ impl cfn_resources::CfnResource for HlsPackage {
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MssEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -756,6 +767,7 @@ impl cfn_resources::CfnResource for MssEncryption {
 
 /// Parameters for a Microsoft Smooth manifest.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MssManifest {
     ///
     /// A short string that's appended to the end of the endpoint URL to create a unique path to this packaging configuration.
@@ -766,7 +778,7 @@ pub struct MssManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -778,7 +790,7 @@ pub struct MssManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_selection: Option<StreamSelection>,
 }
 
@@ -802,6 +814,7 @@ impl cfn_resources::CfnResource for MssManifest {
 
 /// Parameters for a packaging configuration that uses Microsoft Smooth Streaming (MSS) packaging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MssPackage {
     ///
     /// Parameters for encrypting content.
@@ -812,7 +825,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<MssEncryption>,
 
     ///
@@ -835,7 +848,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_duration_seconds: Option<i64>,
 }
 
@@ -859,6 +872,7 @@ impl cfn_resources::CfnResource for MssPackage {
 
 /// A configuration for accessing an external Secure Packager and Encoder Key Exchange     (SPEKE) service that provides encryption keys.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SpekeKeyProvider {
     ///
     /// Use encryptionContractConfiguration to configure one or more content encryption keys for your         endpoints that use SPEKE Version 2.0. The encryption contract defines which content keys are used to encrypt the         audio and video tracks in your stream. To configure the encryption contract, specify which audio and video encryption presets to use.
@@ -869,7 +883,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionContractConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_contract_configuration: Option<EncryptionContractConfiguration>,
 
     ///
@@ -926,6 +940,7 @@ impl cfn_resources::CfnResource for SpekeKeyProvider {
 
 /// Limitations for outputs from the endpoint, based on the video bitrate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamSelection {
     ///
     /// The upper limit of the bitrates that this endpoint serves. If the video track exceeds this threshold, then AWS Elemental MediaPackage excludes it from output. If you don't specify a value, it defaults to 2147483647 bits per second.
@@ -936,7 +951,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVideoBitsPerSecond")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_video_bits_per_second: Option<i64>,
 
     ///
@@ -948,7 +963,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinVideoBitsPerSecond")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_video_bits_per_second: Option<i64>,
 
     ///
@@ -962,7 +977,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_order: Option<cfn_resources::StrVal>,
 }
 
@@ -988,6 +1003,7 @@ impl cfn_resources::CfnResource for StreamSelection {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

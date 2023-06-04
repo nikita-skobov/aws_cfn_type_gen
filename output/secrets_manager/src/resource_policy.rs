@@ -4,6 +4,7 @@
 ///
 /// Required permissions:    secretsmanager:PutResourcePolicy. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourcePolicy {
     ///
     /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.
@@ -14,7 +15,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_policy: Option<bool>,
 
     ///

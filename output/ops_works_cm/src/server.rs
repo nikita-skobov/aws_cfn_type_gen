@@ -1,5 +1,6 @@
 /// The AWS::OpsWorksCM::Server resource creates an AWS OpsWorks for Chef Automate or OpsWorks for Puppet Enterprise       configuration management server. For more      information, see Create a Chef Automate Server in AWS CloudFormation or Create a        Puppet Enterprise Master in AWS CloudFormation in the AWS OpsWorks User          Guide, and CreateServer in the AWS OpsWorks CM API     Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServer {
     ///
     /// Associate a public IP address with a server that you are launching. Valid values are true or false. The default value is true.
@@ -10,7 +11,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatePublicIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupRetentionCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_retention_count: Option<i64>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomCertificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_certificate: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomPrivateKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_private_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableAutomatedBackup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_automated_backup: Option<bool>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_attributes: Option<Vec<EngineAttribute>>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineModel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_model: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +213,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyPair")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_pair: Option<cfn_resources::StrVal>,
 
     ///
@@ -232,7 +233,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -246,7 +247,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +261,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -293,7 +294,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -309,7 +310,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -492,6 +493,7 @@ impl cfn_resources::CfnResource for CfnServer {
 
 /// The EngineAttribute property type specifies administrator credentials for      an AWS OpsWorks for Chef Automate or OpsWorks for Puppet Enterprise server.     EngineAttribute is a property of the AWS::OpsWorksCM::Server    resource type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EngineAttribute {
     ///
     /// The name of the engine attribute.
@@ -514,7 +516,7 @@ pub struct EngineAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -538,7 +540,7 @@ pub struct EngineAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -586,6 +588,7 @@ impl cfn_resources::CfnResource for EngineAttribute {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

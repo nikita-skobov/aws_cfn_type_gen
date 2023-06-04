@@ -2,6 +2,7 @@
 ///
 /// Granted licenses are licenses for products that your organization purchased from AWS Marketplace      or directly from a seller who integrated their software with managed entitlements. For more information,      see Granted       licenses in the AWS License Manager User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLicense {
     ///
     /// License beneficiary.
@@ -12,7 +13,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Beneficiary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub beneficiary: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_metadata: Option<Vec<Metadata>>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductSKU")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub product_sku: Option<cfn_resources::StrVal>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -173,6 +174,7 @@ impl cfn_resources::CfnResource for CfnLicense {
 
 /// Details about a borrow configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BorrowConfiguration {
     ///
     /// Indicates whether early check-ins are allowed.
@@ -213,6 +215,7 @@ impl cfn_resources::CfnResource for BorrowConfiguration {
 
 /// Details about a consumption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConsumptionConfiguration {
     ///
     /// Details about a borrow configuration.
@@ -223,7 +226,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorrowConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub borrow_configuration: Option<BorrowConfiguration>,
 
     ///
@@ -235,7 +238,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionalConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisional_configuration: Option<ProvisionalConfiguration>,
 
     ///
@@ -247,7 +250,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenewType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub renew_type: Option<cfn_resources::StrVal>,
 }
 
@@ -275,6 +278,7 @@ impl cfn_resources::CfnResource for ConsumptionConfiguration {
 
 /// Describes a resource entitled for use with a license.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Entitlement {
     ///
     /// Indicates whether check-ins are allowed.
@@ -285,7 +289,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCheckIn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_check_in: Option<bool>,
 
     ///
@@ -297,7 +301,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_count: Option<i64>,
 
     ///
@@ -320,7 +324,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overage: Option<bool>,
 
     ///
@@ -343,7 +347,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -363,6 +367,7 @@ impl cfn_resources::CfnResource for Entitlement {
 
 /// Details associated with the issuer of a license.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IssuerData {
     ///
     /// Issuer name.
@@ -384,7 +389,7 @@ pub struct IssuerData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SignKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sign_key: Option<cfn_resources::StrVal>,
 }
 
@@ -404,6 +409,7 @@ impl cfn_resources::CfnResource for IssuerData {
 
 /// Describes key/value pairs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metadata {
     ///
     /// The key name.
@@ -444,6 +450,7 @@ impl cfn_resources::CfnResource for Metadata {
 
 /// Details about a provisional configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionalConfiguration {
     ///
     /// Maximum time for the provisional configuration, in minutes.
@@ -473,6 +480,7 @@ impl cfn_resources::CfnResource for ProvisionalConfiguration {
 
 /// Date and time range during which the license is valid, in ISO8601-UTC format.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValidityDateFormat {
     ///
     /// Start of the time range.

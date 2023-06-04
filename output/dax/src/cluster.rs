@@ -1,5 +1,6 @@
 /// Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCluster {
     ///
     /// The Availability Zones (AZs) in which the cluster nodes will reside after the       cluster has been created or updated. If provided, the length of this list must equal the         ReplicationFactor parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest       availability.
@@ -10,7 +11,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterEndpointEncryptionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_endpoint_encryption_type: Option<ClusterClusterEndpointEncryptionTypeEnum>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "ClusterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +138,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SSESpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssespecification: Option<SSESpecification>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -165,7 +166,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -177,7 +178,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -251,6 +252,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 
 /// Represents the settings used to enable server-side encryption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SSESpecification {
     ///
     /// Indicates whether server-side encryption is enabled (true) or disabled (false) on       the cluster.
@@ -261,7 +263,7 @@ pub struct SSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sseenabled: Option<bool>,
 }
 

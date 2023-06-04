@@ -1,5 +1,6 @@
 /// The AWS::FinSpace::Environment resource represents an Amazon FinSpace     environment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEnvironment {
     ///
     /// The description of the FinSpace environment.
@@ -16,7 +17,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederationMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federation_mode: Option<EnvironmentFederationModeEnum>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federation_parameters: Option<FederationParameters>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SuperuserParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub superuser_parameters: Option<SuperuserParameters>,
 
     /// Property description not available.
@@ -100,7 +101,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -288,6 +289,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 
 /// The AttributeMapItems property type specifies Property description not available. for an AWS::FinSpace::Environment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributeMapItems {
     /// Property description not available.
     ///
@@ -297,7 +299,7 @@ pub struct AttributeMapItems {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -308,7 +310,7 @@ pub struct AttributeMapItems {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -328,6 +330,7 @@ impl cfn_resources::CfnResource for AttributeMapItems {
 
 /// Configuration information when authentication mode is FEDERATED.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FederationParameters {
     ///
     /// The redirect or sign-in URL that should be entered into the SAML 2.0 compliant identity provider configuration    (IdP).
@@ -344,7 +347,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationCallBackURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_call_back_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +359,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AttributeMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_map: Option<Vec<AttributeMapItems>>,
 
     ///
@@ -374,7 +377,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationProviderName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federation_provider_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -392,7 +395,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationURN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federation_urn: Option<cfn_resources::StrVal>,
 
     ///
@@ -410,7 +413,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamlMetadataDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saml_metadata_document: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,7 +431,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamlMetadataURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saml_metadata_url: Option<cfn_resources::StrVal>,
 }
 
@@ -537,6 +540,7 @@ impl cfn_resources::CfnResource for FederationParameters {
 
 /// Configuration information for the superuser.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SuperuserParameters {
     ///
     /// The email address of the superuser.
@@ -553,7 +557,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EmailAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -571,7 +575,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirstName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub first_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -589,7 +593,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LastName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_name: Option<cfn_resources::StrVal>,
 }
 
@@ -681,6 +685,7 @@ impl cfn_resources::CfnResource for SuperuserParameters {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

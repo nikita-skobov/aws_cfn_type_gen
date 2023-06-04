@@ -1,5 +1,6 @@
 /// Sets the security configuration for a specified catalog. After the configuration has been    set, the specified encryption is applied to every catalog write thereafter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataCatalogEncryptionSettings {
     ///
     /// The ID of the Data Catalog in which the settings are created.
@@ -46,6 +47,7 @@ impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
 ///
 /// This encryption requires that you set AWS KMS key permissions to enable or restrict access    on the password key according to your security requirements. For example, you might want only    administrators to have decrypt permission on the password key.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionPasswordEncryption {
     ///
     /// An AWS KMS key that is used to encrypt the connection password.
@@ -58,7 +60,7 @@ pub struct ConnectionPasswordEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +72,7 @@ pub struct ConnectionPasswordEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnConnectionPasswordEncrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub return_connection_password_encrypted: Option<bool>,
 }
 
@@ -90,6 +92,7 @@ impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
 
 /// Contains configuration information for maintaining Data Catalog security.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCatalogEncryptionSettings {
     ///
     /// When connection password protection is enabled, the Data Catalog uses a customer-provided    key to encrypt the password as part of CreateConnection or     UpdateConnection and store it in the ENCRYPTED_PASSWORD field in    the connection properties. You can enable catalog encryption or only password    encryption.
@@ -100,7 +103,7 @@ pub struct DataCatalogEncryptionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPasswordEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_password_encryption: Option<ConnectionPasswordEncryption>,
 
     ///
@@ -112,7 +115,7 @@ pub struct DataCatalogEncryptionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionAtRest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_at_rest: Option<EncryptionAtRest>,
 }
 
@@ -140,6 +143,7 @@ impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
 
 /// Specifies the encryption-at-rest configuration for the Data Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionAtRest {
     ///
     /// The encryption-at-rest mode for encrypting Data Catalog data.
@@ -152,7 +156,7 @@ pub struct EncryptionAtRest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogEncryptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_encryption_mode: Option<EncryptionAtRestCatalogEncryptionModeEnum>,
 
     ///
@@ -170,7 +174,7 @@ pub struct EncryptionAtRest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SseAwsKmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sse_aws_kms_key_id: Option<cfn_resources::StrVal>,
 }
 

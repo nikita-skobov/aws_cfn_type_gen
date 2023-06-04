@@ -2,6 +2,7 @@
 ///
 /// The initial state of the image builder is PENDING. When it is ready, the state is RUNNING.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnImageBuilder {
     ///
     /// The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image builder only through the specified endpoints.
@@ -14,7 +15,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessEndpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_endpoints: Option<Vec<AccessEndpoint>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppstreamAgentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub appstream_agent_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainJoinInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_join_info: Option<DomainJoinInfo>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDefaultInternetAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_default_internet_access: Option<bool>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -178,7 +179,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_config: Option<VpcConfig>,
 
     #[serde(skip_serializing)]
@@ -286,6 +287,7 @@ impl cfn_resources::CfnResource for CfnImageBuilder {
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessEndpoint {
     ///
     /// The type of interface endpoint.
@@ -354,6 +356,7 @@ impl cfn_resources::CfnResource for AccessEndpoint {
 
 /// The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainJoinInfo {
     ///
     /// The fully qualified name of the directory (for example, corp.example.com).
@@ -364,7 +367,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub directory_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -378,7 +381,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 }
 
@@ -412,6 +415,7 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -450,6 +454,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The VPC configuration for the image builder.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     ///
     /// The identifiers of the security groups for the image builder.
@@ -462,7 +467,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -474,7 +479,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationNFS resource specifies a file system on a     Network File System (NFS) server that can be read from or written to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationNFS {
     ///
     /// The NFS mount options that DataSync can use to mount your NFS share.
@@ -10,7 +11,7 @@ pub struct CfnLocationNFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_options: Option<MountOptions>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnLocationNFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnLocationNFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnLocationNFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -160,6 +161,7 @@ impl cfn_resources::CfnResource for CfnLocationNFS {
 
 /// The NFS mount options that DataSync can use to mount your NFS share.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MountOptions {
     ///
     /// Specifies the NFS version that you want DataSync to use when mounting your NFS    share. If the server refuses to use the version specified, the task fails.
@@ -178,7 +180,7 @@ pub struct MountOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<MountOptionsVersionEnum>,
 }
 
@@ -223,6 +225,7 @@ impl cfn_resources::CfnResource for MountOptions {
 
 /// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnPremConfig {
     ///
     /// ARNs of the agents to use for an NFS location.
@@ -269,6 +272,7 @@ impl cfn_resources::CfnResource for OnPremConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

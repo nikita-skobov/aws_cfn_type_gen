@@ -2,6 +2,7 @@
 ///
 /// Before you can update the route table associated with an attachment, you must     disassociate the transit gateway route table that is currently associated with the     attachment. First update the stack to remove the associated transit gateway route table,     and then update the stack with the ID of the new transit gateway route table to     associate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGatewayRouteTableAssociation {
     ///
     /// The ID of the attachment.

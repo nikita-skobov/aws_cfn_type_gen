@@ -1,5 +1,6 @@
 /// Use the AWS::EventSchemas::Registry to specify a schema registry. Schema       registries are containers for Schemas. Registries collect and organize schemas so that       your schemas are in logical groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRegistry {
     ///
     /// A description of the registry to be created.
@@ -10,7 +11,7 @@ pub struct CfnRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnRegistry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     #[serde(skip_serializing)]
@@ -76,6 +77,7 @@ impl cfn_resources::CfnResource for CfnRegistry {
 
 /// Tags to associate with the schema registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

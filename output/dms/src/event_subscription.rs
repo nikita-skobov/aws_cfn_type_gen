@@ -1,5 +1,6 @@
 /// Use the AWS::DMS::EventSubscription resource to get notifications for AWS Database Migration Service       events through the Amazon Simple Notification Service. For more information, see       Working with events and notifications in         AWS Database Migration Service in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventSubscription {
     ///
     /// Indicates whether to activate the subscription. If you don't specify this property,       AWS CloudFormation activates the subscription.
@@ -10,7 +11,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventCategories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_categories: Option<Vec<String>>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ids: Option<Vec<String>>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subscription_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -113,6 +114,7 @@ impl cfn_resources::CfnResource for CfnEventSubscription {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

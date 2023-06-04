@@ -1,5 +1,6 @@
 /// Create or update cluster policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClusterPolicy {
     ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.

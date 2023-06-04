@@ -1,5 +1,6 @@
 /// A versioned model that can be deployed for SageMaker inference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModelPackage {
     ///
     /// A structure of additional Inference Specification. Additional Inference Specification       specifies details about inference jobs that can be run with models based on       this model package
@@ -10,7 +11,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecificationDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_inference_specification_definition:
         Option<AdditionalInferenceSpecificationDefinition>,
 
@@ -25,7 +26,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_inference_specifications:
         Option<Vec<AdditionalInferenceSpecificationDefinition>>,
 
@@ -38,7 +39,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecificationsToAdd")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_inference_specifications_to_add:
         Option<Vec<AdditionalInferenceSpecificationDefinition>>,
 
@@ -55,7 +56,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approval_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertifyForMarketplace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certify_for_marketplace: Option<bool>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub created_by: Option<UserContext>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerMetadataProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_metadata_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriftCheckBaselines")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drift_check_baselines: Option<DriftCheckBaselines>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inference_specification: Option<InferenceSpecification>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_modified_by: Option<UserContext>,
 
     ///
@@ -175,7 +176,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_modified_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +188,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetadataProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata_properties: Option<MetadataProperties>,
 
     ///
@@ -203,7 +204,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelApprovalStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_approval_status: Option<ModelPackageModelApprovalStatusEnum>,
 
     ///
@@ -215,7 +216,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_metrics: Option<ModelMetrics>,
 
     ///
@@ -231,7 +232,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -249,7 +250,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -267,7 +268,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +280,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatusDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_status_details: Option<ModelPackageStatusDetails>,
 
     ///
@@ -291,7 +292,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatusItem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_status_item: Option<ModelPackageStatusItem>,
 
     ///
@@ -305,7 +306,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_version: Option<i64>,
 
     ///
@@ -317,7 +318,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamplePayloadUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sample_payload_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +330,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAlgorithmSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_algorithm_specification: Option<SourceAlgorithmSpecification>,
 
     ///
@@ -343,7 +344,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -355,7 +356,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Task")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task: Option<cfn_resources::StrVal>,
 
     ///
@@ -367,7 +368,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_specification: Option<ValidationSpecification>,
 
     #[serde(skip_serializing)]
@@ -560,6 +561,7 @@ impl cfn_resources::CfnResource for CfnModelPackage {
 
 /// A structure of additional Inference Specification. Additional Inference Specification       specifies details about inference jobs that can be run with models based on       this model package
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// The Amazon ECR registry path of the Docker image that contains the inference code.
@@ -587,7 +589,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -616,7 +618,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedContentTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_content_types: Option<Vec<String>>,
 
     ///
@@ -628,7 +630,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedRealtimeInferenceInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_realtime_inference_instance_types: Option<Vec<String>>,
 
     ///
@@ -640,7 +642,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedResponseMIMETypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_response_mimetypes: Option<Vec<String>>,
 
     ///
@@ -652,7 +654,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedTransformInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_transform_instance_types: Option<Vec<String>>,
 }
 
@@ -714,6 +716,7 @@ impl cfn_resources::CfnResource for AdditionalInferenceSpecificationDefinition {
 
 /// Contains bias metrics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Bias {
     ///
     /// The post-training bias report for a model.
@@ -724,7 +727,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PostTrainingReport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_training_report: Option<MetricsSource>,
 
     ///
@@ -736,7 +739,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreTrainingReport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_training_report: Option<MetricsSource>,
 
     ///
@@ -748,7 +751,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Report")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report: Option<MetricsSource>,
 }
 
@@ -778,6 +781,7 @@ impl cfn_resources::CfnResource for Bias {
 
 /// Describes the location of the channel data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSource {
     ///
     /// The S3 location of the data source that is associated with a channel.
@@ -809,6 +813,7 @@ impl cfn_resources::CfnResource for DataSource {
 
 /// Represents the drift check baselines that can be used when the model monitor is set using the model       package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DriftCheckBaselines {
     ///
     /// Represents the drift check bias baselines that can be used when the model monitor is set using the model       package.
@@ -819,7 +824,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bias: Option<DriftCheckBias>,
 
     ///
@@ -831,7 +836,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Explainability")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explainability: Option<DriftCheckExplainability>,
 
     ///
@@ -843,7 +848,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataQuality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_quality: Option<DriftCheckModelDataQuality>,
 
     ///
@@ -855,7 +860,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelQuality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_quality: Option<DriftCheckModelQuality>,
 }
 
@@ -889,6 +894,7 @@ impl cfn_resources::CfnResource for DriftCheckBaselines {
 
 /// Represents the drift check bias baselines that can be used when the model monitor is set using the       model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DriftCheckBias {
     ///
     /// The bias config file for a model.
@@ -899,7 +905,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigFile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_file: Option<FileSource>,
 
     ///
@@ -911,7 +917,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PostTrainingConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_training_constraints: Option<MetricsSource>,
 
     ///
@@ -923,7 +929,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreTrainingConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_training_constraints: Option<MetricsSource>,
 }
 
@@ -955,6 +961,7 @@ impl cfn_resources::CfnResource for DriftCheckBias {
 
 /// Represents the drift check explainability baselines that can be used when the model monitor is set       using the model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DriftCheckExplainability {
     ///
     /// The explainability config file for the model.
@@ -965,7 +972,7 @@ pub struct DriftCheckExplainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigFile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_file: Option<FileSource>,
 
     ///
@@ -977,7 +984,7 @@ pub struct DriftCheckExplainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints: Option<MetricsSource>,
 }
 
@@ -1005,6 +1012,7 @@ impl cfn_resources::CfnResource for DriftCheckExplainability {
 
 /// Represents the drift check data quality baselines that can be used when the model monitor is set using       the model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DriftCheckModelDataQuality {
     ///
     /// The drift check model data quality constraints.
@@ -1015,7 +1023,7 @@ pub struct DriftCheckModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -1027,7 +1035,7 @@ pub struct DriftCheckModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -1055,6 +1063,7 @@ impl cfn_resources::CfnResource for DriftCheckModelDataQuality {
 
 /// Represents the drift check model quality baselines that can be used when the model monitor is set using       the model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DriftCheckModelQuality {
     ///
     /// The drift check model quality constraints.
@@ -1065,7 +1074,7 @@ pub struct DriftCheckModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -1077,7 +1086,7 @@ pub struct DriftCheckModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -1105,6 +1114,7 @@ impl cfn_resources::CfnResource for DriftCheckModelQuality {
 
 /// Contains explainability metrics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Explainability {
     ///
     /// The explainability report for a model.
@@ -1115,7 +1125,7 @@ pub struct Explainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Report")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report: Option<MetricsSource>,
 }
 
@@ -1137,6 +1147,7 @@ impl cfn_resources::CfnResource for Explainability {
 
 /// Contains details regarding the file source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileSource {
     ///
     /// The digest of the file source.
@@ -1151,7 +1162,7 @@ pub struct FileSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_digest: Option<cfn_resources::StrVal>,
 
     ///
@@ -1167,7 +1178,7 @@ pub struct FileSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1235,6 +1246,7 @@ impl cfn_resources::CfnResource for FileSource {
 
 /// Defines how to perform inference generation after a training job is run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InferenceSpecification {
     ///
     /// The Amazon ECR registry path of the Docker image that contains the inference code.
@@ -1271,7 +1283,7 @@ pub struct InferenceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedRealtimeInferenceInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_realtime_inference_instance_types: Option<Vec<String>>,
 
     ///
@@ -1296,7 +1308,7 @@ pub struct InferenceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedTransformInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_transform_instance_types: Option<Vec<String>>,
 }
 
@@ -1325,6 +1337,7 @@ impl cfn_resources::CfnResource for InferenceSpecification {
 
 /// Metadata properties of the tracking entity, trial, or trial component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetadataProperties {
     ///
     /// The commit ID.
@@ -1339,7 +1352,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CommitId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub commit_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1355,7 +1368,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GeneratedBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generated_by: Option<cfn_resources::StrVal>,
 
     ///
@@ -1371,7 +1384,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1387,7 +1400,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Repository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository: Option<cfn_resources::StrVal>,
 }
 
@@ -1451,6 +1464,7 @@ impl cfn_resources::CfnResource for MetadataProperties {
 
 /// Details about the metrics source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricsSource {
     ///
     /// The hash key used for the metrics source.
@@ -1465,7 +1479,7 @@ pub struct MetricsSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_digest: Option<cfn_resources::StrVal>,
 
     ///
@@ -1548,6 +1562,7 @@ impl cfn_resources::CfnResource for MetricsSource {
 
 /// Data quality constraints and statistics for a model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelDataQuality {
     ///
     /// Data quality constraints for a model.
@@ -1558,7 +1573,7 @@ pub struct ModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -1570,7 +1585,7 @@ pub struct ModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -1598,6 +1613,7 @@ impl cfn_resources::CfnResource for ModelDataQuality {
 
 /// Input object for the model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelInput {
     ///
     /// The input configuration object for the model.
@@ -1655,6 +1671,7 @@ impl cfn_resources::CfnResource for ModelInput {
 
 /// Contains metrics captured from a model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelMetrics {
     ///
     /// Metrics that measure bais in a model.
@@ -1665,7 +1682,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bias: Option<Bias>,
 
     ///
@@ -1677,7 +1694,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Explainability")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explainability: Option<Explainability>,
 
     ///
@@ -1689,7 +1706,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataQuality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_quality: Option<ModelDataQuality>,
 
     ///
@@ -1701,7 +1718,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelQuality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_quality: Option<ModelQuality>,
 }
 
@@ -1735,6 +1752,7 @@ impl cfn_resources::CfnResource for ModelMetrics {
 
 /// Describes the Docker container for the model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelPackageContainerDefinition {
     ///
     /// The DNS host name for the Docker container.
@@ -1749,7 +1767,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ContainerHostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -1761,7 +1779,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1773,7 +1791,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Framework")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework: Option<cfn_resources::StrVal>,
 
     ///
@@ -1791,7 +1809,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "FrameworkVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -1824,7 +1842,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageDigest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_digest: Option<cfn_resources::StrVal>,
 
     ///
@@ -1842,7 +1860,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ModelDataUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -1854,7 +1872,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ModelInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_input: Option<ModelInput>,
 
     ///
@@ -1866,7 +1884,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NearestModelName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nearest_model_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1882,7 +1900,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ProductId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub product_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1980,6 +1998,7 @@ impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
 
 /// Specifies the validation and image scan statuses of the model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelPackageStatusDetails {
     ///
     /// The status of the scan of the Docker image container for the model package.
@@ -1990,7 +2009,7 @@ pub struct ModelPackageStatusDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanStatuses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scan_statuses: Option<Vec<ModelPackageStatusItem>>,
 
     ///
@@ -2021,6 +2040,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusDetails {
 
 /// Represents the overall status of a model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelPackageStatusItem {
     ///
     /// if the overall status is Failed, the reason for the failure.
@@ -2031,7 +2051,7 @@ pub struct ModelPackageStatusItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
@@ -2128,6 +2148,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusItem {
 
 /// Model quality statistics and constraints.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelQuality {
     ///
     /// Model quality constraints.
@@ -2138,7 +2159,7 @@ pub struct ModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -2150,7 +2171,7 @@ pub struct ModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -2180,6 +2201,7 @@ impl cfn_resources::CfnResource for ModelQuality {
 ///
 /// Your input bucket must be in the same AWS region as your training job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3DataSource {
     ///
     /// If you choose S3Prefix, S3Uri identifies a key name prefix.       SageMaker uses all objects that match the specified key name prefix for model training.
@@ -2266,6 +2288,7 @@ impl cfn_resources::CfnResource for S3DataSource {
 
 /// Specifies an algorithm that was used to create the model package. The algorithm must       be either an algorithm resource in your SageMaker account or an algorithm in AWS Marketplace that you are subscribed to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceAlgorithm {
     ///
     /// The name of an algorithm that was used to create the model package. The algorithm must       be either an algorithm resource in your SageMaker account or an algorithm in AWS Marketplace that you are subscribed to.
@@ -2299,7 +2322,7 @@ pub struct SourceAlgorithm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_url: Option<cfn_resources::StrVal>,
 }
 
@@ -2352,6 +2375,7 @@ impl cfn_resources::CfnResource for SourceAlgorithm {
 
 /// A list of algorithms that were used to create a model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceAlgorithmSpecification {
     ///
     /// A list of the algorithms that were used to create a model package.
@@ -2398,6 +2422,7 @@ impl cfn_resources::CfnResource for SourceAlgorithmSpecification {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2436,6 +2461,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the input source of a transform job and the way the transform job consumes       it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformInput {
     ///
     /// If your transform data       is       compressed, specify the compression type. Amazon SageMaker automatically       decompresses the data for the transform job accordingly. The default value is         None.
@@ -2448,7 +2474,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompressionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression_type: Option<TransformInputCompressionTypeEnum>,
 
     ///
@@ -2464,7 +2490,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -2495,7 +2521,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SplitType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub split_type: Option<TransformInputSplitTypeEnum>,
 }
 
@@ -2570,6 +2596,7 @@ impl cfn_resources::CfnResource for TransformInput {
 
 /// Defines the input needed to run a transform job using the inference specification       specified in the algorithm.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformJobDefinition {
     ///
     /// A string that determines the number of records included in a single mini-batch.
@@ -2584,7 +2611,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BatchStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub batch_strategy: Option<TransformJobDefinitionBatchStrategyEnum>,
 
     ///
@@ -2596,7 +2623,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -2610,7 +2637,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxConcurrentTransforms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_transforms: Option<i64>,
 
     ///
@@ -2624,7 +2651,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxPayloadInMB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_payload_in_mb: Option<i64>,
 
     ///
@@ -2718,6 +2745,7 @@ impl cfn_resources::CfnResource for TransformJobDefinition {
 
 /// Describes the results of a transform job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformOutput {
     ///
     /// The MIME type used to specify the output data. Amazon SageMaker uses the MIME type with each http       call to transfer data from the transform job.
@@ -2732,7 +2760,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Accept")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept: Option<cfn_resources::StrVal>,
 
     ///
@@ -2746,7 +2774,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssembleWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assemble_with: Option<TransformOutputAssembleWithEnum>,
 
     ///
@@ -2768,7 +2796,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2855,6 +2883,7 @@ impl cfn_resources::CfnResource for TransformOutput {
 
 /// Describes the resources, including ML instance types and ML instance count, to use for       transform job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformResources {
     ///
     /// The number of       ML       compute instances to use in the transform job. The default value is         1, and the maximum is 100. For distributed transform jobs,       specify a value greater than 1.
@@ -2901,7 +2930,7 @@ pub struct TransformResources {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeKmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -3075,6 +3104,7 @@ impl cfn_resources::CfnResource for TransformResources {
 
 /// Information about the user who created or modified an experiment, trial, trial    component, lineage group, project, or model card.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserContext {
     ///
     /// The domain associated with the user.
@@ -3085,7 +3115,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3097,7 +3127,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -3109,7 +3139,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_profile_name: Option<cfn_resources::StrVal>,
 }
 
@@ -3131,6 +3161,7 @@ impl cfn_resources::CfnResource for UserContext {
 ///
 /// The data provided in the validation profile is made available to your buyers on AWS       Marketplace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValidationProfile {
     ///
     /// The name of the profile for the model package.
@@ -3201,6 +3232,7 @@ impl cfn_resources::CfnResource for ValidationProfile {
 
 /// Specifies batch transform jobs that SageMaker runs to validate your model package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValidationSpecification {
     ///
     /// An array of ModelPackageValidationProfile objects, each of which       specifies a batch transform job that SageMaker runs to validate your model package.

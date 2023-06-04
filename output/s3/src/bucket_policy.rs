@@ -6,6 +6,7 @@
 ///
 /// The following operations are related to PutBucketPolicy:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBucketPolicy {
     ///
     /// The name of the Amazon S3 bucket to which the policy applies.

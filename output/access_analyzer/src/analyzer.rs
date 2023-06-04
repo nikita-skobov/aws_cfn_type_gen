@@ -1,5 +1,6 @@
 /// The AWS::AccessAnalyzer::Analyzer resource specifies a new analyzer. The analyzer is an object that represents the IAM Access Analyzer feature. An analyzer is required      for Access Analyzer to become operational.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAnalyzer {
     ///
     /// The name of the analyzer.
@@ -10,7 +11,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AnalyzerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub analyzer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub archive_rules: Option<Vec<ArchiveRule>>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -95,6 +96,7 @@ impl cfn_resources::CfnResource for CfnAnalyzer {
 
 /// The criteria for an archive rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArchiveRule {
     /// The criteria for the rule.
     ///
@@ -135,6 +137,7 @@ impl cfn_resources::CfnResource for ArchiveRule {
 ///
 /// To learn about filter keys that you can use to create an archive rule, see AWS Identity and Access Management Access Analyzer filter keys in the     AWS Identity and Access Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     /// A "contains" condition to match for the rule.
     ///
@@ -144,7 +147,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Contains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contains: Option<Vec<String>>,
 
     /// An "equals" condition to match for the rule.
@@ -155,7 +158,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub eq: Option<Vec<String>>,
 
     /// An "exists" condition to match for the rule.
@@ -166,7 +169,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exists")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exists: Option<bool>,
 
     /// A "not equal" condition to match for the rule.
@@ -177,7 +180,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Neq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub neq: Option<Vec<String>>,
 
     /// The property used to define the criteria in the filter for the rule.
@@ -213,6 +216,7 @@ impl cfn_resources::CfnResource for Filter {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::Inspector::AssessmentTarget resource is used to create Amazon     Inspector assessment targets, which specify the Amazon EC2 instances that will be analyzed     during an assessment run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAssessmentTarget {
     ///
     /// The name of the Amazon Inspector assessment target. The name must be unique within     the AWS account.
@@ -14,7 +15,7 @@ pub struct CfnAssessmentTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTargetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assessment_target_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnAssessmentTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_group_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

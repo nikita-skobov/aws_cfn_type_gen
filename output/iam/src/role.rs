@@ -1,5 +1,6 @@
 /// Creates a new role for your AWS account. For more information about roles, see         IAM         roles. For information about quotas for role names and the number of roles       you can create, see IAM and AWS STS quotas in the         IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRole {
     ///
     /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
@@ -25,7 +26,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_policy_arns: Option<Vec<String>>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSessionDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_session_duration: Option<i64>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions_boundary: Option<cfn_resources::StrVal>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policies: Option<Vec<Policy>>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -250,6 +251,7 @@ impl cfn_resources::CfnResource for CfnRole {
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Policy {
     ///
     /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.
@@ -324,6 +326,7 @@ impl cfn_resources::CfnResource for Policy {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

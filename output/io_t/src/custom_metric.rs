@@ -1,5 +1,6 @@
 /// Use the AWS::IoT::CustomMetric resource to define a custom metric published by your devices to Device Defender. For API reference, see CreateCustomMetric and for general information, see Custom metrics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCustomMetric {
     ///
     /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
@@ -10,7 +11,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -84,6 +85,7 @@ impl cfn_resources::CfnResource for CfnCustomMetric {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// The maximum number of metric filters that can be associated with a log group is    100.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMetricFilter {
     ///
     /// The name of the metric filter.
@@ -18,7 +19,7 @@ pub struct CfnMetricFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,6 +137,7 @@ impl cfn_resources::CfnResource for CfnMetricFilter {
 ///
 /// For more information about publishing dimensions with metrics created by metric filters,      see       Publishing dimensions with metrics from values in JSON or space-delimited log events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Dimension {
     ///
     /// The name for the CloudWatch metric dimension that the metric filter creates.
@@ -178,6 +180,7 @@ impl cfn_resources::CfnResource for Dimension {
 
 /// MetricTransformation is a property of the AWS::Logs::MetricFilter resource that describes      how to transform log streams into a CloudWatch metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricTransformation {
     ///
     /// (Optional) The value to emit when a filter pattern does not match a log event.    This value can be null.
@@ -188,7 +191,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<f64>,
 
     ///
@@ -202,7 +205,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -253,7 +256,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<MetricTransformationUnitEnum>,
 }
 

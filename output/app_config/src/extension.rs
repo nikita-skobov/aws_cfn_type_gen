@@ -4,6 +4,7 @@
 ///
 /// For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnExtension {
     ///
     /// The actions defined in the extension.
@@ -29,7 +30,7 @@ pub struct CfnExtension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnExtension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LatestVersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub latest_version_number: Option<i64>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnExtension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<std::collections::HashMap<String, Parameter>>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnExtension {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -166,6 +167,7 @@ impl cfn_resources::CfnResource for CfnExtension {
 
 /// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Parameter {
     ///
     /// Information about the parameter.
@@ -180,7 +182,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -239,6 +241,7 @@ impl cfn_resources::CfnResource for Parameter {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

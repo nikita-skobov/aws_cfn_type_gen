@@ -10,6 +10,7 @@
 ///
 /// For information about retrieving a secret in code, see Retrieve     secrets from Secrets Manager.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecret {
     ///
     /// The description of the secret.
@@ -20,7 +21,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GenerateSecretString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generate_secret_string: Option<GenerateSecretString>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicaRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replica_regions: Option<Vec<ReplicaRegion>>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -116,7 +117,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -153,6 +154,7 @@ impl cfn_resources::CfnResource for CfnSecret {
 ///
 /// Required permissions:    secretsmanager:GetRandomPassword. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GenerateSecretString {
     ///
     /// A string of the characters that you don't want in the password.
@@ -163,7 +165,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeCharacters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_characters: Option<cfn_resources::StrVal>,
 
     ///
@@ -175,7 +177,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeLowercase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_lowercase: Option<bool>,
 
     ///
@@ -187,7 +189,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeNumbers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_numbers: Option<bool>,
 
     ///
@@ -199,7 +201,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePunctuation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_punctuation: Option<bool>,
 
     ///
@@ -211,7 +213,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeUppercase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_uppercase: Option<bool>,
 
     ///
@@ -223,7 +225,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GenerateStringKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generate_string_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -235,7 +237,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSpace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_space: Option<bool>,
 
     ///
@@ -247,7 +249,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password_length: Option<i64>,
 
     ///
@@ -259,7 +261,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireEachIncludedType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_each_included_type: Option<bool>,
 
     ///
@@ -271,7 +273,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretStringTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_string_template: Option<cfn_resources::StrVal>,
 }
 
@@ -291,6 +293,7 @@ impl cfn_resources::CfnResource for GenerateSecretString {
 
 /// Specifies a Region and the KmsKeyId for a replica secret.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicaRegion {
     ///
     /// The ARN, key ID, or alias of the KMS key to encrypt the secret. If you don't include this field, Secrets Manager uses aws/secretsmanager.
@@ -301,7 +304,7 @@ pub struct ReplicaRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -338,6 +341,7 @@ impl cfn_resources::CfnResource for ReplicaRegion {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

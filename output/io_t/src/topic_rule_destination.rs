@@ -1,5 +1,6 @@
 /// A topic rule destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTopicRuleDestination {
     ///
     /// Properties of the HTTP URL.
@@ -10,7 +11,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HttpUrlProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_url_properties: Option<HttpUrlDestinationSummary>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_properties: Option<VpcDestinationProperties>,
 
     #[serde(skip_serializing)]
@@ -84,6 +85,7 @@ impl cfn_resources::CfnResource for CfnTopicRuleDestination {
 
 /// HTTP URL destination properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpUrlDestinationSummary {
     ///
     /// The URL used to confirm the HTTP topic rule destination URL.
@@ -94,7 +96,7 @@ pub struct HttpUrlDestinationSummary {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfirmationUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub confirmation_url: Option<cfn_resources::StrVal>,
 }
 
@@ -114,6 +116,7 @@ impl cfn_resources::CfnResource for HttpUrlDestinationSummary {
 
 /// The properties of a virtual private cloud (VPC) destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcDestinationProperties {
     ///
     /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
@@ -124,7 +127,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +139,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -148,7 +151,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -160,7 +163,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 

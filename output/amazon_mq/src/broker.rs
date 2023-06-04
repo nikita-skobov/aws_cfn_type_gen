@@ -2,6 +2,7 @@
 ///
 /// The AWS::AmazonMQ::Broker resource lets you create Amazon MQ for ActiveMQ and Amazon MQ for RabbitMQ brokers, add    configuration changes or modify users for a speified ActiveMQ broker, return information about the    specified broker, and delete the broker. For more information, see How Amazon MQ works in the Amazon MQ Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBroker {
     ///
     /// Optional. The authentication strategy used to secure the broker. The default is          SIMPLE.
@@ -12,7 +13,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<ConfigurationId>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_options: Option<EncryptionOptions>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LdapServerMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ldap_server_metadata: Option<LdapServerMetadata>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logs: Option<LogList>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window_start_time: Option<MaintenanceWindow>,
 
     ///
@@ -165,7 +166,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -177,7 +178,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +192,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -203,7 +204,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///
@@ -274,6 +275,7 @@ impl cfn_resources::CfnResource for CfnBroker {
 
 /// A list of information about the configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationId {
     ///
     /// The unique ID that Amazon MQ generates for the configuration.
@@ -314,6 +316,7 @@ impl cfn_resources::CfnResource for ConfigurationId {
 
 /// Encryption options for the broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionOptions {
     ///
     /// The customer master key (CMK) to use for the A AWS KMS (KMS).        This key is used to encrypt your data at rest. If not provided, Amazon MQ will use a        default CMK to encrypt your data.
@@ -324,7 +327,7 @@ pub struct EncryptionOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -355,6 +358,7 @@ impl cfn_resources::CfnResource for EncryptionOptions {
 
 /// Optional. The metadata of the LDAP server used to authenticate and authorize        connections to the broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LdapServerMetadata {
     ///
     /// Specifies the location of the LDAP server such as AWS Directory Service for Microsoft Active Directory. Optional failover server.
@@ -386,7 +390,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -408,7 +412,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleSearchSubtree")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_search_subtree: Option<bool>,
 
     /// Service account password. A service account is an account in your LDAP server that has access to initiate a connection. For example,   cn=admin,dc=corp, dc=example, dc=com.
@@ -452,7 +456,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserRoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -475,7 +479,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSearchSubtree")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_search_subtree: Option<bool>,
 }
 
@@ -495,6 +499,7 @@ impl cfn_resources::CfnResource for LdapServerMetadata {
 
 /// The list of information about logs to be enabled for the specified broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogList {
     ///
     /// Enables audit logging. Every user management action made using JMX or the ActiveMQ        Web Console is logged. Does not apply to RabbitMQ brokers.
@@ -505,7 +510,7 @@ pub struct LogList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Audit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audit: Option<bool>,
 
     ///
@@ -517,7 +522,7 @@ pub struct LogList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "General")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub general: Option<bool>,
 }
 
@@ -537,6 +542,7 @@ impl cfn_resources::CfnResource for LogList {
 
 /// The parameters that determine the WeeklyStartTime to apply pending updates or    patches to the broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindow {
     ///
     /// The day of the week.
@@ -588,6 +594,7 @@ impl cfn_resources::CfnResource for MaintenanceWindow {
 
 /// A key-value pair to associate with the broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// The key in a key-value pair.
@@ -628,6 +635,7 @@ impl cfn_resources::CfnResource for TagsEntry {
 
 /// The list of broker users (persons or applications) who can access queues and topics.    For Amazon MQ for RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned.     All subsequent broker users are created via the RabbitMQ web console or by using the RabbitMQ management API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct User {
     ///
     /// Enables access to the ActiveMQ web console for the ActiveMQ user. Does not apply to RabbitMQ brokers.
@@ -638,7 +646,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsoleAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub console_access: Option<bool>,
 
     ///
@@ -650,7 +658,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<String>>,
 
     ///

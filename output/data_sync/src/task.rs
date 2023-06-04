@@ -1,5 +1,6 @@
 /// The AWS::DataSync::Task resource specifies a task. A task is a set of two     locations (source and destination) and a set of Options that you use to     control the behavior of a task. If you don't specify Options when you create a     task, AWS DataSync populates them with service defaults.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTask {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that is used to    monitor and log events in the task.
@@ -18,7 +19,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excludes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excludes: Option<Vec<FilterRule>>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Includes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub includes: Option<Vec<FilterRule>>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<Options>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<TaskSchedule>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -248,6 +249,7 @@ impl cfn_resources::CfnResource for CfnTask {
 
 /// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterRule {
     ///
     /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
@@ -260,7 +262,7 @@ pub struct FilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_type: Option<FilterRuleFilterTypeEnum>,
 
     ///
@@ -278,7 +280,7 @@ pub struct FilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -324,6 +326,7 @@ impl cfn_resources::CfnResource for FilterRule {
 ///
 /// A task has a set of default options associated with it. If you don't specify an     option in StartTaskExecution,     the default value is used. You can override the default options on each task execution by     specifying an overriding Options value to StartTaskExecution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Options {
     ///
     /// A file metadata value that shows the last time that a file was accessed (that is,     when the file was read or written to). If you set Atime to       BEST_EFFORT, AWS DataSync attempts to preserve the original       Atime attribute on all source files (that is, the version before the     PREPARING phase). However, Atime's behavior is not fully standard across     platforms, so AWS DataSync can only do this on a best-effort basis.
@@ -344,7 +347,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Atime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub atime: Option<OptionsAtimeEnum>,
 
     ///
@@ -356,7 +359,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BytesPerSecond")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bytes_per_second: Option<i64>,
 
     ///
@@ -378,7 +381,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gid: Option<OptionsGidEnum>,
 
     ///
@@ -394,7 +397,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_level: Option<OptionsLogLevelEnum>,
 
     ///
@@ -416,7 +419,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mtime: Option<OptionsMtimeEnum>,
 
     ///
@@ -432,7 +435,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_tags: Option<OptionsObjectTagsEnum>,
 
     ///
@@ -448,7 +451,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverwriteMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overwrite_mode: Option<OptionsOverwriteModeEnum>,
 
     ///
@@ -470,7 +473,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PosixPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub posix_permissions: Option<OptionsPosixPermissionsEnum>,
 
     ///
@@ -490,7 +493,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveDeletedFiles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preserve_deleted_files: Option<OptionsPreserveDeletedFilesEnum>,
 
     ///
@@ -512,7 +515,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveDevices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preserve_devices: Option<OptionsPreserveDevicesEnum>,
 
     ///
@@ -544,7 +547,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDescriptorCopyFlags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_descriptor_copy_flags: Option<OptionsSecurityDescriptorCopyFlagsEnum>,
 
     ///
@@ -560,7 +563,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskQueueing")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_queueing: Option<OptionsTaskQueueingEnum>,
 
     ///
@@ -578,7 +581,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransferMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transfer_mode: Option<OptionsTransferModeEnum>,
 
     ///
@@ -600,7 +603,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Uid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uid: Option<OptionsUidEnum>,
 
     ///
@@ -622,7 +625,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifyMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verify_mode: Option<OptionsVerifyModeEnum>,
 }
 
@@ -914,6 +917,7 @@ impl cfn_resources::CfnResource for Options {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -952,6 +956,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies the schedule you want your task to use for repeated executions. For more    information, see Schedule Expressions for     Rules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TaskSchedule {
     ///
     /// A cron expression that specifies when AWS DataSync initiates a scheduled    transfer from a source to a destination location.

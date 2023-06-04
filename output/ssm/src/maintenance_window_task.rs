@@ -1,5 +1,6 @@
 /// The AWS::SSM::MaintenanceWindowTask resource defines information about a     task for an AWS Systems Manager maintenance window. For more information, see RegisterTaskWithMaintenanceWindow in the AWS Systems Manager API       Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMaintenanceWindowTask {
     ///
     /// The specification for whether tasks should continue to run after the cutoff time specified  in the maintenance windows is reached.
@@ -12,7 +13,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CutoffBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cutoff_behavior: Option<MaintenanceWindowTaskCutoffBehaviorEnum>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_info: Option<LoggingInfo>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrency: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxErrors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_errors: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -125,7 +126,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -141,7 +142,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub targets: Option<Vec<Target>>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskInvocationParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_invocation_parameters: Option<TaskInvocationParameters>,
 
     ///
@@ -190,7 +191,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_parameters: Option<serde_json::Value>,
 
     ///
@@ -440,6 +441,7 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
 
 /// Configuration options for sending command output to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchOutputConfig {
     ///
     /// The name of the CloudWatch Logs log group where you want to send command output. If you  don't specify a group name, AWS Systems Manager automatically creates a log group for you. The log group  uses the following naming format:
@@ -456,7 +458,7 @@ pub struct CloudWatchOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -468,7 +470,7 @@ pub struct CloudWatchOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchOutputEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_output_enabled: Option<bool>,
 }
 
@@ -506,6 +508,7 @@ impl cfn_resources::CfnResource for CloudWatchOutputConfig {
 ///
 /// LoggingInfo is a property of the AWS::SSM::MaintenanceWindowTask resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingInfo {
     ///
     /// The AWS Region where the S3 bucket is located.
@@ -548,7 +551,7 @@ pub struct LoggingInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -627,6 +630,7 @@ impl cfn_resources::CfnResource for LoggingInfo {
 ///
 /// For information about available parameters in Automation runbooks, you can view the    content of the runbook itself in the Systems Manager console. For information, see View runbook content in the AWS Systems Manager User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindowAutomationParameters {
     ///
     /// The version of an Automation runbook to use during task execution.
@@ -639,7 +643,7 @@ pub struct MaintenanceWindowAutomationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -651,7 +655,7 @@ pub struct MaintenanceWindowAutomationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 }
 
@@ -673,6 +677,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowAutomationParameters {
 ///
 /// MaintenanceWindowLambdaParameters is a property of the TaskInvocationParameters property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Client-specific information to pass to the AWS Lambda function that you're invoking. You can    then use the context variable to process the client information in your AWS Lambda    function.
@@ -687,7 +692,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientContext")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_context: Option<cfn_resources::StrVal>,
 
     ///
@@ -703,7 +708,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<cfn_resources::StrVal>,
 
     ///
@@ -719,7 +724,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Qualifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub qualifier: Option<cfn_resources::StrVal>,
 }
 
@@ -787,6 +792,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowLambdaParameters {
 ///
 /// MaintenanceWindowRunCommandParameters is a property of the TaskInvocationParameters property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Configuration options for sending command output to Amazon CloudWatch Logs.
@@ -797,7 +803,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchOutputConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_output_config: Option<CloudWatchOutputConfig>,
 
     ///
@@ -811,7 +817,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -825,7 +831,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentHash")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_hash: Option<cfn_resources::StrVal>,
 
     ///
@@ -839,7 +845,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentHashType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_hash_type: Option<MaintenanceWindowRunCommandParametersDocumentHashTypeEnum>,
 
     ///
@@ -859,7 +865,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -871,7 +877,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_config: Option<NotificationConfig>,
 
     ///
@@ -887,7 +893,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -901,7 +907,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -915,7 +921,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -927,7 +933,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -943,7 +949,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_seconds: Option<i64>,
 }
 
@@ -1057,6 +1063,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowRunCommandParameters {
 ///
 /// MaintenanceWindowStepFunctionsParameters is a property of the TaskInvocationParameters property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// The inputs for the STEP_FUNCTIONS task.
@@ -1069,7 +1076,7 @@ pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input: Option<cfn_resources::StrVal>,
 
     ///
@@ -1085,7 +1092,7 @@ pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1140,6 +1147,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowStepFunctionsParameters {
 ///
 /// NotificationConfig is a property of the MaintenanceWindowRunCommandParameters property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationConfig {
     ///
     /// An Amazon Resource Name (ARN) for an Amazon Simple Notification Service (Amazon SNS) topic. Run  Command pushes notifications about command status changes to this topic.
@@ -1161,7 +1169,7 @@ pub struct NotificationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_events: Option<Vec<String>>,
 
     ///
@@ -1177,7 +1185,7 @@ pub struct NotificationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_type: Option<NotificationConfigNotificationTypeEnum>,
 }
 
@@ -1216,6 +1224,7 @@ impl cfn_resources::CfnResource for NotificationConfig {
 ///
 /// Target is a property of the AWS::SSM::MaintenanceWindowTask property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Target {
     ///
     /// User-defined criteria for sending commands that target instances that meet the criteria.     Key can be InstanceIds or WindowTargetIds. For more    information about how to target instances within a maintenance window task, see About 'register-task-with-maintenance-window' Options and Values in the     AWS Systems Manager User Guide.
@@ -1297,6 +1306,7 @@ impl cfn_resources::CfnResource for Target {
 ///
 /// TaskInvocationParameters is a property of the AWS::SSM::MaintenanceWindowTask property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TaskInvocationParameters {
     ///
     /// The parameters for an AUTOMATION task type.
@@ -1307,7 +1317,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowAutomationParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window_automation_parameters: Option<MaintenanceWindowAutomationParameters>,
 
     ///
@@ -1319,7 +1329,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowLambdaParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window_lambda_parameters: Option<MaintenanceWindowLambdaParameters>,
 
     ///
@@ -1331,7 +1341,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowRunCommandParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window_run_command_parameters: Option<MaintenanceWindowRunCommandParameters>,
 
     ///
@@ -1343,7 +1353,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowStepFunctionsParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window_step_functions_parameters:
         Option<MaintenanceWindowStepFunctionsParameters>,
 }

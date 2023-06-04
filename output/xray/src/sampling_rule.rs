@@ -2,6 +2,7 @@
 ///
 /// Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending    order of priority for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service    reports back to X-Ray with GetSamplingTargets to get updated versions of    each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSamplingRule {
     ///
     /// The sampling rule to be created or updated.
@@ -12,7 +13,7 @@ pub struct CfnSamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sampling_rule: Option<Box<SamplingRule>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnSamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -59,6 +60,7 @@ impl cfn_resources::CfnResource for CfnSamplingRule {
 
 /// A sampling rule that services use to decide whether to instrument a request. Rule    fields can match properties of the service, or properties of a request. The service can ignore    rules that don't match its properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SamplingRule {
     ///
     /// Matches attributes derived from the request.
@@ -75,7 +77,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -167,7 +169,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +185,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -236,7 +238,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<i64>,
 }
 
@@ -386,6 +388,7 @@ impl cfn_resources::CfnResource for SamplingRule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// Use the AWS::IoT::Certificate resource to declare an AWS IoT X.509     certificate. For information about working with X.509 certificates, see X.509 Client       Certificates in the AWS IoT Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCertificate {
     ///
     /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
@@ -10,7 +11,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CACertificatePem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cacertificate_pem: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificatePem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_pem: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateSigningRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_signing_request: Option<cfn_resources::StrVal>,
 
     ///

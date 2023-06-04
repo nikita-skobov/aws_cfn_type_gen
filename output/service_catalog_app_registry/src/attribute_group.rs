@@ -1,5 +1,6 @@
 /// Creates a new attribute group as a container for user-defined attributes. This feature    enables users to have full control over their cloud application's metadata in a rich    machine-readable format to facilitate integration with automated workflows and third-party    tools.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAttributeGroup {
     ///
     /// A nested object      in a JSON or YAML template      that supports arbitrary definitions.      Represents the attributes      in an attribute group      that describes an application and its components.
@@ -23,7 +24,7 @@ pub struct CfnAttributeGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnAttributeGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]

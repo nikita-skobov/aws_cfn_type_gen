@@ -4,6 +4,7 @@
 ///
 /// For more information about output MediaConvert presets, see Working       with AWS Elemental MediaConvert Output Presets in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPreset {
     ///
     /// The new category for the preset, if you are changing it.
@@ -14,7 +15,7 @@ pub struct CfnPreset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnPreset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnPreset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnPreset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]

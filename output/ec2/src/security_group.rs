@@ -4,6 +4,7 @@
 ///
 /// This type supports updates. For more information about updating stacks, see AWS CloudFormation Stacks Updates.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityGroup {
     ///
     /// A description for the security group.
@@ -33,7 +34,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupEgress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_egress: Option<Vec<Egress>>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupIngress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ingress: Option<Vec<Ingress>>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -139,6 +140,7 @@ impl cfn_resources::CfnResource for CfnSecurityGroup {
 ///
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Egress {
     ///
     /// The IPv4 address range, in CIDR format.
@@ -153,7 +155,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -169,7 +171,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +185,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -197,7 +199,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -211,7 +213,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationSecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -223,7 +225,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from_port: Option<i64>,
 
     ///
@@ -248,7 +250,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to_port: Option<i64>,
 }
 
@@ -284,6 +286,7 @@ impl cfn_resources::CfnResource for Egress {
 ///
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ingress {
     ///
     /// The IPv4 address range, in CIDR format.
@@ -298,7 +301,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -314,7 +317,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -328,7 +331,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -340,7 +343,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from_port: Option<i64>,
 
     ///
@@ -365,22 +368,22 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_prefix_list_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupid
     #[serde(rename = "SourceSecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_security_group_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupname
     #[serde(rename = "SourceSecurityGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_security_group_name: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupownerid
     #[serde(rename = "SourceSecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_security_group_owner_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -392,7 +395,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to_port: Option<i64>,
 }
 
@@ -418,6 +421,7 @@ impl cfn_resources::CfnResource for Ingress {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

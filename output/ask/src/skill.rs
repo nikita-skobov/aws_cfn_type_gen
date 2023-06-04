@@ -1,5 +1,6 @@
 /// The Alexa::ASK::Skill resource creates an Alexa skill that enables       customers to access new abilities. For more information about developing a skill, see       the Build Skills with the Alexa Skills Kit developer documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSkill {
     ///
     /// Login with Amazon (LWA) configuration used to authenticate with the Alexa service.       Only Login with Amazon clients created through the Amazon Developer Console are supported. The client ID, client secret, and refresh token are       required.
@@ -57,6 +58,7 @@ impl cfn_resources::CfnResource for CfnSkill {
 ///
 /// AuthenticationConfiguration is a property of the         Alexa::ASK::Skill resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticationConfiguration {
     ///
     /// Client ID from Login with Amazon (LWA).
@@ -110,6 +112,7 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
 ///
 /// Overrides is a property of the Alexa::ASK::Skill SkillPackage       property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Overrides {
     ///
     /// Overrides to apply to the skill manifest inside of the skill package. The skill       manifest contains metadata about the skill. For more information, see Skill Manifest Schemas.
@@ -120,7 +123,7 @@ pub struct Overrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Manifest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manifest: Option<serde_json::Value>,
 }
 
@@ -142,6 +145,7 @@ impl cfn_resources::CfnResource for Overrides {
 ///
 /// SkillPackage is a property of the Alexa::ASK::Skill       resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SkillPackage {
     ///
     /// Overrides to the skill package to apply when creating or updating the skill. Values       provided here do not modify the contents of the original skill package. Currently, only       overriding values inside of the skill manifest component of the package is       supported.
@@ -152,7 +156,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overrides: Option<Overrides>,
 
     ///
@@ -175,7 +179,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -198,7 +202,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_object_version: Option<cfn_resources::StrVal>,
 }
 

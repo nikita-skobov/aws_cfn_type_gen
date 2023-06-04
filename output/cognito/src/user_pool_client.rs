@@ -1,5 +1,6 @@
 /// The AWS::Cognito::UserPoolClient resource specifies an Amazon Cognito user    pool client.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolClient {
     ///
     /// The access token time limit. After this limit expires, your user can't use their access    token. To specify the time unit for AccessTokenValidity as seconds,     minutes, hours, or days, set a     TokenValidityUnits value in your API request.
@@ -14,7 +15,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessTokenValidity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token_validity: Option<i64>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthFlows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_oauth_flows: Option<Vec<String>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthFlowsUserPoolClient")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_oauth_flows_user_pool_client: Option<bool>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthScopes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_oauth_scopes: Option<Vec<String>>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalyticsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub analytics_configuration: Option<AnalyticsConfiguration>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthSessionValidity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_session_validity: Option<i64>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallbackURLs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub callback_urls: Option<Vec<String>>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRedirectURI")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_redirect_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePropagateAdditionalUserContextData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_propagate_additional_user_context_data: Option<bool>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableTokenRevocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_token_revocation: Option<bool>,
 
     ///
@@ -202,7 +203,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitAuthFlows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explicit_auth_flows: Option<Vec<String>>,
 
     ///
@@ -214,7 +215,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GenerateSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generate_secret: Option<bool>,
 
     ///
@@ -230,7 +231,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdTokenValidity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_token_validity: Option<i64>,
 
     ///
@@ -244,7 +245,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogoutURLs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logout_urls: Option<Vec<String>>,
 
     ///
@@ -258,7 +259,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreventUserExistenceErrors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prevent_user_existence_errors: Option<UserPoolClientPreventUserExistenceErrorsEnum>,
 
     ///
@@ -270,7 +271,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_attributes: Option<Vec<String>>,
 
     ///
@@ -286,7 +287,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshTokenValidity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token_validity: Option<i64>,
 
     ///
@@ -298,7 +299,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedIdentityProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_identity_providers: Option<Vec<String>>,
 
     ///
@@ -310,7 +311,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenValidityUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_validity_units: Option<TokenValidityUnits>,
 
     ///
@@ -341,7 +342,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_attributes: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -525,6 +526,7 @@ impl cfn_resources::CfnResource for CfnUserPoolClient {
 
 /// The Amazon Pinpoint analytics configuration necessary to collect metrics for a user       pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalyticsConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of an Amazon Pinpoint project. You can use the     Amazon Pinpoint project for integration with the chosen user pool client. Amazon Cognito publishes events to the Amazon Pinpoint project that the app ARN    declares.
@@ -535,7 +537,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -549,7 +551,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -561,7 +563,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub external_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -579,7 +581,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -591,7 +593,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserDataShared")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_data_shared: Option<bool>,
 }
 
@@ -633,6 +635,7 @@ impl cfn_resources::CfnResource for AnalyticsConfiguration {
 
 /// The time units you use when you set the duration of ID, access, and refresh tokens.       The default unit for RefreshToken is days, and the default for ID and access tokens is       hours.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TokenValidityUnits {
     ///
     /// A time unit of seconds, minutes, hours, or         days for the value that you set in the AccessTokenValidity       parameter. The default AccessTokenValidity time unit is hours.         AccessTokenValidity duration can range from five minutes to one       day.
@@ -645,7 +648,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<TokenValidityUnitsAccessTokenEnum>,
 
     ///
@@ -659,7 +662,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_token: Option<TokenValidityUnitsIdTokenEnum>,
 
     ///
@@ -673,7 +676,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<TokenValidityUnitsRefreshTokenEnum>,
 }
 

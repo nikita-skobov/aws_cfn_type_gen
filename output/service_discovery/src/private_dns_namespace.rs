@@ -1,5 +1,6 @@
 /// Creates a private namespace based on DNS, which is visible only inside a specified Amazon  VPC. The namespace defines your service naming scheme. For example, if you name your namespace   example.com and name your service backend, the resulting DNS name for  the service is backend.example.com. Service instances that are registered using a  private DNS namespace can be discovered using either a DiscoverInstances request or  using DNS. For the current quota on the number of namespaces that you can create using the same   AWS account, see AWS Cloud Map quotas in the           AWS Cloud Map Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPrivateDnsNamespace {
     ///
     /// A description for the namespace.
@@ -12,7 +13,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Properties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub properties: Option<Properties>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -165,6 +166,7 @@ impl cfn_resources::CfnResource for CfnPrivateDnsNamespace {
 
 /// DNS properties for  the private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrivateDnsPropertiesMutable {
     ///
     /// Fields for the Start  of Authority (SOA) record for the hosted zone for the private DNS  namespace.
@@ -175,7 +177,7 @@ pub struct PrivateDnsPropertiesMutable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SOA")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub soa: Option<SOA>,
 }
 
@@ -197,6 +199,7 @@ impl cfn_resources::CfnResource for PrivateDnsPropertiesMutable {
 
 /// Properties for the  private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Properties {
     ///
     /// DNS properties for  the private DNS namespace.
@@ -207,7 +210,7 @@ pub struct Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_properties: Option<PrivateDnsPropertiesMutable>,
 }
 
@@ -231,6 +234,7 @@ impl cfn_resources::CfnResource for Properties {
 
 /// Start of Authority  (SOA) properties for a public or private DNS namespace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SOA {
     ///
     /// The time to live  (TTL) for purposes of negative caching.
@@ -241,7 +245,7 @@ pub struct SOA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TTL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ttl: Option<f64>,
 }
 
@@ -267,6 +271,7 @@ impl cfn_resources::CfnResource for SOA {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// You can send requests to a route calculator resource to estimate travel time,       distance, and get directions. A route calculator sources traffic and road network data       from your chosen data provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRouteCalculator {
     ///
     /// The name of the route calculator resource.
@@ -56,7 +57,7 @@ pub struct CfnRouteCalculator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnRouteCalculator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pricing_plan: Option<RouteCalculatorPricingPlanEnum>,
 
     #[serde(skip_serializing)]

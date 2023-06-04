@@ -2,6 +2,7 @@
 ///
 /// Resource definitions can reference multiple resource definition versions. All resource definition versions      must be associated with a resource definition. Each resource definition version can contain one or more resources. 		(In AWS CloudFormation, resources are named resource instances.)
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceDefinition {
     ///
     /// The resource definition version to include when the resource definition is created.          A resource definition version contains a list of          resource instance property types.
@@ -14,7 +15,7 @@ pub struct CfnResourceDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<ResourceDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnResourceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnResourceDefinition {
 ///
 /// In an AWS CloudFormation template, GroupOwnerSetting is a property of the 		 LocalDeviceResourceData  		 and LocalVolumeResourceData property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GroupOwnerSetting {
     ///
     /// Indicates whether to give the privileges of the Linux group that owns the resource to the Lambda process. This gives 	 the Lambda process the file access permissions of the Linux group.
@@ -132,7 +134,7 @@ pub struct GroupOwnerSetting {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_owner: Option<cfn_resources::StrVal>,
 }
 
@@ -154,6 +156,7 @@ impl cfn_resources::CfnResource for GroupOwnerSetting {
 ///
 /// In an AWS CloudFormation template, LocalDeviceResourceData can be used in the ResourceDataContainer property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocalDeviceResourceData {
     ///
     /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process.
@@ -164,7 +167,7 @@ pub struct LocalDeviceResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwnerSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_owner_setting: Option<GroupOwnerSetting>,
 
     ///
@@ -201,6 +204,7 @@ impl cfn_resources::CfnResource for LocalDeviceResourceData {
 ///
 /// In an AWS CloudFormation template, LocalVolumeResourceData can be used in the ResourceDataContainer  		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocalVolumeResourceData {
     ///
     /// The absolute local path of the resource in the Lambda environment.
@@ -222,7 +226,7 @@ pub struct LocalVolumeResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwnerSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_owner_setting: Option<GroupOwnerSetting>,
 
     ///
@@ -259,6 +263,7 @@ impl cfn_resources::CfnResource for LocalVolumeResourceData {
 ///
 /// In an AWS CloudFormation template, ResourceDataContainer is a property of the ResourceInstance  		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceDataContainer {
     ///
     /// Settings for a local device resource.
@@ -269,7 +274,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalDeviceResourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_device_resource_data: Option<LocalDeviceResourceData>,
 
     ///
@@ -281,7 +286,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalVolumeResourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_volume_resource_data: Option<LocalVolumeResourceData>,
 
     ///
@@ -293,7 +298,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3MachineLearningModelResourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_machine_learning_model_resource_data: Option<S3MachineLearningModelResourceData>,
 
     ///
@@ -305,7 +310,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SageMakerMachineLearningModelResourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_machine_learning_model_resource_data:
         Option<SageMakerMachineLearningModelResourceData>,
 
@@ -318,7 +323,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretsManagerSecretResourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_resource_data: Option<SecretsManagerSecretResourceData>,
 }
 
@@ -360,6 +365,7 @@ impl cfn_resources::CfnResource for ResourceDataContainer {
 ///
 /// In an AWS CloudFormation template, ResourceDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::ResourceDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceDefinitionVersion {
     ///
     /// The resources in this version.
@@ -391,6 +397,7 @@ impl cfn_resources::CfnResource for ResourceDefinitionVersion {
 ///
 /// In an AWS CloudFormation template, ResourceDownloadOwnerSetting is the property type of the OwnerSetting property for the S3MachineLearningModelResourceData and SageMakerMachineLearningModelResourceData property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceDownloadOwnerSetting {
     ///
     /// The group owner of the machine learning resource. This is the group ID (GID) of an existing Linux OS group on the system.     The group's permissions are added to the Lambda process.
@@ -433,6 +440,7 @@ impl cfn_resources::CfnResource for ResourceDownloadOwnerSetting {
 ///
 /// In an AWS CloudFormation template, the Resources 		 property of the AWS::Greengrass::ResourceDefinition resource contains a      list of ResourceInstance property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceInstance {
     ///
     /// A descriptive or arbitrary ID for the resource. This value must be unique within       the resource definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -490,6 +498,7 @@ impl cfn_resources::CfnResource for ResourceInstance {
 ///
 /// In an AWS CloudFormation template, S3MachineLearningModelResourceData can be used in the 		 ResourceDataContainer 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3MachineLearningModelResourceData {
     ///
     /// The absolute local path of the resource inside the Lambda environment.
@@ -511,7 +520,7 @@ pub struct S3MachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner_setting: Option<ResourceDownloadOwnerSetting>,
 
     ///
@@ -548,6 +557,7 @@ impl cfn_resources::CfnResource for S3MachineLearningModelResourceData {
 ///
 /// In an AWS CloudFormation template, SageMakerMachineLearningModelResourceData can be used in the ResourceDataContainer 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// The absolute local path of the resource inside the Lambda environment.
@@ -569,7 +579,7 @@ pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner_setting: Option<ResourceDownloadOwnerSetting>,
 
     ///
@@ -606,6 +616,7 @@ impl cfn_resources::CfnResource for SageMakerMachineLearningModelResourceData {
 ///
 /// In an AWS CloudFormation template, SecretsManagerSecretResourceData can be used in the 		 ResourceDataContainer 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecretsManagerSecretResourceData {
     ///
     /// The Amazon Resource Name (ARN) of the Secrets Manager secret to make available on the core. The value of the secret's 				 latest version (represented by the AWSCURRENT staging label) is included by default.
@@ -627,7 +638,7 @@ pub struct SecretsManagerSecretResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AdditionalStagingLabelsToDownload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_staging_labels_to_download: Option<Vec<String>>,
 }
 

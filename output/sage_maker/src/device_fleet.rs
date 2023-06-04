@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::DeviceFleet resource is an Amazon SageMaker resource       type that allows you to create a DeviceFleet that manages your SageMaker Edge Manager       Devices. You must register your devices against the DeviceFleet       separately.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeviceFleet {
     ///
     /// A description of the fleet.
@@ -10,7 +11,7 @@ pub struct CfnDeviceFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnDeviceFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnDeviceFleet {
 
 /// The output configuration for storing sample data collected by the fleet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EdgeOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume after compilation job. If       you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3       for your role's account.
@@ -158,7 +160,7 @@ pub struct EdgeOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -221,6 +223,7 @@ impl cfn_resources::CfnResource for EdgeOutputConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

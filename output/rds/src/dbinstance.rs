@@ -18,6 +18,7 @@
 ///
 /// For more information, see DeletionPolicy Attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBInstance {
     ///
     /// The amount of storage in gibibytes (GiB) to be initially allocated for the database       instance.
@@ -64,7 +65,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocatedStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocated_storage: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMajorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_major_version_upgrade: Option<bool>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociatedRoles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associated_roles: Option<Vec<DBInstanceRole>>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "BackupRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_retention_period: Option<i64>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CACertificateIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cacertificate_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -180,7 +181,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_details: Option<CertificateDetails>,
 
     ///
@@ -202,7 +203,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateRotationRestart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_rotation_restart: Option<bool>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CharacterSetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub character_set_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +235,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToSnapshot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_snapshot: Option<bool>,
 
     ///
@@ -252,7 +253,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomIAMInstanceProfile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_iaminstance_profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -264,7 +265,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +283,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DBClusterSnapshotIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_snapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -296,7 +297,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DBInstanceClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbinstance_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -312,7 +313,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -368,7 +369,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbname: Option<cfn_resources::StrVal>,
 
     ///
@@ -388,7 +389,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DBParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -404,7 +405,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBSecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsecurity_groups: Option<Vec<String>>,
 
     ///
@@ -430,7 +431,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "DBSnapshotIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsnapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -450,7 +451,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -466,7 +467,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteAutomatedBackups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_automated_backups: Option<bool>,
 
     ///
@@ -482,7 +483,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection: Option<bool>,
 
     ///
@@ -496,7 +497,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -514,7 +515,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainIAMRoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_iamrole_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -550,7 +551,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableCloudwatchLogsExports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
 
     ///
@@ -568,7 +569,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableIAMDatabaseAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_iamdatabase_authentication: Option<bool>,
 
     ///
@@ -582,7 +583,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceInsights")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_performance_insights: Option<bool>,
 
     ///
@@ -596,7 +597,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint: Option<Endpoint>,
 
     ///
@@ -614,7 +615,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Engine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine: Option<cfn_resources::StrVal>,
 
     ///
@@ -654,7 +655,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -670,7 +671,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -694,7 +695,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -712,7 +713,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseModel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_model: Option<cfn_resources::StrVal>,
 
     ///
@@ -730,7 +731,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManageMasterUserPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manage_master_user_password: Option<bool>,
 
     ///
@@ -766,7 +767,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -780,7 +781,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_secret: Option<MasterUserSecret>,
 
     ///
@@ -828,7 +829,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MasterUsername")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_username: Option<cfn_resources::StrVal>,
 
     ///
@@ -848,7 +849,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAllocatedStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_allocated_storage: Option<i64>,
 
     ///
@@ -866,7 +867,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_interval: Option<i64>,
 
     ///
@@ -882,7 +883,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -900,7 +901,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "MultiAZ")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_az: Option<bool>,
 
     ///
@@ -914,7 +915,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NcharCharacterSetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nchar_character_set_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -934,7 +935,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -948,7 +949,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -966,7 +967,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PerformanceInsightsKMSKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub performance_insights_kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -988,7 +989,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerformanceInsightsRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub performance_insights_retention_period: Option<i64>,
 
     ///
@@ -1004,7 +1005,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -1024,7 +1025,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -1044,7 +1045,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -1062,7 +1063,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessorFeatures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processor_features: Option<Vec<ProcessorFeature>>,
 
     ///
@@ -1080,7 +1081,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PromotionTier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub promotion_tier: Option<i64>,
 
     ///
@@ -1094,7 +1095,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -1112,7 +1113,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicaMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replica_mode: Option<DBInstanceReplicaModeEnum>,
 
     ///
@@ -1132,7 +1133,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "RestoreTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restore_time: Option<DBInstanceRestoreTimeEnum>,
 
     ///
@@ -1148,7 +1149,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -1162,7 +1163,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBInstanceAutomatedBackupsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbinstance_automated_backups_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1180,7 +1181,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDBInstanceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -1192,7 +1193,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SourceDbiResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbi_resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1204,7 +1205,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -1228,7 +1229,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageEncrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_encrypted: Option<bool>,
 
     ///
@@ -1242,7 +1243,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageThroughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_throughput: Option<i64>,
 
     ///
@@ -1268,7 +1269,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "StorageType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1280,7 +1281,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -1292,7 +1293,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Timezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -1306,7 +1307,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseDefaultProcessorFeatures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_default_processor_features: Option<bool>,
 
     ///
@@ -1320,7 +1321,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "UseLatestRestorableTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_latest_restorable_time: Option<bool>,
 
     ///
@@ -1344,7 +1345,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCSecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpcsecurity_groups: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -1503,6 +1504,7 @@ impl cfn_resources::CfnResource for CfnDBInstance {
 ///
 /// For more information, see Using SSL/TLS to encrypt a connection to a DB       instance in the Amazon RDS User Guide and              Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon Aurora       User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CertificateDetails {
     ///
     /// The CA identifier of the CA certificate used for the DB instance's server certificate.
@@ -1513,7 +1515,7 @@ pub struct CertificateDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CAIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub caidentifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -1525,7 +1527,7 @@ pub struct CertificateDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidTill")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub valid_till: Option<cfn_resources::StrVal>,
 }
 
@@ -1545,6 +1547,7 @@ impl cfn_resources::CfnResource for CertificateDetails {
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DBInstanceRole {
     ///
     /// The name of the feature associated with the AWS Identity and Access Management (IAM)       role. IAM roles that are associated with a DB instance grant permission for the DB       instance to access other AWS services on your behalf. For the list of supported feature       names, see the SupportedFeatureNames description in DBEngineVersion       in the Amazon RDS API Reference.
@@ -1587,6 +1590,7 @@ impl cfn_resources::CfnResource for DBInstanceRole {
 ///
 /// For the data structure that represents Amazon Aurora DB cluster endpoints,     see DBClusterEndpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Endpoint {
     ///
     /// Specifies the DNS address of the DB instance.
@@ -1597,7 +1601,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<cfn_resources::StrVal>,
 
     ///
@@ -1609,7 +1613,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1621,7 +1625,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 }
 
@@ -1643,6 +1647,7 @@ impl cfn_resources::CfnResource for Endpoint {
 ///
 /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MasterUserSecret {
     ///
     /// The AWS KMS key identifier that is used to encrypt the secret.
@@ -1653,7 +1658,7 @@ pub struct MasterUserSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1665,7 +1670,7 @@ pub struct MasterUserSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1685,6 +1690,7 @@ impl cfn_resources::CfnResource for MasterUserSecret {
 
 /// The ProcessorFeature property type specifies the processor features of a       DB instance class status.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProcessorFeature {
     ///
     /// The name of the processor feature. Valid names are coreCount and threadsPerCore.
@@ -1695,7 +1701,7 @@ pub struct ProcessorFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1707,7 +1713,7 @@ pub struct ProcessorFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1733,6 +1739,7 @@ impl cfn_resources::CfnResource for ProcessorFeature {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

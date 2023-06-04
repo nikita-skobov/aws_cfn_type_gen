@@ -1,5 +1,6 @@
 /// The AWS::AppRunner::Service resource is an AWS App Runner resource type that specifies an App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnService {
     ///
     /// The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner    associates the latest revision of a default auto scaling configuration.
@@ -20,7 +21,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingConfigurationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_scaling_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_configuration: Option<HealthCheckConfiguration>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_configuration: Option<InstanceConfiguration>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObservabilityConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub observability_configuration: Option<ServiceObservabilityConfiguration>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +124,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -247,6 +248,7 @@ impl cfn_resources::CfnResource for CfnService {
 
 /// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories    (but not for ECR Public repositories).
@@ -263,7 +265,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -281,7 +283,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -345,6 +347,7 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
 
 /// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CodeConfiguration {
     ///
     /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a     apprunner.yaml file in the source code repository (or ignoring the file if it exists).
@@ -355,7 +358,7 @@ pub struct CodeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeConfigurationValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_configuration_values: Option<CodeConfigurationValues>,
 
     ///
@@ -411,6 +414,7 @@ impl cfn_resources::CfnResource for CodeConfiguration {
 
 /// Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible    configuration options. Fur full configuration capabilities, use a apprunner.yaml file in the source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CodeConfigurationValues {
     ///
     /// The command App Runner runs to build your application.
@@ -423,7 +427,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildCommand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub build_command: Option<cfn_resources::StrVal>,
 
     ///
@@ -443,7 +447,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -467,7 +471,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentSecrets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
     ///
@@ -479,7 +483,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
     ///
@@ -493,7 +497,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_command: Option<cfn_resources::StrVal>,
 }
 
@@ -584,6 +588,7 @@ impl cfn_resources::CfnResource for CodeConfigurationValues {
 
 /// Describes a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CodeRepository {
     ///
     /// Configuration for building and running the service from a source code repository.
@@ -596,7 +601,7 @@ pub struct CodeRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_configuration: Option<CodeConfiguration>,
 
     ///
@@ -672,6 +677,7 @@ impl cfn_resources::CfnResource for CodeRepository {
 
 /// Describes configuration settings related to outbound network traffic of an AWS App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EgressConfiguration {
     ///
     /// The type of egress configuration.
@@ -705,7 +711,7 @@ pub struct EgressConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectorArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_connector_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -761,6 +767,7 @@ impl cfn_resources::CfnResource for EgressConfiguration {
 
 /// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// The ARN of the KMS key that's used for encryption.
@@ -818,6 +825,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
 /// Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckConfiguration {
     ///
     /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy.
@@ -834,7 +842,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub healthy_threshold: Option<i64>,
 
     ///
@@ -852,7 +860,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     ///
@@ -870,7 +878,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -888,7 +896,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<HealthCheckConfigurationProtocolEnum>,
 
     ///
@@ -906,7 +914,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 
     ///
@@ -924,7 +932,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unhealthy_threshold: Option<i64>,
 }
 
@@ -1044,6 +1052,7 @@ impl cfn_resources::CfnResource for HealthCheckConfiguration {
 
 /// Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageConfiguration {
     ///
     /// The port that your application listens to in the container.
@@ -1062,7 +1071,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -1073,7 +1082,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentSecrets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
     ///
@@ -1085,7 +1094,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
     ///
@@ -1099,7 +1108,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_command: Option<cfn_resources::StrVal>,
 }
 
@@ -1141,6 +1150,7 @@ impl cfn_resources::CfnResource for ImageConfiguration {
 
 /// Describes a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageRepository {
     ///
     /// Configuration for running the identified image.
@@ -1151,7 +1161,7 @@ pub struct ImageRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_configuration: Option<ImageConfiguration>,
 
     ///
@@ -1246,6 +1256,7 @@ impl cfn_resources::CfnResource for ImageRepository {
 
 /// Network configuration settings for inbound network traffic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IngressConfiguration {
     ///
     /// Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service    privately accessible, from only within an Amazon VPC set it to False.
@@ -1275,6 +1286,7 @@ impl cfn_resources::CfnResource for IngressConfiguration {
 
 /// Describes the runtime configuration of an AWS App Runner service instance (scaling unit).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceConfiguration {
     ///
     /// The number of CPU units reserved for each instance of your App Runner service.
@@ -1293,7 +1305,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu: Option<cfn_resources::StrVal>,
 
     ///
@@ -1311,7 +1323,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1331,7 +1343,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory: Option<cfn_resources::StrVal>,
 }
 
@@ -1414,6 +1426,7 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
 
 /// Describes a key-value pair, which is a string-to-string mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KeyValuePair {
     ///
     /// The key name string to map to a value.
@@ -1424,7 +1437,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1436,7 +1449,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1456,6 +1469,7 @@ impl cfn_resources::CfnResource for KeyValuePair {
 
 /// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// Network configuration settings for outbound message traffic.
@@ -1466,7 +1480,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_configuration: Option<EgressConfiguration>,
 
     ///
@@ -1478,7 +1492,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingress_configuration: Option<IngressConfiguration>,
 }
 
@@ -1506,6 +1520,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
 /// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceObservabilityConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when     ObservabilityEnabled is true.
@@ -1526,7 +1541,7 @@ pub struct ServiceObservabilityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObservabilityConfigurationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub observability_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1573,6 +1588,7 @@ impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
 
 /// Identifies a version of code that AWS App Runner refers to within a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceCodeVersion {
     ///
     /// The type of version identifier.
@@ -1660,6 +1676,7 @@ impl cfn_resources::CfnResource for SourceCodeVersion {
 
 /// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceConfiguration {
     ///
     /// Describes the resources that are needed to authenticate access to some source repositories.
@@ -1670,7 +1687,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_configuration: Option<AuthenticationConfiguration>,
 
     ///
@@ -1684,7 +1701,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploymentsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_deployments_enabled: Option<bool>,
 
     ///
@@ -1698,7 +1715,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeRepository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_repository: Option<CodeRepository>,
 
     ///
@@ -1712,7 +1729,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageRepository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_repository: Option<ImageRepository>,
 }
 
@@ -1750,6 +1767,7 @@ impl cfn_resources::CfnResource for SourceConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -4,6 +4,7 @@
 ///
 /// For more information about dataflow endpoint groups, see Dataflow Endpoint Groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataflowEndpointGroup {
     /// Property description not available.
     ///
@@ -13,7 +14,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPostPassDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contact_post_pass_duration_seconds: Option<i64>,
 
     /// Property description not available.
@@ -24,7 +25,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPrePassDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contact_pre_pass_duration_seconds: Option<i64>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -89,6 +90,7 @@ impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {
 
 /// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsGroundStationAgentEndpoint {
     /// Property description not available.
     ///
@@ -98,7 +100,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub agent_status: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -109,7 +111,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditResults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audit_results: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -120,7 +122,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_address: Option<ConnectionDetails>,
 
     /// Property description not available.
@@ -131,7 +133,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingress_address: Option<RangedConnectionDetails>,
 
     /// Property description not available.
@@ -142,7 +144,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -170,6 +172,7 @@ impl cfn_resources::CfnResource for AwsGroundStationAgentEndpoint {
 
 /// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionDetails {
     /// Property description not available.
     ///
@@ -179,7 +182,7 @@ pub struct ConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mtu: Option<i64>,
 
     /// Property description not available.
@@ -190,7 +193,7 @@ pub struct ConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SocketAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub socket_address: Option<SocketAddress>,
 }
 
@@ -214,6 +217,7 @@ impl cfn_resources::CfnResource for ConnectionDetails {
 
 /// Contains information such as socket address and name that defines an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataflowEndpoint {
     ///
     /// The address and port of an endpoint.
@@ -224,7 +228,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<SocketAddress>,
 
     ///
@@ -236,7 +240,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mtu: Option<i64>,
 
     ///
@@ -250,7 +254,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -272,6 +276,7 @@ impl cfn_resources::CfnResource for DataflowEndpoint {
 
 /// The security details and endpoint information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointDetails {
     /// Property description not available.
     ///
@@ -281,7 +286,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsGroundStationAgentEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_ground_station_agent_endpoint: Option<AwsGroundStationAgentEndpoint>,
 
     ///
@@ -293,7 +298,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint: Option<DataflowEndpoint>,
 
     ///
@@ -305,7 +310,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_details: Option<SecurityDetails>,
 }
 
@@ -337,6 +342,7 @@ impl cfn_resources::CfnResource for EndpointDetails {
 
 /// The IntegerRange property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerRange {
     /// Property description not available.
     ///
@@ -346,7 +352,7 @@ pub struct IntegerRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum: Option<i64>,
 
     /// Property description not available.
@@ -357,7 +363,7 @@ pub struct IntegerRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum: Option<i64>,
 }
 
@@ -377,6 +383,7 @@ impl cfn_resources::CfnResource for IntegerRange {
 
 /// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RangedConnectionDetails {
     /// Property description not available.
     ///
@@ -386,7 +393,7 @@ pub struct RangedConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mtu: Option<i64>,
 
     /// Property description not available.
@@ -397,7 +404,7 @@ pub struct RangedConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SocketAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub socket_address: Option<RangedSocketAddress>,
 }
 
@@ -421,6 +428,7 @@ impl cfn_resources::CfnResource for RangedConnectionDetails {
 
 /// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RangedSocketAddress {
     /// Property description not available.
     ///
@@ -430,7 +438,7 @@ pub struct RangedSocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -441,7 +449,7 @@ pub struct RangedSocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_range: Option<IntegerRange>,
 }
 
@@ -465,6 +473,7 @@ impl cfn_resources::CfnResource for RangedSocketAddress {
 
 /// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecurityDetails {
     ///
     /// The ARN of a role which Ground Station has permission to assume, such as       arn:aws:iam::1234567890:role/DataDeliveryServiceRole.
@@ -477,7 +486,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -489,7 +498,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -501,7 +510,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -521,6 +530,7 @@ impl cfn_resources::CfnResource for SecurityDetails {
 
 /// The address of the endpoint, such as       192.168.1.1.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SocketAddress {
     ///
     /// The name of the endpoint, such as       Endpoint 1.
@@ -531,7 +541,7 @@ pub struct SocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -543,7 +553,7 @@ pub struct SocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 }
 
@@ -569,6 +579,7 @@ impl cfn_resources::CfnResource for SocketAddress {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

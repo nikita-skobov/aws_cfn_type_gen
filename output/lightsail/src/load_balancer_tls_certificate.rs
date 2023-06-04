@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::LoadBalancerTlsCertificate resource specifies a TLS     certificate that can be used with a Lightsail load balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// An array of alternative domain names and subdomain names for your SSL/TLS     certificate.
@@ -12,7 +13,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "CertificateAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_alternative_names: Option<Vec<String>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpsRedirectionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub https_redirection_enabled: Option<bool>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsAttached")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_attached: Option<bool>,
 
     ///

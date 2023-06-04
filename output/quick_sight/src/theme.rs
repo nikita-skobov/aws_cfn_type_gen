@@ -2,6 +2,7 @@
 ///
 /// A theme is set of configuration options for color and layout. Themes apply to analyses and  dashboards. For more information, see Using Themes in Amazon QuickSight in the  Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTheme {
     ///
     /// The ID of the AWS account where you want to store the new theme.
@@ -35,7 +36,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_theme_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<ThemeConfiguration>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_description: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -372,6 +373,7 @@ impl cfn_resources::CfnResource for CfnTheme {
 
 /// The display options for tile borders for visuals.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BorderStyle {
     ///
     /// The option to enable display of borders for visuals.
@@ -382,7 +384,7 @@ pub struct BorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub show: Option<bool>,
 }
 
@@ -402,6 +404,7 @@ impl cfn_resources::CfnResource for BorderStyle {
 
 /// The theme colors that are used for data colors in charts. The colors description is a       hexadecimal color code that consists of six alphanumerical characters, prefixed with         #, for example #37BFF5.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataColorPalette {
     ///
     /// The hexadecimal codes for the colors.
@@ -414,7 +417,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<String>>,
 
     ///
@@ -428,7 +431,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyFillColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub empty_fill_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -442,7 +445,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinMaxGradient")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_max_gradient: Option<Vec<String>>,
 }
 
@@ -480,6 +483,7 @@ impl cfn_resources::CfnResource for DataColorPalette {
 
 /// The Font property type specifies Property description not available. for an AWS::QuickSight::Theme.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Font {
     /// Property description not available.
     ///
@@ -489,7 +493,7 @@ pub struct Font {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontFamily")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_family: Option<cfn_resources::StrVal>,
 }
 
@@ -509,6 +513,7 @@ impl cfn_resources::CfnResource for Font {
 
 /// The display options for gutter spacing between tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GutterStyle {
     ///
     /// This Boolean value controls whether to display a gutter space between sheet tiles.
@@ -519,7 +524,7 @@ pub struct GutterStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub show: Option<bool>,
 }
 
@@ -539,6 +544,7 @@ impl cfn_resources::CfnResource for GutterStyle {
 
 /// The display options for margins around the outside edge of sheets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MarginStyle {
     ///
     /// This Boolean value controls whether to display sheet margins.
@@ -549,7 +555,7 @@ pub struct MarginStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub show: Option<bool>,
 }
 
@@ -569,6 +575,7 @@ impl cfn_resources::CfnResource for MarginStyle {
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -611,6 +618,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 
 /// The theme display options for sheets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetStyle {
     ///
     /// The display options for tiles.
@@ -621,7 +629,7 @@ pub struct SheetStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tile: Option<TileStyle>,
 
     ///
@@ -633,7 +641,7 @@ pub struct SheetStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TileLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tile_layout: Option<TileLayoutStyle>,
 }
 
@@ -665,6 +673,7 @@ impl cfn_resources::CfnResource for SheetStyle {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -703,6 +712,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The theme configuration. This configuration contains all of the display properties for       a theme.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThemeConfiguration {
     ///
     /// Color properties that apply to chart data colors.
@@ -713,7 +723,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataColorPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_color_palette: Option<DataColorPalette>,
 
     ///
@@ -725,7 +735,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sheet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet: Option<SheetStyle>,
 
     /// Property description not available.
@@ -736,7 +746,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Typography")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub typography: Option<Typography>,
 
     ///
@@ -748,7 +758,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UIColorPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uicolor_palette: Option<UIColorPalette>,
 }
 
@@ -782,6 +792,7 @@ impl cfn_resources::CfnResource for ThemeConfiguration {
 
 /// Theme error.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThemeError {
     ///
     /// The error message.
@@ -794,7 +805,7 @@ pub struct ThemeError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message: Option<cfn_resources::StrVal>,
 
     ///
@@ -808,7 +819,7 @@ pub struct ThemeError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ThemeErrorTypeEnum>,
 }
 
@@ -841,6 +852,7 @@ impl cfn_resources::CfnResource for ThemeError {
 
 /// A version of a theme.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThemeVersion {
     ///
     /// The Amazon Resource Name (ARN) of the resource.
@@ -851,7 +863,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -869,7 +881,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_theme_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -881,7 +893,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<ThemeConfiguration>,
 
     ///
@@ -893,7 +905,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub created_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -909,7 +921,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -921,7 +933,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Errors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub errors: Option<Vec<ThemeError>>,
 
     ///
@@ -935,7 +947,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<ThemeVersionStatusEnum>,
 
     ///
@@ -947,7 +959,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_number: Option<f64>,
 }
 
@@ -1052,6 +1064,7 @@ impl cfn_resources::CfnResource for ThemeVersion {
 
 /// The display options for the layout of tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TileLayoutStyle {
     ///
     /// The gutter settings that apply between tiles.
@@ -1062,7 +1075,7 @@ pub struct TileLayoutStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gutter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gutter: Option<GutterStyle>,
 
     ///
@@ -1074,7 +1087,7 @@ pub struct TileLayoutStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Margin")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub margin: Option<MarginStyle>,
 }
 
@@ -1098,6 +1111,7 @@ impl cfn_resources::CfnResource for TileLayoutStyle {
 
 /// Display options related to tiles on a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TileStyle {
     ///
     /// The border around a tile.
@@ -1108,7 +1122,7 @@ pub struct TileStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Border")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border: Option<BorderStyle>,
 }
 
@@ -1130,6 +1144,7 @@ impl cfn_resources::CfnResource for TileStyle {
 
 /// The Typography property type specifies Property description not available. for an AWS::QuickSight::Theme.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Typography {
     /// Property description not available.
     ///
@@ -1139,7 +1154,7 @@ pub struct Typography {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontFamilies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_families: Option<Vec<Font>>,
 }
 
@@ -1159,6 +1174,7 @@ impl cfn_resources::CfnResource for Typography {
 
 /// The theme colors that apply to UI and to charts, excluding data colors. The colors description is a hexadecimal  color code that consists of six alphanumerical characters, prefixed with #, for example #37BFF5. For  more information, see Using Themes  in Amazon QuickSight in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UIColorPalette {
     ///
     /// This color is that applies to selected states and buttons.
@@ -1171,7 +1187,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accent: Option<cfn_resources::StrVal>,
 
     ///
@@ -1185,7 +1201,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccentForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accent_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1199,7 +1215,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Danger")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub danger: Option<cfn_resources::StrVal>,
 
     ///
@@ -1213,7 +1229,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DangerForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub danger_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1227,7 +1243,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimension")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimension: Option<cfn_resources::StrVal>,
 
     ///
@@ -1241,7 +1257,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimension_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1255,7 +1271,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Measure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure: Option<cfn_resources::StrVal>,
 
     ///
@@ -1269,7 +1285,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1283,7 +1299,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryBackground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_background: Option<cfn_resources::StrVal>,
 
     ///
@@ -1297,7 +1313,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1311,7 +1327,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryBackground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_background: Option<cfn_resources::StrVal>,
 
     ///
@@ -1325,7 +1341,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1339,7 +1355,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Success")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success: Option<cfn_resources::StrVal>,
 
     ///
@@ -1353,7 +1369,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success_foreground: Option<cfn_resources::StrVal>,
 
     ///
@@ -1367,7 +1383,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Warning")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub warning: Option<cfn_resources::StrVal>,
 
     ///
@@ -1381,7 +1397,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarningForeground")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub warning_foreground: Option<cfn_resources::StrVal>,
 }
 

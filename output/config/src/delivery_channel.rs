@@ -8,6 +8,7 @@
 ///
 /// For more information, see Managing the Delivery Channel in the AWS Config Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeliveryChannel {
     ///
     /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
@@ -18,7 +19,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigSnapshotDeliveryProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -141,6 +142,7 @@ impl cfn_resources::CfnResource for CfnDeliveryChannel {
 ///
 /// To update the deliveryFrequency with which AWS Config delivers your configuration snapshots, use the PutDeliveryChannel action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigSnapshotDeliveryProperties {
     ///
     /// The frequency with which AWS Config delivers configuration 			snapshots.
@@ -153,7 +155,7 @@ pub struct ConfigSnapshotDeliveryProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_frequency: Option<ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum>,
 }
 

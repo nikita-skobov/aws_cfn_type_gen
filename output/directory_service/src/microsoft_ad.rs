@@ -1,5 +1,6 @@
 /// The AWS::DirectoryService::MicrosoftAD resource specifies a Microsoft Active    Directory in AWS so that your directory users and groups can access the AWS Management Console    and AWS applications using their existing credentials. For more information, see AWS Managed Microsoft AD in the AWS Directory Service Admin     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMicrosoftAD {
     ///
     /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
@@ -12,7 +13,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CreateAlias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_alias: Option<bool>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Edition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub edition: Option<MicrosoftADEditionEnum>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSso")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_sso: Option<bool>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShortName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub short_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -141,6 +142,7 @@ impl cfn_resources::CfnResource for CfnMicrosoftAD {
 
 /// Contains VPC information for the CreateDirectory or     CreateMicrosoftAD    operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcSettings {
     ///
     /// The identifiers of the subnets for the directory servers. The two subnets must be in    different Availability Zones. AWS Directory Service specifies a directory server and a DNS    server in each of these subnets.

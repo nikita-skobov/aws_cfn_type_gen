@@ -1,5 +1,6 @@
 /// Specifies a new AWS Glue DataBrew transformation recipe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRecipe {
     ///
     /// The description of the recipe.
@@ -12,7 +13,7 @@ pub struct CfnRecipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -103,6 +104,7 @@ impl cfn_resources::CfnResource for CfnRecipe {
 
 /// Represents a transformation and associated parameters that are used to apply a change       to an AWS Glue DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// The name of a valid DataBrew transformation to be performed on the       data.
@@ -124,7 +126,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<RecipeParameters>,
 }
 
@@ -152,6 +154,7 @@ impl cfn_resources::CfnResource for Action {
 ///
 /// If a recipe requires more than one condition, then the recipe must specify multiple       ConditionExpression elements. Each condition is applied to the rows in a dataset first, before       the recipe action is performed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionExpression {
     ///
     /// A specific condition to apply to a recipe action. For more information, see Recipe         structure in the AWS Glue DataBrew Developer         Guide.
@@ -196,7 +199,7 @@ pub struct ConditionExpression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -271,6 +274,7 @@ impl cfn_resources::CfnResource for ConditionExpression {
 
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCatalogInputDefinition {
     ///
     /// The unique identifier of the AWS account that holds the Data Catalog that stores the       data.
@@ -285,7 +289,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -301,7 +305,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -317,7 +321,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +333,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -419,6 +423,7 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 
 /// The Input property type specifies Property description not available. for an AWS::DataBrew::Recipe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Input {
     /// Property description not available.
     ///
@@ -428,7 +433,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     /// Property description not available.
@@ -439,7 +444,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_definition: Option<S3Location>,
 }
 
@@ -467,6 +472,7 @@ impl cfn_resources::CfnResource for Input {
 
 /// Parameters that are used as inputs for various recipe actions. The parameters are       specific to the context in which they're used.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecipeParameters {
     ///
     /// The name of an aggregation function to apply.
@@ -477,7 +483,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregateFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregate_function: Option<cfn_resources::StrVal>,
 
     ///
@@ -489,7 +495,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<cfn_resources::StrVal>,
 
     ///
@@ -501,7 +507,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_statement: Option<cfn_resources::StrVal>,
 
     ///
@@ -513,7 +519,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_map: Option<cfn_resources::StrVal>,
 
     ///
@@ -525,7 +531,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CharsToRemove")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chars_to_remove: Option<cfn_resources::StrVal>,
 
     ///
@@ -537,7 +543,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollapseConsecutiveWhitespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collapse_consecutive_whitespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -549,7 +555,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_data_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -561,7 +567,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_range: Option<cfn_resources::StrVal>,
 
     ///
@@ -573,7 +579,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<cfn_resources::StrVal>,
 
     ///
@@ -585,7 +591,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCharacters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_characters: Option<cfn_resources::StrVal>,
 
     ///
@@ -597,7 +603,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomStopWords")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_stop_words: Option<cfn_resources::StrVal>,
 
     ///
@@ -609,7 +615,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -621,7 +627,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetsColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datasets_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -633,7 +639,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAddValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_add_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -645,7 +651,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -657,7 +663,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_parameters: Option<cfn_resources::StrVal>,
 
     ///
@@ -669,7 +675,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOtherRows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_other_rows: Option<cfn_resources::StrVal>,
 
     ///
@@ -681,7 +687,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -693,7 +699,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -705,7 +711,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndPosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_position: Option<cfn_resources::StrVal>,
 
     ///
@@ -717,7 +723,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -729,7 +735,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpandContractions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expand_contractions: Option<cfn_resources::StrVal>,
 
     ///
@@ -741,7 +747,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exponent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exponent: Option<cfn_resources::StrVal>,
 
     ///
@@ -753,7 +759,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub false_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -765,7 +771,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupByAggFunctionOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_by_agg_function_options: Option<cfn_resources::StrVal>,
 
     ///
@@ -777,7 +783,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupByColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_by_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -789,7 +795,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HiddenColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hidden_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -801,7 +807,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreCase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_case: Option<cfn_resources::StrVal>,
 
     ///
@@ -813,7 +819,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeInSplit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_in_split: Option<cfn_resources::StrVal>,
 
     ///
@@ -825,7 +831,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input: Option<Input>,
 
     ///
@@ -837,7 +843,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -849,7 +855,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -861,7 +867,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub join_keys: Option<cfn_resources::StrVal>,
 
     ///
@@ -873,7 +879,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub join_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -885,7 +891,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub left_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -897,7 +903,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub limit: Option<cfn_resources::StrVal>,
 
     ///
@@ -909,7 +915,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBound")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lower_bound: Option<cfn_resources::StrVal>,
 
     ///
@@ -921,7 +927,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -933,7 +939,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -945,7 +951,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiLine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_line: Option<bool>,
 
     ///
@@ -957,7 +963,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_rows: Option<cfn_resources::StrVal>,
 
     ///
@@ -969,7 +975,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRowsAfter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_rows_after: Option<cfn_resources::StrVal>,
 
     ///
@@ -981,7 +987,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRowsBefore")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_rows_before: Option<cfn_resources::StrVal>,
 
     ///
@@ -993,7 +999,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order_by_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1005,7 +1011,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order_by_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -1017,7 +1023,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Other")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub other: Option<cfn_resources::StrVal>,
 
     ///
@@ -1029,7 +1035,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -1041,7 +1047,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOption1")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern_option1: Option<cfn_resources::StrVal>,
 
     ///
@@ -1053,7 +1059,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOption2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern_option2: Option<cfn_resources::StrVal>,
 
     ///
@@ -1065,7 +1071,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern_options: Option<cfn_resources::StrVal>,
 
     ///
@@ -1077,7 +1083,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<cfn_resources::StrVal>,
 
     ///
@@ -1089,7 +1095,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<cfn_resources::StrVal>,
 
     ///
@@ -1101,7 +1107,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllPunctuation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_all_punctuation: Option<cfn_resources::StrVal>,
 
     ///
@@ -1113,7 +1119,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllQuotes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_all_quotes: Option<cfn_resources::StrVal>,
 
     ///
@@ -1125,7 +1131,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllWhitespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_all_whitespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -1137,7 +1143,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomCharacters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_custom_characters: Option<cfn_resources::StrVal>,
 
     ///
@@ -1149,7 +1155,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_custom_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1161,7 +1167,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingPunctuation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_leading_and_trailing_punctuation: Option<cfn_resources::StrVal>,
 
     ///
@@ -1173,7 +1179,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingQuotes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_leading_and_trailing_quotes: Option<cfn_resources::StrVal>,
 
     ///
@@ -1185,7 +1191,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingWhitespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_leading_and_trailing_whitespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -1197,7 +1203,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLetters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_letters: Option<cfn_resources::StrVal>,
 
     ///
@@ -1209,7 +1215,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveNumbers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_numbers: Option<cfn_resources::StrVal>,
 
     ///
@@ -1221,7 +1227,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSourceColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_source_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1233,7 +1239,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSpecialCharacters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_special_characters: Option<cfn_resources::StrVal>,
 
     ///
@@ -1245,7 +1251,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub right_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -1257,7 +1263,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sample_size: Option<cfn_resources::StrVal>,
 
     ///
@@ -1269,7 +1275,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sample_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1281,7 +1287,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub second_input: Option<cfn_resources::StrVal>,
 
     ///
@@ -1293,7 +1299,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryInputs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_inputs: Option<Vec<SecondaryInput>>,
 
     ///
@@ -1305,7 +1311,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetIndexes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_indexes: Option<Vec<i64>>,
 
     ///
@@ -1317,7 +1323,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_names: Option<Vec<String>>,
 
     ///
@@ -1329,7 +1335,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1341,7 +1347,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn1")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_column1: Option<cfn_resources::StrVal>,
 
     ///
@@ -1353,7 +1359,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_column2: Option<cfn_resources::StrVal>,
 
     ///
@@ -1365,7 +1371,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -1377,7 +1383,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartColumnIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_column_index: Option<cfn_resources::StrVal>,
 
     ///
@@ -1389,7 +1395,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -1401,7 +1407,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartPosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_position: Option<cfn_resources::StrVal>,
 
     ///
@@ -1413,7 +1419,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1425,7 +1431,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StemmingMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stemming_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -1437,7 +1443,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step_count: Option<cfn_resources::StrVal>,
 
     ///
@@ -1449,7 +1455,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step_index: Option<cfn_resources::StrVal>,
 
     ///
@@ -1461,7 +1467,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StopWordsMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stop_words_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -1473,7 +1479,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Strategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1485,7 +1491,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1497,7 +1503,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_column_names: Option<cfn_resources::StrVal>,
 
     ///
@@ -1509,7 +1515,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDateFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_date_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -1521,7 +1527,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_index: Option<cfn_resources::StrVal>,
 
     ///
@@ -1533,7 +1539,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -1545,7 +1551,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenizerPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tokenizer_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -1557,7 +1563,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrueString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub true_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -1569,7 +1575,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UdfLang")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub udf_lang: Option<cfn_resources::StrVal>,
 
     ///
@@ -1581,7 +1587,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Units")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub units: Option<cfn_resources::StrVal>,
 
     ///
@@ -1593,7 +1599,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnpivotColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unpivot_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1605,7 +1611,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBound")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upper_bound: Option<cfn_resources::StrVal>,
 
     ///
@@ -1617,7 +1623,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseNewDataFrame")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_new_data_frame: Option<cfn_resources::StrVal>,
 
     ///
@@ -1629,7 +1635,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1641,7 +1647,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value1")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value1: Option<cfn_resources::StrVal>,
 
     ///
@@ -1653,7 +1659,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value2: Option<cfn_resources::StrVal>,
 
     ///
@@ -1665,7 +1671,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -1677,7 +1683,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewFrame")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub view_frame: Option<cfn_resources::StrVal>,
 }
 
@@ -1699,6 +1705,7 @@ impl cfn_resources::CfnResource for RecipeParameters {
 
 /// Represents a single step from a DataBrew recipe to be performed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecipeStep {
     ///
     /// The particular action to be performed in the recipe step.
@@ -1722,7 +1729,7 @@ pub struct RecipeStep {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionExpressions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition_expressions: Option<Vec<ConditionExpression>>,
 }
 
@@ -1744,6 +1751,7 @@ impl cfn_resources::CfnResource for RecipeStep {
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The Amazon S3 bucket name.
@@ -1773,7 +1781,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 }
 
@@ -1837,6 +1845,7 @@ impl cfn_resources::CfnResource for S3Location {
 
 /// Represents secondary inputs in a UNION transform.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecondaryInput {
     ///
     /// The AWS Glue Data Catalog parameters for the data.
@@ -1847,7 +1856,7 @@ pub struct SecondaryInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     ///
@@ -1859,7 +1868,7 @@ pub struct SecondaryInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_definition: Option<S3Location>,
 }
 
@@ -1893,6 +1902,7 @@ impl cfn_resources::CfnResource for SecondaryInput {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

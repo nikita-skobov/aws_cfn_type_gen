@@ -2,6 +2,7 @@
 ///
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUsagePlan {
     ///
     /// The associated API stages of a usage plan.
@@ -12,7 +13,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiStages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_stages: Option<Vec<ApiStage>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Quota")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub quota: Option<QuotaSettings>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttle: Option<ThrottleSettings>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsagePlanName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub usage_plan_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -109,6 +110,7 @@ impl cfn_resources::CfnResource for CfnUsagePlan {
 
 /// API stage name of the associated API stage in a usage plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApiStage {
     ///
     /// API Id of the associated API stage in a usage plan.
@@ -119,7 +121,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -131,7 +133,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +145,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttle: Option<std::collections::HashMap<String, ThrottleSettings>>,
 }
 
@@ -165,6 +167,7 @@ impl cfn_resources::CfnResource for ApiStage {
 ///
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuotaSettings {
     ///
     /// The target maximum number of requests that can be made in a given time period.
@@ -175,7 +178,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub limit: Option<i64>,
 
     ///
@@ -187,7 +190,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub offset: Option<i64>,
 
     ///
@@ -201,7 +204,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<QuotaSettingsPeriodEnum>,
 }
 
@@ -248,6 +251,7 @@ impl cfn_resources::CfnResource for QuotaSettings {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -286,6 +290,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// ThrottleSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies the overall request rate (average requests per second) and burst capacity when users call your REST APIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThrottleSettings {
     ///
     /// The API target request burst rate limit. This allows more requests through for a period of time than the target rate limit.
@@ -296,7 +301,7 @@ pub struct ThrottleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub burst_limit: Option<i64>,
 
     ///
@@ -308,7 +313,7 @@ pub struct ThrottleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rate_limit: Option<f64>,
 }
 

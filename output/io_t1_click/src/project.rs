@@ -1,5 +1,6 @@
 /// The AWS::IoT1Click::Project resource creates an empty project with a placement template. A project contains zero or more placements that      adhere to the placement template defined in the project. For more information, see CreateProject     in the AWS IoT 1-Click Projects API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnProject {
     ///
     /// The description of the project.
@@ -10,7 +11,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -79,6 +80,7 @@ impl cfn_resources::CfnResource for CfnProject {
 ///
 /// DeviceTemplate is a property of the AWS::IoT1Click::Project resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceTemplate {
     ///
     /// An optional AWS Lambda function to invoke instead of the default AWS Lambda function provided by    the placement template.
@@ -89,7 +91,7 @@ pub struct DeviceTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallbackOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub callback_overrides: Option<serde_json::Value>,
 
     ///
@@ -101,7 +103,7 @@ pub struct DeviceTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_type: Option<cfn_resources::StrVal>,
 }
 
@@ -123,6 +125,7 @@ impl cfn_resources::CfnResource for DeviceTemplate {
 ///
 /// PlacementTemplate is a property of the AWS::IoT1Click::Project resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlacementTemplate {
     ///
     /// The default attributes (key-value pairs) to be applied to all placements using this    template.
@@ -133,7 +136,7 @@ pub struct PlacementTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_attributes: Option<serde_json::Value>,
 
     ///
@@ -145,7 +148,7 @@ pub struct PlacementTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceTemplates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_templates: Option<serde_json::Value>,
 }
 

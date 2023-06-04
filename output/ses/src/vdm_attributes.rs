@@ -1,5 +1,6 @@
 /// The Virtual Deliverability Manager (VDM) attributes that apply to your Amazon SES account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVdmAttributes {
     ///
     /// Specifies additional settings for your VDM configuration as applicable to the       Dashboard.
@@ -10,7 +11,7 @@ pub struct CfnVdmAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dashboard_attributes: Option<DashboardAttributes>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnVdmAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardianAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub guardian_attributes: Option<GuardianAttributes>,
 
     #[serde(skip_serializing)]
@@ -61,6 +62,7 @@ impl cfn_resources::CfnResource for CfnVdmAttributes {
 
 /// Settings for your VDM configuration as applicable to the Dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DashboardAttributes {
     ///
     /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
@@ -73,7 +75,7 @@ pub struct DashboardAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngagementMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engagement_metrics: Option<cfn_resources::StrVal>,
 }
 
@@ -93,6 +95,7 @@ impl cfn_resources::CfnResource for DashboardAttributes {
 
 /// Settings for your VDM configuration as applicable to the Guardian.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GuardianAttributes {
     ///
     /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
@@ -105,7 +108,7 @@ pub struct GuardianAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizedSharedDelivery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub optimized_shared_delivery: Option<cfn_resources::StrVal>,
 }
 

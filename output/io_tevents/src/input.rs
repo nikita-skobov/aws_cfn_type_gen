@@ -1,5 +1,6 @@
 /// The AWS::IoTEvents::Input resource creates an input. To monitor your devices and processes,    they must have a way to get telemetry data into AWS IoT Events. This is done by sending messages    as inputs to AWS IoT Events. For more information, see       How to Use AWS IoT Events in the AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInput {
     ///
     /// The definition of the input.
@@ -23,7 +24,7 @@ pub struct CfnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -107,6 +108,7 @@ impl cfn_resources::CfnResource for CfnInput {
 
 /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Attribute {
     ///
     /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
@@ -166,6 +168,7 @@ impl cfn_resources::CfnResource for Attribute {
 
 /// The definition of the input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputDefinition {
     ///
     /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload, and those attributes (and their paired values) specified here    are available for use in the condition expressions used by detectors that monitor    this input.
@@ -212,6 +215,7 @@ impl cfn_resources::CfnResource for InputDefinition {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// A CIDR provisioned to an IPAM pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIPAMPoolCidr {
     ///
     /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
@@ -10,7 +11,7 @@ pub struct CfnIPAMPoolCidr {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnIPAMPoolCidr {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetmaskLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub netmask_length: Option<i64>,
 
     #[serde(skip_serializing)]

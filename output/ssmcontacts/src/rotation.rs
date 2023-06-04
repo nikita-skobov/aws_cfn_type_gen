@@ -1,5 +1,6 @@
 /// Specifies a rotation in an on-call schedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRotation {
     ///
     /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
@@ -64,7 +65,7 @@ pub struct CfnRotation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -167,6 +168,7 @@ impl cfn_resources::CfnResource for CfnRotation {
 
 /// Information about when an on-call shift begins and ends.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CoverageTime {
     ///
     /// Information about when an on-call rotation shift ends.
@@ -207,6 +209,7 @@ impl cfn_resources::CfnResource for CoverageTime {
 
 /// Information about on-call rotations that recur monthly.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonthlySetting {
     ///
     /// The day of the month when monthly recurring on-call rotations begin.
@@ -269,6 +272,7 @@ impl cfn_resources::CfnResource for MonthlySetting {
 
 /// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecurrenceSettings {
     ///
     /// Information about on-call rotations that recur daily.
@@ -279,7 +283,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailySettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub daily_settings: Option<Vec<String>>,
 
     ///
@@ -291,7 +295,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonthlySettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monthly_settings: Option<Vec<MonthlySetting>>,
 
     ///
@@ -331,7 +335,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShiftCoverages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shift_coverages: Option<Vec<ShiftCoverage>>,
 
     ///
@@ -343,7 +347,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklySettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_settings: Option<Vec<WeeklySetting>>,
 }
 
@@ -390,6 +394,7 @@ impl cfn_resources::CfnResource for RecurrenceSettings {
 
 /// Information about the days of the week that the on-call rotation coverage includes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShiftCoverage {
     ///
     /// The start and end times of the shift.
@@ -436,6 +441,7 @@ impl cfn_resources::CfnResource for ShiftCoverage {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -474,6 +480,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Information about rotations that recur weekly.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WeeklySetting {
     ///
     /// The day of the week when weekly recurring on-call shift rotations begins.

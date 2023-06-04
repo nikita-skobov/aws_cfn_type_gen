@@ -1,5 +1,6 @@
 /// Creates a new Timestream database. If the AWS KMS key is not    specified, the database will be encrypted with a Timestream managed AWS KMS key located in your account. Refer to AWS managed      AWS KMS keys for more info. Service quotas apply. See     code sample for    details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDatabase {
     ///
     /// The name of the Timestream database.
@@ -12,7 +13,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -99,6 +100,7 @@ impl cfn_resources::CfnResource for CfnDatabase {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

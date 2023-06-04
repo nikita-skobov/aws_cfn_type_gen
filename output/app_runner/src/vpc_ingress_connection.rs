@@ -2,6 +2,7 @@
 ///
 /// App Runner requires this resource when you want to associate your App Runner service to an Amazon VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVpcIngressConnection {
     ///
     /// Specifications for the customer’s Amazon VPC and the related AWS PrivateLink VPC endpoint that are used to create the VPC Ingress Connection    resource.
@@ -40,7 +41,7 @@ pub struct CfnVpcIngressConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnVpcIngressConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcIngressConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_ingress_connection_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -151,6 +152,7 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
 
 /// Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IngressVpcConfiguration {
     ///
     /// The ID of the VPC endpoint that your App Runner service connects to.
@@ -253,6 +255,7 @@ impl cfn_resources::CfnResource for IngressVpcConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

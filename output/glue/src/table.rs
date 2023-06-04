@@ -1,5 +1,6 @@
 /// The AWS::Glue::Table resource specifies tabular data in the AWS Glue data       catalog. For more information, see Defining Tables in the AWS Glue Data         Catalog and Table Structure in the AWS Glue Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTable {
     ///
     /// The ID of the Data Catalog in which to create the Table.
@@ -109,6 +110,7 @@ impl cfn_resources::CfnResource for CfnTable {
 
 /// A column in a Table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Column {
     ///
     /// A free-form text comment.
@@ -125,7 +127,7 @@ pub struct Column {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +162,7 @@ pub struct Column {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -246,6 +248,7 @@ impl cfn_resources::CfnResource for Column {
 
 /// Specifies the sort order of a sorted column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Order {
     ///
     /// The name of the column.
@@ -336,6 +339,7 @@ impl cfn_resources::CfnResource for Order {
 
 /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaId {
     ///
     /// The name of the schema registry that contains the schema.
@@ -346,7 +350,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -358,7 +362,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -370,7 +374,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_name: Option<cfn_resources::StrVal>,
 }
 
@@ -390,6 +394,7 @@ impl cfn_resources::CfnResource for SchemaId {
 
 /// An object that references a schema stored in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaReference {
     ///
     /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
@@ -400,7 +405,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_id: Option<SchemaId>,
 
     ///
@@ -412,7 +417,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_version_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -424,7 +429,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_version_number: Option<i64>,
 }
 
@@ -448,6 +453,7 @@ impl cfn_resources::CfnResource for SchemaReference {
 
 /// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SerdeInfo {
     ///
     /// Name of the SerDe.
@@ -458,7 +464,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -470,7 +476,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -482,7 +488,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SerializationLibrary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serialization_library: Option<cfn_resources::StrVal>,
 }
 
@@ -502,6 +508,7 @@ impl cfn_resources::CfnResource for SerdeInfo {
 
 /// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SkewedInfo {
     ///
     /// A list of names of columns that contain skewed values.
@@ -512,7 +519,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub skewed_column_names: Option<Vec<String>>,
 
     ///
@@ -524,7 +531,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnValueLocationMaps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub skewed_column_value_location_maps: Option<serde_json::Value>,
 
     ///
@@ -536,7 +543,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub skewed_column_values: Option<Vec<String>>,
 }
 
@@ -556,6 +563,7 @@ impl cfn_resources::CfnResource for SkewedInfo {
 
 /// Describes the physical storage of table data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageDescriptor {
     ///
     /// A list of reducer grouping columns, clustering columns, and    bucketing columns in the table.
@@ -566,7 +574,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_columns: Option<Vec<String>>,
 
     ///
@@ -578,7 +586,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<Column>>,
 
     ///
@@ -590,7 +598,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compressed")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compressed: Option<bool>,
 
     ///
@@ -606,7 +614,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -622,7 +630,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location: Option<cfn_resources::StrVal>,
 
     ///
@@ -634,7 +642,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfBuckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_buckets: Option<i64>,
 
     ///
@@ -650,7 +658,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -662,7 +670,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -674,7 +682,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaReference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_reference: Option<SchemaReference>,
 
     ///
@@ -686,7 +694,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SerdeInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serde_info: Option<SerdeInfo>,
 
     ///
@@ -698,7 +706,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub skewed_info: Option<SkewedInfo>,
 
     ///
@@ -710,7 +718,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_columns: Option<Vec<Order>>,
 
     ///
@@ -722,7 +730,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StoredAsSubDirectories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stored_as_sub_directories: Option<bool>,
 }
 
@@ -787,6 +795,7 @@ impl cfn_resources::CfnResource for StorageDescriptor {
 
 /// A structure that describes a target table for resource linking.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableIdentifier {
     ///
     /// The ID of the Data Catalog in which the table resides.
@@ -797,7 +806,7 @@ pub struct TableIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -809,7 +818,7 @@ pub struct TableIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -821,7 +830,7 @@ pub struct TableIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -841,6 +850,7 @@ impl cfn_resources::CfnResource for TableIdentifier {
 
 /// A structure used to define a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableInput {
     ///
     /// A description of the table.
@@ -857,7 +867,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -875,7 +885,7 @@ pub struct TableInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -893,7 +903,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Owner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -905,7 +915,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -921,7 +931,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition_keys: Option<Vec<Column>>,
 
     ///
@@ -935,7 +945,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Retention")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention: Option<i64>,
 
     ///
@@ -947,7 +957,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageDescriptor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_descriptor: Option<StorageDescriptor>,
 
     ///
@@ -965,7 +975,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -977,7 +987,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_table: Option<TableIdentifier>,
 
     ///
@@ -991,7 +1001,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewExpandedText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub view_expanded_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -1005,7 +1015,7 @@ pub struct TableInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewOriginalText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub view_original_text: Option<cfn_resources::StrVal>,
 }
 

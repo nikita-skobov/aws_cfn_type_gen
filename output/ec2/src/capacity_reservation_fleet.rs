@@ -1,5 +1,6 @@
 /// Creates a new Capacity Reservation Fleet with the specified attributes. For more     information, see Capacity Reservation Fleets in the Amazon EC2 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCapacityReservationFleet {
     ///
     /// The strategy used by the Capacity Reservation Fleet to determine which of the 			specified instance types to use. Currently, only the prioritized 			allocation strategy is supported. For more information, see 				Allocation strategy in the Amazon EC2 User Guide.
@@ -12,7 +13,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllocationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceMatchCriteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_match_criteria: Option<CapacityReservationFleetInstanceMatchCriteriaEnum>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypeSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type_specifications: Option<Vec<InstanceTypeSpecification>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoRemoveEndDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_remove_end_date: Option<bool>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveEndDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_end_date: Option<bool>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tenancy: Option<CapacityReservationFleetTenancyEnum>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalTargetCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_target_capacity: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -177,6 +178,7 @@ impl cfn_resources::CfnResource for CfnCapacityReservationFleet {
 ///
 /// InstanceTypeSpecification is a property of the       AWS::EC2::CapacityReservationFleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceTypeSpecification {
     ///
     /// The Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A Capacity 			Reservation Fleet can't span Availability Zones. All instance type specifications that you specify 			for the Fleet must use the same Availability Zone.
@@ -187,7 +189,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +201,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -211,7 +213,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -225,7 +227,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstancePlatform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_platform: Option<InstanceTypeSpecificationInstancePlatformEnum>,
 
     ///
@@ -239,7 +241,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<InstanceTypeSpecificationInstanceTypeEnum>,
 
     ///
@@ -253,7 +255,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 
     ///
@@ -267,7 +269,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<f64>,
 }
 
@@ -2928,6 +2930,7 @@ impl cfn_resources::CfnResource for InstanceTypeSpecification {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2966,6 +2969,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag on creation. Specify     capacity-reservation-fleet.
@@ -2978,7 +2982,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -2990,7 +2994,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -8,6 +8,7 @@
 ///
 /// Each source account can be linked to as many as five monitoring accounts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLink {
     ///
     /// Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring    account.
@@ -22,7 +23,7 @@ pub struct CfnLink {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]

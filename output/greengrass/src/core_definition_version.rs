@@ -1,5 +1,6 @@
 /// The     AWS::Greengrass::CoreDefinitionVersion resource represents a core definition version for AWS IoT Greengrass.     A core definition version contains a Greengrass core.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCoreDefinitionVersion {
     ///
     /// The ID of the core definition associated with this version. This value is a GUID.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the AWS::Greengrass::CoreDefinitionVersion resource contains a      list of Core property types. Currently, the list can contain only one core.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Core {
     ///
     /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
@@ -74,7 +76,7 @@ pub struct Core {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_shadow: Option<bool>,
 
     ///

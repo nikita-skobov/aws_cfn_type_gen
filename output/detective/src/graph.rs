@@ -1,5 +1,6 @@
 /// The AWS::Detective::Graph resource is an Amazon Detective resource type       that creates a Detective behavior graph. The requesting account becomes the       administrator account for the behavior graph.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGraph {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnGraph {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoEnableMembers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_enable_members: Option<bool>,
 
     ///
@@ -21,7 +22,7 @@ pub struct CfnGraph {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -58,6 +59,7 @@ impl cfn_resources::CfnResource for CfnGraph {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

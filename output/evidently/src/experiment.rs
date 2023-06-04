@@ -2,6 +2,7 @@
 ///
 /// An experiment helps you make feature design       decisions based on evidence and data. An experiment can test as       many as five variations at once. Evidently collects experiment data and analyzes it by statistical methods, and provides       clear recommendations about which variations perform better.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnExperiment {
     ///
     /// An optional description of the experiment.
@@ -12,7 +13,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub randomization_salt: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSegment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_segment: Option<bool>,
 
     /// A structure that you can use     to start and stop the experiment.
@@ -91,7 +92,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub running_status: Option<RunningStatusObject>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sampling_rate: Option<i64>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Segment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment: Option<cfn_resources::StrVal>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -187,6 +188,7 @@ impl cfn_resources::CfnResource for CfnExperiment {
 
 /// Use this structure to tell Evidently whether higher or lower values are desired for a metric that is       used in an experiment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricGoalObject {
     ///
     /// INCREASE means that a variation with a higher number for this metric is performing       better.
@@ -223,7 +225,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -246,7 +248,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -277,6 +279,7 @@ impl cfn_resources::CfnResource for MetricGoalObject {
 
 /// A structure that contains the configuration of which variation to use as the "control"       version. The "control" version is used for comparison with other variations. This structure       also specifies how much experiment traffic is allocated to each variation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnlineAbConfigObject {
     ///
     /// The name of the variation that is to be the default variation that the other variations are compared to.
@@ -287,7 +290,7 @@ pub struct OnlineAbConfigObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlTreatmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub control_treatment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -299,7 +302,7 @@ pub struct OnlineAbConfigObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatmentWeights")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub treatment_weights: Option<Vec<TreatmentToWeight>>,
 }
 
@@ -319,6 +322,7 @@ impl cfn_resources::CfnResource for OnlineAbConfigObject {
 
 /// Use this structure to start and stop the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RunningStatusObject {
     /// If you are using     AWS CloudFormation to start the experiment, use this field to specify when the experiment is to end. The format   is as a UNIX timestamp. For more information about this format, see     The Current Epoch Unix Timestamp.
     ///
@@ -328,7 +332,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalysisCompleteTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub analysis_complete_time: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this     experiment, specify either COMPLETED or CANCELLED here to indicate how to classify this   experiment.
@@ -339,7 +343,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_state: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this   experiment, this is an optional field that you can use to record why the experiment is being stopped or cancelled.
@@ -350,7 +354,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reason: Option<cfn_resources::StrVal>,
 
     /// To start the experiment now, specify START   for this parameter. If this experiment is currently running and you want to stop it now, specify STOP.
@@ -386,6 +390,7 @@ impl cfn_resources::CfnResource for RunningStatusObject {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -424,6 +429,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// A structure that defines one treatment in an experiment. A treatment is a variation of the feature       that you are including in the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreatmentObject {
     ///
     /// The description of the treatment.
@@ -434,7 +440,7 @@ pub struct TreatmentObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -487,6 +493,7 @@ impl cfn_resources::CfnResource for TreatmentObject {
 
 /// This structure defines how much experiment traffic to allocate to     one treatment used in the experiment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreatmentToWeight {
     ///
     /// The portion of experiment traffic to allocate to this treatment.     Specify the traffic portion in     thousandths of a percent, so 20,000 allocated to a treatment would allocate 20% of the experiment     traffic to that treatment.

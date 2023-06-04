@@ -1,5 +1,6 @@
 /// Contains the Rules that identify the requests that you want to allow, block, or count. In a WebACL, you also specify a 			default action (ALLOW or BLOCK), and the action for each Rule that you add to a 			WebACL, for example, block requests from specified IP addresses or block requests from specified referrers.             You also associate the WebACL with a Amazon CloudFront distribution to identify the requests that you want AWS WAF to filter. 			If you add more than one Rule to a WebACL, a request needs to match only one of the specifications 			to be allowed, blocked, or counted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWebACL {
     ///
     /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the 		     WafAction object.
@@ -55,7 +56,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules: Option<Vec<ActivatedRule>>,
 }
 
@@ -123,6 +124,7 @@ impl cfn_resources::CfnResource for CfnWebACL {
 ///
 /// To specify whether to insert or delete a Rule, use the Action parameter in the WebACLUpdate data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActivatedRule {
     ///
     /// Specifies the action that Amazon CloudFront or AWS WAF takes when a web request matches the conditions in the Rule.  			Valid values for Action include the following:
@@ -137,7 +139,7 @@ pub struct ActivatedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<WafAction>,
 
     ///
@@ -211,6 +213,7 @@ impl cfn_resources::CfnResource for ActivatedRule {
 
 /// For the action that is associated with a rule in a WebACL, specifies the action that you want AWS WAF to perform when a 			web request matches all of the conditions in a rule. For the default action in a WebACL, specifies the action that you want             AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a WebACL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WafAction {
     ///
     /// Specifies how you want AWS WAF to respond to requests that match the settings in a Rule. Valid settings include the following:

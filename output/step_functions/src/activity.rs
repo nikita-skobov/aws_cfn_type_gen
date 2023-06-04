@@ -2,6 +2,7 @@
 ///
 /// For information about creating an activity, see Creating an     Activity State Machine in the AWS Step Functions Developer       Guide and CreateActivity     in the AWS Step Functions API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnActivity {
     ///
     /// The name of the activity.
@@ -31,7 +32,7 @@ pub struct CfnActivity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     #[serde(skip_serializing)]
@@ -73,6 +74,7 @@ impl cfn_resources::CfnResource for CfnActivity {
 
 /// The TagsEntry property specifies tags to identify an     activity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// The key for a key-value pair in a tag entry.

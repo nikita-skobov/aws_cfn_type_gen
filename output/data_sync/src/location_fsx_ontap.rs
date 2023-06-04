@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationFSxONTAP resource creates an endpoint for an Amazon FSx for NetApp ONTAP file system. AWS DataSync can access this endpoint as a source or destination location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationFSxONTAP {
     ///
     /// Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.
@@ -10,7 +11,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<Protocol>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -170,6 +171,7 @@ impl cfn_resources::CfnResource for CfnLocationFSxONTAP {
 
 /// Specifies the Network File System (NFS) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see Accessing FSx for ONTAP file systems.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NFS {
     ///
     /// Specifies how DataSync can access a location using the NFS protocol.
@@ -201,6 +203,7 @@ impl cfn_resources::CfnResource for NFS {
 
 /// Specifies how DataSync can access a location using the NFS protocol.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NfsMountOptions {
     ///
     /// Specifies the NFS version that you want DataSync to use when mounting your NFS    share. If the server refuses to use the version specified, the task fails.
@@ -219,7 +222,7 @@ pub struct NfsMountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<NfsMountOptionsVersionEnum>,
 }
 
@@ -264,6 +267,7 @@ impl cfn_resources::CfnResource for NfsMountOptions {
 
 /// Specifies the data transfer protocol that AWS DataSync uses to access your     Amazon FSx file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Protocol {
     ///
     /// Specifies the Network File System (NFS) protocol configuration that DataSync uses to access your FSx for ONTAP file system's storage virtual machine (SVM).
@@ -274,7 +278,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NFS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nfs: Option<NFS>,
 
     ///
@@ -286,7 +290,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SMB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub smb: Option<SMB>,
 }
 
@@ -310,6 +314,7 @@ impl cfn_resources::CfnResource for Protocol {
 
 /// Specifies the Server Message Block (SMB) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see Accessing FSx for ONTAP file systems.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SMB {
     ///
     /// Specifies the fully qualified domain name (FQDN) of the Microsoft Active Directory that    your storage virtual machine (SVM) belongs to.
@@ -324,7 +329,7 @@ pub struct SMB {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,6 +433,7 @@ impl cfn_resources::CfnResource for SMB {
 
 /// Specifies the version of the Server Message Block (SMB) protocol that AWS DataSync uses to access an SMB file server.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SmbMountOptions {
     ///
     /// By default, DataSync automatically chooses an SMB protocol version based on    negotiation with your SMB file server. You also can configure DataSync to use a    specific SMB version, but we recommend doing this only if DataSync has trouble    negotiating with the SMB file server automatically.
@@ -444,7 +450,7 @@ pub struct SmbMountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<SmbMountOptionsVersionEnum>,
 }
 
@@ -499,6 +505,7 @@ impl cfn_resources::CfnResource for SmbMountOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

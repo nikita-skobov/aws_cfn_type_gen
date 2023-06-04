@@ -2,6 +2,7 @@
 ///
 /// Logger definitions can reference multiple logger definition versions. All logger definition versions      must be associated with a logger definition. Each logger definition version can contain one or more loggers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoggerDefinition {
     ///
     /// The logger definition version to include when the logger definition is created.          A logger definition version contains a list of          logger property types.
@@ -14,7 +15,7 @@ pub struct CfnLoggerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<LoggerDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnLoggerDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnLoggerDefinition {
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the LoggerDefinitionVersion property type contains a list       of Logger property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Logger {
     ///
     /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
@@ -154,7 +156,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Space")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub space: Option<i64>,
 
     ///
@@ -187,6 +189,7 @@ impl cfn_resources::CfnResource for Logger {
 ///
 /// In an AWS CloudFormation template, LoggerDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::LoggerDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggerDefinitionVersion {
     ///
     /// The loggers in this version.

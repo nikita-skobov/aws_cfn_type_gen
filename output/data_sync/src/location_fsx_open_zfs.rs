@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationFSxOpenZFS resource specifies an endpoint for an Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationFSxOpenZFS {
     ///
     /// The Amazon Resource Name (ARN) of the FSx for OpenZFS file system.
@@ -14,7 +15,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fsx_filesystem_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -153,6 +154,7 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
 
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MountOptions {
     ///
     /// The specific NFS version that you want DataSync to use to mount your NFS share. If the server refuses to use the version specified, the sync will fail. If you don't specify a version, DataSync defaults to AUTOMATIC. That is, DataSync automatically selects a version based on negotiation with the NFS server.
@@ -169,7 +171,7 @@ pub struct MountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<MountOptionsVersionEnum>,
 }
 
@@ -214,6 +216,7 @@ impl cfn_resources::CfnResource for MountOptions {
 
 /// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NFS {
     ///
     /// Represents the mount options that are available for DataSync to access an NFS location.
@@ -245,6 +248,7 @@ impl cfn_resources::CfnResource for NFS {
 
 /// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Protocol {
     ///
     /// Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system.
@@ -255,7 +259,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NFS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nfs: Option<NFS>,
 }
 
@@ -283,6 +287,7 @@ impl cfn_resources::CfnResource for Protocol {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

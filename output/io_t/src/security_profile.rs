@@ -1,5 +1,6 @@
 /// Use the AWS::IoT::SecurityProfile resource to create a Device Defender     security profile. For API reference, see CreateSecurityProfile and for general information, see Detect.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityProfile {
     ///
     /// A list of metrics whose data is retained (stored). By default, data is retained for any     metric used in the profile's behaviors, but it's also retained for any metric     specified here. Can be used with custom metrics; can't be used with dimensions.
@@ -10,7 +11,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalMetricsToRetainV2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_metrics_to_retain_v2: Option<Vec<MetricToRetain>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlertTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alert_targets: Option<std::collections::HashMap<String, AlertTarget>>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Behaviors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub behaviors: Option<Vec<Behavior>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityProfileDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_profile_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityProfileName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_arns: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -113,6 +114,7 @@ impl cfn_resources::CfnResource for CfnSecurityProfile {
 
 /// A structure containing the alert target ARN and the role ARN.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlertTarget {
     ///
     /// The Amazon Resource Name (ARN) of the notification target to which alerts are sent.
@@ -153,6 +155,7 @@ impl cfn_resources::CfnResource for AlertTarget {
 
 /// A Device Defender security profile behavior.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Behavior {
     ///
     /// The criteria that determine if a device is behaving normally in regard to      the metric.
@@ -163,7 +166,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub criteria: Option<BehaviorCriteria>,
 
     ///
@@ -175,7 +178,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +190,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDimension")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_dimension: Option<MetricDimension>,
 
     ///
@@ -210,7 +213,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressAlerts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suppress_alerts: Option<bool>,
 }
 
@@ -238,6 +241,7 @@ impl cfn_resources::CfnResource for Behavior {
 
 /// The criteria by which the behavior is determined to be normal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BehaviorCriteria {
     ///
     /// The operator that relates the thing measured (metric) to the criteria      (containing a value or statisticalThreshold). Valid operators include:
@@ -250,7 +254,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonOperator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparison_operator: Option<cfn_resources::StrVal>,
 
     ///
@@ -262,7 +266,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsecutiveDatapointsToAlarm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub consecutive_datapoints_to_alarm: Option<i64>,
 
     ///
@@ -274,7 +278,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsecutiveDatapointsToClear")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub consecutive_datapoints_to_clear: Option<i64>,
 
     ///
@@ -286,7 +290,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -298,7 +302,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MlDetectionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ml_detection_config: Option<MachineLearningDetectionConfig>,
 
     ///
@@ -310,7 +314,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatisticalThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistical_threshold: Option<StatisticalThreshold>,
 
     ///
@@ -322,7 +326,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MetricValue>,
 }
 
@@ -352,6 +356,7 @@ impl cfn_resources::CfnResource for BehaviorCriteria {
 
 /// The MachineLearningDetectionConfig property type controls confidence of the machine learning model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MachineLearningDetectionConfig {
     ///
     /// The model confidence level.
@@ -366,7 +371,7 @@ pub struct MachineLearningDetectionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfidenceLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub confidence_level: Option<cfn_resources::StrVal>,
 }
 
@@ -386,6 +391,7 @@ impl cfn_resources::CfnResource for MachineLearningDetectionConfig {
 
 /// The dimension of the metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -407,7 +413,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operator: Option<cfn_resources::StrVal>,
 }
 
@@ -427,6 +433,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 
 /// The metric you want to retain. Dimensions are optional.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricToRetain {
     ///
     /// A standard of measurement.
@@ -448,7 +455,7 @@ pub struct MetricToRetain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDimension")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_dimension: Option<MetricDimension>,
 }
 
@@ -472,6 +479,7 @@ impl cfn_resources::CfnResource for MetricToRetain {
 
 /// The value to be compared with the metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricValue {
     ///
     /// If the comparisonOperator calls for a set of CIDRs, use this      to specify that set to be compared with the metric.
@@ -482,7 +490,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -494,7 +502,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<cfn_resources::StrVal>,
 
     ///
@@ -506,7 +514,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Number")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number: Option<f64>,
 
     ///
@@ -518,7 +526,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Numbers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numbers: Option<Vec<f64>>,
 
     ///
@@ -530,7 +538,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -542,7 +550,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Strings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub strings: Option<Vec<String>>,
 }
 
@@ -562,6 +570,7 @@ impl cfn_resources::CfnResource for MetricValue {
 
 /// A statistical ranking (percentile) that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatisticalThreshold {
     ///
     /// The percentile that    resolves to a threshold value by which compliance with a behavior is determined. Metrics are    collected over the specified period (durationSeconds) from all reporting devices    in your account and statistical ranks are calculated. Then, the measurements from a device are    collected over the same period. If the accumulated measurements from the device fall above or    below (comparisonOperator) the value associated with the percentile specified,    then the device is considered to be in compliance with the behavior, otherwise a violation    occurs.
@@ -572,7 +581,7 @@ pub struct StatisticalThreshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistic: Option<cfn_resources::StrVal>,
 }
 
@@ -598,6 +607,7 @@ impl cfn_resources::CfnResource for StatisticalThreshold {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

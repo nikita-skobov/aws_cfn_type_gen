@@ -1,5 +1,6 @@
 /// Configure logging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLogging {
     ///
     /// The account ID.

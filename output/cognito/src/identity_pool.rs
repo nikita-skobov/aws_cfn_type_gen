@@ -2,6 +2,7 @@
 ///
 /// To avoid deleting the resource accidentally from AWS CloudFormation, use DeletionPolicy     Attribute and the UpdateReplacePolicy Attribute to retain the resource on deletion or    replacement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIdentityPool {
     ///
     /// Enables the Basic (Classic) authentication flow.
@@ -12,7 +13,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowClassicFlow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_classic_flow: Option<bool>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cognito_events: Option<serde_json::Value>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoIdentityProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cognito_identity_providers: Option<Vec<CognitoIdentityProvider>>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoStreams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cognito_streams: Option<CognitoStreams>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeveloperProviderName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub developer_provider_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_pool_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenIdConnectProviderARNs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_id_connect_provider_arns: Option<Vec<String>>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PushSync")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub push_sync: Option<PushSync>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamlProviderARNs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saml_provider_arns: Option<Vec<String>>,
 
     ///
@@ -141,7 +142,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedLoginProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_login_providers: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -180,6 +181,7 @@ impl cfn_resources::CfnResource for CfnIdentityPool {
 
 /// CognitoIdentityProvider is a property of the AWS::Cognito::IdentityPool resource that represents an Amazon Cognito user pool and    its client ID.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CognitoIdentityProvider {
     ///
     /// The client ID for the Amazon Cognito user pool.
@@ -190,7 +192,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -202,7 +204,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -218,7 +220,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideTokenCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_side_token_check: Option<bool>,
 }
 
@@ -238,6 +240,7 @@ impl cfn_resources::CfnResource for CognitoIdentityProvider {
 
 /// CognitoStreams is a property of the AWS::Cognito::IdentityPool resource that defines configuration options for Amazon    Cognito streams.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CognitoStreams {
     ///
     /// The Amazon Resource Name (ARN) of the role Amazon Cognito can assume to publish to the    stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke     PutRecord on your Amazon Cognito stream.
@@ -248,7 +251,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +263,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -272,7 +275,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamingStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub streaming_status: Option<cfn_resources::StrVal>,
 }
 
@@ -292,6 +295,7 @@ impl cfn_resources::CfnResource for CognitoStreams {
 
 /// PushSync is a property of the AWS::Cognito::IdentityPool resource that defines the configuration options to be    applied to an Amazon Cognito identity pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PushSync {
     ///
     /// The ARNs of the Amazon SNS platform applications that could be used by clients.
@@ -302,7 +306,7 @@ pub struct PushSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_arns: Option<Vec<String>>,
 
     ///
@@ -314,7 +318,7 @@ pub struct PushSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 

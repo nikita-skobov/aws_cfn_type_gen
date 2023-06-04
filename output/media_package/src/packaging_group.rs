@@ -2,6 +2,7 @@
 ///
 /// The packaging group holds one or more packaging configurations. When you create an asset, you specify the packaging group associated with the asset. The asset has playback endpoints for each packaging configuration within the group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPackagingGroup {
     ///
     /// Parameters for CDN authorization.
@@ -12,7 +13,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Authorization")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization: Option<Authorization>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressAccessLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_access_logs: Option<LogConfiguration>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -97,6 +98,7 @@ impl cfn_resources::CfnResource for CfnPackagingGroup {
 
 /// Parameters for enabling CDN authorization.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Authorization {
     ///
     /// The Amazon Resource Name (ARN) for the secret in AWS Secrets Manager that is used for CDN authorization.
@@ -137,6 +139,7 @@ impl cfn_resources::CfnResource for Authorization {
 
 /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfiguration {
     ///
     /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
@@ -147,7 +150,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 }
 
@@ -173,6 +176,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

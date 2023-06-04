@@ -2,6 +2,7 @@
 ///
 /// Make sure you use either DataSources or          Features in a one request, and not both.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDetector {
     ///
     /// Describes which data sources will be enabled for the detector.
@@ -12,7 +13,7 @@ pub struct CfnDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_sources: Option<CFNDataSourceConfigurations>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Features")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub features: Option<Vec<FeatureConfigurations>>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub finding_publishing_frequency: Option<DetectorFindingPublishingFrequencyEnum>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -110,6 +111,7 @@ impl cfn_resources::CfnResource for CfnDetector {
 
 /// Describes whether S3 data event logs, Kubernetes audit logs, or Malware Protection          will be enabled as a data source when the detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNDataSourceConfigurations {
     ///
     /// Describes which Kubernetes data sources are enabled for a detector.
@@ -120,7 +122,7 @@ pub struct CFNDataSourceConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Kubernetes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kubernetes: Option<CFNKubernetesConfiguration>,
 
     ///
@@ -132,7 +134,7 @@ pub struct CFNDataSourceConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MalwareProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub malware_protection: Option<CFNMalwareProtectionConfiguration>,
 
     ///
@@ -144,7 +146,7 @@ pub struct CFNDataSourceConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Logs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_logs: Option<CFNS3LogsConfiguration>,
 }
 
@@ -174,6 +176,7 @@ impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
 
 /// Describes which optional data sources are enabled for a detector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNKubernetesAuditLogsConfiguration {
     ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
@@ -184,7 +187,7 @@ pub struct CFNKubernetesAuditLogsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable: Option<bool>,
 }
 
@@ -204,6 +207,7 @@ impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
 
 /// Describes which Kubernetes protection data sources are enabled for the          detector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNKubernetesConfiguration {
     ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
@@ -214,7 +218,7 @@ pub struct CFNKubernetesConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audit_logs: Option<CFNKubernetesAuditLogsConfiguration>,
 }
 
@@ -238,6 +242,7 @@ impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
 
 /// Describes whether Malware Protection will be enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNMalwareProtectionConfiguration {
     ///
     /// Describes the configuration of Malware Protection for EC2 instances with          findings.
@@ -248,7 +253,7 @@ pub struct CFNMalwareProtectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanEc2InstanceWithFindings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scan_ec2_instance_with_findings: Option<CFNScanEc2InstanceWithFindingsConfiguration>,
 }
 
@@ -272,6 +277,7 @@ impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
 
 /// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNS3LogsConfiguration {
     ///
     /// The status of S3 data event logs as a data source.
@@ -282,7 +288,7 @@ pub struct CFNS3LogsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable: Option<bool>,
 }
 
@@ -302,6 +308,7 @@ impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
 
 /// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CFNScanEc2InstanceWithFindingsConfiguration {
     ///
     /// Describes the configuration for scanning EBS volumes as data source.
@@ -312,7 +319,7 @@ pub struct CFNScanEc2InstanceWithFindingsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbsVolumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_volumes: Option<bool>,
 }
 
@@ -334,6 +341,7 @@ impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration 
 ///
 /// If you're providing additional configuration, ensure to provide the corresponding       FeatureConfigurations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FeatureAdditionalConfiguration {
     ///
     /// Name of the additional configuration of a feature.
@@ -344,7 +352,7 @@ pub struct FeatureAdditionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +364,7 @@ pub struct FeatureAdditionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 }
 
@@ -378,6 +386,7 @@ impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
 ///
 /// Although the Required field associated with the following properties specifies          No, if you provide information for Name, you will need to          provide the information for Status too. For information about the available feature configurations, see          DetectorFeatureConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FeatureConfigurations {
     ///
     /// Additional configuration of the feature.
@@ -388,7 +397,7 @@ pub struct FeatureConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_configuration: Option<Vec<FeatureAdditionalConfiguration>>,
 
     ///
@@ -400,7 +409,7 @@ pub struct FeatureConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -412,7 +421,7 @@ pub struct FeatureConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 }
 
@@ -438,6 +447,7 @@ impl cfn_resources::CfnResource for FeatureConfigurations {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

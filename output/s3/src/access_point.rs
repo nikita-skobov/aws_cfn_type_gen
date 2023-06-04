@@ -1,5 +1,6 @@
 /// The AWS::S3::AccessPoint resource is an Amazon S3 resource type that you can use to access    buckets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessPoint {
     ///
     /// The name of the bucket associated with this access point.
@@ -21,7 +22,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<VpcConfiguration>,
 
     #[serde(skip_serializing)]
@@ -141,6 +142,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -155,7 +157,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -169,7 +171,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -183,7 +185,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -197,7 +199,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -217,6 +219,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 
 /// The Virtual Private Cloud (VPC) configuration for this access point.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfiguration {
     ///
     /// If this field is specified, the access point will only allow connections from the    specified VPC ID.
@@ -227,7 +230,7 @@ pub struct VpcConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 

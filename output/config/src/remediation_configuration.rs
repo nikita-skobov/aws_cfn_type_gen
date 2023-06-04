@@ -1,5 +1,6 @@
 /// An object that represents the details about the remediation configuration that includes the remediation action, parameters, and data to execute the action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRemediationConfiguration {
     ///
     /// The remediation is triggered automatically.
@@ -10,7 +11,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Automatic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic: Option<bool>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_controls: Option<ExecutionControls>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumAutomaticAttempts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_automatic_attempts: Option<i64>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryAttemptSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_attempt_seconds: Option<i64>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_version: Option<cfn_resources::StrVal>,
 }
 
@@ -232,6 +233,7 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
 
 /// An ExecutionControls object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExecutionControls {
     ///
     /// A SsmControls object.
@@ -242,7 +244,7 @@ pub struct ExecutionControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssm_controls: Option<SsmControls>,
 }
 
@@ -266,6 +268,7 @@ impl cfn_resources::CfnResource for ExecutionControls {
 
 /// The value is either a dynamic (resource) value or a static value. You must select either a dynamic value or a static value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RemediationParameterValue {
     ///
     /// The value is dynamic and changes at run-time.
@@ -276,7 +279,7 @@ pub struct RemediationParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_value: Option<ResourceValue>,
 
     ///
@@ -288,7 +291,7 @@ pub struct RemediationParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_value: Option<StaticValue>,
 }
 
@@ -316,6 +319,7 @@ impl cfn_resources::CfnResource for RemediationParameterValue {
 
 /// The dynamic value of the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceValue {
     ///
     /// The value is a resource ID.
@@ -328,7 +332,7 @@ pub struct ResourceValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<ResourceValueValueEnum>,
 }
 
@@ -361,6 +365,7 @@ impl cfn_resources::CfnResource for ResourceValue {
 
 /// AWS Systems Manager (SSM) specific remediation controls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SsmControls {
     ///
     /// The maximum percentage of remediation actions allowed to run in parallel on the non-compliant resources for that specific rule. You can specify a percentage, such as 10%. The default value is 10.
@@ -375,7 +380,7 @@ pub struct SsmControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConcurrentExecutionRatePercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub concurrent_execution_rate_percentage: Option<i64>,
 
     ///
@@ -391,7 +396,7 @@ pub struct SsmControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_percentage: Option<i64>,
 }
 
@@ -441,6 +446,7 @@ impl cfn_resources::CfnResource for SsmControls {
 
 /// The static value of the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StaticValue {
     ///
     /// A list of values. For example, the ARN of the assumed role.
@@ -453,7 +459,7 @@ pub struct StaticValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// For more information, see Target groups in the   Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTargetGroup {
     ///
     /// The target group configuration. If type is set to LAMBDA, this  parameter doesn't apply.
@@ -12,7 +13,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Config")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config: Option<TargetGroupConfig>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub targets: Option<Vec<Target>>,
 
     ///
@@ -138,6 +139,7 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
 
 /// The health check configuration of a target group. Health check configurations aren't used  for LAMBDA and ALB target groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckConfig {
     ///
     /// Indicates whether health checking is enabled.
@@ -148,7 +150,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -160,7 +162,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckIntervalSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_interval_seconds: Option<i64>,
 
     ///
@@ -172,7 +174,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckTimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_timeout_seconds: Option<i64>,
 
     ///
@@ -184,7 +186,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThresholdCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub healthy_threshold_count: Option<i64>,
 
     ///
@@ -196,7 +198,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Matcher")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub matcher: Option<Matcher>,
 
     ///
@@ -208,7 +210,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -220,7 +222,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -232,7 +234,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -244,7 +246,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProtocolVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -256,7 +258,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThresholdCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unhealthy_threshold_count: Option<i64>,
 }
 
@@ -278,6 +280,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 
 /// The codes to use when checking for a successful response from a target for health  checks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Matcher {
     ///
     /// The HTTP code to use when checking for a successful response from a target.
@@ -313,6 +316,7 @@ impl cfn_resources::CfnResource for Matcher {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -351,6 +355,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes a target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Target {
     ///
     /// The ID of the target. If the target type of the target group is INSTANCE, this  is an instance ID. If the target type is IP , this is an IP address. If the target  type is LAMBDA, this is the ARN of the Lambda function. If the target type is   ALB, this is the ARN of the Application Load Balancer.
@@ -372,7 +377,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 }
 
@@ -392,6 +397,7 @@ impl cfn_resources::CfnResource for Target {
 
 /// Describes the configuration of a target group. Lambda functions don't support target group  configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupConfig {
     ///
     /// The health check configuration.
@@ -402,7 +408,7 @@ pub struct TargetGroupConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check: Option<HealthCheckConfig>,
 
     ///
@@ -414,7 +420,7 @@ pub struct TargetGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddressType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -448,7 +454,7 @@ pub struct TargetGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProtocolVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///

@@ -1,5 +1,6 @@
 /// Provisions a state machine. A state machine consists of a collection of states that can     do work (Task states), determine to which states to transition next       (Choice states), stop an execution with an error (Fail     states), and so on. State machines are specified using a JSON-based, structured     language.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStateMachine {
     ///
     /// The Amazon States Language definition of the state machine. The state machine definition must be in JSON or YAML, and the format of the object must     match the format of your AWS Step Functions template file. See Amazon States Language.
@@ -10,7 +11,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<serde_json::Value>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition_s3_location: Option<S3Location>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionSubstitutions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition_substitutions: Option<std::collections::HashMap<String, serde_json::Value>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StateMachineName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state_machine_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StateMachineType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state_machine_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tracing_configuration: Option<TracingConfiguration>,
 
     #[serde(skip_serializing)]
@@ -192,6 +193,7 @@ impl cfn_resources::CfnResource for CfnStateMachine {
 
 /// Defines a CloudWatch log group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogsLogGroup {
     ///
     /// The ARN of the the CloudWatch log group to which you want your logs emitted to. The ARN    must end with :*
@@ -202,7 +204,7 @@ pub struct CloudWatchLogsLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -222,6 +224,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogGroup {
 
 /// Defines a destination for LoggingConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogDestination {
     ///
     /// An object describing a CloudWatch log group. For more information, see AWS::Logs::LogGroup in the AWS CloudFormation User Guide.
@@ -232,7 +235,7 @@ pub struct LogDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_log_group: Option<CloudWatchLogsLogGroup>,
 }
 
@@ -256,6 +259,7 @@ impl cfn_resources::CfnResource for LogDestination {
 
 /// Defines what execution history events are logged and where they are logged.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfiguration {
     ///
     /// An array of objects that describes where your execution history events will be logged.    Limited to size 1. Required, if your log level is not set to OFF.
@@ -266,7 +270,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destinations: Option<Vec<LogDestination>>,
 
     ///
@@ -278,7 +282,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeExecutionData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_execution_data: Option<bool>,
 
     ///
@@ -290,7 +294,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Level")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub level: Option<cfn_resources::StrVal>,
 }
 
@@ -310,6 +314,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 
 /// Defines the S3 bucket location where a state machine definition is stored. The state machine definition must be a JSON or YAML file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The name of the S3 bucket where the state machine definition JSON or YAML file is stored.
@@ -342,7 +347,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -362,6 +367,7 @@ impl cfn_resources::CfnResource for S3Location {
 
 /// The TagsEntry property specifies tags to identify a     state machine.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// The key for a key-value pair in a tag entry.
@@ -402,6 +408,7 @@ impl cfn_resources::CfnResource for TagsEntry {
 
 /// Selects whether or not the state machine's AWS X-Ray tracing is enabled. To configure     your state machine to send trace data to X-Ray, set Enabled to       true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TracingConfiguration {
     ///
     /// When set to true, X-Ray tracing is enabled.
@@ -412,7 +419,7 @@ pub struct TracingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 

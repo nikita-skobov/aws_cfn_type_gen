@@ -10,6 +10,7 @@
 ///
 /// For a complete introduction to Lambda functions, see    What is Lambda?   in the Lambda developer guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFunction {
     ///
     /// The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64).   The default value is x86_64.
@@ -22,7 +23,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architectures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub architectures: Option<Vec<String>>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningConfigArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_signing_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Environment>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EphemeralStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ephemeral_storage: Option<EphemeralStorage>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemConfigs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_configs: Option<Vec<FileSystemConfig>>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Handler")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub handler: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +160,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_config: Option<ImageConfig>,
 
     ///
@@ -173,7 +174,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -185,7 +186,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub layers: Option<Vec<String>>,
 
     ///
@@ -201,7 +202,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemorySize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_size: Option<i64>,
 
     ///
@@ -215,7 +216,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PackageType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub package_type: Option<FunctionPackageTypeEnum>,
 
     ///
@@ -229,7 +230,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReservedConcurrentExecutions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reserved_concurrent_executions: Option<i64>,
 
     ///
@@ -258,7 +259,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime: Option<FunctionRuntimeEnum>,
 
     ///
@@ -270,7 +271,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeManagementConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_management_config: Option<RuntimeManagementConfig>,
 
     ///
@@ -282,7 +283,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapStart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snap_start: Option<SnapStart>,
 
     ///
@@ -294,7 +295,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -308,7 +309,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 
     ///
@@ -320,7 +321,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tracing_config: Option<TracingConfig>,
 
     ///
@@ -332,7 +333,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_config: Option<VpcConfig>,
 
     #[serde(skip_serializing)]
@@ -659,6 +660,7 @@ impl cfn_resources::CfnResource for CfnFunction {
 ///
 /// Changes to a deployment package in Amazon S3 are not detected automatically during stack updates. To update    the function code, change the object key or version in the template.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Code {
     ///
     /// URI of a container image in the     Amazon ECR registry.
@@ -669,7 +671,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -687,7 +689,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -703,7 +705,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -719,7 +721,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -735,7 +737,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZipFile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zip_file: Option<cfn_resources::StrVal>,
 }
 
@@ -818,6 +820,7 @@ impl cfn_resources::CfnResource for Code {
 
 /// The dead-letter queue for    failed asynchronous invocations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeadLetterConfig {
     ///
     /// The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
@@ -830,7 +833,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -850,6 +853,7 @@ impl cfn_resources::CfnResource for DeadLetterConfig {
 
 /// A function's environment variable settings. You can use environment variables to adjust your function's    behavior without updating code. An environment variable is a pair of strings that are stored in a function's    version-specific configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Environment {
     ///
     /// Environment variable key-value pairs. For more information, see Using Lambda environment variables.
@@ -860,7 +864,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variables: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -880,6 +884,7 @@ impl cfn_resources::CfnResource for Environment {
 
 /// The size of the function's /tmp directory in MB. The default value is 512,      but it can be any whole number between 512 and 10,240 MB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EphemeralStorage {
     ///
     /// The size of the function's /tmp directory.
@@ -931,6 +936,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 
 /// Details about the connection between a Lambda function and an Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileSystemConfig {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file    system.
@@ -1001,6 +1007,7 @@ impl cfn_resources::CfnResource for FileSystemConfig {
 
 /// Configuration values that override the container image Dockerfile settings. For more information, see Container image    settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageConfig {
     ///
     /// Specifies parameters that you want to pass in with ENTRYPOINT. You can specify a maximum of 1,500 parameters      in the list.
@@ -1013,7 +1020,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -1027,7 +1034,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryPoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entry_point: Option<Vec<String>>,
 
     ///
@@ -1041,7 +1048,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub working_directory: Option<cfn_resources::StrVal>,
 }
 
@@ -1087,6 +1094,7 @@ impl cfn_resources::CfnResource for ImageConfig {
 
 /// Sets the runtime management configuration for a function's version. For more information,    see Runtime updates.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuntimeManagementConfig {
     ///
     /// The ARN of the runtime version you want the function to use.
@@ -1105,7 +1113,7 @@ pub struct RuntimeManagementConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1180,6 +1188,7 @@ impl cfn_resources::CfnResource for RuntimeManagementConfig {
 
 /// The function's AWS Lambda SnapStart setting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnapStart {
     ///
     /// Set ApplyOn to PublishedVersions to create a snapshot of the initialized execution environment when you publish a function version.
@@ -1228,6 +1237,7 @@ impl cfn_resources::CfnResource for SnapStart {
 
 /// The function's SnapStart setting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnapStartResponse {
     ///
     /// When set to PublishedVersions, Lambda creates a snapshot of the execution environment when you publish a function version.
@@ -1240,7 +1250,7 @@ pub struct SnapStartResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyOn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub apply_on: Option<SnapStartResponseApplyOnEnum>,
 
     ///
@@ -1254,7 +1264,7 @@ pub struct SnapStartResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizationStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub optimization_status: Option<SnapStartResponseOptimizationStatusEnum>,
 }
 
@@ -1314,6 +1324,7 @@ impl cfn_resources::CfnResource for SnapStartResponse {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1352,6 +1363,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The function's AWS X-Ray tracing configuration.    To sample and record incoming requests, set Mode to Active.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TracingConfig {
     ///
     /// The tracing mode.
@@ -1364,7 +1376,7 @@ pub struct TracingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<TracingConfigModeEnum>,
 }
 
@@ -1401,6 +1413,7 @@ impl cfn_resources::CfnResource for TracingConfig {
 
 /// The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a    VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the    function's VPC configuration. The function can only access resources and the internet through that VPC. For more    information, see VPC    Settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     ///
     /// A list of VPC security group IDs.
@@ -1413,7 +1426,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -1427,7 +1440,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

@@ -8,6 +8,7 @@
 ///
 /// When you create a transit gateway, we create a default transit gateway route table and     use it as the default association route table and the default propagation route table. You     can use AWS::EC2::TransitGatewayRouteTable to create additional transit gateway route     tables. If you disable automatic route propagation, we do not create a default transit     gateway route table. You can use AWS::EC2::TransitGatewayRouteTablePropagation to propagate routes from a     resource attachment to a transit gateway route table. If you disable automatic     associations, you can use AWS::EC2::TransitGatewayRouteTableAssociation to associate a resource     attachment with a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGateway {
     ///
     /// A private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range     is 64512 to 65534 for 16-bit ASNs. The default is 64512.
@@ -18,7 +19,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmazonSideAsn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazon_side_asn: Option<i64>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociationDefaultRouteTableId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub association_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoAcceptSharedAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_accept_shared_attachments: Option<TransitGatewayAutoAcceptSharedAttachmentsEnum>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteTableAssociation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_route_table_association: Option<TransitGatewayDefaultRouteTableAssociationEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteTablePropagation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_route_table_propagation: Option<TransitGatewayDefaultRouteTablePropagationEnum>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_support: Option<TransitGatewayDnsSupportEnum>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MulticastSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multicast_support: Option<TransitGatewayMulticastSupportEnum>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagationDefaultRouteTableId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub propagation_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayCidrBlocks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_cidr_blocks: Option<Vec<String>>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnEcmpSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
 
     #[serde(skip_serializing)]
@@ -301,6 +302,7 @@ impl cfn_resources::CfnResource for CfnTransitGateway {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

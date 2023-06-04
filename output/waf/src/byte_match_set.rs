@@ -1,5 +1,6 @@
 /// The AWS::WAF::ByteMatchSet resource creates an AWS WAF ByteMatchSet that identifies a part of a web request that you want to inspect.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnByteMatchSet {
     ///
     /// Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
@@ -10,7 +11,7 @@ pub struct CfnByteMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ByteMatchTuples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub byte_match_tuples: Option<Vec<ByteMatchTuple>>,
 
     ///
@@ -69,6 +70,7 @@ impl cfn_resources::CfnResource for CfnByteMatchSet {
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ByteMatchTuple {
     ///
     /// The part of a web request that you want to inspect, such as a specified header or a query string.
@@ -133,7 +135,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +153,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetStringBase64")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_string_base64: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,6 +284,7 @@ impl cfn_resources::CfnResource for ByteMatchTuple {
 
 /// Specifies where in a web request to look for TargetString.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     ///
     /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
@@ -302,7 +305,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///

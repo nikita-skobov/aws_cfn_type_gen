@@ -2,6 +2,7 @@
 ///
 /// You cannot create more than 25 work teams in an account and region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkteam {
     ///
     /// A description of the work team.
@@ -18,7 +19,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberDefinitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub member_definitions: Option<Vec<MemberDefinition>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_configuration: Option<NotificationConfiguration>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -69,7 +70,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkforceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workforce_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkteamName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workteam_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -175,6 +176,7 @@ impl cfn_resources::CfnResource for CfnWorkteam {
 
 /// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CognitoMemberDefinition {
     ///
     /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
@@ -226,6 +228,7 @@ impl cfn_resources::CfnResource for CognitoMemberDefinition {
 
 /// Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemberDefinition {
     ///
     /// The Amazon Cognito user group that is part of the work team.
@@ -236,7 +239,7 @@ pub struct MemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoMemberDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cognito_member_definition: Option<CognitoMemberDefinition>,
 
     ///
@@ -248,7 +251,7 @@ pub struct MemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OidcMemberDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oidc_member_definition: Option<OidcMemberDefinition>,
 }
 
@@ -276,6 +279,7 @@ impl cfn_resources::CfnResource for MemberDefinition {
 
 /// Configures Amazon SNS notifications of available or expiring work items for work       teams.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationConfiguration {
     ///
     /// The ARN for the Amazon SNS topic to which notifications should be published.
@@ -307,6 +311,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 
 /// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OidcMemberDefinition {
     /// Property description not available.
     ///
@@ -341,6 +346,7 @@ impl cfn_resources::CfnResource for OidcMemberDefinition {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

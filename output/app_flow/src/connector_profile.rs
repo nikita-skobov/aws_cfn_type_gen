@@ -1,5 +1,6 @@
 /// The AWS::AppFlow::ConnectorProfile resource is an Amazon AppFlow resource    type that specifies the configuration profile for an instance of a connector. This includes    the provided name, credentials ARN, connection-mode, and so on. The fields that are common to    all types of connector profiles are explicitly specified under the Properties    field. The rest of the connector-specific properties are specified under     Properties/ConnectorProfileConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnectorProfile {
     ///
     /// Indicates the connection mode and if it is public or private.
@@ -27,7 +28,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_profile_config: Option<ConnectorProfileConfig>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmsarn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -294,6 +295,7 @@ impl cfn_resources::CfnResource for CfnConnectorProfile {
 
 /// The connector-specific credentials required when using Amplitude.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmplitudeConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -364,6 +366,7 @@ impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
 
 /// The API key credentials required for API key authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApiKeyCredentials {
     ///
     /// The API key required for API key authentication.
@@ -393,7 +396,7 @@ pub struct ApiKeyCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiSecretKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_secret_key: Option<cfn_resources::StrVal>,
 }
 
@@ -435,6 +438,7 @@ impl cfn_resources::CfnResource for ApiKeyCredentials {
 
 /// The basic auth credentials required for basic authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BasicAuthCredentials {
     ///
     /// The password to use to connect to a resource.
@@ -505,6 +509,7 @@ impl cfn_resources::CfnResource for BasicAuthCredentials {
 
 /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorOAuthRequest {
     ///
     /// The code provided by the connector when it has been authenticated via the connected app.
@@ -519,7 +524,7 @@ pub struct ConnectorOAuthRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -535,7 +540,7 @@ pub struct ConnectorOAuthRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redirect_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -577,6 +582,7 @@ impl cfn_resources::CfnResource for ConnectorOAuthRequest {
 
 /// Defines the connector-specific configuration and credentials for the connector profile.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorProfileConfig {
     ///
     /// The connector-specific credentials required by each connector.
@@ -587,7 +593,7 @@ pub struct ConnectorProfileConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_profile_credentials: Option<ConnectorProfileCredentials>,
 
     ///
@@ -599,7 +605,7 @@ pub struct ConnectorProfileConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_profile_properties: Option<ConnectorProfileProperties>,
 }
 
@@ -627,6 +633,7 @@ impl cfn_resources::CfnResource for ConnectorProfileConfig {
 
 /// The connector-specific credentials required by a connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorProfileCredentials {
     ///
     /// The connector-specific credentials required when using Amplitude.
@@ -637,7 +644,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amplitude: Option<AmplitudeConnectorProfileCredentials>,
 
     ///
@@ -649,7 +656,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_connector: Option<CustomConnectorProfileCredentials>,
 
     ///
@@ -661,7 +668,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datadog: Option<DatadogConnectorProfileCredentials>,
 
     ///
@@ -673,7 +680,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynatrace: Option<DynatraceConnectorProfileCredentials>,
 
     ///
@@ -685,7 +692,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub google_analytics: Option<GoogleAnalyticsConnectorProfileCredentials>,
 
     ///
@@ -697,7 +704,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub infor_nexus: Option<InforNexusConnectorProfileCredentials>,
 
     ///
@@ -709,7 +716,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marketo: Option<MarketoConnectorProfileCredentials>,
 
     /// Property description not available.
@@ -720,7 +727,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pardot: Option<PardotConnectorProfileCredentials>,
 
     ///
@@ -732,7 +739,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift: Option<RedshiftConnectorProfileCredentials>,
 
     ///
@@ -744,7 +751,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sapodata: Option<SAPODataConnectorProfileCredentials>,
 
     ///
@@ -756,7 +763,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce: Option<SalesforceConnectorProfileCredentials>,
 
     ///
@@ -768,7 +775,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_now: Option<ServiceNowConnectorProfileCredentials>,
 
     ///
@@ -780,7 +787,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub singular: Option<SingularConnectorProfileCredentials>,
 
     ///
@@ -792,7 +799,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slack: Option<SlackConnectorProfileCredentials>,
 
     ///
@@ -804,7 +811,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snowflake: Option<SnowflakeConnectorProfileCredentials>,
 
     ///
@@ -816,7 +823,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trendmicro: Option<TrendmicroConnectorProfileCredentials>,
 
     ///
@@ -828,7 +835,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub veeva: Option<VeevaConnectorProfileCredentials>,
 
     ///
@@ -840,7 +847,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zendesk: Option<ZendeskConnectorProfileCredentials>,
 }
 
@@ -920,6 +927,7 @@ impl cfn_resources::CfnResource for ConnectorProfileCredentials {
 
 /// The connector-specific profile properties required by each connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorProfileProperties {
     ///
     /// The properties required by the custom connector.
@@ -930,7 +938,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_connector: Option<CustomConnectorProfileProperties>,
 
     ///
@@ -942,7 +950,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datadog: Option<DatadogConnectorProfileProperties>,
 
     ///
@@ -954,7 +962,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynatrace: Option<DynatraceConnectorProfileProperties>,
 
     ///
@@ -966,7 +974,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub infor_nexus: Option<InforNexusConnectorProfileProperties>,
 
     ///
@@ -978,7 +986,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marketo: Option<MarketoConnectorProfileProperties>,
 
     /// Property description not available.
@@ -989,7 +997,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pardot: Option<PardotConnectorProfileProperties>,
 
     ///
@@ -1001,7 +1009,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift: Option<RedshiftConnectorProfileProperties>,
 
     ///
@@ -1013,7 +1021,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sapodata: Option<SAPODataConnectorProfileProperties>,
 
     ///
@@ -1025,7 +1033,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce: Option<SalesforceConnectorProfileProperties>,
 
     ///
@@ -1037,7 +1045,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_now: Option<ServiceNowConnectorProfileProperties>,
 
     ///
@@ -1049,7 +1057,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slack: Option<SlackConnectorProfileProperties>,
 
     ///
@@ -1061,7 +1069,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snowflake: Option<SnowflakeConnectorProfileProperties>,
 
     ///
@@ -1073,7 +1081,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub veeva: Option<VeevaConnectorProfileProperties>,
 
     ///
@@ -1085,7 +1093,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zendesk: Option<ZendeskConnectorProfileProperties>,
 }
 
@@ -1149,6 +1157,7 @@ impl cfn_resources::CfnResource for ConnectorProfileProperties {
 
 /// The custom credentials required for custom authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomAuthCredentials {
     ///
     /// A map that holds custom authentication credentials.
@@ -1159,7 +1168,7 @@ pub struct CustomAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials_map: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1202,6 +1211,7 @@ impl cfn_resources::CfnResource for CustomAuthCredentials {
 
 /// The connector-specific profile credentials that are required when using the custom    connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomConnectorProfileCredentials {
     ///
     /// The API keys required for the authentication of the user.
@@ -1212,7 +1222,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_key: Option<ApiKeyCredentials>,
 
     ///
@@ -1237,7 +1247,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Basic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic: Option<BasicAuthCredentials>,
 
     ///
@@ -1249,7 +1259,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Custom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom: Option<CustomAuthCredentials>,
 
     ///
@@ -1261,7 +1271,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Oauth2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth2: Option<OAuth2Credentials>,
 }
 
@@ -1314,6 +1324,7 @@ impl cfn_resources::CfnResource for CustomConnectorProfileCredentials {
 
 /// The profile properties required by the custom connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomConnectorProfileProperties {
     ///
     /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
@@ -1324,7 +1335,7 @@ pub struct CustomConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2Properties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth2_properties: Option<OAuth2Properties>,
 
     ///
@@ -1336,7 +1347,7 @@ pub struct CustomConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub profile_properties: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1360,6 +1371,7 @@ impl cfn_resources::CfnResource for CustomConnectorProfileProperties {
 
 /// The connector-specific credentials required by Datadog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatadogConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -1430,6 +1442,7 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
 
 /// The connector-specific profile properties required by Datadog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatadogConnectorProfileProperties {
     ///
     /// The location of the Datadog resource.
@@ -1474,6 +1487,7 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
 
 /// The connector-specific profile credentials required by Dynatrace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynatraceConnectorProfileCredentials {
     ///
     /// The API tokens used by Dynatrace API to authenticate various API calls.
@@ -1518,6 +1532,7 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
 
 /// The connector-specific profile properties required by Dynatrace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynatraceConnectorProfileProperties {
     ///
     /// The location of the Dynatrace resource.
@@ -1562,6 +1577,7 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
 
 /// The connector-specific profile credentials required by Google Analytics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Google Analytics resources.
@@ -1576,7 +1592,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -1618,7 +1634,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -1634,7 +1650,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
@@ -1702,6 +1718,7 @@ impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
 
 /// The connector-specific profile credentials required by Infor Nexus.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InforNexusConnectorProfileCredentials {
     ///
     /// The Access Key portion of the credentials.
@@ -1824,6 +1841,7 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
 
 /// The connector-specific profile properties required by Infor Nexus.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InforNexusConnectorProfileProperties {
     ///
     /// The location of the Infor Nexus resource.
@@ -1868,6 +1886,7 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
 
 /// The connector-specific profile credentials required by Marketo.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MarketoConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Marketo resources.
@@ -1882,7 +1901,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -1924,7 +1943,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 
@@ -1981,6 +2000,7 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Marketo.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MarketoConnectorProfileProperties {
     ///
     /// The location of the Marketo resource.
@@ -2025,6 +2045,7 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
 
 /// The OAuth 2.0 credentials required for OAuth 2.0 authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OAuth2Credentials {
     ///
     /// The access token used to access the connector on your behalf.
@@ -2039,7 +2060,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -2055,7 +2076,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2071,7 +2092,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2082,7 +2103,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -2098,7 +2119,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
@@ -2166,6 +2187,7 @@ impl cfn_resources::CfnResource for OAuth2Credentials {
 
 /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OAuth2Properties {
     ///
     /// The OAuth 2.0 grant type used by connector for OAuth 2.0 authentication.
@@ -2178,7 +2200,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2GrantType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth2_grant_type: Option<OAuth2PropertiesOAuth2GrantTypeEnum>,
 
     ///
@@ -2194,7 +2216,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -2206,7 +2228,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrlCustomProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_url_custom_properties: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -2258,6 +2280,7 @@ impl cfn_resources::CfnResource for OAuth2Properties {
 
 /// The OAuth credentials required for OAuth type authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OAuthCredentials {
     ///
     /// The access token used to access protected SAPOData resources.
@@ -2272,7 +2295,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -2288,7 +2311,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2304,7 +2327,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2315,7 +2338,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -2331,7 +2354,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
@@ -2399,6 +2422,7 @@ impl cfn_resources::CfnResource for OAuthCredentials {
 
 /// The OAuth properties required for OAuth type authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OAuthProperties {
     ///
     /// The authorization code url required to redirect to SAP Login Page to fetch authorization    code for OAuth type authentication.
@@ -2413,7 +2437,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthCodeUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_code_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -2425,7 +2449,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthScopes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth_scopes: Option<Vec<String>>,
 
     ///
@@ -2441,7 +2465,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_url: Option<cfn_resources::StrVal>,
 }
 
@@ -2483,6 +2507,7 @@ impl cfn_resources::CfnResource for OAuthProperties {
 
 /// The PardotConnectorProfileCredentials property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PardotConnectorProfileCredentials {
     /// Property description not available.
     ///
@@ -2492,7 +2517,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2503,7 +2528,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_credentials_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2514,7 +2539,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     /// Property description not available.
@@ -2525,7 +2550,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
@@ -2549,6 +2574,7 @@ impl cfn_resources::CfnResource for PardotConnectorProfileCredentials {
 
 /// The PardotConnectorProfileProperties property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PardotConnectorProfileProperties {
     /// Property description not available.
     ///
@@ -2568,7 +2594,7 @@ pub struct PardotConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2579,7 +2605,7 @@ pub struct PardotConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsSandboxEnvironment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_sandbox_environment: Option<bool>,
 }
 
@@ -2599,6 +2625,7 @@ impl cfn_resources::CfnResource for PardotConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -2613,7 +2640,7 @@ pub struct RedshiftConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -2629,7 +2656,7 @@ pub struct RedshiftConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -2671,6 +2698,7 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
 
 /// The connector-specific profile properties when using Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftConnectorProfileProperties {
     ///
     /// A name for the associated Amazon S3 bucket.
@@ -2702,7 +2730,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2713,7 +2741,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2724,7 +2752,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataApiRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_api_role_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2735,7 +2763,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2751,7 +2779,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2762,7 +2790,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsRedshiftServerless")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_redshift_serverless: Option<bool>,
 
     ///
@@ -2788,7 +2816,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workgroup_name: Option<cfn_resources::StrVal>,
 }
 
@@ -2863,6 +2891,7 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using SAPOData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SAPODataConnectorProfileCredentials {
     ///
     /// The SAPOData basic authentication credentials.
@@ -2873,7 +2902,7 @@ pub struct SAPODataConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic_auth_credentials: Option<BasicAuthCredentials>,
 
     ///
@@ -2885,7 +2914,7 @@ pub struct SAPODataConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth_credentials: Option<OAuthCredentials>,
 }
 
@@ -2913,6 +2942,7 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using SAPOData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SAPODataConnectorProfileProperties {
     ///
     /// The location of the SAPOData resource.
@@ -2927,7 +2957,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationHostUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_host_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -2943,7 +2973,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationServicePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_service_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -2961,7 +2991,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_number: Option<cfn_resources::StrVal>,
 
     ///
@@ -2977,7 +3007,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogonLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logon_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -2989,7 +3019,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth_properties: Option<OAuthProperties>,
 
     ///
@@ -3005,7 +3035,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_number: Option<i64>,
 
     ///
@@ -3021,7 +3051,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_link_service_name: Option<cfn_resources::StrVal>,
 }
 
@@ -3120,6 +3150,7 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Salesforce.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Salesforce resources.
@@ -3134,7 +3165,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -3152,7 +3183,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -3164,7 +3195,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     /// Property description not available.
@@ -3175,7 +3206,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jwt_token: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -3186,7 +3217,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2GrantType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth2_grant_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -3202,7 +3233,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_token: Option<cfn_resources::StrVal>,
 }
 
@@ -3264,6 +3295,7 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Salesforce.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceConnectorProfileProperties {
     ///
     /// The location of the Salesforce resource.
@@ -3278,7 +3310,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -3290,7 +3322,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "isSandboxEnvironment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_sandbox_environment: Option<bool>,
 
     /// Property description not available.
@@ -3301,7 +3333,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "usePrivateLinkForMetadataAndAuthorization")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_private_link_for_metadata_and_authorization: Option<bool>,
 }
 
@@ -3332,6 +3364,7 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using ServiceNow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -3402,6 +3435,7 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using ServiceNow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowConnectorProfileProperties {
     ///
     /// The location of the ServiceNow resource.
@@ -3446,6 +3480,7 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Singular.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingularConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -3490,6 +3525,7 @@ impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
 
 /// The connector-specific profile credentials required when using Slack.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SlackConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Slack resources.
@@ -3504,7 +3540,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -3546,7 +3582,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 
@@ -3603,6 +3639,7 @@ impl cfn_resources::CfnResource for SlackConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Slack.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SlackConnectorProfileProperties {
     ///
     /// The location of the Slack resource.
@@ -3647,6 +3684,7 @@ impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Snowflake.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnowflakeConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -3717,6 +3755,7 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Snowflake.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnowflakeConnectorProfileProperties {
     ///
     /// The name of the account.
@@ -3731,7 +3770,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3764,7 +3803,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -3780,7 +3819,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_link_service_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3796,7 +3835,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -3931,6 +3970,7 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Trend Micro.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrendmicroConnectorProfileCredentials {
     ///
     /// The Secret Access Key portion of the credentials.
@@ -3975,6 +4015,7 @@ impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
 
 /// The connector-specific profile credentials required when using Veeva.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VeevaConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -4045,6 +4086,7 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Veeva.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VeevaConnectorProfileProperties {
     ///
     /// The location of the Veeva resource.
@@ -4089,6 +4131,7 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
 
 /// The connector-specific profile credentials required when using Zendesk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ZendeskConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Zendesk resources.
@@ -4103,7 +4146,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -4145,7 +4188,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 
@@ -4202,6 +4245,7 @@ impl cfn_resources::CfnResource for ZendeskConnectorProfileCredentials {
 
 /// The connector-specific profile properties required when using Zendesk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ZendeskConnectorProfileProperties {
     ///
     /// The location of the Zendesk resource.

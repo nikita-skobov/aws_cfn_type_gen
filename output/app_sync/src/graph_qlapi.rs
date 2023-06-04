@@ -1,5 +1,6 @@
 /// The AWS::AppSync::GraphQLApi resource creates a new AWS AppSync GraphQL API. This is     the top-level construct for your application. For more information, see Quick Start in the AWS AppSync       Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGraphQLApi {
     ///
     /// A list of additional authentication providers for the GraphqlApi     API.
@@ -10,12 +11,12 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalAuthenticationProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_authentication_providers: Option<Vec<AdditionalAuthenticationProvider>>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-apitype
     #[serde(rename = "ApiType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaAuthorizerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_authorizer_config: Option<LambdaAuthorizerConfig>,
 
     ///
@@ -50,12 +51,12 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_config: Option<LogConfig>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-mergedapiexecutionrolearn
     #[serde(rename = "MergedApiExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub merged_api_execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,12 +79,12 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenIDConnectConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_idconnect_config: Option<OpenIDConnectConfig>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-ownercontact
     #[serde(rename = "OwnerContact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner_contact: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_config: Option<UserPoolConfig>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<cfn_resources::StrVal>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnGraphQLApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XrayEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xray_enabled: Option<bool>,
 
     #[serde(skip_serializing)]
@@ -233,6 +234,7 @@ impl cfn_resources::CfnResource for CfnGraphQLApi {
 
 /// Describes an additional authentication provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdditionalAuthenticationProvider {
     ///
     /// The authentication type for API key, AWS Identity and Access Management, OIDC, Amazon Cognito user pools, or AWS Lambda.
@@ -256,7 +258,7 @@ pub struct AdditionalAuthenticationProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaAuthorizerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_authorizer_config: Option<LambdaAuthorizerConfig>,
 
     ///
@@ -268,7 +270,7 @@ pub struct AdditionalAuthenticationProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenIDConnectConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_idconnect_config: Option<OpenIDConnectConfig>,
 
     ///
@@ -280,7 +282,7 @@ pub struct AdditionalAuthenticationProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_config: Option<CognitoUserPoolConfig>,
 }
 
@@ -341,6 +343,7 @@ impl cfn_resources::CfnResource for AdditionalAuthenticationProvider {
 
 /// Describes an Amazon Cognito user pool configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CognitoUserPoolConfig {
     ///
     /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
@@ -351,7 +354,7 @@ pub struct CognitoUserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppIdClientRegex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_id_client_regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -363,7 +366,7 @@ pub struct CognitoUserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -375,7 +378,7 @@ pub struct CognitoUserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 
@@ -395,6 +398,7 @@ impl cfn_resources::CfnResource for CognitoUserPoolConfig {
 
 /// Configuration for AWS Lambda function authorization.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaAuthorizerConfig {
     ///
     /// The number of seconds a response should be cached for. The default is 0 seconds, which disables caching. If     you don't specify a value for authorizerResultTtlInSeconds, the default value is used. The maximum     value is one hour (3600 seconds). The Lambda function can override this by returning a       ttlOverride key in its response.
@@ -405,7 +409,7 @@ pub struct LambdaAuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_result_ttl_in_seconds: Option<f64>,
 
     ///
@@ -421,7 +425,7 @@ pub struct LambdaAuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -433,7 +437,7 @@ pub struct LambdaAuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityValidationExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_validation_expression: Option<cfn_resources::StrVal>,
 }
 
@@ -455,6 +459,7 @@ impl cfn_resources::CfnResource for LambdaAuthorizerConfig {
 ///
 /// LogConfig is a property of the AWS::AppSync::GraphQLApi property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfig {
     ///
     /// The service role that AWS AppSync will assume to publish to Amazon CloudWatch Logs in your     account.
@@ -465,7 +470,7 @@ pub struct LogConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -477,7 +482,7 @@ pub struct LogConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeVerboseContent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_verbose_content: Option<bool>,
 
     ///
@@ -491,7 +496,7 @@ pub struct LogConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLogLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_log_level: Option<cfn_resources::StrVal>,
 }
 
@@ -513,6 +518,7 @@ impl cfn_resources::CfnResource for LogConfig {
 ///
 /// OpenIDConnectConfig is a property of the AWS::AppSync::GraphQLApi property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenIDConnectConfig {
     ///
     /// The number of milliseconds that a token is valid after being authenticated.
@@ -523,7 +529,7 @@ pub struct OpenIDConnectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthTTL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_ttl: Option<f64>,
 
     ///
@@ -535,7 +541,7 @@ pub struct OpenIDConnectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -547,7 +553,7 @@ pub struct OpenIDConnectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IatTTL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iat_ttl: Option<f64>,
 
     ///
@@ -559,7 +565,7 @@ pub struct OpenIDConnectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub issuer: Option<cfn_resources::StrVal>,
 }
 
@@ -585,6 +591,7 @@ impl cfn_resources::CfnResource for OpenIDConnectConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -623,6 +630,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The UserPoolConfig property type specifies the optional authorization configuration for using       Amazon Cognito user pools with your GraphQL endpoint for an AWS AppSync GraphQL API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserPoolConfig {
     ///
     /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
@@ -633,7 +641,7 @@ pub struct UserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppIdClientRegex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_id_client_regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -645,7 +653,7 @@ pub struct UserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -659,7 +667,7 @@ pub struct UserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -671,7 +679,7 @@ pub struct UserPoolConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 

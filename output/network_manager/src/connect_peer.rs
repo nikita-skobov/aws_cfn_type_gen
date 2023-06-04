@@ -1,5 +1,6 @@
 /// Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance.     The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnectPeer {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BgpOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bgp_options: Option<BgpOptions>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -259,6 +260,7 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
 
 /// Describes the BGP options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BgpOptions {
     ///
     /// The Peer ASN of the BGP.
@@ -269,7 +271,7 @@ pub struct BgpOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerAsn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_asn: Option<f64>,
 }
 
@@ -289,6 +291,7 @@ impl cfn_resources::CfnResource for BgpOptions {
 
 /// Describes a core network BGP configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectPeerBgpConfiguration {
     ///
     /// The address of a core network.
@@ -305,7 +308,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -317,7 +320,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAsn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_network_asn: Option<f64>,
 
     ///
@@ -335,7 +338,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -347,7 +350,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAsn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_asn: Option<f64>,
 }
 
@@ -408,6 +411,7 @@ impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
 
 /// Describes a core network Connect peer configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectPeerConfiguration {
     ///
     /// The Connect peer BGP configurations.
@@ -418,7 +422,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BgpConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bgp_configurations: Option<Vec<ConnectPeerBgpConfiguration>>,
 
     ///
@@ -436,7 +440,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -448,7 +452,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsideCidrBlocks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inside_cidr_blocks: Option<Vec<String>>,
 
     ///
@@ -466,7 +470,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -480,7 +484,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
 }
 
@@ -560,6 +564,7 @@ impl cfn_resources::CfnResource for ConnectPeerConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

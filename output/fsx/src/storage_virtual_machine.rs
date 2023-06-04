@@ -1,5 +1,6 @@
 /// Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStorageVirtualMachine {
     ///
     /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
@@ -10,7 +11,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveDirectoryConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootVolumeSecurityStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_volume_security_style: Option<StorageVirtualMachineRootVolumeSecurityStyleEnum>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SvmAdminPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub svm_admin_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -180,6 +181,7 @@ impl cfn_resources::CfnResource for CfnStorageVirtualMachine {
 
 /// Describes the self-managed Microsoft Active Directory to which you want to join the SVM.    Joining an Active Directory provides user authentication and access control for SMB clients,    including Microsoft Windows and macOS client accessing the file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActiveDirectoryConfiguration {
     ///
     /// The NetBIOS name of the Active Directory computer object that will be created for your SVM.
@@ -196,7 +198,7 @@ pub struct ActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetBiosName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub net_bios_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -208,7 +210,7 @@ pub struct ActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_managed_active_directory_configuration:
         Option<SelfManagedActiveDirectoryConfiguration>,
 }
@@ -255,6 +257,7 @@ impl cfn_resources::CfnResource for ActiveDirectoryConfiguration {
 
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
@@ -267,7 +270,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsIps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_ips: Option<Vec<String>>,
 
     ///
@@ -285,7 +288,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -303,7 +306,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_administrators_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -323,7 +326,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -341,7 +344,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -359,7 +362,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_name: Option<cfn_resources::StrVal>,
 }
 
@@ -492,6 +495,7 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// Calling this action requires developer credentials.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolUserToGroupAttachment {
     ///
     /// The group name.

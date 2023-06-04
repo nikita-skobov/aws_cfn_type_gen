@@ -1,5 +1,6 @@
 /// The AWS::MediaConvert::Queue resource is an AWS Elemental MediaConvert resource type       that you can use to manage the resources that are available to your account for parallel       processing of jobs. For more information about queues, see Working with AWS Elemental MediaConvert Queues in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnQueue {
     ///
     /// Optional. A description of the queue that you are creating.
@@ -10,7 +11,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pricing_plan: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]

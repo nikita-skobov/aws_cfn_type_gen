@@ -2,6 +2,7 @@
 ///
 /// For more information about Amazon EC2 Auto Scaling, see the Amazon EC2 Auto Scaling     User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAutoScalingGroup {
     ///
     /// The name of the Auto Scaling group. This name must be unique per Region per account.
@@ -16,7 +17,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_scaling_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityRebalance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_rebalance: Option<bool>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Context")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub context: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cooldown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cooldown: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultInstanceWarmup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_instance_warmup: Option<i64>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_capacity: Option<cfn_resources::StrVal>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacityType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_capacity_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckGracePeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_grace_period: Option<i64>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchConfigurationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +191,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -202,7 +203,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleHookSpecificationList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_hook_specification_list: Option<Vec<LifecycleHookSpecification>>,
 
     ///
@@ -214,7 +215,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_names: Option<Vec<String>>,
 
     ///
@@ -226,7 +227,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxInstanceLifetime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_instance_lifetime: Option<i64>,
 
     ///
@@ -251,7 +252,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsCollection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics_collection: Option<Vec<MetricsCollection>>,
 
     ///
@@ -278,7 +279,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MixedInstancesPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mixed_instances_policy: Option<MixedInstancesPolicy>,
 
     ///
@@ -290,7 +291,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewInstancesProtectedFromScaleIn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub new_instances_protected_from_scale_in: Option<bool>,
 
     ///
@@ -302,7 +303,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_configurations: Option<Vec<NotificationConfiguration>>,
 
     ///
@@ -316,7 +317,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -328,7 +329,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceLinkedRoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_linked_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -340,7 +341,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagProperty>>,
 
     ///
@@ -352,7 +353,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupARNs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arns: Option<Vec<String>>,
 
     ///
@@ -366,7 +367,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub termination_policies: Option<Vec<String>>,
 
     ///
@@ -384,7 +385,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "VPCZoneIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpczone_identifier: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -467,6 +468,7 @@ impl cfn_resources::CfnResource for CfnAutoScalingGroup {
 
 /// AcceleratorCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of accelerators for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AcceleratorCountRequest {
     ///
     /// The maximum value.
@@ -479,7 +481,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -493,7 +495,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -531,6 +533,7 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
 
 /// AcceleratorTotalMemoryMiBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total memory size for the accelerators for an instance type,    in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// The memory maximum in MiB.
@@ -543,7 +546,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -557,7 +560,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -595,6 +598,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
 
 /// BaselineEbsBandwidthMbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum baseline bandwidth performance for an instance type, in    Mbps.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// The maximum value in Mbps.
@@ -607,7 +611,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -621,7 +625,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -669,6 +673,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
 ///
 /// InstanceRequirements is a property of the     LaunchTemplateOverrides property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplate property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceRequirements {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia       chips) for an instance type.
@@ -683,7 +688,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_count: Option<AcceleratorCountRequest>,
 
     ///
@@ -699,7 +704,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorManufacturers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
     ///
@@ -715,7 +720,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_names: Option<Vec<String>>,
 
     ///
@@ -729,7 +734,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiBRequest>,
 
     ///
@@ -745,7 +750,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -767,7 +772,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_instance_types: Option<Vec<String>>,
 
     ///
@@ -783,7 +788,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BareMetal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bare_metal: Option<InstanceRequirementsBareMetalEnum>,
 
     ///
@@ -797,7 +802,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaselineEbsBandwidthMbps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbpsRequest>,
 
     ///
@@ -813,7 +818,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstablePerformance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub burstable_performance: Option<InstanceRequirementsBurstablePerformanceEnum>,
 
     ///
@@ -831,7 +836,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuManufacturers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
     ///
@@ -851,7 +856,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_instance_types: Option<Vec<String>>,
 
     ///
@@ -867,7 +872,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceGenerations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_generations: Option<Vec<String>>,
 
     ///
@@ -883,7 +888,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_storage: Option<InstanceRequirementsLocalStorageEnum>,
 
     ///
@@ -899,7 +904,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorageTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_storage_types: Option<Vec<String>>,
 
     ///
@@ -913,7 +918,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryGiBPerVCpu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpuRequest>,
 
     ///
@@ -925,7 +930,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryMiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_mi_b: Option<MemoryMiBRequest>,
 
     ///
@@ -939,7 +944,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkBandwidthGbps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbpsRequest>,
 
     ///
@@ -953,7 +958,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_count: Option<NetworkInterfaceCountRequest>,
 
     ///
@@ -971,7 +976,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -985,7 +990,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireHibernateSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_hibernate_support: Option<bool>,
 
     ///
@@ -1003,7 +1008,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1017,7 +1022,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalLocalStorageGB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_local_storage_gb: Option<TotalLocalStorageGBRequest>,
 
     ///
@@ -1029,7 +1034,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VCpuCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vcpu_count: Option<VCpuCountRequest>,
 }
 
@@ -1176,6 +1181,7 @@ impl cfn_resources::CfnResource for InstanceRequirements {
 ///
 /// InstancesDistribution is a property of the AWS::AutoScaling::AutoScalingGroup MixedInstancesPolicy property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstancesDistribution {
     ///
     /// The allocation strategy to apply to your On-Demand Instances when they are launched.    Possible instance types are determined by the launch template overrides that you    specify.
@@ -1190,7 +1196,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandAllocationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1208,7 +1214,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "OnDemandBaseCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_base_capacity: Option<i64>,
 
     ///
@@ -1224,7 +1230,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "OnDemandPercentageAboveBaseCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_percentage_above_base_capacity: Option<i64>,
 
     ///
@@ -1240,7 +1246,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotAllocationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1254,7 +1260,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotInstancePools")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_instance_pools: Option<i64>,
 
     ///
@@ -1270,7 +1276,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_max_price: Option<cfn_resources::StrVal>,
 }
 
@@ -1292,6 +1298,7 @@ impl cfn_resources::CfnResource for InstancesDistribution {
 ///
 /// LaunchTemplate is a property of the AWS::AutoScaling::AutoScalingGroup MixedInstancesPolicy property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplate {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplate.html#cfn-as-group-launchtemplate
     #[serde(rename = "LaunchTemplateSpecification")]
@@ -1299,7 +1306,7 @@ pub struct LaunchTemplate {
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplate.html#cfn-as-mixedinstancespolicy-overrides
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overrides: Option<Vec<LaunchTemplateOverrides>>,
 }
 
@@ -1327,6 +1334,7 @@ impl cfn_resources::CfnResource for LaunchTemplate {
 ///
 /// LaunchTemplateOverrides is a property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplate property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateOverrides {
     ///
     /// The instance requirements. Amazon EC2 Auto Scaling uses your specified requirements to identify       instance types. Then, it uses your On-Demand and Spot allocation strategies to launch       instances from these instance types.
@@ -1341,7 +1349,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRequirements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_requirements: Option<InstanceRequirements>,
 
     ///
@@ -1355,7 +1363,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1369,7 +1377,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_specification: Option<LaunchTemplateSpecification>,
 
     ///
@@ -1385,7 +1393,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
@@ -1421,6 +1429,7 @@ impl cfn_resources::CfnResource for LaunchTemplateOverrides {
 ///
 /// For examples of launch templates, see Auto scaling template     snippets and the Examples section in the AWS::EC2::LaunchTemplate resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -1433,7 +1442,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1447,7 +1456,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1484,6 +1493,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 ///
 /// For more information, see Amazon EC2 Auto Scaling lifecycle     hooks in the Amazon EC2 Auto Scaling User Guide. You can find a    sample template snippet in the Examples section of the AWS::AutoScaling::LifecycleHook    resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecycleHookSpecification {
     ///
     /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an       unexpected failure occurs. The default value is ABANDON.
@@ -1496,7 +1506,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_result: Option<cfn_resources::StrVal>,
 
     ///
@@ -1508,7 +1518,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heartbeat_timeout: Option<i64>,
 
     ///
@@ -1556,7 +1566,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -1568,7 +1578,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_target_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1582,7 +1592,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1643,6 +1653,7 @@ impl cfn_resources::CfnResource for LifecycleHookSpecification {
 
 /// MemoryGiBPerVCpuRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum amount of memory per vCPU for an instance type, in    GiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemoryGiBPerVCpuRequest {
     ///
     /// The memory maximum in GiB.
@@ -1653,7 +1664,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -1665,7 +1676,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -1685,6 +1696,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
 
 /// MemoryMiBRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum instance memory size for an instance type, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemoryMiBRequest {
     ///
     /// The memory maximum in MiB.
@@ -1697,7 +1709,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -1711,7 +1723,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -1751,6 +1763,7 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
 ///
 /// For more information, see Monitor CloudWatch metrics for     your Auto Scaling groups and instances in the Amazon EC2 Auto Scaling User     Guide. You can find a sample template snippet in the Examples section of the AWS::AutoScaling::AutoScalingGroup    resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricsCollection {
     ///
     /// The frequency at which Amazon EC2 Auto Scaling sends aggregated data to CloudWatch. The only valid value is         1Minute.
@@ -1780,7 +1793,7 @@ pub struct MetricsCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics: Option<Vec<String>>,
 }
 
@@ -1810,6 +1823,7 @@ impl cfn_resources::CfnResource for MetricsCollection {
 ///
 /// MixedInstancesPolicy is a property of the AWS::AutoScaling::AutoScalingGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MixedInstancesPolicy {
     ///
     /// The instances distribution.
@@ -1820,7 +1834,7 @@ pub struct MixedInstancesPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancesDistribution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instances_distribution: Option<InstancesDistribution>,
 
     ///
@@ -1857,6 +1871,7 @@ impl cfn_resources::CfnResource for MixedInstancesPolicy {
 
 /// NetworkBandwidthGbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum network bandwidth for an instance type, in Gbps.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkBandwidthGbpsRequest {
     ///
     /// The maximum amount of network bandwidth, in gigabits per second (Gbps).
@@ -1867,7 +1882,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<f64>,
 
     ///
@@ -1879,7 +1894,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<f64>,
 }
 
@@ -1899,6 +1914,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
 
 /// NetworkInterfaceCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of network interfaces for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterfaceCountRequest {
     ///
     /// The maximum number of network interfaces.
@@ -1911,7 +1927,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -1925,7 +1941,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -1967,6 +1983,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
 ///
 /// For more information, see Get Amazon SNS notifications     when your Auto Scaling group scales in the Amazon EC2 Auto Scaling User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationConfiguration {
     ///
     /// A list of event types that send a notification. Event types can include any of the    following types.
@@ -1981,7 +1998,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_types: Option<Vec<String>>,
 
     ///
@@ -2016,6 +2033,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 ///
 /// CloudFormation adds the following tags to all Auto Scaling groups and associated    instances:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagProperty {
     ///
     /// The tag key.
@@ -2123,6 +2141,7 @@ impl cfn_resources::CfnResource for TagProperty {
 
 /// TotalLocalStorageGBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total local storage size for an instance type, in GB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TotalLocalStorageGBRequest {
     ///
     /// The storage maximum in GB.
@@ -2133,7 +2152,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -2145,7 +2164,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -2165,6 +2184,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
 
 /// VCpuCountRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of vCPUs for an instance type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VCpuCountRequest {
     ///
     /// The maximum number of vCPUs.
@@ -2177,7 +2197,7 @@ pub struct VCpuCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -2191,7 +2211,7 @@ pub struct VCpuCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 

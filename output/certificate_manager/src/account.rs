@@ -1,5 +1,6 @@
 /// The AWS::CertificateManager::Account resource defines the expiry event     configuration that determines the number of days prior to expiry when ACM starts generating     EventBridge events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccount {
     ///
     /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnAccount {
 
 /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExpiryEventsConfiguration {
     ///
     /// This option specifies the number of days prior to certificate expiration when ACM starts     generating EventBridge events. ACM sends one event per day per certificate     until the certificate expires. By default, accounts receive events starting 45 days before     certificate expiration.
@@ -52,7 +54,7 @@ pub struct ExpiryEventsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DaysBeforeExpiry")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub days_before_expiry: Option<i64>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see Set up Custom Domain Name for an API in API Gateway in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomainName {
     ///
     /// The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
@@ -12,7 +13,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_configuration: Option<EndpointConfiguration>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
 
     /// The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.
@@ -59,7 +60,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ownership_verification_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionalCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regional_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_policy: Option<DomainNameSecurityPolicyEnum>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -188,6 +189,7 @@ impl cfn_resources::CfnResource for CfnDomainName {
 ///
 /// EndpointConfiguration is a property of the AWS::ApiGateway::DomainName resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointConfiguration {
     ///
     /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
@@ -198,7 +200,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Types")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub types: Option<Vec<String>>,
 }
 
@@ -218,6 +220,7 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 
 /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MutualTlsAuthentication {
     ///
     /// An Amazon S3 URL that specifies the truststore for mutual TLS authentication, for example    s3://bucket-name/key-name. The truststore can contain certificates from public or private    certificate authorities. To update the truststore, upload a new version to S3, and then update    your custom domain name to use the new version. To update the truststore, you must have    permissions to access the S3 object.
@@ -228,7 +231,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truststore_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -240,7 +243,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truststore_version: Option<cfn_resources::StrVal>,
 }
 
@@ -266,6 +269,7 @@ impl cfn_resources::CfnResource for MutualTlsAuthentication {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::SSM::MaintenanceWindowTarget resource registers a target with a    maintenance window for AWS Systems Manager. For more information, see     RegisterTargetWithMaintenanceWindow in the AWS Systems Manager API     Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMaintenanceWindowTarget {
     ///
     /// A description for the target.
@@ -14,7 +15,7 @@ pub struct CfnMaintenanceWindowTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnMaintenanceWindowTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnMaintenanceWindowTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnerInformation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner_information: Option<cfn_resources::StrVal>,
 
     ///
@@ -226,6 +227,7 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
 ///
 /// Targets is a property of the AWS::SSM::MaintenanceWindowTarget resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Targets {
     ///
     /// User-defined criteria for sending commands that target managed nodes that meet the  criteria.

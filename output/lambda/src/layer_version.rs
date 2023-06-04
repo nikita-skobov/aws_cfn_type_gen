@@ -1,5 +1,6 @@
 /// The AWS::Lambda::LayerVersion resource creates a Lambda layer from a ZIP archive.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLayerVersion {
     ///
     /// A list of compatible  instruction set architectures.
@@ -12,7 +13,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompatibleArchitectures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compatible_architectures: Option<Vec<String>>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompatibleRuntimes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compatible_runtimes: Option<Vec<String>>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LayerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub layer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LicenseInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_info: Option<cfn_resources::StrVal>,
 }
 
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnLayerVersion {
 
 /// A ZIP archive that contains the contents of an Lambda layer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Content {
     ///
     /// The Amazon S3 bucket of the layer archive.
@@ -225,7 +227,7 @@ pub struct Content {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_object_version: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// Creates a listener rule. Each listener has a default rule for checking connection requests,  but you can define additional rules. Each rule consists of a priority, one or more actions, and  one or more conditions. For more information, see Listener rules in the   Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRule {
     ///
     /// Describes the action for a rule. Each rule must include exactly one of the following types  of actions: forward or fixed-response, and it must be the last action  to be performed.
@@ -21,7 +22,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListenerIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub listener_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -127,6 +128,7 @@ impl cfn_resources::CfnResource for CfnRule {
 
 /// Describes the action for a rule. Each rule must include exactly one of the following types  of actions: forward or fixed-response, and it must be the last action  to be performed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// Describes the rule action that returns a custom HTTP response.
@@ -137,7 +139,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fixed_response: Option<FixedResponse>,
 
     ///
@@ -149,7 +151,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forward: Option<Forward>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// Information about an action that returns a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FixedResponse {
     ///
     /// The HTTP response code.
@@ -204,6 +207,7 @@ impl cfn_resources::CfnResource for FixedResponse {
 
 /// The forward action. Traffic that matches the rule is forwarded to the specified target  groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Forward {
     ///
     /// The target groups. Traffic matching the rule is forwarded to the specified target groups.  With forward actions, you can assign a weight that controls the prioritization and selection of  each target group. This means that requests are distributed to individual target groups based on  their weights. For example, if two target groups have the same weight, each target group receives  half of the traffic.
@@ -235,6 +239,7 @@ impl cfn_resources::CfnResource for Forward {
 
 /// Describes the constraints for a header match. Matches incoming requests with rule based on  request header value before applying rule action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeaderMatch {
     ///
     /// Indicates whether the match is case sensitive. Defaults to false.
@@ -245,7 +250,7 @@ pub struct HeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_sensitive: Option<bool>,
 
     ///
@@ -289,6 +294,7 @@ impl cfn_resources::CfnResource for HeaderMatch {
 
 /// Describes a header match type. Only one can be provided.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeaderMatchType {
     ///
     /// Specifies a contains type match.
@@ -299,7 +305,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Contains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contains: Option<cfn_resources::StrVal>,
 
     ///
@@ -311,7 +317,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -323,7 +329,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -343,6 +349,7 @@ impl cfn_resources::CfnResource for HeaderMatchType {
 
 /// Describes criteria that can be applied to incoming requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpMatch {
     ///
     /// The header matches. Matches incoming requests with rule based on request header value before  applying rule action.
@@ -353,7 +360,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderMatches")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header_matches: Option<Vec<HeaderMatch>>,
 
     ///
@@ -365,7 +372,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method: Option<cfn_resources::StrVal>,
 
     ///
@@ -377,7 +384,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathMatch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_match: Option<PathMatch>,
 }
 
@@ -401,6 +408,7 @@ impl cfn_resources::CfnResource for HttpMatch {
 
 /// Describes a rule match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Match {
     ///
     /// The HTTP criteria that a rule must match.
@@ -432,6 +440,7 @@ impl cfn_resources::CfnResource for Match {
 
 /// Describes the conditions that can be applied when matching a path for incoming  requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathMatch {
     ///
     /// Indicates whether the match is case sensitive. Defaults to false.
@@ -442,7 +451,7 @@ pub struct PathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_sensitive: Option<bool>,
 
     ///
@@ -475,6 +484,7 @@ impl cfn_resources::CfnResource for PathMatch {
 
 /// Describes a path match type. Each rule can include only one of the following types of  paths.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathMatchType {
     ///
     /// An exact match of the path.
@@ -485,7 +495,7 @@ pub struct PathMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -497,7 +507,7 @@ pub struct PathMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -523,6 +533,7 @@ impl cfn_resources::CfnResource for PathMatchType {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -561,6 +572,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the weight of a target group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WeightedTargetGroup {
     ///
     /// The ID of the target group.
@@ -582,7 +594,7 @@ pub struct WeightedTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

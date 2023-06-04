@@ -2,6 +2,7 @@
 ///
 /// For information about working with things, see How AWS IoT Works and       Device       Registry for AWS IoT in the AWS IoT Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnThing {
     ///
     /// A string that contains up to three key value pairs. Maximum length of 800. Duplicates     not allowed.
@@ -12,7 +13,7 @@ pub struct CfnThing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributePayload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_payload: Option<AttributePayload>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnThing {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -72,6 +73,7 @@ impl cfn_resources::CfnResource for CfnThing {
 
 /// The AttributePayload property specifies up to three attributes for an AWS IoT as     key-value pairs. AttributePayload is a property of the AWS::IoT::Thing resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributePayload {
     ///
     /// A JSON string containing up to three key-value pair in JSON format. For example:
@@ -84,7 +86,7 @@ pub struct AttributePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 }
 

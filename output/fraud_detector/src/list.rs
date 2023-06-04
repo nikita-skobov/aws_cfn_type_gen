@@ -2,6 +2,7 @@
 ///
 /// List is a set of input data for a variable in your event dataset. You use the input data in a rule that's associated with your detector.       For more information, see Lists.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnList {
     ///
     /// The description of the list.
@@ -16,7 +17,7 @@ pub struct CfnList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Elements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elements: Option<Vec<String>>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variable_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -174,6 +175,7 @@ impl cfn_resources::CfnResource for CfnList {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

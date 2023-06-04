@@ -4,6 +4,7 @@
 ///
 /// An account can have one sink.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSink {
     ///
     /// A name for the sink.
@@ -27,7 +28,7 @@ pub struct CfnSink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnSink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]

@@ -8,6 +8,7 @@
 ///
 /// The CreateHostedZone request requires the caller to have an 				ec2:DescribeVpcs permission.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHostedZone {
     ///
     /// A complex type that contains an optional comment.
@@ -20,7 +21,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_config: Option<HostedZoneConfig>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryLoggingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_logging_config: Option<QueryLoggingConfig>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpcs: Option<Vec<VPC>>,
 
     #[serde(skip_serializing)]
@@ -132,6 +133,7 @@ impl cfn_resources::CfnResource for CfnHostedZone {
 
 /// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HostedZoneConfig {
     ///
     /// Any comments that you want to include about the hosted zone.
@@ -144,7 +146,7 @@ pub struct HostedZoneConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for HostedZoneConfig {
 
 /// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HostedZoneTag {
     ///
     /// The value of Key depends on the operation that you want to 			perform:
@@ -245,6 +248,7 @@ impl cfn_resources::CfnResource for HostedZoneTag {
 
 /// A complex type that contains information about a configuration for DNS query 			logging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryLoggingConfig {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 			is publishing logs to.
@@ -274,6 +278,7 @@ impl cfn_resources::CfnResource for QueryLoggingConfig {
 
 /// Private hosted zones only: A complex type that contains information about an Amazon VPC. Route 53 Resolver 			uses the records in the private hosted zone to route traffic in that VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VPC {
     ///
     /// Private hosted zones only: The ID of an Amazon VPC.

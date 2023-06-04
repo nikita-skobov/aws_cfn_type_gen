@@ -2,6 +2,7 @@
 ///
 /// A MediaLive input security group is associated with a MediaLive       input. The input security group is an "allow list" of IP addresses       that controls whether an external IP address can push content to the       associated MediaLive input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInputSecurityGroup {
     ///
     /// A collection of tags for this input security group. Each tag is a       key-value pair.
@@ -12,7 +13,7 @@ pub struct CfnInputSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnInputSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhitelistRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub whitelist_rules: Option<Vec<InputWhitelistRuleCidr>>,
 
     #[serde(skip_serializing)]
@@ -57,6 +58,7 @@ impl cfn_resources::CfnResource for CfnInputSecurityGroup {
 ///
 /// The parent of this entity is InputSecurityGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputWhitelistRuleCidr {
     ///
     /// An IPv4 CIDR range to include in this input security group.
@@ -67,7 +69,7 @@ pub struct InputWhitelistRuleCidr {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::SNS::TopicPolicy resource associates Amazon SNS topics     with a policy. For an example snippet, see Declaring       an Amazon SNS policy in the AWS CloudFormation User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTopicPolicy {
     ///
     /// A policy document that contains permissions to add to the specified SNS topics.

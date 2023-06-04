@@ -1,5 +1,6 @@
 /// Specifies a place index resource in your AWS account. Use a place index resource to       geocode addresses and other text queries by using the         SearchPlaceIndexForText operation, and reverse geocode coordinates by       using the SearchPlaceIndexForPosition operation, and enable autosuggestions       by using the SearchPlaceIndexForSuggestions operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPlaceIndex {
     ///
     /// Specifies the geospatial data provider for the new place index.
@@ -29,7 +30,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSourceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source_configuration: Option<DataSourceConfiguration>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
 
     #[serde(skip_serializing)]
@@ -205,6 +206,7 @@ impl cfn_resources::CfnResource for CfnPlaceIndex {
 
 /// Specifies the data storage option requesting Places.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceConfiguration {
     ///
     /// Specifies how the results of an operation will be stored by the caller.
@@ -223,7 +225,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntendedUse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub intended_use: Option<DataSourceConfigurationIntendedUseEnum>,
 }
 

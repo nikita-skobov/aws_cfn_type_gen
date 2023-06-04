@@ -2,6 +2,7 @@
 ///
 /// A Lightsail container service is a compute resource to which you can     deploy containers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnContainer {
     ///
     /// An object that describes the current container deployment of the container     service.
@@ -12,7 +13,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ContainerServiceDeployment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_service_deployment: Option<ContainerServiceDeployment>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsDisabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_disabled: Option<bool>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicDomainNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_domain_names: Option<Vec<PublicDomainName>>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -198,6 +199,7 @@ impl cfn_resources::CfnResource for CfnContainer {
 
 /// Container is a property of the ContainerServiceDeployment property. It describes the settings of a container     that will be launched, or that is launched, to an Amazon Lightsail container     service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Container {
     ///
     /// The launch command for the container.
@@ -208,7 +210,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -220,7 +222,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -232,7 +234,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -248,7 +250,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +262,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ports: Option<Vec<PortInfo>>,
 }
 
@@ -282,6 +284,7 @@ impl cfn_resources::CfnResource for Container {
 ///
 /// A deployment specifies the settings, such as the ports and launch command, of containers     that are deployed to your container service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerServiceDeployment {
     ///
     /// An object that describes the configuration for the containers of the deployment.
@@ -292,7 +295,7 @@ pub struct ContainerServiceDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Containers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub containers: Option<Vec<Container>>,
 
     ///
@@ -304,7 +307,7 @@ pub struct ContainerServiceDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_endpoint: Option<PublicEndpoint>,
 }
 
@@ -328,6 +331,7 @@ impl cfn_resources::CfnResource for ContainerServiceDeployment {
 
 /// EnvironmentVariable is a property of the Container property. It describes the environment variables of a container on a container service which are key-value parameters that     provide dynamic configuration of the application or script run by the container.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable value.
@@ -338,7 +342,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 
     ///
@@ -350,7 +354,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variable: Option<cfn_resources::StrVal>,
 }
 
@@ -370,6 +374,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 
 /// HealthCheckConfig is a property of the PublicEndpoint property. It describes the healthcheck configuration of a     container deployment on a container service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckConfig {
     ///
     /// The number of consecutive health check successes required before moving the container     to the Healthy state. The default value is 2.
@@ -380,7 +385,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub healthy_threshold: Option<i64>,
 
     ///
@@ -392,7 +397,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_seconds: Option<i64>,
 
     ///
@@ -404,7 +409,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -416,7 +421,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessCodes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success_codes: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,7 +433,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_seconds: Option<i64>,
 
     ///
@@ -440,7 +445,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unhealthy_threshold: Option<i64>,
 }
 
@@ -460,6 +465,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 
 /// PortInfo is a property of the Container property. It describes the ports to open and the protocols to use for     a container on a Amazon Lightsail container service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortInfo {
     ///
     /// The open firewall ports of the container.
@@ -470,7 +476,7 @@ pub struct PortInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -484,7 +490,7 @@ pub struct PortInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<PortInfoProtocolEnum>,
 }
 
@@ -529,6 +535,7 @@ impl cfn_resources::CfnResource for PortInfo {
 
 /// PublicDomainName is a property of the AWS::Lightsail::Container resource. It describes the public domain names to use     with a container service, such as example.com and     www.example.com. It also describes the certificates to use with a container     service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicDomainName {
     ///
     /// The name of the certificate for the public domains.
@@ -539,7 +546,7 @@ pub struct PublicDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -551,7 +558,7 @@ pub struct PublicDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_names: Option<Vec<String>>,
 }
 
@@ -571,6 +578,7 @@ impl cfn_resources::CfnResource for PublicDomainName {
 
 /// PublicEndpoint is a property of the ContainerServiceDeployment property. It describes describes the settings of the     public endpoint of a container on a container service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicEndpoint {
     ///
     /// The name of the container entry of the deployment that the endpoint configuration     applies to.
@@ -581,7 +589,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -593,7 +601,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_port: Option<i64>,
 
     ///
@@ -605,7 +613,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_config: Option<HealthCheckConfig>,
 }
 
@@ -635,6 +643,7 @@ impl cfn_resources::CfnResource for PublicEndpoint {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

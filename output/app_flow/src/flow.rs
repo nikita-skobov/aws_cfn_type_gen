@@ -1,5 +1,6 @@
 /// The AWS::AppFlow::Flow resource is an Amazon AppFlow resource type that    specifies a new flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFlow {
     ///
     /// A user-entered description of the flow.
@@ -14,7 +15,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub flow_status: Option<FlowFlowStatusEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmsarn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -83,7 +84,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataCatalogConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata_catalog_config: Option<MetadataCatalogConfig>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -244,6 +245,7 @@ impl cfn_resources::CfnResource for CfnFlow {
 
 /// The aggregation settings that you can use to customize the output format of your flow    data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AggregationConfig {
     ///
     /// Specifies whether Amazon AppFlow aggregates the flow records into a single file, or    leave them unaggregated.
@@ -256,7 +258,7 @@ pub struct AggregationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_type: Option<AggregationConfigAggregationTypeEnum>,
 
     /// Property description not available.
@@ -267,7 +269,7 @@ pub struct AggregationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_file_size: Option<i64>,
 }
 
@@ -304,6 +306,7 @@ impl cfn_resources::CfnResource for AggregationConfig {
 
 /// The properties that are applied when Amplitude is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmplitudeSourceProperties {
     ///
     /// The object specified in the Amplitude flow source.
@@ -348,6 +351,7 @@ impl cfn_resources::CfnResource for AmplitudeSourceProperties {
 
 /// The operation to be performed on the provided source fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorOperator {
     ///
     /// The operation to be performed on the provided Amplitude source fields.
@@ -360,7 +364,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amplitude: Option<ConnectorOperatorAmplitudeEnum>,
 
     ///
@@ -374,7 +378,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_connector: Option<ConnectorOperatorCustomConnectorEnum>,
 
     ///
@@ -388,7 +392,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datadog: Option<ConnectorOperatorDatadogEnum>,
 
     ///
@@ -402,7 +406,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynatrace: Option<ConnectorOperatorDynatraceEnum>,
 
     ///
@@ -416,7 +420,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub google_analytics: Option<ConnectorOperatorGoogleAnalyticsEnum>,
 
     ///
@@ -430,7 +434,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub infor_nexus: Option<ConnectorOperatorInforNexusEnum>,
 
     ///
@@ -444,7 +448,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marketo: Option<ConnectorOperatorMarketoEnum>,
 
     /// Property description not available.
@@ -455,7 +459,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pardot: Option<cfn_resources::StrVal>,
 
     ///
@@ -469,7 +473,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<ConnectorOperatorS3Enum>,
 
     ///
@@ -483,7 +487,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sapodata: Option<ConnectorOperatorSAPODataEnum>,
 
     ///
@@ -497,7 +501,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce: Option<ConnectorOperatorSalesforceEnum>,
 
     ///
@@ -511,7 +515,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_now: Option<ConnectorOperatorServiceNowEnum>,
 
     ///
@@ -525,7 +529,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub singular: Option<ConnectorOperatorSingularEnum>,
 
     ///
@@ -539,7 +543,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slack: Option<ConnectorOperatorSlackEnum>,
 
     ///
@@ -553,7 +557,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trendmicro: Option<ConnectorOperatorTrendmicroEnum>,
 
     ///
@@ -567,7 +571,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub veeva: Option<ConnectorOperatorVeevaEnum>,
 
     ///
@@ -581,7 +585,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zendesk: Option<ConnectorOperatorZendeskEnum>,
 }
 
@@ -1745,6 +1749,7 @@ impl cfn_resources::CfnResource for ConnectorOperator {
 
 /// The properties that are applied when the custom connector is being used as a    destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomConnectorDestinationProperties {
     ///
     /// The custom properties that are specific to the connector when it's used as a destination    in the flow.
@@ -1755,7 +1760,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1782,7 +1787,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -1794,7 +1799,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -1808,7 +1813,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_operation_type: Option<CustomConnectorDestinationPropertiesWriteOperationTypeEnum>,
 }
 
@@ -1868,6 +1873,7 @@ impl cfn_resources::CfnResource for CustomConnectorDestinationProperties {
 
 /// The properties that are applied when the custom connector is being used as a    source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomConnectorSourceProperties {
     ///
     /// Custom properties that are required to use the custom connector as a source.
@@ -1878,7 +1884,7 @@ pub struct CustomConnectorSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1924,6 +1930,7 @@ impl cfn_resources::CfnResource for CustomConnectorSourceProperties {
 
 /// The properties that are applied when Datadog is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatadogSourceProperties {
     ///
     /// The object specified in the Datadog flow source.
@@ -1968,6 +1975,7 @@ impl cfn_resources::CfnResource for DatadogSourceProperties {
 
 /// This stores the information that is required to query a particular connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationConnectorProperties {
     ///
     /// The properties that are required to query the custom Connector.
@@ -1978,7 +1986,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_connector: Option<CustomConnectorDestinationProperties>,
 
     ///
@@ -1990,7 +1998,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bridge: Option<EventBridgeDestinationProperties>,
 
     ///
@@ -2002,7 +2010,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LookoutMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lookout_metrics: Option<LookoutMetricsDestinationProperties>,
 
     ///
@@ -2014,7 +2022,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marketo: Option<MarketoDestinationProperties>,
 
     ///
@@ -2026,7 +2034,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift: Option<RedshiftDestinationProperties>,
 
     ///
@@ -2038,7 +2046,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3DestinationProperties>,
 
     ///
@@ -2050,7 +2058,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sapodata: Option<SAPODataDestinationProperties>,
 
     ///
@@ -2062,7 +2070,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce: Option<SalesforceDestinationProperties>,
 
     ///
@@ -2074,7 +2082,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snowflake: Option<SnowflakeDestinationProperties>,
 
     ///
@@ -2086,7 +2094,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Upsolver")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upsolver: Option<UpsolverDestinationProperties>,
 
     ///
@@ -2098,7 +2106,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zendesk: Option<ZendeskDestinationProperties>,
 }
 
@@ -2156,6 +2164,7 @@ impl cfn_resources::CfnResource for DestinationConnectorProperties {
 
 /// Contains information about the configuration of destination connectors present in the    flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationFlowConfig {
     ///
     /// The API version that the destination connector uses.
@@ -2170,7 +2179,7 @@ pub struct DestinationFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -2186,7 +2195,7 @@ pub struct DestinationFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2280,6 +2289,7 @@ impl cfn_resources::CfnResource for DestinationFlowConfig {
 
 /// The properties that are applied when Dynatrace is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynatraceSourceProperties {
     ///
     /// The object specified in the Dynatrace flow source.
@@ -2324,6 +2334,7 @@ impl cfn_resources::CfnResource for DynatraceSourceProperties {
 
 /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ErrorHandlingConfig {
     ///
     /// Specifies the name of the Amazon S3 bucket.
@@ -2340,7 +2351,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2356,7 +2367,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2368,7 +2379,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailOnFirstError")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fail_on_first_error: Option<bool>,
 }
 
@@ -2421,6 +2432,7 @@ impl cfn_resources::CfnResource for ErrorHandlingConfig {
 
 /// The properties that are applied when Amazon EventBridge is being used as a    destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventBridgeDestinationProperties {
     ///
     /// The object specified in the Amplitude flow source.
@@ -2435,7 +2447,7 @@ pub struct EventBridgeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -2485,6 +2497,7 @@ impl cfn_resources::CfnResource for EventBridgeDestinationProperties {
 
 /// The GlueDataCatalog property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlueDataCatalog {
     /// Property description not available.
     ///
@@ -2533,6 +2546,7 @@ impl cfn_resources::CfnResource for GlueDataCatalog {
 
 /// The properties that are applied when Google Analytics is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GoogleAnalyticsSourceProperties {
     ///
     /// The object specified in the Google Analytics flow source.
@@ -2577,6 +2591,7 @@ impl cfn_resources::CfnResource for GoogleAnalyticsSourceProperties {
 
 /// Specifies the configuration used when importing incremental records from the source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IncrementalPullConfig {
     ///
     /// A field that specifies the date time or timestamp field as the criteria to use when    importing incremental records from the source.
@@ -2591,7 +2606,7 @@ pub struct IncrementalPullConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatetimeTypeFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datetime_type_field_name: Option<cfn_resources::StrVal>,
 }
 
@@ -2619,6 +2634,7 @@ impl cfn_resources::CfnResource for IncrementalPullConfig {
 
 /// The properties that are applied when Infor Nexus is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InforNexusSourceProperties {
     ///
     /// The object specified in the Infor Nexus flow source.
@@ -2663,6 +2679,7 @@ impl cfn_resources::CfnResource for InforNexusSourceProperties {
 
 /// The properties that are applied when Amazon Lookout for Metrics is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LookoutMetricsDestinationProperties {
     ///
     /// The object specified in the Amazon Lookout for Metrics flow destination.
@@ -2673,7 +2690,7 @@ pub struct LookoutMetricsDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object: Option<cfn_resources::StrVal>,
 }
 
@@ -2693,6 +2710,7 @@ impl cfn_resources::CfnResource for LookoutMetricsDestinationProperties {
 
 /// The properties that Amazon AppFlow applies when you use Marketo as a flow    destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MarketoDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -2703,7 +2721,7 @@ pub struct MarketoDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -2753,6 +2771,7 @@ impl cfn_resources::CfnResource for MarketoDestinationProperties {
 
 /// The properties that are applied when Marketo is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MarketoSourceProperties {
     ///
     /// The object specified in the Marketo flow source.
@@ -2797,6 +2816,7 @@ impl cfn_resources::CfnResource for MarketoSourceProperties {
 
 /// The MetadataCatalogConfig property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetadataCatalogConfig {
     /// Property description not available.
     ///
@@ -2806,7 +2826,7 @@ pub struct MetadataCatalogConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueDataCatalog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub glue_data_catalog: Option<GlueDataCatalog>,
 }
 
@@ -2830,6 +2850,7 @@ impl cfn_resources::CfnResource for MetadataCatalogConfig {
 
 /// The PardotSourceProperties property type specifies Property description not available. for an AWS::AppFlow::Flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PardotSourceProperties {
     /// Property description not available.
     ///
@@ -2858,6 +2879,7 @@ impl cfn_resources::CfnResource for PardotSourceProperties {
 
 /// Specifies elements that Amazon AppFlow includes in the file and folder names in the flow    destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrefixConfig {
     /// Property description not available.
     ///
@@ -2867,7 +2889,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathPrefixHierarchy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_prefix_hierarchy: Option<Vec<String>>,
 
     ///
@@ -2881,7 +2903,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_format: Option<PrefixConfigPrefixFormatEnum>,
 
     ///
@@ -2895,7 +2917,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_type: Option<PrefixConfigPrefixTypeEnum>,
 }
 
@@ -2965,6 +2987,7 @@ impl cfn_resources::CfnResource for PrefixConfig {
 
 /// The properties that are applied when Amazon Redshift is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftDestinationProperties {
     ///
     /// The object key for the bucket in which Amazon AppFlow places the destination files.
@@ -2979,7 +3002,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2991,7 +3014,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3088,6 +3111,7 @@ impl cfn_resources::CfnResource for RedshiftDestinationProperties {
 
 /// The properties that are applied when Amazon S3 is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3DestinationProperties {
     ///
     /// The Amazon S3 bucket name in which Amazon AppFlow places the transferred    data.
@@ -3119,7 +3143,7 @@ pub struct S3DestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -3131,7 +3155,7 @@ pub struct S3DestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OutputFormatConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_output_format_config: Option<S3OutputFormatConfig>,
 }
 
@@ -3188,6 +3212,7 @@ impl cfn_resources::CfnResource for S3DestinationProperties {
 
 /// When you use Amazon S3 as the source, the configuration format that you provide    the flow input data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3InputFormatConfig {
     ///
     /// The file type that Amazon AppFlow gets from your Amazon S3 bucket.
@@ -3200,7 +3225,7 @@ pub struct S3InputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputFileType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_file_type: Option<S3InputFormatConfigS3InputFileTypeEnum>,
 }
 
@@ -3237,6 +3262,7 @@ impl cfn_resources::CfnResource for S3InputFormatConfig {
 
 /// The configuration that determines how Amazon AppFlow should format the flow output    data when Amazon S3 is used as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3OutputFormatConfig {
     ///
     /// The aggregation settings that you can use to customize the output format of your flow    data.
@@ -3247,7 +3273,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_config: Option<AggregationConfig>,
 
     ///
@@ -3261,7 +3287,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_type: Option<S3OutputFormatConfigFileTypeEnum>,
 
     ///
@@ -3273,7 +3299,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_config: Option<PrefixConfig>,
 
     /// Property description not available.
@@ -3284,7 +3310,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveSourceDataTyping")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preserve_source_data_typing: Option<bool>,
 }
 
@@ -3333,6 +3359,7 @@ impl cfn_resources::CfnResource for S3OutputFormatConfig {
 
 /// The properties that are applied when Amazon S3 is being used as the flow source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3SourceProperties {
     ///
     /// The Amazon S3 bucket name where the source files are stored.
@@ -3375,7 +3402,7 @@ pub struct S3SourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputFormatConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_format_config: Option<S3InputFormatConfig>,
 }
 
@@ -3432,6 +3459,7 @@ impl cfn_resources::CfnResource for S3SourceProperties {
 
 /// The properties that are applied when using SAPOData as a flow destination
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SAPODataDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -3442,7 +3470,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3454,7 +3482,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -3483,7 +3511,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessResponseHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success_response_handling_config: Option<SuccessResponseHandlingConfig>,
 
     ///
@@ -3495,7 +3523,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_operation_type: Option<cfn_resources::StrVal>,
 }
 
@@ -3534,6 +3562,7 @@ impl cfn_resources::CfnResource for SAPODataDestinationProperties {
 
 /// The properties that are applied when using SAPOData as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SAPODataSourceProperties {
     ///
     /// The object path specified in the SAPOData flow source.
@@ -3578,6 +3607,7 @@ impl cfn_resources::CfnResource for SAPODataSourceProperties {
 
 /// The properties that are applied when Salesforce is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceDestinationProperties {
     ///
     /// Specifies which Salesforce API is used by Amazon AppFlow when your flow transfers    data to Salesforce.
@@ -3592,7 +3622,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferApi")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_transfer_api: Option<SalesforceDestinationPropertiesDataTransferApiEnum>,
 
     ///
@@ -3604,7 +3634,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3616,7 +3646,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -3645,7 +3675,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_operation_type: Option<SalesforceDestinationPropertiesWriteOperationTypeEnum>,
 }
 
@@ -3726,6 +3756,7 @@ impl cfn_resources::CfnResource for SalesforceDestinationProperties {
 
 /// The properties that are applied when Salesforce is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceSourceProperties {
     ///
     /// Specifies which Salesforce API is used by Amazon AppFlow when your flow transfers    data from Salesforce.
@@ -3740,7 +3771,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferApi")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_transfer_api: Option<SalesforceSourcePropertiesDataTransferApiEnum>,
 
     ///
@@ -3752,7 +3783,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDynamicFieldUpdate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_dynamic_field_update: Option<bool>,
 
     ///
@@ -3764,7 +3795,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDeletedRecords")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_deleted_records: Option<bool>,
 
     ///
@@ -3831,6 +3862,7 @@ impl cfn_resources::CfnResource for SalesforceSourceProperties {
 
 /// Specifies the configuration details of a schedule-triggered flow as defined by the user.    Currently, these settings only apply to the Scheduled trigger type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduledTriggerProperties {
     ///
     /// Specifies whether a scheduled flow has an incremental data transfer or a complete data    transfer for each flow run.
@@ -3843,7 +3875,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPullMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_pull_mode: Option<ScheduledTriggerPropertiesDataPullModeEnum>,
 
     ///
@@ -3855,7 +3887,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirstExecutionFrom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub first_execution_from: Option<f64>,
 
     /// Property description not available.
@@ -3866,7 +3898,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowErrorDeactivationThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub flow_error_deactivation_threshold: Option<i64>,
 
     ///
@@ -3878,7 +3910,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleEndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_end_time: Option<f64>,
 
     ///
@@ -3905,7 +3937,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleOffset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_offset: Option<f64>,
 
     ///
@@ -3917,7 +3949,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_start_time: Option<f64>,
 
     ///
@@ -3935,7 +3967,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_zone: Option<cfn_resources::StrVal>,
 }
 
@@ -3994,6 +4026,7 @@ impl cfn_resources::CfnResource for ScheduledTriggerProperties {
 
 /// The properties that are applied when ServiceNow is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowSourceProperties {
     ///
     /// The object specified in the ServiceNow flow source.
@@ -4038,6 +4071,7 @@ impl cfn_resources::CfnResource for ServiceNowSourceProperties {
 
 /// The properties that are applied when Singular is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingularSourceProperties {
     ///
     /// The object specified in the Singular flow source.
@@ -4082,6 +4116,7 @@ impl cfn_resources::CfnResource for SingularSourceProperties {
 
 /// The properties that are applied when Slack is being used as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SlackSourceProperties {
     ///
     /// The object specified in the Slack flow source.
@@ -4126,6 +4161,7 @@ impl cfn_resources::CfnResource for SlackSourceProperties {
 
 /// The properties that are applied when Snowflake is being used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnowflakeDestinationProperties {
     ///
     /// The object key for the destination bucket in which Amazon AppFlow places the files.
@@ -4140,7 +4176,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -4152,7 +4188,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -4249,6 +4285,7 @@ impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
 
 /// Specifies the information that is required to query a particular connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceConnectorProperties {
     ///
     /// Specifies the information that is required for querying Amplitude.
@@ -4259,7 +4296,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amplitude: Option<AmplitudeSourceProperties>,
 
     ///
@@ -4271,7 +4308,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_connector: Option<CustomConnectorSourceProperties>,
 
     ///
@@ -4283,7 +4320,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datadog: Option<DatadogSourceProperties>,
 
     ///
@@ -4295,7 +4332,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynatrace: Option<DynatraceSourceProperties>,
 
     ///
@@ -4307,7 +4344,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub google_analytics: Option<GoogleAnalyticsSourceProperties>,
 
     ///
@@ -4319,7 +4356,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub infor_nexus: Option<InforNexusSourceProperties>,
 
     ///
@@ -4331,7 +4368,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marketo: Option<MarketoSourceProperties>,
 
     /// Property description not available.
@@ -4342,7 +4379,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pardot: Option<PardotSourceProperties>,
 
     ///
@@ -4354,7 +4391,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3SourceProperties>,
 
     ///
@@ -4366,7 +4403,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sapodata: Option<SAPODataSourceProperties>,
 
     ///
@@ -4378,7 +4415,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce: Option<SalesforceSourceProperties>,
 
     ///
@@ -4390,7 +4427,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_now: Option<ServiceNowSourceProperties>,
 
     ///
@@ -4402,7 +4439,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub singular: Option<SingularSourceProperties>,
 
     ///
@@ -4414,7 +4451,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slack: Option<SlackSourceProperties>,
 
     ///
@@ -4426,7 +4463,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trendmicro: Option<TrendmicroSourceProperties>,
 
     ///
@@ -4438,7 +4475,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub veeva: Option<VeevaSourceProperties>,
 
     ///
@@ -4450,7 +4487,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zendesk: Option<ZendeskSourceProperties>,
 }
 
@@ -4524,6 +4561,7 @@ impl cfn_resources::CfnResource for SourceConnectorProperties {
 
 /// Contains information about the configuration of the source connector used in the flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceFlowConfig {
     ///
     /// The API version of the connector when it's used as a source in the flow.
@@ -4538,7 +4576,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -4554,7 +4592,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4579,7 +4617,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncrementalPullConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub incremental_pull_config: Option<IncrementalPullConfig>,
 
     ///
@@ -4742,6 +4780,7 @@ impl cfn_resources::CfnResource for SourceFlowConfig {
 ///
 /// For example, this setting would determine where to write the response from the destination    connector upon a successful insert operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SuccessResponseHandlingConfig {
     ///
     /// The name of the Amazon S3 bucket.
@@ -4758,7 +4797,7 @@ pub struct SuccessResponseHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4774,7 +4813,7 @@ pub struct SuccessResponseHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -4833,6 +4872,7 @@ impl cfn_resources::CfnResource for SuccessResponseHandlingConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -4871,6 +4911,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// A class for modeling different type of tasks. Task implementation varies based on the     TaskType.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Task {
     ///
     /// The operation to be performed on the provided source fields.
@@ -4881,7 +4922,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOperator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_operator: Option<ConnectorOperator>,
 
     ///
@@ -4897,7 +4938,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -4920,7 +4961,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_properties: Option<Vec<TaskPropertiesObject>>,
 
     ///
@@ -5006,6 +5047,7 @@ impl cfn_resources::CfnResource for Task {
 
 /// A map used to store task-related information. The execution service looks for particular    information based on the TaskType.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TaskPropertiesObject {
     ///
     /// The task property key.
@@ -5117,6 +5159,7 @@ impl cfn_resources::CfnResource for TaskPropertiesObject {
 
 /// The properties that are applied when using Trend Micro as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrendmicroSourceProperties {
     ///
     /// The object specified in the Trend Micro flow source.
@@ -5161,6 +5204,7 @@ impl cfn_resources::CfnResource for TrendmicroSourceProperties {
 
 /// The trigger settings that determine how and when Amazon AppFlow runs the specified    flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TriggerConfig {
     ///
     /// Specifies the configuration details of a schedule-triggered flow as defined by the user.    Currently, these settings only apply to the Scheduled trigger type.
@@ -5171,7 +5215,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trigger_properties: Option<ScheduledTriggerProperties>,
 
     ///
@@ -5229,6 +5273,7 @@ impl cfn_resources::CfnResource for TriggerConfig {
 
 /// The properties that are applied when Upsolver is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpsolverDestinationProperties {
     ///
     /// The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the    transferred data.
@@ -5260,7 +5305,7 @@ pub struct UpsolverDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -5326,6 +5371,7 @@ impl cfn_resources::CfnResource for UpsolverDestinationProperties {
 
 /// The configuration that determines how Amazon AppFlow formats the flow output data    when Upsolver is used as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpsolverS3OutputFormatConfig {
     ///
     /// The aggregation settings that you can use to customize the output format of your flow    data.
@@ -5336,7 +5382,7 @@ pub struct UpsolverS3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_config: Option<AggregationConfig>,
 
     ///
@@ -5350,7 +5396,7 @@ pub struct UpsolverS3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_type: Option<UpsolverS3OutputFormatConfigFileTypeEnum>,
 
     ///
@@ -5408,6 +5454,7 @@ impl cfn_resources::CfnResource for UpsolverS3OutputFormatConfig {
 
 /// The properties that are applied when using Veeva as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VeevaSourceProperties {
     ///
     /// The document type specified in the Veeva document extract flow.
@@ -5422,7 +5469,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -5434,7 +5481,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAllVersions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_all_versions: Option<bool>,
 
     ///
@@ -5446,7 +5493,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRenditions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_renditions: Option<bool>,
 
     ///
@@ -5458,7 +5505,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSourceFiles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_source_files: Option<bool>,
 
     ///
@@ -5515,6 +5562,7 @@ impl cfn_resources::CfnResource for VeevaSourceProperties {
 
 /// The properties that are applied when Zendesk is used as a destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ZendeskDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -5525,7 +5573,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -5537,7 +5585,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -5564,7 +5612,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_operation_type: Option<cfn_resources::StrVal>,
 }
 
@@ -5599,6 +5647,7 @@ impl cfn_resources::CfnResource for ZendeskDestinationProperties {
 
 /// The properties that are applied when using Zendesk as a flow source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ZendeskSourceProperties {
     ///
     /// The object specified in the Zendesk flow source.

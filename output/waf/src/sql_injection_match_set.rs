@@ -1,5 +1,6 @@
 /// A complex type that contains SqlInjectionMatchTuple objects, which specify the parts of web requests that you           want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a 			SqlInjectionMatchSet contains more than one SqlInjectionMatchTuple object, a request needs to 			include snippets of SQL code in only one of the specified parts of the request to be considered a match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSqlInjectionMatchSet {
     ///
     /// The name, if any, of the SqlInjectionMatchSet.
@@ -27,7 +28,7 @@ pub struct CfnSqlInjectionMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlInjectionMatchTuples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sql_injection_match_tuples: Option<Vec<SqlInjectionMatchTuple>>,
 }
 
@@ -69,10 +70,11 @@ impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
 
 /// Specifies where in a web request to look for TargetString.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type
@@ -96,6 +98,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SqlInjectionMatchTuple {
     ///
     /// The part of a web request that you want to inspect, such as a specified header or a query string.

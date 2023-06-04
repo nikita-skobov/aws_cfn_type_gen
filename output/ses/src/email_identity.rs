@@ -6,6 +6,7 @@
 ///
 /// Additionally, you can associate an existing configuration set with the email identity       that you're verifying.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEmailIdentity {
     ///
     /// Used to associate a configuration set with an email identity.
@@ -16,7 +17,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSetAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_set_attributes: Option<ConfigurationSetAttributes>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DkimAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dkim_attributes: Option<DkimAttributes>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DkimSigningAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dkim_signing_attributes: Option<DkimSigningAttributes>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeedbackAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub feedback_attributes: Option<FeedbackAttributes>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MailFromAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mail_from_attributes: Option<MailFromAttributes>,
 
     #[serde(skip_serializing)]
@@ -181,6 +182,7 @@ impl cfn_resources::CfnResource for CfnEmailIdentity {
 
 /// Used to associate a configuration set with an email identity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationSetAttributes {
     ///
     /// The configuration set to associate with an email identity.
@@ -191,7 +193,7 @@ pub struct ConfigurationSetAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_set_name: Option<cfn_resources::StrVal>,
 }
 
@@ -211,6 +213,7 @@ impl cfn_resources::CfnResource for ConfigurationSetAttributes {
 
 /// Used to enable or disable DKIM authentication for an email identity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DkimAttributes {
     ///
     /// Sets the DKIM signing configuration for the identity.
@@ -223,7 +226,7 @@ pub struct DkimAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signing_enabled: Option<bool>,
 }
 
@@ -243,6 +246,7 @@ impl cfn_resources::CfnResource for DkimAttributes {
 
 /// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DkimSigningAttributes {
     ///
     /// [Bring Your Own DKIM] A private key that's used to generate a DKIM signature.
@@ -257,7 +261,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningPrivateKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_signing_private_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -269,7 +273,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningSelector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_signing_selector: Option<cfn_resources::StrVal>,
 
     ///
@@ -283,7 +287,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NextSigningKeyLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next_signing_key_length: Option<DkimSigningAttributesNextSigningKeyLengthEnum>,
 }
 
@@ -320,6 +324,7 @@ impl cfn_resources::CfnResource for DkimSigningAttributes {
 
 /// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FeedbackAttributes {
     ///
     /// Sets the feedback forwarding configuration for the identity.
@@ -334,7 +339,7 @@ pub struct FeedbackAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailForwardingEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_forwarding_enabled: Option<bool>,
 }
 
@@ -354,6 +359,7 @@ impl cfn_resources::CfnResource for FeedbackAttributes {
 
 /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MailFromAttributes {
     ///
     /// The action to take if the required MX record isn't found when you send an email. When       you set this value to USE_DEFAULT_VALUE, the mail is sent using         amazonses.com as the MAIL FROM domain. When you set this value       to REJECT_MESSAGE, the Amazon SES API v2 returns a         MailFromDomainNotVerified error, and doesn't attempt to deliver the       email.
@@ -368,7 +374,7 @@ pub struct MailFromAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BehaviorOnMxFailure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub behavior_on_mx_failure: Option<MailFromAttributesBehaviorOnMxFailureEnum>,
 
     ///
@@ -382,7 +388,7 @@ pub struct MailFromAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MailFromDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mail_from_domain: Option<cfn_resources::StrVal>,
 }
 

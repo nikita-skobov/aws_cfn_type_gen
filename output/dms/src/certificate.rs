@@ -1,5 +1,6 @@
 /// The AWS::DMS::Certificate resource creates an Secure Sockets Layer (SSL) certificate that       encrypts connections between AWS DMS endpoints and the replication instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCertificate {
     ///
     /// A customer-assigned name for the certificate. Identifiers must begin with a letter and     must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or     contain two consecutive hyphens.
@@ -10,7 +11,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificatePem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_pem: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateWallet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_wallet: Option<cfn_resources::StrVal>,
 }
 

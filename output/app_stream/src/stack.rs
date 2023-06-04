@@ -1,5 +1,6 @@
 /// The AWS::AppStream::Stack resource creates a stack to start streaming applications to Amazon AppStream 2.0 users. A stack consists of an associated fleet, user access policies, and storage configurations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStack {
     ///
     /// The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
@@ -12,7 +13,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessEndpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_endpoints: Option<Vec<AccessEndpoint>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_settings: Option<ApplicationSettings>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributesToDelete")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes_to_delete: Option<Vec<String>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteStorageConnectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_storage_connectors: Option<bool>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmbedHostDomains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub embed_host_domains: Option<Vec<String>>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeedbackURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub feedback_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redirect_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageConnectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_connectors: Option<Vec<StorageConnector>>,
 
     /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
@@ -157,7 +158,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamingExperienceSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub streaming_experience_settings: Option<StreamingExperienceSettings>,
 
     ///
@@ -169,7 +170,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -181,7 +182,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_settings: Option<Vec<UserSetting>>,
 }
 
@@ -271,6 +272,7 @@ impl cfn_resources::CfnResource for CfnStack {
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessEndpoint {
     ///
     /// The type of interface endpoint.
@@ -339,6 +341,7 @@ impl cfn_resources::CfnResource for AccessEndpoint {
 
 /// The persistent application settings for users of a stack.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApplicationSettings {
     ///
     /// Enables or disables persistent application settings for users during their streaming sessions.
@@ -362,7 +365,7 @@ pub struct ApplicationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SettingsGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub settings_group: Option<cfn_resources::StrVal>,
 }
 
@@ -393,6 +396,7 @@ impl cfn_resources::CfnResource for ApplicationSettings {
 
 /// A connector that enables persistent storage for users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageConnector {
     ///
     /// The type of storage connector.
@@ -418,7 +422,7 @@ pub struct StorageConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domains: Option<Vec<String>>,
 
     ///
@@ -430,7 +434,7 @@ pub struct StorageConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -480,6 +484,7 @@ impl cfn_resources::CfnResource for StorageConnector {
 
 /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamingExperienceSettings {
     /// The preferred protocol that you want to use while streaming your application.
     ///
@@ -491,7 +496,7 @@ pub struct StreamingExperienceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_protocol: Option<StreamingExperienceSettingsPreferredProtocolEnum>,
 }
 
@@ -534,6 +539,7 @@ impl cfn_resources::CfnResource for StreamingExperienceSettings {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -572,6 +578,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies an action and whether the action is enabled or disabled for users during their streaming sessions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserSetting {
     ///
     /// The action that is enabled or disabled.

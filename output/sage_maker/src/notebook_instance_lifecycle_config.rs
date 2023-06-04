@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::NotebookInstanceLifecycleConfig resource creates       shell scripts that run when you create and/or start a notebook instance. For information       about notebook instance lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// The name of the lifecycle configuration.
@@ -14,7 +15,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotebookInstanceLifecycleConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notebook_instance_lifecycle_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnCreate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_create: Option<Vec<NotebookInstanceLifecycleHook>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnStart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_start: Option<Vec<NotebookInstanceLifecycleHook>>,
 
     #[serde(skip_serializing)]
@@ -100,6 +101,7 @@ impl cfn_resources::CfnResource for CfnNotebookInstanceLifecycleConfig {
 
 /// Specifies the notebook instance lifecycle configuration script. Each lifecycle       configuration script has a limit of 16384 characters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotebookInstanceLifecycleHook {
     ///
     /// A base64-encoded string that contains a shell script for a notebook instance lifecycle       configuration.
@@ -116,7 +118,7 @@ pub struct NotebookInstanceLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content: Option<cfn_resources::StrVal>,
 }
 

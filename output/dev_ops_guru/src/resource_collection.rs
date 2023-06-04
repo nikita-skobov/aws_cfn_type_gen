@@ -1,5 +1,6 @@
 /// A collection of AWS resources supported by DevOps Guru. The one type of AWS resource 			collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze 			only the AWS resources that are defined in the stacks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceCollection {
     ///
     /// Information about a filter used to specify which AWS resources are analyzed for anomalous behavior by DevOps Guru.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnResourceCollection {
 
 /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudFormationCollectionFilter {
     ///
     /// An array of CloudFormation stack names.
@@ -52,7 +54,7 @@ pub struct CloudFormationCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_names: Option<Vec<String>>,
 }
 
@@ -72,6 +74,7 @@ impl cfn_resources::CfnResource for CloudFormationCollectionFilter {
 
 /// Information about a filter used to specify which AWS resources are analyzed for 			anomalous behavior by DevOps Guru.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceCollectionFilter {
     ///
     /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
@@ -82,7 +85,7 @@ pub struct ResourceCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudFormation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_formation: Option<CloudFormationCollectionFilter>,
 
     ///
@@ -104,7 +107,7 @@ pub struct ResourceCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagCollection>>,
 }
 
@@ -134,6 +137,7 @@ impl cfn_resources::CfnResource for ResourceCollectionFilter {
 ///
 /// Together these are known as key-value pairs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagCollection {
     ///
     /// An AWS tag key that is used to identify the AWS resources that    	DevOps Guru analyzes. All AWS resources in your account and Region tagged with this key make    up your DevOps Guru application and analysis boundary.
@@ -152,7 +156,7 @@ pub struct TagCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppBoundaryKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_boundary_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +170,7 @@ pub struct TagCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_values: Option<Vec<String>>,
 }
 

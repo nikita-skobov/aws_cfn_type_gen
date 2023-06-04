@@ -1,5 +1,6 @@
 /// Use the AWS::NetworkFirewall::FirewallPolicy to define the stateless and stateful network traffic filtering behavior for your AWS::NetworkFirewall::Firewall. You can use one firewall policy for multiple firewalls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFirewallPolicy {
     ///
     /// A description of the firewall policy.
@@ -14,7 +15,7 @@ pub struct CfnFirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnFirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnFirewallPolicy {
 
 /// A custom action to use in stateless rule actions settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionDefinition {
     ///
     /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
@@ -156,7 +158,7 @@ pub struct ActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishMetricAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publish_metric_action: Option<PublishMetricAction>,
 }
 
@@ -184,6 +186,7 @@ impl cfn_resources::CfnResource for ActionDefinition {
 ///
 /// You can use custom actions in the following places:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomAction {
     ///
     /// The custom action associated with the action name.
@@ -258,6 +261,7 @@ impl cfn_resources::CfnResource for CustomAction {
 ///
 /// For more information about CloudWatch custom metric dimensions, see      Publishing Custom Metrics in the Amazon CloudWatch User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Dimension {
     ///
     /// The value to use in the custom metric dimension.
@@ -315,6 +319,7 @@ impl cfn_resources::CfnResource for Dimension {
 
 /// The traffic filtering behavior of a firewall policy, defined in a collection of stateless     and stateful rule groups and other settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FirewallPolicy {
     ///
     /// Contains variables that you can use to override default Suricata settings in your firewall policy.
@@ -325,7 +330,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_variables: Option<PolicyVariables>,
 
     ///
@@ -343,7 +348,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulDefaultActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateful_default_actions: Option<Vec<String>>,
 
     ///
@@ -355,7 +360,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulEngineOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateful_engine_options: Option<StatefulEngineOptions>,
 
     ///
@@ -367,7 +372,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRuleGroupReferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateful_rule_group_references: Option<Vec<StatefulRuleGroupReference>>,
 
     ///
@@ -379,7 +384,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessCustomActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateless_custom_actions: Option<Vec<CustomAction>>,
 
     ///
@@ -421,7 +426,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessRuleGroupReferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateless_rule_group_references: Option<Vec<StatelessRuleGroupReference>>,
 }
 
@@ -449,6 +454,7 @@ impl cfn_resources::CfnResource for FirewallPolicy {
 
 /// A list of IP addresses and address ranges, in CIDR notation. This is part of a RuleVariables.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSet {
     ///
     /// The list of IP addresses and address ranges, in CIDR notation.
@@ -459,7 +465,7 @@ pub struct IPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -479,6 +485,7 @@ impl cfn_resources::CfnResource for IPSet {
 
 /// Contains variables that you can use to override default Suricata settings in your firewall policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PolicyVariables {
     ///
     /// The IPv4 or IPv6 addresses in CIDR notation to use for the Suricata HOME_NET variable. If your firewall uses an inspection VPC, you might want to override the HOME_NET variable with the CIDRs of your home networks. If you don't override HOME_NET with your own CIDRs, Network Firewall by default uses the CIDR of your inspection VPC.
@@ -489,7 +496,7 @@ pub struct PolicyVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_variables: Option<std::collections::HashMap<String, IPSet>>,
 }
 
@@ -509,6 +516,7 @@ impl cfn_resources::CfnResource for PolicyVariables {
 
 /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublishMetricAction {
     ///
     ///
@@ -549,6 +557,7 @@ impl cfn_resources::CfnResource for PublishMetricAction {
 
 /// Configuration settings for the handling of the stateful rule groups in a firewall policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatefulEngineOptions {
     ///
     /// Indicates how to manage the order of stateful rule evaluation for the policy. DEFAULT_ACTION_ORDER is     the default behavior. Stateful rules are provided to the rule engine as Suricata compatible strings, and Suricata evaluates them     based on certain settings. For more information, see     Evaluation order for stateful rules in the         AWS Network Firewall Developer Guide.
@@ -561,7 +570,7 @@ pub struct StatefulEngineOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_order: Option<StatefulEngineOptionsRuleOrderEnum>,
 
     ///
@@ -577,7 +586,7 @@ pub struct StatefulEngineOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamExceptionPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_exception_policy: Option<StatefulEngineOptionsStreamExceptionPolicyEnum>,
 }
 
@@ -635,6 +644,7 @@ impl cfn_resources::CfnResource for StatefulEngineOptions {
 
 /// The setting that allows the policy owner to change the behavior of the rule group within a policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatefulRuleGroupOverride {
     ///
     /// The action that changes the rule group from DROP to ALERT. This only applies to    managed rule groups.
@@ -647,7 +657,7 @@ pub struct StatefulRuleGroupOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<StatefulRuleGroupOverrideActionEnum>,
 }
 
@@ -680,6 +690,7 @@ impl cfn_resources::CfnResource for StatefulRuleGroupOverride {
 
 /// Identifier for a single stateful rule group, used in a firewall policy to refer to a     rule group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatefulRuleGroupReference {
     ///
     /// The action that allows the policy owner to override the behavior of the rule group within a policy.
@@ -690,7 +701,7 @@ pub struct StatefulRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Override")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_override: Option<StatefulRuleGroupOverride>,
 
     ///
@@ -710,7 +721,7 @@ pub struct StatefulRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 
     ///
@@ -791,6 +802,7 @@ impl cfn_resources::CfnResource for StatefulRuleGroupReference {
 
 /// Identifier for a single stateless rule group, used in a firewall policy to refer to the     rule group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatelessRuleGroupReference {
     ///
     /// An integer setting that indicates the order in which to run the stateless rule groups in     a single AWS::NetworkFirewall::FirewallPolicy. Network Firewall applies each stateless rule group     to a packet starting with the group that has the lowest priority setting. You must ensure     that the priority settings are unique within each policy.
@@ -887,6 +899,7 @@ impl cfn_resources::CfnResource for StatelessRuleGroupReference {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -4,6 +4,7 @@
 ///
 /// Do not include secrets or proprietary information in your canary names. The canary name     makes up part of the Amazon Resource Name (ARN) for the canary, and the ARN is included in     outbound calls over the internet. For more information, see Security       Considerations for Synthetics Canaries.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCanary {
     ///
     /// A structure that contains the configuration for canary artifacts, including      the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
@@ -14,7 +15,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub artifact_config: Option<ArtifactConfig>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_retention_period: Option<i64>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_config: Option<RunConfig>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCanaryAfterCreation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_canary_after_creation: Option<bool>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success_retention_period: Option<i64>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpcconfig: Option<VPCConfig>,
 
     ///
@@ -198,7 +199,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualReference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_reference: Option<VisualReference>,
 
     #[serde(skip_serializing)]
@@ -386,6 +387,7 @@ impl cfn_resources::CfnResource for CfnCanary {
 
 /// A structure that contains the configuration for canary artifacts,    including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArtifactConfig {
     /// A structure that contains the configuration    of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.    Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3    or later. For more information, see    Encrypting canary artifacts.
     ///
@@ -395,7 +397,7 @@ pub struct ArtifactConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_encryption: Option<S3Encryption>,
 }
 
@@ -419,6 +421,7 @@ impl cfn_resources::CfnResource for ArtifactConfig {
 
 /// A structure representing a screenshot that is used as a baseline during visual monitoring comparisons made by the canary.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BaseScreenshot {
     /// Coordinates that define the part of a screen to ignore during screenshot comparisons. To obtain the coordinates to use here, use the      CloudWatch Logs console to draw the boundaries on the screen. For more information, see {LINK}
     ///
@@ -428,7 +431,7 @@ pub struct BaseScreenshot {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreCoordinates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_coordinates: Option<Vec<String>>,
 
     /// The name of the screenshot. This is generated the first time the canary is run after the UpdateCanary operation that     specified for this canary to perform visual monitoring.
@@ -458,6 +461,7 @@ impl cfn_resources::CfnResource for BaseScreenshot {
 
 /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Code {
     ///
     /// The entry point to use for the source code when running the canary. For canaries that use the      syn-python-selenium-1.0 runtime     or a syn-nodejs.puppeteer runtime earlier than syn-nodejs.puppeteer-3.4,      the handler must be specified as         fileName.handler. For      syn-python-selenium-1.1, syn-nodejs.puppeteer-3.4, and later runtimes, the handler can be specified as               fileName.functionName       , or       you can specify a folder where canary scripts reside as         folder/fileName.functionName       .
@@ -489,7 +493,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -505,7 +509,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -521,7 +525,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -533,7 +537,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Script")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub script: Option<cfn_resources::StrVal>,
 
     ///
@@ -549,7 +553,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceLocationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_location_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -673,6 +677,7 @@ impl cfn_resources::CfnResource for Code {
 
 /// A structure that contains input information for a canary run. This structure     is required.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RunConfig {
     ///
     /// Specifies whether this canary is to use active AWS X-Ray tracing when it runs. Active tracing      enables this canary run to be displayed in the ServiceLens and X-Ray service maps even if the      canary does not hit an endpoint that has X-Ray tracing enabled. Using X-Ray tracing      incurs charges. For more information, see      Canaries and X-Ray tracing.
@@ -685,7 +690,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveTracing")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub active_tracing: Option<bool>,
 
     ///
@@ -701,7 +706,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_variables: Option<std::collections::HashMap<String, String>>,
 
     /// The maximum amount of memory that the    canary can use while running. This value must be a multiple of 64. The range is 960 to 3008.
@@ -716,7 +721,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryInMB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_in_mb: Option<i64>,
 
     ///
@@ -734,7 +739,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -790,6 +795,7 @@ impl cfn_resources::CfnResource for RunConfig {
 
 /// A structure that contains the configuration      of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.      Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3      or later. For more information, see     Encrypting canary artifacts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Encryption {
     /// The encryption method to use      for artifacts created by this canary. Specify SSE_S3 to use     server-side encryption (SSE) with an Amazon S3-managed     key. Specify SSE-KMS to use server-side encryption with a customer-managed AWS KMS key.
     ///
@@ -801,7 +807,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -813,7 +819,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -833,6 +839,7 @@ impl cfn_resources::CfnResource for S3Encryption {
 
 /// This structure specifies how often a canary is to make runs and the date and time     when it should stop making runs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     ///
     /// How long, in seconds, for the canary to continue making regular runs according to     the schedule in the Expression value. If you specify 0, the canary continues     making runs until you stop it. If you omit this field, the default of 0 is used.
@@ -843,7 +850,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<cfn_resources::StrVal>,
 
     ///
@@ -914,6 +921,7 @@ impl cfn_resources::CfnResource for Schedule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -952,6 +960,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VPCConfig {
     ///
     /// The IDs of the security groups for this canary.
@@ -988,7 +997,7 @@ pub struct VPCConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1028,6 +1037,7 @@ impl cfn_resources::CfnResource for VPCConfig {
 ///
 /// Visual monitoring is supported only on canaries running the syn-puppeteer-node-3.2       runtime or later. For more information, see         Visual monitoring and          Visual monitoring blueprint
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualReference {
     /// Specifies which canary run to use the screenshots from as the baseline for future visual monitoring with this canary. Valid values are      nextrun to use the screenshots from the next run after this update is made, lastrun to use the screenshots from the most recent run      before this update was made, or the value of Id in the       CanaryRun from any past run of this canary.
     ///
@@ -1047,7 +1057,7 @@ pub struct VisualReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseScreenshots")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_screenshots: Option<Vec<BaseScreenshot>>,
 }
 

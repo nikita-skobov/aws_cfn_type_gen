@@ -6,6 +6,7 @@
 ///
 /// You must also associate the security group with a cluster so that clients running       on these IP addresses or the EC2 instance are authorized to connect to the cluster. For       information about managing security groups, go to Working with Security         Groups in the Amazon Redshift Cluster Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClusterSecurityGroupIngress {
     ///
     /// The IP range to be added the Amazon Redshift security group.
@@ -18,7 +19,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CIDRIP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 

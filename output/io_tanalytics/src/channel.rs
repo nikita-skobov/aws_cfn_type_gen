@@ -1,5 +1,6 @@
 /// The AWS::IoTAnalytics::Channel resource collects data from an MQTT topic and archives the      raw, unprocessed messages before publishing the data to a pipeline. For more information, see             How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnChannel {
     ///
     /// The name of the channel.
@@ -16,7 +17,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ChannelName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub channel_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub channel_storage: Option<ChannelStorage>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_period: Option<RetentionPeriod>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -126,6 +127,7 @@ impl cfn_resources::CfnResource for CfnChannel {
 
 /// Where channel data is stored. You may choose one of serviceManagedS3,     customerManagedS3 storage. If not specified, the default is     serviceManagedS3. This can't be changed after creation of the channel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChannelStorage {
     ///
     /// Used to store channel data in an S3 bucket that you manage. If customer managed storage is    selected, the retentionPeriod parameter is ignored. You can't change the choice    of S3 storage after the data store is created.
@@ -136,7 +138,7 @@ pub struct ChannelStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_managed_s3: Option<CustomerManagedS3>,
 
     ///
@@ -148,7 +150,7 @@ pub struct ChannelStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceManagedS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_managed_s3: Option<serde_json::Value>,
 }
 
@@ -172,6 +174,7 @@ impl cfn_resources::CfnResource for ChannelStorage {
 
 /// Used to store channel data in an S3 bucket that you manage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomerManagedS3 {
     ///
     /// The name of the S3 bucket in which channel data is stored.
@@ -205,7 +208,7 @@ pub struct CustomerManagedS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -306,6 +309,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3 {
 
 /// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetentionPeriod {
     ///
     /// The number of days that message data is kept. The unlimited parameter must be    false.
@@ -318,7 +322,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_days: Option<i64>,
 
     ///
@@ -330,7 +334,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unlimited: Option<bool>,
 }
 
@@ -365,6 +369,7 @@ impl cfn_resources::CfnResource for RetentionPeriod {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

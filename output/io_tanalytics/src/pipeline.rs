@@ -1,5 +1,6 @@
 /// The AWS::IoTAnalytics::Pipeline resource consumes messages from one or more channels and allows      you to process the messages before storing them in a data store. You must specify both a      channel and a datastore activity and, optionally, as many      as 23 additional activities in the pipelineActivities array. For more information, see            How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPipeline {
     ///
     /// A list of "PipelineActivity" objects. Activities perform transformations on your messages,      such as removing, renaming or adding message attributes; filtering messages based on attribute      values; invoking your Lambda functions on messages for advanced processing; or performing      mathematical transformations to normalize device data.
@@ -33,7 +34,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PipelineName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -120,6 +121,7 @@ impl cfn_resources::CfnResource for CfnPipeline {
 
 /// An activity that performs a transformation on a message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Activity {
     ///
     /// Adds other attributes based on existing attributes in the message.
@@ -130,7 +132,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_attributes: Option<AddAttributes>,
 
     ///
@@ -142,7 +144,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Channel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub channel: Option<Channel>,
 
     ///
@@ -154,7 +156,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datastore")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datastore: Option<Datastore>,
 
     ///
@@ -166,7 +168,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceRegistryEnrich")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_registry_enrich: Option<DeviceRegistryEnrich>,
 
     ///
@@ -178,7 +180,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceShadowEnrich")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_shadow_enrich: Option<DeviceShadowEnrich>,
 
     ///
@@ -190,7 +192,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<Filter>,
 
     ///
@@ -202,7 +204,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda: Option<Lambda>,
 
     ///
@@ -214,7 +216,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Math")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub math: Option<Math>,
 
     ///
@@ -226,7 +228,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_attributes: Option<RemoveAttributes>,
 
     ///
@@ -238,7 +240,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_attributes: Option<SelectAttributes>,
 }
 
@@ -290,6 +292,7 @@ impl cfn_resources::CfnResource for Activity {
 
 /// An activity that adds other attributes based on existing attributes in the message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AddAttributes {
     ///
     /// A list of 1-50 "AttributeNameMapping"     objects that map an existing attribute to a new attribute.
@@ -332,7 +335,7 @@ pub struct AddAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -396,6 +399,7 @@ impl cfn_resources::CfnResource for AddAttributes {
 
 /// Determines the source of the messages to be processed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Channel {
     ///
     /// The name of the channel from which the messages are processed.
@@ -442,7 +446,7 @@ pub struct Channel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -528,6 +532,7 @@ impl cfn_resources::CfnResource for Channel {
 
 /// The datastore activity that specifies where to store the processed data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Datastore {
     ///
     /// The name of the data store where processed messages are stored.
@@ -622,6 +627,7 @@ impl cfn_resources::CfnResource for Datastore {
 
 /// An activity that adds data from the AWS IoT device registry to your message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceRegistryEnrich {
     ///
     /// The name of the attribute that is added to the message.
@@ -666,7 +672,7 @@ pub struct DeviceRegistryEnrich {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 
     ///
@@ -826,6 +832,7 @@ impl cfn_resources::CfnResource for DeviceRegistryEnrich {
 
 /// An activity that adds information from the AWS IoT Device Shadows service to a message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceShadowEnrich {
     ///
     /// The name of the attribute that is added to the message.
@@ -870,7 +877,7 @@ pub struct DeviceShadowEnrich {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 
     ///
@@ -1030,6 +1037,7 @@ impl cfn_resources::CfnResource for DeviceShadowEnrich {
 
 /// An activity that filters a message based on its attributes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     ///
     /// An expression that looks like an SQL WHERE clause that must return a Boolean value.
@@ -1074,7 +1082,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1160,6 +1168,7 @@ impl cfn_resources::CfnResource for Filter {
 
 /// An activity that runs a Lambda function to modify the message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Lambda {
     ///
     /// The number of messages passed to the Lambda function for processing.
@@ -1223,7 +1232,7 @@ pub struct Lambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1327,6 +1336,7 @@ impl cfn_resources::CfnResource for Lambda {
 
 /// An activity that computes an arithmetic expression using the message's attributes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Math {
     ///
     /// The name of the attribute that contains the result of the math operation.
@@ -1386,7 +1396,7 @@ pub struct Math {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1494,6 +1504,7 @@ impl cfn_resources::CfnResource for Math {
 
 /// An activity that removes attributes from a message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RemoveAttributes {
     ///
     /// A list of 1-50 attributes to remove from the message.
@@ -1536,7 +1547,7 @@ pub struct RemoveAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1609,6 +1620,7 @@ impl cfn_resources::CfnResource for RemoveAttributes {
 
 /// Creates a new message using only the specified attributes     from the original message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelectAttributes {
     ///
     /// A list of the attributes to select from the message.
@@ -1651,7 +1663,7 @@ pub struct SelectAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1730,6 +1742,7 @@ impl cfn_resources::CfnResource for SelectAttributes {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// Creates a self-service action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServiceAction {
     /// The language code.
     ///
@@ -11,7 +12,7 @@ pub struct CfnServiceAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnServiceAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,6 +144,7 @@ impl cfn_resources::CfnResource for CfnServiceAction {
 
 /// The list of parameters in JSON format.    For example: [{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}] or [{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}].
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefinitionParameter {
     ///
     /// The parameter key.

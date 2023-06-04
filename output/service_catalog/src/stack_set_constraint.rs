@@ -1,5 +1,6 @@
 /// Specifies a StackSet constraint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStackSetConstraint {
     ///
     /// The language code.
@@ -14,7 +15,7 @@ pub struct CfnStackSetConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///

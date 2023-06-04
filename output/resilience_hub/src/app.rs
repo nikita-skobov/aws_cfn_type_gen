@@ -2,6 +2,7 @@
 ///
 /// After you create an AWS Resilience Hub application, you publish it so that you can run a resiliency    assessment on it. You can then use recommendations from the assessment to improve resiliency    by running another assessment, comparing results, and then iterating the process until you    achieve your goals for recovery time objective (RTO) and recovery point objective    (RPO).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApp {
     ///
     /// Assessment execution schedule with 'Daily' or 'Disabled' values.
@@ -12,7 +13,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppAssessmentSchedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_assessment_schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResiliencyPolicyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resiliency_policy_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -116,6 +117,7 @@ impl cfn_resources::CfnResource for CfnApp {
 
 /// Defines a physical resource identifier.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PhysicalResourceId {
     ///
     /// The AWS account that owns the physical resource.
@@ -126,7 +128,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -138,7 +140,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,6 +184,7 @@ impl cfn_resources::CfnResource for PhysicalResourceId {
 
 /// Defines a resource mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceMapping {
     ///
     /// The name of the CloudFormation stack this resource is mapped to.
@@ -192,7 +195,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalStackName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logical_stack_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +233,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -242,7 +245,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerraformSourceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub terraform_source_name: Option<cfn_resources::StrVal>,
 }
 

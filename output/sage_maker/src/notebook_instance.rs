@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::NotebookInstance resource creates an Amazon SageMaker       notebook instance. A notebook instance is a machine learning (ML) compute instance       running on a Jupyter notebook. For more information, see Use Notebook Instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNotebookInstance {
     ///
     /// A list of Amazon Elastic Inference (EI) instance types to associate with the notebook       instance. Currently, only one instance type can be associated with a notebook instance.       For more information, see Using Elastic Inference in Amazon SageMaker.
@@ -12,7 +13,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalCodeRepositories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_code_repositories: Option<Vec<String>>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultCodeRepository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_code_repository: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DirectInternetAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub direct_internet_access: Option<NotebookInstanceDirectInternetAccessEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataServiceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_metadata_service_configuration: Option<InstanceMetadataServiceConfiguration>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotebookInstanceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notebook_instance_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_access: Option<NotebookInstanceRootAccessEnum>,
 
     ///
@@ -200,7 +201,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -216,7 +217,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +235,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -252,7 +253,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSizeInGB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size_in_gb: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -732,6 +733,7 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
 
 /// Information on the IMDS configuration of the notebook instance
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceMetadataServiceConfiguration {
     ///
     /// Indicates the minimum IMDS version that the notebook instance supports. When passed as part of CreateNotebookInstance, if no value is selected, then it defaults to IMDSv1. This means that both IMDSv1 and IMDSv2 are supported. If passed as part of UpdateNotebookInstance, there is no default.
@@ -779,6 +781,7 @@ impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

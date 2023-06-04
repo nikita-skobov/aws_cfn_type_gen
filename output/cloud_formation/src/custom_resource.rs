@@ -2,6 +2,7 @@
 ///
 /// Custom resources provide a way for you to write custom provisioning logic in CloudFormation template  and have CloudFormation run it during a stack operation, such as when you create, update or delete a stack.  For more information, see Custom resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCustomResource {
     ///
     /// NoteOnly one property is defined by AWS for a custom resource: ServiceToken. All   other properties are defined by the service provider.

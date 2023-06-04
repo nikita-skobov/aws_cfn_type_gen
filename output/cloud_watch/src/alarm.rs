@@ -5,6 +5,7 @@
 /// When you update an existing alarm, its state is left unchanged, but the 			update completely overwrites the previous configuration of the alarm.
 ///
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAlarm {
     ///
     /// Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE.
@@ -15,7 +16,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions_enabled: Option<bool>,
 
     ///
@@ -29,7 +30,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_actions: Option<Vec<String>>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatapointsToAlarm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datapoints_to_alarm: Option<i64>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluateLowSampleCountPercentile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub evaluate_low_sample_count_percentile: Option<cfn_resources::StrVal>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtendedStatistic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extended_statistic: Option<cfn_resources::StrVal>,
 
     ///
@@ -169,7 +170,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsufficientDataActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insufficient_data_actions: Option<Vec<String>>,
 
     ///
@@ -185,7 +186,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +200,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics: Option<Vec<MetricDataQuery>>,
 
     ///
@@ -219,7 +220,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +234,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OKActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub okactions: Option<Vec<String>>,
 
     ///
@@ -249,7 +250,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<i64>,
 
     ///
@@ -267,7 +268,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistic: Option<AlarmStatisticEnum>,
 
     ///
@@ -279,7 +280,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Threshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold: Option<f64>,
 
     ///
@@ -295,7 +296,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdMetricId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold_metric_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -313,7 +314,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatMissingData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub treat_missing_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +330,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<AlarmUnitEnum>,
 
     #[serde(skip_serializing)]
@@ -742,6 +743,7 @@ impl cfn_resources::CfnResource for CfnAlarm {
 
 /// Dimension is an embedded property of the AWS::CloudWatch::Alarm type. Dimensions       are name/value pairs that can be associated with a CloudWatch metric. You can       specify a maximum of 10 dimensions for a given metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Dimension {
     ///
     /// The name of the dimension, from 1–255 characters in length. This dimension      name must have been included when      the metric was published.
@@ -834,6 +836,7 @@ impl cfn_resources::CfnResource for Dimension {
 
 /// The Metric property type represents a specific metric. Metric is a property of the 		      MetricStat property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metric {
     ///
     /// The metric dimensions that you want to be used for the metric that 		      the alarm will watch.
@@ -846,7 +849,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -862,7 +865,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -880,7 +883,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 }
 
@@ -955,6 +958,7 @@ impl cfn_resources::CfnResource for Metric {
 ///
 /// Any expression used must return a single time series. For more information, see Metric Math Syntax and Functions in the Amazon CloudWatch User 				Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDataQuery {
     ///
     /// The ID of the account where the metrics are located, if this is a cross-account alarm.
@@ -965,7 +969,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -983,7 +987,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -1010,7 +1014,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -1024,7 +1028,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricStat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -1038,7 +1042,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<i64>,
 
     ///
@@ -1054,7 +1058,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub return_data: Option<bool>,
 }
 
@@ -1133,6 +1137,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 ///
 /// MetricStat is a property of the       MetricDataQuery property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStat {
     ///
     /// The metric to return, including the metric name, namespace, and dimensions.
@@ -1186,7 +1191,7 @@ pub struct MetricStat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<MetricStatUnitEnum>,
 }
 

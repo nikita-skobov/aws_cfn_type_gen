@@ -1,5 +1,6 @@
 /// The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon SNS topic. For a subscription to be created, the owner of the endpoint must     confirm the subscription.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubscription {
     ///
     /// The delivery policy JSON assigned to the subscription. Enables the subscriber to define     the message delivery retry strategy in the case of an HTTP/S endpoint subscribed to the     topic. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       delivery retries in the Amazon SNS Developer     Guide.
@@ -10,7 +11,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_policy: Option<serde_json::Value>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Endpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_policy: Option<serde_json::Value>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterPolicyScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_policy_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RawMessageDelivery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub raw_message_delivery: Option<bool>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedrivePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redrive_policy: Option<serde_json::Value>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubscriptionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subscription_role_arn: Option<cfn_resources::StrVal>,
 
     ///

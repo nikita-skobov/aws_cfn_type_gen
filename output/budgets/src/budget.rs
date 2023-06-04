@@ -1,5 +1,6 @@
 /// The AWS::Budgets::Budget resource allows customers to take pre-defined actions that will trigger once a budget threshold has been exceeded. creates, replaces, or deletes budgets for Billing and Cost Management. 			For more information, see 			Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBudget {
     ///
     /// The budget object that you want to create.
@@ -23,7 +24,7 @@ pub struct CfnBudget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationsWithSubscribers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notifications_with_subscribers: Option<Vec<NotificationWithSubscribers>>,
 }
 
@@ -51,6 +52,7 @@ impl cfn_resources::CfnResource for CfnBudget {
 
 /// The AutoAdjustData property type specifies Property description not available. for an AWS::Budgets::Budget.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoAdjustData {
     /// Property description not available.
     ///
@@ -70,7 +72,7 @@ pub struct AutoAdjustData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistoricalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub historical_options: Option<HistoricalOptions>,
 }
 
@@ -98,6 +100,7 @@ impl cfn_resources::CfnResource for AutoAdjustData {
 ///
 /// arn:aws:budgets::AccountId:budget/budgetName
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BudgetData {
     /// Property description not available.
     ///
@@ -107,7 +110,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoAdjustData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_adjust_data: Option<AutoAdjustData>,
 
     ///
@@ -121,7 +124,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BudgetLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub budget_limit: Option<Spend>,
 
     ///
@@ -133,7 +136,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BudgetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub budget_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -162,7 +165,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CostFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cost_filters: Option<serde_json::Value>,
 
     ///
@@ -176,7 +179,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CostTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cost_types: Option<CostTypes>,
 
     ///
@@ -202,7 +205,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlannedBudgetLimits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub planned_budget_limits: Option<serde_json::Value>,
 
     ///
@@ -220,7 +223,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimePeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_period: Option<TimePeriod>,
 
     ///
@@ -329,6 +332,7 @@ impl cfn_resources::CfnResource for BudgetData {
 ///
 /// USAGE, RI_UTILIZATION, RI_COVERAGE, 				SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE 			budgets don't have CostTypes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CostTypes {
     ///
     /// Specifies whether a budget includes credits.
@@ -341,7 +345,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeCredit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_credit: Option<bool>,
 
     ///
@@ -355,7 +359,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDiscount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_discount: Option<bool>,
 
     ///
@@ -369,7 +373,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeOtherSubscription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_other_subscription: Option<bool>,
 
     ///
@@ -383,7 +387,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRecurring")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_recurring: Option<bool>,
 
     ///
@@ -397,7 +401,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRefund")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_refund: Option<bool>,
 
     ///
@@ -411,7 +415,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSubscription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_subscription: Option<bool>,
 
     ///
@@ -425,7 +429,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_support: Option<bool>,
 
     ///
@@ -439,7 +443,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTax")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_tax: Option<bool>,
 
     ///
@@ -453,7 +457,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeUpfront")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_upfront: Option<bool>,
 
     ///
@@ -467,7 +471,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAmortized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_amortized: Option<bool>,
 
     ///
@@ -481,7 +485,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBlended")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_blended: Option<bool>,
 }
 
@@ -501,6 +505,7 @@ impl cfn_resources::CfnResource for CostTypes {
 
 /// The HistoricalOptions property type specifies Property description not available. for an AWS::Budgets::Budget.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistoricalOptions {
     /// Property description not available.
     ///
@@ -533,6 +538,7 @@ impl cfn_resources::CfnResource for HistoricalOptions {
 ///
 /// For example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Notification {
     ///
     /// The comparison that's used for this notification.
@@ -582,7 +588,7 @@ pub struct Notification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold_type: Option<NotificationThresholdTypeEnum>,
 }
 
@@ -657,6 +663,7 @@ impl cfn_resources::CfnResource for Notification {
 
 /// A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationWithSubscribers {
     ///
     /// The notification that's associated with a budget.
@@ -712,6 +719,7 @@ impl cfn_resources::CfnResource for NotificationWithSubscribers {
 ///
 /// For example, a Spend for 3 GB of S3 usage has the following 			parameters:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Spend {
     ///
     /// The cost or usage amount that's associated with a budget forecast, actual spend, or budget 			threshold.
@@ -754,6 +762,7 @@ impl cfn_resources::CfnResource for Spend {
 ///
 /// For example, an email subscriber would have the following parameters:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Subscriber {
     ///
     /// The address that AWS sends budget notifications to, either an SNS topic or an email.
@@ -815,6 +824,7 @@ impl cfn_resources::CfnResource for Subscriber {
 
 /// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimePeriod {
     ///
     /// The end date for a budget. If you didn't specify an end date, AWS set your end date to 06/15/87 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.
@@ -827,7 +837,7 @@ pub struct TimePeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "End")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end: Option<cfn_resources::StrVal>,
 
     ///
@@ -845,7 +855,7 @@ pub struct TimePeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Start")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start: Option<cfn_resources::StrVal>,
 }
 

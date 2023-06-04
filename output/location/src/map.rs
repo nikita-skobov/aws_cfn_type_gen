@@ -1,5 +1,6 @@
 /// The AWS::Location::Map resource specifies a map resource in your       AWS account, which provides map tiles of different styles sourced       from global location data providers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMap {
     ///
     /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
@@ -25,7 +26,7 @@ pub struct CfnMap {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnMap {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pricing_plan: Option<MapPricingPlanEnum>,
 
     #[serde(skip_serializing)]
@@ -194,6 +195,7 @@ impl cfn_resources::CfnResource for CfnMap {
 
 /// Specifies the map tile style selected from an available provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MapConfiguration {
     ///
     /// Specifies the map style selected from an available data provider.

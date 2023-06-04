@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationEFS resource creates an endpoint for an Amazon EFS file system. AWS DataSync can access this endpoint as a source or destination location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationEFS {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses    to access the Amazon EFS file system.
@@ -14,7 +15,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessPointArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_point_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EfsFilesystemArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub efs_filesystem_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InTransitEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub in_transit_encryption: Option<LocationEFSInTransitEncryptionEnum>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -213,6 +214,7 @@ impl cfn_resources::CfnResource for CfnLocationEFS {
 
 /// The subnet and security groups that AWS DataSync uses to access your Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ec2Config {
     ///
     /// Specifies the Amazon Resource Names (ARNs) of the security groups associated with an     Amazon EFS file system's mount target.
@@ -291,6 +293,7 @@ impl cfn_resources::CfnResource for Ec2Config {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

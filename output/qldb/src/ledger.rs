@@ -2,6 +2,7 @@
 ///
 /// For more information, see CreateLedger in the       Amazon QLDB API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLedger {
     ///
     /// Specifies whether the ledger is protected from being deleted by any user. If not defined during    ledger creation, this feature is enabled (true) by default.
@@ -14,7 +15,7 @@ pub struct CfnLedger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection: Option<bool>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnLedger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnLedger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnLedger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -167,6 +168,7 @@ impl cfn_resources::CfnResource for CfnLedger {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

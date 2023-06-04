@@ -1,5 +1,6 @@
 /// The AWS::Glue::Job resource specifies an AWS Glue job in the data       catalog. For more information, see Adding Jobs in AWS Glue and Job         Structure in the AWS Glue Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJob {
     ///
     /// This parameter is no longer supported. Use MaxCapacity instead.
@@ -12,7 +13,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocatedCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocated_capacity: Option<f64>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Connections")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connections: Option<ConnectionsList>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultArguments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_arguments: Option<serde_json::Value>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionProperty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_property: Option<ExecutionProperty>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub glue_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity: Option<f64>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_retries: Option<f64>,
 
     ///
@@ -181,7 +182,7 @@ pub struct CfnJob {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -193,7 +194,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NonOverridableArguments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub non_overridable_arguments: Option<serde_json::Value>,
 
     /// Specifies configuration properties of a notification.
@@ -204,7 +205,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationProperty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_property: Option<NotificationProperty>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfWorkers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_workers: Option<i64>,
 
     ///
@@ -247,7 +248,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -259,7 +260,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
@@ -270,7 +271,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 
     ///
@@ -286,7 +287,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub worker_type: Option<JobWorkerTypeEnum>,
 }
 
@@ -427,6 +428,7 @@ impl cfn_resources::CfnResource for CfnJob {
 
 /// Specifies the connections used by a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionsList {
     ///
     /// A list of connections used by the job.
@@ -437,7 +439,7 @@ pub struct ConnectionsList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Connections")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connections: Option<Vec<String>>,
 }
 
@@ -457,6 +459,7 @@ impl cfn_resources::CfnResource for ConnectionsList {
 
 /// An execution property of a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExecutionProperty {
     ///
     /// The maximum number of concurrent runs allowed for the job. The default is 1. An error       is returned when this threshold is reached. The maximum value you can specify is       controlled by a service limit.
@@ -467,7 +470,7 @@ pub struct ExecutionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentRuns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_runs: Option<f64>,
 }
 
@@ -487,6 +490,7 @@ impl cfn_resources::CfnResource for ExecutionProperty {
 
 /// Specifies code executed when a job is run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JobCommand {
     ///
     /// The name of the job command. For an Apache Spark ETL job, this must be    glueetl. For a Python shell job, it must be pythonshell.    For an Apache Spark streaming ETL job, this must be gluestreaming.
@@ -497,7 +501,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -511,7 +515,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PythonVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub python_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -525,7 +529,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScriptLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub script_location: Option<cfn_resources::StrVal>,
 }
 
@@ -553,6 +557,7 @@ impl cfn_resources::CfnResource for JobCommand {
 
 /// Specifies configuration properties of a notification.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationProperty {
     /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
     ///
@@ -562,7 +567,7 @@ pub struct NotificationProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyDelayAfter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notify_delay_after: Option<i64>,
 }
 

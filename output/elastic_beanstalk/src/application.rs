@@ -1,5 +1,6 @@
 /// The AWS::ElasticBeanstalk::Application resource is an AWS Elastic Beanstalk Beanstalk resource    type that specifies an Elastic Beanstalk application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name. For    more information, see Name Type.
@@ -16,7 +17,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLifecycleConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_lifecycle_config: Option<ApplicationResourceLifecycleConfig>,
 }
 
@@ -101,6 +102,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 ///
 /// ApplicationResourceLifecycleConfig is a property of the AWS::ElasticBeanstalk::Application resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApplicationResourceLifecycleConfig {
     ///
     /// The ARN of an IAM service role that Elastic Beanstalk has permission to    assume.
@@ -113,7 +115,7 @@ pub struct ApplicationResourceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -125,7 +127,7 @@ pub struct ApplicationResourceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionLifecycleConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_lifecycle_config: Option<ApplicationVersionLifecycleConfig>,
 }
 
@@ -153,6 +155,7 @@ impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
 ///
 /// ApplicationVersionLifecycleConfig is a property of the ApplicationResourceLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Specify a max age rule to restrict the length of time that application versions are    retained for an application.
@@ -163,7 +166,7 @@ pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAgeRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_age_rule: Option<MaxAgeRule>,
 
     ///
@@ -175,7 +178,7 @@ pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCountRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_count_rule: Option<MaxCountRule>,
 }
 
@@ -205,6 +208,7 @@ impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
 ///
 /// MaxAgeRule is a property of the ApplicationVersionLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaxAgeRule {
     ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
@@ -215,7 +219,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteSourceFromS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_source_from_s3: Option<bool>,
 
     ///
@@ -227,7 +231,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -239,7 +243,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAgeInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_age_in_days: Option<i64>,
 }
 
@@ -261,6 +265,7 @@ impl cfn_resources::CfnResource for MaxAgeRule {
 ///
 /// MaxCountRule is a property of the ApplicationVersionLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaxCountRule {
     ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
@@ -271,7 +276,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteSourceFromS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_source_from_s3: Option<bool>,
 
     ///
@@ -283,7 +288,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -295,7 +300,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_count: Option<i64>,
 }
 

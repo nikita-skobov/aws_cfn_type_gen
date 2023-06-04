@@ -2,6 +2,7 @@
 ///
 /// You can specify risk configuration for a single client (with a specific     clientId) or for all clients (by setting the clientId to     ALL). If you specify ALL, the default configuration is used for    every client that has had no risk configuration set previously. If you specify risk    configuration for a particular client, it no longer falls back to the ALL    configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// The account takeover risk configuration object, including the         NotifyConfiguration object and Actions to take if there is       an account takeover.
@@ -12,7 +13,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountTakeoverRiskConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_takeover_risk_configuration: Option<AccountTakeoverRiskConfigurationType>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompromisedCredentialsRiskConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compromised_credentials_risk_configuration:
         Option<CompromisedCredentialsRiskConfigurationType>,
 
@@ -54,7 +55,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RiskExceptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub risk_exception_configuration: Option<RiskExceptionConfigurationType>,
 
     ///
@@ -147,6 +148,7 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
 
 /// Account takeover action type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountTakeoverActionType {
     ///
     /// The action to take in response to the account takeover action. Valid values are as       follows:
@@ -216,6 +218,7 @@ impl cfn_resources::CfnResource for AccountTakeoverActionType {
 
 /// Account takeover actions type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountTakeoverActionsType {
     ///
     /// Action to take for a high risk.
@@ -226,7 +229,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HighAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub high_action: Option<AccountTakeoverActionType>,
 
     ///
@@ -238,7 +241,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub low_action: Option<AccountTakeoverActionType>,
 
     ///
@@ -250,7 +253,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediumAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub medium_action: Option<AccountTakeoverActionType>,
 }
 
@@ -282,6 +285,7 @@ impl cfn_resources::CfnResource for AccountTakeoverActionsType {
 
 /// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountTakeoverRiskConfigurationType {
     ///
     /// Account takeover risk configuration actions.
@@ -303,7 +307,7 @@ pub struct AccountTakeoverRiskConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notify_configuration: Option<NotifyConfigurationType>,
 }
 
@@ -329,6 +333,7 @@ impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
 
 /// The compromised credentials actions type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CompromisedCredentialsActionsType {
     ///
     /// The event action.
@@ -377,6 +382,7 @@ impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
 
 /// The compromised credentials risk configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CompromisedCredentialsRiskConfigurationType {
     ///
     /// The compromised credentials risk configuration actions.
@@ -398,7 +404,7 @@ pub struct CompromisedCredentialsRiskConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_filter: Option<Vec<String>>,
 }
 
@@ -420,6 +426,7 @@ impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType 
 
 /// The notify configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotifyConfigurationType {
     ///
     /// Email template used when a detected risk event is blocked.
@@ -430,7 +437,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockEmail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_email: Option<NotifyEmailType>,
 
     ///
@@ -442,7 +449,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +461,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MfaEmail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mfa_email: Option<NotifyEmailType>,
 
     ///
@@ -466,7 +473,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoActionEmail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_action_email: Option<NotifyEmailType>,
 
     ///
@@ -478,7 +485,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplyTo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reply_to: Option<cfn_resources::StrVal>,
 
     ///
@@ -549,6 +556,7 @@ impl cfn_resources::CfnResource for NotifyConfigurationType {
 
 /// The notify email type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotifyEmailType {
     ///
     /// The email HTML body.
@@ -565,7 +573,7 @@ pub struct NotifyEmailType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HtmlBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub html_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -600,7 +608,7 @@ pub struct NotifyEmailType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_body: Option<cfn_resources::StrVal>,
 }
 
@@ -686,6 +694,7 @@ impl cfn_resources::CfnResource for NotifyEmailType {
 
 /// The type of the configuration to override the risk decision.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RiskExceptionConfigurationType {
     ///
     /// Overrides the risk decision to always block the pre-authentication requests. The IP       range is in CIDR notation, a compact representation of an IP address and its routing       prefix.
@@ -698,7 +707,7 @@ pub struct RiskExceptionConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockedIPRangeList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blocked_iprange_list: Option<Vec<String>>,
 
     ///
@@ -712,7 +721,7 @@ pub struct RiskExceptionConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkippedIPRangeList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub skipped_iprange_list: Option<Vec<String>>,
 }
 

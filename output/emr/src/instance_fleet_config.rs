@@ -1,5 +1,6 @@
 /// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInstanceFleetConfig {
     ///
     /// The unique identifier of the EMR cluster.
@@ -36,7 +37,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypeConfigs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type_configs: Option<Vec<InstanceTypeConfig>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_specifications: Option<InstanceFleetProvisioningSpecifications>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetOnDemandCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_on_demand_capacity: Option<i64>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetSpotCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_spot_capacity: Option<i64>,
 }
 
@@ -175,6 +176,7 @@ impl cfn_resources::CfnResource for CfnInstanceFleetConfig {
 
 /// Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Configuration {
     ///
     /// The classification within a configuration.
@@ -185,7 +187,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Classification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classification: Option<cfn_resources::StrVal>,
 
     ///
@@ -197,7 +199,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -209,7 +211,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configurations: Option<Vec<Configuration>>,
 }
 
@@ -229,6 +231,7 @@ impl cfn_resources::CfnResource for Configuration {
 
 /// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EbsBlockDeviceConfig {
     ///
     /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
@@ -250,7 +253,7 @@ pub struct EbsBlockDeviceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumesPerInstance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes_per_instance: Option<i64>,
 }
 
@@ -272,6 +275,7 @@ impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
 
 /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EbsConfiguration {
     ///
     /// An array of Amazon EBS volume specifications attached to a cluster     instance.
@@ -282,7 +286,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsBlockDeviceConfigs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_block_device_configs: Option<Vec<EbsBlockDeviceConfig>>,
 
     ///
@@ -294,7 +298,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 }
 
@@ -314,6 +318,7 @@ impl cfn_resources::CfnResource for EbsConfiguration {
 
 /// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
@@ -326,7 +331,7 @@ pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_specification: Option<OnDemandProvisioningSpecification>,
 
     ///
@@ -338,7 +343,7 @@ pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_specification: Option<SpotProvisioningSpecification>,
 }
 
@@ -366,6 +371,7 @@ impl cfn_resources::CfnResource for InstanceFleetProvisioningSpecifications {
 
 /// InstanceType config is a subproperty of InstanceFleetConfig. An instance type configuration specifies each instance type in an instance fleet. The configuration determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceTypeConfig {
     ///
     /// The bid price for each EC2 Spot Instance type as defined by InstanceType.     Expressed in USD. If neither BidPrice nor       BidPriceAsPercentageOfOnDemandPrice is provided,       BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
@@ -382,7 +388,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
@@ -394,7 +400,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BidPriceAsPercentageOfOnDemandPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bid_price_as_percentage_of_on_demand_price: Option<f64>,
 
     ///
@@ -408,7 +414,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configurations: Option<Vec<Configuration>>,
 
     ///
@@ -426,7 +432,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -438,7 +444,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_configuration: Option<EbsConfiguration>,
 
     ///
@@ -469,7 +475,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WeightedCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weighted_capacity: Option<i64>,
 }
 
@@ -568,6 +574,7 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 
 /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnDemandProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the     only option is lowest-price (the default), which launches the lowest price     first.
@@ -612,6 +619,7 @@ impl cfn_resources::CfnResource for OnDemandProvisioningSpecification {
 
 /// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SpotProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching Spot Instance fleets. Currently, the only     option is capacity-optimized (the default), which launches instances from Spot Instance     pools with optimal capacity for the number of instances that are launching.
@@ -624,7 +632,7 @@ pub struct SpotProvisioningSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_strategy: Option<SpotProvisioningSpecificationAllocationStrategyEnum>,
 
     ///
@@ -640,7 +648,7 @@ pub struct SpotProvisioningSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDurationMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_duration_minutes: Option<i64>,
 
     ///
@@ -734,6 +742,7 @@ impl cfn_resources::CfnResource for SpotProvisioningSpecification {
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VolumeSpecification {
     ///
     /// The number of I/O operations per second (IOPS) that the volume supports.
@@ -744,7 +753,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///

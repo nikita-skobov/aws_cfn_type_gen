@@ -1,5 +1,6 @@
 /// A named set of parameters that are applied to all of the nodes in a DAX cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnParameterGroup {
     ///
     /// A description of the parameter group.
@@ -10,7 +11,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterNameValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name_values: Option<serde_json::Value>,
 }
 

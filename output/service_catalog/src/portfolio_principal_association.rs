@@ -1,5 +1,6 @@
 /// Associates the specified principal ARN with the specified portfolio.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPortfolioPrincipalAssociation {
     ///
     /// The language code.
@@ -14,7 +15,7 @@ pub struct CfnPortfolioPrincipalAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///

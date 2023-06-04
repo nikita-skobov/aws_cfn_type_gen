@@ -1,5 +1,6 @@
 /// A complex type that contains information about a Resolver configuration for a VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverConfig {
     ///
     /// Represents the desired status of AutodefinedReverse. The only supported value on creation is DISABLE.       Deletion of this resource will return AutodefinedReverse to its default value of ENABLED.

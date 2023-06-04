@@ -1,5 +1,6 @@
 /// The AWS::EFS::MountTarget resource is an Amazon EFS resource that creates a mount target for an EFS     file system. You can then mount the file system on Amazon EC2 instances or other resources by using the mount target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMountTarget {
     ///
     /// The ID of the file system for which to create the mount target.
@@ -31,7 +32,7 @@ pub struct CfnMountTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address: Option<cfn_resources::StrVal>,
 
     ///

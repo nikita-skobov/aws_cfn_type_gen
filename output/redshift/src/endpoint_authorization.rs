@@ -1,5 +1,6 @@
 /// Describes an endpoint authorization for authorizing Redshift-managed VPC endpoint access to a cluster across AWS accounts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpointAuthorization {
     ///
     /// The AWS account ID of either the cluster owner (grantor) or grantee.     If Grantee parameter is true, then the Account value is of the grantor.
@@ -36,7 +37,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Force")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub force: Option<bool>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]

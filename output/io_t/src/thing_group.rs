@@ -2,6 +2,7 @@
 ///
 /// Requires permission to access the CreateThingGroup action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnThingGroup {
     ///
     /// The parent thing group name.
@@ -14,7 +15,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parent_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_group_properties: Option<ThingGroupProperties>,
 
     #[serde(skip_serializing)]
@@ -110,6 +111,7 @@ impl cfn_resources::CfnResource for CfnThingGroup {
 
 /// The attribute payload.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributePayload {
     ///
     /// A JSON string containing up to three key-value pair in JSON format. For example:
@@ -122,7 +124,7 @@ pub struct AttributePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -148,6 +150,7 @@ impl cfn_resources::CfnResource for AttributePayload {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -186,6 +189,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Thing group properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThingGroupProperties {
     ///
     /// The thing group attributes in JSON format.
@@ -196,7 +200,7 @@ pub struct ThingGroupProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributePayload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_payload: Option<AttributePayload>,
 
     ///
@@ -208,7 +212,7 @@ pub struct ThingGroupProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_group_description: Option<cfn_resources::StrVal>,
 }
 

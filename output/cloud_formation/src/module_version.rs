@@ -4,6 +4,7 @@
 ///
 /// For more information using modules, see Using modules to encapsulate and reuse resource   configurations and Registering extensions in the   CloudFormation User Guide. For information on developing modules, see Developing modules in the   CloudFormation CLI User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModuleVersion {
     ///
     /// The name of the module being registered.

@@ -1,5 +1,6 @@
 /// The AWS::CloudFormation::Macro resource is a CloudFormation resource type that creates a   CloudFormation macro to perform custom processing on CloudFormation templates. For more  information, see Using   AWS CloudFormation macros to perform custom processing on templates.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMacro {
     ///
     /// A description of the macro.
@@ -10,7 +11,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogRoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 
     ///

@@ -2,6 +2,7 @@
 ///
 /// An Amazon EKS managed node group is an Amazon EC2       Auto Scaling group and associated Amazon EC2 instances that are managed by         AWS for an Amazon EKS cluster. For more information, see         Managed node groups in the Amazon EKS User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNodegroup {
     ///
     /// The AMI type for your node group. If you specify launchTemplate, and your launch template uses a custom AMI,         then don't specify amiType, or the node group deployment       will fail. If your launch template uses a Windows custom AMI, then add         eks:kube-proxy-windows to your Windows nodes rolearn in       the aws-auth       ConfigMap. For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
@@ -14,7 +15,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmiType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ami_type: Option<NodegroupAmiTypeEnum>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CapacityType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_type: Option<NodegroupCapacityTypeEnum>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DiskSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disk_size: Option<i64>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForceUpdateEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub force_update_enabled: Option<bool>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_types: Option<Vec<String>>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Labels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NodegroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nodegroup_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReleaseVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub release_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RemoteAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remote_access: Option<RemoteAccess>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scaling_config: Option<ScalingConfig>,
 
     ///
@@ -185,7 +186,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -197,7 +198,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Taints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub taints: Option<Vec<Taint>>,
 
     ///
@@ -209,7 +210,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_config: Option<UpdateConfig>,
 
     ///
@@ -223,7 +224,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -379,6 +380,7 @@ impl cfn_resources::CfnResource for CfnNodegroup {
 ///
 /// You must specify either the launch template ID or the launch template name in the       request, but not both.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -391,7 +393,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -405,7 +407,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -417,7 +419,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -437,6 +439,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 
 /// An object representing the remote access configuration for the managed node       group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RemoteAccess {
     ///
     /// The Amazon EC2 SSH key name that provides access for SSH communication with       the nodes in the managed node group. For more information, see Amazon EC2 key pairs and Linux instances in the Amazon Elastic Compute Cloud User Guide for Linux Instances. For       Windows, an Amazon EC2 SSH key is used to obtain the RDP password. For more       information, see Amazon EC2 key pairs and Windows instances in       the Amazon Elastic Compute Cloud User Guide for Windows Instances.
@@ -458,7 +461,7 @@ pub struct RemoteAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_security_groups: Option<Vec<String>>,
 }
 
@@ -478,6 +481,7 @@ impl cfn_resources::CfnResource for RemoteAccess {
 
 /// An object representing the scaling configuration details for the Auto Scaling group       that is associated with your node group. When creating a node group, you must specify       all or none of the properties. When updating a node group, you can specify any or none       of the properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScalingConfig {
     ///
     /// The current number of nodes that the managed node group should maintain.
@@ -496,7 +500,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_size: Option<i64>,
 
     ///
@@ -510,7 +514,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_size: Option<i64>,
 
     ///
@@ -524,7 +528,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_size: Option<i64>,
 }
 
@@ -571,6 +575,7 @@ impl cfn_resources::CfnResource for ScalingConfig {
 
 /// A property that allows a node to repel a set of pods. For more information, see Node taints on managed node groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Taint {
     ///
     /// The effect of the taint.
@@ -583,7 +588,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Effect")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub effect: Option<TaintEffectEnum>,
 
     ///
@@ -599,7 +604,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -615,7 +620,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -700,6 +705,7 @@ impl cfn_resources::CfnResource for Taint {
 
 /// The update configuration for the node group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdateConfig {
     ///
     /// The maximum number of nodes unavailable at once during a version update. Nodes will be       updated in parallel. This value or maxUnavailablePercentage is required to       have a value.The maximum number is 100.
@@ -712,7 +718,7 @@ pub struct UpdateConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUnavailable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_unavailable: Option<f64>,
 
     ///
@@ -728,7 +734,7 @@ pub struct UpdateConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUnavailablePercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_unavailable_percentage: Option<f64>,
 }
 

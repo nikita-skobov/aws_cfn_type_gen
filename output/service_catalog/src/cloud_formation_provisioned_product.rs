@@ -4,6 +4,7 @@
 ///
 /// If the request contains a tag key with an empty list of values, there is a tag     conflict for that key. Do not include conflicted keys as tags, or this causes the error     "Parameter validation failed: Missing required parameter in       Tags[N]:Value".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// The language code.
@@ -18,7 +19,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_arns: Option<Vec<String>>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub product_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub product_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisionedProductName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_product_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_artifact_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_artifact_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +179,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 
     ///
@@ -190,7 +191,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningPreferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_preferences: Option<ProvisioningPreferences>,
 
     ///
@@ -206,7 +207,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -420,6 +421,7 @@ impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
 
 /// Information about a parameter used to provision a product.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisioningParameter {
     ///
     /// The parameter key.
@@ -507,6 +509,7 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
 ///
 /// If no values are specified, the default value is all accounts from the       STACKSET constraint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisioningPreferences {
     ///
     /// One or more AWS accounts where the provisioned product will be available.
@@ -523,7 +526,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_accounts: Option<Vec<String>>,
 
     ///
@@ -543,7 +546,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetFailureToleranceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_failure_tolerance_count: Option<i64>,
 
     ///
@@ -565,7 +568,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetFailureTolerancePercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_failure_tolerance_percentage: Option<i64>,
 
     ///
@@ -585,7 +588,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetMaxConcurrencyCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_max_concurrency_count: Option<i64>,
 
     ///
@@ -609,7 +612,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetMaxConcurrencyPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_max_concurrency_percentage: Option<i64>,
 
     ///
@@ -627,7 +630,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetOperationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_operation_type: Option<ProvisioningPreferencesStackSetOperationTypeEnum>,
 
     ///
@@ -645,7 +648,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_regions: Option<Vec<String>>,
 }
 
@@ -728,6 +731,7 @@ impl cfn_resources::CfnResource for ProvisioningPreferences {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

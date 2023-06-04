@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::Model resource defines the structure of a request or response payload for an API method.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModel {
     ///
     /// The content-type for the model.
@@ -10,7 +11,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema: Option<serde_json::Value>,
 }
 

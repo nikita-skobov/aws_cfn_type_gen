@@ -3,6 +3,7 @@
 /// Amazon S3 on Outposts access points simplify managing data access at scale for shared    datasets in S3 on Outposts. S3 on Outposts uses endpoints to connect to S3 on Outposts buckets    so that you can perform actions within your virtual private cloud (VPC). For more information,    see     Accessing S3 on Outposts using VPC-only access points.
 ///
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpoint {
     ///
     /// The container for the type of connectivity used to access the Amazon S3 on Outposts    endpoint. To use the Amazon VPC, choose Private. To use the endpoint    with an on-premises network, choose CustomerOwnedIp. If you choose     CustomerOwnedIp, you must also provide the customer-owned IP address pool (CoIP    pool).
@@ -17,7 +18,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_type: Option<EndpointAccessTypeEnum>,
 
     ///
@@ -31,7 +32,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomerOwnedIpv4Pool")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_owned_ipv4_pool: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,6 +157,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
 /// The container for the network interface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterface {
     ///
     /// The ID for the network interface.

@@ -2,6 +2,7 @@
 ///
 /// For more information about RDS Proxy, see                AWS::RDS::DBProxy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBProxyEndpoint {
     ///
     /// The name of the DB proxy endpoint to create.
@@ -34,7 +35,7 @@ pub struct CfnDBProxyEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagFormat>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnDBProxyEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_role: Option<DBProxyEndpointTargetRoleEnum>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnDBProxyEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     ///
@@ -141,6 +142,7 @@ impl cfn_resources::CfnResource for CfnDBProxyEndpoint {
 
 /// Metadata assigned to a DB proxy endpoint consisting of a key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagFormat {
     ///
     /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
@@ -151,7 +153,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -163,7 +165,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

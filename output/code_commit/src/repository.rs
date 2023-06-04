@@ -1,5 +1,6 @@
 /// Creates a new, empty repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRepository {
     /// Information about code to be committed to a repository after it is created in     an AWS CloudFormation stack. Information about code is only used in resource creation. Updates to a stack will not reflect changes made to code     properties after initial resource creation.
     ///
@@ -11,7 +12,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code: Option<Code>,
 
     ///
@@ -27,7 +28,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Triggers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub triggers: Option<Vec<RepositoryTrigger>>,
 
     #[serde(skip_serializing)]
@@ -166,6 +167,7 @@ impl cfn_resources::CfnResource for CfnRepository {
 
 /// Information about code to be committed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Code {
     ///
     /// Optional. Specifies a branch name to be used as the default branch when importing code into a repository on initial creation.       If this property is not set, the name main       will be used for the default branch for the repository. Changes to this property are ignored after initial resource creation.        We recommend using this parameter to set the name to main to align with the default behavior       of CodeCommit unless another name is needed.
@@ -176,7 +178,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BranchName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub branch_name: Option<cfn_resources::StrVal>,
 
     /// Information about the Amazon S3 bucket that contains a ZIP file of code     to be committed to the repository. Changes to this property are ignored after initial resource creation.
@@ -208,6 +210,7 @@ impl cfn_resources::CfnResource for Code {
 
 /// Information about a trigger for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RepositoryTrigger {
     ///
     /// The branches to be included in the trigger configuration. If you specify an empty       array, the trigger applies to all branches.
@@ -220,7 +223,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Branches")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub branches: Option<Vec<String>>,
 
     ///
@@ -232,7 +235,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -287,6 +290,7 @@ impl cfn_resources::CfnResource for RepositoryTrigger {
 
 /// Information about the Amazon S3 bucket that contains the code that will be committed to the new repository.     Changes to this property are ignored after initial resource creation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3 {
     /// The name of the Amazon S3 bucket that contains the ZIP file with the content that       will be committed to the new repository. This can be specified using the name of the       bucket in the AWS account. Changes to this property are ignored after       initial resource creation.
     ///
@@ -316,7 +320,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_version: Option<cfn_resources::StrVal>,
 }
 
@@ -342,6 +346,7 @@ impl cfn_resources::CfnResource for S3 {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

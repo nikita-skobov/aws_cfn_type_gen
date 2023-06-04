@@ -6,6 +6,7 @@
 ///
 /// The observability configuration resource is designed to configure multiple features (currently one feature, tracing). This resource takes optional    parameters that describe the configuration of these features (currently one parameter, TraceConfiguration). If you don't specify a feature      parameter, App Runner doesn't enable the feature.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnObservabilityConfiguration {
     ///
     /// A name for the observability configuration. When you use it for the first time in an AWS Region, App Runner creates revision number     1 of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.
@@ -26,7 +27,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObservabilityConfigurationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub observability_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TraceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trace_configuration: Option<TraceConfiguration>,
 
     #[serde(skip_serializing)]
@@ -108,6 +109,7 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -146,6 +148,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the configuration of the tracing feature within an AWS App Runner observability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TraceConfiguration {
     ///
     /// The implementation provider chosen for tracing App Runner services.

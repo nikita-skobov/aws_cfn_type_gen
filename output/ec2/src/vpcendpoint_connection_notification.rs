@@ -2,6 +2,7 @@
 ///
 /// You can create a connection notification for interface endpoints only.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// The endpoint events for which to receive notifications. Valid values are         Accept, Connect, Delete, and         Reject.
@@ -34,7 +35,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VPCEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpcendpoint_id: Option<cfn_resources::StrVal>,
 }
 

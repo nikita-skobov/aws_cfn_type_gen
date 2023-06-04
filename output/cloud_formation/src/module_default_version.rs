@@ -4,6 +4,7 @@
 ///
 /// For more information using modules, see Using modules to encapsulate and reuse resource   configurations and Registering extensions in the   AWS CloudFormation User Guide. For information on developing modules, see Developing modules in the  AWS CloudFormation CLI User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModuleDefaultVersion {
     ///
     /// The Amazon Resource Name (ARN) of the module version to set as the default version.
@@ -20,7 +21,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModuleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub module_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_id: Option<cfn_resources::StrVal>,
 }
 

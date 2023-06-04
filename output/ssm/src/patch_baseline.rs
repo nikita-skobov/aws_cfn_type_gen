@@ -2,6 +2,7 @@
 ///
 /// For more information, see CreatePatchBaseline in the AWS Systems Manager API       Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPatchBaseline {
     ///
     /// A set of rules used to include patches in the baseline.
@@ -12,7 +13,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approval_rules: Option<RuleGroup>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatches")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approved_patches: Option<Vec<String>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatchesComplianceLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approved_patches_compliance_level: Option<PatchBaselineApprovedPatchesComplianceLevelEnum>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatchesEnableNonSecurity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approved_patches_enable_non_security: Option<bool>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_filters: Option<PatchFilterGroup>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operating_system: Option<PatchBaselineOperatingSystemEnum>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub patch_groups: Option<Vec<String>>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RejectedPatches")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rejected_patches: Option<Vec<String>>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RejectedPatchesAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rejected_patches_action: Option<PatchBaselineRejectedPatchesActionEnum>,
 
     ///
@@ -177,7 +178,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sources: Option<Vec<PatchSource>>,
 
     ///
@@ -191,7 +192,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -436,6 +437,7 @@ impl cfn_resources::CfnResource for CfnPatchBaseline {
 ///
 /// You can view lists of valid values for the patch properties by running the   DescribePatchProperties command. For more information, see DescribePatchProperties in the AWS Systems Manager API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PatchFilter {
     ///
     /// The key for the filter.
@@ -450,7 +452,7 @@ pub struct PatchFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<PatchFilterKeyEnum>,
 
     ///
@@ -466,7 +468,7 @@ pub struct PatchFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -582,6 +584,7 @@ impl cfn_resources::CfnResource for PatchFilter {
 ///
 /// PatchFilterGroup is the property type for the GlobalFilters property    of the AWS::SSM::PatchBaseline resource and the PatchFilterGroup property of    the Rule property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PatchFilterGroup {
     ///
     /// The set of patch filters that make up the group.
@@ -594,7 +597,7 @@ pub struct PatchFilterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub patch_filters: Option<Vec<PatchFilter>>,
 }
 
@@ -625,6 +628,7 @@ impl cfn_resources::CfnResource for PatchFilterGroup {
 ///
 /// The AWS CloudFormation AWS::SSM::PatchSource resource is used to provide    information about the patches to use to update target instances, including target operating    systems and source repository. Applies to Linux instances only.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PatchSource {
     ///
     /// The value of the yum repo configuration. For example:
@@ -649,7 +653,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -663,7 +667,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -677,7 +681,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Products")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub products: Option<Vec<String>>,
 }
 
@@ -728,6 +732,7 @@ impl cfn_resources::CfnResource for PatchSource {
 
 /// The date for ApproveUntilDate, as a String in the format     YYYY-MM-DD. For example, 2020-12-31.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PatchStringDate {}
 
 impl cfn_resources::CfnResource for PatchStringDate {
@@ -748,6 +753,7 @@ impl cfn_resources::CfnResource for PatchStringDate {
 ///
 /// The PatchRules property of the RuleGroup property type contains a list of Rule property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// The number of days after the release date of each patch matched by the rule that the patch    is marked as approved in the patch baseline. For example, a value of 7 means that    patches are approved seven days after they are released.
@@ -766,7 +772,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApproveAfterDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approve_after_days: Option<i64>,
 
     ///
@@ -784,7 +790,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApproveUntilDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approve_until_date: Option<PatchStringDate>,
 
     ///
@@ -798,7 +804,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_level: Option<RuleComplianceLevelEnum>,
 
     ///
@@ -810,7 +816,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableNonSecurity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_non_security: Option<bool>,
 
     ///
@@ -822,7 +828,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchFilterGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub patch_filter_group: Option<PatchFilterGroup>,
 }
 
@@ -903,6 +909,7 @@ impl cfn_resources::CfnResource for Rule {
 ///
 /// RuleGroup is the property type for the ApprovalRules property of the     AWS::SSM::PatchBaseline resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleGroup {
     ///
     /// The rules that make up the rule group.
@@ -915,7 +922,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub patch_rules: Option<Vec<Rule>>,
 }
 
@@ -950,6 +957,7 @@ impl cfn_resources::CfnResource for RuleGroup {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

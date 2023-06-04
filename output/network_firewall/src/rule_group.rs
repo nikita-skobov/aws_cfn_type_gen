@@ -1,5 +1,6 @@
 /// Use the AWS::NetworkFirewall::RuleGroup to define a reusable collection of stateless or stateful network traffic filtering rules.        You use rule groups in an AWS::NetworkFirewall::FirewallPolicy to specify the filtering behavior of an AWS::NetworkFirewall::Firewall.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRuleGroup {
     ///
     /// The maximum operating resources that this rule group can use. You can't change a rule group's capacity setting         after you create the rule group. When you update a rule group, you are limited to this capacity. When you reference a rule group    from a firewall policy, Network Firewall reserves this capacity for the rule group.
@@ -25,7 +26,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_group: Option<Box<RuleGroup>>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -188,6 +189,7 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
 
 /// A custom action to use in stateless rule actions settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionDefinition {
     ///
     /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
@@ -200,7 +202,7 @@ pub struct ActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishMetricAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publish_metric_action: Option<PublishMetricAction>,
 }
 
@@ -224,6 +226,7 @@ impl cfn_resources::CfnResource for ActionDefinition {
 
 /// A single IP address specification. This is used in the AWS::NetworkFirewall::RuleGroup MatchAttributes     source and destination specifications.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Address {
     ///
     /// Specify an IP address or a block of IP addresses in Classless Inter-Domain Routing (CIDR) notation. Network Firewall supports all address ranges for IPv4 and IPv6.
@@ -291,6 +294,7 @@ impl cfn_resources::CfnResource for Address {
 ///
 /// You can use custom actions in the following places:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomAction {
     ///
     /// The custom action associated with the action name.
@@ -365,6 +369,7 @@ impl cfn_resources::CfnResource for CustomAction {
 ///
 /// For more information about CloudWatch custom metric dimensions, see      Publishing Custom Metrics in the Amazon CloudWatch User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Dimension {
     ///
     /// The value to use in the custom metric dimension.
@@ -422,6 +427,7 @@ impl cfn_resources::CfnResource for Dimension {
 
 /// The 5-tuple criteria for AWS Network Firewall to use to inspect packet headers in stateful     traffic flow inspection. Traffic flows that match the criteria are a match for the     corresponding stateful rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Header {
     ///
     /// The destination IP address or address range to inspect for, in CIDR notation.      To match with any address, specify ANY.
@@ -740,6 +746,7 @@ impl cfn_resources::CfnResource for Header {
 
 /// A list of IP addresses and address ranges, in CIDR notation. This is part of a AWS::NetworkFirewall::RuleGroup RuleVariables.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSet {
     ///
     /// The list of IP addresses and address ranges, in CIDR notation.
@@ -750,7 +757,7 @@ pub struct IPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -770,6 +777,7 @@ impl cfn_resources::CfnResource for IPSet {
 
 /// Configures one or more IPSetReferences for a Suricata-compatible rule group. An IP set reference is a rule variable that references a resource that you create and manage in another AWS service, such as an Amazon VPC prefix list. Network Firewall IP set references enable you to dynamically update the contents of your rules. When you create, update, or delete the IP set you are referencing in your rule, Network Firewall automatically updates the rule's content with the changes. For more information about IP set references in Network Firewall, see Using IP set references in the Network Firewall Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSetReference {
     ///
     /// The Amazon Resource Name (ARN) of the resource to include in the AWS::NetworkFirewall::RuleGroup IPSetReference.
@@ -786,7 +794,7 @@ pub struct IPSetReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -828,6 +836,7 @@ impl cfn_resources::CfnResource for IPSetReference {
 
 /// Criteria for Network Firewall to use to inspect an individual packet in stateless rule inspection. Each match attributes set can include one or more items such as IP address, CIDR range, port number, protocol, and TCP flags.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MatchAttributes {
     ///
     /// The destination ports to inspect for. If not specified, this matches with any     destination port. This setting is only used for protocols 6 (TCP) and 17 (UDP).
@@ -840,7 +849,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_ports: Option<Vec<PortRange>>,
 
     ///
@@ -852,7 +861,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destinations: Option<Vec<Address>>,
 
     ///
@@ -864,7 +873,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocols: Option<Vec<i64>>,
 
     ///
@@ -878,7 +887,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ports: Option<Vec<PortRange>>,
 
     ///
@@ -890,7 +899,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sources: Option<Vec<Address>>,
 
     ///
@@ -902,7 +911,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCPFlags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tcpflags: Option<Vec<TCPFlagField>>,
 }
 
@@ -922,6 +931,7 @@ impl cfn_resources::CfnResource for MatchAttributes {
 
 /// A single port range specification. This is used for source and destination port ranges     in the stateless AWS::NetworkFirewall::RuleGroup MatchAttributes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortRange {
     ///
     /// The lower limit of the port range. This must be less than or equal to the       ToPort specification.
@@ -1006,6 +1016,7 @@ impl cfn_resources::CfnResource for PortRange {
 
 /// A set of port ranges for use in the rules in a rule group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortSet {
     ///
     /// The set of port ranges.
@@ -1016,7 +1027,7 @@ pub struct PortSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -1036,6 +1047,7 @@ impl cfn_resources::CfnResource for PortSet {
 
 /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublishMetricAction {
     ///
     ///
@@ -1076,6 +1088,7 @@ impl cfn_resources::CfnResource for PublishMetricAction {
 
 /// Configures the ReferenceSets for a stateful rule group. For more information, see the Using IP set references in Suricata compatible rule groups in the Network Firewall User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceSets {
     ///
     /// The IP set references to use in the stateful rule group.
@@ -1086,7 +1099,7 @@ pub struct ReferenceSets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetReferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipset_references: Option<std::collections::HashMap<String, IPSetReference>>,
 }
 
@@ -1106,6 +1119,7 @@ impl cfn_resources::CfnResource for ReferenceSets {
 
 /// The inspection criteria and action for a single stateless rule. AWS Network Firewall inspects each packet for the specified matching        criteria. When a packet matches the criteria, Network Firewall performs the rule's actions on     the packet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleDefinition {
     ///
     /// The actions to take on a packet that matches one of the stateless rule definition's     match attributes. You must specify a standard action and you can add custom actions.
@@ -1162,6 +1176,7 @@ impl cfn_resources::CfnResource for RuleDefinition {
 ///
 /// To use a rule group, you include it by reference in an Network Firewall firewall policy, then you use the policy in a firewall. You can reference a rule group from   more than one firewall policy, and you can use a firewall policy in more than one firewall.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleGroup {
     ///
     /// The reference sets for the stateful rule group.
@@ -1172,7 +1187,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_sets: Option<ReferenceSets>,
 
     ///
@@ -1184,7 +1199,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_variables: Option<RuleVariables>,
 
     ///
@@ -1207,7 +1222,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRuleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateful_rule_options: Option<StatefulRuleOptions>,
 }
 
@@ -1241,6 +1256,7 @@ impl cfn_resources::CfnResource for RuleGroup {
 
 /// Additional settings for a stateful rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleOption {
     ///
     /// The Suricata rule option keywords. For Network Firewall, the keyword signature ID (sid) is required in the format sid:112233. The sid must be unique within the rule group. For information about Suricata rule option keywords, see Rule options.
@@ -1268,7 +1284,7 @@ pub struct RuleOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub settings: Option<Vec<String>>,
 }
 
@@ -1310,6 +1326,7 @@ impl cfn_resources::CfnResource for RuleOption {
 
 /// Settings that are available for use in the rules in the AWS::NetworkFirewall::RuleGroup     where this is defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleVariables {
     ///
     /// A list of IP addresses and address ranges, in CIDR notation.
@@ -1320,7 +1337,7 @@ pub struct RuleVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipsets: Option<std::collections::HashMap<String, IPSet>>,
 
     ///
@@ -1332,7 +1349,7 @@ pub struct RuleVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_sets: Option<std::collections::HashMap<String, PortSet>>,
 }
 
@@ -1352,6 +1369,7 @@ impl cfn_resources::CfnResource for RuleVariables {
 
 /// The stateless or stateful rules definitions for use in a single rule group. Each rule     group requires a single RulesSource. You can use an instance of this for     either stateless rules or stateful rules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RulesSource {
     ///
     /// Stateful inspection criteria for a domain list rule group.
@@ -1362,7 +1380,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesSourceList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules_source_list: Option<RulesSourceList>,
 
     ///
@@ -1380,7 +1398,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -1392,7 +1410,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateful_rules: Option<Vec<StatefulRule>>,
 
     ///
@@ -1404,7 +1422,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessRulesAndCustomActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stateless_rules_and_custom_actions: Option<StatelessRulesAndCustomActions>,
 }
 
@@ -1458,6 +1476,7 @@ impl cfn_resources::CfnResource for RulesSource {
 ///
 /// By default, Network Firewall domain list inspection only includes traffic coming from the VPC where you deploy the firewall. To inspect traffic from IP addresses outside of the deployment VPC, you set the HOME_NET rule variable to include the CIDR range of the deployment VPC plus the other CIDR ranges. For more information, see AWS::NetworkFirewall::RuleGroup RuleVariables in this guide and Stateful domain list rule groups in AWS Network Firewall in the Network Firewall Developer Guide
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RulesSourceList {
     ///
     /// Whether you want to allow or deny access to the domains in your target list.
@@ -1530,6 +1549,7 @@ impl cfn_resources::CfnResource for RulesSourceList {
 
 /// A single Suricata rules specification, for use in a stateful rule group.    Use this option to specify a simple Suricata rule with protocol, source and destination, ports, direction, and rule options.    For information about the Suricata Rules format, see                     Rules Format.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatefulRule {
     ///
     /// Defines what Network Firewall should do with the packets in a traffic flow when the flow     matches the stateful rule criteria. For all actions, Network Firewall performs the specified     action and discontinues stateful inspection of the traffic flow.
@@ -1614,6 +1634,7 @@ impl cfn_resources::CfnResource for StatefulRule {
 
 /// Additional options governing how Network Firewall handles the rule group. You can only use these for stateful rule groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatefulRuleOptions {
     ///
     /// Indicates how to manage the order of the rule evaluation for the rule group. DEFAULT_ACTION_ORDER is       the default behavior. Stateful rules are provided to the rule engine as Suricata compatible strings, and Suricata evaluates them       based on certain settings. For more information, see      Evaluation order for stateful rules in the AWS Network Firewall Developer Guide.
@@ -1626,7 +1647,7 @@ pub struct StatefulRuleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_order: Option<StatefulRuleOptionsRuleOrderEnum>,
 }
 
@@ -1663,6 +1684,7 @@ impl cfn_resources::CfnResource for StatefulRuleOptions {
 
 /// A single stateless rule. This is used in AWS::NetworkFirewall::RuleGroup StatelessRulesAndCustomActions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatelessRule {
     ///
     /// Indicates the order in which to run this rule relative to all of the     rules that are defined for a stateless rule group. Network Firewall evaluates the rules in a     rule group starting with the lowest priority setting. You must ensure that the priority     settings are unique for the rule group.
@@ -1731,6 +1753,7 @@ impl cfn_resources::CfnResource for StatelessRule {
 
 /// Stateless inspection criteria. Each stateless rule group uses exactly one of these data     types to define its stateless rules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatelessRulesAndCustomActions {
     ///
     /// Defines an array of individual custom action definitions that are available for use by     the stateless rules in this StatelessRulesAndCustomActions specification. You     name each custom action that you define, and then you can use it by name in your stateless rule       AWS::NetworkFirewall::RuleGroup RuleDefinition Actions specification.
@@ -1741,7 +1764,7 @@ pub struct StatelessRulesAndCustomActions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_actions: Option<Vec<CustomAction>>,
 
     ///
@@ -1776,6 +1799,7 @@ impl cfn_resources::CfnResource for StatelessRulesAndCustomActions {
 ///
 /// "TCPFlags": [     {       "Flags": [         "ECE",         "SYN"       ],       "Masks": [         "SYN",         "ECE"       ]     }       ]
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TCPFlagField {
     ///
     /// Used in conjunction with the Masks setting to define the flags that must be set and flags that must not be set in order for the packet to match. This setting can only specify values that are also specified in the Masks setting.
@@ -1801,7 +1825,7 @@ pub struct TCPFlagField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Masks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub masks: Option<Vec<String>>,
 }
 
@@ -1827,6 +1851,7 @@ impl cfn_resources::CfnResource for TCPFlagField {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

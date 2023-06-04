@@ -6,6 +6,7 @@
 ///
 /// For more information, see Adding or removing HTTP headers in CloudFront responses in the 			Amazon CloudFront Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResponseHeadersPolicy {
     ///
     /// A response headers policy configuration.
@@ -61,6 +62,7 @@ impl cfn_resources::CfnResource for CfnResponseHeadersPolicy {
 ///
 /// For more information about the Access-Control-Allow-Headers HTTP response 			header, see Access-Control-Allow-Headers in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlAllowHeaders {
     ///
     /// The list of HTTP header names. You can specify * to allow all 			headers.
@@ -92,6 +94,7 @@ impl cfn_resources::CfnResource for AccessControlAllowHeaders {
 ///
 /// For more information about the Access-Control-Allow-Methods HTTP response 			header, see Access-Control-Allow-Methods in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlAllowMethods {
     ///
     /// The list of HTTP methods. Valid values are:
@@ -127,6 +130,7 @@ impl cfn_resources::CfnResource for AccessControlAllowMethods {
 ///
 /// For more information about the Access-Control-Allow-Origin HTTP response 			header, see Access-Control-Allow-Origin in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlAllowOrigins {
     ///
     /// The list of origins (domain names). You can specify * to allow all 			origins.
@@ -158,6 +162,7 @@ impl cfn_resources::CfnResource for AccessControlAllowOrigins {
 ///
 /// For more information about the Access-Control-Expose-Headers HTTP 			response header, see Access-Control-Expose-Headers in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlExposeHeaders {
     ///
     /// The list of HTTP headers. You can specify * to expose all headers.
@@ -189,6 +194,7 @@ impl cfn_resources::CfnResource for AccessControlExposeHeaders {
 ///
 /// For more information about the Content-Security-Policy HTTP response 			header, see Content-Security-Policy in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContentSecurityPolicy {
     ///
     /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
@@ -231,6 +237,7 @@ impl cfn_resources::CfnResource for ContentSecurityPolicy {
 ///
 /// For more information about the X-Content-Type-Options HTTP response 			header, see X-Content-Type-Options in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContentTypeOptions {
     ///
     /// A Boolean that determines whether CloudFront overrides the 				X-Content-Type-Options HTTP response header received from the origin 			with the one specified in this response headers policy.
@@ -262,6 +269,7 @@ impl cfn_resources::CfnResource for ContentTypeOptions {
 ///
 /// For more information about CORS, see Cross-Origin Resource 				Sharing (CORS) in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CorsConfig {
     ///
     /// A Boolean that CloudFront uses as the value for the 				Access-Control-Allow-Credentials HTTP response header.
@@ -326,7 +334,7 @@ pub struct CorsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlExposeHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_control_expose_headers: Option<AccessControlExposeHeaders>,
 
     ///
@@ -340,7 +348,7 @@ pub struct CorsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlMaxAgeSec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_control_max_age_sec: Option<i64>,
 
     ///
@@ -381,6 +389,7 @@ impl cfn_resources::CfnResource for CorsConfig {
 
 /// An HTTP response header name and its value. CloudFront includes this header in HTTP 			responses that it sends for requests that match a cache behavior that's associated with 			this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomHeader {
     ///
     /// The HTTP response header name.
@@ -432,6 +441,7 @@ impl cfn_resources::CfnResource for CustomHeader {
 
 /// A list of HTTP response header names and their values. CloudFront includes these headers in 			HTTP responses that it sends for requests that match a cache behavior that's associated 			with this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomHeadersConfig {
     ///
     /// The list of HTTP response headers and their values.
@@ -463,6 +473,7 @@ impl cfn_resources::CfnResource for CustomHeadersConfig {
 ///
 /// For more information about the X-Frame-Options HTTP response header, see 				X-Frame-Options in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FrameOptions {
     ///
     /// The value of the X-Frame-Options HTTP response header. Valid values are 				DENY and SAMEORIGIN.
@@ -526,6 +537,7 @@ impl cfn_resources::CfnResource for FrameOptions {
 ///
 /// For more information about the Referrer-Policy HTTP response header, see 				Referrer-Policy in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferrerPolicy {
     ///
     /// A Boolean that determines whether CloudFront overrides the Referrer-Policy HTTP 			response header received from the origin with the one specified in this response headers 			policy.
@@ -613,6 +625,7 @@ impl cfn_resources::CfnResource for ReferrerPolicy {
 
 /// The name of an HTTP header that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RemoveHeader {
     ///
     /// The HTTP header name.
@@ -642,6 +655,7 @@ impl cfn_resources::CfnResource for RemoveHeader {
 
 /// A list of HTTP header names that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RemoveHeadersConfig {
     ///
     /// The list of HTTP header names.
@@ -673,6 +687,7 @@ impl cfn_resources::CfnResource for RemoveHeadersConfig {
 ///
 /// A response headers policy configuration contains metadata about the response headers policy, 			and configurations for sets of HTTP response headers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResponseHeadersPolicyConfig {
     ///
     /// A comment to describe the response headers policy.
@@ -685,7 +700,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -697,7 +712,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorsConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cors_config: Option<CorsConfig>,
 
     ///
@@ -709,7 +724,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomHeadersConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_headers_config: Option<CustomHeadersConfig>,
 
     ///
@@ -734,7 +749,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveHeadersConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_headers_config: Option<RemoveHeadersConfig>,
 
     ///
@@ -746,7 +761,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityHeadersConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_headers_config: Option<SecurityHeadersConfig>,
 
     ///
@@ -758,7 +773,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimingHeadersConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_timing_headers_config: Option<ServerTimingHeadersConfig>,
 }
 
@@ -798,6 +813,7 @@ impl cfn_resources::CfnResource for ResponseHeadersPolicyConfig {
 
 /// A configuration for a set of security-related HTTP response headers. CloudFront adds these 			headers to HTTP responses that it sends for requests that match a cache behavior 			associated with this response headers policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecurityHeadersConfig {
     ///
     /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
@@ -810,7 +826,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentSecurityPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_security_policy: Option<ContentSecurityPolicy>,
 
     ///
@@ -824,7 +840,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentTypeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type_options: Option<ContentTypeOptions>,
 
     ///
@@ -838,7 +854,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub frame_options: Option<FrameOptions>,
 
     ///
@@ -852,7 +868,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferrerPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub referrer_policy: Option<ReferrerPolicy>,
 
     ///
@@ -866,7 +882,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StrictTransportSecurity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub strict_transport_security: Option<StrictTransportSecurity>,
 
     ///
@@ -880,7 +896,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XSSProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xssprotection: Option<XSSProtection>,
 }
 
@@ -924,6 +940,7 @@ impl cfn_resources::CfnResource for SecurityHeadersConfig {
 
 /// A configuration for enabling the Server-Timing header in HTTP responses 			sent from CloudFront.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerTimingHeadersConfig {
     ///
     /// A Boolean that determines whether CloudFront adds the Server-Timing header to 			HTTP responses that it sends in response to requests that match a cache behavior that's 			associated with this response headers policy.
@@ -945,7 +962,7 @@ pub struct ServerTimingHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sampling_rate: Option<f64>,
 }
 
@@ -967,6 +984,7 @@ impl cfn_resources::CfnResource for ServerTimingHeadersConfig {
 ///
 /// For more information about the Strict-Transport-Security HTTP response 			header, see Strict-Transport-Security in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StrictTransportSecurity {
     ///
     /// A number that CloudFront uses as the value for the max-age directive in the 				Strict-Transport-Security HTTP response header.
@@ -988,7 +1006,7 @@ pub struct StrictTransportSecurity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSubdomains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_subdomains: Option<bool>,
 
     ///
@@ -1011,7 +1029,7 @@ pub struct StrictTransportSecurity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Preload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preload: Option<bool>,
 }
 
@@ -1033,6 +1051,7 @@ impl cfn_resources::CfnResource for StrictTransportSecurity {
 ///
 /// For more information about the X-XSS-Protection HTTP response header, see 				X-XSS-Protection in the MDN Web Docs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct XSSProtection {
     ///
     /// A Boolean that determines whether CloudFront includes the mode=block directive 			in the X-XSS-Protection header.
@@ -1045,7 +1064,7 @@ pub struct XSSProtection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModeBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode_block: Option<bool>,
 
     ///
@@ -1085,7 +1104,7 @@ pub struct XSSProtection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report_uri: Option<cfn_resources::StrVal>,
 }
 

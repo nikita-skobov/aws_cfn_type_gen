@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Integration resource creates an integration          for an API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIntegration {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandlingStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_handling_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationSubtype")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_subtype: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +155,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub passthrough_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload_format_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_parameters: Option<serde_json::Value>,
 
     ///
@@ -194,7 +195,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestTemplates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_templates: Option<serde_json::Value>,
 
     ///
@@ -206,7 +207,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_parameters: Option<serde_json::Value>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateSelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +231,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_millis: Option<i64>,
 
     ///
@@ -242,7 +243,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls_config: Option<TlsConfig>,
 }
 
@@ -266,6 +267,7 @@ impl cfn_resources::CfnResource for CfnIntegration {
 
 /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResponseParameter {
     ///
     /// Specifies the location of the response to modify, and how to modify it. To learn more, see Transforming API requests and responses.
@@ -306,6 +308,7 @@ impl cfn_resources::CfnResource for ResponseParameter {
 
 /// Specifies a list of response parameters for an HTTP API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResponseParameterList {
     ///
     /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
@@ -316,7 +319,7 @@ pub struct ResponseParameterList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_parameters: Option<Vec<ResponseParameter>>,
 }
 
@@ -336,6 +339,7 @@ impl cfn_resources::CfnResource for ResponseParameterList {
 
 /// The TlsConfig property specifies the TLS configuration for a private       integration. If you specify a TLS configuration, private integration traffic uses the       HTTPS protocol. Supported only for HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsConfig {
     ///
     /// If you specify a server name, API Gateway uses it to verify the hostname on           the integration's certificate. The server name is also included in the TLS           handshake to support Server Name Indication (SNI) or virtual hosting.
@@ -346,7 +350,7 @@ pub struct TlsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerNameToVerify")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_name_to_verify: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// Creates a static route for the specified local gateway route table. You must specify one of the      following targets:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocalGatewayRoute {
     ///
     /// The CIDR block used for destination matches.
@@ -32,7 +33,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_gateway_virtual_interface_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

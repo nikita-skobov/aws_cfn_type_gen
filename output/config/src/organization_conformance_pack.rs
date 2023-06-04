@@ -1,5 +1,6 @@
 /// OrganizationConformancePack deploys conformance packs across member accounts in an AWS Organizations.       OrganizationConformancePack enables organization service access for config-multiaccountsetup.amazonaws.com through the EnableAWSServiceAccess action and       creates a service linked role in the master account of your organization.       The service linked role is created only when the role does not exist in the master account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnOrganizationConformancePack {
     ///
     /// A list of ConformancePackInputParameter objects.
@@ -12,7 +13,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConformancePackInputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conformance_pack_input_parameters: Option<Vec<ConformancePackInputParameter>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_accounts: Option<Vec<String>>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnOrganizationConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateS3Uri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_s3_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -189,6 +190,7 @@ impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
 
 /// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConformancePackInputParameter {
     ///
     /// One part of a key-value pair.

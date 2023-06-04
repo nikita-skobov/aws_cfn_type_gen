@@ -1,5 +1,6 @@
 /// Specifies a static route for a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGatewayRoute {
     ///
     /// Indicates whether to drop traffic that matches this route.
@@ -10,7 +11,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Blackhole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blackhole: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayAttachmentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_attachment_id: Option<cfn_resources::StrVal>,
 
     ///

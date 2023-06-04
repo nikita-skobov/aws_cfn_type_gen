@@ -6,6 +6,7 @@
 ///
 /// If this is the first AWS Region in which you've created an index for       Resource Explorer, this operation also creates a service-linked role in your AWS account that allows Resource Explorer to search for your resources and       populate the index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIndex {
     ///
     /// The specified tags are attached to only the index created in this AWS Region. The tags don't attach to any of the resources listed in the       index.
@@ -16,7 +17,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///

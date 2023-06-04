@@ -1,5 +1,6 @@
 /// The AWS::Glue::Crawler resource specifies an AWS Glue crawler. For more       information, see Cataloging Tables with a Crawler and Crawler Structure in the AWS Glue Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCrawler {
     ///
     /// A list of UTF-8 strings that specify the names of custom classifiers that are associated    with the crawler.
@@ -10,7 +11,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classifiers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classifiers: Option<Vec<String>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlerSecurityConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawler_security_configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecrawlPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recrawl_policy: Option<RecrawlPolicy>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaChangePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_change_policy: Option<SchemaChangePolicy>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TablePrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -290,6 +291,7 @@ impl cfn_resources::CfnResource for CfnCrawler {
 
 /// Specifies an AWS Glue Data Catalog target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CatalogTarget {
     ///
     /// The name of the database to be synchronized.
@@ -306,7 +308,7 @@ pub struct CatalogTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -318,7 +320,7 @@ pub struct CatalogTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tables: Option<Vec<String>>,
 }
 
@@ -360,6 +362,7 @@ impl cfn_resources::CfnResource for CatalogTarget {
 
 /// The DeltaTarget property type specifies Property description not available. for an AWS::Glue::Crawler.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeltaTarget {
     /// Property description not available.
     ///
@@ -369,7 +372,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -380,7 +383,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateNativeDeltaTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_native_delta_table: Option<bool>,
 
     /// Property description not available.
@@ -391,7 +394,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delta_tables: Option<Vec<String>>,
 
     /// Property description not available.
@@ -402,7 +405,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteManifest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_manifest: Option<bool>,
 }
 
@@ -422,6 +425,7 @@ impl cfn_resources::CfnResource for DeltaTarget {
 
 /// Specifies an Amazon DynamoDB table to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamoDBTarget {
     ///
     /// The name of the DynamoDB table to crawl.
@@ -432,7 +436,7 @@ pub struct DynamoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -452,6 +456,7 @@ impl cfn_resources::CfnResource for DynamoDBTarget {
 
 /// Specifies a JDBC data store to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JdbcTarget {
     ///
     /// The name of the connection to use to connect to the JDBC target.
@@ -462,7 +467,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -474,7 +479,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclusions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusions: Option<Vec<String>>,
 
     ///
@@ -486,7 +491,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -506,6 +511,7 @@ impl cfn_resources::CfnResource for JdbcTarget {
 
 /// Specifies an Amazon DocumentDB or MongoDB data store to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MongoDBTarget {
     ///
     /// The name of the connection to use to connect to the Amazon DocumentDB or MongoDB target.
@@ -516,7 +522,7 @@ pub struct MongoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -528,7 +534,7 @@ pub struct MongoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -548,6 +554,7 @@ impl cfn_resources::CfnResource for MongoDBTarget {
 
 /// When crawling an Amazon S3 data source after the first crawl is complete, specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run. For more information, see Incremental Crawls in AWS Glue in the developer guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecrawlPolicy {
     ///
     /// Specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run.
@@ -566,7 +573,7 @@ pub struct RecrawlPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecrawlBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recrawl_behavior: Option<RecrawlPolicyRecrawlBehaviorEnum>,
 }
 
@@ -607,6 +614,7 @@ impl cfn_resources::CfnResource for RecrawlPolicy {
 
 /// Specifies a data store in Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Target {
     ///
     /// The name of a connection which allows a job or crawler to access data in Amazon S3 within an Amazon Virtual Private Cloud environment (Amazon VPC).
@@ -617,7 +625,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -629,7 +637,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DlqEventQueueArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dlq_event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -641,7 +649,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventQueueArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -653,7 +661,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclusions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusions: Option<Vec<String>>,
 
     ///
@@ -665,7 +673,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -677,7 +685,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sample_size: Option<i64>,
 }
 
@@ -697,6 +705,7 @@ impl cfn_resources::CfnResource for S3Target {
 
 /// A scheduling object using a cron statement to schedule an event.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     ///
     /// A cron expression used to specify the schedule. For more information, see         Time-Based Schedules for         Jobs and Crawlers. For example, to run something every day at 12:15 UTC,       specify cron(15 12 * * ? *).
@@ -707,7 +716,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
@@ -729,6 +738,7 @@ impl cfn_resources::CfnResource for Schedule {
 ///
 /// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaChangePolicy {
     ///
     /// The deletion behavior when the crawler finds a deleted object.
@@ -747,7 +757,7 @@ pub struct SchemaChangePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_behavior: Option<SchemaChangePolicyDeleteBehaviorEnum>,
 
     ///
@@ -765,7 +775,7 @@ pub struct SchemaChangePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_behavior: Option<SchemaChangePolicyUpdateBehaviorEnum>,
 }
 
@@ -823,6 +833,7 @@ impl cfn_resources::CfnResource for SchemaChangePolicy {
 
 /// Specifies data stores to crawl.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Targets {
     ///
     /// Specifies AWS Glue Data Catalog targets.
@@ -833,7 +844,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_targets: Option<Vec<CatalogTarget>>,
 
     /// Property description not available.
@@ -844,7 +855,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delta_targets: Option<Vec<DeltaTarget>>,
 
     ///
@@ -856,7 +867,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamo_dbtargets: Option<Vec<DynamoDBTarget>>,
 
     ///
@@ -868,7 +879,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JdbcTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jdbc_targets: Option<Vec<JdbcTarget>>,
 
     ///
@@ -880,7 +891,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MongoDBTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mongo_dbtargets: Option<Vec<MongoDBTarget>>,
 
     ///
@@ -892,7 +903,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Targets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_targets: Option<Vec<S3Target>>,
 }
 

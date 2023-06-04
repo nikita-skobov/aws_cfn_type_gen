@@ -1,5 +1,6 @@
 /// Specifies a workspace. In a workspace, you can create Grafana       dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to       build, package, or deploy any hardware to run the Grafana server.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkspace {
     ///
     /// Specifies whether the workspace can access AWS resources in this AWS account only, or whether it can also access AWS resources in       other accounts in the same organization. If this is ORGANIZATION, the       OrganizationalUnits parameter specifies which organizational units       the workspace can access.
@@ -36,7 +37,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_sources: Option<Vec<String>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkAccessControl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_access_control: Option<NetworkAccessControl>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationDestinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_destinations: Option<Vec<String>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationRoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_units: Option<Vec<String>>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -179,7 +180,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saml_configuration: Option<SamlConfiguration>,
 
     ///
@@ -191,7 +192,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_set_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -203,7 +204,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<VpcConfiguration>,
 
     #[serde(skip_serializing)]
@@ -417,6 +418,7 @@ impl cfn_resources::CfnResource for CfnWorkspace {
 
 /// A structure that defines which attributes in the IdP assertion are to be used to       define information about the users authenticated by the IdP to use the workspace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssertionAttributes {
     ///
     /// The name of the attribute within the SAML assertion to use as the email names for SAML       users.
@@ -431,7 +433,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Email")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email: Option<cfn_resources::StrVal>,
 
     ///
@@ -447,7 +449,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<cfn_resources::StrVal>,
 
     ///
@@ -463,7 +465,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Login")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub login: Option<cfn_resources::StrVal>,
 
     ///
@@ -479,7 +481,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -495,7 +497,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Org")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub org: Option<cfn_resources::StrVal>,
 
     ///
@@ -511,7 +513,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role: Option<cfn_resources::StrVal>,
 }
 
@@ -663,6 +665,7 @@ impl cfn_resources::CfnResource for AssertionAttributes {
 
 /// A structure containing the identity provider (IdP) metadata used to integrate the       identity provider with this workspace. You can specify the metadata either by providing       a URL to its location in the url parameter, or by specifying the full       metadata in XML format in the xml parameter. Specifying both will cause an       error.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IdpMetadata {
     ///
     /// The URL of the location containing the IdP metadata.
@@ -677,7 +680,7 @@ pub struct IdpMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 
     ///
@@ -689,7 +692,7 @@ pub struct IdpMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Xml")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xml: Option<cfn_resources::StrVal>,
 }
 
@@ -737,6 +740,7 @@ impl cfn_resources::CfnResource for IdpMetadata {
 ///
 /// If this is not configured, or is removed, then all IP addresses and VPC endpoints are       allowed. Standard Grafana authentication and authorization are still       required.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkAccessControl {
     ///
     /// An array of prefix list IDs. A prefix list is a list of CIDR ranges of IP addresses.       The IP addresses specified are allowed to access your workspace. If the list is not       included in the configuration (passed an empty array) then no IP addresses are       allowed to access the workspace. You create a prefix list using the Amazon VPC       console.
@@ -751,7 +755,7 @@ pub struct NetworkAccessControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_list_ids: Option<Vec<String>>,
 
     ///
@@ -769,7 +773,7 @@ pub struct NetworkAccessControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpceIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpce_ids: Option<Vec<String>>,
 }
 
@@ -789,6 +793,7 @@ impl cfn_resources::CfnResource for NetworkAccessControl {
 
 /// This structure defines which groups defined in the SAML assertion attribute are to be       mapped to the Grafana Admin and Editor roles in the workspace.       SAML authenticated users not part of Admin or Editor role       groups have Viewer permission over the workspace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoleValues {
     ///
     /// A list of groups from the SAML assertion attribute to grant the Grafana         Admin role to.
@@ -799,7 +804,7 @@ pub struct RoleValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Admin")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub admin: Option<Vec<String>>,
 
     ///
@@ -811,7 +816,7 @@ pub struct RoleValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Editor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub editor: Option<Vec<String>>,
 }
 
@@ -831,6 +836,7 @@ impl cfn_resources::CfnResource for RoleValues {
 
 /// A structure containing information about how this workspace works with SAML.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SamlConfiguration {
     ///
     /// Lists which organizations defined in the SAML assertion are allowed to use the Amazon Managed Grafana workspace. If this is empty, all organizations in the assertion attribute       have access.
@@ -841,7 +847,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOrganizations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_organizations: Option<Vec<String>>,
 
     ///
@@ -853,7 +859,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssertionAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assertion_attributes: Option<AssertionAttributes>,
 
     ///
@@ -876,7 +882,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoginValidityDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub login_validity_duration: Option<f64>,
 
     ///
@@ -888,7 +894,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_values: Option<RoleValues>,
 }
 
@@ -918,6 +924,7 @@ impl cfn_resources::CfnResource for SamlConfiguration {
 
 /// The configuration settings for an Amazon VPC that contains data sources for       your Grafana workspace to connect to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfiguration {
     ///
     /// The list of Amazon EC2 security group IDs attached to the Amazon VPC       for your Grafana workspace to connect. Duplicates not allowed.

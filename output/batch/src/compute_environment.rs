@@ -4,6 +4,7 @@
 ///
 /// In an unmanaged compute environment, you can manage your own EC2 compute resources and have a lot of flexibility  with how you configure your compute resources. For example, you can use custom AMI. However, you need to verify that  your AMI meets the Amazon ECS container instance AMI specification. For more information, see container instance   AMIs in the Amazon Elastic Container Service Developer Guide. After you have created  your unmanaged compute environment, you can use the DescribeComputeEnvironments operation  to find the Amazon ECS cluster that is associated with it. Then, manually launch your container instances into that  Amazon ECS cluster. For more information, see Launching an Amazon ECS container   instance in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnComputeEnvironment {
     ///
     /// The name for your compute environment. It can be up to 128 characters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
@@ -14,7 +15,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputeEnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeResources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_resources: Option<ComputeResources>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EksConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub eks_configuration: Option<EksConfiguration>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceComputeEnvironment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_compute_environment: Option<bool>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<ComputeEnvironmentStateEnum>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnmanagedvCpus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unmanagedv_cpus: Option<i64>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnComputeEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdatePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_policy: Option<UpdatePolicy>,
 
     #[serde(skip_serializing)]
@@ -220,6 +221,7 @@ impl cfn_resources::CfnResource for CfnComputeEnvironment {
 
 /// Details about the compute resources managed by the compute environment. This parameter is required for managed  compute environments. For more information, see Compute Environments in the         AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComputeResources {
     ///
     /// The allocation strategy to use for the compute resource if not enough instances of the best fitting instance  type can be allocated. This might be because of availability of the instance type in the Region or Amazon EC2 service limits. For  more information, see Allocation   strategies in the   AWS Batch User Guide.
@@ -240,7 +242,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AllocationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_strategy: Option<ComputeResourcesAllocationStrategyEnum>,
 
     ///
@@ -256,7 +258,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "BidPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bid_percentage: Option<i64>,
 
     ///
@@ -274,7 +276,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredvCpus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desiredv_cpus: Option<i64>,
 
     ///
@@ -292,7 +294,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Ec2Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_configuration: Option<Vec<Ec2ConfigurationObject>>,
 
     ///
@@ -308,7 +310,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Ec2KeyPair")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_key_pair: Option<cfn_resources::StrVal>,
 
     ///
@@ -326,7 +328,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -342,7 +344,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -362,7 +364,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_types: Option<Vec<String>>,
 
     ///
@@ -378,7 +380,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -405,7 +407,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinvCpus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minv_cpus: Option<i64>,
 
     ///
@@ -421,7 +423,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PlacementGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -435,7 +437,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -451,7 +453,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotIamFleetRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_iam_fleet_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -482,7 +484,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -517,7 +519,7 @@ pub struct ComputeResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateToLatestImageVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_to_latest_image_version: Option<bool>,
 }
 
@@ -583,6 +585,7 @@ impl cfn_resources::CfnResource for ComputeResources {
 
 /// Provides information used to select Amazon Machine Images (AMIs) for instances in the  compute environment. If Ec2Configuration isn't specified, the default is   ECS_AL2 (Amazon Linux 2).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ec2ConfigurationObject {
     ///
     /// The AMI ID used for instances launched in the compute environment that match the image type.  This setting overrides the imageId set in the computeResource  object.
@@ -599,7 +602,7 @@ pub struct Ec2ConfigurationObject {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageIdOverride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_id_override: Option<cfn_resources::StrVal>,
 
     ///
@@ -615,7 +618,7 @@ pub struct Ec2ConfigurationObject {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageKubernetesVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_kubernetes_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -709,6 +712,7 @@ impl cfn_resources::CfnResource for Ec2ConfigurationObject {
 
 /// Configuration for the Amazon EKS cluster that supports the AWS Batch compute environment. The  cluster must exist before the compute environment can be created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon EKS cluster. An example is   arn:aws:eks:us-east-1:123456789012:cluster/ClusterForBatch       .
@@ -751,6 +755,7 @@ impl cfn_resources::CfnResource for EksConfiguration {
 ///
 /// If security groups are specified using both the securityGroupIds parameter of   CreateComputeEnvironment and the launch template, the values in the   securityGroupIds parameter of CreateComputeEnvironment will be  used.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -761,7 +766,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -773,7 +778,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -791,7 +796,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -811,6 +816,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 
 /// Specifies the infrastructure update policy for the compute environment. For more information  about infrastructure updates, see Updating compute environments in the           AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdatePolicy {
     ///
     /// Specifies the job timeout (in minutes) when the compute environment infrastructure is  updated. The default value is 30.
@@ -821,7 +827,7 @@ pub struct UpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobExecutionTimeoutMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_execution_timeout_minutes: Option<i64>,
 
     ///
@@ -833,7 +839,7 @@ pub struct UpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminateJobsOnUpdate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub terminate_jobs_on_update: Option<bool>,
 }
 

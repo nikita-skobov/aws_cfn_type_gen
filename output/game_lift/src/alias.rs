@@ -1,5 +1,6 @@
 /// The AWS::GameLift::Alias resource creates an alias for an Amazon GameLift    (GameLift) fleet destination. There are two types of routing strategies for aliases: simple    and terminal. A simple alias points to an active fleet. A terminal alias displays a message    instead of routing players to an active fleet. For example, a terminal alias might display a    URL link that directs players to an upgrade site. You can use aliases to define destinations    in a game session queue or when requesting new game sessions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAlias {
     ///
     /// A human-readable description of the alias.
@@ -14,7 +15,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,6 +120,7 @@ impl cfn_resources::CfnResource for CfnAlias {
 
 /// The routing configuration for a fleet alias.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoutingStrategy {
     ///
     /// A unique identifier for a fleet that the alias points to. If you specify    SIMPLE for the Type property, you must specify this    property.
@@ -131,7 +133,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FleetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fleet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +145,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message: Option<cfn_resources::StrVal>,
 
     ///

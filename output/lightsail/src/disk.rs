@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::Disk resource specifies a disk that can be attached to     an Amazon Lightsail instance that is in the same AWS Region     and Availability Zone.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDisk {
     ///
     /// An array of add-ons for the disk.
@@ -12,7 +13,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_ons: Option<Vec<AddOn>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location: Option<Location>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -198,6 +199,7 @@ impl cfn_resources::CfnResource for CfnDisk {
 
 /// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AddOn {
     ///
     /// The add-on type (for example, AutoSnapshot).
@@ -221,7 +223,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSnapshotAddOnRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
 
     ///
@@ -235,7 +237,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<AddOnStatusEnum>,
 }
 
@@ -276,6 +278,7 @@ impl cfn_resources::CfnResource for AddOn {
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoSnapshotAddOn {
     ///
     /// The daily time when an automatic snapshot will be created.
@@ -292,7 +295,7 @@ pub struct AutoSnapshotAddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_time_of_day: Option<cfn_resources::StrVal>,
 }
 
@@ -312,6 +315,7 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
 
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Location {
     /// Property description not available.
     ///
@@ -321,7 +325,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -332,7 +336,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_name: Option<cfn_resources::StrVal>,
 }
 
@@ -358,6 +362,7 @@ impl cfn_resources::CfnResource for Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

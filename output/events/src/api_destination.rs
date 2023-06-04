@@ -6,6 +6,7 @@
 ///
 /// For examples of CloudFormation templates that use secrets, see Examples.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApiDestination {
     ///
     /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
@@ -37,7 +38,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationRateLimitPerSecond")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invocation_rate_limit_per_second: Option<i64>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

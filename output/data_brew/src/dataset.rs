@@ -1,5 +1,6 @@
 /// Specifies a new DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataset {
     ///
     /// The file format of a dataset that is created from an Amazon S3 file or folder.
@@ -12,7 +13,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<DatasetFormatEnum>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_options: Option<FormatOptions>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_options: Option<PathOptions>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -155,6 +156,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 
 /// Represents a set of options that define how DataBrew will read a       comma-separated value (CSV) file when creating a dataset from that file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CsvOptions {
     ///
     /// A single character that specifies the delimiter being used in the CSV file.
@@ -169,7 +171,7 @@ pub struct CsvOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -181,7 +183,7 @@ pub struct CsvOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderRow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header_row: Option<bool>,
 }
 
@@ -223,6 +225,7 @@ impl cfn_resources::CfnResource for CsvOptions {
 
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCatalogInputDefinition {
     ///
     /// The unique identifier of the AWS account that holds the Data Catalog that stores the       data.
@@ -237,7 +240,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -253,7 +256,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -269,7 +272,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -281,7 +284,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -371,6 +374,7 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 
 /// Connection information for dataset input files stored in a database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseInputDefinition {
     ///
     /// The table within the target database.
@@ -381,7 +385,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseTableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -404,7 +408,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -416,7 +420,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -440,6 +444,7 @@ impl cfn_resources::CfnResource for DatabaseInputDefinition {
 
 /// Represents a dataset paramater that defines type and conditions for a parameter in the         Amazon S3 path of the dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetParameter {
     ///
     /// Optional boolean value that defines whether the captured value of this parameter       should be loaded as an additional column in the dataset.
@@ -450,7 +455,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_column: Option<bool>,
 
     ///
@@ -462,7 +467,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatetimeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datetime_options: Option<DatetimeOptions>,
 
     ///
@@ -474,7 +479,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<FilterExpression>,
 
     ///
@@ -522,6 +527,7 @@ impl cfn_resources::CfnResource for DatasetParameter {
 
 /// Represents additional options for correct interpretation of datetime parameters used       in the Amazon S3 path of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatetimeOptions {
     ///
     /// Required option, that defines the datetime format used for a date parameter in the         Amazon S3 path. Should use only supported datetime specifiers and       separation characters, all litera a-z or A-Z character should be escaped with single       quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
@@ -543,7 +549,7 @@ pub struct DatetimeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocaleCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub locale_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -555,7 +561,7 @@ pub struct DatetimeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimezoneOffset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timezone_offset: Option<cfn_resources::StrVal>,
 }
 
@@ -575,6 +581,7 @@ impl cfn_resources::CfnResource for DatetimeOptions {
 
 /// Represents a set of options that define how DataBrew will interpret a Microsoft Excel file when       creating a dataset from that file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExcelOptions {
     ///
     /// A variable that specifies whether the first row in the file is parsed as the       header. If this value is false, column names are auto-generated.
@@ -585,7 +592,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderRow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header_row: Option<bool>,
 
     ///
@@ -599,7 +606,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetIndexes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_indexes: Option<Vec<i64>>,
 
     ///
@@ -613,7 +620,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_names: Option<Vec<String>>,
 }
 
@@ -651,6 +658,7 @@ impl cfn_resources::CfnResource for ExcelOptions {
 
 /// Represents a limit imposed on number of Amazon S3 files that should be       selected for a dataset from a connected Amazon S3 path.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilesLimit {
     ///
     /// The number of Amazon S3 files to select.
@@ -672,7 +680,7 @@ pub struct FilesLimit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order: Option<cfn_resources::StrVal>,
 
     ///
@@ -684,7 +692,7 @@ pub struct FilesLimit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderedBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ordered_by: Option<cfn_resources::StrVal>,
 }
 
@@ -704,6 +712,7 @@ impl cfn_resources::CfnResource for FilesLimit {
 
 /// Represents a structure for defining parameter conditions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterExpression {
     ///
     /// The expression which includes condition names followed by substitution variables,       possibly grouped and combined with other conditions. For example, "(starts_with :prefix1       or starts_with :prefix2) and (ends_with :suffix1 or ends_with :suffix2)". Substitution       variables should start with ':' symbol.
@@ -744,6 +753,7 @@ impl cfn_resources::CfnResource for FilterExpression {
 
 /// Represents a single entry in the ValuesMap of a         FilterExpression. A FilterValue associates the name of a       substitution variable in an expression to its value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterValue {
     ///
     /// The value to be associated with the substitution variable.
@@ -784,6 +794,7 @@ impl cfn_resources::CfnResource for FilterValue {
 
 /// Represents a set of options that define the structure of either comma-separated value (CSV),       Excel, or JSON input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormatOptions {
     ///
     /// Options that define how CSV input is to be interpreted by DataBrew.
@@ -794,7 +805,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csv")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv: Option<CsvOptions>,
 
     ///
@@ -806,7 +817,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excel: Option<ExcelOptions>,
 
     ///
@@ -818,7 +829,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json: Option<JsonOptions>,
 }
 
@@ -844,6 +855,7 @@ impl cfn_resources::CfnResource for FormatOptions {
 
 /// Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or       Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Input {
     ///
     /// The AWS Glue Data Catalog parameters for the data.
@@ -854,7 +866,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     ///
@@ -866,7 +878,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseInputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_input_definition: Option<DatabaseInputDefinition>,
 
     ///
@@ -878,7 +890,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata: Option<Metadata>,
 
     ///
@@ -890,7 +902,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_definition: Option<S3Location>,
 }
 
@@ -926,6 +938,7 @@ impl cfn_resources::CfnResource for Input {
 
 /// Represents the JSON-specific options that define how input is to be interpreted by AWS Glue DataBrew.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonOptions {
     ///
     /// A value that specifies whether JSON input contains embedded new line       characters.
@@ -936,7 +949,7 @@ pub struct JsonOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiLine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_line: Option<bool>,
 }
 
@@ -956,6 +969,7 @@ impl cfn_resources::CfnResource for JsonOptions {
 
 /// Contains additional resource information needed for specific datasets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metadata {
     ///
     /// The Amazon Resource Name (ARN) associated with the dataset. Currently, DataBrew       only supports ARNs from Amazon AppFlow.
@@ -970,7 +984,7 @@ pub struct Metadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1012,6 +1026,7 @@ impl cfn_resources::CfnResource for Metadata {
 
 /// Represents a set of options that define how DataBrew selects files for a       given Amazon S3 path in a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathOptions {
     ///
     /// If provided, this structure imposes a limit on a number of files that should be       selected.
@@ -1022,7 +1037,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilesLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub files_limit: Option<FilesLimit>,
 
     ///
@@ -1034,7 +1049,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedDateCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_modified_date_condition: Option<FilterExpression>,
 
     ///
@@ -1046,7 +1061,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Vec<PathParameter>>,
 }
 
@@ -1074,6 +1089,7 @@ impl cfn_resources::CfnResource for PathOptions {
 
 /// Represents a single entry in the path parameters of a dataset. Each         PathParameter consists of a name and a parameter definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathParameter {
     ///
     /// The path parameter definition.
@@ -1116,6 +1132,7 @@ impl cfn_resources::CfnResource for PathParameter {
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The Amazon S3 bucket name.
@@ -1145,7 +1162,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 }
 
@@ -1215,6 +1232,7 @@ impl cfn_resources::CfnResource for S3Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

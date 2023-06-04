@@ -1,5 +1,6 @@
 /// The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup,       which contains a name, description, creation time, state, and other configuration,       listed under WorkGroupConfiguration. Each workgroup enables you to       isolate queries for you or your group from other queries in the same account. For more       information, see CreateWorkGroup in       the Amazon Athena API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkGroup {
     ///
     /// The workgroup description.
@@ -14,7 +15,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecursiveDeleteOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recursive_delete_option: Option<bool>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<WorkGroupStateEnum>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkGroupConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub work_group_configuration: Option<WorkGroupConfiguration>,
 
     #[serde(skip_serializing)]
@@ -163,6 +164,7 @@ impl cfn_resources::CfnResource for CfnWorkGroup {
 
 /// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AclConfiguration {
     /// Property description not available.
     ///
@@ -191,6 +193,7 @@ impl cfn_resources::CfnResource for AclConfiguration {
 
 /// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomerContentEncryptionConfiguration {
     /// Property description not available.
     ///
@@ -219,6 +222,7 @@ impl cfn_resources::CfnResource for CustomerContentEncryptionConfiguration {
 
 /// If query results are encrypted in Amazon S3, indicates the encryption option used (for       example, SSE_KMS or CSE_KMS) and key information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys         (SSE_S3), server-side encryption with KMS-managed keys         (SSE_KMS), or client-side encryption with KMS-managed keys         (CSE_KMS) is used.
@@ -244,7 +248,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 }
 
@@ -285,6 +289,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
 /// The Athena engine version for running queries, or the PySpark engine       version for running sessions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EngineVersion {
     ///
     /// Read only. The engine version on which the query runs. If the user requests a valid       engine version other than Auto, the effective engine version is the same as the engine       version that the user requested. If the user requests Auto, the effective engine version       is chosen by Athena. When a request to update the engine version is made by       a CreateWorkGroup or UpdateWorkGroup operation, the         EffectiveEngineVersion field is ignored.
@@ -299,7 +304,7 @@ pub struct EngineVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EffectiveEngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub effective_engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -315,7 +320,7 @@ pub struct EngineVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedEngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_engine_version: Option<cfn_resources::StrVal>,
 }
 
@@ -367,6 +372,7 @@ impl cfn_resources::CfnResource for EngineVersion {
 
 /// The location in Amazon S3 where query and calculation results are stored and the encryption       option, if any, used for query and calculation results. These are known as "client-side settings". If       workgroup settings override client-side settings, then the query uses the workgroup       settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResultConfiguration {
     /// Property description not available.
     ///
@@ -376,7 +382,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acl_configuration: Option<AclConfiguration>,
 
     ///
@@ -388,7 +394,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     /// Property description not available.
@@ -399,7 +405,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpectedBucketOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expected_bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -411,7 +417,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_location: Option<cfn_resources::StrVal>,
 }
 
@@ -445,6 +451,7 @@ impl cfn_resources::CfnResource for ResultConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -483,6 +490,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkGroupConfiguration {
     /// Property description not available.
     ///
@@ -492,7 +500,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -506,7 +514,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BytesScannedCutoffPerQuery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bytes_scanned_cutoff_per_query: Option<i64>,
 
     /// Property description not available.
@@ -517,7 +525,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerContentEncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_content_encryption_configuration: Option<CustomerContentEncryptionConfiguration>,
 
     ///
@@ -529,7 +537,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceWorkGroupConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enforce_work_group_configuration: Option<bool>,
 
     /// Property description not available.
@@ -540,7 +548,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<EngineVersion>,
 
     /// Property description not available.
@@ -551,7 +559,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -563,7 +571,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishCloudWatchMetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publish_cloud_watch_metrics_enabled: Option<bool>,
 
     ///
@@ -575,7 +583,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequesterPaysEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requester_pays_enabled: Option<bool>,
 
     ///
@@ -587,7 +595,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResultConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub result_configuration: Option<ResultConfiguration>,
 }
 

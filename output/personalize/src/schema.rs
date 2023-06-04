@@ -4,6 +4,7 @@
 ///
 /// For more information on schemas, see    Datasets and schemas.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchema {
     ///
     /// The domain of a schema that you created for a dataset in a Domain dataset group.
@@ -16,7 +17,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain: Option<SchemaDomainEnum>,
 
     ///

@@ -2,6 +2,7 @@
 ///
 /// A delegated admin is authorized to invoke this command.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPortfolioProductAssociation {
     ///
     /// The language code.
@@ -16,7 +17,7 @@ pub struct CfnPortfolioProductAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnPortfolioProductAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePortfolioId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_portfolio_id: Option<cfn_resources::StrVal>,
 }
 

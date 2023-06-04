@@ -4,6 +4,7 @@
 ///
 /// The headers, cookies, and query strings that are included in the cache key are also included 			in requests that CloudFront sends to the origin. CloudFront sends a request when it can't find a 			valid object in its cache that matches the request's cache key. If you want to send 			values to the origin but not include them in the cache key, use 			OriginRequestPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCachePolicy {
     ///
     /// The cache policy configuration.
@@ -61,6 +62,7 @@ impl cfn_resources::CfnResource for CfnCachePolicy {
 ///
 /// The headers, cookies, and query strings that are included in the cache key are also included 			in requests that CloudFront sends to the origin. CloudFront sends a request when it can't find a 			valid object in its cache that matches the request's cache key. If you want to send 			values to the origin but not include them in the cache key, use 			OriginRequestPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CachePolicyConfig {
     ///
     /// A comment to describe the cache policy. The comment cannot be longer than 128 			characters.
@@ -71,7 +73,7 @@ pub struct CachePolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,6 +155,7 @@ impl cfn_resources::CfnResource for CachePolicyConfig {
 
 /// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CookiesConfig {
     ///
     /// Determines whether any cookies in viewer requests are included in the cache key and in 			requests that CloudFront sends to the origin. Valid values are:
@@ -178,7 +181,7 @@ pub struct CookiesConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cookies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cookies: Option<Vec<String>>,
 }
 
@@ -223,6 +226,7 @@ impl cfn_resources::CfnResource for CookiesConfig {
 
 /// An object that determines whether any HTTP headers (and if so, which headers) are included 			in the cache key and in requests that CloudFront sends to the origin.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeadersConfig {
     ///
     /// Determines whether any HTTP headers are included in the cache key and in requests that CloudFront 			sends to the origin. Valid values are:
@@ -248,7 +252,7 @@ pub struct HeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub headers: Option<Vec<String>>,
 }
 
@@ -287,6 +291,7 @@ impl cfn_resources::CfnResource for HeadersConfig {
 ///
 /// The headers, cookies, and query strings that are included in the cache key are also included 			in requests that CloudFront sends to the origin. CloudFront sends a request when it can't find an 			object in its cache that matches the request's cache key. If you want to send values to 			the origin but not include them in the cache key, use 			OriginRequestPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParametersInCacheKeyAndForwardedToOrigin {
     ///
     /// An object that determines whether any cookies in viewer requests (and if so, which cookies) 			are included in the cache key and in requests that CloudFront sends to the origin.
@@ -318,7 +323,7 @@ pub struct ParametersInCacheKeyAndForwardedToOrigin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAcceptEncodingBrotli")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_accept_encoding_brotli: Option<bool>,
 
     ///
@@ -387,6 +392,7 @@ impl cfn_resources::CfnResource for ParametersInCacheKeyAndForwardedToOrigin {
 
 /// An object that determines whether any URL query strings in viewer requests (and if so, which 			query strings) are included in the cache key and in requests that CloudFront sends to the 			origin.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryStringsConfig {
     ///
     /// Determines whether any URL query strings in viewer requests are included in the cache key 			and in requests that CloudFront sends to the origin. Valid values are:
@@ -412,7 +418,7 @@ pub struct QueryStringsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStrings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_strings: Option<Vec<String>>,
 }
 

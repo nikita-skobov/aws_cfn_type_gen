@@ -1,5 +1,6 @@
 /// The AWS::SSMIncidents::ReplicationSet resource specifies a set of Regions       that Incident Manager data is replicated to and the KMS key used to encrypt       the data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnReplicationSet {
     ///
     /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
@@ -10,7 +11,7 @@ pub struct CfnReplicationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protected: Option<bool>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnReplicationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -64,6 +65,7 @@ impl cfn_resources::CfnResource for CfnReplicationSet {
 
 /// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RegionConfiguration {
     ///
     /// The KMS key ID to use to encrypt your replication set.
@@ -93,6 +95,7 @@ impl cfn_resources::CfnResource for RegionConfiguration {
 
 /// The ReplicationRegion property type specifies the Region and KMS key to       add to the replication set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationRegion {
     ///
     /// Specifies the Region configuration.
@@ -103,7 +106,7 @@ pub struct ReplicationRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_configuration: Option<RegionConfiguration>,
 
     ///
@@ -115,7 +118,7 @@ pub struct ReplicationRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_name: Option<cfn_resources::StrVal>,
 }
 
@@ -145,6 +148,7 @@ impl cfn_resources::CfnResource for ReplicationRegion {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

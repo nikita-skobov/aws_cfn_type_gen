@@ -2,6 +2,7 @@
 ///
 /// Now run the following Python 3.6 script in the folder where you saved config-file.txt. This script uses the properties specified in config-file.txt to create a configuration named SalesClusterConfiguration. This configuration can work with Apache Kafka versions 1.1.1 and 2.1.0.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfiguration {
     ///
     /// The description of the configuration.
@@ -12,7 +13,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -23,7 +24,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KafkaVersionsList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kafka_versions_list: Option<Vec<String>>,
 
     ///

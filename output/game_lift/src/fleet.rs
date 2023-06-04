@@ -1,5 +1,6 @@
 /// The AWS::GameLift::Fleet resource creates an Amazon GameLift (GameLift) fleet to host      custom game server or Realtime Servers. A fleet is a set of EC2 instances, configured with instructions to      run game servers on each instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFleet {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnywhereConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anywhere_configuration: Option<AnywhereConfiguration>,
 
     ///
@@ -23,7 +24,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BuildId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub build_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_configuration: Option<CertificateConfiguration>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_type: Option<FleetComputeTypeEnum>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredEC2Instances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_ec2_instances: Option<i64>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2InboundPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_inbound_permissions: Option<Vec<IpPermission>>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_instance_type: Option<FleetEC2InstanceTypeEnum>,
 
     ///
@@ -125,7 +126,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FleetType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fleet_type: Option<FleetFleetTypeEnum>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceRoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Locations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub locations: Option<Vec<LocationConfiguration>>,
 
     ///
@@ -169,7 +170,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_size: Option<i64>,
 
     ///
@@ -183,7 +184,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_groups: Option<Vec<String>>,
 
     ///
@@ -197,7 +198,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_size: Option<i64>,
 
     ///
@@ -228,7 +229,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewGameSessionProtectionPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub new_game_session_protection_policy: Option<FleetNewGameSessionProtectionPolicyEnum>,
 
     ///
@@ -244,7 +245,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcAwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_vpc_aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +261,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub peer_vpc_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -272,7 +273,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceCreationLimitPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_creation_limit_policy: Option<ResourceCreationLimitPolicy>,
 
     ///
@@ -286,7 +287,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_configuration: Option<RuntimeConfiguration>,
 
     ///
@@ -302,7 +303,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScriptId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub script_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -1009,6 +1010,7 @@ impl cfn_resources::CfnResource for CfnFleet {
 
 /// Amazon GameLift Anywhere configuration options for your Anywhere fleets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnywhereConfiguration {
     ///
     /// The cost to run your fleet per hour. Amazon GameLift uses the provided cost of your fleet to       balance usage in queues. For more information about queues, see Setting         up queues in the Amazon GameLift Developer Guide.
@@ -1066,6 +1068,7 @@ impl cfn_resources::CfnResource for AnywhereConfiguration {
 
 /// Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be       enabled when creating the fleet. All instances in a fleet share the same       certificate. The certificate can be retrieved by calling the         GameLift Server         SDK operation GetInstanceCertificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CertificateConfiguration {
     ///
     /// Indicates whether a TLS/SSL certificate is generated for a fleet.
@@ -1118,6 +1121,7 @@ impl cfn_resources::CfnResource for CertificateConfiguration {
 
 /// A range of IP addresses and port settings that allow inbound traffic to connect to    server processes on an instance in a fleet. New game sessions are assigned an IP    address/port number combination, which must fall into the fleet's allowed ranges. Fleets    with custom game builds must have permissions explicitly set. For Realtime Servers fleets, GameLift    automatically opens two port ranges, one for TCP messaging and one for UDP.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IpPermission {
     ///
     /// A starting value for a range of allowed port numbers.
@@ -1257,6 +1261,7 @@ impl cfn_resources::CfnResource for IpPermission {
 ///
 /// DescribeFleetCapacity | DescribeFleetLocationCapacity | UpdateFleetCapacity
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocationCapacity {
     ///
     /// The number of Amazon EC2 instances you want to maintain in the specified fleet location.       This value must fall between the minimum and maximum size limits.
@@ -1341,6 +1346,7 @@ impl cfn_resources::CfnResource for LocationCapacity {
 
 /// A remote location where a multi-location fleet can deploy game servers for game       hosting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocationConfiguration {
     ///
     /// An AWS Region code, such as us-west-2.
@@ -1372,7 +1378,7 @@ pub struct LocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location_capacity: Option<LocationCapacity>,
 }
 
@@ -1420,6 +1426,7 @@ impl cfn_resources::CfnResource for LocationConfiguration {
 ///
 /// The policy is evaluated when a player tries to create a new game session. For example,    assume you have a policy of 10 new game sessions and a time period of 60 minutes. On receiving    a CreateGameSession request, Amazon GameLift checks that the player (identified    by CreatorId) has created fewer than 10 game sessions in the past 60    minutes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceCreationLimitPolicy {
     ///
     /// A policy that puts limits on the number of game sessions that a player can create       within a specified span of time. With this policy, you can control players' ability to       consume available resources.
@@ -1434,7 +1441,7 @@ pub struct ResourceCreationLimitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewGameSessionsPerCreator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub new_game_sessions_per_creator: Option<i64>,
 
     ///
@@ -1448,7 +1455,7 @@ pub struct ResourceCreationLimitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyPeriodInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_period_in_minutes: Option<i64>,
 }
 
@@ -1485,6 +1492,7 @@ impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
 ///
 /// A GameLift instance is limited to 50 processes running concurrently. To calculate the    total number of processes in a runtime configuration, add the values of the    ConcurrentExecutions parameter for each ServerProcess. Learn more about     Running Multiple     Processes on a Fleet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuntimeConfiguration {
     ///
     /// The maximum amount of time (in seconds) allowed to launch a new game session and have       it report ready to host players. During this time, the game session is in status         ACTIVATING. If the game session does not become active before the       timeout, it is ended and the game session status is changed to       TERMINATED.
@@ -1499,7 +1507,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionActivationTimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub game_session_activation_timeout_seconds: Option<i64>,
 
     ///
@@ -1515,7 +1523,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentGameSessionActivations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_game_session_activations: Option<i64>,
 
     ///
@@ -1529,7 +1537,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerProcesses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_processes: Option<Vec<ServerProcess>>,
 }
 
@@ -1582,6 +1590,7 @@ impl cfn_resources::CfnResource for RuntimeConfiguration {
 
 /// A set of instructions for launching server processes on each instance in a fleet.       Server processes run either an executable in a custom game build or a Realtime Servers script.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerProcess {
     ///
     /// The number of server processes using this configuration that run concurrently on each       instance.
@@ -1630,7 +1639,7 @@ pub struct ServerProcess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<cfn_resources::StrVal>,
 }
 

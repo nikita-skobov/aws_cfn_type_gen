@@ -1,5 +1,6 @@
 /// The AWS::AmplifyUIBuilder::Component resource specifies a component within an Amplify app.    A component is a user interface (UI) element that you can customize. Use     ComponentChild to configure an instance of a Component. A     ComponentChild instance inherits the configuration of the main     Component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnComponent {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub children: Option<Vec<ComponentChild>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collection_properties:
         Option<std::collections::HashMap<String, ComponentDataConfiguration>>,
 
@@ -69,7 +70,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -192,6 +193,7 @@ impl cfn_resources::CfnResource for CfnComponent {
 
 /// Represents the event action configuration for an element of a Component or     ComponentChild. Use for the workflow feature in Amplify Studio    that allows you to bind events and actions to components. ActionParameters    defines the action that is performed when an event occurs on the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionParameters {
     ///
     /// The HTML anchor link to the location to open. Specify this value for a navigation    action.
@@ -202,7 +204,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Anchor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anchor: Option<ComponentProperty>,
 
     ///
@@ -214,7 +216,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Fields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fields: Option<std::collections::HashMap<String, ComponentProperty>>,
 
     ///
@@ -226,7 +228,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Global")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global: Option<ComponentProperty>,
 
     ///
@@ -238,7 +240,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<ComponentProperty>,
 
     ///
@@ -250,7 +252,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model: Option<cfn_resources::StrVal>,
 
     ///
@@ -262,7 +264,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<MutationActionSetStateParameter>,
 
     ///
@@ -274,7 +276,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<ComponentProperty>,
 
     ///
@@ -286,7 +288,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ComponentProperty>,
 
     ///
@@ -298,7 +300,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<ComponentProperty>,
 }
 
@@ -334,6 +336,7 @@ impl cfn_resources::CfnResource for ActionParameters {
 
 /// The ComponentBindingPropertiesValue property specifies the data binding configuration for a component at runtime. You can use     ComponentBindingPropertiesValue to add exposed properties to a component to    allow different values to be entered when a component is reused in different places in an    app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentBindingPropertiesValue {
     ///
     /// Describes the properties to customize with data at runtime.
@@ -344,7 +347,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BindingProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub binding_properties: Option<ComponentBindingPropertiesValueProperties>,
 
     ///
@@ -356,7 +359,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -368,7 +371,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -392,6 +395,7 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
 
 /// The ComponentBindingPropertiesValueProperties property specifies the data    binding configuration for a specific property using data stored in AWS. For     AWS connected properties, you can bind a property to data stored in an     Amazon S3 bucket, an Amplify DataStore model or an authenticated user    attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// An Amazon S3 bucket.
@@ -402,7 +406,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -414,7 +418,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -426,7 +430,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -438,7 +442,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -450,7 +454,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model: Option<cfn_resources::StrVal>,
 
     ///
@@ -462,7 +466,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predicates: Option<Vec<Predicate>>,
 
     ///
@@ -474,7 +478,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attribute: Option<cfn_resources::StrVal>,
 }
 
@@ -494,6 +498,7 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
 
 /// The ComponentChild property specifies a nested UI configuration within a    parent Component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentChild {
     ///
     /// The list of ComponentChild instances for this component.
@@ -504,7 +509,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub children: Option<Vec<ComponentChild>>,
 
     ///
@@ -527,7 +532,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
     ///
@@ -569,6 +574,7 @@ impl cfn_resources::CfnResource for ComponentChild {
 
 /// The ComponentConditionProperty property specifies a conditional expression    for setting a component property. Use ComponentConditionProperty to set a    property to different values conditionally, based on the value of another property.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentConditionProperty {
     ///
     /// The value to assign to the property if the condition is not met.
@@ -579,7 +585,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Else")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_else: Option<ComponentProperty>,
 
     ///
@@ -591,7 +597,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -603,7 +609,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operand: Option<cfn_resources::StrVal>,
 
     ///
@@ -615,7 +621,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperandType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operand_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -627,7 +633,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operator: Option<cfn_resources::StrVal>,
 
     ///
@@ -639,7 +645,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property: Option<cfn_resources::StrVal>,
 
     ///
@@ -651,7 +657,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Then")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub then: Option<ComponentProperty>,
 }
 
@@ -677,6 +683,7 @@ impl cfn_resources::CfnResource for ComponentConditionProperty {
 
 /// The ComponentDataConfiguration property specifies the configuration for    binding a component's properties to data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentDataConfiguration {
     ///
     /// A list of IDs to use to bind data to a component. Use this property to bind specifically    chosen data, rather than data retrieved from a query.
@@ -687,7 +694,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifiers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identifiers: Option<Vec<String>>,
 
     ///
@@ -710,7 +717,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predicate: Option<Predicate>,
 
     ///
@@ -722,7 +729,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort: Option<Vec<SortProperty>>,
 }
 
@@ -746,6 +753,7 @@ impl cfn_resources::CfnResource for ComponentDataConfiguration {
 
 /// The ComponentEvent property specifies the configuration of an event. You can bind an event and a corresponding    action to a Component or a ComponentChild. A button click    is an example of an event.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentEvent {
     ///
     /// The action to perform when a specific event is raised.
@@ -756,7 +764,7 @@ pub struct ComponentEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<cfn_resources::StrVal>,
 
     ///
@@ -768,7 +776,7 @@ pub struct ComponentEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<ActionParameters>,
 }
 
@@ -792,6 +800,7 @@ impl cfn_resources::CfnResource for ComponentEvent {
 
 /// The ComponentProperty property specifies the configuration for all of a    component's properties. Use ComponentProperty to specify the values to render or    bind by default.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentProperty {
     ///
     /// The information to bind the component property to data at runtime.
@@ -802,7 +811,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BindingProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub binding_properties: Option<ComponentPropertyBindingProperties>,
 
     ///
@@ -814,7 +823,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bindings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bindings: Option<std::collections::HashMap<String, FormBindingElement>>,
 
     ///
@@ -826,7 +835,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionBindingProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collection_binding_properties: Option<ComponentPropertyBindingProperties>,
 
     ///
@@ -838,7 +847,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -850,7 +859,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Concat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub concat: Option<Vec<ComponentProperty>>,
 
     ///
@@ -862,7 +871,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition: Option<Box<ComponentConditionProperty>>,
 
     ///
@@ -874,7 +883,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configured: Option<bool>,
 
     ///
@@ -886,7 +895,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -898,7 +907,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Event")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event: Option<cfn_resources::StrVal>,
 
     ///
@@ -910,7 +919,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportedValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub imported_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -922,7 +931,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model: Option<cfn_resources::StrVal>,
 
     ///
@@ -934,7 +943,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property: Option<cfn_resources::StrVal>,
 
     ///
@@ -946,7 +955,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -958,7 +967,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attribute: Option<cfn_resources::StrVal>,
 
     ///
@@ -970,7 +979,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1002,6 +1011,7 @@ impl cfn_resources::CfnResource for ComponentProperty {
 
 /// The ComponentPropertyBindingProperties property specifies a component    property to associate with a binding property. This enables exposed properties on the top    level component to propagate data to the component's property values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentPropertyBindingProperties {
     ///
     /// The data field to bind the property to.
@@ -1012,7 +1022,7 @@ pub struct ComponentPropertyBindingProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1043,6 +1053,7 @@ impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
 
 /// The ComponentVariant property specifies the style configuration of a unique    variation of a main component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentVariant {
     ///
     /// The properties of the component variant that can be overriden when customizing an instance    of the component. You can't specify tags as a valid property for     overrides.
@@ -1053,7 +1064,7 @@ pub struct ComponentVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overrides: Option<serde_json::Value>,
 
     ///
@@ -1065,7 +1076,7 @@ pub struct ComponentVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariantValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variant_values: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1085,6 +1096,7 @@ impl cfn_resources::CfnResource for ComponentVariant {
 
 /// The FormBindingElement property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormBindingElement {
     /// Property description not available.
     ///
@@ -1123,6 +1135,7 @@ impl cfn_resources::CfnResource for FormBindingElement {
 
 /// Represents the state configuration when an action modifies a property of another element    within the same component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MutationActionSetStateParameter {
     ///
     /// The name of the component that is being modified.
@@ -1176,6 +1189,7 @@ impl cfn_resources::CfnResource for MutationActionSetStateParameter {
 
 /// The Predicate property specifies information for generating Amplify DataStore queries. Use Predicate to retrieve a subset of the    data in a collection.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Predicate {
     ///
     /// A list of predicates to combine logically.
@@ -1186,7 +1200,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "And")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub and: Option<Vec<Predicate>>,
 
     ///
@@ -1198,7 +1212,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1210,7 +1224,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operand: Option<cfn_resources::StrVal>,
 
     ///
@@ -1222,7 +1236,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operator: Option<cfn_resources::StrVal>,
 
     ///
@@ -1234,7 +1248,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Or")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub or: Option<Vec<Predicate>>,
 }
 
@@ -1254,6 +1268,7 @@ impl cfn_resources::CfnResource for Predicate {
 
 /// The SortProperty property specifies how to sort the data that you bind to a    component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SortProperty {
     ///
     /// The direction of the sort, either ascending or descending.

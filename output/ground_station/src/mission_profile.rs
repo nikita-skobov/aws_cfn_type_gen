@@ -1,5 +1,6 @@
 /// Mission profiles specify parameters and provide references to config objects to define how Ground Station lists and executes contacts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMissionProfile {
     ///
     /// Amount of time in seconds after a contact ends that you’d like to receive a CloudWatch Event indicating the pass has finished.       For more information on CloudWatch Events, see the What Is CloudWatch Events?
@@ -10,7 +11,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPostPassDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contact_post_pass_duration_seconds: Option<i64>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPrePassDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contact_pre_pass_duration_seconds: Option<i64>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamsKmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub streams_kms_key: Option<StreamsKmsKey>,
 
     /// Property description not available.
@@ -77,7 +78,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamsKmsRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub streams_kms_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -157,6 +158,7 @@ impl cfn_resources::CfnResource for CfnMissionProfile {
 
 /// A dataflow edge defines from where and to where data will flow during a contact.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataflowEdge {
     ///
     /// The ARN of the destination for this dataflow edge.       For example, specify the ARN of a dataflow endpoint config for a downlink edge or an antenna uplink config for an uplink edge.
@@ -167,7 +169,7 @@ pub struct DataflowEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -179,7 +181,7 @@ pub struct DataflowEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source: Option<cfn_resources::StrVal>,
 }
 
@@ -199,6 +201,7 @@ impl cfn_resources::CfnResource for DataflowEdge {
 
 /// The StreamsKmsKey property type specifies Property description not available. for an AWS::GroundStation::MissionProfile.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamsKmsKey {
     /// Property description not available.
     ///
@@ -208,7 +211,7 @@ pub struct StreamsKmsKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsAliasArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_alias_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -219,7 +222,7 @@ pub struct StreamsKmsKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -245,6 +248,7 @@ impl cfn_resources::CfnResource for StreamsKmsKey {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// You must create an AWS::Macie::Session resource for an account before you       can create other types of resources for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSession {
     ///
     /// Specifies how often Amazon Macie publishes updates to policy findings for       the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events). Valid values are:
@@ -14,7 +15,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub finding_publishing_frequency: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

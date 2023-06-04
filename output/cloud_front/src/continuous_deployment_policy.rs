@@ -4,6 +4,7 @@
 ///
 /// For more information, see Using       CloudFront continuous deployment to safely test CDN configuration changes       in the Amazon CloudFront Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnContinuousDeploymentPolicy {
     ///
     /// Contains the configuration for a continuous deployment policy.
@@ -57,6 +58,7 @@ impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {
 
 /// Contains the configuration for a continuous deployment policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContinuousDeploymentPolicyConfig {
     ///
     /// A Boolean that indicates whether this continuous deployment policy is enabled (in 			effect). When this value is true, this policy is enabled and in effect. 			When this value is false, this policy is not enabled and has no 			effect.
@@ -89,7 +91,7 @@ pub struct ContinuousDeploymentPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub traffic_config: Option<TrafficConfig>,
 }
 
@@ -113,6 +115,7 @@ impl cfn_resources::CfnResource for ContinuousDeploymentPolicyConfig {
 
 /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SessionStickinessConfig {
     ///
     /// The amount of time after which you want sessions to cease if no requests are 			received. Allowed values are 300–3600 seconds (5–60 minutes).
@@ -153,6 +156,7 @@ impl cfn_resources::CfnResource for SessionStickinessConfig {
 
 /// Determines which HTTP requests are sent to the staging distribution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleHeaderConfig {
     ///
     /// The request header name that you want CloudFront to send to your staging 			distribution. The header must contain the prefix aws-cf-cd-.
@@ -193,6 +197,7 @@ impl cfn_resources::CfnResource for SingleHeaderConfig {
 
 /// This configuration determines the percentage of HTTP requests that are sent to the       staging distribution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleWeightConfig {
     ///
     /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
@@ -203,7 +208,7 @@ pub struct SingleWeightConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_stickiness_config: Option<SessionStickinessConfig>,
 
     ///
@@ -238,6 +243,7 @@ impl cfn_resources::CfnResource for SingleWeightConfig {
 
 /// The traffic configuration of your continuous deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrafficConfig {
     ///
     /// Determines which HTTP requests are sent to the staging distribution.
@@ -248,7 +254,7 @@ pub struct TrafficConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeaderConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_header_config: Option<SingleHeaderConfig>,
 
     ///
@@ -260,7 +266,7 @@ pub struct TrafficConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleWeightConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_weight_config: Option<SingleWeightConfig>,
 
     ///

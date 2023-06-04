@@ -2,6 +2,7 @@
 ///
 /// After you associate the options with the VPC, any existing instances and all new     instances that you launch in that VPC use the options. You don't need to restart or     relaunch the instances. They automatically pick up the changes within a few hours,     depending on how frequently the instance renews its DHCP lease. You can explicitly renew     the lease using the operating system on the instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPCDHCPOptionsAssociation {
     ///
     /// The ID of the DHCP options set, or default to associate     no DHCP options with the VPC.

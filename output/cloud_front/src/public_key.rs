@@ -1,5 +1,6 @@
 /// A public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPublicKey {
     ///
     /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
@@ -53,6 +54,7 @@ impl cfn_resources::CfnResource for CfnPublicKey {
 
 /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicKeyConfig {
     ///
     /// A string included in the request to help make sure that the request can't be 			replayed.
@@ -74,7 +76,7 @@ pub struct PublicKeyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///

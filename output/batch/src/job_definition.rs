@@ -1,5 +1,6 @@
 /// The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job  definition. For more information, see Job Definitions in the AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJobDefinition {
     ///
     /// An object with various properties specific to Amazon ECS based jobs. Valid values are   containerProperties, eksProperties, and nodeProperties.  Only one can be specified.
@@ -10,7 +11,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_properties: Option<ContainerProperties>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EksProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub eks_properties: Option<EksProperties>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobDefinitionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_definition_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub node_properties: Option<NodeProperties>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformCapabilities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_capabilities: Option<Vec<String>>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub propagate_tags: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_strategy: Option<RetryStrategy>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulingPriority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduling_priority: Option<i64>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<Timeout>,
 
     ///
@@ -202,6 +203,7 @@ impl cfn_resources::CfnResource for CfnJobDefinition {
 
 /// The authorization configuration details for the Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthorizationConfig {
     ///
     /// The Amazon EFS access point ID to use. If an access point is specified, the root directory value  specified in the EFSVolumeConfiguration must either be omitted or set to   / which enforces the path set on the EFS access point. If an access point is used,  transit encryption must be enabled in the EFSVolumeConfiguration. For more  information, see Working   with Amazon EFS access points in the Amazon Elastic File System User Guide.
@@ -212,7 +214,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_point_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -226,7 +228,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iam")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam: Option<AuthorizationConfigIamEnum>,
 }
 
@@ -263,6 +265,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 
 /// Container properties are used  for  Amazon ECS based job definitions. These properties to describe the container that's  launched as part of a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerProperties {
     ///
     /// The command that's passed to the container. This parameter maps to Cmd in the  Create a container section of the Docker Remote API and the COMMAND  parameter to docker run. For more information, see   https://docs.docker.com/engine/reference/builder/#cmd.
@@ -273,7 +276,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -289,7 +292,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Vec<Environment>>,
 
     /// Property description not available.
@@ -300,7 +303,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EphemeralStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ephemeral_storage: Option<EphemeralStorage>,
 
     ///
@@ -312,7 +315,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +327,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FargatePlatformConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fargate_platform_configuration: Option<FargatePlatformConfiguration>,
 
     ///
@@ -353,7 +356,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -365,7 +368,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -377,7 +380,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinuxParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub linux_parameters: Option<LinuxParameters>,
 
     ///
@@ -397,7 +400,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_configuration: Option<LogConfiguration>,
 
     ///
@@ -409,7 +412,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory: Option<i64>,
 
     ///
@@ -421,7 +424,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_points: Option<Vec<MountPoints>>,
 
     ///
@@ -433,7 +436,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -447,7 +450,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Privileged")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub privileged: Option<bool>,
 
     ///
@@ -459,7 +462,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadonlyRootFilesystem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub readonly_root_filesystem: Option<bool>,
 
     ///
@@ -471,7 +474,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceRequirements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_requirements: Option<Vec<ResourceRequirement>>,
 
     ///
@@ -483,7 +486,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Secrets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets: Option<Vec<Secret>>,
 
     ///
@@ -497,7 +500,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ulimits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ulimits: Option<Vec<Ulimit>>,
 
     ///
@@ -509,7 +512,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "User")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user: Option<cfn_resources::StrVal>,
 
     ///
@@ -523,7 +526,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vcpus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vcpus: Option<i64>,
 
     ///
@@ -535,7 +538,7 @@ pub struct ContainerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes: Option<Vec<Volumes>>,
 }
 
@@ -575,6 +578,7 @@ impl cfn_resources::CfnResource for ContainerProperties {
 
 /// An object that represents a container instance host device.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Device {
     ///
     /// The path inside the container that's used to expose the host device. By default, the   hostPath value is used.
@@ -585,7 +589,7 @@ pub struct Device {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -597,7 +601,7 @@ pub struct Device {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -609,7 +613,7 @@ pub struct Device {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<String>>,
 }
 
@@ -629,6 +633,7 @@ impl cfn_resources::CfnResource for Device {
 
 /// This is used when you're using an Amazon Elastic File System file system for job storage. For more  information, see Amazon EFS   Volumes in the         AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EfsVolumeConfiguration {
     ///
     /// The authorization configuration details for the Amazon EFS file system.
@@ -639,7 +644,7 @@ pub struct EfsVolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_config: Option<AuthorizationConfig>,
 
     ///
@@ -664,7 +669,7 @@ pub struct EfsVolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_directory: Option<cfn_resources::StrVal>,
 
     ///
@@ -676,7 +681,7 @@ pub struct EfsVolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_encryption: Option<cfn_resources::StrVal>,
 
     ///
@@ -688,7 +693,7 @@ pub struct EfsVolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_encryption_port: Option<i64>,
 }
 
@@ -712,6 +717,7 @@ impl cfn_resources::CfnResource for EfsVolumeConfiguration {
 
 /// EKS container properties are used in job definitions for Amazon EKS based job definitions to  describe the properties for a container node in the pod that's launched as part of a job. This  can't be specified for Amazon ECS based job definitions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksContainer {
     ///
     /// An array of arguments to the entrypoint. If this isn't specified, the CMD of  the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod  in Kubernetes. Environment variable references are expanded using the container's environment.
@@ -724,7 +730,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Args")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub args: Option<Vec<String>>,
 
     ///
@@ -738,7 +744,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -752,7 +758,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Env")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub env: Option<Vec<EksContainerEnvironmentVariable>>,
 
     ///
@@ -775,7 +781,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImagePullPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_pull_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -787,7 +793,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -799,7 +805,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources: Option<EksContainerResourceRequirements>,
 
     ///
@@ -811,7 +817,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityContext")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_context: Option<EksContainerSecurityContext>,
 
     ///
@@ -823,7 +829,7 @@ pub struct EksContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeMounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_mounts: Option<Vec<EksContainerVolumeMount>>,
 }
 
@@ -851,6 +857,7 @@ impl cfn_resources::CfnResource for EksContainer {
 
 /// An environment variable.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksContainerEnvironmentVariable {
     ///
     /// The name of the environment variable.
@@ -872,7 +879,7 @@ pub struct EksContainerEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -892,6 +899,7 @@ impl cfn_resources::CfnResource for EksContainerEnvironmentVariable {
 
 /// The EksContainerResourceRequirements property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksContainerResourceRequirements {
     /// Property description not available.
     ///
@@ -901,7 +909,7 @@ pub struct EksContainerResourceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub limits: Option<serde_json::Value>,
 
     /// Property description not available.
@@ -912,7 +920,7 @@ pub struct EksContainerResourceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Requests")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requests: Option<serde_json::Value>,
 }
 
@@ -932,6 +940,7 @@ impl cfn_resources::CfnResource for EksContainerResourceRequirements {
 
 /// The EksContainerSecurityContext property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksContainerSecurityContext {
     /// Property description not available.
     ///
@@ -941,7 +950,7 @@ pub struct EksContainerSecurityContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Privileged")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub privileged: Option<bool>,
 
     /// Property description not available.
@@ -952,7 +961,7 @@ pub struct EksContainerSecurityContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnlyRootFilesystem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only_root_filesystem: Option<bool>,
 
     /// Property description not available.
@@ -963,7 +972,7 @@ pub struct EksContainerSecurityContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunAsGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_as_group: Option<i64>,
 
     /// Property description not available.
@@ -974,7 +983,7 @@ pub struct EksContainerSecurityContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunAsNonRoot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_as_non_root: Option<bool>,
 
     /// Property description not available.
@@ -985,7 +994,7 @@ pub struct EksContainerSecurityContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunAsUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_as_user: Option<i64>,
 }
 
@@ -1005,6 +1014,7 @@ impl cfn_resources::CfnResource for EksContainerSecurityContext {
 
 /// The volume mounts for a container for an Amazon EKS job. For more information about volumes and  volume mounts in Kubernetes, see Volumes in the Kubernetes documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksContainerVolumeMount {
     ///
     /// The path on the container where the volume is mounted.
@@ -1015,7 +1025,7 @@ pub struct EksContainerVolumeMount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1027,7 +1037,7 @@ pub struct EksContainerVolumeMount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1039,7 +1049,7 @@ pub struct EksContainerVolumeMount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 }
 
@@ -1059,6 +1069,7 @@ impl cfn_resources::CfnResource for EksContainerVolumeMount {
 
 /// The EksEmptyDir property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksEmptyDir {
     /// Property description not available.
     ///
@@ -1068,7 +1079,7 @@ pub struct EksEmptyDir {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Medium")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub medium: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -1079,7 +1090,7 @@ pub struct EksEmptyDir {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_limit: Option<cfn_resources::StrVal>,
 }
 
@@ -1099,6 +1110,7 @@ impl cfn_resources::CfnResource for EksEmptyDir {
 
 /// The EksHostPath property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksHostPath {
     /// Property description not available.
     ///
@@ -1108,7 +1120,7 @@ pub struct EksHostPath {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -1128,6 +1140,7 @@ impl cfn_resources::CfnResource for EksHostPath {
 
 /// An object that contains the properties for the Kubernetes resources of a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksProperties {
     ///
     /// The properties for the Kubernetes pod resources of a job.
@@ -1138,7 +1151,7 @@ pub struct EksProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PodProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pod_properties: Option<PodProperties>,
 }
 
@@ -1162,6 +1175,7 @@ impl cfn_resources::CfnResource for EksProperties {
 
 /// The EksSecret property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksSecret {
     /// Property description not available.
     ///
@@ -1171,7 +1185,7 @@ pub struct EksSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Optional")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub optional: Option<bool>,
 
     /// Property description not available.
@@ -1201,6 +1215,7 @@ impl cfn_resources::CfnResource for EksSecret {
 
 /// Specifies an Amazon EKS volume for a job definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksVolume {
     ///
     /// Specifies the configuration of a Kubernetes emptyDir volume. For more information,  see emptyDir  in the Kubernetes documentation.
@@ -1211,7 +1226,7 @@ pub struct EksVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyDir")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub empty_dir: Option<EksEmptyDir>,
 
     ///
@@ -1223,7 +1238,7 @@ pub struct EksVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_path: Option<EksHostPath>,
 
     ///
@@ -1246,7 +1261,7 @@ pub struct EksVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Secret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret: Option<EksSecret>,
 }
 
@@ -1276,6 +1291,7 @@ impl cfn_resources::CfnResource for EksVolume {
 
 /// The Environment property type specifies environment variables to use in a job definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Environment {
     ///
     /// The name of the environment variable.
@@ -1286,7 +1302,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1298,7 +1314,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1318,6 +1334,7 @@ impl cfn_resources::CfnResource for Environment {
 
 /// The EphemeralStorage property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EphemeralStorage {
     /// Property description not available.
     ///
@@ -1346,6 +1363,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 
 /// Specifies an array of up to 5 conditions to be met, and an action to take   (RETRY or EXIT) if all conditions are met. If none of the   EvaluateOnExit conditions in a RetryStrategy match, then the job is  retried.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EvaluateOnExit {
     ///
     /// Specifies the action to take if all of the specified conditions  (onStatusReason, onReason, and onExitCode) are met. The  values aren't case sensitive.
@@ -1371,7 +1389,7 @@ pub struct EvaluateOnExit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnExitCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_exit_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -1383,7 +1401,7 @@ pub struct EvaluateOnExit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_reason: Option<cfn_resources::StrVal>,
 
     ///
@@ -1395,7 +1413,7 @@ pub struct EvaluateOnExit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnStatusReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_status_reason: Option<cfn_resources::StrVal>,
 }
 
@@ -1432,6 +1450,7 @@ impl cfn_resources::CfnResource for EvaluateOnExit {
 
 /// The platform configuration for jobs that are running on Fargate resources. Jobs that run  on EC2 resources must not specify this parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FargatePlatformConfiguration {
     ///
     /// The AWS Fargate platform version where the jobs are running. A platform version is  specified only for jobs that are running on Fargate resources. If one isn't specified, the   LATEST platform version is used by default. This uses a recent, approved version of  the AWS Fargate platform for compute resources. For more information, see AWS Fargate   platform versions in the Amazon Elastic Container Service Developer Guide.
@@ -1442,7 +1461,7 @@ pub struct FargatePlatformConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_version: Option<cfn_resources::StrVal>,
 }
 
@@ -1462,6 +1481,7 @@ impl cfn_resources::CfnResource for FargatePlatformConfiguration {
 
 /// Linux-specific modifications that are applied to the container, such as details for device  mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LinuxParameters {
     ///
     /// Any of the host devices to expose to the container. This parameter maps to   Devices in the Create a container section of the Docker Remote API  and the --device option to docker  run.
@@ -1474,7 +1494,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Devices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub devices: Option<Vec<Device>>,
 
     ///
@@ -1486,7 +1506,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitProcessEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub init_process_enabled: Option<bool>,
 
     ///
@@ -1502,7 +1522,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSwap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_swap: Option<i64>,
 
     ///
@@ -1516,7 +1536,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharedMemorySize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shared_memory_size: Option<i64>,
 
     ///
@@ -1534,7 +1554,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Swappiness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub swappiness: Option<i64>,
 
     ///
@@ -1548,7 +1568,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tmpfs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tmpfs: Option<Vec<Tmpfs>>,
 }
 
@@ -1568,6 +1588,7 @@ impl cfn_resources::CfnResource for LinuxParameters {
 
 /// Log configuration options to send to a custom log driver for the container.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container. The valid values that are listed for this parameter  are log drivers that the Amazon ECS container agent can communicate with by default.
@@ -1601,7 +1622,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<serde_json::Value>,
 
     ///
@@ -1613,7 +1634,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_options: Option<Vec<Secret>>,
 }
 
@@ -1670,6 +1691,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 
 /// The Metadata property type specifies Property description not available. for an AWS::Batch::JobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metadata {
     /// Property description not available.
     ///
@@ -1679,7 +1701,7 @@ pub struct Metadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Labels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub labels: Option<serde_json::Value>,
 }
 
@@ -1699,6 +1721,7 @@ impl cfn_resources::CfnResource for Metadata {
 
 /// Details for a Docker volume mount point that's used in a job's container properties. This  parameter maps to Volumes in the Create a container section of the Docker Remote API and the   --volume option to docker run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MountPoints {
     ///
     /// The path on the container where the host volume is mounted.
@@ -1709,7 +1732,7 @@ pub struct MountPoints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1721,7 +1744,7 @@ pub struct MountPoints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -1733,7 +1756,7 @@ pub struct MountPoints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVolume")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_volume: Option<cfn_resources::StrVal>,
 }
 
@@ -1753,6 +1776,7 @@ impl cfn_resources::CfnResource for MountPoints {
 
 /// The network configuration for jobs that are running on Fargate resources. Jobs that are  running on EC2 resources must not specify this parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// Indicates whether the job has a public IP address. For a job that's running on Fargate  resources in a private subnet to send outbound traffic to the internet (for example, to pull  container images), the private subnet requires a NAT gateway be attached to route requests to the  internet. For more information, see Amazon ECS task networking in the   Amazon Elastic Container Service Developer Guide. The default value is "DISABLED".
@@ -1765,7 +1789,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assign_public_ip: Option<NetworkConfigurationAssignPublicIpEnum>,
 }
 
@@ -1802,6 +1826,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
 /// An object that represents the node properties of a multi-node parallel job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NodeProperties {
     ///
     /// Specifies the node index for the main node of a multi-node parallel job. This node index  value must be fewer than the number of nodes.
@@ -1853,6 +1878,7 @@ impl cfn_resources::CfnResource for NodeProperties {
 
 /// An object that represents the properties of the node range for a multi-node parallel  job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NodeRangeProperty {
     ///
     /// The container details for the node range.
@@ -1863,7 +1889,7 @@ pub struct NodeRangeProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Container")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container: Option<ContainerProperties>,
 
     ///
@@ -1898,6 +1924,7 @@ impl cfn_resources::CfnResource for NodeRangeProperty {
 
 /// The properties for the pod.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PodProperties {
     ///
     /// The properties of the container that's used on the Amazon EKS pod.
@@ -1908,7 +1935,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Containers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub containers: Option<Vec<EksContainer>>,
 
     ///
@@ -1922,7 +1949,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1934,7 +1961,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostNetwork")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_network: Option<bool>,
 
     /// Property description not available.
@@ -1945,7 +1972,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata: Option<Metadata>,
 
     ///
@@ -1957,7 +1984,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_account_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1969,7 +1996,7 @@ pub struct PodProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes: Option<Vec<EksVolume>>,
 }
 
@@ -1993,6 +2020,7 @@ impl cfn_resources::CfnResource for PodProperties {
 
 /// The type and amount of a resource to assign to a container. The supported resources include   GPU, MEMORY, and VCPU.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported resources include   GPU, MEMORY, and VCPU.
@@ -2005,7 +2033,7 @@ pub struct ResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ResourceRequirementTypeEnum>,
 
     ///
@@ -2019,7 +2047,7 @@ pub struct ResourceRequirement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -2060,6 +2088,7 @@ impl cfn_resources::CfnResource for ResourceRequirement {
 
 /// The retry strategy that's associated with a job. For more information, see Automated job retries in the           AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetryStrategy {
     ///
     /// The number of times to move a job to the RUNNABLE status. You can specify  between 1 and 10 attempts. If the value of attempts is greater than one, the job is  retried on failure the same number of attempts as the value.
@@ -2070,7 +2099,7 @@ pub struct RetryStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attempts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attempts: Option<i64>,
 
     ///
@@ -2082,7 +2111,7 @@ pub struct RetryStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluateOnExit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub evaluate_on_exit: Option<Vec<EvaluateOnExit>>,
 }
 
@@ -2104,6 +2133,7 @@ impl cfn_resources::CfnResource for RetryStrategy {
 ///
 /// For more information, see Specifying sensitive data in the           AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -2146,6 +2176,7 @@ impl cfn_resources::CfnResource for Secret {
 
 /// An object that represents a job timeout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Timeout {
     ///
     /// The job timeout time (in seconds) that's measured from the job attempt's   startedAt timestamp. After this time passes, AWS Batch terminates your jobs if they  aren't finished. The minimum value for the timeout is 60 seconds.
@@ -2160,7 +2191,7 @@ pub struct Timeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttemptDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attempt_duration_seconds: Option<i64>,
 }
 
@@ -2180,6 +2211,7 @@ impl cfn_resources::CfnResource for Timeout {
 
 /// The container path, mount options, and size of the tmpfs mount.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tmpfs {
     ///
     /// The absolute file path in the container where the tmpfs volume is  mounted.
@@ -2203,7 +2235,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_options: Option<Vec<String>>,
 
     ///
@@ -2234,6 +2266,7 @@ impl cfn_resources::CfnResource for Tmpfs {
 
 /// The ulimit settings to pass to the container.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ulimit {
     ///
     /// The hard limit for the ulimit type.
@@ -2285,6 +2318,7 @@ impl cfn_resources::CfnResource for Ulimit {
 
 /// A list of volumes that are associated with the job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Volumes {
     ///
     /// This is used when you're using an Amazon Elastic File System file system for job storage. For more  information, see Amazon EFS   Volumes in the         AWS Batch User Guide.
@@ -2295,7 +2329,7 @@ pub struct Volumes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EfsVolumeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub efs_volume_configuration: Option<EfsVolumeConfiguration>,
 
     ///
@@ -2309,7 +2343,7 @@ pub struct Volumes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<VolumesHost>,
 
     ///
@@ -2321,7 +2355,7 @@ pub struct Volumes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -2347,6 +2381,7 @@ impl cfn_resources::CfnResource for Volumes {
 
 /// Determine whether your data volume persists on the host container instance and where it's  stored. If this parameter is empty, then the Docker daemon assigns a host path for your data  volume. However, the data isn't guaranteed to persist after the containers that are associated  with it stop running.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VolumesHost {
     ///
     /// The path on the host container instance that's presented to the container. If this parameter  is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a  file location, then the data volume persists at the specified location on the host container  instance until you delete it manually. If the source path location doesn't exist on the host  container instance, the Docker daemon creates it. If the location does exist, the contents of the  source path folder are exported.
@@ -2359,7 +2394,7 @@ pub struct VolumesHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_path: Option<cfn_resources::StrVal>,
 }
 

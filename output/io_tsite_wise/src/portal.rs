@@ -1,5 +1,6 @@
 /// Creates a portal, which can contain projects and dashboards. Before you can create a       portal, you must enable IAM Identity Center. AWS IoT SiteWise Monitor uses IAM Identity Center to manage user permissions. For more    information, see Enabling      IAM Identity Center in the AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPortal {
     ///
     /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
@@ -10,7 +11,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarms: Option<Alarms>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationSenderEmail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_sender_email: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortalAuthMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub portal_auth_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortalDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub portal_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -165,6 +166,7 @@ impl cfn_resources::CfnResource for CfnPortal {
 
 /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Alarms {
     ///
     /// The ARN of the IAM role that allows the alarm to perform actions and access AWS    resources and services, such as AWS IoT Events.
@@ -175,7 +177,7 @@ pub struct Alarms {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +189,7 @@ pub struct Alarms {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationLambdaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_lambda_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -213,6 +215,7 @@ impl cfn_resources::CfnResource for Alarms {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

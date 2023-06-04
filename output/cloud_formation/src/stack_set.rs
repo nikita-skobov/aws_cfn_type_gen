@@ -1,5 +1,6 @@
 /// The AWS::CloudFormation::StackSet enables you to provision stacks into AWS accounts and across Regions by using a single CloudFormation template. In the stack set, you specify the template  to use, in addition to any parameters and capabilities that the template requires.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStackSet {
     ///
     /// The Amazon Resource Number (ARN) of the IAM role to use to create this stack set. Specify an   IAM role only if you are using customized administrator roles to control which users or groups can  manage specific stack sets within the same administrator account.
@@ -16,7 +17,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdministrationRoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub administration_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeployment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_deployment: Option<AutoDeployment>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallAs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub call_as: Option<StackSetCallAsEnum>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Capabilities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capabilities: Option<Vec<String>>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedExecution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_execution: Option<ManagedExecution>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationPreferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operation_preferences: Option<OperationPreferences>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Vec<Parameter>>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackInstancesGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stack_instances_group: Option<Vec<StackInstances>>,
 
     ///
@@ -192,7 +193,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -228,7 +229,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_url: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -417,6 +418,7 @@ impl cfn_resources::CfnResource for CfnStackSet {
 
 /// [Service-managed permissions] Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organizational unit (OU).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoDeployment {
     ///
     /// If set to true, StackSets automatically deploys additional stack instances to AWS Organizations accounts that are added to a target organization or organizational unit (OU) in the specified Regions. If an  account is removed from a target organization or OU, StackSets deletes stack instances from the account in the  specified Regions.
@@ -427,7 +429,7 @@ pub struct AutoDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -439,7 +441,7 @@ pub struct AutoDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainStacksOnAccountRemoval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_stacks_on_account_removal: Option<bool>,
 }
 
@@ -459,6 +461,7 @@ impl cfn_resources::CfnResource for AutoDeployment {
 
 /// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified  Regions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentTargets {
     ///
     /// Limit deployment targets to individual accounts or include additional accounts with provided OUs.
@@ -475,7 +478,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountFilterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_filter_type: Option<DeploymentTargetsAccountFilterTypeEnum>,
 
     ///
@@ -489,7 +492,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accounts: Option<Vec<String>>,
 
     ///
@@ -503,7 +506,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_ids: Option<Vec<String>>,
 }
 
@@ -548,6 +551,7 @@ impl cfn_resources::CfnResource for DeploymentTargets {
 
 /// Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting  operations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ManagedExecution {
     ///
     /// When true, StackSets performs non-conflicting operations concurrently and queues conflicting  operations. After conflicting operations finish, StackSets starts queued operations in request order.
@@ -562,7 +566,7 @@ pub struct ManagedExecution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Active")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub active: Option<bool>,
 }
 
@@ -582,6 +586,7 @@ impl cfn_resources::CfnResource for ManagedExecution {
 
 /// The user-specified preferences for how AWS CloudFormation performs a stack set operation. For more  information on maximum concurrent accounts and failure tolerance, see Stack set operation   options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OperationPreferences {
     ///
     /// The number of accounts, per Region, for which this operation can fail before AWS CloudFormation stops the  operation in that Region. If the operation is stopped in a Region, AWS CloudFormation doesn't attempt the  operation in any subsequent Regions.
@@ -596,7 +601,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureToleranceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_tolerance_count: Option<i64>,
 
     ///
@@ -616,7 +621,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureTolerancePercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_tolerance_percentage: Option<i64>,
 
     ///
@@ -634,7 +639,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_count: Option<i64>,
 
     ///
@@ -656,7 +661,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_percentage: Option<i64>,
 
     ///
@@ -672,7 +677,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionConcurrencyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_concurrency_type: Option<OperationPreferencesRegionConcurrencyTypeEnum>,
 
     ///
@@ -684,7 +689,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_order: Option<Vec<String>>,
 }
 
@@ -766,6 +771,7 @@ impl cfn_resources::CfnResource for OperationPreferences {
 
 /// The Parameter data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Parameter {
     ///
     /// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that's specified in your template.
@@ -806,6 +812,7 @@ impl cfn_resources::CfnResource for Parameter {
 
 /// Stack instances in some specific accounts and Regions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StackInstances {
     ///
     /// The AWS  OrganizationalUnitIds or Accounts for which to create stack instances in the specified  Regions.
@@ -827,7 +834,7 @@ pub struct StackInstances {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_overrides: Option<Vec<Parameter>>,
 
     ///
@@ -866,6 +873,7 @@ impl cfn_resources::CfnResource for StackInstances {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

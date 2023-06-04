@@ -1,5 +1,6 @@
 /// Specifies a runtime environment for a given runtime engine.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEnvironment {
     ///
     /// The description of the runtime environment.
@@ -14,7 +15,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HighAvailabilityConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub high_availability_config: Option<HighAvailabilityConfig>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PubliclyAccessible")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -141,7 +142,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_configurations: Option<Vec<StorageConfiguration>>,
 
     ///
@@ -153,7 +154,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -252,6 +253,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 
 /// Defines the storage configuration for an Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EfsStorageConfiguration {
     ///
     /// The file system identifier.
@@ -296,6 +298,7 @@ impl cfn_resources::CfnResource for EfsStorageConfiguration {
 
 /// Defines the storage configuration for an Amazon FSx file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FsxStorageConfiguration {
     ///
     /// The file system identifier.
@@ -340,6 +343,7 @@ impl cfn_resources::CfnResource for FsxStorageConfiguration {
 
 /// Defines the details of a high availability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HighAvailabilityConfig {
     ///
     /// The number of instances in a high availability configuration.
@@ -391,6 +395,7 @@ impl cfn_resources::CfnResource for HighAvailabilityConfig {
 
 /// Defines the storage configuration for a runtime environment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageConfiguration {
     ///
     /// Defines the storage configuration for an Amazon EFS file system.
@@ -401,7 +406,7 @@ pub struct StorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Efs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub efs: Option<EfsStorageConfiguration>,
 
     ///
@@ -413,7 +418,7 @@ pub struct StorageConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Fsx")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fsx: Option<FsxStorageConfiguration>,
 }
 

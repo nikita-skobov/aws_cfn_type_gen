@@ -1,5 +1,6 @@
 /// The AWS::MediaConnect::Flow resource defines a connection between one or more video       sources and one or more outputs. For each flow, you specify the transport protocol to       use, encryption information, and details for any outputs or entitlements that you want.         AWS Elemental MediaConnect returns an ingest endpoint where you can       send your live video as a single unicast stream. The service replicates and distributes       the video to every output that you specify, whether inside or outside the AWS Cloud. You can also set up entitlements on a flow to allow other         AWS accounts to access your content.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFlow {
     ///
     /// The Availability Zone that you want to create the flow in. These options are        limited to the Availability Zones within the current AWS Region.
@@ -10,7 +11,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceFailoverConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_failover_config: Option<FailoverConfig>,
 
     #[serde(skip_serializing)]
@@ -125,6 +126,7 @@ impl cfn_resources::CfnResource for CfnFlow {
 
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or        aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
@@ -135,7 +137,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +149,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +161,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,7 +173,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +185,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -195,7 +197,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -218,7 +220,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +232,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 }
 
@@ -250,6 +252,7 @@ impl cfn_resources::CfnResource for Encryption {
 
 /// The settings for source failover.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FailoverConfig {
     ///
     /// The type of failover you choose for this flow. MERGE combines the source streams        into a single stream, allowing graceful recovery from any single-source loss.        FAILOVER allows switching between different streams. The string for this property must be entered as MERGE or FAILOVER. No other string entry is valid.
@@ -260,7 +263,7 @@ pub struct FailoverConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailoverMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failover_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -272,7 +275,7 @@ pub struct FailoverConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecoveryWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recovery_window: Option<i64>,
 
     ///
@@ -284,7 +287,7 @@ pub struct FailoverConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePriority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_priority: Option<SourcePriority>,
 
     ///
@@ -296,7 +299,7 @@ pub struct FailoverConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<cfn_resources::StrVal>,
 }
 
@@ -322,6 +325,7 @@ impl cfn_resources::CfnResource for FailoverConfig {
 ///
 /// If you are creating a flow with a VPC source, you must first create the flow with a       temporary standard source by doing the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Source {
     ///
     /// The type of encryption that is used on the content ingested from the        source.
@@ -332,7 +336,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Decryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decryption: Option<Encryption>,
 
     ///
@@ -344,7 +348,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +360,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitlementArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entitlement_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -368,7 +372,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingest_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -380,7 +384,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingest_port: Option<i64>,
 
     ///
@@ -392,7 +396,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBitrate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_bitrate: Option<i64>,
 
     ///
@@ -404,7 +408,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLatency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_latency: Option<i64>,
 
     ///
@@ -416,7 +420,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinLatency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_latency: Option<i64>,
 
     ///
@@ -428,7 +432,7 @@ pub struct Source {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -440,7 +444,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -452,7 +456,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SenderControlPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sender_control_port: Option<i64>,
 
     ///
@@ -464,7 +468,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SenderIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sender_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -476,7 +480,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -488,7 +492,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIngestPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ingest_port: Option<cfn_resources::StrVal>,
 
     ///
@@ -500,7 +504,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceListenerAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_listener_address: Option<cfn_resources::StrVal>,
 
     /// Source port for SRT-caller protocol.
@@ -511,7 +515,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceListenerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_listener_port: Option<i64>,
 
     ///
@@ -523,7 +527,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -535,7 +539,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_interface_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -547,7 +551,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhitelistCidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub whitelist_cidr: Option<cfn_resources::StrVal>,
 }
 
@@ -571,6 +575,7 @@ impl cfn_resources::CfnResource for Source {
 
 /// The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams. This setting only applies when Failover Mode is set to FAILOVER.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourcePriority {
     ///
     /// The name of the source you choose as the primary source for this flow.

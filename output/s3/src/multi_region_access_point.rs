@@ -1,5 +1,6 @@
 /// The AWS::S3::MultiRegionAccessPoint resource creates an Amazon S3    Multi-Region Access Point. To learn more about Multi-Region Access Points, see     Multi-Region Access Points in Amazon S3 in the in the Amazon S3 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMultiRegionAccessPoint {
     ///
     /// The name of the Multi-Region Access Point.
@@ -10,7 +11,7 @@ pub struct CfnMultiRegionAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnMultiRegionAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 
     ///
@@ -79,6 +80,7 @@ impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 Multi-Region    Access Point. You can enable the configuration options in any combination. For more    information about when Amazon S3 considers an object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -93,7 +95,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockPublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -107,7 +109,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -121,7 +123,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IgnorePublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -135,7 +137,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestrictPublicBuckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -155,6 +157,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 
 /// A bucket associated with a specific Region when creating Multi-Region Access    Points.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Region {
     ///
     /// The name of the associated bucket for the Region.
@@ -175,7 +178,7 @@ pub struct Region {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_account_id: Option<cfn_resources::StrVal>,
 }
 

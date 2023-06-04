@@ -4,6 +4,7 @@
 ///
 /// You must use the following guidelines when naming a log stream:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLogStream {
     ///
     /// The name of the log group where the log stream is created.
@@ -37,7 +38,7 @@ pub struct CfnLogStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogStreamName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_stream_name: Option<cfn_resources::StrVal>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// A target network association must be created before you can specify a route. If you're     setting up all the components of a Client VPN endpoint at the same time, you must use the       DependsOn       Attribute to declare a dependency on the       AWS::EC2::ClientVpnTargetNetworkAssociation resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClientVpnRoute {
     ///
     /// The ID of the Client VPN endpoint to which to add the route.
@@ -23,7 +24,7 @@ pub struct CfnClientVpnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

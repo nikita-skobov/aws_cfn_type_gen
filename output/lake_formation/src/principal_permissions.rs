@@ -1,5 +1,6 @@
 /// The AWS::LakeFormation::PrincipalPermissions resource represents the permissions that a principal has on a Data Catalog resource (such as AWS Glue databases or AWS Glue tables).     When you create a PrincipalPermissions resource, the permissions are granted via the AWS Lake Formation GrantPermissions API operation. When you delete a PrincipalPermissions resource, the permissions on principal-resource pair are revoked via the AWS Lake Formation RevokePermissions API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPrincipalPermissions {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store.     It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
@@ -10,7 +11,7 @@ pub struct CfnPrincipalPermissions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,6 +101,7 @@ impl cfn_resources::CfnResource for CfnPrincipalPermissions {
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnWildcard {
     ///
     /// Excludes column names. Any column with this name will be excluded.
@@ -110,7 +112,7 @@ pub struct ColumnWildcard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludedColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_column_names: Option<Vec<String>>,
 }
 
@@ -130,6 +132,7 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 
 /// A structure that describes certain columns on certain rows.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCellsFilterResource {
     ///
     /// A database in the Data Catalog.
@@ -192,6 +195,7 @@ impl cfn_resources::CfnResource for DataCellsFilterResource {
 
 /// The AWS Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the AWS Lake Formation principal.
@@ -202,7 +206,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataLakePrincipalIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -222,6 +226,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 
 /// A structure for a data location object where permissions are granted or revoked.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLocationResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
@@ -262,6 +267,7 @@ impl cfn_resources::CfnResource for DataLocationResource {
 
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -302,6 +308,7 @@ impl cfn_resources::CfnResource for DatabaseResource {
 
 /// The LF-tag key and values attached to a resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LFTag {
     ///
     /// The key-name for the LF-tag.
@@ -312,7 +319,7 @@ pub struct LFTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +331,7 @@ pub struct LFTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_values: Option<Vec<String>>,
 }
 
@@ -344,6 +351,7 @@ impl cfn_resources::CfnResource for LFTag {
 
 /// A structure containing an LF-tag key and values for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LFTagKeyResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with Data Catalog.
@@ -397,6 +405,7 @@ impl cfn_resources::CfnResource for LFTagKeyResource {
 ///
 /// A structure that allows an admin to grant user permissions on certain conditions. For example, granting a role access to all columns that do not have the LF-tag 'PII' in tables that have the LF-tag 'Prod'.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LFTagPolicyResource {
     ///
     /// The identifier for the Data Catalog. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -448,6 +457,7 @@ impl cfn_resources::CfnResource for LFTagPolicyResource {
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Resource {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -458,7 +468,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog: Option<serde_json::Value>,
 
     ///
@@ -470,7 +480,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCellsFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_cells_filter: Option<DataCellsFilterResource>,
 
     ///
@@ -482,7 +492,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_location: Option<DataLocationResource>,
 
     ///
@@ -494,7 +504,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Database")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database: Option<DatabaseResource>,
 
     ///
@@ -506,7 +516,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LFTag")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lftag: Option<LFTagKeyResource>,
 
     ///
@@ -518,7 +528,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LFTagPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lftag_policy: Option<LFTagPolicyResource>,
 
     ///
@@ -530,7 +540,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Table")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table: Option<TableResource>,
 
     ///
@@ -542,7 +552,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWithColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 }
 
@@ -586,6 +596,7 @@ impl cfn_resources::CfnResource for Resource {
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableResource {
     /// Property description not available.
     ///
@@ -617,7 +628,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -631,7 +642,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWildcard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_wildcard: Option<serde_json::Value>,
 }
 
@@ -653,6 +664,7 @@ impl cfn_resources::CfnResource for TableResource {
 ///
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableWithColumnsResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
@@ -674,7 +686,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -686,7 +698,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnWildcard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_wildcard: Option<ColumnWildcard>,
 
     ///

@@ -6,6 +6,7 @@
 ///
 /// For more information, see Launch an instance from a       launch template in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLaunchTemplate {
     ///
     /// The information for the launch template.
@@ -33,7 +34,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_specifications: Option<Vec<LaunchTemplateTagSpecification>>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_description: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -145,6 +146,7 @@ impl cfn_resources::CfnResource for CfnLaunchTemplate {
 
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AcceleratorCount {
     ///
     /// The maximum number of accelerators. To specify no maximum limit, omit this     parameter. To exclude accelerator-enabled instance types, set Max to     0.
@@ -155,7 +157,7 @@ pub struct AcceleratorCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -167,7 +169,7 @@ pub struct AcceleratorCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -187,6 +189,7 @@ impl cfn_resources::CfnResource for AcceleratorCount {
 
 /// The minimum and maximum amount of total accelerator memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AcceleratorTotalMemoryMiB {
     ///
     /// The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -197,7 +200,7 @@ pub struct AcceleratorTotalMemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -209,7 +212,7 @@ pub struct AcceleratorTotalMemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -229,6 +232,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiB {
 
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BaselineEbsBandwidthMbps {
     ///
     /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit     this parameter.
@@ -239,7 +243,7 @@ pub struct BaselineEbsBandwidthMbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -251,7 +255,7 @@ pub struct BaselineEbsBandwidthMbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -273,6 +277,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbps {
 ///
 /// BlockDeviceMapping is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name (for example, /dev/sdh or xvdh).
@@ -283,7 +288,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -295,7 +300,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ebs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs: Option<Ebs>,
 
     ///
@@ -307,7 +312,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_device: Option<cfn_resources::StrVal>,
 
     ///
@@ -319,7 +324,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
@@ -343,6 +348,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 ///
 /// CapacityReservationSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityReservationSpecification {
     ///
     /// Indicates the instance's Capacity Reservation preferences. Possible preferences       include:
@@ -357,7 +363,7 @@ pub struct CapacityReservationSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_reservation_preference:
         Option<CapacityReservationSpecificationCapacityReservationPreferenceEnum>,
 
@@ -370,7 +376,7 @@ pub struct CapacityReservationSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationTarget")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_reservation_target: Option<CapacityReservationTarget>,
 }
 
@@ -413,6 +419,7 @@ impl cfn_resources::CfnResource for CapacityReservationSpecification {
 ///
 /// CapacityReservationTarget is a property of the Amazon EC2 LaunchTemplate LaunchTemplateData property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityReservationTarget {
     ///
     /// The ID of the Capacity Reservation in which to run the instance.
@@ -423,7 +430,7 @@ pub struct CapacityReservationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_reservation_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -435,7 +442,7 @@ pub struct CapacityReservationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationResourceGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_reservation_resource_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -457,6 +464,7 @@ impl cfn_resources::CfnResource for CapacityReservationTarget {
 ///
 /// CpuOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CpuOptions {
     ///
     /// Indicates whether to enable the instance for AMD SEV-SNP. AMD SEV-SNP is supported       with M6a, R6a, and C6a instance types only. For more information, see       AMD SEV-SNP.
@@ -469,7 +477,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmdSevSnp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amd_sev_snp: Option<CpuOptionsAmdSevSnpEnum>,
 
     ///
@@ -481,7 +489,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_count: Option<i64>,
 
     ///
@@ -493,7 +501,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThreadsPerCore")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threads_per_core: Option<i64>,
 }
 
@@ -532,6 +540,7 @@ impl cfn_resources::CfnResource for CpuOptions {
 ///
 /// CreditSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreditSpecification {
     ///
     /// The credit option for CPU usage of a T instance.
@@ -544,7 +553,7 @@ pub struct CreditSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuCredits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_credits: Option<cfn_resources::StrVal>,
 }
 
@@ -566,6 +575,7 @@ impl cfn_resources::CfnResource for CreditSpecification {
 ///
 /// Ebs is a property of AWS::EC2::LaunchTemplate BlockDeviceMapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ebs {
     ///
     /// Indicates whether the EBS volume is deleted on instance termination.
@@ -576,7 +586,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -588,7 +598,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -608,7 +618,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -620,7 +630,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -632,7 +642,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -646,7 +656,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput: Option<i64>,
 
     ///
@@ -660,7 +670,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 
     ///
@@ -674,7 +684,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<EbsVolumeTypeEnum>,
 }
 
@@ -733,6 +743,7 @@ impl cfn_resources::CfnResource for Ebs {
 ///
 /// ElasticGpuSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticGpuSpecification {
     ///
     /// The type of Elastic Graphics accelerator. For more information about the values to specify for       Type, see Elastic Graphics Basics, specifically the Elastic Graphics accelerator column, in the       Amazon Elastic Compute Cloud User Guide for Windows Instances.
@@ -743,7 +754,7 @@ pub struct ElasticGpuSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -763,6 +774,7 @@ impl cfn_resources::CfnResource for ElasticGpuSpecification {
 
 /// Indicates whether the instance is enabled for AWS Nitro       Enclaves.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnclaveOptions {
     ///
     /// If this parameter is set to true, the instance is enabled for AWS Nitro Enclaves; otherwise, it is not enabled for AWS Nitro       Enclaves.
@@ -773,7 +785,7 @@ pub struct EnclaveOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -795,6 +807,7 @@ impl cfn_resources::CfnResource for EnclaveOptions {
 ///
 /// HibernationOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HibernationOptions {
     ///
     /// If you set this parameter to true, the instance is enabled for       hibernation.
@@ -807,7 +820,7 @@ pub struct HibernationOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configured: Option<bool>,
 }
 
@@ -831,6 +844,7 @@ impl cfn_resources::CfnResource for HibernationOptions {
 ///
 /// IamInstanceProfile is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IamInstanceProfile {
     ///
     /// The Amazon Resource Name (ARN) of the instance profile.
@@ -841,7 +855,7 @@ pub struct IamInstanceProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -853,7 +867,7 @@ pub struct IamInstanceProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -875,6 +889,7 @@ impl cfn_resources::CfnResource for IamInstanceProfile {
 ///
 /// InstanceMarketOptions is a property of the AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceMarketOptions {
     ///
     /// The market type.
@@ -887,7 +902,7 @@ pub struct InstanceMarketOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarketType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub market_type: Option<InstanceMarketOptionsMarketTypeEnum>,
 
     ///
@@ -899,7 +914,7 @@ pub struct InstanceMarketOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_options: Option<SpotOptions>,
 }
 
@@ -942,6 +957,7 @@ impl cfn_resources::CfnResource for InstanceMarketOptions {
 ///
 /// For more information, see Attribute-based instance type selection for EC2 Fleet, Attribute-based instance type selection for Spot Fleet, and Spot        placement score in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceRequirements {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on     an instance.
@@ -956,7 +972,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_count: Option<AcceleratorCount>,
 
     ///
@@ -972,7 +988,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorManufacturers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
     ///
@@ -988,7 +1004,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_names: Option<Vec<String>>,
 
     ///
@@ -1002,7 +1018,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiB>,
 
     ///
@@ -1018,7 +1034,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -1040,7 +1056,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_instance_types: Option<Vec<String>>,
 
     ///
@@ -1058,7 +1074,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BareMetal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bare_metal: Option<InstanceRequirementsBareMetalEnum>,
 
     ///
@@ -1072,7 +1088,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaselineEbsBandwidthMbps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbps>,
 
     ///
@@ -1090,7 +1106,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstablePerformance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub burstable_performance: Option<InstanceRequirementsBurstablePerformanceEnum>,
 
     ///
@@ -1108,7 +1124,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuManufacturers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
     ///
@@ -1130,7 +1146,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_instance_types: Option<Vec<String>>,
 
     ///
@@ -1148,7 +1164,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceGenerations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_generations: Option<Vec<String>>,
 
     ///
@@ -1166,7 +1182,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_storage: Option<InstanceRequirementsLocalStorageEnum>,
 
     ///
@@ -1182,7 +1198,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorageTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_storage_types: Option<Vec<String>>,
 
     ///
@@ -1196,7 +1212,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryGiBPerVCpu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpu>,
 
     ///
@@ -1208,7 +1224,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryMiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_mi_b: Option<MemoryMiB>,
 
     ///
@@ -1222,7 +1238,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkBandwidthGbps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbps>,
 
     ///
@@ -1236,7 +1252,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_count: Option<NetworkInterfaceCount>,
 
     ///
@@ -1258,7 +1274,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1274,7 +1290,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireHibernateSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_hibernate_support: Option<bool>,
 
     ///
@@ -1296,7 +1312,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1310,7 +1326,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalLocalStorageGB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_local_storage_gb: Option<TotalLocalStorageGB>,
 
     ///
@@ -1322,7 +1338,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VCpuCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vcpu_count: Option<VCpuCount>,
 }
 
@@ -1455,6 +1471,7 @@ impl cfn_resources::CfnResource for InstanceRequirements {
 ///
 /// Ipv4PrefixSpecification is a property of AWS::EC2::LaunchTemplate NetworkInterface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ipv4PrefixSpecification {
     ///
     /// The IPv4 prefix. For information, see       Assigning prefixes to Amazon EC2 network interfaces in the         Amazon Elastic Compute Cloud User Guide.
@@ -1465,7 +1482,7 @@ pub struct Ipv4PrefixSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv4_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -1487,6 +1504,7 @@ impl cfn_resources::CfnResource for Ipv4PrefixSpecification {
 ///
 /// Ipv6Add is a property of AWS::EC2::LaunchTemplate NetworkInterface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ipv6Add {
     ///
     /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You       can't use this option if you're specifying a number of IPv6 addresses.
@@ -1497,7 +1515,7 @@ pub struct Ipv6Add {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_address: Option<cfn_resources::StrVal>,
 }
 
@@ -1519,6 +1537,7 @@ impl cfn_resources::CfnResource for Ipv6Add {
 ///
 /// Ipv6PrefixSpecification is a property of AWS::EC2::LaunchTemplate NetworkInterface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ipv6PrefixSpecification {
     ///
     /// The IPv6 prefix.
@@ -1529,7 +1548,7 @@ pub struct Ipv6PrefixSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -1549,6 +1568,7 @@ impl cfn_resources::CfnResource for Ipv6PrefixSpecification {
 
 /// The information to include in the launch template.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateData {
     ///
     /// The block device mapping.
@@ -1559,7 +1579,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDeviceMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -1571,7 +1591,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_reservation_specification: Option<CapacityReservationSpecification>,
 
     ///
@@ -1583,7 +1603,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_options: Option<CpuOptions>,
 
     ///
@@ -1595,7 +1615,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreditSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credit_specification: Option<CreditSpecification>,
 
     ///
@@ -1607,7 +1627,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableApiStop")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_api_stop: Option<bool>,
 
     ///
@@ -1619,7 +1639,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableApiTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_api_termination: Option<bool>,
 
     ///
@@ -1631,7 +1651,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -1643,7 +1663,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticGpuSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_gpu_specifications: Option<Vec<ElasticGpuSpecification>>,
 
     ///
@@ -1655,7 +1675,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticInferenceAccelerators")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_inference_accelerators: Option<Vec<LaunchTemplateElasticInferenceAccelerator>>,
 
     ///
@@ -1669,7 +1689,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnclaveOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enclave_options: Option<EnclaveOptions>,
 
     ///
@@ -1681,7 +1701,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HibernationOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hibernation_options: Option<HibernationOptions>,
 
     ///
@@ -1693,7 +1713,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamInstanceProfile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_instance_profile: Option<IamInstanceProfile>,
 
     ///
@@ -1711,7 +1731,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1727,7 +1747,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceInitiatedShutdownBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_initiated_shutdown_behavior:
         Option<LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum>,
 
@@ -1740,7 +1760,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMarketOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_market_options: Option<InstanceMarketOptions>,
 
     ///
@@ -1754,7 +1774,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRequirements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_requirements: Option<InstanceRequirements>,
 
     ///
@@ -1770,7 +1790,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<LaunchTemplateDataInstanceTypeEnum>,
 
     ///
@@ -1784,7 +1804,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1798,7 +1818,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1810,7 +1830,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_specifications: Option<Vec<LicenseSpecification>>,
 
     ///
@@ -1822,7 +1842,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_options: Option<MaintenanceOptions>,
 
     ///
@@ -1834,7 +1854,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata_options: Option<MetadataOptions>,
 
     ///
@@ -1846,7 +1866,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Monitoring")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring: Option<Monitoring>,
 
     ///
@@ -1858,7 +1878,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -1870,7 +1890,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement: Option<Placement>,
 
     ///
@@ -1882,7 +1902,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsNameOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_dns_name_options: Option<PrivateDnsNameOptions>,
 
     ///
@@ -1896,7 +1916,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RamDiskId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ram_disk_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1908,7 +1928,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -1920,7 +1940,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -1940,7 +1960,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -1954,7 +1974,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_data: Option<cfn_resources::StrVal>,
 }
 
@@ -4594,6 +4614,7 @@ impl cfn_resources::CfnResource for LaunchTemplateData {
 ///
 /// LaunchTemplateElasticInferenceAccelerator is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// The number of elastic inference accelerators to attach to the instance.
@@ -4608,7 +4629,7 @@ pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     ///
@@ -4620,7 +4641,7 @@ pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -4651,6 +4672,7 @@ impl cfn_resources::CfnResource for LaunchTemplateElasticInferenceAccelerator {
 ///
 /// LaunchTemplateTagSpecification is a property of AWS::EC2::LaunchTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateTagSpecification {
     ///
     /// The type of resource. To tag the launch template, ResourceType must be       launch-template.
@@ -4663,7 +4685,7 @@ pub struct LaunchTemplateTagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<LaunchTemplateTagSpecificationResourceTypeEnum>,
 
     ///
@@ -4675,7 +4697,7 @@ pub struct LaunchTemplateTagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -5046,6 +5068,7 @@ impl cfn_resources::CfnResource for LaunchTemplateTagSpecification {
 ///
 /// LicenseSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LicenseSpecification {
     ///
     /// The Amazon Resource Name (ARN) of the license configuration.
@@ -5056,7 +5079,7 @@ pub struct LicenseSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_configuration_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -5076,6 +5099,7 @@ impl cfn_resources::CfnResource for LicenseSpecification {
 
 /// The maintenance options of your instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceOptions {
     ///
     /// Disables the automatic recovery behavior of your instance or sets it to       default.
@@ -5088,7 +5112,7 @@ pub struct MaintenanceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRecovery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_recovery: Option<MaintenanceOptionsAutoRecoveryEnum>,
 }
 
@@ -5125,6 +5149,7 @@ impl cfn_resources::CfnResource for MaintenanceOptions {
 
 /// The minimum and maximum amount of memory per vCPU, in GiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemoryGiBPerVCpu {
     ///
     /// The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this     parameter.
@@ -5135,7 +5160,7 @@ pub struct MemoryGiBPerVCpu {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<f64>,
 
     ///
@@ -5147,7 +5172,7 @@ pub struct MemoryGiBPerVCpu {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<f64>,
 }
 
@@ -5167,6 +5192,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpu {
 
 /// The minimum and maximum amount of memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemoryMiB {
     ///
     /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -5177,7 +5203,7 @@ pub struct MemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -5189,7 +5215,7 @@ pub struct MemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -5211,6 +5237,7 @@ impl cfn_resources::CfnResource for MemoryMiB {
 ///
 /// MetadataOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetadataOptions {
     ///
     /// Enables or disables the HTTP metadata endpoint on your instances. If the parameter is       not specified, the default state is enabled.
@@ -5225,7 +5252,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_endpoint: Option<MetadataOptionsHttpEndpointEnum>,
 
     ///
@@ -5241,7 +5268,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpProtocolIpv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_protocol_ipv6: Option<MetadataOptionsHttpProtocolIpv6Enum>,
 
     ///
@@ -5257,7 +5284,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpPutResponseHopLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_put_response_hop_limit: Option<i64>,
 
     ///
@@ -5275,7 +5302,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTokens")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_tokens: Option<MetadataOptionsHttpTokensEnum>,
 
     ///
@@ -5291,7 +5318,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_metadata_tags: Option<MetadataOptionsInstanceMetadataTagsEnum>,
 }
 
@@ -5381,6 +5408,7 @@ impl cfn_resources::CfnResource for MetadataOptions {
 ///
 /// Monitoring is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Monitoring {
     ///
     /// Specify true to enable detailed monitoring. Otherwise, basic monitoring       is enabled.
@@ -5391,7 +5419,7 @@ pub struct Monitoring {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -5411,6 +5439,7 @@ impl cfn_resources::CfnResource for Monitoring {
 
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkBandwidthGbps {
     ///
     /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this     parameter.
@@ -5421,7 +5450,7 @@ pub struct NetworkBandwidthGbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<f64>,
 
     ///
@@ -5433,7 +5462,7 @@ pub struct NetworkBandwidthGbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<f64>,
 }
 
@@ -5455,6 +5484,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbps {
 ///
 /// NetworkInterface is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterface {
     ///
     /// Indicates whether to associate a Carrier IP address with eth0 for a new network       interface.
@@ -5467,7 +5497,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociateCarrierIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associate_carrier_ip_address: Option<bool>,
 
     ///
@@ -5479,7 +5509,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociatePublicIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -5491,7 +5521,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -5503,7 +5533,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -5515,7 +5545,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_index: Option<i64>,
 
     ///
@@ -5527,7 +5557,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -5543,7 +5573,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InterfaceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interface_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -5555,7 +5585,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4PrefixCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv4_prefix_count: Option<i64>,
 
     ///
@@ -5567,7 +5597,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4Prefixes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv4_prefixes: Option<Vec<Ipv4PrefixSpecification>>,
 
     ///
@@ -5579,7 +5609,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6AddressCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -5591,7 +5621,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_addresses: Option<Vec<Ipv6Add>>,
 
     ///
@@ -5603,7 +5633,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6PrefixCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_prefix_count: Option<i64>,
 
     ///
@@ -5615,7 +5645,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Prefixes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_prefixes: Option<Vec<Ipv6PrefixSpecification>>,
 
     ///
@@ -5627,7 +5657,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkCardIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_card_index: Option<i64>,
 
     ///
@@ -5639,7 +5669,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -5651,7 +5681,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -5663,7 +5693,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_addresses: Option<Vec<PrivateIpAdd>>,
 
     ///
@@ -5675,7 +5705,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -5687,7 +5717,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
@@ -5707,6 +5737,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 
 /// The minimum and maximum number of network interfaces.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterfaceCount {
     ///
     /// The maximum number of network interfaces. To specify no maximum limit, omit this     parameter.
@@ -5717,7 +5748,7 @@ pub struct NetworkInterfaceCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -5729,7 +5760,7 @@ pub struct NetworkInterfaceCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 
@@ -5751,6 +5782,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCount {
 ///
 /// Placement is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Placement {
     ///
     /// The affinity setting for an instance on a Dedicated Host.
@@ -5761,7 +5793,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Affinity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub affinity: Option<cfn_resources::StrVal>,
 
     ///
@@ -5773,7 +5805,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -5785,7 +5817,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -5797,7 +5829,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5809,7 +5841,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -5821,7 +5853,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostResourceGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_resource_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -5833,7 +5865,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition_number: Option<i64>,
 
     ///
@@ -5845,7 +5877,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpreadDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spread_domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -5859,7 +5891,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tenancy: Option<PlacementTenancyEnum>,
 }
 
@@ -5900,6 +5932,7 @@ impl cfn_resources::CfnResource for Placement {
 
 /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries should be handled. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrivateDnsNameOptions {
     ///
     /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA       records.
@@ -5910,7 +5943,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
     ///
@@ -5922,7 +5955,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsARecord")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
     ///
@@ -5936,7 +5969,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname_type: Option<PrivateDnsNameOptionsHostnameTypeEnum>,
 }
 
@@ -5975,6 +6008,7 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptions {
 ///
 /// PrivateIpAdd is a property of AWS::EC2::LaunchTemplate NetworkInterface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrivateIpAdd {
     ///
     /// Indicates whether the private IPv4 address is the primary private IPv4 address. Only       one IPv4 address can be designated as primary.
@@ -5985,7 +6019,7 @@ pub struct PrivateIpAdd {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Primary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary: Option<bool>,
 
     ///
@@ -5997,7 +6031,7 @@ pub struct PrivateIpAdd {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 }
 
@@ -6019,6 +6053,7 @@ impl cfn_resources::CfnResource for PrivateIpAdd {
 ///
 /// SpotOptions is a property of AWS::EC2::LaunchTemplate InstanceMarketOptions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SpotOptions {
     ///
     /// Deprecated.
@@ -6029,7 +6064,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDurationMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_duration_minutes: Option<i64>,
 
     ///
@@ -6043,7 +6078,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceInterruptionBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_interruption_behavior: Option<SpotOptionsInstanceInterruptionBehaviorEnum>,
 
     ///
@@ -6057,7 +6092,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_price: Option<cfn_resources::StrVal>,
 
     ///
@@ -6073,7 +6108,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotInstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_instance_type: Option<SpotOptionsSpotInstanceTypeEnum>,
 
     ///
@@ -6089,7 +6124,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidUntil")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub valid_until: Option<cfn_resources::StrVal>,
 }
 
@@ -6153,6 +6188,7 @@ impl cfn_resources::CfnResource for SpotOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -6193,6 +6229,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// TagSpecification is a property type of TagSpecifications. TagSpecifications is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag.
@@ -6209,7 +6246,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
     ///
@@ -6221,7 +6258,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -6590,6 +6627,7 @@ impl cfn_resources::CfnResource for TagSpecification {
 
 /// The minimum and maximum amount of total local storage, in GB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TotalLocalStorageGB {
     ///
     /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this     parameter.
@@ -6600,7 +6638,7 @@ pub struct TotalLocalStorageGB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<f64>,
 
     ///
@@ -6612,7 +6650,7 @@ pub struct TotalLocalStorageGB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<f64>,
 }
 
@@ -6632,6 +6670,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGB {
 
 /// The minimum and maximum number of vCPUs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VCpuCount {
     ///
     /// The maximum number of vCPUs. To specify no maximum limit, omit this parameter.
@@ -6642,7 +6681,7 @@ pub struct VCpuCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<i64>,
 
     ///
@@ -6654,7 +6693,7 @@ pub struct VCpuCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<i64>,
 }
 

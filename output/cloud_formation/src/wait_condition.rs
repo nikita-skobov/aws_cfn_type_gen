@@ -2,6 +2,7 @@
 ///
 /// For these situations, we recommend that you associate a CreationPolicy attribute with the  wait condition so that you don't have to use a wait condition handle. For more information and an example, see Creating wait conditions   in a template. If you use a CreationPolicy with a wait condition, don't specify any of the wait condition's  properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWaitCondition {
     ///
     /// The number of success signals that CloudFormation must receive before it continues the stack creation  process. When the wait condition receives the requisite number of success signals, CloudFormation resumes  the creation of the stack. If the wait condition doesn't receive the specified number of success signals before the  Timeout period expires, CloudFormation assumes that the wait condition has failed and rolls the stack  back.
@@ -14,7 +15,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Handle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub handle: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<cfn_resources::StrVal>,
 }
 

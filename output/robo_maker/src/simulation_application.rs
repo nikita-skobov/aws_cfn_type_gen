@@ -1,5 +1,6 @@
 /// The AWS::RoboMaker::SimulationApplication resource creates an AWS RoboMaker simulation application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSimulationApplication {
     ///
     /// The current revision id.
@@ -10,7 +11,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentRevisionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub current_revision_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenderingEngine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rendering_engine: Option<RenderingEngine>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sources: Option<Vec<SourceConfig>>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnSimulationApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -170,6 +171,7 @@ impl cfn_resources::CfnResource for CfnSimulationApplication {
 
 /// Information about a rendering engine.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RenderingEngine {
     ///
     /// The name of the rendering engine.
@@ -253,6 +255,7 @@ impl cfn_resources::CfnResource for RenderingEngine {
 
 /// Information about a robot software suite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RobotSoftwareSuite {
     ///
     /// The name of the robot software suite. General is the only supported value.
@@ -278,7 +281,7 @@ pub struct RobotSoftwareSuite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
 }
 
@@ -344,6 +347,7 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
 
 /// Information about a simulation software suite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SimulationSoftwareSuite {
     ///
     /// The name of the simulation software suite. SimulationRuntime is the only supported value.
@@ -373,7 +377,7 @@ pub struct SimulationSoftwareSuite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -436,6 +440,7 @@ impl cfn_resources::CfnResource for SimulationSoftwareSuite {
 
 /// Information about a source configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceConfig {
     ///
     /// The target processor architecture for the application.

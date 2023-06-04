@@ -2,6 +2,7 @@
 ///
 /// Each data repository association must have a unique Amazon FSx file       system directory and a unique S3 bucket or prefix associated with it. You       can configure a data repository association for automatic import only,       for automatic export only, or for both. To learn more about linking a       data repository to your file system, see       Linking your file system to an S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataRepositoryAssociation {
     ///
     /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
@@ -12,7 +13,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BatchImportMetaDataOnCreate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub batch_import_meta_data_on_create: Option<bool>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportedFileChunkSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub imported_file_chunk_size: Option<i64>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -207,6 +208,7 @@ impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
 ///
 /// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoExportPolicy {
     ///
     /// The AutoExportPolicy can have the following event values:
@@ -253,6 +255,7 @@ impl cfn_resources::CfnResource for AutoExportPolicy {
 ///
 /// The AutoImportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoImportPolicy {
     ///
     /// The AutoImportPolicy can have the following event values:
@@ -297,6 +300,7 @@ impl cfn_resources::CfnResource for AutoImportPolicy {
 
 /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3 {
     ///
     /// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
@@ -309,7 +313,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoExportPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_export_policy: Option<AutoExportPolicy>,
 
     ///
@@ -323,7 +327,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImportPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_import_policy: Option<AutoImportPolicy>,
 }
 
@@ -357,6 +361,7 @@ impl cfn_resources::CfnResource for S3 {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

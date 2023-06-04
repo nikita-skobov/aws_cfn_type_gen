@@ -6,6 +6,7 @@
 ///
 /// For additional information about web ACL logging, see       Logging web ACL traffic information         in the         AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoggingConfiguration {
     ///
     /// The logging destination configuration that you want to associate with the web     ACL.
@@ -31,7 +32,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_filter: Option<LoggingFilter>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedactedFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redacted_fields: Option<Vec<FieldToMatch>>,
 
     ///
@@ -128,6 +129,7 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
 
 /// A single action condition for a condition in a logging filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionCondition {
     ///
     /// The action setting that a log record must contain in order to meet the condition. This is the action that AWS WAF applied to the web request.
@@ -194,6 +196,7 @@ impl cfn_resources::CfnResource for ActionCondition {
 
 /// A single match condition for a log filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Condition {
     ///
     /// A single action condition. This is the action setting that a log record must contain in order to meet the condition.
@@ -204,7 +207,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action_condition: Option<ActionCondition>,
 
     ///
@@ -216,7 +219,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelNameCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_name_condition: Option<LabelNameCondition>,
 }
 
@@ -252,6 +255,7 @@ impl cfn_resources::CfnResource for Condition {
 ///
 /// "FieldToMatch": { "Method": { "Name": "DELETE" } }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     ///
     /// Redact the request body JSON.
@@ -262,7 +266,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_body: Option<JsonBody>,
 
     ///
@@ -274,7 +278,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method: Option<serde_json::Value>,
 
     ///
@@ -286,7 +290,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string: Option<serde_json::Value>,
 
     ///
@@ -300,7 +304,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_header: Option<SingleHeader>,
 
     ///
@@ -312,7 +316,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri_path: Option<serde_json::Value>,
 }
 
@@ -340,6 +344,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
 /// A single logging filter, used in LoggingFilter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     ///
     /// How to handle logs that satisfy the filter's conditions and requirement.
@@ -435,6 +440,7 @@ impl cfn_resources::CfnResource for Filter {
 ///
 /// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonBody {
     ///
     /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
@@ -457,7 +463,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvalidFallbackBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
 
     ///
@@ -545,6 +551,7 @@ impl cfn_resources::CfnResource for JsonBody {
 
 /// A single label name condition for a condition in a logging     filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LabelNameCondition {
     ///
     /// The label name that a log record must contain in order to meet the condition. This must     be a fully qualified label name. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
@@ -604,6 +611,7 @@ impl cfn_resources::CfnResource for LabelNameCondition {
 ///
 /// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingFilter {
     ///
     /// Default handling for logs that don't match any of the specified filtering conditions.
@@ -663,6 +671,7 @@ impl cfn_resources::CfnResource for LoggingFilter {
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MatchPattern {
     ///
     /// Match all of the elements.
@@ -675,7 +684,7 @@ pub struct MatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -693,7 +702,7 @@ pub struct MatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPaths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_paths: Option<Vec<String>>,
 }
 
@@ -719,6 +728,7 @@ impl cfn_resources::CfnResource for MatchPattern {
 ///
 /// Example JSON: "SingleHeader": { "Name": "haystack" }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleHeader {
     ///
     /// The name of the query header to inspect.

@@ -1,5 +1,6 @@
 /// Allows you to create a workflow with specified steps and step details the workflow invokes after file transfer completes.    After creating a workflow, you can associate the workflow created with any transfer servers by specifying the workflow-details field in CreateServer and UpdateServer operations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkflow {
     ///
     /// Specifies the text description for the workflow.
@@ -14,7 +15,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnExceptionSteps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_exception_steps: Option<Vec<WorkflowStep>>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -137,6 +138,7 @@ impl cfn_resources::CfnResource for CfnWorkflow {
 ///
 /// Consists of the following values:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CopyStepDetails {
     ///
     /// Specifies the location for the file being copied. Use ${Transfer:UserName} or     ${Transfer:UploadDate} in this field to parametrize the destination prefix by    username or uploaded date.
@@ -149,7 +151,7 @@ pub struct CopyStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_file_location: Option<S3FileLocation>,
 
     ///
@@ -161,7 +163,7 @@ pub struct CopyStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -177,7 +179,7 @@ pub struct CopyStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OverwriteExisting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overwrite_existing: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +193,7 @@ pub struct CopyStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_file_location: Option<cfn_resources::StrVal>,
 }
 
@@ -217,6 +219,7 @@ impl cfn_resources::CfnResource for CopyStepDetails {
 ///
 /// Consists of the Lambda function's name, target, and timeout (in seconds).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -227,7 +230,7 @@ pub struct CustomStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -241,7 +244,7 @@ pub struct CustomStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -253,7 +256,7 @@ pub struct CustomStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<cfn_resources::StrVal>,
 
     ///
@@ -265,7 +268,7 @@ pub struct CustomStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_seconds: Option<i64>,
 }
 
@@ -287,6 +290,7 @@ impl cfn_resources::CfnResource for CustomStepDetails {
 ///
 /// Consists of the following values:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecryptStepDetails {
     ///
     /// Specifies the location for the file being decrypted. Use ${Transfer:UserName} or    ${Transfer:UploadDate} in this field to parametrize the destination prefix by    username or uploaded date.
@@ -299,7 +303,7 @@ pub struct DecryptStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_file_location: Option<InputFileLocation>,
 
     ///
@@ -311,7 +315,7 @@ pub struct DecryptStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -327,7 +331,7 @@ pub struct DecryptStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OverwriteExisting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overwrite_existing: Option<cfn_resources::StrVal>,
 
     ///
@@ -341,7 +345,7 @@ pub struct DecryptStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -353,7 +357,7 @@ pub struct DecryptStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -377,6 +381,7 @@ impl cfn_resources::CfnResource for DecryptStepDetails {
 
 /// An object that contains the name and file location for a file being deleted by a workflow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeleteStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -387,7 +392,7 @@ pub struct DeleteStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -401,7 +406,7 @@ pub struct DeleteStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_file_location: Option<cfn_resources::StrVal>,
 }
 
@@ -421,6 +426,7 @@ impl cfn_resources::CfnResource for DeleteStepDetails {
 
 /// Specifies the Amazon EFS identifier and the path for the file being used.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EfsInputFileLocation {
     ///
     /// The identifier of the file system, assigned by Amazon EFS.
@@ -431,7 +437,7 @@ pub struct EfsInputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -443,7 +449,7 @@ pub struct EfsInputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -463,6 +469,7 @@ impl cfn_resources::CfnResource for EfsInputFileLocation {
 
 /// Specifies the location for the file that's being processed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputFileLocation {
     ///
     /// Specifies the details for the Amazon Elastic File System (Amazon EFS) file that's being    decrypted.
@@ -473,7 +480,7 @@ pub struct InputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EfsFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub efs_file_location: Option<EfsInputFileLocation>,
 
     ///
@@ -485,7 +492,7 @@ pub struct InputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3FileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_file_location: Option<S3InputFileLocation>,
 }
 
@@ -513,6 +520,7 @@ impl cfn_resources::CfnResource for InputFileLocation {
 
 /// Specifies the S3 details for the file being used, such as bucket, ETag, and so    forth.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3FileLocation {
     ///
     /// Specifies the details for the file location for the file that's being used in the workflow. Only applicable if you are using Amazon S3 storage.
@@ -523,7 +531,7 @@ pub struct S3FileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3FileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_file_location: Option<S3InputFileLocation>,
 }
 
@@ -547,6 +555,7 @@ impl cfn_resources::CfnResource for S3FileLocation {
 
 /// Specifies the details for the Amazon S3 location for an input file to a workflow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3InputFileLocation {
     ///
     /// Specifies the S3 bucket for the customer input file.
@@ -557,7 +566,7 @@ pub struct S3InputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -569,7 +578,7 @@ pub struct S3InputFileLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 }
 
@@ -589,6 +598,7 @@ impl cfn_resources::CfnResource for S3InputFileLocation {
 
 /// Specifies the key-value pair that are assigned to a file during the execution of a Tagging step.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Tag {
     ///
     /// The name assigned to the tag that you create.
@@ -635,6 +645,7 @@ impl cfn_resources::CfnResource for S3Tag {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -675,6 +686,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// You specify one or more tags. Each tag contains a key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -685,7 +697,7 @@ pub struct TagStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -699,7 +711,7 @@ pub struct TagStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceFileLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_file_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -711,7 +723,7 @@ pub struct TagStepDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<S3Tag>>,
 }
 
@@ -731,6 +743,7 @@ impl cfn_resources::CfnResource for TagStepDetails {
 
 /// The basic building block of a workflow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkflowStep {
     ///
     /// Details for a step that performs a file copy.
@@ -745,7 +758,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyStepDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_step_details: Option<CopyStepDetails>,
 
     ///
@@ -759,7 +772,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomStepDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_step_details: Option<CustomStepDetails>,
 
     ///
@@ -775,7 +788,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DecryptStepDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decrypt_step_details: Option<DecryptStepDetails>,
 
     ///
@@ -787,7 +800,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeleteStepDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_step_details: Option<DeleteStepDetails>,
 
     ///
@@ -801,7 +814,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagStepDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_step_details: Option<TagStepDetails>,
 
     ///
@@ -815,7 +828,7 @@ pub struct WorkflowStep {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 

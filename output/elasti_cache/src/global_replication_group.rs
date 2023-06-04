@@ -1,5 +1,6 @@
 /// Consists of a primary cluster that accepts writes and an associated secondary cluster that resides in a different Amazon region. The secondary cluster accepts only reads. The primary     cluster automatically replicates updates to the secondary cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGlobalReplicationGroup {
     /// Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.
     ///
@@ -11,7 +12,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticFailoverEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_failover_enabled: Option<bool>,
 
     ///
@@ -23,7 +24,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_node_type: Option<cfn_resources::StrVal>,
 
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
@@ -34,7 +35,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     /// The number of node groups that comprise the Global Datastore.
@@ -57,7 +58,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalNodeGroupCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_node_group_count: Option<i64>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_replication_group_description: Option<cfn_resources::StrVal>,
 
     /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
@@ -80,7 +81,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupIdSuffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_replication_group_id_suffix: Option<cfn_resources::StrVal>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionalConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regional_configurations: Option<Vec<RegionalConfiguration>>,
 
     #[serde(skip_serializing)]
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
 
 /// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlobalReplicationGroupMember {
     ///
     /// The replication group id of the Global datastore member.
@@ -154,7 +156,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +168,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_group_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +180,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role: Option<cfn_resources::StrVal>,
 }
 
@@ -198,6 +200,7 @@ impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
 
 /// A list of the replication groups
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RegionalConfiguration {
     ///
     /// The name of the secondary cluster
@@ -208,7 +211,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -220,7 +223,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_group_region: Option<cfn_resources::StrVal>,
 
     /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
@@ -231,7 +234,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReshardingConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
 }
 
@@ -251,6 +254,7 @@ impl cfn_resources::CfnResource for RegionalConfiguration {
 
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReshardingConfiguration {
     ///
     /// Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these       configuration values apply to.
@@ -267,7 +271,7 @@ pub struct ReshardingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub node_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +283,7 @@ pub struct ReshardingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredAvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_availability_zones: Option<Vec<String>>,
 }
 

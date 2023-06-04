@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Deployment resource creates a deployment for          an API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeployment {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

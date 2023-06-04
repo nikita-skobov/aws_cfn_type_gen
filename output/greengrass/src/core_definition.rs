@@ -2,6 +2,7 @@
 ///
 /// Core definitions can reference multiple core definition versions. All core definition versions      must be associated with a core definition. Each core definition version can contain one Greengrass core.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCoreDefinition {
     ///
     /// The core definition version to include when the core definition is created.          Currently, a core definition version can contain only one          core.
@@ -14,7 +15,7 @@ pub struct CfnCoreDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<CoreDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnCoreDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnCoreDefinition {
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the CoreDefinitionVersion property type contains a list       of Core property types. Currently, the list can contain only one core.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Core {
     ///
     /// The Amazon Resource Name (ARN) of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
@@ -143,7 +145,7 @@ pub struct Core {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_shadow: Option<bool>,
 
     ///
@@ -176,6 +178,7 @@ impl cfn_resources::CfnResource for Core {
 ///
 /// In an AWS CloudFormation template, CoreDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::CoreDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CoreDefinitionVersion {
     ///
     /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.

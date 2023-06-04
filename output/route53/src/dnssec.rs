@@ -1,5 +1,6 @@
 /// The AWS::Route53::DNSSEC resource is used to enable DNSSEC signing in a hosted zone.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDNSSEC {
     ///
     /// A unique string (ID) that is used to identify a hosted zone. For example: Z00001111A1ABCaaABC11.

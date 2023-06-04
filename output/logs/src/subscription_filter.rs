@@ -2,6 +2,7 @@
 ///
 /// There can be as many as two subscription filters associated with a log group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubscriptionFilter {
     ///
     /// The Amazon Resource Name (ARN) of the destination.
@@ -25,7 +26,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Distribution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub distribution: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 

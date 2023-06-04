@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::Stage resource creates a stage for a deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStage {
     ///
     /// Access log settings, including the access log format and access log destination ARN.
@@ -10,7 +11,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_log_setting: Option<AccessLogSetting>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheClusterEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_cluster_enabled: Option<bool>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheClusterSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_cluster_size: Option<StageCacheClusterSizeEnum>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanarySetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub canary_setting: Option<CanarySetting>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentationVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub documentation_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MethodSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method_settings: Option<Vec<MethodSetting>>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnStage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tracing_enabled: Option<bool>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variables: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -238,6 +239,7 @@ impl cfn_resources::CfnResource for CfnStage {
 ///
 /// AccessLogSetting is a property of the AWS::ApiGateway::Stage resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessLogSetting {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with amazon-apigateway-. This parameter is required to enable access logging.
@@ -248,7 +250,7 @@ pub struct AccessLogSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +262,7 @@ pub struct AccessLogSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<cfn_resources::StrVal>,
 }
 
@@ -280,6 +282,7 @@ impl cfn_resources::CfnResource for AccessLogSetting {
 
 /// Configuration settings of a canary deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CanarySetting {
     ///
     /// The ID of the canary deployment.
@@ -290,7 +293,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +305,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentTraffic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percent_traffic: Option<f64>,
 
     ///
@@ -314,7 +317,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariableOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -326,7 +329,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseStageCache")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_stage_cache: Option<bool>,
 }
 
@@ -348,6 +351,7 @@ impl cfn_resources::CfnResource for CanarySetting {
 ///
 /// The MethodSettings property of the AWS::ApiGateway::Stage resource contains a list of MethodSetting property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MethodSetting {
     ///
     /// Specifies whether the cached responses are encrypted.
@@ -358,7 +362,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheDataEncrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_data_encrypted: Option<bool>,
 
     ///
@@ -370,7 +374,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheTtlInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_ttl_in_seconds: Option<i64>,
 
     ///
@@ -382,7 +386,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub caching_enabled: Option<bool>,
 
     ///
@@ -394,7 +398,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -406,7 +410,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -418,7 +422,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -430,7 +434,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics_enabled: Option<bool>,
 
     ///
@@ -442,7 +446,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +458,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -466,7 +470,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_rate_limit: Option<f64>,
 }
 
@@ -492,6 +496,7 @@ impl cfn_resources::CfnResource for MethodSetting {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBackupPlan {
     ///
     /// Uniquely identifies the backup plan to be associated with the selection of     resources.
@@ -23,7 +24,7 @@ pub struct CfnBackupPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupPlanTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_plan_tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -78,6 +79,7 @@ impl cfn_resources::CfnResource for CfnBackupPlan {
 
 /// Specifies an object containing resource type and backup options. This is only supported     for Windows VSS backups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedBackupSettingResourceType {
     ///
     /// The backup option for the resource. Each option is a key-value pair. This option is only     available for Windows VSS backup jobs.
@@ -128,6 +130,7 @@ impl cfn_resources::CfnResource for AdvancedBackupSettingResourceType {
 
 /// Specifies an object containing properties used to create a backup plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BackupPlanResourceType {
     ///
     /// A list of backup options for each resource type.
@@ -138,7 +141,7 @@ pub struct BackupPlanResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedBackupSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_backup_settings: Option<Vec<AdvancedBackupSettingResourceType>>,
 
     ///
@@ -180,6 +183,7 @@ impl cfn_resources::CfnResource for BackupPlanResourceType {
 
 /// Specifies an object containing properties used to schedule a task to back up a selection     of resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BackupRuleResourceType {
     ///
     /// A value in minutes after a backup job is successfully started before it must be     completed or it is canceled by AWS Backup.
@@ -190,7 +194,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompletionWindowMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub completion_window_minutes: Option<f64>,
 
     ///
@@ -202,7 +206,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_actions: Option<Vec<CopyActionResourceType>>,
 
     ///
@@ -214,7 +218,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableContinuousBackup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_continuous_backup: Option<bool>,
 
     ///
@@ -226,7 +230,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lifecycle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle: Option<LifecycleResourceType>,
 
     ///
@@ -238,7 +242,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecoveryPointTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recovery_point_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -261,7 +265,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -275,7 +279,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartWindowMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_window_minutes: Option<f64>,
 
     ///
@@ -310,6 +314,7 @@ impl cfn_resources::CfnResource for BackupRuleResourceType {
 
 /// Copies backups created by a backup rule to another vault.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CopyActionResourceType {
     ///
     /// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for     the copied backup. For example,       arn:aws:backup:us-east-1:123456789012:vault:aBackupVault.
@@ -333,7 +338,7 @@ pub struct CopyActionResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lifecycle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle: Option<LifecycleResourceType>,
 }
 
@@ -357,6 +362,7 @@ impl cfn_resources::CfnResource for CopyActionResourceType {
 
 /// Specifies an object containing an array of Transition objects that     determine how long in days before a recovery point transitions to cold storage or is     deleted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecycleResourceType {
     ///
     /// Specifies the number of days after creation that a recovery point is deleted. Must be     greater than MoveToColdStorageAfterDays.
@@ -367,7 +373,7 @@ pub struct LifecycleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteAfterDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_after_days: Option<f64>,
 
     ///
@@ -379,7 +385,7 @@ pub struct LifecycleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MoveToColdStorageAfterDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub move_to_cold_storage_after_days: Option<f64>,
 }
 

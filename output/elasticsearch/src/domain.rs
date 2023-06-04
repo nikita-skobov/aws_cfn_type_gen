@@ -1,5 +1,6 @@
 /// The AWS::Elasticsearch::Domain resource creates an Amazon OpenSearch Service    domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomain {
     ///
     /// An AWS Identity and Access Management (IAM) policy document that specifies who can    access the OpenSearch Service domain and their permissions. For more information, see Configuring access policies in the Amazon OpenSearch Service Developer     Guide.
@@ -10,7 +11,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_policies: Option<serde_json::Value>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_options: Option<std::collections::HashMap<String, String>>,
 
     /// Specifies options for fine-grained access control.
@@ -33,7 +34,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AdvancedSecurityOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_security_options: Option<AdvancedSecurityOptionsInput>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cognito_options: Option<CognitoOptions>,
 
     /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
@@ -56,7 +57,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainEndpointOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_endpoint_options: Option<DomainEndpointOptions>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebsoptions: Option<EBSOptions>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchClusterConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elasticsearch_cluster_config: Option<ElasticsearchClusterConfig>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ElasticsearchVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elasticsearch_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "EncryptionAtRestOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_at_rest_options: Option<EncryptionAtRestOptions>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPublishingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_publishing_options: Option<std::collections::HashMap<String, LogPublishingOption>>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NodeToNodeEncryptionOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub node_to_node_encryption_options: Option<NodeToNodeEncryptionOptions>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_options: Option<SnapshotOptions>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -180,7 +181,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpcoptions: Option<VPCOptions>,
 
     #[serde(skip_serializing)]
@@ -269,6 +270,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 
 /// Specifies options for fine-grained access control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedSecurityOptionsInput {
     /// Property description not available.
     ///
@@ -278,7 +280,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnonymousAuthEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anonymous_auth_enabled: Option<bool>,
 
     /// True to enable fine-grained access control. You must also enable encryption of data at rest    and node-to-node encryption.
@@ -289,7 +291,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     /// True to enable the internal user database.
@@ -300,7 +302,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternalUserDatabaseEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub internal_user_database_enabled: Option<bool>,
 
     /// Specifies information about the master user.
@@ -311,7 +313,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_options: Option<MasterUserOptions>,
 }
 
@@ -335,6 +337,7 @@ impl cfn_resources::CfnResource for AdvancedSecurityOptionsInput {
 
 /// Configures OpenSearch Service to use Amazon Cognito authentication for OpenSearch Dashboards.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CognitoOptions {
     ///
     /// Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards. See Amazon     Cognito authentication for OpenSearch Dashboards.
@@ -345,7 +348,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -357,7 +360,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -369,7 +372,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -381,7 +384,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 
@@ -401,6 +404,7 @@ impl cfn_resources::CfnResource for CognitoOptions {
 
 /// Specifies options for cold storage. For more information, see Cold storage for Amazon     Elasticsearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColdStorageOptions {
     ///
     /// Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage in order to enable cold storage.
@@ -411,7 +415,7 @@ pub struct ColdStorageOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -431,6 +435,7 @@ impl cfn_resources::CfnResource for ColdStorageOptions {
 
 /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainEndpointOptions {
     /// The fully qualified URL for your custom endpoint. Required if you enabled a custom endpoint    for the domain.
     ///
@@ -440,7 +445,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_endpoint: Option<cfn_resources::StrVal>,
 
     /// The AWS Certificate Manager ARN for your domain's SSL/TLS certificate. Required if you    enabled a custom endpoint for the domain.
@@ -451,7 +456,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_endpoint_certificate_arn: Option<cfn_resources::StrVal>,
 
     /// True to enable a custom endpoint for the domain. If enabled, you must also provide values for CustomEndpoint and CustomEndpointCertificateArn.
@@ -462,7 +467,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_endpoint_enabled: Option<bool>,
 
     /// True to require that all traffic to the domain arrive over HTTPS.
@@ -473,7 +478,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceHTTPS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enforce_https: Option<bool>,
 
     /// The minimum TLS version required for traffic to the domain. Valid values are TLS 1.0 (default) or 1.2:
@@ -486,7 +491,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLSSecurityPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tlssecurity_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -506,6 +511,7 @@ impl cfn_resources::CfnResource for DomainEndpointOptions {
 
 /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EBSOptions {
     ///
     /// Specifies whether Amazon EBS volumes are attached to data nodes in the OpenSearch Service    domain.
@@ -516,7 +522,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebsenabled: Option<bool>,
 
     ///
@@ -528,7 +534,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -540,7 +546,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 
     ///
@@ -552,7 +558,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 
@@ -572,6 +578,7 @@ impl cfn_resources::CfnResource for EBSOptions {
 
 /// The cluster configuration for the OpenSearch Service domain. You can specify options such    as the instance type and the number of instances. For more information, see Creating and managing Amazon OpenSearch Service domains in the Amazon     OpenSearch Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchClusterConfig {
     ///
     /// Specifies cold storage options for the domain.
@@ -582,7 +589,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColdStorageOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cold_storage_options: Option<ColdStorageOptions>,
 
     ///
@@ -594,7 +601,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dedicated_master_count: Option<i64>,
 
     ///
@@ -606,7 +613,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dedicated_master_enabled: Option<bool>,
 
     ///
@@ -618,7 +625,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dedicated_master_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -630,7 +637,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_count: Option<i64>,
 
     ///
@@ -642,7 +649,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -654,7 +661,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub warm_count: Option<i64>,
 
     ///
@@ -666,7 +673,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub warm_enabled: Option<bool>,
 
     ///
@@ -678,7 +685,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub warm_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -690,7 +697,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZoneAwarenessConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zone_awareness_config: Option<ZoneAwarenessConfig>,
 
     ///
@@ -702,7 +709,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZoneAwarenessEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub zone_awareness_enabled: Option<bool>,
 }
 
@@ -730,6 +737,7 @@ impl cfn_resources::CfnResource for ElasticsearchClusterConfig {
 
 /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service key to use.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionAtRestOptions {
     ///
     /// Specify true to enable encryption at rest.
@@ -740,7 +748,7 @@ pub struct EncryptionAtRestOptions {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -752,7 +760,7 @@ pub struct EncryptionAtRestOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -774,6 +782,7 @@ impl cfn_resources::CfnResource for EncryptionAtRestOptions {
 ///
 /// If you enable a slow log, you still have to enable the collection of    slow logs using the Configuration API. To learn more, see Enabling log publishing (AWS CLI).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogPublishingOption {
     ///
     /// Specifies the CloudWatch log group to publish to. Required if you enable log publishing    for the domain.
@@ -784,7 +793,7 @@ pub struct LogPublishingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -798,7 +807,7 @@ pub struct LogPublishingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -818,6 +827,7 @@ impl cfn_resources::CfnResource for LogPublishingOption {
 
 /// Specifies information about the master user. Required if you enabled the internal user    database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MasterUserOptions {
     /// ARN for the master user. Only specify if InternalUserDatabaseEnabled is false in AdvancedSecurityOptions.
     ///
@@ -827,7 +837,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_arn: Option<cfn_resources::StrVal>,
 
     /// Username for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
@@ -838,7 +848,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_name: Option<cfn_resources::StrVal>,
 
     /// Password for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
@@ -849,7 +859,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_password: Option<cfn_resources::StrVal>,
 }
 
@@ -869,6 +879,7 @@ impl cfn_resources::CfnResource for MasterUserOptions {
 
 /// Specifies whether node-to-node encryption is enabled.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NodeToNodeEncryptionOptions {
     ///
     /// Specifies whether node-to-node encryption is enabled, as a Boolean.
@@ -879,7 +890,7 @@ pub struct NodeToNodeEncryptionOptions {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -901,6 +912,7 @@ impl cfn_resources::CfnResource for NodeToNodeEncryptionOptions {
 ///
 /// The automated snapshot configuration for the OpenSearch Service domain indices.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnapshotOptions {
     ///
     /// The hour in UTC during which the service takes an automated daily snapshot of the indices    in the OpenSearch Service domain. For example, if you specify 0, OpenSearch Service takes an automated snapshot    everyday between midnight and 1 am. You can specify a value between 0 and 23.
@@ -911,7 +923,7 @@ pub struct SnapshotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomatedSnapshotStartHour")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automated_snapshot_start_hour: Option<i64>,
 }
 
@@ -937,6 +949,7 @@ impl cfn_resources::CfnResource for SnapshotOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -975,6 +988,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The virtual private cloud (VPC) configuration for the OpenSearch Service domain. For more    information, see Launching your Amazon OpenSearch     Service domains using a VPC in the Amazon OpenSearch Service Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VPCOptions {
     ///
     /// The list of security group IDs that are associated with the VPC endpoints for the domain.    If you don't provide a security group ID, OpenSearch Service uses the default security group    for the VPC. To learn more, see Security groups for your VPC in    the Amazon VPC User Guide.
@@ -985,7 +999,7 @@ pub struct VPCOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -999,7 +1013,7 @@ pub struct VPCOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -1019,6 +1033,7 @@ impl cfn_resources::CfnResource for VPCOptions {
 
 /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ZoneAwarenessConfig {
     ///
     /// If you enabled multiple Availability Zones (AZs), the number of AZs that you want the    domain to use.
@@ -1031,7 +1046,7 @@ pub struct ZoneAwarenessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZoneCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone_count: Option<i64>,
 }
 

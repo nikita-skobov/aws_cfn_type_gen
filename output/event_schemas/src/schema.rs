@@ -1,5 +1,6 @@
 /// Use the AWS::EventSchemas::Schema resource to specify an event       schema.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchema {
     ///
     /// The source of the schema definition.
@@ -21,7 +22,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///
@@ -122,6 +123,7 @@ impl cfn_resources::CfnResource for CfnSchema {
 
 /// Tags to associate with the schema.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

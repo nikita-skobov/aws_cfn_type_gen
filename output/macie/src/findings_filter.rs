@@ -2,6 +2,7 @@
 ///
 /// An AWS::Macie::Session resource must exist for an AWS account before you can create an         AWS::Macie::FindingsFilter resource for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFindingsFilter {
     ///
     /// The action to perform on findings that match the filter criteria         (FindingCriteria). Valid values are:
@@ -14,7 +15,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -108,6 +109,7 @@ impl cfn_resources::CfnResource for CfnFindingsFilter {
 
 /// Specifies a condition that defines the property, operator, and one or more values to       use in a findings filter. A findings filter, also referred to as a filter rule, is a       set of custom criteria that specifies which findings to include or exclude from the results of a query for findings. You can also       configure a findings filter to suppress (automatically archive) findings that match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CriterionAdditionalProperties {
     ///
     /// The value for the specified property matches (equals) the specified value. If you specify       multiple values, Amazon Macie uses OR logic to join the values.
@@ -118,7 +120,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "eq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub eq: Option<Vec<String>>,
 
     ///
@@ -130,7 +132,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gt: Option<i64>,
 
     ///
@@ -142,7 +144,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gte")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gte: Option<i64>,
 
     ///
@@ -154,7 +156,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "lt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lt: Option<i64>,
 
     ///
@@ -166,7 +168,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "lte")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lte: Option<i64>,
 
     ///
@@ -178,7 +180,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "neq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub neq: Option<Vec<String>>,
 }
 
@@ -198,6 +200,7 @@ impl cfn_resources::CfnResource for CriterionAdditionalProperties {
 
 /// Specifies, as a map, one or more property-based conditions for a findings filter. A findings filter, also referred       to as a filter rule, is a set of custom criteria that specifies which findings to include or exclude       from the results of a query for findings. You can also configure a findings filter to suppress (automatically archive) findings that       match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FindingCriteria {
     ///
     /// Specifies a condition that defines the property, operator, and one or more values to       use to filter the results.
@@ -208,7 +211,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criterion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub criterion: Option<std::collections::HashMap<String, CriterionAdditionalProperties>>,
 }
 

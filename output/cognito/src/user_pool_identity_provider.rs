@@ -1,5 +1,6 @@
 /// The AWS::Cognito::UserPoolIdentityProvider resource creates an identity    provider for a user pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolIdentityProvider {
     ///
     /// A mapping of IdP attributes to standard and custom user pool attributes.
@@ -10,7 +11,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeMapping")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_mapping: Option<serde_json::Value>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdpIdentifiers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idp_identifiers: Option<Vec<String>>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider_details: Option<serde_json::Value>,
 
     ///

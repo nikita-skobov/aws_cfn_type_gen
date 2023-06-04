@@ -2,6 +2,7 @@
 ///
 /// After you create an app monitor, sign in to the CloudWatch RUM console to get       the JavaScript code snippet to add to your web application. For more information, see       How do I find a code snippet         that I've already generated?
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAppMonitor {
     ///
     /// A structure that contains much of the configuration data for the app monitor. If you are using       Amazon Cognito for authorization, you must include this structure in your request, and it       must include the ID of the       Amazon Cognito identity pool to use for authorization. If you don't       include AppMonitorConfiguration, you must set up your own       authorization method. For more information, see       Authorize your application         to send data to AWS.
@@ -14,7 +15,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppMonitorConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_monitor_configuration: Option<AppMonitorConfiguration>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_events: Option<CustomEvents>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CwLogEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cw_log_enabled: Option<bool>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -121,6 +122,7 @@ impl cfn_resources::CfnResource for CfnAppMonitor {
 
 /// This structure contains much of the configuration data for the app monitor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AppMonitorConfiguration {
     ///
     /// If you set this to true, the CloudWatch RUM web client sets two cookies, a session       cookie and a user cookie. The cookies allow the CloudWatch RUM web client to collect data relating to       the number of users an application has and the behavior of the application across a       sequence of events. Cookies are stored in the top-level domain of the current page.
@@ -131,7 +133,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCookies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_cookies: Option<bool>,
 
     ///
@@ -143,7 +145,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableXRay")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_xray: Option<bool>,
 
     ///
@@ -157,7 +159,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedPages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_pages: Option<Vec<String>>,
 
     ///
@@ -169,7 +171,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FavoritePages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub favorite_pages: Option<Vec<String>>,
 
     ///
@@ -181,7 +183,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuestRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub guest_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -193,7 +195,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -207,7 +209,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_pages: Option<Vec<String>>,
 
     ///
@@ -219,7 +221,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDestinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_destinations: Option<Vec<MetricDestination>>,
 
     ///
@@ -235,7 +237,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionSampleRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_sample_rate: Option<f64>,
 
     ///
@@ -249,7 +251,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Telemetries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub telemetries: Option<Vec<String>>,
 }
 
@@ -269,6 +271,7 @@ impl cfn_resources::CfnResource for AppMonitorConfiguration {
 
 /// This structure specifies whether this app monitor allows the web client to define and send custom events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomEvents {
     ///
     /// Set this to ENABLED to allow the web client to send custom events for this app monitor.
@@ -281,7 +284,7 @@ pub struct CustomEvents {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 }
 
@@ -313,6 +316,7 @@ impl cfn_resources::CfnResource for CustomEvents {
 ///
 /// If some metric definitions that you specify are not valid,      then the operation will not modify any metric definitions even if other metric definitions specified are valid.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDefinition {
     ///
     /// This field is a map of field paths to dimension names. It defines the dimensions to associate with this       metric in CloudWatch. The value of this field is used only if the metric destination is CloudWatch.       If the metric destination is Evidently, the value of DimensionKeys is ignored.
@@ -323,7 +327,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimension_keys: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -337,7 +341,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -362,7 +366,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -374,7 +378,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -386,7 +390,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_key: Option<cfn_resources::StrVal>,
 }
 
@@ -408,6 +412,7 @@ impl cfn_resources::CfnResource for MetricDefinition {
 ///
 /// For more information about extended metrics, see             Extended metrics that you can send to CloudWatch and CloudWatch Evidently.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDestination {
     ///
     /// Defines the destination to send the metrics to. Valid values are CloudWatch and       Evidently. If       you specify Evidently, you must also specify the ARN of the       CloudWatchEvidently experiment that is to       be the destination and an IAM role that has permission to write to the experiment.
@@ -429,7 +434,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -443,7 +448,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -455,7 +460,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDefinitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_definitions: Option<Vec<MetricDefinition>>,
 }
 
@@ -481,6 +486,7 @@ impl cfn_resources::CfnResource for MetricDestination {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

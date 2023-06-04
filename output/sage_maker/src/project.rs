@@ -1,5 +1,6 @@
 /// Creates a machine learning (ML) project that can contain one or more templates that set       up an ML pipeline from training to deploying an approved model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnProject {
     ///
     /// The description of the project.
@@ -14,7 +15,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -176,6 +177,7 @@ impl cfn_resources::CfnResource for CfnProject {
 
 /// A key value pair used when you provision a project as a service catalog product. For       information, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisioningParameter {
     ///
     /// The key that identifies a provisioning parameter.
@@ -259,6 +261,7 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
 
 /// Details of a provisioned service catalog product. For information about service catalog,       see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// The ID of the provisioned product.
@@ -275,7 +278,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_product_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -291,7 +294,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductStatusMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_product_status_message: Option<cfn_resources::StrVal>,
 }
 
@@ -327,6 +330,7 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
 
 /// Details that you specify to provision a service catalog product. For information about       service catalog, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceCatalogProvisioningDetails {
     ///
     /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
@@ -343,7 +347,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PathId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -378,7 +382,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningArtifactId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_artifact_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -390,7 +394,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 }
 
@@ -476,6 +480,7 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

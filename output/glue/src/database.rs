@@ -1,5 +1,6 @@
 /// The AWS::Glue::Database resource specifies a logical grouping of tables       in AWS Glue. For more information, see Defining a Database in Your Data         Catalog and Database Structure in the AWS Glue Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDatabase {
     ///
     /// The AWS account ID for the account in which to create the catalog object.
@@ -72,6 +73,7 @@ impl cfn_resources::CfnResource for CfnDatabase {
 
 /// The AWS Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the AWS Lake Formation principal.
@@ -86,7 +88,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -122,6 +124,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 
 /// A structure that describes a target database for resource linking.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseIdentifier {
     ///
     /// The ID of the Data Catalog in which the database resides.
@@ -132,7 +135,7 @@ pub struct DatabaseIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +147,7 @@ pub struct DatabaseIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 }
 
@@ -164,6 +167,7 @@ impl cfn_resources::CfnResource for DatabaseIdentifier {
 
 /// The structure used to create or update a database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseInput {
     ///
     /// Creates a set of default permissions on the table for principals. Used by AWS Lake Formation. Not used in the normal course of AWS Glue operations.
@@ -174,7 +178,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateTableDefaultPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_table_default_permissions: Option<Vec<PrincipalPrivileges>>,
 
     ///
@@ -192,7 +196,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -203,7 +207,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederatedDatabase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federated_database: Option<FederatedDatabase>,
 
     ///
@@ -221,7 +225,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -239,7 +243,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -251,7 +255,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -263,7 +267,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDatabase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_database: Option<DatabaseIdentifier>,
 }
 
@@ -357,6 +361,7 @@ impl cfn_resources::CfnResource for DatabaseInput {
 
 /// The FederatedDatabase property type specifies Property description not available. for an AWS::Glue::Database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FederatedDatabase {
     /// Property description not available.
     ///
@@ -366,7 +371,7 @@ pub struct FederatedDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -377,7 +382,7 @@ pub struct FederatedDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -397,6 +402,7 @@ impl cfn_resources::CfnResource for FederatedDatabase {
 
 /// the permissions granted to a principal
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrincipalPrivileges {
     ///
     /// The permissions that are granted to the principal.
@@ -407,7 +413,7 @@ pub struct PrincipalPrivileges {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<String>>,
 
     ///
@@ -419,7 +425,7 @@ pub struct PrincipalPrivileges {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principal: Option<DataLakePrincipal>,
 }
 

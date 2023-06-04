@@ -1,5 +1,6 @@
 /// The AWS::ElasticBeanstalk::ConfigurationTemplate resource is an AWS Elastic Beanstalk    resource type that specifies an Elastic Beanstalk configuration template, associated with a    specific Elastic Beanstalk application. You define application configuration settings in a    configuration template. You can then use the configuration template to deploy different    versions of the application with the same configuration settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigurationTemplate {
     ///
     /// The name of the Elastic Beanstalk application to associate with this configuration    template.
@@ -27,7 +28,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SolutionStackName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub solution_stack_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_configuration: Option<SourceConfiguration>,
 
     #[serde(skip_serializing)]
@@ -171,6 +172,7 @@ impl cfn_resources::CfnResource for CfnConfigurationTemplate {
 ///
 /// For a list of possible namespaces and option values, see Option Values in the     AWS Elastic Beanstalk Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationOptionSetting {
     ///
     /// A unique namespace that identifies the option's associated AWS resource.
@@ -207,7 +209,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -219,7 +221,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -261,6 +263,7 @@ impl cfn_resources::CfnResource for ConfigurationOptionSetting {
 
 /// An AWS Elastic Beanstalk configuration template to base a new one on. You can use it to    define a AWS::ElasticBeanstalk::ConfigurationTemplate resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceConfiguration {
     ///
     /// The name of the application associated with the configuration.

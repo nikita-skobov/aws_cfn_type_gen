@@ -4,6 +4,7 @@
 ///
 /// If you use an Amazon SNS topic that is encrypted by an AWS Key Management Service customer-managed key (CMK), then you must add permissions 				to the CMK. For more information, see Permissions for 				AWS KMS–encrypted Amazon SNS topics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNotificationChannel {
     ///
     /// A NotificationChannelConfig object that contains information about 			configured notification channels.
@@ -46,6 +47,7 @@ impl cfn_resources::CfnResource for CfnNotificationChannel {
 
 /// Information about notification channels you have configured with DevOps Guru. 			The one    	supported notification channel is Amazon Simple Notification Service (Amazon SNS).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationChannelConfig {
     ///
     /// The filter configurations for the Amazon SNS notification topic you use with DevOps Guru. 			If you do not provide filter configurations, the default configurations are to receive notifications for all message types of High or Medium severity.
@@ -56,7 +58,7 @@ pub struct NotificationChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filters: Option<NotificationFilterConfig>,
 
     ///
@@ -72,7 +74,7 @@ pub struct NotificationChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Sns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns: Option<SnsChannelConfig>,
 }
 
@@ -96,6 +98,7 @@ impl cfn_resources::CfnResource for NotificationChannelConfig {
 
 /// The filter configurations for the Amazon SNS notification topic you use with DevOps Guru. You can choose to specify which events or message types to receive notifications for. 			You can also choose to specify which severity levels to receive notifications for.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationFilterConfig {
     ///
     /// The events that you want to receive notifications for. For example, you can choose to receive notifications only when the severity level is upgraded or a new insight is created.
@@ -108,7 +111,7 @@ pub struct NotificationFilterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MessageTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_types: Option<Vec<String>>,
 
     ///
@@ -122,7 +125,7 @@ pub struct NotificationFilterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Severities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub severities: Option<Vec<String>>,
 }
 
@@ -164,6 +167,7 @@ impl cfn_resources::CfnResource for NotificationFilterConfig {
 ///
 /// If you use an Amazon SNS topic that is encrypted by an AWS Key Management Service customer-managed key (CMK), then you must add permissions 				to the CMK. For more information, see Permissions for 				AWS KMS–encrypted Amazon SNS topics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnsChannelConfig {
     ///
     /// The Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
@@ -180,7 +184,7 @@ pub struct SnsChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic_arn: Option<cfn_resources::StrVal>,
 }
 

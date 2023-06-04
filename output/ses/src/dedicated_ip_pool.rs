@@ -1,5 +1,6 @@
 /// Create a new pool of dedicated IP addresses. A pool can include one or more dedicated       IP addresses that are associated with your AWS account. You can       associate a pool with a configuration set. When you send an email that uses that       configuration set, the message is sent from one of the addresses in the associated       pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDedicatedIpPool {
     ///
     /// The name of the dedicated IP pool that the IP address is associated with.
@@ -10,7 +11,7 @@ pub struct CfnDedicatedIpPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PoolName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pool_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDedicatedIpPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScalingMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scaling_mode: Option<cfn_resources::StrVal>,
 }
 

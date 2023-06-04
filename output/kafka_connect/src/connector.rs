@@ -1,5 +1,6 @@
 /// Creates a connector using the specified properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnector {
     ///
     /// The connector's compute capacity settings.
@@ -31,7 +32,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDelivery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_delivery: Option<LogDelivery>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkerConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub worker_configuration: Option<WorkerConfiguration>,
 
     #[serde(skip_serializing)]
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnConnector {
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApacheKafkaCluster {
     ///
     /// The bootstrap servers of the cluster.
@@ -221,6 +223,7 @@ impl cfn_resources::CfnResource for ApacheKafkaCluster {
 
 /// Specifies how the connector scales.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoScaling {
     ///
     /// The maximum number of workers allocated to the connector.
@@ -298,6 +301,7 @@ impl cfn_resources::CfnResource for AutoScaling {
 
 /// Information about the capacity of the connector, whether it is auto scaled or     provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Capacity {
     ///
     /// Information about the auto scaling parameters for the connector.
@@ -308,7 +312,7 @@ pub struct Capacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_scaling: Option<AutoScaling>,
 
     ///
@@ -320,7 +324,7 @@ pub struct Capacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_capacity: Option<ProvisionedCapacity>,
 }
 
@@ -348,6 +352,7 @@ impl cfn_resources::CfnResource for Capacity {
 
 /// The settings for delivering connector logs to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogsLogDelivery {
     ///
     /// Whether log delivery to Amazon CloudWatch Logs is enabled.
@@ -369,7 +374,7 @@ pub struct CloudWatchLogsLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group: Option<cfn_resources::StrVal>,
 }
 
@@ -389,6 +394,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
 
 /// A plugin is an AWS resource that contains the code that defines a connector's logic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomPlugin {
     ///
     /// The Amazon Resource Name (ARN) of the custom plugin.
@@ -429,6 +435,7 @@ impl cfn_resources::CfnResource for CustomPlugin {
 
 /// The settings for delivering logs to Amazon Kinesis Data Firehose.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FirehoseLogDelivery {
     ///
     /// The name of the Kinesis Data Firehose delivery stream that is the destination for log     delivery.
@@ -439,7 +446,7 @@ pub struct FirehoseLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
@@ -470,6 +477,7 @@ impl cfn_resources::CfnResource for FirehoseLogDelivery {
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KafkaCluster {
     ///
     /// The Apache Kafka cluster to which the connector is connected.
@@ -501,6 +509,7 @@ impl cfn_resources::CfnResource for KafkaCluster {
 
 /// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KafkaClusterClientAuthentication {
     ///
     /// The type of client authentication used to connect to the Apache Kafka cluster. Value     NONE means that no client authentication is used.
@@ -530,6 +539,7 @@ impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
 
 /// Details of encryption in transit to the Apache Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KafkaClusterEncryptionInTransit {
     ///
     /// The type of encryption in transit to the Apache Kafka cluster.
@@ -559,6 +569,7 @@ impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
 
 /// Details about log delivery.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogDelivery {
     ///
     /// The workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
@@ -590,6 +601,7 @@ impl cfn_resources::CfnResource for LogDelivery {
 
 /// A plugin is an AWS resource that contains the code that defines your connector logic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Plugin {
     ///
     /// Details about a custom plugin.
@@ -621,6 +633,7 @@ impl cfn_resources::CfnResource for Plugin {
 
 /// Details about a connector's provisioned capacity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedCapacity {
     ///
     /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
@@ -631,7 +644,7 @@ pub struct ProvisionedCapacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "McuCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mcu_count: Option<i64>,
 
     ///
@@ -662,6 +675,7 @@ impl cfn_resources::CfnResource for ProvisionedCapacity {
 
 /// Details about delivering logs to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3LogDelivery {
     ///
     /// The name of the S3 bucket that is the destination for log delivery.
@@ -672,7 +686,7 @@ pub struct S3LogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -695,7 +709,7 @@ pub struct S3LogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -715,6 +729,7 @@ impl cfn_resources::CfnResource for S3LogDelivery {
 
 /// The scale-in policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScaleInPolicy {
     ///
     /// Specifies the CPU utilization percentage threshold at which you want connector scale in     to be triggered.
@@ -744,6 +759,7 @@ impl cfn_resources::CfnResource for ScaleInPolicy {
 
 /// The scale-out policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScaleOutPolicy {
     ///
     /// The CPU utilization percentage threshold at which you want connector scale out to be     triggered.
@@ -773,6 +789,7 @@ impl cfn_resources::CfnResource for ScaleOutPolicy {
 
 /// Information about the VPC in which the connector resides.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Vpc {
     ///
     /// The security groups for the connector.
@@ -813,6 +830,7 @@ impl cfn_resources::CfnResource for Vpc {
 
 /// The configuration of the workers, which are the processes that run the connector     logic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkerConfiguration {
     ///
     /// The revision of the worker configuration.
@@ -853,6 +871,7 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 
 /// Workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkerLogDelivery {
     ///
     /// Details about delivering logs to Amazon CloudWatch Logs.
@@ -863,7 +882,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CloudWatchLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs: Option<CloudWatchLogsLogDelivery>,
 
     ///
@@ -875,7 +894,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Firehose")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firehose: Option<FirehoseLogDelivery>,
 
     ///
@@ -887,7 +906,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3LogDelivery>,
 }
 

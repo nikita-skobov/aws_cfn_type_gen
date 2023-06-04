@@ -2,6 +2,7 @@
 ///
 /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
@@ -29,7 +30,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -164,6 +165,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 
 /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Definition {
     ///
     /// The content of the application definition. This is a JSON object that contains the     resource configuration/definitions that identify an application.
@@ -178,7 +180,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content: Option<cfn_resources::StrVal>,
 
     ///
@@ -192,7 +194,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_location: Option<cfn_resources::StrVal>,
 }
 

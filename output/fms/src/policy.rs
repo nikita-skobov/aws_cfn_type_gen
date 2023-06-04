@@ -6,6 +6,7 @@
 ///
 /// These policies require some setup to use. For more information, see the sections on prerequisites and getting started       under AWS Firewall Manager.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPolicy {
     ///
     /// Used when deleting a policy. If true, Firewall Manager performs cleanup according to the policy type.
@@ -26,7 +27,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteAllPolicyResources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_all_policy_resources: Option<bool>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_map: Option<IEMap>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_map: Option<IEMap>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceSetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_set_ids: Option<Vec<String>>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_tags: Option<Vec<ResourceTag>>,
 
     ///
@@ -163,7 +164,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -175,7 +176,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypeList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type_list: Option<Vec<String>>,
 
     ///
@@ -191,7 +192,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesCleanUp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources_clean_up: Option<bool>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<PolicyTag>>,
 
     #[serde(skip_serializing)]
@@ -335,6 +336,7 @@ impl cfn_resources::CfnResource for CfnPolicy {
 ///
 /// You can specify account IDs, OUs, or a combination:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IEMap {
     ///
     /// The account list for the map.
@@ -345,7 +347,7 @@ pub struct IEMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACCOUNT")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account: Option<Vec<String>>,
 
     ///
@@ -357,7 +359,7 @@ pub struct IEMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ORGUNIT")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub orgunit: Option<Vec<String>>,
 }
 
@@ -377,6 +379,7 @@ impl cfn_resources::CfnResource for IEMap {
 
 /// Configures the firewall policy deployment model of AWS Network Firewall. For information about     Network Firewall deployment models, see AWS Network Firewall example       architectures with routing in the Network Firewall Developer     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkFirewallPolicy {
     ///
     /// Defines the deployment model to use for the firewall policy. To use a distributed model,      set FirewallDeploymentModel to       DISTRIBUTED.
@@ -425,6 +428,7 @@ impl cfn_resources::CfnResource for NetworkFirewallPolicy {
 
 /// Contains the AWS Network Firewall firewall policy options to configure the policy's deployment model and third-party firewall policy settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PolicyOption {
     ///
     /// Defines the deployment model to use for the firewall policy.
@@ -435,7 +439,7 @@ pub struct PolicyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFirewallPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_firewall_policy: Option<NetworkFirewallPolicy>,
 
     ///
@@ -447,7 +451,7 @@ pub struct PolicyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThirdPartyFirewallPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub third_party_firewall_policy: Option<ThirdPartyFirewallPolicy>,
 }
 
@@ -475,6 +479,7 @@ impl cfn_resources::CfnResource for PolicyOption {
 
 /// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PolicyTag {
     ///
     /// Part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive.
@@ -571,6 +576,7 @@ impl cfn_resources::CfnResource for PolicyTag {
 
 /// The resource tags that AWS Firewall Manager uses to determine if a particular resource    should be included or excluded from the AWS Firewall Manager policy. Tags enable you to    categorize your AWS resources in different ways, for example, by purpose, owner, or    environment. Each tag consists of a key and an optional value. Firewall Manager combines the    tags with "AND" so that, if you add more than one tag to a policy scope, a resource must have     all the specified tags to be included or excluded. For more information, see   Working with Tag Editor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceTag {
     ///
     /// The resource tag key.
@@ -602,7 +608,7 @@ pub struct ResourceTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -655,6 +661,7 @@ impl cfn_resources::CfnResource for ResourceTag {
 
 /// Details about the security service that is being used to protect the resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecurityServicePolicyData {
     ///
     /// Details about the service that are specific to the service type, in JSON format.
@@ -673,7 +680,7 @@ pub struct SecurityServicePolicyData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedServiceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_service_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -685,7 +692,7 @@ pub struct SecurityServicePolicyData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_option: Option<PolicyOption>,
 
     ///
@@ -790,6 +797,7 @@ impl cfn_resources::CfnResource for SecurityServicePolicyData {
 
 /// Configures the deployment model for the third-party firewall.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThirdPartyFirewallPolicy {
     ///
     /// Defines the deployment model to use for the third-party firewall policy.

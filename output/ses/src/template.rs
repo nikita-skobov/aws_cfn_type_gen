@@ -1,5 +1,6 @@
 /// Specifies an email template. Email templates enable you to send personalized email to       one or more destinations in a single API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTemplate {
     ///
     /// The content of the email, composed of a subject line and either an HTML part or a       text-only part.
@@ -10,7 +11,7 @@ pub struct CfnTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Template")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template: Option<Box<Template>>,
 
     #[serde(skip_serializing)]
@@ -45,6 +46,7 @@ impl cfn_resources::CfnResource for CfnTemplate {
 
 /// The content of the email, composed of a subject line and either an HTML part or a       text-only part.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Template {
     ///
     /// The HTML body of the email.
@@ -55,7 +57,7 @@ pub struct Template {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HtmlPart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub html_part: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +80,7 @@ pub struct Template {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +92,7 @@ pub struct Template {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextPart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_part: Option<cfn_resources::StrVal>,
 }
 

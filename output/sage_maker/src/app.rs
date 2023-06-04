@@ -1,5 +1,6 @@
 /// Creates a running app for the specified UserProfile. This operation is automatically    invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel    configurations are selected by the user. A user may have multiple Apps active simultaneously.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApp {
     ///
     /// The name of the app.
@@ -51,7 +52,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_spec: Option<ResourceSpec>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -181,6 +182,7 @@ impl cfn_resources::CfnResource for CfnApp {
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceSpec {
     ///
     /// The instance type that the image version runs on.
@@ -195,7 +197,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -211,7 +213,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -227,7 +229,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -518,6 +520,7 @@ impl cfn_resources::CfnResource for ResourceSpec {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

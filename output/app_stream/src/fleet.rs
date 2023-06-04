@@ -1,5 +1,6 @@
 /// The AWS::AppStream::Fleet resource creates a fleet for Amazon AppStream 2.0. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFleet {
     ///
     /// The desired capacity for the fleet. This is not allowed for Elastic fleets.
@@ -10,7 +11,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_capacity: Option<ComputeCapacity>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisconnectTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disconnect_timeout_in_seconds: Option<i64>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainJoinInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_join_info: Option<DomainJoinInfo>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDefaultInternetAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_default_internet_access: Option<bool>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FleetType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fleet_type: Option<FleetFleetTypeEnum>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleDisconnectTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle_disconnect_timeout_in_seconds: Option<i64>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +153,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentSessions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_sessions: Option<i64>,
 
     ///
@@ -196,7 +197,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUserDurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_user_duration_in_seconds: Option<i64>,
 
     ///
@@ -224,7 +225,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Platform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform: Option<FleetPlatformEnum>,
 
     /// The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.
@@ -235,7 +236,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionScriptS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_script_s3_location: Option<S3Location>,
 
     ///
@@ -251,7 +252,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamView")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_view: Option<FleetStreamViewEnum>,
 
     ///
@@ -263,7 +264,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     /// The USB device filter strings that specify which USB devices a user can redirect to the fleet streaming session, when using the Windows native client. This is allowed but not required for Elastic fleets.
@@ -274,7 +275,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsbDeviceFilterStrings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub usb_device_filter_strings: Option<Vec<String>>,
 
     ///
@@ -286,7 +287,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -429,6 +430,7 @@ impl cfn_resources::CfnResource for CfnFleet {
 
 /// The desired capacity for a fleet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComputeCapacity {
     ///
     /// The desired number of streaming instances.
@@ -458,6 +460,7 @@ impl cfn_resources::CfnResource for ComputeCapacity {
 
 /// The name of the directory and organizational unit (OU) to use to join a fleet to a Microsoft Active Directory domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainJoinInfo {
     ///
     /// The fully qualified name of the directory (for example, corp.example.com).
@@ -468,7 +471,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub directory_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -482,7 +485,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 }
 
@@ -510,6 +513,7 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 
 /// Describes the S3 location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     /// The S3 bucket of the S3 object.
     ///
@@ -608,6 +612,7 @@ impl cfn_resources::CfnResource for S3Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -646,6 +651,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The VPC configuration information for the fleet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     ///
     /// The identifiers of the security groups for the fleet.
@@ -658,7 +664,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -670,7 +676,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

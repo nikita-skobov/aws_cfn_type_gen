@@ -2,6 +2,7 @@
 ///
 /// Calling this action requires developer credentials.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolGroup {
     ///
     /// A string containing the description of the group.
@@ -14,7 +15,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Precedence")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub precedence: Option<f64>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///

@@ -4,6 +4,7 @@
 ///
 /// For more information about virtual services, see Virtual services.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVirtualService {
     ///
     /// The name of the service mesh to create the virtual service in.
@@ -33,7 +34,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -216,6 +217,7 @@ impl cfn_resources::CfnResource for CfnVirtualService {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -254,6 +256,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// An object that represents a virtual node service provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeServiceProvider {
     ///
     /// The name of the virtual node that is acting as a service provider.
@@ -309,6 +312,7 @@ impl cfn_resources::CfnResource for VirtualNodeServiceProvider {
 
 /// An object that represents a virtual node service provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualRouterServiceProvider {
     ///
     /// The name of the virtual router that is acting as a service provider.
@@ -364,6 +368,7 @@ impl cfn_resources::CfnResource for VirtualRouterServiceProvider {
 
 /// An object that represents the provider for a virtual service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualServiceProvider {
     ///
     /// The virtual node associated with a virtual service.
@@ -374,7 +379,7 @@ pub struct VirtualServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualNode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_node: Option<VirtualNodeServiceProvider>,
 
     ///
@@ -386,7 +391,7 @@ pub struct VirtualServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualRouter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_router: Option<VirtualRouterServiceProvider>,
 }
 
@@ -414,6 +419,7 @@ impl cfn_resources::CfnResource for VirtualServiceProvider {
 
 /// An object that represents the specification of a virtual service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualServiceSpec {
     ///
     /// The App Mesh object that is acting as the provider for a virtual service. You     can specify a single virtual node or virtual router.
@@ -424,7 +430,7 @@ pub struct VirtualServiceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider: Option<VirtualServiceProvider>,
 }
 

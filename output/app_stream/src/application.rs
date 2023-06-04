@@ -1,5 +1,6 @@
 /// This resource creates an application. Applications store the details about how to launch applications on streaming instances. This is only supported for Elastic fleets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     /// The app block ARN with which the application should be associated.
     ///
@@ -21,7 +22,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributesToDelete")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes_to_delete: Option<Vec<String>>,
 
     /// The description of the application.
@@ -34,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// The display name of the application. This name is visible to users in the application catalog.
@@ -47,7 +48,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     /// The icon S3 location of the application.
@@ -82,7 +83,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_parameters: Option<cfn_resources::StrVal>,
 
     /// The launch path of the application.
@@ -133,7 +134,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     /// The working directory of the application.
@@ -146,7 +147,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub working_directory: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -256,6 +257,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 
 /// The S3 location of the application icon.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The S3 bucket of the S3 object.
@@ -302,6 +304,7 @@ impl cfn_resources::CfnResource for S3Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

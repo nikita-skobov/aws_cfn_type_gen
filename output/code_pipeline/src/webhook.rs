@@ -2,6 +2,7 @@
 ///
 /// We strongly recommend that you use AWS Secrets Manager to store your credentials. If you    use Secrets Manager, you must have already configured and stored your secret parameters in    Secrets Manager. For more information, see Using Dynamic References to Specify Template Values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWebhook {
     ///
     /// Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
@@ -57,7 +58,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegisterWithThirdParty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub register_with_third_party: Option<bool>,
 
     ///
@@ -249,6 +250,7 @@ impl cfn_resources::CfnResource for CfnWebhook {
 
 /// The authentication applied to incoming webhook trigger requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebhookAuthConfiguration {
     ///
     /// The property used to configure acceptance of webhooks in an IP address range. For       IP, only the AllowedIPRange property must be set. This property must be set       to a valid CIDR range.
@@ -263,7 +265,7 @@ pub struct WebhookAuthConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedIPRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_iprange: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +281,7 @@ pub struct WebhookAuthConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_token: Option<cfn_resources::StrVal>,
 }
 
@@ -343,6 +345,7 @@ impl cfn_resources::CfnResource for WebhookAuthConfiguration {
 
 /// The event criteria that specify when a webhook notification is sent to your       URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebhookFilterRule {
     ///
     /// A JsonPath expression that is applied to the body/payload of the webhook. The value       selected by the JsonPath expression must match the value specified in the         MatchEquals field. Otherwise, the request is ignored. For more       information, see Java JsonPath         implementation in GitHub.
@@ -372,7 +375,7 @@ pub struct WebhookFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub match_equals: Option<cfn_resources::StrVal>,
 }
 

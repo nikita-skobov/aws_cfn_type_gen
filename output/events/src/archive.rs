@@ -1,5 +1,6 @@
 /// Creates an archive of events with the specified settings. When you create an archive,    incoming events might not immediately start being sent to the archive. Allow a short period of    time for changes to take effect. If you do not specify a pattern to filter events sent to the    archive, all events are sent to the archive except replayed events. Replayed events are not    sent to an archive.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnArchive {
     ///
     /// The name for the archive to create.
@@ -16,7 +17,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ArchiveName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub archive_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_pattern: Option<serde_json::Value>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_days: Option<i64>,
 
     ///

@@ -1,5 +1,6 @@
 /// Represents an alarm model to monitor an AWS IoT Events input attribute. You can use the alarm to get    notified when the value is outside a specified range. For more information, see Create an     alarm model in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAlarmModel {
     ///
     /// Contains the configuration information of alarm state changes.
@@ -10,7 +11,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmCapabilities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_capabilities: Option<AlarmCapabilities>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmEventActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_event_actions: Option<AlarmEventActions>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmModelDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_model_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlarmModelName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_model_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub severity: Option<i64>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnAlarmModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -228,6 +229,7 @@ impl cfn_resources::CfnResource for CfnAlarmModel {
 
 /// Specifies whether to get notified for alarm state changes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AcknowledgeFlow {
     ///
     /// The value must be TRUE or FALSE. If TRUE, you    receive a notification when the alarm state changes. You must choose to acknowledge the    notification before the alarm state can return to NORMAL. If FALSE,    you won't receive notifications. The alarm automatically changes to the NORMAL    state when the input property value returns to the specified range.
@@ -238,7 +240,7 @@ pub struct AcknowledgeFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -258,6 +260,7 @@ impl cfn_resources::CfnResource for AcknowledgeFlow {
 
 /// Specifies one of the following actions to receive notifications when the alarm state    changes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmAction {
     ///
     /// Defines an action to write to the Amazon DynamoDB table that you created. The standard action    payload contains all the information about the detector model instance and the event that    triggered the action. You can customize the payload. One column of the    DynamoDB table receives all attribute-value pairs in the payload that you specify.
@@ -276,7 +279,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamo_db: Option<DynamoDB>,
 
     ///
@@ -296,7 +299,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBv2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamo_dbv2: Option<DynamoDBv2>,
 
     ///
@@ -308,7 +311,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Firehose")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firehose: Option<Firehose>,
 
     ///
@@ -320,7 +323,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_events: Option<IotEvents>,
 
     ///
@@ -340,7 +343,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotSiteWise")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_site_wise: Option<IotSiteWise>,
 
     ///
@@ -352,7 +355,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotTopicPublish")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_topic_publish: Option<IotTopicPublish>,
 
     ///
@@ -364,7 +367,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda: Option<Lambda>,
 
     ///
@@ -376,7 +379,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns: Option<Sns>,
 
     ///
@@ -388,7 +391,7 @@ pub struct AlarmAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sqs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sqs: Option<Sqs>,
 }
 
@@ -438,6 +441,7 @@ impl cfn_resources::CfnResource for AlarmAction {
 
 /// Contains the configuration information of alarm state changes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmCapabilities {
     ///
     /// Specifies whether to get notified for alarm state changes.
@@ -448,7 +452,7 @@ pub struct AlarmCapabilities {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcknowledgeFlow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acknowledge_flow: Option<AcknowledgeFlow>,
 
     ///
@@ -460,7 +464,7 @@ pub struct AlarmCapabilities {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitializationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initialization_configuration: Option<InitializationConfiguration>,
 }
 
@@ -488,6 +492,7 @@ impl cfn_resources::CfnResource for AlarmCapabilities {
 
 /// Contains information about one or more alarm actions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmEventActions {
     ///
     /// Specifies one or more supported actions to receive notifications when the alarm state    changes.
@@ -498,7 +503,7 @@ pub struct AlarmEventActions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_actions: Option<Vec<AlarmAction>>,
 }
 
@@ -518,6 +523,7 @@ impl cfn_resources::CfnResource for AlarmEventActions {
 
 /// Defines when your alarm is invoked.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmRule {
     ///
     /// A rule that compares an input property value to a threshold value with a comparison operator.
@@ -528,7 +534,7 @@ pub struct AlarmRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub simple_rule: Option<SimpleRule>,
 }
 
@@ -556,6 +562,7 @@ impl cfn_resources::CfnResource for AlarmRule {
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetPropertyTimestamp {
     ///
     /// The nanosecond offset converted from timeInSeconds. The valid range is    between 0-999999999.
@@ -566,7 +573,7 @@ pub struct AssetPropertyTimestamp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OffsetInNanos")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub offset_in_nanos: Option<cfn_resources::StrVal>,
 
     ///
@@ -601,6 +608,7 @@ impl cfn_resources::CfnResource for AssetPropertyTimestamp {
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetPropertyValue {
     ///
     /// The quality of the asset property value. The value must be 'GOOD',     'BAD', or 'UNCERTAIN'.
@@ -611,7 +619,7 @@ pub struct AssetPropertyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Quality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub quality: Option<cfn_resources::StrVal>,
 
     ///
@@ -623,7 +631,7 @@ pub struct AssetPropertyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp: Option<AssetPropertyTimestamp>,
 
     ///
@@ -666,6 +674,7 @@ impl cfn_resources::CfnResource for AssetPropertyValue {
 ///
 /// You must specify one of the following value types, depending on the dataType    of the specified asset property. For more information, see AssetProperty in the             AWS IoT SiteWise API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetPropertyVariant {
     ///
     /// The asset property value is a Boolean value that must be 'TRUE' or     'FALSE'. You must use an expression, and the evaluated result should be a    Boolean value.
@@ -676,7 +685,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BooleanValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub boolean_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -688,7 +697,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub double_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -700,7 +709,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integer_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -712,7 +721,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_value: Option<cfn_resources::StrVal>,
 }
 
@@ -738,6 +747,7 @@ impl cfn_resources::CfnResource for AssetPropertyVariant {
 ///
 /// If the defined payload type is a string, DynamoDBAction writes non-JSON data to    the DynamoDB table as binary data. The DynamoDB console displays the data as Base64-encoded text.    The value for the payloadField parameter is     <payload-field>_raw.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamoDB {
     ///
     /// The name of the hash key (also called the partition key). The hashKeyField    value must match the partition key of the target DynamoDB table.
@@ -763,7 +773,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HashKeyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hash_key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -790,7 +800,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operation: Option<cfn_resources::StrVal>,
 
     ///
@@ -804,7 +814,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 
     ///
@@ -818,7 +828,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -830,7 +840,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_key_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -846,7 +856,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -858,7 +868,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_key_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -897,6 +907,7 @@ impl cfn_resources::CfnResource for DynamoDB {
 ///
 /// The value for the type parameter in Payload must be     JSON.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamoDBv2 {
     ///
     /// Information needed to configure the payload.
@@ -909,7 +920,7 @@ pub struct DynamoDBv2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 
     ///
@@ -942,6 +953,7 @@ impl cfn_resources::CfnResource for DynamoDBv2 {
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Firehose {
     ///
     /// The name of the Kinesis Data Firehose delivery stream where the data is written.
@@ -963,7 +975,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 
     ///
@@ -977,7 +989,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Separator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub separator: Option<cfn_resources::StrVal>,
 }
 
@@ -999,6 +1011,7 @@ impl cfn_resources::CfnResource for Firehose {
 
 /// Specifies the default alarm state. The configuration applies to all alarms that were created based on this alarm model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InitializationConfiguration {
     ///
     /// The value must be TRUE or FALSE. If FALSE, all    alarm instances created based on the alarm model are activated. The default value is     TRUE.
@@ -1028,6 +1041,7 @@ impl cfn_resources::CfnResource for InitializationConfiguration {
 
 /// Sends an AWS IoT Events input, passing in information about the detector model instance and the    event that triggered the action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IotEvents {
     ///
     /// The name of the AWS IoT Events input where the data is sent.
@@ -1055,7 +1069,7 @@ pub struct IotEvents {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 }
 
@@ -1105,6 +1119,7 @@ impl cfn_resources::CfnResource for IotEvents {
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IotSiteWise {
     ///
     /// The ID of the asset that has the specified property.
@@ -1115,7 +1130,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1127,7 +1142,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entry_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1139,7 +1154,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyAlias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -1151,7 +1166,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1163,7 +1178,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_value: Option<AssetPropertyValue>,
 }
 
@@ -1187,6 +1202,7 @@ impl cfn_resources::CfnResource for IotSiteWise {
 
 /// Information required to publish the MQTT message through the AWS IoT message broker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IotTopicPublish {
     ///
     /// The MQTT topic of the message. You can use a string expression that includes variables     ($variable.<variable-name>) and input values     ($input.<input-name>.<path-to-datum>) as the topic string.
@@ -1212,7 +1228,7 @@ pub struct IotTopicPublish {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 }
 
@@ -1256,6 +1272,7 @@ impl cfn_resources::CfnResource for IotTopicPublish {
 
 /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Lambda {
     ///
     /// The ARN of the Lambda function that is executed.
@@ -1281,7 +1298,7 @@ pub struct Lambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 }
 
@@ -1327,6 +1344,7 @@ impl cfn_resources::CfnResource for Lambda {
 ///
 /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Payload {
     ///
     /// The content of the payload. You can use a string expression that includes quoted strings     ('<string>'), variables ($variable.<variable-name>),    input values ($input.<input-name>.<path-to-datum>), string    concatenations, and quoted strings that contain ${} as the content. The    recommended maximum size of a content expression is 1 KB.
@@ -1399,6 +1417,7 @@ impl cfn_resources::CfnResource for Payload {
 
 /// A rule that compares an input property value to a threshold value with a comparison operator.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SimpleRule {
     ///
     /// The comparison operator.
@@ -1537,6 +1556,7 @@ impl cfn_resources::CfnResource for SimpleRule {
 
 /// Information required to publish the Amazon SNS message.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Sns {
     ///
     /// You can configure the action payload when you send a message as an Amazon SNS push    notification.
@@ -1547,7 +1567,7 @@ pub struct Sns {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 
     ///
@@ -1606,6 +1626,7 @@ impl cfn_resources::CfnResource for Sns {
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Sqs {
     ///
     /// You can configure the action payload when you send a message to an Amazon SQS    queue.
@@ -1616,7 +1637,7 @@ pub struct Sqs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload: Option<Payload>,
 
     ///
@@ -1639,7 +1660,7 @@ pub struct Sqs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBase64")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_base64: Option<bool>,
 }
 
@@ -1667,6 +1688,7 @@ impl cfn_resources::CfnResource for Sqs {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

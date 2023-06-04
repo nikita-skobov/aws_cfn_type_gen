@@ -1,5 +1,6 @@
 /// Specifies a new ruleset that can be used in a profile job to validate the data quality       of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRuleset {
     ///
     /// The description of the ruleset.
@@ -10,7 +11,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -77,6 +78,7 @@ impl cfn_resources::CfnResource for CfnRuleset {
 
 /// Selector of a column from a dataset for profile job configuration.       One selector includes either a column name or a regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnSelector {
     ///
     /// The name of a column from a dataset.
@@ -91,7 +93,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +109,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 }
 
@@ -171,6 +173,7 @@ impl cfn_resources::CfnResource for ColumnSelector {
 
 /// Represents a single data quality requirement that should be validated in the       scope of this dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// The expression which includes column references, condition names followed by variable       references, possibly grouped and combined with other conditions. For example,         (:col1 starts_with :prefix1 or :col1 starts_with :prefix2) and (:col1         ends_with :suffix1 or :col1 ends_with :suffix2). Column and value references       are substitution variables that should start with the ':' symbol. Depending on the       context, substitution variables' values can be either an actual value or a column name.       These values are defined in the SubstitutionMap. If a CheckExpression starts with a       column reference, then ColumnSelectors in the rule should be null. If ColumnSelectors       has been defined, then there should be no columnn reference in the left side of a       condition, for example, is_between :val1 and :val2.
@@ -192,7 +195,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSelectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_selectors: Option<Vec<ColumnSelector>>,
 
     ///
@@ -204,7 +207,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disabled: Option<bool>,
 
     ///
@@ -227,7 +230,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubstitutionMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub substitution_map: Option<Vec<SubstitutionValue>>,
 
     ///
@@ -239,7 +242,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Threshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold: Option<Threshold>,
 }
 
@@ -263,6 +266,7 @@ impl cfn_resources::CfnResource for Rule {
 
 /// A key-value pair to associate an expression's substitution variable names with their       values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubstitutionValue {
     ///
     /// Value or column name.
@@ -309,6 +313,7 @@ impl cfn_resources::CfnResource for SubstitutionValue {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -347,6 +352,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The threshold used with a non-aggregate check expression. The non-aggregate check       expression will be applied to each row in a specific column. Then the threshold will be       used to determine whether the validation succeeds.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Threshold {
     ///
     /// The type of a threshold. Used for comparison of an actual count of rows that satisfy       the rule to the threshold value.
@@ -357,7 +363,7 @@ pub struct Threshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -369,7 +375,7 @@ pub struct Threshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 
     ///

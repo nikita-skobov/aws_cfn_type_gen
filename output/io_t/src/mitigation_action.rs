@@ -1,5 +1,6 @@
 /// Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. For API reference, see     CreateMitigationAction and for general information,      see Mitigation actions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMitigationAction {
     ///
     /// The friendly name of the mitigation action.
@@ -10,7 +11,7 @@ pub struct CfnMitigationAction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnMitigationAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -88,6 +89,7 @@ impl cfn_resources::CfnResource for CfnMitigationAction {
 
 /// Defines the type of action and the parameters for that action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionParams {
     ///
     /// Specifies the group to which you want to add the devices.
@@ -98,7 +100,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddThingsToThingGroupParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_things_to_thing_group_params: Option<AddThingsToThingGroupParams>,
 
     ///
@@ -110,7 +112,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableIoTLoggingParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_io_tlogging_params: Option<EnableIoTLoggingParams>,
 
     ///
@@ -122,7 +124,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishFindingToSnsParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publish_finding_to_sns_params: Option<PublishFindingToSnsParams>,
 
     ///
@@ -134,7 +136,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceDefaultPolicyVersionParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_default_policy_version_params: Option<ReplaceDefaultPolicyVersionParams>,
 
     ///
@@ -146,7 +148,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateCACertificateParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_cacertificate_params: Option<UpdateCACertificateParams>,
 
     ///
@@ -158,7 +160,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateDeviceCertificateParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_device_certificate_params: Option<UpdateDeviceCertificateParams>,
 }
 
@@ -202,6 +204,7 @@ impl cfn_resources::CfnResource for ActionParams {
 
 /// Parameters used when defining a mitigation action that move a set of things to a thing group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AddThingsToThingGroupParams {
     ///
     /// Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.
@@ -212,7 +215,7 @@ pub struct AddThingsToThingGroupParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverrideDynamicGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub override_dynamic_groups: Option<bool>,
 
     ///
@@ -243,6 +246,7 @@ impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
 
 /// Parameters used when defining a mitigation action that enable AWS IoT Core logging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnableIoTLoggingParams {
     ///
     /// Specifies the type of information to be logged.
@@ -283,6 +287,7 @@ impl cfn_resources::CfnResource for EnableIoTLoggingParams {
 
 /// Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublishFindingToSnsParams {
     ///
     /// The ARN of the topic to which you want to publish the findings.
@@ -312,6 +317,7 @@ impl cfn_resources::CfnResource for PublishFindingToSnsParams {
 
 /// Parameters to define a mitigation action that adds a blank policy to restrict permissions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplaceDefaultPolicyVersionParams {
     ///
     /// The name of the template to be applied. The only supported value is BLANK_POLICY.
@@ -347,6 +353,7 @@ impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -385,6 +392,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdateCACertificateParams {
     ///
     /// The action that you want to apply to the CA certificate. The only supported value is DEACTIVATE.
@@ -414,6 +422,7 @@ impl cfn_resources::CfnResource for UpdateCACertificateParams {
 
 /// Parameters to define a mitigation action that changes the state of the device certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdateDeviceCertificateParams {
     ///
     /// The action that you want to apply to the device certificate. The only supported value is DEACTIVATE.

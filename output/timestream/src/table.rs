@@ -1,5 +1,6 @@
 /// The CreateTable operation adds a new table to an existing database in your account. In an     AWS account, table names must be at least unique within each Region if they    are in the same database. You may have identical table names in the same Region if the tables    are in separate databases. While creating the table, you must specify the table name, database    name, and the retention properties. Service quotas apply. See     code sample    for details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTable {
     ///
     /// The name of the Timestream database that contains this table.
@@ -39,7 +40,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreWriteProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub magnetic_store_write_properties: Option<MagneticStoreWriteProperties>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_properties: Option<RetentionProperties>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -141,6 +142,7 @@ impl cfn_resources::CfnResource for CfnTable {
 
 /// The location to write error reports for records rejected, asynchronously, during     magnetic store writes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MagneticStoreRejectedDataLocation {
     ///
     /// Configuration of an S3 location to write error reports for records rejected,     asynchronously, during magnetic store writes.
@@ -151,7 +153,7 @@ pub struct MagneticStoreRejectedDataLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_configuration: Option<S3Configuration>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for MagneticStoreRejectedDataLocation {
 
 /// The set of properties on a table for configuring magnetic store writes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MagneticStoreWriteProperties {
     ///
     /// A flag to enable magnetic store writes.
@@ -196,7 +199,7 @@ pub struct MagneticStoreWriteProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreRejectedDataLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub magnetic_store_rejected_data_location: Option<MagneticStoreRejectedDataLocation>,
 }
 
@@ -220,6 +223,7 @@ impl cfn_resources::CfnResource for MagneticStoreWriteProperties {
 
 /// Retention properties contain the duration for which your time-series data must be stored     in the magnetic store and the memory store.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetentionProperties {
     ///
     /// The duration for which data must be stored in the magnetic store.
@@ -230,7 +234,7 @@ pub struct RetentionProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreRetentionPeriodInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub magnetic_store_retention_period_in_days: Option<cfn_resources::StrVal>,
 
     ///
@@ -242,7 +246,7 @@ pub struct RetentionProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryStoreRetentionPeriodInHours")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_store_retention_period_in_hours: Option<cfn_resources::StrVal>,
 }
 
@@ -262,6 +266,7 @@ impl cfn_resources::CfnResource for RetentionProperties {
 
 /// The configuration that specifies an S3 location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Configuration {
     ///
     /// The bucket name of the customer S3 bucket.
@@ -306,7 +311,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +329,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectKeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -430,6 +435,7 @@ impl cfn_resources::CfnResource for S3Configuration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

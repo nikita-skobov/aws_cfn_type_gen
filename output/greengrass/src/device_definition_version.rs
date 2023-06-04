@@ -1,5 +1,6 @@
 /// The     AWS::Greengrass::DeviceDefinitionVersion resource represents a device definition version for AWS IoT Greengrass.      A device definition version contains a list of devices.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeviceDefinitionVersion {
     ///
     /// The ID of the device definition associated with this version. This value is a GUID.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the AWS::Greengrass::DeviceDefinitionVersion resource contains a      list of Device property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Device {
     ///
     /// The ARN of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
@@ -74,7 +76,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_shadow: Option<bool>,
 
     ///

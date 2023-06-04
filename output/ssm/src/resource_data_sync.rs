@@ -12,6 +12,7 @@
 ///
 /// Important: The following Syntax section shows all fields that are    supported for a resource data sync. The Examples section below shows the    recommended way to specify configurations for each sync type. Please see the     Examples section when you create your resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceDataSync {
     ///
     /// The name of the S3 bucket where the aggregated data is stored.
@@ -26,7 +27,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_destination: Option<S3Destination>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_format: Option<ResourceDataSyncSyncFormatEnum>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_source: Option<SyncSource>,
 
     ///
@@ -145,7 +146,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -329,6 +330,7 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
 
 /// Information about the AwsOrganizationsSource resource data sync source. A sync  source of this type can synchronize data from AWS Organizations or, if an AWS organization isn't  present, from multiple AWS Regions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsOrganizationsSource {
     ///
     /// If an AWS organization is present, this is either OrganizationalUnits or   EntireOrganization. For OrganizationalUnits, the data is aggregated  from a set of organization units. For EntireOrganization, the data is aggregated  from the entire AWS organization.
@@ -356,7 +358,7 @@ pub struct AwsOrganizationsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_units: Option<Vec<String>>,
 }
 
@@ -401,6 +403,7 @@ impl cfn_resources::CfnResource for AwsOrganizationsSource {
 
 /// Information about the target S3 bucket for the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Destination {
     ///
     /// The name of the S3 bucket where the aggregated data is stored.
@@ -430,7 +433,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -463,7 +466,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -597,6 +600,7 @@ impl cfn_resources::CfnResource for S3Destination {
 
 /// Information about the source of the data included in the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SyncSource {
     ///
     /// Information about the AwsOrganizationsSource resource data sync source. A sync source of    this type can synchronize data from AWS Organizations.
@@ -607,7 +611,7 @@ pub struct SyncSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsOrganizationsSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_organizations_source: Option<AwsOrganizationsSource>,
 
     ///
@@ -619,7 +623,7 @@ pub struct SyncSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFutureRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_future_regions: Option<bool>,
 
     ///

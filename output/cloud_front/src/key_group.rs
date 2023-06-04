@@ -2,6 +2,7 @@
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnKeyGroup {
     ///
     /// The key group configuration.
@@ -57,6 +58,7 @@ impl cfn_resources::CfnResource for CfnKeyGroup {
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KeyGroupConfig {
     ///
     /// A comment to describe the key group. The comment cannot be longer than 128 			characters.
@@ -67,7 +69,7 @@ pub struct KeyGroupConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///

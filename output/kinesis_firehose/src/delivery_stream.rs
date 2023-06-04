@@ -1,5 +1,6 @@
 /// The AWS::KinesisFirehose::DeliveryStream resource specifies an Amazon     Kinesis Data Firehose (Kinesis Data Firehose) delivery stream that delivers real-time     streaming data to an Amazon Simple Storage Service (Amazon S3), Amazon Redshift, or Amazon     Elasticsearch Service (Amazon ES) destination. For more information, see Creating an Amazon       Kinesis Data Firehose Delivery Stream in the Amazon Kinesis Data       Firehose Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeliveryStream {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonOpenSearchServerlessDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazon_open_search_serverless_destination_configuration:
         Option<AmazonOpenSearchServerlessDestinationConfiguration>,
 
@@ -22,7 +23,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonopensearchserviceDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazonopensearchservice_destination_configuration:
         Option<AmazonopensearchserviceDestinationConfiguration>,
 
@@ -35,7 +36,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStreamEncryptionConfigurationInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream_encryption_configuration_input:
         Option<DeliveryStreamEncryptionConfigurationInput>,
 
@@ -54,7 +55,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStreamName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStreamType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream_type: Option<DeliveryStreamDeliveryStreamTypeEnum>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elasticsearch_destination_configuration: Option<ElasticsearchDestinationConfiguration>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtendedS3DestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extended_s3_destination_configuration: Option<ExtendedS3DestinationConfiguration>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpEndpointDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_endpoint_destination_configuration: Option<HttpEndpointDestinationConfiguration>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KinesisStreamSourceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_stream_source_configuration: Option<KinesisStreamSourceConfiguration>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift_destination_configuration: Option<RedshiftDestinationConfiguration>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_destination_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -170,7 +171,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplunkDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub splunk_destination_configuration: Option<SplunkDestinationConfiguration>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -302,6 +303,7 @@ impl cfn_resources::CfnResource for CfnDeliveryStream {
 
 /// The AmazonOpenSearchServerlessBufferingHints property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonOpenSearchServerlessBufferingHints {
     /// Property description not available.
     ///
@@ -311,7 +313,7 @@ pub struct AmazonOpenSearchServerlessBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_in_seconds: Option<i64>,
 
     /// Property description not available.
@@ -322,7 +324,7 @@ pub struct AmazonOpenSearchServerlessBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -342,6 +344,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessBufferingHints {
 
 /// The AmazonOpenSearchServerlessDestinationConfiguration property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     /// Property description not available.
     ///
@@ -351,7 +354,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<AmazonOpenSearchServerlessBufferingHints>,
 
     /// Property description not available.
@@ -362,7 +365,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     /// Property description not available.
@@ -373,7 +376,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collection_endpoint: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -394,7 +397,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     /// Property description not available.
@@ -405,7 +408,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<AmazonOpenSearchServerlessRetryOptions>,
 
     /// Property description not available.
@@ -426,7 +429,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -447,7 +450,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -489,6 +492,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessDestinationConfigu
 
 /// The AmazonOpenSearchServerlessRetryOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonOpenSearchServerlessRetryOptions {
     /// Property description not available.
     ///
@@ -498,7 +502,7 @@ pub struct AmazonOpenSearchServerlessRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -518,6 +522,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessRetryOptions {
 
 /// Describes the buffering to perform before delivering data to the Amazon OpenSearch     Service destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Buffer incoming data for the specified period of time, in seconds, before delivering it     to the destination. The default value is 300 (5 minutes).
@@ -532,7 +537,7 @@ pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -548,7 +553,7 @@ pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -604,6 +609,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceBufferingHints {
 
 /// Describes the configuration of a destination in Amazon OpenSearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// The buffering options. If no value is specified, the default values for     AmazonopensearchserviceBufferingHints are used.
@@ -614,7 +620,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<AmazonopensearchserviceBufferingHints>,
 
     ///
@@ -626,7 +632,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -644,7 +650,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_endpoint: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -655,7 +661,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentIdOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_id_options: Option<DocumentIdOptions>,
 
     ///
@@ -673,7 +679,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -704,7 +710,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexRotationPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub index_rotation_period:
         Option<AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum>,
 
@@ -717,7 +723,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -729,7 +735,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<AmazonopensearchserviceRetryOptions>,
 
     ///
@@ -760,7 +766,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -789,7 +795,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -801,7 +807,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -1003,6 +1009,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceDestinationConfigurat
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver documents     to Amazon OpenSearch Service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonopensearchserviceRetryOptions {
     ///
     /// After an initial failure to deliver to Amazon OpenSearch Service, the total amount of     time during which Kinesis Data Firehose retries delivery (including the first attempt).     After this time has elapsed, the failed documents are written to Amazon S3. Default value     is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
@@ -1017,7 +1024,7 @@ pub struct AmazonopensearchserviceRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -1055,6 +1062,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceRetryOptions {
 
 /// The BufferingHints property type specifies how Amazon Kinesis Data     Firehose (Kinesis Data Firehose) buffers incoming data before delivering it to the     destination. The first buffer condition that is satisfied triggers Kinesis Data Firehose to     deliver the data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BufferingHints {
     ///
     /// The length of time, in seconds, that Kinesis Data Firehose buffers incoming data     before delivering it to the destination. For valid values, see the       IntervalInSeconds content for the BufferingHints data     type in the Amazon Kinesis Data Firehose API Reference.
@@ -1069,7 +1077,7 @@ pub struct BufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -1085,7 +1093,7 @@ pub struct BufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -1141,6 +1149,7 @@ impl cfn_resources::CfnResource for BufferingHints {
 
 /// The CloudWatchLoggingOptions property type specifies Amazon CloudWatch     Logs (CloudWatch Logs) logging options that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) uses for the delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLoggingOptions {
     ///
     /// Indicates whether CloudWatch Logs logging is enabled.
@@ -1151,7 +1160,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -1171,7 +1180,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1191,7 +1200,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogStreamName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_stream_name: Option<cfn_resources::StrVal>,
 }
 
@@ -1255,6 +1264,7 @@ impl cfn_resources::CfnResource for CloudWatchLoggingOptions {
 
 /// The CopyCommand property type configures the Amazon Redshift       COPY command that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses     to load data into an Amazon Redshift cluster from an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CopyCommand {
     ///
     /// Parameters to use with the Amazon Redshift COPY command. For examples, see     the CopyOptions content for the CopyCommand data type in     the Amazon Kinesis Data Firehose API Reference.
@@ -1271,7 +1281,7 @@ pub struct CopyCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_options: Option<cfn_resources::StrVal>,
 
     ///
@@ -1289,7 +1299,7 @@ pub struct CopyCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTableColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_table_columns: Option<cfn_resources::StrVal>,
 
     ///
@@ -1389,6 +1399,7 @@ impl cfn_resources::CfnResource for CopyCommand {
 
 /// Specifies that you want Kinesis Data Firehose to convert data from the JSON format to     the Parquet or ORC format before writing it to Amazon S3. Kinesis Data Firehose uses the     serializer and deserializer that you specify, in addition to the column information from     the AWS Glue table, to deserialize your input data from JSON and then     serialize it to the Parquet or ORC format. For more information, see Kinesis       Data Firehose Record Format Conversion.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataFormatConversionConfiguration {
     ///
     /// Defaults to true. Set it to false if you want to disable     format conversion while preserving the configuration details.
@@ -1399,7 +1410,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -1411,7 +1422,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_format_configuration: Option<InputFormatConfiguration>,
 
     ///
@@ -1423,7 +1434,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_format_configuration: Option<OutputFormatConfiguration>,
 
     ///
@@ -1435,7 +1446,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_configuration: Option<SchemaConfiguration>,
 }
 
@@ -1467,6 +1478,7 @@ impl cfn_resources::CfnResource for DataFormatConversionConfiguration {
 
 /// Specifies the type and Amazon Resource Name (ARN) of the CMK to use for Server-Side     Encryption (SSE).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeliveryStreamEncryptionConfigurationInput {
     ///
     /// If you set KeyType to CUSTOMER_MANAGED_CMK, you must specify     the Amazon Resource Name (ARN) of the CMK. If you set KeyType to         AWS_OWNED_CMK, Kinesis Data Firehose uses a service-account CMK.
@@ -1483,7 +1495,7 @@ pub struct DeliveryStreamEncryptionConfigurationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1559,6 +1571,7 @@ impl cfn_resources::CfnResource for DeliveryStreamEncryptionConfigurationInput {
 
 /// The deserializer you want Kinesis Data Firehose to use for converting the input data     from JSON. Kinesis Data Firehose then serializes the data to its final format using the       Serializer. Kinesis Data Firehose supports two types of deserializers: the       Apache Hive JSON SerDe and the OpenX JSON SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Deserializer {
     ///
     /// The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing     data, which means converting it from the JSON format in preparation for serializing it to     the Parquet or ORC format. This is one of two deserializers you can choose, depending on     which one offers the functionality you need. The other option is the OpenX SerDe.
@@ -1569,7 +1582,7 @@ pub struct Deserializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HiveJsonSerDe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hive_json_ser_de: Option<HiveJsonSerDe>,
 
     ///
@@ -1581,7 +1594,7 @@ pub struct Deserializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenXJsonSerDe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_xjson_ser_de: Option<OpenXJsonSerDe>,
 }
 
@@ -1609,6 +1622,7 @@ impl cfn_resources::CfnResource for Deserializer {
 
 /// The DocumentIdOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentIdOptions {
     /// Property description not available.
     ///
@@ -1637,6 +1651,7 @@ impl cfn_resources::CfnResource for DocumentIdOptions {
 
 /// The DynamicPartitioningConfiguration property type specifies the     configuration of the dynamic partitioning mechanism that creates targeted data sets from     the streaming data by partitioning it based on partition keys.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamicPartitioningConfiguration {
     ///
     /// Specifies whether dynamic partitioning is enabled for this Kinesis Data Firehose     delivery stream.
@@ -1647,7 +1662,7 @@ pub struct DynamicPartitioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -1659,7 +1674,7 @@ pub struct DynamicPartitioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<RetryOptions>,
 }
 
@@ -1685,6 +1700,7 @@ impl cfn_resources::CfnResource for DynamicPartitioningConfiguration {
 ///
 /// ElasticsearchBufferingHints is the property type for the BufferingHints     property of the Amazon Kinesis Data Firehose DeliveryStream       ElasticsearchDestinationConfiguration property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchBufferingHints {
     ///
     /// The length of time, in seconds, that Kinesis Data Firehose buffers incoming data     before delivering it to the destination. For valid values, see the       IntervalInSeconds content for the BufferingHints data     type in the Amazon Kinesis Data Firehose API Reference.
@@ -1699,7 +1715,7 @@ pub struct ElasticsearchBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -1715,7 +1731,7 @@ pub struct ElasticsearchBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -1771,6 +1787,7 @@ impl cfn_resources::CfnResource for ElasticsearchBufferingHints {
 
 /// The ElasticsearchDestinationConfiguration property type specifies an Amazon     Elasticsearch Service (Amazon ES) domain that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Configures how Kinesis Data Firehose buffers incoming data while delivering it to the     Amazon ES domain.
@@ -1781,7 +1798,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<ElasticsearchBufferingHints>,
 
     ///
@@ -1793,7 +1810,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -1805,7 +1822,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_endpoint: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -1816,7 +1833,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentIdOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_id_options: Option<DocumentIdOptions>,
 
     ///
@@ -1836,7 +1853,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1867,7 +1884,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexRotationPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub index_rotation_period: Option<ElasticsearchDestinationConfigurationIndexRotationPeriodEnum>,
 
     ///
@@ -1879,7 +1896,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -1891,7 +1908,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<ElasticsearchRetryOptions>,
 
     ///
@@ -1922,7 +1939,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<ElasticsearchDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -1951,7 +1968,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1963,7 +1980,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -2143,6 +2160,7 @@ impl cfn_resources::CfnResource for ElasticsearchDestinationConfiguration {
 
 /// The ElasticsearchRetryOptions property type configures the retry behavior     for when Amazon Kinesis Data Firehose (Kinesis Data Firehose) can't deliver data to Amazon     Elasticsearch Service (Amazon ES).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchRetryOptions {
     ///
     /// After an initial failure to deliver to Amazon ES, the total amount of time during which     Kinesis Data Firehose re-attempts delivery (including the first attempt). If Kinesis Data     Firehose can't deliver the data within the specified time, it writes the data to the backup     S3 bucket. For valid values, see the DurationInSeconds content for the ElasticsearchRetryOptions data type in the Amazon Kinesis Data       Firehose API Reference.
@@ -2157,7 +2175,7 @@ pub struct ElasticsearchRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -2195,6 +2213,7 @@ impl cfn_resources::CfnResource for ElasticsearchRetryOptions {
 
 /// The EncryptionConfiguration property type specifies the encryption     settings that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses when delivering     data to Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// The AWS Key Management Service (AWS KMS) encryption     key that Amazon S3 uses to encrypt your data.
@@ -2205,7 +2224,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSEncryptionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmsencryption_config: Option<KMSEncryptionConfig>,
 
     ///
@@ -2219,7 +2238,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoEncryptionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_encryption_config: Option<EncryptionConfigurationNoEncryptionConfigEnum>,
 }
 
@@ -2256,6 +2275,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
 /// The ExtendedS3DestinationConfiguration property type configures an     Amazon S3 destination for an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExtendedS3DestinationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon S3 bucket. For constraints, see ExtendedS3DestinationConfiguration in the Amazon Kinesis Data       Firehose API Reference.
@@ -2283,7 +2303,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -2295,7 +2315,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -2309,7 +2329,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression_format: Option<ExtendedS3DestinationConfigurationCompressionFormatEnum>,
 
     ///
@@ -2321,7 +2341,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFormatConversionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_format_conversion_configuration: Option<DataFormatConversionConfiguration>,
 
     ///
@@ -2333,7 +2353,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicPartitioningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_partitioning_configuration: Option<DynamicPartitioningConfiguration>,
 
     ///
@@ -2345,7 +2365,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -2363,7 +2383,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorOutputPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_output_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2381,7 +2401,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2393,7 +2413,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -2422,7 +2442,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -2436,7 +2456,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<ExtendedS3DestinationConfigurationS3BackupModeEnum>,
 }
 
@@ -2615,6 +2635,7 @@ impl cfn_resources::CfnResource for ExtendedS3DestinationConfiguration {
 
 /// The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing     data, which means converting it from the JSON format in preparation for serializing it to     the Parquet or ORC format. This is one of two deserializers you can choose, depending on     which one offers the functionality you need. The other option is the OpenX SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HiveJsonSerDe {
     ///
     /// Indicates how you want Kinesis Data Firehose to parse the date and timestamps that     may be present in your input data JSON. To specify these format strings, follow the pattern     syntax of JodaTime's DateTimeFormat format strings. For more information, see Class DateTimeFormat. You can also use the special value millis to     parse timestamps in epoch milliseconds. If you don't specify a format, Kinesis Data     Firehose uses java.sql.Timestamp::valueOf by default.
@@ -2625,7 +2646,7 @@ pub struct HiveJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampFormats")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp_formats: Option<Vec<String>>,
 }
 
@@ -2645,6 +2666,7 @@ impl cfn_resources::CfnResource for HiveJsonSerDe {
 
 /// Describes the metadata that's delivered to the specified HTTP endpoint destination.     Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by supported     third-party service providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpEndpointCommonAttribute {
     ///
     /// The name of the HTTP endpoint common attribute.
@@ -2741,6 +2763,7 @@ impl cfn_resources::CfnResource for HttpEndpointCommonAttribute {
 
 /// Describes the configuration of the HTTP endpoint to which Kinesis Firehose delivers     data. Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by     supported third-party service providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpEndpointConfiguration {
     ///
     /// The access key required for Kinesis Firehose to authenticate with the HTTP endpoint     selected as the destination.
@@ -2757,7 +2780,7 @@ pub struct HttpEndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -2775,7 +2798,7 @@ pub struct HttpEndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2878,6 +2901,7 @@ impl cfn_resources::CfnResource for HttpEndpointConfiguration {
 
 /// Describes the configuration of the HTTP endpoint destination. Kinesis Firehose     supports any custom HTTP endpoint or HTTP endpoints owned by supported third-party service     providers, including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpEndpointDestinationConfiguration {
     ///
     /// The buffering options that can be used before data is delivered to the specified     destination. Kinesis Data Firehose treats these options as hints, and it might choose to     use more optimal values. The SizeInMBs and IntervalInSeconds parameters are optional.     However, if you specify a value for one of them, you must also provide a value for the     other.
@@ -2888,7 +2912,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -2900,7 +2924,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -2923,7 +2947,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -2935,7 +2959,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_configuration: Option<HttpEndpointRequestConfiguration>,
 
     ///
@@ -2947,7 +2971,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<RetryOptions>,
 
     ///
@@ -2965,7 +2989,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2979,7 +3003,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<HttpEndpointDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -3073,6 +3097,7 @@ impl cfn_resources::CfnResource for HttpEndpointDestinationConfiguration {
 
 /// The configuration of the HTTP endpoint request. Kinesis Firehose supports any custom     HTTP endpoint or HTTP endpoints owned by supported third-party service providers, including     Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpEndpointRequestConfiguration {
     ///
     /// Describes the metadata sent to the HTTP endpoint destination.
@@ -3085,7 +3110,7 @@ pub struct HttpEndpointRequestConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CommonAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub common_attributes: Option<Vec<HttpEndpointCommonAttribute>>,
 
     ///
@@ -3099,7 +3124,7 @@ pub struct HttpEndpointRequestConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentEncoding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_encoding: Option<HttpEndpointRequestConfigurationContentEncodingEnum>,
 }
 
@@ -3145,6 +3170,7 @@ impl cfn_resources::CfnResource for HttpEndpointRequestConfiguration {
 
 /// Specifies the deserializer you want to use to convert the format of the input data.     This parameter is required if Enabled is set to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputFormatConfiguration {
     ///
     /// Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe     or the OpenX JSON SerDe. If both are non-null, the server rejects the request.
@@ -3155,7 +3181,7 @@ pub struct InputFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deserializer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deserializer: Option<Deserializer>,
 }
 
@@ -3179,6 +3205,7 @@ impl cfn_resources::CfnResource for InputFormatConfiguration {
 
 /// The KMSEncryptionConfig property type specifies the AWS     Key Management Service (AWS KMS) encryption key that Amazon Simple Storage     Service (Amazon S3) uses to encrypt data delivered by the Amazon Kinesis Data Firehose     (Kinesis Data Firehose) stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KMSEncryptionConfig {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS encryption key that     Amazon S3 uses to encrypt data delivered by the Kinesis Data Firehose stream. The key must     belong to the same region as the destination S3 bucket.
@@ -3236,6 +3263,7 @@ impl cfn_resources::CfnResource for KMSEncryptionConfig {
 
 /// The KinesisStreamSourceConfiguration property type specifies the stream and     role Amazon Resource Names (ARNs) for a Kinesis stream used as the source for a delivery     stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisStreamSourceConfiguration {
     ///
     /// The ARN of the source Kinesis data stream.
@@ -3332,6 +3360,7 @@ impl cfn_resources::CfnResource for KinesisStreamSourceConfiguration {
 
 /// The OpenX SerDe. Used by Kinesis Data Firehose for deserializing data, which means     converting it from the JSON format in preparation for serializing it to the Parquet or ORC     format. This is one of two deserializers you can choose, depending on which one offers the     functionality you need. The other option is the native Hive / HCatalog JsonSerDe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenXJsonSerDe {
     ///
     /// When set to true, which is the default, Kinesis Data Firehose converts     JSON keys to lowercase before deserializing them.
@@ -3342,7 +3371,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseInsensitive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_insensitive: Option<bool>,
 
     ///
@@ -3354,7 +3383,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnToJsonKeyMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_to_json_key_mappings: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -3368,7 +3397,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConvertDotsInJsonKeysToUnderscores")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub convert_dots_in_json_keys_to_underscores: Option<bool>,
 }
 
@@ -3388,6 +3417,7 @@ impl cfn_resources::CfnResource for OpenXJsonSerDe {
 
 /// A serializer to use for converting data to the ORC format before storing it in Amazon     S3. For more information, see Apache     ORC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrcSerDe {
     ///
     /// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to     copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the     minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
@@ -3400,7 +3430,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSizeBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_size_bytes: Option<i64>,
 
     ///
@@ -3412,7 +3442,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BloomFilterColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bloom_filter_columns: Option<Vec<String>>,
 
     ///
@@ -3424,7 +3454,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BloomFilterFalsePositiveProbability")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bloom_filter_false_positive_probability: Option<f64>,
 
     ///
@@ -3438,7 +3468,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression: Option<OrcSerDeCompressionEnum>,
 
     ///
@@ -3450,7 +3480,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DictionaryKeyThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dictionary_key_threshold: Option<f64>,
 
     ///
@@ -3462,7 +3492,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePadding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_padding: Option<bool>,
 
     ///
@@ -3476,7 +3506,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_version: Option<OrcSerDeFormatVersionEnum>,
 
     ///
@@ -3492,7 +3522,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaddingTolerance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub padding_tolerance: Option<f64>,
 
     ///
@@ -3506,7 +3536,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowIndexStride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_index_stride: Option<i64>,
 
     ///
@@ -3520,7 +3550,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StripeSizeBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stripe_size_bytes: Option<i64>,
 }
 
@@ -3605,6 +3635,7 @@ impl cfn_resources::CfnResource for OrcSerDe {
 
 /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the     format of your data before it writes it to Amazon S3. This parameter is required if       Enabled is set to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutputFormatConfiguration {
     ///
     /// Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet     SerDe. If both are non-null, the server rejects the request.
@@ -3615,7 +3646,7 @@ pub struct OutputFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Serializer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serializer: Option<Serializer>,
 }
 
@@ -3639,6 +3670,7 @@ impl cfn_resources::CfnResource for OutputFormatConfiguration {
 
 /// A serializer to use for converting data to the Parquet format before storing it in     Amazon S3. For more information, see Apache Parquet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParquetSerDe {
     ///
     /// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to     copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the     minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
@@ -3651,7 +3683,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSizeBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_size_bytes: Option<i64>,
 
     ///
@@ -3665,7 +3697,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression: Option<ParquetSerDeCompressionEnum>,
 
     ///
@@ -3677,7 +3709,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDictionaryCompression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_dictionary_compression: Option<bool>,
 
     ///
@@ -3691,7 +3723,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPaddingBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_padding_bytes: Option<i64>,
 
     ///
@@ -3705,7 +3737,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageSizeBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub page_size_bytes: Option<i64>,
 
     ///
@@ -3719,7 +3751,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriterVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub writer_version: Option<ParquetSerDeWriterVersionEnum>,
 }
 
@@ -3804,6 +3836,7 @@ impl cfn_resources::CfnResource for ParquetSerDe {
 
 /// The ProcessingConfiguration property configures data processing for an     Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProcessingConfiguration {
     ///
     /// Indicates whether data processing is enabled (true) or disabled (false).
@@ -3814,7 +3847,7 @@ pub struct ProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -3826,7 +3859,7 @@ pub struct ProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Processors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processors: Option<Vec<Processor>>,
 }
 
@@ -3846,6 +3879,7 @@ impl cfn_resources::CfnResource for ProcessingConfiguration {
 
 /// The Processor property specifies a data processor for an Amazon Kinesis     Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Processor {
     ///
     /// The processor parameters.
@@ -3856,7 +3890,7 @@ pub struct Processor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Vec<ProcessorParameter>>,
 
     ///
@@ -3914,6 +3948,7 @@ impl cfn_resources::CfnResource for Processor {
 
 /// The ProcessorParameter property specifies a processor parameter in a data     processor for an Amazon Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProcessorParameter {
     ///
     /// The name of the parameter. Currently the following default values are supported: 3     for NumberOfRetries and 60 for the BufferIntervalInSeconds. The       BufferSizeInMBs ranges between 0.2 MB and up to 3MB. The default buffering     hint is 1MB for all destinations, except Splunk. For Splunk, the default buffering hint is     256 KB.
@@ -4029,6 +4064,7 @@ impl cfn_resources::CfnResource for ProcessorParameter {
 
 /// The RedshiftDestinationConfiguration property type specifies an Amazon     Redshift cluster to which Amazon Kinesis Data Firehose (Kinesis Data Firehose) delivers     data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftDestinationConfiguration {
     ///
     /// The CloudWatch logging options for your delivery stream.
@@ -4039,7 +4075,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -4096,7 +4132,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -4108,7 +4144,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<RedshiftRetryOptions>,
 
     ///
@@ -4137,7 +4173,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -4151,7 +4187,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<RedshiftDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -4324,6 +4360,7 @@ impl cfn_resources::CfnResource for RedshiftDestinationConfiguration {
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver     documents to Amazon Redshift.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftRetryOptions {
     ///
     /// The length of time during which Kinesis Data Firehose retries delivery after a     failure, starting from the initial request and including the first attempt. The default     value is 3600 seconds (60 minutes). Kinesis Data Firehose does not retry if the value of       DurationInSeconds is 0 (zero) or if the first delivery attempt takes longer     than the current value.
@@ -4338,7 +4375,7 @@ pub struct RedshiftRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -4376,6 +4413,7 @@ impl cfn_resources::CfnResource for RedshiftRetryOptions {
 
 /// Describes the retry behavior in case Kinesis Data Firehose is unable to deliver data     to the specified HTTP endpoint destination, or if it doesn't receive a valid acknowledgment     of receipt from the specified HTTP endpoint destination. Kinesis Firehose supports any     custom HTTP endpoint or HTTP endpoints owned by supported third-party service providers,     including Datadog, MongoDB, and New Relic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetryOptions {
     ///
     /// The total amount of time that Kinesis Data Firehose spends on retries. This duration     starts after the initial attempt to send data to the custom destination via HTTPS endpoint     fails. It doesn't include the periods during which Kinesis Data Firehose waits for     acknowledgment from the specified destination after each attempt.
@@ -4390,7 +4428,7 @@ pub struct RetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -4428,6 +4466,7 @@ impl cfn_resources::CfnResource for RetryOptions {
 
 /// The S3DestinationConfiguration property type specifies an Amazon Simple     Storage Service (Amazon S3) destination to which Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3DestinationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon S3 bucket to send data to.
@@ -4455,7 +4494,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -4467,7 +4506,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -4481,7 +4520,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression_format: Option<S3DestinationConfigurationCompressionFormatEnum>,
 
     ///
@@ -4493,7 +4532,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -4511,7 +4550,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorOutputPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_output_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -4529,7 +4568,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -4692,6 +4731,7 @@ impl cfn_resources::CfnResource for S3DestinationConfiguration {
 
 /// Specifies the schema to which you want Kinesis Data Firehose to configure your data     before it writes it to Amazon S3. This parameter is required if Enabled is set     to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaConfiguration {
     ///
     /// The ID of the AWS Glue Data Catalog. If you don't supply this, the       AWS account ID is used by default.
@@ -4708,7 +4748,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -4728,7 +4768,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4746,7 +4786,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -4766,7 +4806,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -4786,7 +4826,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4804,7 +4844,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_id: Option<cfn_resources::StrVal>,
 }
 
@@ -4956,6 +4996,7 @@ impl cfn_resources::CfnResource for SchemaConfiguration {
 
 /// The serializer that you want Kinesis Data Firehose to use to convert data to the target     format before writing it to Amazon S3. Kinesis Data Firehose supports two types of     serializers: the ORC SerDe and the Parquet SerDe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Serializer {
     ///
     /// A serializer to use for converting data to the ORC format before storing it in Amazon     S3. For more information, see Apache     ORC.
@@ -4966,7 +5007,7 @@ pub struct Serializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrcSerDe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub orc_ser_de: Option<OrcSerDe>,
 
     ///
@@ -4978,7 +5019,7 @@ pub struct Serializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetSerDe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parquet_ser_de: Option<ParquetSerDe>,
 }
 
@@ -5006,6 +5047,7 @@ impl cfn_resources::CfnResource for Serializer {
 
 /// The SplunkDestinationConfiguration property type specifies the     configuration of a destination in Splunk for a Kinesis Data Firehose delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SplunkDestinationConfiguration {
     ///
     /// The Amazon CloudWatch logging options for your delivery stream.
@@ -5016,7 +5058,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -5032,7 +5074,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HECAcknowledgmentTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hecacknowledgment_timeout_in_seconds: Option<i64>,
 
     ///
@@ -5091,7 +5133,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -5103,7 +5145,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_options: Option<SplunkRetryOptions>,
 
     ///
@@ -5119,7 +5161,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_backup_mode: Option<SplunkDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -5254,6 +5296,7 @@ impl cfn_resources::CfnResource for SplunkDestinationConfiguration {
 
 /// The SplunkRetryOptions property type specifies retry behavior in case     Kinesis Data Firehose is unable to deliver documents to Splunk or if it doesn't receive an     acknowledgment from Splunk.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SplunkRetryOptions {
     ///
     /// The total amount of time that Kinesis Data Firehose spends on retries. This duration     starts after the initial attempt to send data to Splunk fails. It doesn't include the     periods during which Kinesis Data Firehose waits for acknowledgment from Splunk after each     attempt.
@@ -5268,7 +5311,7 @@ pub struct SplunkRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -5312,6 +5355,7 @@ impl cfn_resources::CfnResource for SplunkRetryOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -5350,6 +5394,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The details of the VPC of the Amazon ES destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfiguration {
     ///
     /// The ARN of the IAM role that you want the delivery stream to use to create endpoints     in the destination VPC. You can use your existing Kinesis Data Firehose delivery role or     you can specify a new role. In either case, make sure that the role trusts the Kinesis Data     Firehose service principal and that it grants the following permissions:

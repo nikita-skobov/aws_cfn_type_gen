@@ -1,5 +1,6 @@
 /// Creates or updates the auth policy. The policy string in JSON must not contain newlines or  blank lines.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAuthPolicy {
     ///
     /// The auth policy.

@@ -1,5 +1,6 @@
 /// Attaches an Elastic Load Balancing load balancer to an AWS OpsWorks layer that you     specify.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnElasticLoadBalancerAttachment {
     ///
     /// The Elastic Load Balancing instance name.

@@ -1,5 +1,6 @@
 /// The AWS::SSMContacts::ContactChannel resource specifies a contact channel       as the method that Incident Manager uses to engage your contact.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnContactChannel {
     ///
     /// The details that Incident Manager uses when trying to engage the contact channel.
@@ -70,7 +71,7 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferActivation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub defer_activation: Option<bool>,
 
     #[serde(skip_serializing)]

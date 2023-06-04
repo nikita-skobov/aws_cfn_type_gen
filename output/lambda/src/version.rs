@@ -1,5 +1,6 @@
 /// The AWS::Lambda::Version resource creates a version from the current code and configuration of a    function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVersion {
     ///
     /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
@@ -10,7 +11,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSha256")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_sha256: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrencyConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
     #[serde(skip_serializing)]
@@ -138,6 +139,7 @@ impl cfn_resources::CfnResource for CfnVersion {
 
 /// A provisioned concurrency configuration for a function's version.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedConcurrencyConfiguration {
     ///
     /// The amount of provisioned concurrency to allocate for the version.

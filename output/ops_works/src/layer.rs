@@ -2,6 +2,7 @@
 ///
 /// Required Permissions: To use this action, an IAM user must      have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLayer {
     ///
     /// One or more user-defined key-value pairs to be added to the stack attributes.
@@ -14,7 +15,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomInstanceProfileArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_instance_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomJson")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_json: Option<serde_json::Value>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRecipes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_recipes: Option<Recipes>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_security_group_ids: Option<Vec<String>>,
 
     ///
@@ -109,7 +110,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstallUpdatesOnBoot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub install_updates_on_boot: Option<bool>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleEventConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_event_configuration: Option<LifecycleEventConfiguration>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBasedAutoScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_based_auto_scaling: Option<LoadBasedAutoScaling>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Packages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub packages: Option<Vec<String>>,
 
     ///
@@ -192,7 +193,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -217,7 +218,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseEbsOptimizedInstances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_ebs_optimized_instances: Option<bool>,
 
     ///
@@ -229,7 +230,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_configurations: Option<Vec<VolumeConfiguration>>,
 }
 
@@ -318,6 +319,7 @@ impl cfn_resources::CfnResource for CfnLayer {
 
 /// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoScalingThresholds {
     ///
     /// The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.
@@ -328,7 +330,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_threshold: Option<f64>,
 
     ///
@@ -344,7 +346,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreMetricsTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_metrics_time: Option<i64>,
 
     ///
@@ -356,7 +358,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_count: Option<i64>,
 
     ///
@@ -368,7 +370,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_threshold: Option<f64>,
 
     ///
@@ -380,7 +382,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_threshold: Option<f64>,
 
     ///
@@ -396,7 +398,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdsWaitTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thresholds_wait_time: Option<i64>,
 }
 
@@ -452,6 +454,7 @@ impl cfn_resources::CfnResource for AutoScalingThresholds {
 
 /// Specifies the lifecycle event configuration
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecycleEventConfiguration {
     ///
     /// The Shutdown event configuration.
@@ -462,7 +465,7 @@ pub struct LifecycleEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShutdownEventConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shutdown_event_configuration: Option<ShutdownEventConfiguration>,
 }
 
@@ -486,6 +489,7 @@ impl cfn_resources::CfnResource for LifecycleEventConfiguration {
 
 /// Describes a layer's load-based auto scaling configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadBasedAutoScaling {
     ///
     /// An AutoScalingThresholds object that describes the downscaling configuration,      which defines how and when AWS OpsWorks Stacks reduces the number of instances.
@@ -496,7 +500,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DownScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub down_scaling: Option<AutoScalingThresholds>,
 
     ///
@@ -508,7 +512,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable: Option<bool>,
 
     ///
@@ -520,7 +524,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub up_scaling: Option<AutoScalingThresholds>,
 }
 
@@ -550,6 +554,7 @@ impl cfn_resources::CfnResource for LoadBasedAutoScaling {
 ///
 /// To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name,      which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in      the repository's phpapp2 folder.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Recipes {
     ///
     /// An array of custom recipe names to be run following a configure event.
@@ -560,7 +565,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configure: Option<Vec<String>>,
 
     ///
@@ -572,7 +577,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deploy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deploy: Option<Vec<String>>,
 
     ///
@@ -584,7 +589,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Setup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub setup: Option<Vec<String>>,
 
     ///
@@ -596,7 +601,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Shutdown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shutdown: Option<Vec<String>>,
 
     ///
@@ -608,7 +613,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Undeploy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub undeploy: Option<Vec<String>>,
 }
 
@@ -628,6 +633,7 @@ impl cfn_resources::CfnResource for Recipes {
 
 /// The Shutdown event configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShutdownEventConfiguration {
     ///
     /// Whether to enable Elastic Load Balancing connection draining. For more information, see Connection Draining
@@ -638,7 +644,7 @@ pub struct ShutdownEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DelayUntilElbConnectionsDrained")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delay_until_elb_connections_drained: Option<bool>,
 
     ///
@@ -650,7 +656,7 @@ pub struct ShutdownEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_timeout: Option<i64>,
 }
 
@@ -676,6 +682,7 @@ impl cfn_resources::CfnResource for ShutdownEventConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -714,6 +721,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes an Amazon EBS volume configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VolumeConfiguration {
     ///
     /// Specifies whether an Amazon EBS volume is encrypted. For more information,       see Amazon EBS Encryption.
@@ -724,7 +732,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -738,7 +746,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -750,7 +758,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_point: Option<cfn_resources::StrVal>,
 
     ///
@@ -762,7 +770,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDisks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_disks: Option<i64>,
 
     ///
@@ -774,7 +782,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RaidLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub raid_level: Option<i64>,
 
     ///
@@ -786,7 +794,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<i64>,
 
     ///
@@ -800,7 +808,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 

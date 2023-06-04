@@ -12,6 +12,7 @@
 ///
 /// To control how AWS CloudFormation handles the volume when the stack is deleted,     set a deletion policy for your volume. You can choose to retain the volume, to delete the     volume, or to create a snapshot of the volume. For more information, see DeletionPolicy attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVolume {
     ///
     /// Indicates whether the volume is auto-enabled for I/O operations. By default, Amazon EBS     disables I/O to the volume from attached EC2 instances when it determines that a volume's     data is potentially inconsistent. If the consistency of the volume is not a concern, and     you prefer that the volume be made available immediately if it's impaired, you can     configure the volume to automatically enable I/O.
@@ -22,7 +23,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoEnableIO")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_enable_io: Option<bool>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiAttachEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_attach_enabled: Option<bool>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<i64>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput: Option<i64>,
 
     ///
@@ -187,7 +188,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -261,6 +262,7 @@ impl cfn_resources::CfnResource for CfnVolume {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

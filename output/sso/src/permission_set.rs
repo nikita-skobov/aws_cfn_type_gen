@@ -1,5 +1,6 @@
 /// Specifies a permission set within a specified IAM Identity Center instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPermissionSet {
     ///
     /// Specifies the names and paths of the customer managed policies that you have attached to    your permission set.
@@ -10,7 +11,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedPolicyReferences")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_managed_policy_references: Option<Vec<CustomerManagedPolicyReference>>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InlinePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inline_policy: Option<serde_json::Value>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_policies: Option<Vec<String>>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions_boundary: Option<PermissionsBoundary>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelayStateType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relay_state_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_duration: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -312,6 +313,7 @@ impl cfn_resources::CfnResource for CfnPermissionSet {
 
 /// Specifies the name and path of a customer managed policy. You must have an IAM policy that matches the name and path in each AWS account where you want to deploy your permission set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomerManagedPolicyReference {
     ///
     /// The name of the IAM policy that you have configured in each account where you want to deploy your permission set.
@@ -345,7 +347,7 @@ pub struct CustomerManagedPolicyReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -409,6 +411,7 @@ impl cfn_resources::CfnResource for CustomerManagedPolicyReference {
 
 /// Specifies the configuration of the AWS managed or customer managed policy that you want    to set as a permissions boundary. Specify either CustomerManagedPolicyReference    to use the name and path of a customer managed policy, or ManagedPolicyArn to use    the ARN of an AWS managed policy. A permissions boundary represents the maximum permissions    that any policy can grant your role. For more information, see Permissions boundaries for IAM     entities in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PermissionsBoundary {
     ///
     /// Specifies the name and path of a customer managed policy. You must have an IAM policy that matches the name and path in each AWS account where you want to deploy your permission set.
@@ -419,7 +422,7 @@ pub struct PermissionsBoundary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedPolicyReference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_managed_policy_reference: Option<CustomerManagedPolicyReference>,
 
     ///
@@ -437,7 +440,7 @@ pub struct PermissionsBoundary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_policy_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -486,6 +489,7 @@ impl cfn_resources::CfnResource for PermissionsBoundary {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

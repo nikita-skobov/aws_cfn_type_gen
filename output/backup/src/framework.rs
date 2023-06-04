@@ -2,6 +2,7 @@
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFramework {
     ///
     /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
@@ -29,7 +30,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FrameworkName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework_tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -164,6 +165,7 @@ impl cfn_resources::CfnResource for CfnFramework {
 
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ControlInputParameter {
     ///
     /// The name of a parameter, for example, BackupPlanFrequency.
@@ -204,6 +206,7 @@ impl cfn_resources::CfnResource for ControlInputParameter {
 
 /// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ControlScope {
     ///
     /// The ID of the only AWS resource that you want your control scope to     contain.
@@ -216,7 +219,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_resource_ids: Option<Vec<String>>,
 
     ///
@@ -228,7 +231,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_resource_types: Option<Vec<String>>,
 
     ///
@@ -240,7 +243,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -266,6 +269,7 @@ impl cfn_resources::CfnResource for ControlScope {
 
 /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FrameworkControl {
     ///
     /// A list of ParameterName and ParameterValue pairs.
@@ -276,7 +280,7 @@ pub struct FrameworkControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlInputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub control_input_parameters: Option<Vec<ControlInputParameter>>,
 
     ///
@@ -299,7 +303,7 @@ pub struct FrameworkControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub control_scope: Option<ControlScope>,
 }
 
@@ -329,6 +333,7 @@ impl cfn_resources::CfnResource for FrameworkControl {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

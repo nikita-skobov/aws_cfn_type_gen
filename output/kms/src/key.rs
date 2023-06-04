@@ -14,6 +14,7 @@
 ///
 /// AWS KMS CloudFormation resources are available in all Regions in which AWS KMS and AWS CloudFormation are supported.    You can use the AWS::KMS::Key resource to create and manage all KMS key types that are supported in a Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnKey {
     ///
     /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
@@ -28,7 +29,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableKeyRotation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_key_rotation: Option<bool>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeySpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_spec: Option<KeyKeySpecEnum>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyUsage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_usage: Option<KeyKeyUsageEnum>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_region: Option<bool>,
 
     ///
@@ -179,7 +180,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PendingWindowInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pending_window_in_days: Option<i64>,
 
     ///
@@ -195,7 +196,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -362,6 +363,7 @@ impl cfn_resources::CfnResource for CfnKey {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

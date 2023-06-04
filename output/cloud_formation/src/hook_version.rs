@@ -1,5 +1,6 @@
 /// The HookVersion resource publishes new or first hook version to the AWS CloudFormation  registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHookVersion {
     ///
     /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
@@ -10,7 +11,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_config: Option<LoggingConfig>,
 
     ///
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnHookVersion {
 
 /// The LoggingConfig property type specifies logging configuration information for an  extension.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.
@@ -160,7 +162,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +180,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 }
 

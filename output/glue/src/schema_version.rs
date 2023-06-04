@@ -1,5 +1,6 @@
 /// The AWS::Glue::SchemaVersion is an AWS Glue resource type that manages schema versions of schemas in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchemaVersion {
     ///
     /// The schema that includes the schema version.
@@ -53,6 +54,7 @@ impl cfn_resources::CfnResource for CfnSchemaVersion {
 
 /// A wrapper structure to contain schema identity fields. Either SchemaArn, or SchemaName and RegistryName has to be provided.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schema {
     ///
     /// The name of the registry where the schema is stored. Either SchemaArn, or SchemaName and RegistryName has to be provided.
@@ -63,7 +65,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +77,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +89,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_name: Option<cfn_resources::StrVal>,
 }
 

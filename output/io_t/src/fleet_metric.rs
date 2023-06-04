@@ -1,5 +1,6 @@
 /// Use the AWS::IoT::FleetMetric resource to declare a fleet metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFleetMetric {
     ///
     /// The field to aggregate.
@@ -10,7 +11,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_type: Option<AggregationType>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub index_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<i64>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -152,6 +153,7 @@ impl cfn_resources::CfnResource for CfnFleetMetric {
 
 /// The type of aggregation queries.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AggregationType {
     ///
     /// The name of the aggregation type.
@@ -198,6 +200,7 @@ impl cfn_resources::CfnResource for AggregationType {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

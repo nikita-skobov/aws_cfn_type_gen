@@ -1,5 +1,6 @@
 /// The AWS::ECS::ClusterCapacityProviderAssociations resource associates one or more capacity  providers and a default capacity provider strategy with a cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClusterCapacityProviderAssociations {
     ///
     /// The capacity providers to associate with the cluster.
@@ -51,6 +52,7 @@ impl cfn_resources::CfnResource for CfnClusterCapacityProviderAssociations {
 
 /// The CapacityProviderStrategy property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityProviderStrategy {
     ///
     /// The base value designates how many tasks, at a minimum, to run on the specified capacity  provider. Only one capacity provider in a capacity provider strategy can have a base defined. If  no value is specified, the default value of 0 is used.
@@ -61,7 +63,7 @@ pub struct CapacityProviderStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<i64>,
 
     ///
@@ -88,7 +90,7 @@ pub struct CapacityProviderStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

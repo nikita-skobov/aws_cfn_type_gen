@@ -1,5 +1,6 @@
 /// The AWS::CodeStar::GitHubRepository resource creates a GitHub       repository where users can store source code for use with AWS workflows. You must provide a location for       the source code ZIP file in the AWS CloudFormation template, so the       code can be uploaded to the created repository. You must have       created a personal access token in GitHub to provide in the AWS CloudFormation template. AWS uses this token to connect to GitHub on your behalf. For more information       about using a GitHub source repository with AWS CodeStar projects, see AWS CodeStar Project Files and Resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGitHubRepository {
     ///
     /// Information about code to be committed to a repository after it is created in an       AWS CloudFormation stack.
@@ -10,7 +11,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code: Option<Code>,
 
     /// Property description not available.
@@ -21,7 +22,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "EnableIssues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_issues: Option<bool>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IsPrivate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_private: Option<bool>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryAccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -115,6 +116,7 @@ impl cfn_resources::CfnResource for CfnGitHubRepository {
 ///
 /// Code is a property of the AWS::CodeStar::GitHubRepository       resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Code {
     ///
     /// Information about the Amazon S3 bucket that contains a ZIP file of code to be       committed to the repository.
@@ -148,6 +150,7 @@ impl cfn_resources::CfnResource for Code {
 ///
 /// S3 is a property of the AWS::CodeStar::GitHubRepository       resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3 {
     ///
     /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.
@@ -180,7 +183,7 @@ pub struct S3 {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_version: Option<cfn_resources::StrVal>,
 }
 

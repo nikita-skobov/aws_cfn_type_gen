@@ -1,5 +1,6 @@
 /// You can use the AWS::GuardDuty::Master resource in a member account to accept an invitation          from a administrator account. The          invitation to the member account must be sent prior to using the             AWS::GuardDuty::Master resource to accept the administrator          account's invitation. You can invite a member account by using the             InviteMembers operation of the API, or by creating an             AWS::GuardDuty::Member resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMaster {
     ///
     /// The unique ID of the detector of the GuardDuty member account.
@@ -25,7 +26,7 @@ pub struct CfnMaster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InvitationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invitation_id: Option<cfn_resources::StrVal>,
 
     ///

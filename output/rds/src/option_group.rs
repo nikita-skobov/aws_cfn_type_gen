@@ -1,5 +1,6 @@
 /// The AWS::RDS::OptionGroup resource creates or updates an option group, to enable and       configure features that are specific to a particular DB engine.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnOptionGroup {
     ///
     /// Specifies the name of the engine that this option group should be associated with.
@@ -36,7 +37,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_configurations: Option<Vec<OptionConfiguration>>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OptionGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -101,6 +102,7 @@ impl cfn_resources::CfnResource for CfnOptionGroup {
 
 /// The OptionConfiguration property type specifies an individual option, and       its settings, within an AWS::RDS::OptionGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OptionConfiguration {
     ///
     /// A list of DBSecurityGroupMembership name strings used for this option.
@@ -111,7 +113,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBSecurityGroupMemberships")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsecurity_group_memberships: Option<Vec<String>>,
 
     ///
@@ -134,7 +136,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_settings: Option<Vec<OptionSetting>>,
 
     ///
@@ -146,7 +148,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub option_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +160,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -170,7 +172,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupMemberships")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_memberships: Option<Vec<String>>,
 }
 
@@ -190,6 +192,7 @@ impl cfn_resources::CfnResource for OptionConfiguration {
 
 /// The OptionSetting property type specifies the value for an option within       an OptionSetting property.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OptionSetting {
     ///
     /// The name of the option that has settings that you can set.
@@ -200,7 +203,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +215,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -238,6 +241,7 @@ impl cfn_resources::CfnResource for OptionSetting {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

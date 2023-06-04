@@ -1,5 +1,6 @@
 /// The AWS::AppStream::User resource creates a new user in the AppStream 2.0 user pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUser {
     ///
     /// The authentication type for the user. You must specify USERPOOL.
@@ -27,7 +28,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirstName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub first_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LastName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MessageAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_action: Option<UserMessageActionEnum>,
 
     ///

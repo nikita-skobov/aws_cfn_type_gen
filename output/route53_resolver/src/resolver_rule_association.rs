@@ -1,5 +1,6 @@
 /// In the response to an 			AssociateResolverRule, 			DisassociateResolverRule, 			or 			ListResolverRuleAssociations 			request, provides information about an association between a resolver rule and a VPC. The association determines which 			DNS queries that originate in the VPC are forwarded to your network.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverRuleAssociation {
     ///
     /// The name of an association between a Resolver rule and a VPC.
@@ -14,7 +15,7 @@ pub struct CfnResolverRuleAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///

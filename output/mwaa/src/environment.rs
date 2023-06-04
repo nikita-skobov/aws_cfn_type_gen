@@ -1,5 +1,6 @@
 /// The AWS::MWAA::Environment resource creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEnvironment {
     ///
     /// A list of key-value pairs containing the Airflow configuration options for your environment. For example, core.default_timezone: utc. To learn more, see Apache Airflow configuration options.
@@ -10,7 +11,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AirflowConfigurationOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub airflow_configuration_options: Option<serde_json::Value>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AirflowVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub airflow_version: Option<EnvironmentAirflowVersionEnum>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DagS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dag_s3_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxWorkers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_workers: Option<i64>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinWorkers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_workers: Option<i64>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub plugins_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub plugins_s3_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requirements_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -179,7 +180,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requirements_s3_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -193,7 +194,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedulers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedulers: Option<i64>,
 
     ///
@@ -205,7 +206,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceBucketArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_bucket_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -223,7 +224,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub startup_script_s3_object_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -237,7 +238,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub startup_script_s3_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -249,7 +250,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -261,7 +262,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebserverAccessMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub webserver_access_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -275,7 +276,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceWindowStart")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_maintenance_window_start: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -414,6 +415,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 
 /// The type of Apache Airflow logs to send to CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfiguration {
     ///
     /// Defines the processing logs sent to CloudWatch Logs and the logging level to send.
@@ -424,7 +426,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DagProcessingLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dag_processing_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -436,7 +438,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulerLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduler_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -448,7 +450,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -460,7 +462,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebserverLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub webserver_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -472,7 +474,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub worker_logs: Option<ModuleLoggingConfiguration>,
 }
 
@@ -512,6 +514,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 
 /// Defines the type of logs to send for the Apache Airflow log type (e.g. DagProcessingLogs).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModuleLoggingConfiguration {
     ///
     /// The ARN of the CloudWatch Logs log group for each type of Apache Airflow log type that you have enabled.
@@ -524,7 +527,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -536,7 +539,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -548,7 +551,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_level: Option<cfn_resources::StrVal>,
 }
 
@@ -568,6 +571,7 @@ impl cfn_resources::CfnResource for ModuleLoggingConfiguration {
 
 /// The VPC networking components used to secure and enable network traffic between the AWS resources for your environment. To learn more, see About networking on Amazon MWAA.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// A list of one or more security group IDs. Accepts up to 5 security group IDs. A security group must be attached to the same VPC as the subnets. To learn more, see Security in your VPC on Amazon MWAA.
@@ -578,7 +582,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -590,7 +594,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

@@ -1,5 +1,6 @@
 /// The     AWS::Greengrass::LoggerDefinitionVersion resource represents a logger definition version for AWS IoT Greengrass.     A logger definition version contains a list of loggers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoggerDefinitionVersion {
     ///
     /// The ID of the logger definition associated with this version. This value is a GUID.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the AWS::Greengrass::LoggerDefinitionVersion resource contains a      list of Logger property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Logger {
     ///
     /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
@@ -85,7 +87,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Space")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub space: Option<i64>,
 
     ///

@@ -4,6 +4,7 @@
 ///
 /// Encryption policies specify a KMS encryption key to assign to particular collections.       For more information, see Encryption         at rest for Amazon OpenSearch Serverless.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityPolicy {
     ///
     /// The description of the security policy.
@@ -14,7 +15,7 @@ pub struct CfnSecurityPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

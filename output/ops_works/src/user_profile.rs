@@ -1,5 +1,6 @@
 /// Describes a user's SSH information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserProfile {
     ///
     /// Whether users can specify their own SSH public key through the My Settings page. For more    information, see Managing User     Permissions.
@@ -10,7 +11,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSelfManagement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_self_management: Option<bool>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_public_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshUsername")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_username: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

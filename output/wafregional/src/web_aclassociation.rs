@@ -1,5 +1,6 @@
 /// The AWS::WAFRegional::WebACLAssociation resource associates an AWS WAF Regional web access control group (ACL) with a resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWebACLAssociation {
     ///
     /// The Amazon Resource Name (ARN) of the resource to protect with the web ACL.

@@ -4,6 +4,7 @@
 ///
 /// You can have a maximum of 50 resource versions registered at a time. This maximum is per account and per  Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceVersion {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when  invoking the resource. If your resource calls AWS APIs in any of its handlers, you must create an   IAM execution   role that includes the necessary permissions to call those AWS APIs, and  provision that execution role in your account. When CloudFormation needs to invoke the resource type  handler, CloudFormation assumes this execution role to create a temporary session token, which it then  passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
@@ -20,7 +21,7 @@ pub struct CfnResourceVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnResourceVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_config: Option<LoggingConfig>,
 
     ///
@@ -211,6 +212,7 @@ impl cfn_resources::CfnResource for CfnResourceVersion {
 
 /// Logging configuration information for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch logs group to which CloudFormation sends error logging information when invoking  the type's handlers.
@@ -227,7 +229,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -245,7 +247,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 }
 

@@ -8,6 +8,7 @@
 ///
 /// For more information, see the Create deployments    in the AWS IoT Greengrass V2 Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeployment {
     ///
     /// The components to deploy. This is a dictionary, where each key is the name of a component,    and each key's value is the version and configuration to deploy for that component.
@@ -18,7 +19,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Components")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub components: Option<std::collections::HashMap<String, ComponentDeploymentSpecification>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_policies: Option<DeploymentPolicies>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IotJobConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_job_configuration: Option<DeploymentIoTJobConfiguration>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentTargetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parent_target_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -132,6 +133,7 @@ impl cfn_resources::CfnResource for CfnDeployment {
 
 /// Contains information about a deployment's update to a component's configuration on AWS IoT Greengrass core devices. For more information, see Update component     configurations in the AWS IoT Greengrass V2 Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentConfigurationUpdate {
     ///
     /// A serialized JSON string that contains the configuration object to merge to target    devices. The core device merges this configuration with the component's existing    configuration. If this is the first time a component deploys on a device, the core device    merges this configuration with the component's default configuration. This means that the core    device keeps it's existing configuration for keys and values that you don't specify in this    object. For more information, see Merge configuration updates in the AWS IoT Greengrass V2 Developer     Guide.
@@ -142,7 +144,7 @@ pub struct ComponentConfigurationUpdate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Merge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub merge: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +156,7 @@ pub struct ComponentConfigurationUpdate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Reset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reset: Option<Vec<String>>,
 }
 
@@ -174,6 +176,7 @@ impl cfn_resources::CfnResource for ComponentConfigurationUpdate {
 
 /// Contains information about a component to deploy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentDeploymentSpecification {
     ///
     /// The version of the component.
@@ -184,7 +187,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -196,7 +199,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationUpdate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_update: Option<ComponentConfigurationUpdate>,
 
     ///
@@ -208,7 +211,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RunWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_with: Option<ComponentRunWith>,
 }
 
@@ -236,6 +239,7 @@ impl cfn_resources::CfnResource for ComponentDeploymentSpecification {
 
 /// Contains information system user and group that the AWS IoT Greengrass Core software uses    to run component processes on the core device. For more information, see Configure the user and group that run components in the AWS IoT Greengrass V2 Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentRunWith {
     ///
     /// The POSIX system user and (optional) group to use to run this component. Specify the user    and group separated by a colon (:) in the following format:     user:group. The group is optional. If you don't specify a group, the AWS IoT Greengrass Core software uses the primary user for the group.
@@ -246,7 +250,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PosixUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub posix_user: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +264,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SystemResourceLimits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub system_resource_limits: Option<SystemResourceLimits>,
 
     ///
@@ -274,7 +278,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WindowsUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub windows_user: Option<cfn_resources::StrVal>,
 }
 
@@ -300,6 +304,7 @@ impl cfn_resources::CfnResource for ComponentRunWith {
 ///
 /// Each component on a device can report whether or not it's ready to update. After a    component and its dependencies are ready, they can apply the update in the deployment. You can    configure whether or not the deployment notifies components of an update and waits for a    response. You specify the amount of time each component has to respond to the update    notification.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentComponentUpdatePolicy {
     ///
     /// Whether or not to notify components and wait for components to become safe to update.    Choose from the following options:
@@ -314,7 +319,7 @@ pub struct DeploymentComponentUpdatePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<cfn_resources::StrVal>,
 
     ///
@@ -328,7 +333,7 @@ pub struct DeploymentComponentUpdatePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -348,6 +353,7 @@ impl cfn_resources::CfnResource for DeploymentComponentUpdatePolicy {
 
 /// Contains information about how long a component on a core device can validate its    configuration updates before it times out. Components can use the SubscribeToValidateConfigurationUpdates IPC operation to receive notifications when    a deployment specifies a configuration update. Then, components can respond with the SendConfigurationValidityReport IPC operation. For more information, see the Create deployments in the AWS IoT Greengrass V2 Developer    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentConfigurationValidationPolicy {
     ///
     /// The amount of time in seconds that a component can validate its configuration updates. If    the validation time exceeds this timeout, then the deployment proceeds for the device.
@@ -360,7 +366,7 @@ pub struct DeploymentConfigurationValidationPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -380,6 +386,7 @@ impl cfn_resources::CfnResource for DeploymentConfigurationValidationPolicy {
 
 /// Contains information about an AWS IoT job configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentIoTJobConfiguration {
     ///
     /// The stop configuration for the job. This configuration defines when and how to stop a job    rollout.
@@ -390,7 +397,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AbortConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub abort_config: Option<IoTJobAbortConfig>,
 
     ///
@@ -402,7 +409,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobExecutionsRolloutConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_executions_rollout_config: Option<IoTJobExecutionsRolloutConfig>,
 
     ///
@@ -414,7 +421,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_config: Option<IoTJobTimeoutConfig>,
 }
 
@@ -446,6 +453,7 @@ impl cfn_resources::CfnResource for DeploymentIoTJobConfiguration {
 
 /// Contains information about policies that define how a deployment updates components and    handles failure.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentPolicies {
     ///
     /// The component update policy for the configuration deployment. This policy defines when    it's safe to deploy the configuration to devices.
@@ -456,7 +464,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentUpdatePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_update_policy: Option<DeploymentComponentUpdatePolicy>,
 
     ///
@@ -468,7 +476,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationValidationPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_validation_policy: Option<DeploymentConfigurationValidationPolicy>,
 
     ///
@@ -482,7 +490,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FailureHandlingPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_handling_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -510,6 +518,7 @@ impl cfn_resources::CfnResource for DeploymentPolicies {
 
 /// Contains a list of criteria that define when and how to cancel a configuration    deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobAbortConfig {
     ///
     /// The list of criteria that define when and how to cancel the configuration    deployment.
@@ -541,6 +550,7 @@ impl cfn_resources::CfnResource for IoTJobAbortConfig {
 ///
 /// The deployment stops if the following conditions are true:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobAbortCriteria {
     ///
     /// The action to perform when the criteria are met.
@@ -605,6 +615,7 @@ impl cfn_resources::CfnResource for IoTJobAbortCriteria {
 
 /// Contains information about the rollout configuration for a job. This configuration defines    the rate at which the job deploys a configuration to a fleet of target devices.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobExecutionsRolloutConfig {
     ///
     /// The exponential rate to increase the job rollout rate.
@@ -615,7 +626,7 @@ pub struct IoTJobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExponentialRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exponential_rate: Option<IoTJobExponentialRolloutRate>,
 
     ///
@@ -627,7 +638,7 @@ pub struct IoTJobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumPerMinute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_per_minute: Option<i64>,
 }
 
@@ -651,6 +662,7 @@ impl cfn_resources::CfnResource for IoTJobExecutionsRolloutConfig {
 
 /// Contains information about an exponential rollout rate for a configuration deployment    job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobExponentialRolloutRate {
     ///
     /// The minimum number of devices that receive a pending job notification, per minute, when    the job starts. This parameter defines the initial rollout rate of the job.
@@ -706,6 +718,7 @@ impl cfn_resources::CfnResource for IoTJobExponentialRolloutRate {
 
 /// Contains information about criteria to meet before a job increases its rollout rate.    Specify either numberOfNotifiedThings or    numberOfSucceededThings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobRateIncreaseCriteria {
     ///
     /// The number of devices to receive the job notification before the rollout rate    increases.
@@ -716,7 +729,7 @@ pub struct IoTJobRateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfNotifiedThings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_notified_things: Option<i64>,
 
     ///
@@ -728,7 +741,7 @@ pub struct IoTJobRateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSucceededThings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_succeeded_things: Option<i64>,
 }
 
@@ -748,6 +761,7 @@ impl cfn_resources::CfnResource for IoTJobRateIncreaseCriteria {
 
 /// Contains information about the timeout configuration for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IoTJobTimeoutConfig {
     ///
     /// The amount of time, in minutes, that devices have to complete the job. The timer starts    when the job status is set to IN_PROGRESS. If the job status doesn't change to a    terminal state before the time expires, then the job status is set to    TIMED_OUT.
@@ -760,7 +774,7 @@ pub struct IoTJobTimeoutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InProgressTimeoutInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub in_progress_timeout_in_minutes: Option<i64>,
 }
 
@@ -780,6 +794,7 @@ impl cfn_resources::CfnResource for IoTJobTimeoutConfig {
 
 /// Contains information about system resource limits that the software    applies to a component's processes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SystemResourceLimits {
     ///
     /// The maximum amount of CPU time that a component's processes can use on the core device. A    core device's total CPU time is equivalent to the device's number of CPU cores. For example,    on a core device with 4 CPU cores, you can set this value to 2 to limit the component's    processes to 50 percent usage of each CPU core. On a device with 1 CPU core, you can set this    value to 0.25 to limit the component's processes to 25 percent usage of the CPU. If you set    this value to a number greater than the number of CPU cores, the AWS IoT Greengrass Core    software doesn't limit the component's CPU usage.
@@ -790,7 +805,7 @@ pub struct SystemResourceLimits {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpus: Option<f64>,
 
     ///
@@ -802,7 +817,7 @@ pub struct SystemResourceLimits {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory: Option<i64>,
 }
 

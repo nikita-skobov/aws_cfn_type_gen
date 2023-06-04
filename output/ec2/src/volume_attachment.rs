@@ -6,6 +6,7 @@
 ///
 /// If the root volume is detached from an instance with an AWS Marketplace product     code, then the product codes from that volume are no longer associated with the     instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVolumeAttachment {
     ///
     /// The device name (for example, /dev/sdh or xvdh).

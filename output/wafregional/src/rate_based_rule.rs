@@ -6,6 +6,7 @@
 ///
 /// Note you can only create rate-based rules using an AWS CloudFormation template. To add the rate-based rules created through AWS CloudFormation to a web ACL, use the AWS WAF console, API, or command line interface (CLI). For more information, see    UpdateWebACL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRateBasedRule {
     ///
     /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
@@ -16,7 +17,7 @@ pub struct CfnRateBasedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchPredicates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub match_predicates: Option<Vec<Predicate>>,
 
     ///
@@ -151,6 +152,7 @@ impl cfn_resources::CfnResource for CfnRateBasedRule {
 
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Predicate {
     ///
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.

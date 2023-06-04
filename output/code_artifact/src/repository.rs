@@ -1,5 +1,6 @@
 /// The AWS::CodeArtifact::Repository resource creates an AWS CodeArtifact repository.      CodeArtifact repositories contain a set of package versions.    For more information about repositories, see the    Repository concepts information      in the CodeArtifact User Guide. For more information about the CreateRepository API, see    CreateRepository      in the CodeArtifact API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRepository {
     ///
     /// A text description of the repository.
@@ -14,7 +15,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalConnections")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub external_connections: Option<Vec<String>>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsPolicyDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions_policy_document: Option<serde_json::Value>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Upstreams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upstreams: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -261,6 +262,7 @@ impl cfn_resources::CfnResource for CfnRepository {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

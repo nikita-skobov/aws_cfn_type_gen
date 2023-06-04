@@ -6,6 +6,7 @@
 ///
 /// You can't change the LogDestinationType or LogType in a       LogDestinationConfig. To change these settings, delete the existing       LogDestinationConfig object and create a new one, in two separate modifications.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoggingConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the AWS::NetworkFirewall::Firewall that the logging configuration is associated with.       You can't change the firewall specification after you create the logging configuration.
@@ -27,7 +28,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firewall_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,6 +63,7 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
 ///
 /// Network Firewall generates logs for stateful rule groups. You can save alert and flow log      types. The stateful rules engine records flow logs for all network traffic that it receives.      It records alert logs for traffic that matches stateful rules that have the rule      action set to DROP or ALERT.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogDestinationConfig {
     ///
     /// The named location for the logs, provided in a key:value mapping that is specific to the     chosen destination type.
@@ -157,6 +159,7 @@ impl cfn_resources::CfnResource for LogDestinationConfig {
 
 /// Defines how AWS Network Firewall performs logging for a AWS::NetworkFirewall::Firewall.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfiguration {
     ///
     /// Defines the logging destinations for the logs for a firewall. Network Firewall generates     logs for stateful rule groups.

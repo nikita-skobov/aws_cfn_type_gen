@@ -6,6 +6,7 @@
 ///
 /// For more information, see Configuration Recorder in the AWS Config Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigurationRecorder {
     ///
     /// A name for the configuration recorder. If you don't specify a name, AWS CloudFormation CloudFormation generates a unique physical ID and uses that ID for the configuration recorder name.       For more information, see Name Type.
@@ -24,7 +25,7 @@ pub struct CfnConfigurationRecorder {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnConfigurationRecorder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordingGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recording_group: Option<RecordingGroup>,
 
     ///
@@ -103,6 +104,7 @@ impl cfn_resources::CfnResource for CfnConfigurationRecorder {
 ///
 /// For more information and a table of the Home Regions for Global Resource Types Onboarded after February 2022, see Selecting Which Resources AWS Config Records.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordingGroup {
     ///
     /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.
@@ -117,7 +119,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllSupported")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_supported: Option<bool>,
 
     ///
@@ -135,7 +137,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeGlobalResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_global_resource_types: Option<bool>,
 
     ///
@@ -153,7 +155,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types: Option<Vec<String>>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// For more information, see the following topics in the AWS Support User Guide:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSlackWorkspaceConfiguration {
     ///
     /// The team ID in Slack. This ID uniquely identifies a Slack workspace, such as         T012ABCDEFG.
@@ -23,7 +24,7 @@ pub struct CfnSlackWorkspaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_id: Option<cfn_resources::StrVal>,
 }
 

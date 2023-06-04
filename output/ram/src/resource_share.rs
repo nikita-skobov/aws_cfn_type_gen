@@ -1,5 +1,6 @@
 /// Creates a resource share. You can provide a list of the Amazon Resource Names (ARNs)       for the resources that you want to share, a list of principals you want to share the       resources with, and the permissions to grant those principals.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceShare {
     ///
     /// Specifies whether principals outside your organization in AWS Organizations can be associated       with a resource share. A value of true lets you share with individual AWS accounts       that are not in your organization. A value of false       only has meaning if your account is a member of an AWS Organization. The default value       is true.
@@ -10,7 +11,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowExternalPrincipals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_external_principals: Option<bool>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permission_arns: Option<Vec<String>>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principals: Option<Vec<String>>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_arns: Option<Vec<String>>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnResourceShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -110,6 +111,7 @@ impl cfn_resources::CfnResource for CfnResourceShare {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

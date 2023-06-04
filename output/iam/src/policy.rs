@@ -6,6 +6,7 @@
 ///
 /// For information about limits on the number of inline policies that you can embed in an     identity, see Limitations on IAM Entities in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPolicy {
     ///
     /// The name of the group to associate the policy with.
@@ -24,7 +25,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub roles: Option<Vec<String>>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub users: Option<Vec<String>>,
 }
 

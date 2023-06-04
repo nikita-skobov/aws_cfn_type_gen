@@ -1,5 +1,6 @@
 /// You can use the AWS::Cassandra::Table resource to create a new table in       Amazon Keyspaces (for Apache Cassandra). For more information, see Create a         keyspace and a table in the Amazon Keyspaces Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTable {
     ///
     /// The billing mode for the table, which determines how you'll be charged for reads and writes:
@@ -14,7 +15,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub billing_mode: Option<BillingMode>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientSideTimestampsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_side_timestamps_enabled: Option<bool>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusteringKeyColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clustering_key_columns: Option<Vec<ClusteringKeyColumn>>,
 
     /// The default Time To Live (TTL) value for all rows in a table in seconds.     The maximum configurable value is 630,720,000 seconds, which is the equivalent of 20 years. By default, the TTL value for a table is 0, which means data does not expire.
@@ -55,7 +56,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTimeToLive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_time_to_live: Option<i64>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_specification: Option<EncryptionSpecification>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoveryEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub point_in_time_recovery_enabled: Option<bool>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegularColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regular_columns: Option<Vec<Column>>,
 
     ///
@@ -137,7 +138,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -149,7 +150,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -177,6 +178,7 @@ impl cfn_resources::CfnResource for CfnTable {
 
 /// Determines the billing mode for the table - on-demand or provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BillingMode {
     ///
     /// The billing mode for the table:
@@ -202,7 +204,7 @@ pub struct BillingMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 }
 
@@ -226,6 +228,7 @@ impl cfn_resources::CfnResource for BillingMode {
 
 /// Defines an individual column within the clustering key.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusteringKeyColumn {
     ///
     /// The name and data type of this clustering key column.
@@ -249,7 +252,7 @@ pub struct ClusteringKeyColumn {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrderBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order_by: Option<cfn_resources::StrVal>,
 }
 
@@ -271,6 +274,7 @@ impl cfn_resources::CfnResource for ClusteringKeyColumn {
 
 /// The name and data type of an individual column in a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Column {
     ///
     /// The name of the column. For more information, see Identifiers in the       Amazon Keyspaces Developer Guide.
@@ -311,6 +315,7 @@ impl cfn_resources::CfnResource for Column {
 
 /// Specifies the encryption at rest option selected for the table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionSpecification {
     ///
     /// The encryption at rest options for the table.
@@ -335,7 +340,7 @@ pub struct EncryptionSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -355,6 +360,7 @@ impl cfn_resources::CfnResource for EncryptionSpecification {
 
 /// The provisioned throughput for the table, which consists of         ReadCapacityUnits and WriteCapacityUnits.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedThroughput {
     ///
     /// The amount of read capacity that's provisioned for the table. For more information,       see Read/write capacity         mode in the Amazon Keyspaces Developer Guide.
@@ -401,6 +407,7 @@ impl cfn_resources::CfnResource for ProvisionedThroughput {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

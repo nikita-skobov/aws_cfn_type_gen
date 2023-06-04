@@ -1,5 +1,6 @@
 /// The AWS::ApplicationInsights::Application resource adds an application that is created from a resource group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// If set to true, the application components will be configured with the monitoring configuration recommended by Application Insights.
@@ -10,7 +11,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoConfigurationEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_configuration_enabled: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CWEMonitorEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cwemonitor_enabled: Option<bool>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentMonitoringSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_monitoring_settings: Option<Vec<ComponentMonitoringSetting>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomComponents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_components: Option<Vec<CustomComponent>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grouping_type: Option<ApplicationGroupingTypeEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPatternSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_pattern_sets: Option<Vec<LogPatternSet>>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpsCenterEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ops_center_enabled: Option<bool>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpsItemSNSTopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ops_item_snstopic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -213,6 +214,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 
 /// The AWS::ApplicationInsights::Application Alarm property type defines a CloudWatch alarm to be monitored for the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Alarm {
     ///
     /// The name of the CloudWatch alarm to be monitored for the component.
@@ -234,7 +236,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub severity: Option<cfn_resources::StrVal>,
 }
 
@@ -254,6 +256,7 @@ impl cfn_resources::CfnResource for Alarm {
 
 /// The AWS::ApplicationInsights::Application AlarmMetric property type defines a metric to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmMetric {
     ///
     /// The name of the metric to be monitored for the component. For metrics supported by Application Insights, see Logs and metrics supported by Amazon CloudWatch Application Insights.
@@ -283,6 +286,7 @@ impl cfn_resources::CfnResource for AlarmMetric {
 
 /// The AWS::ApplicationInsights::Application ComponentConfiguration property type defines the configuration settings of the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentConfiguration {
     ///
     /// The configuration settings.
@@ -293,7 +297,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_details: Option<ConfigurationDetails>,
 
     ///
@@ -305,7 +309,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubComponentTypeConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sub_component_type_configurations: Option<Vec<SubComponentTypeConfiguration>>,
 }
 
@@ -329,6 +333,7 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 
 /// The AWS::ApplicationInsights::Application ComponentMonitoringSetting property type defines the monitoring setting of the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentMonitoringSetting {
     ///
     /// The ARN of the component.
@@ -339,7 +344,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -364,7 +369,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -376,7 +381,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomComponentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_component_configuration: Option<ComponentConfiguration>,
 
     ///
@@ -388,7 +393,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultOverwriteComponentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_overwrite_component_configuration: Option<ComponentConfiguration>,
 
     ///
@@ -427,6 +432,7 @@ impl cfn_resources::CfnResource for ComponentMonitoringSetting {
 
 /// The AWS::ApplicationInsights::Application ConfigurationDetails property type specifies the configuration settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationDetails {
     ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
@@ -437,7 +443,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
     ///
@@ -449,7 +455,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarms: Option<Vec<Alarm>>,
 
     ///
@@ -461,7 +467,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HAClusterPrometheusExporter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hacluster_prometheus_exporter: Option<HAClusterPrometheusExporter>,
 
     ///
@@ -473,7 +479,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HANAPrometheusExporter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hanaprometheus_exporter: Option<HANAPrometheusExporter>,
 
     ///
@@ -485,7 +491,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JMXPrometheusExporter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jmxprometheus_exporter: Option<JMXPrometheusExporter>,
 
     ///
@@ -497,7 +503,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logs: Option<Vec<Log>>,
 
     ///
@@ -509,7 +515,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub windows_events: Option<Vec<WindowsEvent>>,
 }
 
@@ -541,6 +547,7 @@ impl cfn_resources::CfnResource for ConfigurationDetails {
 
 /// The AWS::ApplicationInsights::Application CustomComponent property type describes a custom component by grouping similar standalone instances to monitor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomComponent {
     ///
     /// The name of the component.
@@ -609,6 +616,7 @@ impl cfn_resources::CfnResource for CustomComponent {
 
 /// The AWS::ApplicationInsights::Application HAClusterPrometheusExporter       property type defines the HA cluster Prometheus Exporter settings. For more information,       see the component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HAClusterPrometheusExporter {
     ///
     /// The target port to which Prometheus sends metrics. If not specified, the default port 9668 is used.
@@ -619,7 +627,7 @@ pub struct HAClusterPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -639,6 +647,7 @@ impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
 
 /// The AWS::ApplicationInsights::Application HANAPrometheusExporter property       type defines the HANA DB Prometheus Exporter settings. For more information, see the         component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HANAPrometheusExporter {
     ///
     /// Designates whether you agree to install the HANA DB client.
@@ -693,7 +702,7 @@ pub struct HANAPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -713,6 +722,7 @@ impl cfn_resources::CfnResource for HANAPrometheusExporter {
 
 /// The AWS::ApplicationInsights::Application JMXPrometheusExporter property type       defines the JMXPrometheus Exporter configuration. For more information, see the      component configuration in the CloudWatch Application Insights    documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JMXPrometheusExporter {
     ///
     /// The host and port to connect to through remote JMX. Only one of jmxURL and hostPort can be     specified.
@@ -723,7 +733,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_port: Option<cfn_resources::StrVal>,
 
     ///
@@ -735,7 +745,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JMXURL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jmxurl: Option<cfn_resources::StrVal>,
 
     ///
@@ -747,7 +757,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -767,6 +777,7 @@ impl cfn_resources::CfnResource for JMXPrometheusExporter {
 
 /// The AWS::ApplicationInsights::Application Log property type specifies a log to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Log {
     ///
     /// The type of encoding of the logs to be monitored. The specified encoding should be included in the list of CloudWatch agent supported encodings. If not provided, CloudWatch Application Insights uses the default encoding type for the log type:
@@ -779,7 +790,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encoding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -791,7 +802,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -803,7 +814,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -826,7 +837,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern_set: Option<cfn_resources::StrVal>,
 }
 
@@ -846,6 +857,7 @@ impl cfn_resources::CfnResource for Log {
 
 /// The AWS::ApplicationInsights::Application LogPattern property type       specifies an object that defines the log patterns that belong to a         LogPatternSet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogPattern {
     ///
     /// A regular expression that defines the log pattern. A log pattern can contain up to 50       characters, and it cannot be empty.
@@ -953,6 +965,7 @@ impl cfn_resources::CfnResource for LogPattern {
 
 /// The AWS::ApplicationInsights::Application LogPatternSet property type specifies the log pattern set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogPatternSet {
     ///
     /// A list of objects that define the log patterns that belong to LogPatternSet.
@@ -1021,6 +1034,7 @@ impl cfn_resources::CfnResource for LogPatternSet {
 
 /// The AWS::ApplicationInsights::Application SubComponentConfigurationDetails property type specifies the configuration settings of the sub-components.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubComponentConfigurationDetails {
     ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
@@ -1031,7 +1045,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
     ///
@@ -1043,7 +1057,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logs: Option<Vec<Log>>,
 
     ///
@@ -1055,7 +1069,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub windows_events: Option<Vec<WindowsEvent>>,
 }
 
@@ -1075,6 +1089,7 @@ impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
 
 /// The AWS::ApplicationInsights::Application SubComponentTypeConfiguration property type specifies the sub-component configurations for a component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubComponentTypeConfiguration {
     ///
     /// The configuration settings of the sub-components.
@@ -1123,6 +1138,7 @@ impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1161,6 +1177,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The AWS::ApplicationInsights::Application WindowsEvent property type specifies a Windows Event to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WindowsEvent {
     ///
     /// The levels of event to log. You must specify each level to log. Possible values include INFORMATION, WARNING, ERROR, CRITICAL, and VERBOSE. This field is required for each type of Windows Event to log.
@@ -1204,7 +1221,7 @@ pub struct WindowsEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern_set: Option<cfn_resources::StrVal>,
 }
 

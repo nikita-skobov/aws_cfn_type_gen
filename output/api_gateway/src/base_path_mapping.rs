@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::BasePathMapping resource creates a base path that clients who call your API must use in the invocation URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBasePathMapping {
     ///
     /// The base path name that callers of the API must provide as part of the URL after the domain name.
@@ -10,7 +11,7 @@ pub struct CfnBasePathMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BasePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnBasePathMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnBasePathMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rest_api_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnBasePathMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage: Option<cfn_resources::StrVal>,
 }
 

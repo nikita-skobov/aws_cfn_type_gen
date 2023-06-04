@@ -1,5 +1,6 @@
 /// Specifies a new schedule for one or more AWS Glue DataBrew jobs. Jobs can be       run at a specific date and time, or at regular intervals.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchedule {
     ///
     /// The dates and times when the job is to run. For more information, see Working with cron       expressions for recipe jobs in the         AWS Glue DataBrew Developer       Guide.
@@ -27,7 +28,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_names: Option<Vec<String>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -133,6 +134,7 @@ impl cfn_resources::CfnResource for CfnSchedule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

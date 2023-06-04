@@ -1,5 +1,6 @@
 /// Associates a resource      with an application.      Both the resource and the application can be specified either      by ID or name.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceAssociation {
     ///
     /// The name or ID      of the application.

@@ -6,6 +6,7 @@
 ///
 /// This operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplicationReferenceDataSource {
     ///
     /// Name of an existing application.
@@ -80,6 +81,7 @@ impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
 ///
 /// "name2", "address2"
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CSVMappingParameters {
     ///
     /// Column delimiter. For example, in a CSV format, a comma (",") is the typical column       delimiter.
@@ -146,6 +148,7 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
 
 /// Provides additional mapping information when JSON is the record format on the       streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JSONMappingParameters {
     ///
     /// Path to the top-level parent that contains the records.
@@ -188,6 +191,7 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
 
 /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MappingParameters {
     ///
     /// Provides additional mapping information when the record format uses delimiters (for       example, CSV).
@@ -198,7 +202,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSVMappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
     ///
@@ -210,7 +214,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
 }
 
@@ -240,6 +244,7 @@ impl cfn_resources::CfnResource for MappingParameters {
 ///
 /// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordColumn {
     ///
     /// Reference to the data element in the streaming input or the reference data source.       This element is required if the RecordFormatType is JSON.
@@ -250,7 +255,7 @@ pub struct RecordColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mapping")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapping: Option<cfn_resources::StrVal>,
 
     ///
@@ -305,6 +310,7 @@ impl cfn_resources::CfnResource for RecordColumn {
 
 /// Describes the record format and relevant mapping information that should be applied       to schematize the records on the stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordFormat {
     ///
     /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
@@ -315,7 +321,7 @@ pub struct RecordFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapping_parameters: Option<MappingParameters>,
 
     ///
@@ -369,6 +375,7 @@ impl cfn_resources::CfnResource for RecordFormat {
 
 /// Describes the reference data source by providing the source information (S3 bucket       name and object key name), the resulting in-application table name that is created, and       the necessary schema to map the data elements in the Amazon S3 object to the       in-application table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceDataSource {
     ///
     /// Describes the format of the data in the streaming source, and how each data element       maps to corresponding columns created in the in-application stream.
@@ -390,7 +397,7 @@ pub struct ReferenceDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ReferenceDataSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_reference_data_source: Option<S3ReferenceDataSource>,
 
     ///
@@ -406,7 +413,7 @@ pub struct ReferenceDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 }
 
@@ -454,6 +461,7 @@ impl cfn_resources::CfnResource for ReferenceDataSource {
 
 /// The ReferenceSchema property type specifies the format of the data in the reference source for a SQL-based Amazon Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceSchema {
     ///
     /// A list of RecordColumn objects.
@@ -475,7 +483,7 @@ pub struct ReferenceSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordEncoding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -510,6 +518,7 @@ impl cfn_resources::CfnResource for ReferenceSchema {
 ///
 /// An Amazon Kinesis Analytics application loads reference data only once. If the data       changes, you call the UpdateApplication operation to trigger reloading of data into your       application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3ReferenceDataSource {
     ///
     /// Amazon Resource Name (ARN) of the S3 bucket.

@@ -10,6 +10,7 @@
 ///
 /// After you create the group version in your AWS CloudFormation template, you can deploy it using the  		 aws greengrass create-deployment command in the AWS CLI or 		 from the Greengrass node in the AWS IoT console. To deploy a group version, you must have a Greengrass service role associated with 		    your AWS account. For more information, see AWS CloudFormation Support for AWS IoT Greengrass 		 in the AWS IoT Greengrass Version 1 Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGroup {
     ///
     /// The group version to include when the group is created.          A group version references the Amazon Resource Name (ARN) of a core definition version,           device definition version, subscription definition version, and other version types.  				 The group version must reference a core definition version that contains one core. 				 Other version types are optionally included, depending on your business need.
@@ -22,7 +23,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<GroupVersion>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -153,6 +154,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 ///
 /// In an AWS CloudFormation template, GroupVersion is the property type of the InitialVersion property      in the AWS::Greengrass::Group resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GroupVersion {
     ///
     /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
@@ -163,7 +165,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -175,7 +177,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +189,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +201,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +215,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggerDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logger_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -225,7 +227,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -237,7 +239,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subscription_definition_version_arn: Option<cfn_resources::StrVal>,
 }
 

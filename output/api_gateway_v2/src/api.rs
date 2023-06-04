@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Api resource creates an API. WebSocket APIs          and HTTP APIs are supported. For more information about          WebSocket APIs, see About WebSocket APIs in API Gateway in the API Gateway             Developer Guide. For more information about HTTP APIs, see HTTP APIs in the API Gateway Developer          Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApi {
     ///
     /// An API key selection expression. Supported only for WebSocket APIs. See API Key Selection Expressions.
@@ -10,7 +11,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeySelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_key_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub body: Option<serde_json::Value>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BodyS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub body_s3_location: Option<BodyS3Location>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cors_configuration: Option<Cors>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableExecuteApiEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_execute_api_endpoint: Option<bool>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableSchemaValidation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_schema_validation: Option<bool>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailOnWarnings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fail_on_warnings: Option<bool>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnApi {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProtocolType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +155,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +179,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -190,7 +191,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<cfn_resources::StrVal>,
 
     ///
@@ -202,7 +203,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -252,6 +253,7 @@ impl cfn_resources::CfnResource for CfnApi {
 
 /// The BodyS3Location property specifies an S3 location from which to          import an OpenAPI definition. Supported only for HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BodyS3Location {
     ///
     /// The S3 bucket that contains the OpenAPI definition to import. Required if you specify a BodyS3Location for an API.
@@ -262,7 +264,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -274,7 +276,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Etag")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub etag: Option<cfn_resources::StrVal>,
 
     ///
@@ -286,7 +288,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -298,7 +300,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -318,6 +320,7 @@ impl cfn_resources::CfnResource for BodyS3Location {
 
 /// The Cors property specifies a CORS configuration for an API.          Supported only for HTTP APIs. See Configuring CORS for more information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Cors {
     ///
     /// Specifies whether credentials are included in the CORS request. Supported only for HTTP APIs.
@@ -328,7 +331,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_credentials: Option<bool>,
 
     ///
@@ -340,7 +343,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_headers: Option<Vec<String>>,
 
     ///
@@ -352,7 +355,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMethods")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_methods: Option<Vec<String>>,
 
     ///
@@ -364,7 +367,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowOrigins")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_origins: Option<Vec<String>>,
 
     ///
@@ -376,7 +379,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExposeHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expose_headers: Option<Vec<String>>,
 
     ///
@@ -388,7 +391,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_age: Option<i64>,
 }
 

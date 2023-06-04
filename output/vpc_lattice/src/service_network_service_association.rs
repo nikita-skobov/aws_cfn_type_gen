@@ -6,6 +6,7 @@
 ///
 /// As a result of this operation, the association is created in the service network account and  the association owner account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServiceNetworkServiceAssociation {
     /// Property description not available.
     ///
@@ -15,7 +16,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsEntry")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_entry: Option<DnsEntry>,
 
     ///
@@ -27,7 +28,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceNetworkIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_network_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -207,6 +208,7 @@ impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
 
 /// DNS information about the service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DnsEntry {
     ///
     /// The domain name of the service.
@@ -217,7 +219,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -229,7 +231,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_id: Option<cfn_resources::StrVal>,
 }
 
@@ -255,6 +257,7 @@ impl cfn_resources::CfnResource for DnsEntry {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

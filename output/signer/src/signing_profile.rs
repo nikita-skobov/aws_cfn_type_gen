@@ -1,5 +1,6 @@
 /// Creates a signing profile. A signing profile is a code signing template that can be used to 			carry out a pre-defined signing job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSigningProfile {
     ///
     /// The ID of a platform that is available for use by a signing profile.
@@ -21,7 +22,7 @@ pub struct CfnSigningProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SignatureValidityPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signature_validity_period: Option<SignatureValidityPeriod>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnSigningProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -101,6 +102,7 @@ impl cfn_resources::CfnResource for CfnSigningProfile {
 
 /// The validity period for the signing job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SignatureValidityPeriod {
     ///
     /// The time unit for signature validity: DAYS | MONTHS | YEARS.
@@ -111,7 +113,7 @@ pub struct SignatureValidityPeriod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +125,7 @@ pub struct SignatureValidityPeriod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<i64>,
 }
 
@@ -149,6 +151,7 @@ impl cfn_resources::CfnResource for SignatureValidityPeriod {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

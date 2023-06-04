@@ -2,6 +2,7 @@
 ///
 /// Subscription definitions can reference multiple subscription definition versions. All subscription definition versions      must be associated with a subscription definition. Each subscription definition version can contain one or more subscriptions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubscriptionDefinition {
     ///
     /// The subscription definition version to include when the subscription definition is created.          A subscription definition version contains a list of          subscription property types.
@@ -14,7 +15,7 @@ pub struct CfnSubscriptionDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<SubscriptionDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnSubscriptionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinition {
 ///
 /// In an AWS CloudFormation template, the Subscriptions 		 property of the SubscriptionDefinitionVersion property type contains a list       of Subscription property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Subscription {
     ///
     /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for Subscription {
 ///
 /// In an AWS CloudFormation template, SubscriptionDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::SubscriptionDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubscriptionDefinitionVersion {
     ///
     /// The subscriptions in this version.

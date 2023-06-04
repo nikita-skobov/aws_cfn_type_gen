@@ -6,6 +6,7 @@
 ///
 /// For information about Aurora global databases, see       Working with Amazon Aurora Global Databases in the Amazon Aurora User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGlobalCluster {
     ///
     /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.
@@ -16,7 +17,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection: Option<bool>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageEncrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_encrypted: Option<bool>,
 }
 

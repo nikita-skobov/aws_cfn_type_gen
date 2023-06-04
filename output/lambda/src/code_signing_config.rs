@@ -1,5 +1,6 @@
 /// Details about a Code signing configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCodeSigningConfig {
     ///
     /// List of allowed publishers.
@@ -21,7 +22,7 @@ pub struct CfnCodeSigningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_signing_policies: Option<CodeSigningPolicies>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnCodeSigningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -107,6 +108,7 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
 
 /// List of signing profiles that can sign a code package.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AllowedPublishers {
     ///
     /// The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user    who can sign a code package.
@@ -144,6 +146,7 @@ impl cfn_resources::CfnResource for AllowedPublishers {
 
 /// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CodeSigningPolicies {
     ///
     /// Code signing configuration policy for deployment validation failure. If you set the policy to    Enforce, Lambda blocks the deployment request if signature validation checks fail. If you set the    policy to Warn, Lambda allows the deployment and creates a CloudWatch log.

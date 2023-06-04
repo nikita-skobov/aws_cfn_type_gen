@@ -1,5 +1,6 @@
 /// Use the AWS::SageMaker::Endpoint resource to create an endpoint using the       specified configuration in the request. Amazon SageMaker uses the endpoint to provision       resources and deploy models. You create the endpoint configuration with the AWS::SageMaker::EndpointConfig resource. For more information, see Deploy a         Model on Amazon SageMaker Hosting Services in the Amazon SageMaker         Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpoint {
     ///
     /// The deployment configuration for an endpoint, which contains the desired deployment       strategy and rollback configurations.
@@ -10,7 +11,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_config: Option<DeploymentConfig>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeRetainedVariantProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_retained_variant_properties: Option<Vec<VariantProperty>>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainAllVariantProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_all_variant_properties: Option<bool>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainDeploymentConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_deployment_config: Option<bool>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -167,6 +168,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
 /// An Amazon CloudWatch alarm configured to monitor metrics on an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Alarm {
     ///
     /// The name of a CloudWatch alarm in your account.
@@ -224,6 +226,7 @@ impl cfn_resources::CfnResource for Alarm {
 
 /// Automatic rollback configuration for handling endpoint deployment failures and       recovery.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoRollbackConfig {
     ///
     /// List of CloudWatch alarms in your account that are configured to monitor metrics on an       endpoint. If any alarms are tripped during a deployment, SageMaker rolls back the       deployment.
@@ -264,6 +267,7 @@ impl cfn_resources::CfnResource for AutoRollbackConfig {
 
 /// Update policy for a blue/green deployment. If this update policy is specified, SageMaker       creates a new fleet during the deployment while maintaining the old fleet. SageMaker flips       traffic to the new fleet according to the specified traffic routing configuration. Only       one update policy should be used in the deployment configuration. If no update policy is       specified, SageMaker uses a blue/green deployment strategy with all at once traffic shifting       by default.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlueGreenUpdatePolicy {
     ///
     /// Maximum execution timeout for the deployment. Note that the timeout value should be       larger than the total waiting time specified in TerminationWaitInSeconds       and WaitIntervalInSeconds.
@@ -278,7 +282,7 @@ pub struct BlueGreenUpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_timeout_in_seconds: Option<i64>,
 
     ///
@@ -294,7 +298,7 @@ pub struct BlueGreenUpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationWaitInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub termination_wait_in_seconds: Option<i64>,
 
     ///
@@ -351,6 +355,7 @@ impl cfn_resources::CfnResource for BlueGreenUpdatePolicy {
 
 /// Specifies the endpoint capacity to activate for production.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacitySize {
     ///
     /// Specifies the endpoint capacity type.
@@ -423,6 +428,7 @@ impl cfn_resources::CfnResource for CapacitySize {
 
 /// The deployment configuration for an endpoint, which contains the desired deployment       strategy and rollback configurations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentConfig {
     ///
     /// Automatic rollback configuration for handling endpoint deployment failures and       recovery.
@@ -433,7 +439,7 @@ pub struct DeploymentConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRollbackConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_rollback_configuration: Option<AutoRollbackConfig>,
 
     ///
@@ -476,6 +482,7 @@ impl cfn_resources::CfnResource for DeploymentConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -514,6 +521,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Defines the traffic routing strategy during an endpoint deployment to shift traffic from the       old fleet to the new fleet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrafficRoutingConfig {
     ///
     /// Batch size for the first step to turn on traffic on the new endpoint fleet. Value must be less than       or equal to 50% of the variant's total instance count.
@@ -524,7 +532,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanarySize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub canary_size: Option<CapacitySize>,
 
     ///
@@ -536,7 +544,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinearStepSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub linear_step_size: Option<CapacitySize>,
 
     ///
@@ -567,7 +575,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitIntervalInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wait_interval_in_seconds: Option<i64>,
 }
 
@@ -633,6 +641,7 @@ impl cfn_resources::CfnResource for TrafficRoutingConfig {
 ///
 /// If you are updating an Endpoint with the RetainAllVariantProperties option set to true, the         VarientProperty objects listed in ExcludeRetainedVariantProperties override the existing variant properties       of the Endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VariantProperty {
     ///
     /// The type of variant property. The supported values are:
@@ -645,7 +654,7 @@ pub struct VariantProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariantPropertyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variant_property_type: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::RoboMaker::RobotApplicationVersion resource creates an AWS RoboMaker robot version.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRobotApplicationVersion {
     ///
     /// The application information for the robot application.
@@ -33,7 +34,7 @@ pub struct CfnRobotApplicationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CurrentRevisionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub current_revision_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

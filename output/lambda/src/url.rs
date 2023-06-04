@@ -1,5 +1,6 @@
 /// The AWS::Lambda::Url resource creates a function URL with the specified configuration parameters. A function URL is a dedicated HTTP(S) endpoint that   you can use to invoke your function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUrl {
     ///
     /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
@@ -23,7 +24,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cors: Option<Cors>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvokeMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invoke_mode: Option<UrlInvokeModeEnum>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Qualifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub qualifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnUrl {
 
 /// The Cross-Origin Resource Sharing (CORS)    settings for your function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS    to control access for specific HTTP headers and methods in requests to your function URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Cors {
     ///
     /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.
@@ -154,7 +156,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_credentials: Option<bool>,
 
     ///
@@ -168,7 +170,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_headers: Option<Vec<String>>,
 
     ///
@@ -182,7 +184,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMethods")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_methods: Option<Vec<String>>,
 
     ///
@@ -198,7 +200,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowOrigins")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_origins: Option<Vec<String>>,
 
     ///
@@ -212,7 +214,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExposeHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expose_headers: Option<Vec<String>>,
 
     ///
@@ -228,7 +230,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_age: Option<i64>,
 }
 

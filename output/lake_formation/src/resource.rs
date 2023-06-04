@@ -1,5 +1,6 @@
 /// The AWS::LakeFormation::Resource represents the data ( buckets and folders) that is being registered with AWS Lake Formation.    During a stack operation, AWS CloudFormation calls the AWS Lake Formation RegisterResource API operation to register the resource.    To remove a Resource type, AWS CloudFormation calls the AWS Lake Formation DeregisterResource API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResource {
     ///
     /// The Amazon Resource Name (ARN) of the resource.
@@ -21,7 +22,7 @@ pub struct CfnResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WithFederation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub with_federation: Option<bool>,
 }
 

@@ -1,5 +1,6 @@
 /// Creates a refresh schedule for a dataset in Amazon QuickSight.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRefreshSchedule {
     ///
     /// The AWS account ID of the account that you are creating a schedule in.
@@ -10,7 +11,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_set_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<RefreshScheduleMap>,
 
     #[serde(skip_serializing)]
@@ -69,6 +70,7 @@ impl cfn_resources::CfnResource for CfnRefreshSchedule {
 
 /// The day that you want yout dataset to refresh.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RefreshOnDay {
     ///
     /// The day of the month that you want your dataset to refresh. This value is required for monthly refresh  intervals.
@@ -79,7 +81,7 @@ pub struct RefreshOnDay {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfMonth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub day_of_month: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +93,7 @@ pub struct RefreshOnDay {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub day_of_week: Option<cfn_resources::StrVal>,
 }
 
@@ -111,6 +113,7 @@ impl cfn_resources::CfnResource for RefreshOnDay {
 
 /// A summary of a configured refresh schedule for a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RefreshScheduleMap {
     ///
     /// The type of refresh that a dataset undergoes. Valid values are as follows:
@@ -125,7 +128,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +140,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_frequency: Option<ScheduleFrequency>,
 
     ///
@@ -149,7 +152,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduleId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -161,7 +164,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAfterDateTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_after_date_time: Option<cfn_resources::StrVal>,
 }
 
@@ -185,6 +188,7 @@ impl cfn_resources::CfnResource for RefreshScheduleMap {
 
 /// The frequency for the refresh schedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduleFrequency {
     ///
     /// The interval between scheduled refreshes. Valid values are as follows:
@@ -197,7 +201,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -209,7 +213,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshOnDay")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub refresh_on_day: Option<RefreshOnDay>,
 
     ///
@@ -221,7 +225,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeOfTheDay")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_of_the_day: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +237,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_zone: Option<cfn_resources::StrVal>,
 }
 

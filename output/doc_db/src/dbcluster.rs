@@ -1,5 +1,6 @@
 /// The AWS::DocDB::DBCluster Amazon DocumentDB (with MongoDB compatibility) resource describes a DBCluster.      Amazon DocumentDB is a fully managed, MongoDB-compatible document database engine. For more information, see      DBCluster in the Amazon DocumentDB Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBCluster {
     ///
     /// A list of Amazon EC2 Availability Zones that instances in the       cluster can be created in.
@@ -10,7 +11,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_retention_period: Option<i64>,
 
     /// Property description not available.
@@ -39,7 +40,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToSnapshot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_snapshot: Option<bool>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBClusterParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection: Option<bool>,
 
     ///
@@ -109,7 +110,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableCloudwatchLogsExports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_cloudwatch_logs_exports: Option<Vec<String>>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -141,7 +142,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -155,7 +156,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_user_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,7 +172,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MasterUsername")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub master_username: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +184,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -201,7 +202,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_backup_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -221,7 +222,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -232,7 +233,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestoreToTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restore_to_time: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -243,7 +244,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestoreType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restore_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -261,7 +262,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -272,7 +273,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -284,7 +285,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageEncrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_encrypted: Option<bool>,
 
     ///
@@ -296,7 +297,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -307,7 +308,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseLatestRestorableTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_latest_restorable_time: Option<bool>,
 
     ///
@@ -319,7 +320,7 @@ pub struct CfnDBCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -389,6 +390,7 @@ impl cfn_resources::CfnResource for CfnDBCluster {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

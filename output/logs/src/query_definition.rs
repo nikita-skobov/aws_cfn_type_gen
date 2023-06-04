@@ -1,5 +1,6 @@
 /// Creates a query definition for    CloudWatch Logs Insights. For more information, see         Analyzing Log Data with CloudWatch Logs Insights.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnQueryDefinition {
     /// Use this parameter if  you want the query to query only certain log groups.
     ///
@@ -9,7 +10,7 @@ pub struct CfnQueryDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_names: Option<Vec<String>>,
 
     /// A name for the query definition.

@@ -8,6 +8,7 @@
 ///
 /// For more information about virtual nodes, see Virtual nodes. You must be using 1.15.0 or later of the Envoy image when     setting these variables. For more information aboutApp Mesh Envoy variables, see       Envoy       image in the AWS App Mesh User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVirtualNode {
     ///
     /// The name of the service mesh to create the virtual node in.
@@ -37,7 +38,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualNodeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_node_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -238,6 +239,7 @@ impl cfn_resources::CfnResource for CfnVirtualNode {
 
 /// An object that represents the access logging information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessLog {
     ///
     /// The file object to send virtual node access logs to.
@@ -248,7 +250,7 @@ pub struct AccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<FileAccessLog>,
 }
 
@@ -270,6 +272,7 @@ impl cfn_resources::CfnResource for AccessLog {
 
 /// An object that represents the AWS Cloud Map attribute information for your     virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsCloudMapInstanceAttribute {
     ///
     /// The name of an AWS Cloud Map service instance attribute key. Any AWS Cloud Map service instance that contains the specified key and value is     returned.
@@ -366,6 +369,7 @@ impl cfn_resources::CfnResource for AwsCloudMapInstanceAttribute {
 
 /// An object that represents the AWS Cloud Map service discovery information for     your virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsCloudMapServiceDiscovery {
     ///
     /// A string map that contains attributes with values that you can use to filter instances     by any custom attribute that you specified when you registered the instance. Only instances     that match all of the specified key/value pairs will be returned.
@@ -376,7 +380,7 @@ pub struct AwsCloudMapServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<Vec<AwsCloudMapInstanceAttribute>>,
 
     ///
@@ -390,7 +394,7 @@ pub struct AwsCloudMapServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_preference: Option<AwsCloudMapServiceDiscoveryIpPreferenceEnum>,
 
     ///
@@ -509,6 +513,7 @@ impl cfn_resources::CfnResource for AwsCloudMapServiceDiscovery {
 
 /// An object that represents the backends that a virtual node is expected to send outbound     traffic to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Backend {
     ///
     /// Specifies a virtual service to use as a backend.
@@ -519,7 +524,7 @@ pub struct Backend {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualService")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_service: Option<VirtualServiceBackend>,
 }
 
@@ -543,6 +548,7 @@ impl cfn_resources::CfnResource for Backend {
 
 /// An object that represents the default properties for a backend.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BackendDefaults {
     ///
     /// A reference to an object that represents a client policy.
@@ -553,7 +559,7 @@ pub struct BackendDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_policy: Option<ClientPolicy>,
 }
 
@@ -577,6 +583,7 @@ impl cfn_resources::CfnResource for BackendDefaults {
 
 /// An object that represents a client policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientPolicy {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
@@ -587,7 +594,7 @@ pub struct ClientPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<ClientPolicyTls>,
 }
 
@@ -609,6 +616,7 @@ impl cfn_resources::CfnResource for ClientPolicy {
 
 /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientPolicyTls {
     ///
     /// A reference to an object that represents a client's TLS certificate.
@@ -619,7 +627,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate: Option<ClientTlsCertificate>,
 
     ///
@@ -631,7 +639,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enforce: Option<bool>,
 
     ///
@@ -643,7 +651,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -680,6 +688,7 @@ impl cfn_resources::CfnResource for ClientPolicyTls {
 
 /// An object that represents the client's certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientTlsCertificate {
     ///
     /// An object that represents a local file certificate. The certificate must meet specific     requirements and you must have proxy authorization enabled. For more information, see       Transport Layer Security (TLS).
@@ -690,7 +699,7 @@ pub struct ClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<ListenerTlsFileCertificate>,
 
     ///
@@ -702,7 +711,7 @@ pub struct ClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<ListenerTlsSdsCertificate>,
 }
 
@@ -726,6 +735,7 @@ impl cfn_resources::CfnResource for ClientTlsCertificate {
 
 /// An object that represents the DNS service discovery information for your virtual     node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DnsServiceDiscovery {
     ///
     /// Specifies the DNS service discovery hostname for the virtual node.
@@ -749,7 +759,7 @@ pub struct DnsServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_preference: Option<DnsServiceDiscoveryIpPreferenceEnum>,
 
     ///
@@ -763,7 +773,7 @@ pub struct DnsServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_type: Option<DnsServiceDiscoveryResponseTypeEnum>,
 }
 
@@ -825,6 +835,7 @@ impl cfn_resources::CfnResource for DnsServiceDiscovery {
 
 /// An object that represents a duration of time.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Duration {
     ///
     /// A unit of time.
@@ -884,6 +895,7 @@ impl cfn_resources::CfnResource for Duration {
 
 /// An object that represents an access log file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileAccessLog {
     ///
     /// The specified format for the logs. The format is either json_format or       text_format.
@@ -894,7 +906,7 @@ pub struct FileAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<LoggingFormat>,
 
     ///
@@ -955,6 +967,7 @@ impl cfn_resources::CfnResource for FileAccessLog {
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -965,7 +978,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle: Option<Duration>,
 
     ///
@@ -977,7 +990,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub per_request: Option<Duration>,
 }
 
@@ -1003,6 +1016,7 @@ impl cfn_resources::CfnResource for GrpcTimeout {
 
 /// An object that represents the health check policy for a virtual node's listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheck {
     ///
     /// The number of consecutive successful health checks that must occur before declaring     listener healthy.
@@ -1039,7 +1053,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1055,7 +1069,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1193,6 +1207,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -1203,7 +1218,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle: Option<Duration>,
 
     ///
@@ -1215,7 +1230,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub per_request: Option<Duration>,
 }
 
@@ -1241,6 +1256,7 @@ impl cfn_resources::CfnResource for HttpTimeout {
 
 /// An object that represents the key value pairs for the JSON.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonFormatRef {
     ///
     /// The specified key for the JSON.
@@ -1333,6 +1349,7 @@ impl cfn_resources::CfnResource for JsonFormatRef {
 
 /// An object that represents a listener for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Listener {
     ///
     /// The connection pool information for the listener.
@@ -1343,7 +1360,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPool")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_pool: Option<VirtualNodeConnectionPool>,
 
     ///
@@ -1355,7 +1372,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -1367,7 +1384,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlierDetection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outlier_detection: Option<OutlierDetection>,
 
     ///
@@ -1390,7 +1407,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<ListenerTls>,
 
     ///
@@ -1402,7 +1419,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<ListenerTimeout>,
 }
 
@@ -1440,6 +1457,7 @@ impl cfn_resources::CfnResource for Listener {
 
 /// An object that represents timeouts for different protocols.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTimeout {
     ///
     /// An object that represents types of timeouts.
@@ -1450,7 +1468,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grpc: Option<GrpcTimeout>,
 
     ///
@@ -1462,7 +1480,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http: Option<HttpTimeout>,
 
     ///
@@ -1474,7 +1492,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http2: Option<HttpTimeout>,
 
     ///
@@ -1486,7 +1504,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tcp: Option<TcpTimeout>,
 }
 
@@ -1514,6 +1532,7 @@ impl cfn_resources::CfnResource for ListenerTimeout {
 
 /// An object that represents the Transport Layer Security (TLS) properties for a listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTls {
     ///
     /// A reference to an object that represents a listener's Transport Layer Security (TLS) certificate.
@@ -1550,7 +1569,7 @@ pub struct ListenerTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation: Option<ListenerTlsValidationContext>,
 }
 
@@ -1597,6 +1616,7 @@ impl cfn_resources::CfnResource for ListenerTls {
 
 /// An object that represents an AWS Certificate Manager certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsAcmCertificate {
     ///
     /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
@@ -1626,6 +1646,7 @@ impl cfn_resources::CfnResource for ListenerTlsAcmCertificate {
 
 /// An object that represents a listener's Transport Layer Security (TLS) certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsCertificate {
     ///
     /// A reference to an object that represents an AWS Certificate Manager certificate.
@@ -1636,7 +1657,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acm: Option<ListenerTlsAcmCertificate>,
 
     ///
@@ -1648,7 +1669,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<ListenerTlsFileCertificate>,
 
     ///
@@ -1660,7 +1681,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<ListenerTlsSdsCertificate>,
 }
 
@@ -1686,6 +1707,7 @@ impl cfn_resources::CfnResource for ListenerTlsCertificate {
 
 /// An object that represents a local file certificate.     The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsFileCertificate {
     ///
     /// The certificate chain for the certificate.
@@ -1778,6 +1800,7 @@ impl cfn_resources::CfnResource for ListenerTlsFileCertificate {
 
 /// An object that represents the listener's Secret Discovery Service certificate. The proxy     must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsSdsCertificate {
     ///
     /// A reference to an object that represents the name of the secret requested from the     Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or     certificate chain.
@@ -1807,6 +1830,7 @@ impl cfn_resources::CfnResource for ListenerTlsSdsCertificate {
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a listener's Transport Layer Security (TLS) validation     context.
@@ -1817,7 +1841,7 @@ pub struct ListenerTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -1854,6 +1878,7 @@ impl cfn_resources::CfnResource for ListenerTlsValidationContext {
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context trust.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListenerTlsValidationContextTrust {
     ///
     /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
@@ -1864,7 +1889,7 @@ pub struct ListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<TlsValidationContextFileTrust>,
 
     ///
@@ -1876,7 +1901,7 @@ pub struct ListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<TlsValidationContextSdsTrust>,
 }
 
@@ -1900,6 +1925,7 @@ impl cfn_resources::CfnResource for ListenerTlsValidationContextTrust {
 
 /// An object that represents the logging information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Logging {
     ///
     /// The access log configuration for a virtual node.
@@ -1910,7 +1936,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_log: Option<AccessLog>,
 }
 
@@ -1934,6 +1960,7 @@ impl cfn_resources::CfnResource for Logging {
 
 /// An object that represents the format for the logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingFormat {
     ///
     /// The logging format for JSON.
@@ -1944,7 +1971,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json: Option<Vec<JsonFormatRef>>,
 
     ///
@@ -1960,7 +1987,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text: Option<cfn_resources::StrVal>,
 }
 
@@ -2002,6 +2029,7 @@ impl cfn_resources::CfnResource for LoggingFormat {
 
 /// An object that represents the outlier detection for a virtual node's listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutlierDetection {
     ///
     /// The base amount of time for which a host is ejected.
@@ -2090,6 +2118,7 @@ impl cfn_resources::CfnResource for OutlierDetection {
 
 /// An object representing a virtual node or virtual router listener port mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortMapping {
     ///
     /// The port used for the port mapping.
@@ -2179,6 +2208,7 @@ impl cfn_resources::CfnResource for PortMapping {
 
 /// An object that represents the service discovery information for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceDiscovery {
     ///
     /// Specifies any AWS Cloud Map information for the virtual node.
@@ -2189,7 +2219,7 @@ pub struct ServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AWSCloudMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub awscloud_map: Option<AwsCloudMapServiceDiscovery>,
 
     ///
@@ -2201,7 +2231,7 @@ pub struct ServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DNS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns: Option<DnsServiceDiscovery>,
 }
 
@@ -2227,6 +2257,7 @@ impl cfn_resources::CfnResource for ServiceDiscovery {
 
 /// An object that represents the methods by which a subject alternative name on a peer     Transport Layer Security (TLS) certificate can be matched.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubjectAlternativeNameMatchers {
     ///
     /// The values sent must match the specified values exactly.
@@ -2237,7 +2268,7 @@ pub struct SubjectAlternativeNameMatchers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<Vec<String>>,
 }
 
@@ -2257,6 +2288,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
 
 /// An object that represents the subject alternative names secured by the     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubjectAlternativeNames {
     ///
     /// An object that represents the criteria for determining a SANs match.
@@ -2294,6 +2326,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNames {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2332,6 +2365,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// An object that represents types of timeouts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TcpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -2342,7 +2376,7 @@ pub struct TcpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle: Option<Duration>,
 }
 
@@ -2364,6 +2398,7 @@ impl cfn_resources::CfnResource for TcpTimeout {
 
 /// An object that represents how the proxy will validate its peer during Transport Layer Security (TLS)     negotiation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a Transport Layer Security (TLS) validation context. If you     don't specify SANs on the terminating mesh endpoint, the Envoy proxy     for that node doesn't verify the SAN on a peer client certificate. If you don't specify     SANs on the originating mesh endpoint, the SAN on the certificate     provided by the terminating endpoint must match the mesh endpoint service discovery     configuration. Since SPIRE vended certificates have a SPIFFE ID as a name, you must set the     SAN since the name doesn't match the service discovery name.
@@ -2374,7 +2409,7 @@ pub struct TlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -2411,6 +2446,7 @@ impl cfn_resources::CfnResource for TlsValidationContext {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsValidationContextAcmTrust {
     ///
     /// One or more ACM Amazon Resource Name (ARN)s.
@@ -2451,6 +2487,7 @@ impl cfn_resources::CfnResource for TlsValidationContextAcmTrust {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsValidationContextFileTrust {
     ///
     /// The certificate trust chain for a certificate stored on the file system of the virtual     node that the proxy is running on.
@@ -2506,6 +2543,7 @@ impl cfn_resources::CfnResource for TlsValidationContextFileTrust {
 
 /// An object that represents a Transport Layer Security (TLS) Secret Discovery Service validation context trust. The     proxy must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsValidationContextSdsTrust {
     ///
     /// A reference to an object that represents the name of the secret for a Transport Layer Security (TLS) Secret     Discovery Service validation context trust.
@@ -2535,6 +2573,7 @@ impl cfn_resources::CfnResource for TlsValidationContextSdsTrust {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsValidationContextTrust {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager certificate.
@@ -2545,7 +2584,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acm: Option<TlsValidationContextAcmTrust>,
 
     ///
@@ -2557,7 +2596,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<TlsValidationContextFileTrust>,
 
     ///
@@ -2569,7 +2608,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<TlsValidationContextSdsTrust>,
 }
 
@@ -2600,6 +2639,7 @@ impl cfn_resources::CfnResource for TlsValidationContextTrust {
 /// If not present the default value for maxPendingRequests is       2147483647.
 ///
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeConnectionPool {
     ///
     /// An object that represents a type of connection pool.
@@ -2610,7 +2650,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grpc: Option<VirtualNodeGrpcConnectionPool>,
 
     ///
@@ -2622,7 +2662,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http: Option<VirtualNodeHttpConnectionPool>,
 
     ///
@@ -2634,7 +2674,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http2: Option<VirtualNodeHttp2ConnectionPool>,
 
     ///
@@ -2646,7 +2686,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tcp: Option<VirtualNodeTcpConnectionPool>,
 }
 
@@ -2674,6 +2714,7 @@ impl cfn_resources::CfnResource for VirtualNodeConnectionPool {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeGrpcConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -2714,6 +2755,7 @@ impl cfn_resources::CfnResource for VirtualNodeGrpcConnectionPool {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeHttp2ConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -2754,6 +2796,7 @@ impl cfn_resources::CfnResource for VirtualNodeHttp2ConnectionPool {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeHttpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -2779,7 +2822,7 @@ pub struct VirtualNodeHttpConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPendingRequests")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_pending_requests: Option<i64>,
 }
 
@@ -2817,6 +2860,7 @@ impl cfn_resources::CfnResource for VirtualNodeHttpConnectionPool {
 
 /// An object that represents the specification of a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeSpec {
     ///
     /// A reference to an object that represents the defaults for backends.
@@ -2827,7 +2871,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackendDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backend_defaults: Option<BackendDefaults>,
 
     ///
@@ -2841,7 +2885,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Backends")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backends: Option<Vec<Backend>>,
 
     ///
@@ -2853,7 +2897,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Listeners")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub listeners: Option<Vec<Listener>>,
 
     ///
@@ -2865,7 +2909,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging: Option<Logging>,
 
     ///
@@ -2877,7 +2921,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceDiscovery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_discovery: Option<ServiceDiscovery>,
 }
 
@@ -2907,6 +2951,7 @@ impl cfn_resources::CfnResource for VirtualNodeSpec {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualNodeTcpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -2947,6 +2992,7 @@ impl cfn_resources::CfnResource for VirtualNodeTcpConnectionPool {
 
 /// An object that represents a virtual service backend for a virtual node.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualServiceBackend {
     ///
     /// A reference to an object that represents the client policy for a backend.
@@ -2957,7 +3003,7 @@ pub struct VirtualServiceBackend {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_policy: Option<ClientPolicy>,
 
     ///

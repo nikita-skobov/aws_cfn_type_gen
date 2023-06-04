@@ -1,5 +1,6 @@
 /// Creates a new configuration for the specified configuration name. Amazon MQ uses        the default configuration (the engine type and version).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfiguration {
     ///
     /// Optional. The authentication strategy associated with the configuration. The        default is SIMPLE.
@@ -10,7 +11,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     #[serde(skip_serializing)]
@@ -120,6 +121,7 @@ impl cfn_resources::CfnResource for CfnConfiguration {
 
 /// A key-value pair to associate with the configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// The key in a key-value pair.

@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Model resource updates data model for a          WebSocket API. For more information, see Model Selection Expressions in the API Gateway Developer             Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModel {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

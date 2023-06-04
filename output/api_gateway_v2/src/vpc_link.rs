@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::VpcLink resource creates a VPC link. Supported only for HTTP APIs. The VPC link status must transition          from PENDING to AVAILABLE to successfully create a VPC link, which can take up to 10 minutes. To learn more, see             Working with VPC Links for HTTP APIs          in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVpcLink {
     ///
     /// The name of the VPC link.
@@ -21,7 +22,7 @@ pub struct CfnVpcLink {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnVpcLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]

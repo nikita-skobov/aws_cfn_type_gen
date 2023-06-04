@@ -4,6 +4,7 @@
 ///
 /// For more information, see 		Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMonitor {
     ///
     /// Publish internet measurements for a monitor for all city-networks (up to the 500,000 service limit) to another location, such as an Amazon S3 bucket. 			Measurements are also published to Amazon CloudWatch Logs for the first 500 (by traffic volume) city-networks (client locations and ASNs, typically 			internet service providers or ISPs).
@@ -14,7 +15,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetMeasurementsLogDelivery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub internet_measurements_log_delivery: Option<InternetMeasurementsLogDelivery>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCityNetworksToMonitor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_city_networks_to_monitor: Option<i64>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources: Option<Vec<String>>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesToAdd")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources_to_add: Option<Vec<String>>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesToRemove")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources_to_remove: Option<Vec<String>>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficPercentageToMonitor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub traffic_percentage_to_monitor: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -194,6 +195,7 @@ impl cfn_resources::CfnResource for CfnMonitor {
 
 /// The InternetMeasurementsLogDelivery property type specifies Property description not available. for an AWS::InternetMonitor::Monitor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InternetMeasurementsLogDelivery {
     ///
     /// The configuration information for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
@@ -204,7 +206,7 @@ pub struct InternetMeasurementsLogDelivery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Config")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_config: Option<S3Config>,
 }
 
@@ -228,6 +230,7 @@ impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
 
 /// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Config {
     ///
     /// The Amazon S3 bucket name for internet measurements publishing.
@@ -238,7 +241,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -250,7 +253,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -262,7 +265,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_delivery_status: Option<cfn_resources::StrVal>,
 }
 
@@ -288,6 +291,7 @@ impl cfn_resources::CfnResource for S3Config {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

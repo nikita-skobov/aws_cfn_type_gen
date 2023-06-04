@@ -2,6 +2,7 @@
 ///
 /// Required Permissions: To use this action, an IAM user must have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInstance {
     ///
     /// The default AWS OpsWorks Stacks agent version. You have the following options:
@@ -16,7 +17,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub agent_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmiId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ami_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architecture")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub architecture: Option<InstanceArchitectureEnum>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_scaling_type: Option<InstanceAutoScalingTypeEnum>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockDeviceMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticIps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_ips: Option<Vec<String>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstallUpdatesOnBoot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub install_updates_on_boot: Option<bool>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Os")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub os: Option<cfn_resources::StrVal>,
 
     ///
@@ -188,7 +189,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootDeviceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_device_type: Option<InstanceRootDeviceTypeEnum>,
 
     ///
@@ -200,7 +201,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshKeyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_key_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -223,7 +224,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -235,7 +236,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tenancy: Option<cfn_resources::StrVal>,
 
     ///
@@ -249,7 +250,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedAutoScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_based_auto_scaling: Option<TimeBasedAutoScaling>,
 
     ///
@@ -261,7 +262,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualizationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtualization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -273,7 +274,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -399,6 +400,7 @@ impl cfn_resources::CfnResource for CfnInstance {
 
 /// Describes a block device mapping. This data type maps directly to the Amazon EC2 BlockDeviceMapping data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name that is exposed to the instance, such as /dev/sdh. For the root    device, you can use the explicit device name or you can set this parameter to      ROOT_DEVICE and AWS OpsWorks Stacks will provide the correct device name.
@@ -409,7 +411,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -421,7 +423,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ebs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs: Option<EbsBlockDevice>,
 
     ///
@@ -433,7 +435,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_device: Option<cfn_resources::StrVal>,
 
     ///
@@ -445,7 +447,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
@@ -467,30 +469,31 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EbsBlockDevice {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-deleteontermination
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-iops
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-snapshotid
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumesize
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-volumetype
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 
@@ -510,6 +513,7 @@ impl cfn_resources::CfnResource for EbsBlockDevice {
 
 /// Describes an instance's time-based auto scaling configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeBasedAutoScaling {
     ///
     /// The schedule for Friday.
@@ -520,7 +524,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Friday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub friday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -532,7 +536,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Monday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -544,7 +548,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Saturday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saturday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -556,7 +560,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sunday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sunday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -568,7 +572,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Thursday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thursday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -580,7 +584,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tuesday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tuesday: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -592,7 +596,7 @@ pub struct TimeBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Wednesday")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wednesday: Option<std::collections::HashMap<String, String>>,
 }
 

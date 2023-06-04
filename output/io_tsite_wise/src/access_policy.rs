@@ -1,5 +1,6 @@
 /// Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or    IAM user) access to the specified AWS IoT SiteWise Monitor portal or project resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessPolicy {
     ///
     /// The identity for this access policy. Choose an IAM Identity Center user, an IAM Identity Center group, or an IAM user.
@@ -77,6 +78,7 @@ impl cfn_resources::CfnResource for CfnAccessPolicy {
 
 /// The identity (IAM Identity Center user, IAM Identity Center group, or IAM user) to which this access policy    applies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessPolicyIdentity {
     ///
     /// An IAM role identity.
@@ -87,7 +89,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_role: Option<IamRole>,
 
     ///
@@ -99,7 +101,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_user: Option<IamUser>,
 
     ///
@@ -111,7 +113,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "User")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user: Option<User>,
 }
 
@@ -141,6 +143,7 @@ impl cfn_resources::CfnResource for AccessPolicyIdentity {
 
 /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessPolicyResource {
     ///
     /// The AWS IoT SiteWise Monitor portal for this access policy.
@@ -151,7 +154,7 @@ pub struct AccessPolicyResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Portal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub portal: Option<Portal>,
 
     ///
@@ -163,7 +166,7 @@ pub struct AccessPolicyResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Project")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project: Option<Project>,
 }
 
@@ -187,6 +190,7 @@ impl cfn_resources::CfnResource for AccessPolicyResource {
 
 /// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IamRole {
     ///
     /// The ARN of the IAM role. For more information, see IAM ARNs in the     IAM User Guide.
@@ -197,7 +201,7 @@ pub struct IamRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 }
 
@@ -217,6 +221,7 @@ impl cfn_resources::CfnResource for IamRole {
 
 /// Contains information about an AWS Identity and Access Management user.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IamUser {
     ///
     /// The ARN of the IAM user. For more information, see IAM ARNs in the     IAM User Guide.
@@ -229,7 +234,7 @@ pub struct IamUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 }
 
@@ -249,6 +254,7 @@ impl cfn_resources::CfnResource for IamUser {
 
 /// The Portal property type specifies the AWS IoT SiteWise Monitor portal for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Portal {
     ///
     /// The ID of the portal.
@@ -259,7 +265,7 @@ pub struct Portal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 }
 
@@ -279,6 +285,7 @@ impl cfn_resources::CfnResource for Portal {
 
 /// The Project property type specifies the AWS IoT SiteWise Monitor project for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Project {
     ///
     /// The ID of the project.
@@ -289,7 +296,7 @@ pub struct Project {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 }
 
@@ -309,6 +316,7 @@ impl cfn_resources::CfnResource for Project {
 
 /// The User property type specifies the AWS IoT SiteWise Monitor user for       an AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct User {
     ///
     /// The ID of the user.
@@ -319,7 +327,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 }
 

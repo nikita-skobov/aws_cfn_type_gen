@@ -1,5 +1,6 @@
 /// Use the AWS::EventSchemas::Discoverer resource to specify a         discoverer that is associated with an event bus. A discoverer       allows the Amazon EventBridge Schema Registry to automatically generate schemas based on       events on an event bus.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDiscoverer {
     ///
     /// Allows for the discovery of the event schemas that are sent to the event bus from another account.
@@ -10,7 +11,7 @@ pub struct CfnDiscoverer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrossAccount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cross_account: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnDiscoverer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnDiscoverer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsEntry>>,
 
     #[serde(skip_serializing)]
@@ -87,6 +88,7 @@ impl cfn_resources::CfnResource for CfnDiscoverer {
 
 /// Tags to associate with the discoverer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

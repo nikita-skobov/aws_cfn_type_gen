@@ -1,5 +1,6 @@
 /// Creates a data access policy for OpenSearch Serverless. Access policies limit access to collections       and the resources within them, and allow a user to access that data irrespective of the       access mechanism or network source. For more information, see Data access         control for Amazon OpenSearch Serverless.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessPolicy {
     ///
     /// The description of the policy.
@@ -10,7 +11,7 @@ pub struct CfnAccessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

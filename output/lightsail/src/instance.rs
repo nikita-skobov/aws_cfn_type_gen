@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::Instance resource specifies an Amazon Lightsail instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInstance {
     ///
     /// An array of add-ons for the instance.
@@ -12,7 +13,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_ons: Option<Vec<AddOn>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Hardware")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hardware: Option<Hardware>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPairName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_pair_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location: Option<Location>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Networking")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub networking: Option<Networking>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<State>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -159,7 +160,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_data: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -315,6 +316,7 @@ impl cfn_resources::CfnResource for CfnInstance {
 
 /// AddOn is a property of the AWS::Lightsail::Instance resource. It describes the add-ons for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AddOn {
     ///
     /// The add-on type (for example, AutoSnapshot).
@@ -338,7 +340,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSnapshotAddOnRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
 
     ///
@@ -352,7 +354,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<AddOnStatusEnum>,
 }
 
@@ -393,6 +395,7 @@ impl cfn_resources::CfnResource for AddOn {
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoSnapshotAddOn {
     ///
     /// The daily time when an automatic snapshot will be created.
@@ -409,7 +412,7 @@ pub struct AutoSnapshotAddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_time_of_day: Option<cfn_resources::StrVal>,
 }
 
@@ -429,6 +432,7 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
 
 /// Disk is a property of the Hardware property. It describes a disk attached to an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Disk {
     ///
     /// The resources to which the disk is attached.
@@ -439,7 +443,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachedTo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attached_to: Option<cfn_resources::StrVal>,
 
     ///
@@ -453,7 +457,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachmentState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachment_state: Option<cfn_resources::StrVal>,
 
     ///
@@ -476,7 +480,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IOPS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -488,7 +492,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IsSystemDisk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_system_disk: Option<bool>,
 
     ///
@@ -511,7 +515,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SizeInGb")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_gb: Option<cfn_resources::StrVal>,
 }
 
@@ -531,6 +535,7 @@ impl cfn_resources::CfnResource for Disk {
 
 /// Hardware is a property of the AWS::Lightsail::Instance resource. It describes the hardware properties for the     instance, such as the vCPU count, attached disks, and amount of RAM.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Hardware {
     ///
     /// The number of vCPUs the instance has.
@@ -543,7 +548,7 @@ pub struct Hardware {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "CpuCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_count: Option<i64>,
 
     ///
@@ -557,7 +562,7 @@ pub struct Hardware {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Disks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disks: Option<Vec<Disk>>,
 
     ///
@@ -571,7 +576,7 @@ pub struct Hardware {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RamSizeInGb")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ram_size_in_gb: Option<i64>,
 }
 
@@ -591,6 +596,7 @@ impl cfn_resources::CfnResource for Hardware {
 
 /// Location is a property of the AWS::Lightsail::Instance resource. It describes the location for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Location {
     ///
     /// The Availability Zone for the instance.
@@ -601,7 +607,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -613,7 +619,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region_name: Option<cfn_resources::StrVal>,
 }
 
@@ -633,6 +639,7 @@ impl cfn_resources::CfnResource for Location {
 
 /// MonthlyTransfer is a property of the Networking property. It describes the amount of allocated monthly data transfer     (in GB) for an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonthlyTransfer {
     ///
     /// The amount of allocated monthly data transfer (in GB) for an instance.
@@ -643,7 +650,7 @@ pub struct MonthlyTransfer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GbPerMonthAllocated")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gb_per_month_allocated: Option<cfn_resources::StrVal>,
 }
 
@@ -663,6 +670,7 @@ impl cfn_resources::CfnResource for MonthlyTransfer {
 
 /// Networking is a property of the AWS::Lightsail::Instance resource. It describes the public ports and the     monthly amount of data transfer allocated for the instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Networking {
     ///
     /// The monthly amount of data transfer, in GB, allocated for the instance
@@ -673,7 +681,7 @@ pub struct Networking {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "MonthlyTransfer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monthly_transfer: Option<MonthlyTransfer>,
 
     ///
@@ -708,6 +716,7 @@ impl cfn_resources::CfnResource for Networking {
 
 /// Port is a property of the Networking property. It describes information about ports for an     instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Port {
     ///
     /// The access direction (inbound or outbound).
@@ -720,7 +729,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessDirection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_direction: Option<cfn_resources::StrVal>,
 
     ///
@@ -732,7 +741,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessFrom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_from: Option<cfn_resources::StrVal>,
 
     ///
@@ -744,7 +753,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -758,7 +767,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrListAliases")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_list_aliases: Option<Vec<String>>,
 
     ///
@@ -776,7 +785,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -788,7 +797,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CommonName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub common_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -804,7 +813,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from_port: Option<i64>,
 
     ///
@@ -818,7 +827,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Cidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_cidrs: Option<Vec<String>>,
 
     ///
@@ -834,7 +843,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -850,7 +859,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to_port: Option<i64>,
 }
 
@@ -870,6 +879,7 @@ impl cfn_resources::CfnResource for Port {
 
 /// State is a property of the AWS::Lightsail::Instance resource. It describes the status code and the state     (for example, running) of an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct State {
     ///
     /// The status code of the instance.
@@ -880,7 +890,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code: Option<i64>,
 
     ///
@@ -892,7 +902,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -918,6 +928,7 @@ impl cfn_resources::CfnResource for State {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

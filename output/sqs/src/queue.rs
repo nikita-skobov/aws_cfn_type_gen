@@ -4,6 +4,7 @@
 ///
 /// For more information about creating FIFO (first-in-first-out) queues, see Creating an Amazon SQS queue (AWS CloudFormation) in the Amazon SQS Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnQueue {
     ///
     /// For first-in-first-out (FIFO) queues, specifies whether to enable content-based    deduplication. During the deduplication interval, Amazon SQS treats messages that are    sent with identical content as duplicates and delivers only one copy of the message. For more    information, see the ContentBasedDeduplication attribute for the     CreateQueue    action in the Amazon SQS API Reference.
@@ -14,7 +15,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentBasedDeduplication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_based_deduplication: Option<bool>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeduplicationScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deduplication_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DelaySeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delay_seconds: Option<i64>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FifoQueue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fifo_queue: Option<bool>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FifoThroughputLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fifo_throughput_limit: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsDataKeyReusePeriodSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_data_key_reuse_period_seconds: Option<i64>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_master_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumMessageSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_message_size: Option<i64>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageRetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_retention_period: Option<i64>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueueName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queue_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReceiveMessageWaitTimeSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub receive_message_wait_time_seconds: Option<i64>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedriveAllowPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redrive_allow_policy: Option<serde_json::Value>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedrivePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redrive_policy: Option<serde_json::Value>,
 
     ///
@@ -198,7 +199,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsManagedSseEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sqs_managed_sse_enabled: Option<bool>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -226,7 +227,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisibilityTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility_timeout: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -285,6 +286,7 @@ impl cfn_resources::CfnResource for CfnQueue {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::APS::Workspace type specifies an Amazon Managed Service for Prometheus         (Amazon Managed Service for Prometheus) workspace. A workspace is a logical and       isolated Prometheus server dedicated to Prometheus resources such as metrics. You can       have one or more workspaces in each Region in your account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkspace {
     ///
     /// The alert manager definition for the workspace, as a string. For more information, see         Alert manager and templating.
@@ -10,7 +11,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlertManagerDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alert_manager_definition: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -105,6 +106,7 @@ impl cfn_resources::CfnResource for CfnWorkspace {
 
 /// The LoggingConfiguration attribute sets the logging configuration for the workspace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch log group the logs are emitted to.
@@ -115,7 +117,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -141,6 +143,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// Creates a VPC attachment on an edge location of a core network.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVpcAttachment {
     ///
     /// The core network ID.
@@ -21,7 +22,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<VpcOptions>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -198,6 +199,7 @@ impl cfn_resources::CfnResource for CfnVpcAttachment {
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProposedSegmentChange {
     ///
     /// The rule number in the policy document that applies to this change.
@@ -208,7 +210,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentPolicyRuleNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachment_policy_rule_number: Option<i64>,
 
     ///
@@ -226,7 +228,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -238,7 +240,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -286,6 +288,7 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -324,6 +327,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the VPC options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcOptions {
     ///
     /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.
@@ -334,7 +338,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplianceModeSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub appliance_mode_support: Option<bool>,
 
     ///
@@ -346,7 +350,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Support")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_support: Option<bool>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// You can also map an alias to split invocation requests between two versions. Use the     RoutingConfig parameter to specify a second version and the percentage of invocation requests that    it receives.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAlias {
     ///
     /// A description of the alias.
@@ -16,7 +17,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrencyConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub routing_config: Option<AliasRoutingConfiguration>,
 }
 
@@ -211,6 +212,7 @@ impl cfn_resources::CfnResource for CfnAlias {
 
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AliasRoutingConfiguration {
     ///
     /// The second version, and the percentage of traffic that's routed to it.
@@ -240,6 +242,7 @@ impl cfn_resources::CfnResource for AliasRoutingConfiguration {
 
 /// A provisioned concurrency configuration for a function's alias.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedConcurrencyConfiguration {
     ///
     /// The amount of provisioned concurrency to allocate for the alias.
@@ -269,6 +272,7 @@ impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
 
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VersionWeight {
     ///
     /// The qualifier of the second version.

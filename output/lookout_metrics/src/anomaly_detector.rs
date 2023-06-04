@@ -1,5 +1,6 @@
 /// The AWS::LookoutMetrics::AnomalyDetector type creates an anomaly detector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAnomalyDetector {
     ///
     /// Contains information about the configuration of the anomaly detector.
@@ -21,7 +22,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectorDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anomaly_detector_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anomaly_detector_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,6 +90,7 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
 
 /// Contains information about a detector's configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnomalyDetectorConfig {
     ///
     /// The frequency at which the detector analyzes its source data.
@@ -118,6 +120,7 @@ impl cfn_resources::CfnResource for AnomalyDetectorConfig {
 
 /// Details about an Amazon AppFlow flow datasource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AppFlowConfig {
     ///
     /// name of the flow.
@@ -158,6 +161,7 @@ impl cfn_resources::CfnResource for AppFlowConfig {
 
 /// Details about an Amazon CloudWatch datasource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudwatchConfig {
     ///
     /// An IAM role that gives Amazon Lookout for Metrics permission to access data in Amazon CloudWatch.
@@ -187,6 +191,7 @@ impl cfn_resources::CfnResource for CloudwatchConfig {
 
 /// Contains information about how a source CSV data file should be analyzed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CsvFormatDescriptor {
     ///
     /// The character set in which the source CSV file is written.
@@ -197,7 +202,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub charset: Option<cfn_resources::StrVal>,
 
     ///
@@ -209,7 +214,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contains_header: Option<bool>,
 
     ///
@@ -221,7 +226,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +238,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_compression: Option<cfn_resources::StrVal>,
 
     ///
@@ -245,7 +250,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header_list: Option<Vec<String>>,
 
     ///
@@ -257,7 +262,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
@@ -277,6 +282,7 @@ impl cfn_resources::CfnResource for CsvFormatDescriptor {
 
 /// Contains information about a source file's formatting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileFormatDescriptor {
     ///
     /// Contains information about how a source CSV data file should be analyzed.
@@ -287,7 +293,7 @@ pub struct FileFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvFormatDescriptor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_format_descriptor: Option<CsvFormatDescriptor>,
 
     ///
@@ -299,7 +305,7 @@ pub struct FileFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonFormatDescriptor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_format_descriptor: Option<JsonFormatDescriptor>,
 }
 
@@ -327,6 +333,7 @@ impl cfn_resources::CfnResource for FileFormatDescriptor {
 
 /// Contains information about how a source JSON data file should be analyzed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonFormatDescriptor {
     ///
     /// The character set in which the source JSON file is written.
@@ -337,7 +344,7 @@ pub struct JsonFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub charset: Option<cfn_resources::StrVal>,
 
     ///
@@ -349,7 +356,7 @@ pub struct JsonFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_compression: Option<cfn_resources::StrVal>,
 }
 
@@ -369,6 +376,7 @@ impl cfn_resources::CfnResource for JsonFormatDescriptor {
 
 /// A calculation made by contrasting a measure and a dimension from your source data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metric {
     ///
     /// The function with which the metric is calculated.
@@ -401,7 +409,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 }
 
@@ -421,6 +429,7 @@ impl cfn_resources::CfnResource for Metric {
 
 /// Contains information about a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricSet {
     ///
     /// A list of the fields you want to treat as dimensions.
@@ -431,7 +440,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimension_list: Option<Vec<String>>,
 
     ///
@@ -454,7 +463,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricSetDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_set_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -466,7 +475,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricSetFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_set_frequency: Option<cfn_resources::StrVal>,
 
     ///
@@ -500,7 +509,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub offset: Option<i64>,
 
     ///
@@ -512,7 +521,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp_column: Option<TimestampColumn>,
 
     ///
@@ -524,7 +533,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timezone: Option<cfn_resources::StrVal>,
 }
 
@@ -550,6 +559,7 @@ impl cfn_resources::CfnResource for MetricSet {
 
 /// Contains information about how the source data should be interpreted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricSource {
     ///
     /// Details about an AppFlow datasource.
@@ -560,7 +570,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppFlowConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_flow_config: Option<AppFlowConfig>,
 
     ///
@@ -572,7 +582,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloudwatch_config: Option<CloudwatchConfig>,
 
     ///
@@ -584,7 +594,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RDSSourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rdssource_config: Option<RDSSourceConfig>,
 
     ///
@@ -596,7 +606,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftSourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift_source_config: Option<RedshiftSourceConfig>,
 
     ///
@@ -608,7 +618,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3SourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_source_config: Option<S3SourceConfig>,
 }
 
@@ -648,6 +658,7 @@ impl cfn_resources::CfnResource for MetricSource {
 
 /// Contains information about the Amazon Relational Database Service (RDS) configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RDSSourceConfig {
     ///
     /// A string identifying the database instance.
@@ -756,6 +767,7 @@ impl cfn_resources::CfnResource for RDSSourceConfig {
 
 /// Provides information about the Amazon Redshift database configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftSourceConfig {
     ///
     /// A string identifying the Redshift cluster.
@@ -864,6 +876,7 @@ impl cfn_resources::CfnResource for RedshiftSourceConfig {
 
 /// Contains information about the configuration of the S3 bucket that contains source files.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3SourceConfig {
     ///
     /// Contains information about a source file's formatting.
@@ -885,7 +898,7 @@ pub struct S3SourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistoricalDataPathList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub historical_data_path_list: Option<Vec<String>>,
 
     ///
@@ -908,7 +921,7 @@ pub struct S3SourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplatedPathList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub templated_path_list: Option<Vec<String>>,
 }
 
@@ -930,6 +943,7 @@ impl cfn_resources::CfnResource for S3SourceConfig {
 
 /// Contains information about the column used to track time in a source data file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimestampColumn {
     ///
     /// The format of the timestamp column.
@@ -940,7 +954,7 @@ pub struct TimestampColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -952,7 +966,7 @@ pub struct TimestampColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_name: Option<cfn_resources::StrVal>,
 }
 
@@ -972,6 +986,7 @@ impl cfn_resources::CfnResource for TimestampColumn {
 
 /// Contains configuration information about the Amazon Virtual Private Cloud (VPC).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfiguration {
     ///
     /// An array of strings containing the list of security groups.

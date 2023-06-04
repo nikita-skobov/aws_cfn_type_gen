@@ -1,5 +1,6 @@
 /// The AWS::SSM::Association resource creates a State Manager association for    your managed instances. A State Manager association defines the state that you want to    maintain on your instances. For example, an association can specify that anti-virus software    must be installed and running on your instances, or that certain ports must be closed. For    static targets, the association specifies a schedule for when the configuration is reapplied.    For dynamic targets, such as an AWS Resource Groups or an AWS Auto Scaling Group, State Manager    applies the configuration when new instances are added to the group. The association also    specifies actions to take when applying the configuration. For example, an association for    anti-virus software might run once a day. If the software is not installed, then State Manager    installs it. If the software is installed, but the service is not running, then the    association might instruct State Manager to start the service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAssociation {
     ///
     /// By default, when you create a new association, the system runs it immediately after it is      created and then according to the schedule you specified. Specify this option if you don't want      an association to run immediately after you create it. This parameter is not supported for rate expressions.
@@ -10,7 +11,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyOnlyAtCronInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub apply_only_at_cron_interval: Option<bool>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub association_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomationTargetParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automation_target_parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalendarNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calendar_names: Option<Vec<String>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceSeverity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_severity: Option<AssociationComplianceSeverityEnum>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrency: Option<cfn_resources::StrVal>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxErrors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_errors: Option<cfn_resources::StrVal>,
 
     ///
@@ -169,7 +170,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_location: Option<InstanceAssociationOutputLocation>,
 
     ///
@@ -181,7 +182,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -197,7 +198,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +214,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleOffset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_offset: Option<i64>,
 
     ///
@@ -231,7 +232,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncCompliance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_compliance: Option<AssociationSyncComplianceEnum>,
 
     ///
@@ -245,7 +246,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub targets: Option<Vec<Target>>,
 
     ///
@@ -257,7 +258,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitForSuccessTimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wait_for_success_timeout_seconds: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -446,6 +447,7 @@ impl cfn_resources::CfnResource for CfnAssociation {
 ///
 /// For the minimal permissions required to enable Amazon S3 output for an association, see Creating   associations in the Systems Manager User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceAssociationOutputLocation {
     ///
     /// S3OutputLocation is a property of the InstanceAssociationOutputLocation property that specifies an Amazon S3 bucket where    you want to store the results of this request.
@@ -456,7 +458,7 @@ pub struct InstanceAssociationOutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_location: Option<S3OutputLocation>,
 }
 
@@ -480,6 +482,7 @@ impl cfn_resources::CfnResource for InstanceAssociationOutputLocation {
 
 /// S3OutputLocation is a property of the AWS::SSM::Association resource that specifies an Amazon S3 bucket where you want to    store the results of this association request.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3OutputLocation {
     ///
     /// The name of the S3 bucket.
@@ -494,7 +497,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -508,7 +511,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -524,7 +527,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_s3_region: Option<cfn_resources::StrVal>,
 }
 
@@ -593,6 +596,7 @@ impl cfn_resources::CfnResource for S3OutputLocation {
 
 /// Target is a property of the AWS::SSM::Association resource that specifies the targets for an SSM document in    Systems Manager. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Target {
     ///
     /// User-defined criteria for sending commands that target managed nodes that meet the  criteria.

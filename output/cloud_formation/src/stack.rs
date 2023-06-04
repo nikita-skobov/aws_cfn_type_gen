@@ -4,6 +4,7 @@
 ///
 /// When you apply template changes to update a top-level stack, CloudFormation updates the top-level stack  and initiates an update to its nested stacks. CloudFormation updates the resources of modified nested  stacks, but doesn't update the resources of unmodified nested stacks. For more information, see CloudFormation   stack updates.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStack {
     ///
     /// The Amazon Simple Notification Service (Amazon SNS) topic ARNs to publish stack related events. You can find your   Amazon SNS topic ARNs using the Amazon SNS console or your Command Line Interface (CLI).
@@ -16,7 +17,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationARNs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_arns: Option<Vec<String>>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_minutes: Option<i64>,
 }
 
@@ -156,6 +157,7 @@ impl cfn_resources::CfnResource for CfnStack {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

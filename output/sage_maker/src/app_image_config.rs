@@ -1,5 +1,6 @@
 /// Creates a configuration for running a SageMaker image as a KernelGateway app. The     configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the     kernels in the image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAppImageConfig {
     ///
     /// The name of the AppImageConfig. Must be unique to your account.
@@ -25,7 +26,7 @@ pub struct CfnAppImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayImageConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kernel_gateway_image_config: Option<KernelGatewayImageConfig>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnAppImageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -85,6 +86,7 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
 
 /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileSystemConfig {
     ///
     /// The default POSIX group ID (GID). If not specified, defaults to 100.
@@ -99,7 +101,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultGid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_gid: Option<i64>,
 
     ///
@@ -115,7 +117,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultUid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_uid: Option<i64>,
 
     ///
@@ -131,7 +133,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_path: Option<cfn_resources::StrVal>,
 }
 
@@ -198,6 +200,7 @@ impl cfn_resources::CfnResource for FileSystemConfig {
 
 /// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KernelGatewayImageConfig {
     ///
     /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
@@ -208,7 +211,7 @@ pub struct KernelGatewayImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_config: Option<FileSystemConfig>,
 
     ///
@@ -254,6 +257,7 @@ impl cfn_resources::CfnResource for KernelGatewayImageConfig {
 
 /// The specification of a Jupyter kernel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KernelSpec {
     ///
     /// The display name of the kernel.
@@ -266,7 +270,7 @@ pub struct KernelSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -327,6 +331,7 @@ impl cfn_resources::CfnResource for KernelSpec {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

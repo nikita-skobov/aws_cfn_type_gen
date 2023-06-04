@@ -1,5 +1,6 @@
 /// Instantiates an auto-scaling virtual server based on the selected file transfer protocol    in AWS. When you make updates to your file transfer protocol-enabled server or when you work    with users, use the service-generated ServerId property that is assigned to the    newly created server.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServer {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. Required    when Protocols is set to FTPS.
@@ -24,7 +25,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain: Option<ServerDomainEnum>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_details: Option<EndpointDetails>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_type: Option<ServerEndpointTypeEnum>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityProviderDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_provider_details: Option<IdentityProviderDetails>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_provider_type: Option<ServerIdentityProviderTypeEnum>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostAuthenticationLoginBanner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreAuthenticationLoginBanner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +165,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProtocolDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol_details: Option<ProtocolDetails>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocols: Option<Vec<Protocol>>,
 
     ///
@@ -198,7 +199,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_policy_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +213,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -226,7 +227,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkflowDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workflow_details: Option<WorkflowDetails>,
 
     #[serde(skip_serializing)]
@@ -422,6 +423,7 @@ impl cfn_resources::CfnResource for CfnServer {
 
 /// Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct As2Transport {}
 
 impl cfn_resources::CfnResource for As2Transport {
@@ -440,6 +442,7 @@ impl cfn_resources::CfnResource for As2Transport {
 
 /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointDetails {
     ///
     /// A list of address allocation IDs that are required to attach an Elastic IP address to your    server's endpoint.
@@ -452,7 +455,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AddressAllocationIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address_allocation_ids: Option<Vec<String>>,
 
     ///
@@ -466,7 +469,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -480,7 +483,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -500,7 +503,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -514,7 +517,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -556,6 +559,7 @@ impl cfn_resources::CfnResource for EndpointDetails {
 
 /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IdentityProviderDetails {
     ///
     /// The identifier of the AWS Directory Service directory that you want to stop sharing.
@@ -572,7 +576,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub directory_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -590,7 +594,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Function")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function: Option<cfn_resources::StrVal>,
 
     ///
@@ -608,7 +612,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invocation_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -624,7 +628,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SftpAuthenticationMethods")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sftp_authentication_methods: Option<IdentityProviderDetailsSftpAuthenticationMethodsEnum>,
 
     ///
@@ -638,7 +642,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 }
 
@@ -760,6 +764,7 @@ impl cfn_resources::CfnResource for IdentityProviderDetails {
 
 /// Specifies the file transfer protocol or protocols over which your file transfer protocol    client can connect to your server's endpoint. The available protocols are:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Protocol {}
 
 impl cfn_resources::CfnResource for Protocol {
@@ -778,6 +783,7 @@ impl cfn_resources::CfnResource for Protocol {
 
 /// The protocol settings that are configured for your server.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProtocolDetails {
     ///
     /// List of As2Transport objects.
@@ -790,7 +796,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "As2Transports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub as2_transports: Option<Vec<As2Transport>>,
 
     ///
@@ -814,7 +820,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassiveIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub passive_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -834,7 +840,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetStatOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub set_stat_option: Option<ProtocolDetailsSetStatOptionEnum>,
 
     ///
@@ -850,7 +856,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsSessionResumptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls_session_resumption_mode: Option<ProtocolDetailsTlsSessionResumptionModeEnum>,
 }
 
@@ -934,6 +940,7 @@ impl cfn_resources::CfnResource for ProtocolDetails {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -974,6 +981,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// In addition to a workflow to execute when a file is uploaded completely, WorkflowDetails can also contain a   workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when   the session disconnects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkflowDetail {
     ///
     /// Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can    assume, so that all workflow steps can operate on the required resources
@@ -1070,6 +1078,7 @@ impl cfn_resources::CfnResource for WorkflowDetail {
 
 /// Container for the WorkflowDetail data type.    It is used by actions that trigger a workflow to begin execution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkflowDetails {
     ///
     /// A trigger that starts a workflow if a file is only partially uploaded. You can attach a workflow to a server  that executes whenever there is a partial upload.
@@ -1084,7 +1093,7 @@ pub struct WorkflowDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPartialUpload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_partial_upload: Option<Vec<WorkflowDetail>>,
 
     ///
@@ -1102,7 +1111,7 @@ pub struct WorkflowDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUpload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_upload: Option<Vec<WorkflowDetail>>,
 }
 

@@ -8,6 +8,7 @@
 ///
 /// For a sample template that creates a DB proxy and registers a DB instance, see                Examples in AWS::RDS::DBProxy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBProxyTargetGroup {
     ///
     /// Settings that control the size and behavior of the connection pool associated with a         DBProxyTargetGroup.
@@ -18,7 +19,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPoolConfigurationInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_pool_configuration_info: Option<ConnectionPoolConfigurationInfoFormat>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBClusterIdentifiers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_identifiers: Option<Vec<String>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceIdentifiers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbinstance_identifiers: Option<Vec<String>>,
 
     ///
@@ -101,6 +102,7 @@ impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {
 
 /// Specifies the settings that control the size and behavior of the connection pool       associated with a DBProxyTargetGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// The number of seconds for a proxy to wait for a connection to become available in the connection pool. Only applies when the     proxy has opened its maximum number of connections and all connections are busy with client sessions.
@@ -115,7 +117,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionBorrowTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_borrow_timeout: Option<i64>,
 
     ///
@@ -129,7 +131,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitQuery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub init_query: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +149,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConnectionsPercent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_connections_percent: Option<i64>,
 
     ///
@@ -165,7 +167,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxIdleConnectionsPercent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_idle_connections_percent: Option<i64>,
 
     ///
@@ -179,7 +181,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionPinningFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_pinning_filters: Option<Vec<String>>,
 }
 

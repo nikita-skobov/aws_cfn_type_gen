@@ -1,5 +1,6 @@
 /// The AWS::S3ObjectLambda::AccessPoint resource specifies an Object Lambda       Access Point used to access a bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessPoint {
     ///
     /// The name of this access point.
@@ -10,7 +11,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,6 +88,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 
 /// The alias of an Object Lambda Access Point. For more information, see How to use a bucket-style alias for your S3 bucket     Object Lambda Access Point.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Alias {
     ///
     /// The status of the Object Lambda Access Point alias. If the status is PROVISIONING, the Object Lambda Access Point is provisioning the alias and the alias is not ready for use yet. If      the status is READY, the Object Lambda Access Point alias is successfully provisioned and ready for use.
@@ -127,6 +129,7 @@ impl cfn_resources::CfnResource for Alias {
 
 /// The AwsLambda property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsLambda {
     /// Property description not available.
     ///
@@ -146,7 +149,7 @@ pub struct AwsLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionPayload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_payload: Option<cfn_resources::StrVal>,
 }
 
@@ -166,6 +169,7 @@ impl cfn_resources::CfnResource for AwsLambda {
 
 /// The ContentTransformation property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContentTransformation {
     /// Property description not available.
     ///
@@ -196,6 +200,7 @@ impl cfn_resources::CfnResource for ContentTransformation {
 
 /// A configuration used when creating an Object Lambda Access Point.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ObjectLambdaConfiguration {
     ///
     /// A container for allowed features. Valid inputs are GetObject-Range,         GetObject-PartNumber, HeadObject-Range, and         HeadObject-PartNumber.
@@ -206,7 +211,7 @@ pub struct ObjectLambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedFeatures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_features: Option<Vec<String>>,
 
     ///
@@ -218,7 +223,7 @@ pub struct ObjectLambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchMetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_metrics_enabled: Option<bool>,
 
     ///
@@ -260,6 +265,7 @@ impl cfn_resources::CfnResource for ObjectLambdaConfiguration {
 
 /// Indicates whether this access point policy is public. For more information about how Amazon S3     evaluates policies to determine whether they are public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PolicyStatus {
     ///
     ///
@@ -270,7 +276,7 @@ pub struct PolicyStatus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsPublic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_public: Option<bool>,
 }
 
@@ -292,6 +298,7 @@ impl cfn_resources::CfnResource for PolicyStatus {
 ///
 /// This data type is not supported for Amazon S3 on Outposts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for buckets in     this account. Setting this element to TRUE causes the following     behavior:
@@ -308,7 +315,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -324,7 +331,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -340,7 +347,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -356,7 +363,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -376,6 +383,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 
 /// A configuration used when creating an Object Lambda Access Point transformation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformationConfiguration {
     ///
     /// A container for the action of an Object Lambda Access Point configuration. Valid       inputs are GetObject, HeadObject, ListObject, and         ListObjectV2.

@@ -1,5 +1,6 @@
 /// Use AWS::XRay::ResourcePolicy to specify an X-Ray resource-based policy,      which grants one or more AWS services and accounts permissions      to access X-Ray. Each resource-based policy is associated with a      specific AWS account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourcePolicy {
     ///
     /// A flag to indicate whether to bypass the resource-based policy lockout safety check.
@@ -10,7 +11,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BypassPolicyLockoutCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bypass_policy_lockout_check: Option<bool>,
 
     ///

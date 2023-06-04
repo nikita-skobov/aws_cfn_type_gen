@@ -1,5 +1,6 @@
 /// The AWS::Batch::SchedulingPolicy resource specifies the parameters for an AWS Batch  scheduling policy. For more information, see Scheduling Policies in the AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchedulingPolicy {
     ///
     /// The fair share policy of the scheduling policy.
@@ -10,7 +11,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FairsharePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fairshare_policy: Option<FairsharePolicy>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -71,6 +72,7 @@ impl cfn_resources::CfnResource for CfnSchedulingPolicy {
 
 /// The fair share policy for a scheduling policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FairsharePolicy {
     ///
     /// A value used to reserve some of the available maximum vCPU for fair share identifiers that  aren't already used.
@@ -87,7 +89,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeReservation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_reservation: Option<f64>,
 
     ///
@@ -99,7 +101,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareDecaySeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub share_decay_seconds: Option<f64>,
 
     ///
@@ -111,7 +113,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareDistribution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub share_distribution: Option<Vec<ShareAttributes>>,
 }
 
@@ -131,6 +133,7 @@ impl cfn_resources::CfnResource for FairsharePolicy {
 
 /// Specifies the weights for the fair share identifiers for the fair share policy. Fair share  identifiers that aren't included have a default weight of 1.0.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShareAttributes {
     ///
     /// A fair share identifier or fair share identifier prefix. If the string ends with an asterisk  (*), this entry specifies the weight factor to use for fair share identifiers that start with  that prefix. The list of fair share identifiers in a fair share policy can't overlap. For  example, you can't have one that specifies a shareIdentifier of UserA*  and another that specifies a shareIdentifier of UserA-1.
@@ -145,7 +148,7 @@ pub struct ShareAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub share_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +162,7 @@ pub struct ShareAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightFactor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight_factor: Option<f64>,
 }
 

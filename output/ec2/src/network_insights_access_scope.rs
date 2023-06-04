@@ -2,6 +2,7 @@
 ///
 /// Network Access Analyzer identifies unintended network access to your resources on       AWS. When you start an analysis on a Network Access Scope, Network     Access Analyzer produces findings. For more information, see the Network Access Analyzer       User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkInsightsAccessScope {
     ///
     /// The paths to exclude.
@@ -12,7 +13,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludePaths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_paths: Option<Vec<AccessScopePathRequest>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MatchPaths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub match_paths: Option<Vec<AccessScopePathRequest>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -102,6 +103,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
 
 /// Describes a path.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessScopePathRequest {
     ///
     /// The destination.
@@ -112,7 +114,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<PathStatementRequest>,
 
     ///
@@ -124,7 +126,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source: Option<PathStatementRequest>,
 
     ///
@@ -136,7 +138,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThroughResources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub through_resources: Option<Vec<ThroughResourcesStatementRequest>>,
 }
 
@@ -162,6 +164,7 @@ impl cfn_resources::CfnResource for AccessScopePathRequest {
 
 /// Describes a packet header statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PacketHeaderStatementRequest {
     ///
     /// The destination addresses.
@@ -172,7 +175,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_addresses: Option<Vec<String>>,
 
     ///
@@ -184,7 +187,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_ports: Option<Vec<String>>,
 
     ///
@@ -196,7 +199,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPrefixLists")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_prefix_lists: Option<Vec<String>>,
 
     ///
@@ -208,7 +211,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocols: Option<Vec<String>>,
 
     ///
@@ -220,7 +223,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_addresses: Option<Vec<String>>,
 
     ///
@@ -232,7 +235,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ports: Option<Vec<String>>,
 
     ///
@@ -244,7 +247,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePrefixLists")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_prefix_lists: Option<Vec<String>>,
 }
 
@@ -264,6 +267,7 @@ impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
 
 /// Describes a path statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathStatementRequest {
     ///
     /// The packet header statement.
@@ -274,7 +278,7 @@ pub struct PathStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PacketHeaderStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub packet_header_statement: Option<PacketHeaderStatementRequest>,
 
     ///
@@ -286,7 +290,7 @@ pub struct PathStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_statement: Option<ResourceStatementRequest>,
 }
 
@@ -314,6 +318,7 @@ impl cfn_resources::CfnResource for PathStatementRequest {
 
 /// Describes a resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceStatementRequest {
     ///
     /// The resource types.
@@ -324,7 +329,7 @@ pub struct ResourceStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types: Option<Vec<String>>,
 
     ///
@@ -336,7 +341,7 @@ pub struct ResourceStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources: Option<Vec<String>>,
 }
 
@@ -362,6 +367,7 @@ impl cfn_resources::CfnResource for ResourceStatementRequest {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -400,6 +406,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes a through resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThroughResourcesStatementRequest {
     ///
     /// The resource statement.
@@ -410,7 +417,7 @@ pub struct ThroughResourcesStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_statement: Option<ResourceStatementRequest>,
 }
 

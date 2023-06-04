@@ -1,5 +1,6 @@
 /// Creates a Redshift-managed VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpointAccess {
     ///
     /// The cluster identifier of the cluster associated with the endpoint.
@@ -38,7 +39,7 @@ pub struct CfnEndpointAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -172,6 +173,7 @@ impl cfn_resources::CfnResource for CfnEndpointAccess {
 
 /// Describes a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterface {
     ///
     /// The Availability Zone.
@@ -184,7 +186,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -198,7 +200,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +214,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -226,7 +228,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
@@ -281,6 +283,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 
 /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcEndpoint {
     ///
     /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
@@ -291,7 +294,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -305,7 +308,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -319,7 +322,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -358,6 +361,7 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 
 /// The security groups associated with the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcSecurityGroup {
     ///
     /// The status of the endpoint.
@@ -370,7 +374,7 @@ pub struct VpcSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -384,7 +388,7 @@ pub struct VpcSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_id: Option<cfn_resources::StrVal>,
 }
 

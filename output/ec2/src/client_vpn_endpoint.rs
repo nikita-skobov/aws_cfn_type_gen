@@ -1,5 +1,6 @@
 /// Specifies a Client VPN endpoint. A Client VPN endpoint is the resource you create and     configure to enable and manage client VPN sessions. It is the destination endpoint at which     all client VPN sessions are terminated.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClientVpnEndpoint {
     ///
     /// Information about the authentication method to be used to authenticate clients.
@@ -32,7 +33,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientConnectOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_connect_options: Option<ClientConnectOptions>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientLoginBannerOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_login_banner_options: Option<ClientLoginBannerOptions>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_servers: Option<Vec<String>>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfServicePortal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_service_portal: Option<ClientVpnEndpointSelfServicePortalEnum>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeoutHours")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout_hours: Option<i64>,
 
     ///
@@ -154,7 +155,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplitTunnel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub split_tunnel: Option<bool>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransportProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transport_protocol: Option<ClientVpnEndpointTransportProtocolEnum>,
 
     ///
@@ -194,7 +195,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_port: Option<i64>,
 }
 
@@ -274,6 +275,7 @@ impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
 
 /// Information about the client certificate to be used for authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CertificateAuthenticationRequest {
     ///
     /// The ARN of the client certificate. The certificate must be signed by a certificate 			authority (CA) and it must be provisioned in AWS Certificate Manager (ACM).
@@ -303,6 +305,7 @@ impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
 
 /// Describes the authentication method to be used by a Client VPN endpoint. For more information, see Authentication 			in the         AWS Client VPN Administrator Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientAuthenticationRequest {
     ///
     /// Information about the Active Directory to be used, if applicable. You must provide this information if Type is directory-service-authentication.
@@ -313,7 +316,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub active_directory: Option<DirectoryServiceAuthenticationRequest>,
 
     ///
@@ -325,7 +328,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederatedAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub federated_authentication: Option<FederatedAuthenticationRequest>,
 
     ///
@@ -337,7 +340,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mutual_authentication: Option<CertificateAuthenticationRequest>,
 
     ///
@@ -403,6 +406,7 @@ impl cfn_resources::CfnResource for ClientAuthenticationRequest {
 
 /// Indicates whether client connect options are enabled. The default is false     (not enabled).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientConnectOptions {
     ///
     /// Indicates whether client connect options are enabled. The default is false     (not enabled).
@@ -424,7 +428,7 @@ pub struct ClientConnectOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_function_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -444,6 +448,7 @@ impl cfn_resources::CfnResource for ClientConnectOptions {
 
 /// Options for enabling a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientLoginBannerOptions {
     ///
     /// Customizable text that will be displayed in a banner on AWS provided 			clients when a VPN session is established. UTF-8 encoded characters only. Maximum of 			1400 characters.
@@ -454,7 +459,7 @@ pub struct ClientLoginBannerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BannerText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub banner_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -489,6 +494,7 @@ impl cfn_resources::CfnResource for ClientLoginBannerOptions {
 
 /// Describes the client connection logging options for the Client VPN endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionLogOptions {
     ///
     /// The name of the CloudWatch Logs log group. Required if connection logging is enabled.
@@ -499,7 +505,7 @@ pub struct ConnectionLogOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloudwatch_log_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -511,7 +517,7 @@ pub struct ConnectionLogOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloudwatch_log_stream: Option<cfn_resources::StrVal>,
 
     ///
@@ -542,6 +548,7 @@ impl cfn_resources::CfnResource for ConnectionLogOptions {
 
 /// Describes the Active Directory to be used for client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DirectoryServiceAuthenticationRequest {
     ///
     /// The ID of the Active Directory to be used for authentication.
@@ -571,6 +578,7 @@ impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
 
 /// The IAM SAML identity provider used for federated authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FederatedAuthenticationRequest {
     ///
     /// The Amazon Resource Name (ARN) of the IAM SAML identity provider.
@@ -592,7 +600,7 @@ pub struct FederatedAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfServiceSAMLProviderArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_service_samlprovider_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -618,6 +626,7 @@ impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -656,6 +665,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag.

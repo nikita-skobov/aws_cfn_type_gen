@@ -2,6 +2,7 @@
 ///
 /// For more information about using scaling policies to scale your Auto Scaling group    automatically, see Dynamic scaling and     Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnScalingPolicy {
     ///
     /// Specifies how the scaling adjustment is interpreted (for example, an absolute number       or a percentage). The valid values are ChangeInCapacity,         ExactCapacity, and PercentChangeInCapacity.
@@ -14,7 +15,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdjustmentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub adjustment_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cooldown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cooldown: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EstimatedInstanceWarmup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub estimated_instance_warmup: Option<i64>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricAggregationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_aggregation_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinAdjustmentMagnitude")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_adjustment_magnitude: Option<i64>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictiveScalingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predictive_scaling_configuration: Option<PredictiveScalingConfiguration>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingAdjustment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scaling_adjustment: Option<i64>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepAdjustments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step_adjustments: Option<Vec<StepAdjustment>>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetTrackingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_tracking_configuration: Option<TargetTrackingConfiguration>,
 
     #[serde(skip_serializing)]
@@ -223,6 +224,7 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
 ///
 /// CustomizedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomizedMetricSpecification {
     ///
     /// The dimensions of the metric.
@@ -235,7 +237,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -282,7 +284,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -333,6 +335,7 @@ impl cfn_resources::CfnResource for CustomizedMetricSpecification {
 ///
 /// Metric is a property of the AWS::AutoScaling::ScalingPolicy MetricStat property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metric {
     ///
     /// The dimensions for the metric. For the list of available dimensions, see the AWS       documentation available from the table in AWS         services that publish CloudWatch metrics in the Amazon CloudWatch User         Guide.
@@ -345,7 +348,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -395,6 +398,7 @@ impl cfn_resources::CfnResource for Metric {
 ///
 /// For more information and examples, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDataQuery {
     ///
     /// The math expression to perform on the returned data, if this object is performing a       math expression. This expression can use the Id of the other metrics to       refer to those metrics, and can also use the Id of other expressions to use       the result of those expressions.
@@ -413,7 +417,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -446,7 +450,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -460,7 +464,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricStat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -476,7 +480,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub return_data: Option<bool>,
 }
 
@@ -555,6 +559,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::AutoScaling::ScalingPolicy CustomizedMetricSpecification property type.    Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -599,6 +604,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 ///
 /// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts in the Amazon CloudWatch User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStat {
     ///
     /// The CloudWatch metric to return, including the metric name, namespace, and dimensions. To       get the exact metric name, namespace, and dimensions, inspect the Metric object that is returned by a call to ListMetrics.
@@ -639,7 +645,7 @@ pub struct MetricStat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -685,6 +691,7 @@ impl cfn_resources::CfnResource for MetricStat {
 ///
 /// PredefinedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredefinedMetricSpecification {
     ///
     /// The metric type. The following predefined metrics are available:
@@ -726,7 +733,7 @@ pub struct PredefinedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -795,6 +802,7 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
 ///
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingConfiguration {
     ///
     /// Defines the behavior that should be applied if the forecast capacity approaches or       exceeds the maximum capacity of the Auto Scaling group. Defaults to         HonorMaxCapacity if not specified.
@@ -811,7 +819,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacityBreachBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity_breach_behavior:
         Option<PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum>,
 
@@ -832,7 +840,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacityBuffer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity_buffer: Option<i64>,
 
     ///
@@ -859,7 +867,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<PredictiveScalingConfigurationModeEnum>,
 
     ///
@@ -875,7 +883,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulingBufferTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduling_buffer_time: Option<i64>,
 }
 
@@ -956,6 +964,7 @@ impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
 
 /// Contains capacity metric information for the     CustomizedCapacityMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingCustomizedCapacityMetric {
     ///
     /// One or more metric data queries to provide the data points for a capacity metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -985,6 +994,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
 
 /// Contains load metric information for the CustomizedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingCustomizedLoadMetric {
     ///
     /// One or more metric data queries to provide the data points for a load metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -1014,6 +1024,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
 
 /// Contains scaling metric information for the     CustomizedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingCustomizedScalingMetric {
     ///
     /// One or more metric data queries to provide the data points for a scaling metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -1049,6 +1060,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
 ///
 /// For information about using custom metrics with predictive scaling, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingMetricSpecification {
     ///
     /// The customized capacity metric specification.
@@ -1059,7 +1071,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedCapacityMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customized_capacity_metric_specification: Option<PredictiveScalingCustomizedCapacityMetric>,
 
     ///
@@ -1071,7 +1083,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customized_load_metric_specification: Option<PredictiveScalingCustomizedLoadMetric>,
 
     ///
@@ -1083,7 +1095,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customized_scaling_metric_specification: Option<PredictiveScalingCustomizedScalingMetric>,
 
     ///
@@ -1095,7 +1107,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predefined_load_metric_specification: Option<PredictiveScalingPredefinedLoadMetric>,
 
     ///
@@ -1107,7 +1119,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedMetricPairSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predefined_metric_pair_specification: Option<PredictiveScalingPredefinedMetricPair>,
 
     ///
@@ -1119,7 +1131,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predefined_scaling_metric_specification: Option<PredictiveScalingPredefinedScalingMetric>,
 
     ///
@@ -1176,6 +1188,7 @@ impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
 
 /// Contains load metric information for the PredefinedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingPredefinedLoadMetric {
     ///
     /// The metric type.
@@ -1209,7 +1222,7 @@ pub struct PredictiveScalingPredefinedLoadMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1256,6 +1269,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
 ///
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingPredefinedMetricPair {
     ///
     /// Indicates which metrics to use. There are two different types of metrics for each       metric type: one is a load metric and one is a scaling metric. For example, if the       metric type is ASGCPUUtilization, the Auto Scaling group's total CPU metric is used       as the load metric, and the average CPU metric is used for the scaling metric.
@@ -1295,7 +1309,7 @@ pub struct PredictiveScalingPredefinedMetricPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1362,6 +1376,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
 
 /// Contains scaling metric information for the     PredefinedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredictiveScalingPredefinedScalingMetric {
     ///
     /// The metric type.
@@ -1395,7 +1410,7 @@ pub struct PredictiveScalingPredefinedScalingMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1448,6 +1463,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
 ///
 /// You can find a sample template snippet in the Examples section of the AWS::AutoScaling::ScalingPolicy    resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StepAdjustment {
     ///
     /// The lower bound for the difference between the alarm threshold and the CloudWatch metric. If       the metric value is above the breach threshold, the lower bound is inclusive (the metric       must be greater than or equal to the threshold plus the lower bound). Otherwise, it is       exclusive (the metric must be greater than the threshold plus the lower bound). A null       value indicates negative infinity.
@@ -1458,7 +1474,7 @@ pub struct StepAdjustment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricIntervalLowerBound")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_interval_lower_bound: Option<f64>,
 
     ///
@@ -1472,7 +1488,7 @@ pub struct StepAdjustment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricIntervalUpperBound")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_interval_upper_bound: Option<f64>,
 
     ///
@@ -1505,6 +1521,7 @@ impl cfn_resources::CfnResource for StepAdjustment {
 ///
 /// For more information about scaling policies, see Dynamic scaling in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetTrackingConfiguration {
     ///
     /// A customized metric. You must specify either a predefined metric or a customized       metric.
@@ -1515,7 +1532,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customized_metric_specification: Option<CustomizedMetricSpecification>,
 
     ///
@@ -1527,7 +1544,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableScaleIn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_scale_in: Option<bool>,
 
     ///
@@ -1539,7 +1556,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedMetricSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predefined_metric_specification: Option<PredefinedMetricSpecification>,
 
     ///

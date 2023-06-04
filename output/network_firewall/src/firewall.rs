@@ -2,6 +2,7 @@
 ///
 /// The firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFirewall {
     ///
     /// A flag indicating whether it is possible to delete the firewall. A setting of TRUE indicates     that the firewall is protected against deletion. Use this setting to protect against     accidentally deleting a firewall that is in use. When you create a firewall, the operation initializes this flag to TRUE.
@@ -12,7 +13,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_protection: Option<bool>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallPolicyChangeProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firewall_policy_change_protection: Option<bool>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetChangeProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_change_protection: Option<bool>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -249,6 +250,7 @@ impl cfn_resources::CfnResource for CfnFirewall {
 
 /// The ID for a subnet that you want to associate with the firewall. AWS Network Firewall     creates an instance of the associated firewall in each subnet that you specify, to filter     traffic in the subnet's Availability Zone.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubnetMapping {
     ///
     /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
@@ -261,7 +263,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPAddressType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipaddress_type: Option<SubnetMappingIPAddressTypeEnum>,
 
     ///
@@ -319,6 +321,7 @@ impl cfn_resources::CfnResource for SubnetMapping {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

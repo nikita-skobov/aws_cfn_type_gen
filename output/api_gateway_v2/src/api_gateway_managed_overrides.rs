@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::ApiGatewayManagedOverrides resource overrides the       default properties of API Gateway-managed resources that are implicitly configured for       you when you use quick create. When you create an API by using quick create, an         AWS::ApiGatewayV2::Route, AWS::ApiGatewayV2::Integration,       and AWS::ApiGatewayV2::Stage are created for you and associated with your         AWS::ApiGatewayV2::Api. The         AWS::ApiGatewayV2::ApiGatewayManagedOverrides resource enables you to       set, or override the properties of these implicit resources. Supported only for HTTP       APIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApiGatewayManagedOverrides {
     ///
     /// The ID of the API for which to override the configuration of API Gateway-managed resources.
@@ -21,7 +22,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration: Option<IntegrationOverrides>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Route")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route: Option<RouteOverrides>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage: Option<StageOverrides>,
 }
 
@@ -73,6 +74,7 @@ impl cfn_resources::CfnResource for CfnApiGatewayManagedOverrides {
 
 /// The AccessLogSettings property overrides the access log settings for an API Gateway-managed stage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessLogSettings {
     ///
     /// The ARN of the CloudWatch Logs log group to receive access logs.
@@ -83,7 +85,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +97,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<cfn_resources::StrVal>,
 }
 
@@ -115,6 +117,7 @@ impl cfn_resources::CfnResource for AccessLogSettings {
 
 /// The IntegrationOverrides property overrides the integration settings for       an API Gateway-managed integration. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegrationOverrides {
     ///
     /// The description of the integration.
@@ -125,7 +128,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +140,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -149,7 +152,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload_format_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -161,7 +164,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_millis: Option<i64>,
 }
 
@@ -181,6 +184,7 @@ impl cfn_resources::CfnResource for IntegrationOverrides {
 
 /// The RouteOverrides property overrides the route configuration for an API       Gateway-managed route. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RouteOverrides {
     ///
     /// The authorization scopes supported by this route.
@@ -191,7 +195,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -203,7 +207,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -215,7 +219,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -227,7 +231,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -239,7 +243,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<cfn_resources::StrVal>,
 }
 
@@ -259,6 +263,7 @@ impl cfn_resources::CfnResource for RouteOverrides {
 
 /// The RouteSettings property overrides the route settings for an API Gateway-managed route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RouteSettings {
     ///
     /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
@@ -269,7 +274,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -281,7 +286,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedMetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub detailed_metrics_enabled: Option<bool>,
 
     ///
@@ -293,7 +298,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -305,7 +310,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -317,7 +322,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_rate_limit: Option<f64>,
 }
 
@@ -337,6 +342,7 @@ impl cfn_resources::CfnResource for RouteSettings {
 
 /// The StageOverrides property overrides the stage configuration for an API       Gateway-managed stage. If you remove this property, API Gateway restores the default values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StageOverrides {
     ///
     /// Settings for logging access in a stage.
@@ -347,7 +353,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_log_settings: Option<AccessLogSettings>,
 
     ///
@@ -359,7 +365,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_deploy: Option<bool>,
 
     ///
@@ -371,7 +377,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_route_settings: Option<RouteSettings>,
 
     ///
@@ -383,7 +389,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -395,7 +401,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_settings: Option<serde_json::Value>,
 
     ///
@@ -407,7 +413,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_variables: Option<serde_json::Value>,
 }
 

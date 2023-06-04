@@ -1,5 +1,6 @@
 /// Specifies a cluster. All nodes in the cluster run the same     protocol-compliant engine software.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCluster {
     ///
     /// The name of the Access Control List to associate with the cluster.
@@ -25,7 +26,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_endpoint: Option<Endpoint>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataTiering")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_tiering: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FinalSnapshotName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub final_snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumReplicasPerShard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_replicas_per_shard: Option<i64>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumShards")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_shards: Option<i64>,
 
     ///
@@ -172,7 +173,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -184,7 +185,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -196,7 +197,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -208,7 +209,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_arns: Option<Vec<String>>,
 
     ///
@@ -220,7 +221,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -232,7 +233,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotRetentionLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_retention_limit: Option<i64>,
 
     ///
@@ -244,7 +245,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -256,7 +257,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -268,7 +269,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -280,7 +281,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -292,7 +293,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TLSEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tlsenabled: Option<bool>,
 
     ///
@@ -306,7 +307,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -385,6 +386,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 
 /// Represents the information required for client programs to connect to the cluster and     its nodes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Endpoint {
     ///
     /// The DNS hostname of the node.
@@ -395,7 +397,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<cfn_resources::StrVal>,
 
     ///
@@ -407,7 +409,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 }
 
@@ -433,6 +435,7 @@ impl cfn_resources::CfnResource for Endpoint {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

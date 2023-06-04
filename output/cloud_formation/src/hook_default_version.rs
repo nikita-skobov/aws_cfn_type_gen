@@ -1,5 +1,6 @@
 /// The HookDefaultVersion resource specifies the default version of the hook. The default version of  the hook is used in CloudFormation operations for this AWS account and AWS Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHookDefaultVersion {
     ///
     /// The name of the hook.
@@ -16,7 +17,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

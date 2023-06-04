@@ -2,6 +2,7 @@
 ///
 /// To retrieve the domains that are defined for this domain list, call        ListFirewallDomains.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFirewallDomainList {
     ///
     /// The fully qualified URL or URI of the file stored in Amazon Simple Storage Service 			(Amazon S3) that contains the list of domains to import.
@@ -18,7 +19,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainFileUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_file_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domains: Option<Vec<String>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -216,6 +217,7 @@ impl cfn_resources::CfnResource for CfnFirewallDomainList {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

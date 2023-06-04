@@ -1,5 +1,6 @@
 /// The AWS::AppSync::DataSource resource creates data sources for resolvers in AWS AppSync to connect to, such as Amazon DynamoDB, AWS Lambda, and Amazon OpenSearch Service. Resolvers use these data sources to fetch data when clients make GraphQL calls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataSource {
     ///
     /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
@@ -21,7 +22,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamo_dbconfig: Option<DynamoDBConfig>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elasticsearch_config: Option<ElasticsearchConfig>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bridge_config: Option<EventBridgeConfig>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_config: Option<HttpConfig>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_config: Option<LambdaConfig>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenSearchServiceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_search_service_config: Option<OpenSearchServiceConfig>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalDatabaseConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relational_database_config: Option<RelationalDatabaseConfig>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -217,6 +218,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 ///
 /// AuthorizationConfig is a property of the AWS AppSync DataSource HttpConfig property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthorizationConfig {
     ///
     /// The authorization type that the HTTP endpoint requires.
@@ -240,7 +242,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsIamConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_iam_config: Option<AwsIamConfig>,
 }
 
@@ -266,6 +268,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 ///
 /// AwsIamConfig is a property of the AWS AppSync DataSource AuthorizationConfig resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsIamConfig {
     ///
     /// The signing Region for AWS Identity and Access Management authorization.
@@ -276,7 +279,7 @@ pub struct AwsIamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signing_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -288,7 +291,7 @@ pub struct AwsIamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signing_service_name: Option<cfn_resources::StrVal>,
 }
 
@@ -308,6 +311,7 @@ impl cfn_resources::CfnResource for AwsIamConfig {
 
 /// Describes a Delta Sync configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeltaSyncConfig {
     ///
     /// The number of minutes that an Item is stored in the data source.
@@ -361,6 +365,7 @@ impl cfn_resources::CfnResource for DeltaSyncConfig {
 ///
 /// DynamoDBConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamoDBConfig {
     ///
     /// The AWS Region.
@@ -382,7 +387,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaSyncConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delta_sync_config: Option<DeltaSyncConfig>,
 
     ///
@@ -405,7 +410,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseCallerCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_caller_credentials: Option<bool>,
 
     ///
@@ -417,7 +422,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Versioned")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub versioned: Option<bool>,
 }
 
@@ -445,6 +450,7 @@ impl cfn_resources::CfnResource for DynamoDBConfig {
 ///
 /// As of September 2021, Amazon Elasticsearch Service is Amazon OpenSearch Service. This property is deprecated.     For new data sources, use OpenSearchServiceConfig to specify an OpenSearch Service data     source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchConfig {
     ///
     /// The AWS Region.
@@ -485,6 +491,7 @@ impl cfn_resources::CfnResource for ElasticsearchConfig {
 
 /// The data source. This can be an API destination, resource, or AWS service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventBridgeConfig {
     ///
     /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
@@ -516,6 +523,7 @@ impl cfn_resources::CfnResource for EventBridgeConfig {
 ///
 /// HttpConfig is a property of the AWS::AppSync::DataSource resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpConfig {
     ///
     /// The authorization configuration.
@@ -526,7 +534,7 @@ pub struct HttpConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_config: Option<AuthorizationConfig>,
 
     ///
@@ -563,6 +571,7 @@ impl cfn_resources::CfnResource for HttpConfig {
 ///
 /// LambdaConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaConfig {
     ///
     /// The ARN for the Lambda function.
@@ -594,6 +603,7 @@ impl cfn_resources::CfnResource for LambdaConfig {
 ///
 /// OpenSearchServiceConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenSearchServiceConfig {
     ///
     /// The AWS Region.
@@ -636,6 +646,7 @@ impl cfn_resources::CfnResource for OpenSearchServiceConfig {
 ///
 /// RdsHttpEndpointConfig is a property of the AWS AppSync DataSource RelationalDatabaseConfig resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RdsHttpEndpointConfig {
     ///
     /// AWS Region for RDS HTTP endpoint.
@@ -668,7 +679,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -691,7 +702,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema: Option<cfn_resources::StrVal>,
 }
 
@@ -713,6 +724,7 @@ impl cfn_resources::CfnResource for RdsHttpEndpointConfig {
 ///
 /// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RelationalDatabaseConfig {
     ///
     /// Information about the Amazon RDS resource.
@@ -723,7 +735,7 @@ pub struct RelationalDatabaseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsHttpEndpointConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
 
     ///

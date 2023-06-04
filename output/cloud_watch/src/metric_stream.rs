@@ -8,6 +8,7 @@
 ///
 /// If you create a metric stream in an account that has been set up as a monitoring account in CloudWatch cross-account observability,   you can choose whether to include metrics from linked source accounts in the metric stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMetricStream {
     ///
     /// If you specify this parameter, the stream sends metrics from all metric namespaces except       for the namespaces that you specify here. You cannot specify both IncludeFilters       and ExcludeFilters in the same metric stream.
@@ -20,7 +21,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_filters: Option<Vec<MetricStreamFilter>>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_filters: Option<Vec<MetricStreamFilter>>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeLinkedAccountsMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_linked_accounts_metrics: Option<bool>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatisticsConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics_configurations: Option<Vec<MetricStreamStatisticsConfiguration>>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -190,6 +191,7 @@ impl cfn_resources::CfnResource for CfnMetricStream {
 ///
 /// A metric stream's filters can include up to 1000 total names. This limit applies to the sum of namespace names       and metric names in the filters. For example, this could include 10 metric namespace filters with       99 metrics each, or 20 namespace filters with 49 metrics specified in each filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStreamFilter {
     ///
     /// The names of the metrics to either include or exclude from the metric stream.
@@ -204,7 +206,7 @@ pub struct MetricStreamFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_names: Option<Vec<String>>,
 
     ///
@@ -239,6 +241,7 @@ impl cfn_resources::CfnResource for MetricStreamFilter {
 ///
 /// All metrics that match the combination of metric name and namespace will be streamed       with the additional statistics, no matter their dimensions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStreamStatisticsConfiguration {
     /// The     additional statistics to stream for the metrics listed in IncludeMetrics.
     ///
@@ -277,6 +280,7 @@ impl cfn_resources::CfnResource for MetricStreamStatisticsConfiguration {
 
 /// A structure that specifies the   metric name and namespace for one metric that is going to have additional statistics included in the stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStreamStatisticsMetric {
     /// The name of the metric.
     ///
@@ -321,6 +325,7 @@ impl cfn_resources::CfnResource for MetricStreamStatisticsMetric {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

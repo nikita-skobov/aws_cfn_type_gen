@@ -1,5 +1,6 @@
 /// The AWS::Glue::Schema is an AWS Glue resource type that manages schemas in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchema {
     ///
     /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
@@ -10,7 +11,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckpointVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub checkpoint_version: Option<SchemaVersion>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Registry")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry: Option<Registry>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -168,6 +169,7 @@ impl cfn_resources::CfnResource for CfnSchema {
 
 /// Specifies a registry in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Registry {
     ///
     /// The Amazon Resource Name (ARN) of the registry.
@@ -178,7 +180,7 @@ pub struct Registry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +192,7 @@ pub struct Registry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -210,6 +212,7 @@ impl cfn_resources::CfnResource for Registry {
 
 /// Specifies the version of a schema.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaVersion {
     ///
     /// Indicates if this version is the latest version of the schema.
@@ -220,7 +223,7 @@ pub struct SchemaVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsLatest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_latest: Option<bool>,
 
     ///
@@ -232,7 +235,7 @@ pub struct SchemaVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_number: Option<i64>,
 }
 
@@ -258,6 +261,7 @@ impl cfn_resources::CfnResource for SchemaVersion {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

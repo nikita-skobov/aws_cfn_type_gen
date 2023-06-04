@@ -1,5 +1,6 @@
 /// The AWS::EMRServerless::Application resource specifies an EMR Serverless       application. An application uses open source analytics frameworks to run jobs that       process data. To create an application, you must specify the release version for the       open source framework version you want to use and the type of application you want, such       as Apache Spark or Apache Hive. After you create an application, you can submit data       processing jobs or interactive requests to it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     /// The CPU architecture type of the application. Allowed values: X86_64 or ARM64
     ///
@@ -9,7 +10,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architecture")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub architecture: Option<ApplicationArchitectureEnum>,
 
     ///
@@ -21,7 +22,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoStartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_start_configuration: Option<AutoStartConfiguration>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoStopConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_stop_configuration: Option<AutoStopConfiguration>,
 
     /// Property description not available.
@@ -44,7 +45,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_configuration: Option<ImageConfigurationInput>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitialCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_capacity: Option<Vec<InitialCapacityConfigKeyValuePair>>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_capacity: Option<MaximumAllowedResources>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -149,7 +150,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerTypeSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub worker_type_specifications:
         Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
 
@@ -269,6 +270,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 
 /// The conﬁguration for an application to automatically start on job submission.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoStartConfiguration {
     ///
     /// Enables the application to automatically start on job submission. Defaults to       true.
@@ -279,7 +281,7 @@ pub struct AutoStartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -299,6 +301,7 @@ impl cfn_resources::CfnResource for AutoStartConfiguration {
 
 /// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoStopConfiguration {
     ///
     /// Enables the application to automatically stop after a certain amount of time being       idle. Defaults to true.
@@ -309,7 +312,7 @@ pub struct AutoStopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -325,7 +328,7 @@ pub struct AutoStopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleTimeoutMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle_timeout_minutes: Option<i64>,
 }
 
@@ -360,6 +363,7 @@ impl cfn_resources::CfnResource for AutoStopConfiguration {
 
 /// The ImageConfigurationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageConfigurationInput {
     /// Property description not available.
     ///
@@ -369,7 +373,7 @@ pub struct ImageConfigurationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -389,6 +393,7 @@ impl cfn_resources::CfnResource for ImageConfigurationInput {
 
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InitialCapacityConfig {
     ///
     /// The resource configuration of the initial capacity configuration.
@@ -453,6 +458,7 @@ impl cfn_resources::CfnResource for InitialCapacityConfig {
 
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InitialCapacityConfigKeyValuePair {
     ///
     /// The worker type for an analytics framework. For Spark applications, the key can either       be set to Driver or Executor. For Hive applications, it can be       set to HiveDriver or TezTask.
@@ -523,6 +529,7 @@ impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
 
 /// The maximum allowed cumulative resources for an application. No new resources will be     created once the limit is hit.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaximumAllowedResources {
     ///
     /// The maximum allowed CPU for an application.
@@ -556,7 +563,7 @@ pub struct MaximumAllowedResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disk: Option<cfn_resources::StrVal>,
 
     ///
@@ -659,6 +666,7 @@ impl cfn_resources::CfnResource for MaximumAllowedResources {
 
 /// The network configuration for customer VPC connectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// The array of security group Ids for customer VPC connectivity.
@@ -675,7 +683,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -693,7 +701,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -755,6 +763,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -793,6 +802,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The resource configuration of the initial capacity configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkerConfiguration {
     ///
     /// Minimum: 1
@@ -822,7 +832,7 @@ pub struct WorkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disk: Option<cfn_resources::StrVal>,
 
     ///
@@ -923,6 +933,7 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 
 /// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkerTypeSpecificationInput {
     /// Property description not available.
     ///
@@ -932,7 +943,7 @@ pub struct WorkerTypeSpecificationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_configuration: Option<ImageConfigurationInput>,
 }
 

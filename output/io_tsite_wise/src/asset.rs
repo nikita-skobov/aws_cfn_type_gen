@@ -1,5 +1,6 @@
 /// Creates an asset from an existing asset model. For more information, see Creating assets in the       AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAsset {
     ///
     /// A description for the asset.
@@ -10,7 +11,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_properties: Option<Vec<AssetProperty>>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnAsset {
 
 /// Describes an asset hierarchy that contains a childAssetId and hierarchyLogicalId.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetHierarchy {
     ///
     /// The Id of the child asset.
@@ -156,6 +158,7 @@ impl cfn_resources::CfnResource for AssetHierarchy {
 
 /// Contains asset property information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetProperty {
     ///
     /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
@@ -168,7 +171,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -197,7 +200,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_state: Option<cfn_resources::StrVal>,
 
     ///
@@ -209,7 +212,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -235,6 +238,7 @@ impl cfn_resources::CfnResource for AssetProperty {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

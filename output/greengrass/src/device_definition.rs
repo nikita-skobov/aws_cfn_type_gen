@@ -2,6 +2,7 @@
 ///
 /// Device definitions can reference multiple device definition versions. All device definition versions      must be associated with a device definition. Each device definition version can contain one or more devices.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeviceDefinition {
     ///
     /// The device definition version to include when the device definition is created.          A device definition version contains a list of          device property types.
@@ -14,7 +15,7 @@ pub struct CfnDeviceDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<DeviceDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnDeviceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnDeviceDefinition {
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the DeviceDefinitionVersion property type contains a list       of Device property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Device {
     ///
     /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
@@ -143,7 +145,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_shadow: Option<bool>,
 
     ///
@@ -176,6 +178,7 @@ impl cfn_resources::CfnResource for Device {
 ///
 /// In an AWS CloudFormation template, DeviceDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::DeviceDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceDefinitionVersion {
     ///
     /// The devices in this version.

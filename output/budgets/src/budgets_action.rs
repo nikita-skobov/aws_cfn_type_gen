@@ -1,5 +1,6 @@
 /// The AWS::Budgets::BudgetsAction resource enables you to take predefined actions that are initiated when a budget threshold has been exceeded. 		For more information, see Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBudgetsAction {
     /// The trigger threshold of the action.
     ///
@@ -33,7 +34,7 @@ pub struct CfnBudgetsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalModel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approval_model: Option<BudgetsActionApprovalModelEnum>,
 
     /// A string that represents the budget name. ":" and "\" characters aren't allowed.
@@ -203,6 +204,7 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
 
 /// The trigger threshold of the action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActionThreshold {
     /// The type of threshold for a notification.
     ///
@@ -260,6 +262,7 @@ impl cfn_resources::CfnResource for ActionThreshold {
 
 /// The definition is where you specify all of the type-specific parameters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Definition {
     /// The AWS Identity and Access Management (IAM) action definition details.
     ///
@@ -269,7 +272,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamActionDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_action_definition: Option<IamActionDefinition>,
 
     /// The service control policies (SCP) action definition details.
@@ -280,7 +283,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScpActionDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scp_action_definition: Option<ScpActionDefinition>,
 
     /// The Amazon EC2 Systems Manager (SSM) action definition details.
@@ -291,7 +294,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmActionDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssm_action_definition: Option<SsmActionDefinition>,
 }
 
@@ -323,6 +326,7 @@ impl cfn_resources::CfnResource for Definition {
 
 /// The AWS Identity and Access Management (IAM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IamActionDefinition {
     /// A list of groups to be attached. There must be at least one group.
     ///
@@ -334,7 +338,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<String>>,
 
     /// The Amazon Resource Name (ARN) of the policy to be attached.
@@ -363,7 +367,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub roles: Option<Vec<String>>,
 
     /// A list of users to be attached. There must be at least one user.
@@ -376,7 +380,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub users: Option<Vec<String>>,
 }
 
@@ -445,6 +449,7 @@ impl cfn_resources::CfnResource for IamActionDefinition {
 
 /// The service control policies (SCP) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScpActionDefinition {
     /// The policy ID attached.
     ///
@@ -522,6 +527,7 @@ impl cfn_resources::CfnResource for ScpActionDefinition {
 
 /// The Amazon EC2 Systems Manager (SSM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SsmActionDefinition {
     /// The EC2 and RDS instance IDs.
     ///
@@ -630,6 +636,7 @@ impl cfn_resources::CfnResource for SsmActionDefinition {
 ///
 /// For example, an email subscriber has the following parameters:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Subscriber {
     ///
     /// The address that AWS sends budget notifications to, either an SNS topic or an email.

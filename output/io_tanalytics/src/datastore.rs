@@ -1,5 +1,6 @@
 /// AWS::IoTAnalytics::Datastore resource is a repository for messages. For more information, see          How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDatastore {
     ///
     /// The name of the data store.
@@ -16,7 +17,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatastoreName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datastore_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatastorePartitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datastore_partitions: Option<DatastorePartitions>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatastoreStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datastore_storage: Option<DatastoreStorage>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_format_configuration: Option<FileFormatConfiguration>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_period: Option<RetentionPeriod>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -162,6 +163,7 @@ impl cfn_resources::CfnResource for CfnDatastore {
 
 /// Contains information about a column that stores your data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Column {
     ///
     /// The name of the column.
@@ -202,6 +204,7 @@ impl cfn_resources::CfnResource for Column {
 
 /// S3-customer-managed; When you choose customer-managed storage, the retentionPeriod parameter is ignored. You can't change the choice of Amazon S3 storage after your data store is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomerManagedS3 {
     ///
     /// The name of the Amazon S3 bucket where your data is stored.
@@ -235,7 +238,7 @@ pub struct CustomerManagedS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -336,6 +339,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3 {
 
 /// Amazon S3-customer-managed; When you choose customer-managed storage, the retentionPeriod parameter is ignored.      You can't change the choice of Amazon S3 storage after your data store is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomerManagedS3Storage {
     ///
     /// The name of the Amazon S3 bucket where your data is stored.
@@ -357,7 +361,7 @@ pub struct CustomerManagedS3Storage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -377,6 +381,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3Storage {
 
 /// A single dimension to partition a data store. The dimension must be an AttributePartition or a TimestampPartition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatastorePartition {
     ///
     /// A partition dimension defined by an attribute.
@@ -387,7 +392,7 @@ pub struct DatastorePartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Partition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition: Option<Partition>,
 
     ///
@@ -399,7 +404,7 @@ pub struct DatastorePartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampPartition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp_partition: Option<TimestampPartition>,
 }
 
@@ -427,6 +432,7 @@ impl cfn_resources::CfnResource for DatastorePartition {
 
 /// Information about the partition dimensions in a data store.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatastorePartitions {
     ///
     /// A list of partition dimensions in a data store.
@@ -437,7 +443,7 @@ pub struct DatastorePartitions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Partitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partitions: Option<Vec<DatastorePartition>>,
 }
 
@@ -457,6 +463,7 @@ impl cfn_resources::CfnResource for DatastorePartitions {
 
 /// Where data store data is stored.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatastoreStorage {
     ///
     /// Use this to store data store data in an S3 bucket that you manage. The choice of     service-managed or customer-managed S3 storage cannot be changed after creation     of the data store.
@@ -467,7 +474,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_managed_s3: Option<CustomerManagedS3>,
 
     ///
@@ -479,7 +486,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotSiteWiseMultiLayerStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_site_wise_multi_layer_storage: Option<IotSiteWiseMultiLayerStorage>,
 
     ///
@@ -491,7 +498,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceManagedS3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_managed_s3: Option<serde_json::Value>,
 }
 
@@ -523,6 +530,7 @@ impl cfn_resources::CfnResource for DatastoreStorage {
 ///
 /// You can't change the file format after you create the data store.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileFormatConfiguration {
     ///
     /// Contains the configuration information of the JSON format.
@@ -533,7 +541,7 @@ pub struct FileFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_configuration: Option<serde_json::Value>,
 
     ///
@@ -545,7 +553,7 @@ pub struct FileFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parquet_configuration: Option<ParquetConfiguration>,
 }
 
@@ -569,6 +577,7 @@ impl cfn_resources::CfnResource for FileFormatConfiguration {
 
 /// Stores data used by AWS IoT SiteWise in an Amazon S3 bucket that you manage.      You can't change the choice of Amazon S3 storage after your data store is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IotSiteWiseMultiLayerStorage {
     ///
     /// Stores data used by AWS IoT SiteWise in an Amazon S3 bucket that you manage.
@@ -579,7 +588,7 @@ pub struct IotSiteWiseMultiLayerStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3Storage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_managed_s3_storage: Option<CustomerManagedS3Storage>,
 }
 
@@ -603,6 +612,7 @@ impl cfn_resources::CfnResource for IotSiteWiseMultiLayerStorage {
 
 /// Contains the configuration information of the Parquet format.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParquetConfiguration {
     ///
     /// Information needed to define a schema.
@@ -613,7 +623,7 @@ pub struct ParquetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_definition: Option<SchemaDefinition>,
 }
 
@@ -637,6 +647,7 @@ impl cfn_resources::CfnResource for ParquetConfiguration {
 
 /// A single dimension to partition a data store. The dimension must be an AttributePartition or a TimestampPartition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Partition {
     ///
     /// The name of the attribute that defines a partition dimension.
@@ -666,6 +677,7 @@ impl cfn_resources::CfnResource for Partition {
 
 /// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetentionPeriod {
     ///
     /// The number of days that message data is kept. The unlimited parameter must be    false.
@@ -678,7 +690,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_days: Option<i64>,
 
     ///
@@ -690,7 +702,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unlimited: Option<bool>,
 }
 
@@ -719,6 +731,7 @@ impl cfn_resources::CfnResource for RetentionPeriod {
 
 /// Information needed to define a schema.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaDefinition {
     ///
     /// Specifies one or more columns that store your data.
@@ -731,7 +744,7 @@ pub struct SchemaDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<Column>>,
 }
 
@@ -757,6 +770,7 @@ impl cfn_resources::CfnResource for SchemaDefinition {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -795,6 +809,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// A partition dimension defined by a timestamp attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimestampPartition {
     ///
     /// The attribute name of the partition defined by a timestamp.
@@ -816,7 +831,7 @@ pub struct TimestampPartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp_format: Option<cfn_resources::StrVal>,
 }
 

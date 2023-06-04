@@ -2,6 +2,7 @@
 ///
 /// For more information, see StreamJournalToKinesis in the Amazon QLDB API     Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStream {
     ///
     /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
@@ -14,7 +15,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExclusiveEndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusive_end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -217,6 +218,7 @@ impl cfn_resources::CfnResource for CfnStream {
 
 /// The configuration settings of the Amazon Kinesis Data Streams destination for an Amazon QLDB journal     stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisConfiguration {
     ///
     /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the     number of records sent per API call.
@@ -231,7 +233,7 @@ pub struct KinesisConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AggregationEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_enabled: Option<bool>,
 
     ///
@@ -247,7 +249,7 @@ pub struct KinesisConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StreamArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -295,6 +297,7 @@ impl cfn_resources::CfnResource for KinesisConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

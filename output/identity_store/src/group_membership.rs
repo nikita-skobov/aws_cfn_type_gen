@@ -1,5 +1,6 @@
 /// Contains the identifiers for a group, a group member, and a GroupMembership object in the identity store.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGroupMembership {
     /// Property description not available.
     ///
@@ -62,6 +63,7 @@ impl cfn_resources::CfnResource for CfnGroupMembership {
 
 /// An object that contains the identifier of a group member. Setting the UserID field to the specific identifier for a user indicates that the user is a member of the group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemberId {
     /// Property description not available.
     ///

@@ -1,5 +1,6 @@
 /// The AWS::Cloud9::EnvironmentEC2 resource creates an Amazon EC2 development environment in AWS Cloud9. For more information, see Creating an Environment in the AWS Cloud9 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEnvironmentEC2 {
     ///
     /// The number of minutes until the running instance is shut down after the environment was last used.
@@ -14,7 +15,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutomaticStopTimeMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_stop_time_minutes: Option<i64>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_type: Option<EnvironmentEC2ConnectionTypeEnum>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -109,7 +110,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub owner_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Repositories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repositories: Option<Vec<Repository>>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +154,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -299,6 +300,7 @@ impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
 
 /// The Repository property type specifies an AWS CodeCommit source code repository to be cloned into an AWS Cloud9 development environment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Repository {
     ///
     /// The path within the development environment's default file system location to clone the AWS CodeCommit repository into. For example, /REPOSITORY_NAME would clone the repository into the /home/USER_NAME/environment/REPOSITORY_NAME directory in the environment.
@@ -345,6 +347,7 @@ impl cfn_resources::CfnResource for Repository {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

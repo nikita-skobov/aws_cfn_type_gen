@@ -1,5 +1,6 @@
 /// Creates a new event data store.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventDataStore {
     ///
     /// The advanced event selectors to use to select the events for the data store. You can     configure up to five advanced event selectors for each event data store.
@@ -16,7 +17,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedEventSelectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_event_selectors: Option<Vec<AdvancedEventSelector>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiRegionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_region_enabled: Option<bool>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_enabled: Option<bool>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_period: Option<i64>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationProtectionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub termination_protection_enabled: Option<bool>,
 
     #[serde(skip_serializing)]
@@ -263,6 +264,7 @@ impl cfn_resources::CfnResource for CfnEventDataStore {
 ///
 /// You cannot apply both event selectors and advanced event selectors to a trail.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedEventSelector {
     ///
     /// Contains all selector statements in an advanced event selector.
@@ -290,7 +292,7 @@ pub struct AdvancedEventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -332,6 +334,7 @@ impl cfn_resources::CfnResource for AdvancedEventSelector {
 
 /// A single selector statement in an advanced event selector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedFieldSelector {
     ///
     /// An operator that includes events that match the last few characters of the event record     field specified as the value of Field.
@@ -342,7 +345,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndsWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ends_with: Option<Vec<String>>,
 
     ///
@@ -354,7 +357,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Equals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub equals: Option<Vec<String>>,
 
     ///
@@ -389,7 +392,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEndsWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_ends_with: Option<Vec<String>>,
 
     ///
@@ -401,7 +404,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_equals: Option<Vec<String>>,
 
     ///
@@ -413,7 +416,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotStartsWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_starts_with: Option<Vec<String>>,
 
     ///
@@ -425,7 +428,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartsWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub starts_with: Option<Vec<String>>,
 }
 
@@ -473,6 +476,7 @@ impl cfn_resources::CfnResource for AdvancedFieldSelector {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

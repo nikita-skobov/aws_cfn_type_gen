@@ -8,6 +8,7 @@
 ///
 /// To automatically publish the function to the LIVE stage when it’s 				created, set the AutoPublish property to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFunction {
     ///
     /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
@@ -18,7 +19,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoPublish")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_publish: Option<bool>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_metadata: Option<FunctionMetadata>,
 
     ///
@@ -150,6 +151,7 @@ impl cfn_resources::CfnResource for CfnFunction {
 
 /// Contains configuration information about a CloudFront function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunctionConfig {
     ///
     /// A comment to describe the function.
@@ -205,6 +207,7 @@ impl cfn_resources::CfnResource for FunctionConfig {
 
 /// Contains metadata about a CloudFront function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunctionMetadata {
     ///
     /// The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the 			function.
@@ -215,7 +218,7 @@ pub struct FunctionMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_arn: Option<cfn_resources::StrVal>,
 }
 

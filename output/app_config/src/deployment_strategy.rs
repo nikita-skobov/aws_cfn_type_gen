@@ -4,6 +4,7 @@
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeploymentStrategy {
     ///
     /// Total amount of time for a deployment to last.
@@ -33,7 +34,7 @@ pub struct CfnDeploymentStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnDeploymentStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FinalBakeTimeInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub final_bake_time_in_minutes: Option<f64>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnDeploymentStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrowthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub growth_type: Option<DeploymentStrategyGrowthTypeEnum>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnDeploymentStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tags>>,
 }
 
@@ -248,6 +249,7 @@ impl cfn_resources::CfnResource for CfnDeploymentStrategy {
 
 /// Metadata to assign to the deployment strategy. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tags {
     ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
@@ -258,7 +260,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -270,7 +272,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

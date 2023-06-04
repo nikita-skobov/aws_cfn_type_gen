@@ -2,6 +2,7 @@
 ///
 /// To control how AWS CloudFormation handles the bucket when the stack is    deleted, you can set a deletion policy for your bucket. You can choose to     retain the bucket or to delete the bucket. For    more information, see DeletionPolicy     Attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBucket {
     ///
     /// Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see       Amazon S3       Transfer Acceleration in the Amazon S3 User Guide.
@@ -12,7 +13,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccelerateConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerate_configuration: Option<AccelerateConfiguration>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalyticsConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub analytics_configurations: Option<Vec<AnalyticsConfiguration>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_encryption: Option<BucketEncryption>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cors_configuration: Option<CorsConfiguration>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntelligentTieringConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub intelligent_tiering_configurations: Option<Vec<IntelligentTieringConfiguration>>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InventoryConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inventory_configurations: Option<Vec<InventoryConfiguration>>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_configuration: Option<LifecycleConfiguration>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics_configurations: Option<Vec<MetricsConfiguration>>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_configuration: Option<NotificationConfiguration>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectLockConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_lock_configuration: Option<ObjectLockConfiguration>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectLockEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_lock_enabled: Option<bool>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnershipControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ownership_controls: Option<OwnershipControls>,
 
     ///
@@ -198,7 +199,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 
     ///
@@ -212,7 +213,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_configuration: Option<ReplicationConfiguration>,
 
     ///
@@ -224,7 +225,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -236,7 +237,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersioningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub versioning_configuration: Option<VersioningConfiguration>,
 
     ///
@@ -248,7 +249,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebsiteConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub website_configuration: Option<WebsiteConfiguration>,
 
     #[serde(skip_serializing)]
@@ -371,6 +372,7 @@ impl cfn_resources::CfnResource for CfnBucket {
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3    will wait before permanently removing all parts of the upload. For more information, see         Stopping Incomplete Multipart Uploads Using a Bucket Lifecycle Policy in the     Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AbortIncompleteMultipartUpload {
     ///
     /// Specifies the number of days after which Amazon S3 stops an incomplete multipart    upload.
@@ -400,6 +402,7 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
 
 /// Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see       Amazon S3       Transfer Acceleration in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccelerateConfiguration {
     ///
     /// Specifies the transfer acceleration status of the bucket.
@@ -448,6 +451,7 @@ impl cfn_resources::CfnResource for AccelerateConfiguration {
 
 /// Specify this only in a cross-account scenario (where source and destination bucket     owners are not the same), and you want to change replica ownership to the AWS account     that owns the destination bucket. If this is not specified in the replication     configuration, the replicas are owned by same AWS account that owns the source     object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlTranslation {
     ///
     /// Specifies the replica ownership. For default and valid values, see PUT bucket       replication in the Amazon S3 API Reference.
@@ -492,6 +496,7 @@ impl cfn_resources::CfnResource for AccessControlTranslation {
 
 /// Specifies the configuration and any analyses for the analytics filter of an Amazon S3     bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalyticsConfiguration {
     ///
     /// The ID that identifies the analytics configuration.
@@ -513,7 +518,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -538,7 +543,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filters: Option<Vec<TagFilter>>,
 }
 
@@ -560,6 +565,7 @@ impl cfn_resources::CfnResource for AnalyticsConfiguration {
 
 /// Specifies default encryption for a bucket using server-side encryption with Amazon    S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS) bucket. For    information about the Amazon S3 default encryption feature, see Amazon S3 Default Encryption for S3     Buckets in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BucketEncryption {
     ///
     /// Specifies the default server-side-encryption configuration.
@@ -589,6 +595,7 @@ impl cfn_resources::CfnResource for BucketEncryption {
 
 /// Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more     information, see Enabling       Cross-Origin Resource Sharing in the     Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CorsConfiguration {
     ///
     /// A set of origins and methods (cross-origin access that you want to allow). You can add     up to 100 rules to the configuration.
@@ -618,6 +625,7 @@ impl cfn_resources::CfnResource for CorsConfiguration {
 
 /// Specifies a cross-origin access rule for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CorsRule {
     ///
     /// Headers that are specified in the Access-Control-Request-Headers header.     These headers are allowed in a preflight OPTIONS request. In response to any preflight     OPTIONS request, Amazon S3 returns any requested headers that are allowed.
@@ -628,7 +636,7 @@ pub struct CorsRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_headers: Option<Vec<String>>,
 
     ///
@@ -664,7 +672,7 @@ pub struct CorsRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExposedHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exposed_headers: Option<Vec<String>>,
 
     ///
@@ -676,7 +684,7 @@ pub struct CorsRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -688,7 +696,7 @@ pub struct CorsRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_age: Option<i64>,
 }
 
@@ -708,6 +716,7 @@ impl cfn_resources::CfnResource for CorsRule {
 
 /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be     exported.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataExport {
     ///
     /// The place to store the data for an analysis.
@@ -765,6 +774,7 @@ impl cfn_resources::CfnResource for DataExport {
 
 /// The container element for specifying the default Object Lock retention settings for new     objects placed in the specified bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultRetention {
     ///
     /// The number of days that you want to specify for the default retention period. If Object    Lock is turned on, you must specify Mode and specify either Days or     Years.
@@ -775,7 +785,7 @@ pub struct DefaultRetention {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Days")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub days: Option<i64>,
 
     ///
@@ -789,7 +799,7 @@ pub struct DefaultRetention {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<DefaultRetentionModeEnum>,
 
     ///
@@ -801,7 +811,7 @@ pub struct DefaultRetention {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Years")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub years: Option<i64>,
 }
 
@@ -840,6 +850,7 @@ impl cfn_resources::CfnResource for DefaultRetention {
 ///
 /// For more information about delete marker replication, see Basic Rule       Configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeleteMarkerReplication {
     ///
     /// Indicates whether to replicate delete markers. Disabled by default.
@@ -852,7 +863,7 @@ pub struct DeleteMarkerReplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<DeleteMarkerReplicationStatusEnum>,
 }
 
@@ -889,6 +900,7 @@ impl cfn_resources::CfnResource for DeleteMarkerReplication {
 
 /// Specifies information about where to publish analysis or configuration results for an    Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Destination {
     ///
     /// The account ID that owns the destination S3 bucket. If no account ID is provided, the     owner is not validated before exporting data.
@@ -901,7 +913,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -937,7 +949,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -978,6 +990,7 @@ impl cfn_resources::CfnResource for Destination {
 
 /// Specifies encryption-related information for an Amazon S3 bucket that is a destination for     replicated objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in     AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to     encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more     information, see Asymmetric keys in AWS       KMS in the         AWS Key Management Service Developer     Guide.
@@ -1009,6 +1022,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 ///
 /// Unlike other destinations, delivery of events to EventBridge can be either enabled or    disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use    EventBridge rules to route events to additional targets. For more information, see What Is Amazon     EventBridge in the Amazon EventBridge User Guide
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventBridgeConfiguration {
     ///
     /// Enables delivery of events to Amazon EventBridge.
@@ -1019,7 +1033,7 @@ pub struct EventBridgeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bridge_enabled: Option<bool>,
 }
 
@@ -1039,6 +1053,7 @@ impl cfn_resources::CfnResource for EventBridgeConfiguration {
 
 /// Specifies the Amazon S3 object key name to filter on and whether to filter on the suffix or     prefix of the key name.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterRule {
     ///
     /// The object key name prefix or suffix identifying one or more objects to which the     filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and     suffixes are not supported. For more information, see Configuring Event Notifications     in the Amazon S3 User Guide.
@@ -1100,6 +1115,7 @@ impl cfn_resources::CfnResource for FilterRule {
 ///
 /// For information about the S3 Intelligent-Tiering storage class, see Storage class       for automatically optimizing frequently and infrequently accessed     objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntelligentTieringConfiguration {
     ///
     /// The ID used to identify the S3 Intelligent-Tiering configuration.
@@ -1121,7 +1137,7 @@ pub struct IntelligentTieringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1146,7 +1162,7 @@ pub struct IntelligentTieringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filters: Option<Vec<TagFilter>>,
 
     ///
@@ -1196,6 +1212,7 @@ impl cfn_resources::CfnResource for IntelligentTieringConfiguration {
 
 /// Specifies the inventory configuration for an Amazon S3 bucket. For more information, see       GET Bucket inventory in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InventoryConfiguration {
     ///
     /// Contains information about where to publish the inventory results.
@@ -1254,7 +1271,7 @@ pub struct InventoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionalFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub optional_fields: Option<Vec<String>>,
 
     ///
@@ -1266,7 +1283,7 @@ pub struct InventoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1335,6 +1352,7 @@ impl cfn_resources::CfnResource for InventoryConfiguration {
 
 /// Describes the AWS Lambda functions to invoke and the events for which to invoke     them.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaConfiguration {
     ///
     /// The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more information,     see Supported       Event Types in the Amazon S3 User Guide.
@@ -1356,7 +1374,7 @@ pub struct LambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<NotificationFilter>,
 
     ///
@@ -1389,6 +1407,7 @@ impl cfn_resources::CfnResource for LambdaConfiguration {
 
 /// Specifies the lifecycle configuration for objects in an Amazon S3 bucket. For more     information, see Object Lifecycle Management     in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecycleConfiguration {
     ///
     /// A lifecycle rule for individual objects in an Amazon S3 bucket.
@@ -1418,6 +1437,7 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
 
 /// Describes where logs are stored and the prefix that Amazon S3 assigns to all log object    keys for a bucket. For examples and more information, see PUT Bucket logging in the     Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfiguration {
     ///
     /// The name of the bucket where Amazon S3 should store server access log files. You can store    log files in any bucket that you own. By default, logs are stored in the bucket where the     LoggingConfiguration property is defined.
@@ -1428,7 +1448,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationBucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1440,7 +1460,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogFilePrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_file_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -1460,6 +1480,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 
 /// A container specifying replication metrics-related settings enabling replication     metrics and events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metrics {
     ///
     /// A container specifying the time threshold for emitting the       s3:Replication:OperationMissedThreshold event.
@@ -1470,7 +1491,7 @@ pub struct Metrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_threshold: Option<ReplicationTimeValue>,
 
     ///
@@ -1524,6 +1545,7 @@ impl cfn_resources::CfnResource for Metrics {
 
 /// Specifies a metrics configuration for the CloudWatch request metrics (specified by the    metrics configuration ID) from an Amazon S3 bucket. If you're updating an existing metrics    configuration, note that this is a full replacement of the existing metrics configuration. If    you don't include the elements you want to keep, they are erased. For examples, see AWS::S3::Bucket. For more information, see PUT Bucket metrics    in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricsConfiguration {
     ///
     /// The access point that was used while performing operations on the object. The metrics    configuration only includes objects that meet the filter's criteria.
@@ -1534,7 +1556,7 @@ pub struct MetricsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPointArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_point_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1557,7 +1579,7 @@ pub struct MetricsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1569,7 +1591,7 @@ pub struct MetricsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filters: Option<Vec<TagFilter>>,
 }
 
@@ -1589,6 +1611,7 @@ impl cfn_resources::CfnResource for MetricsConfiguration {
 
 /// Specifies when noncurrent object versions expire. Upon expiration, Amazon S3    permanently deletes the noncurrent object versions. You set this lifecycle configuration    action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's    lifetime.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NoncurrentVersionExpiration {
     ///
     /// Specifies how many noncurrent versions Amazon S3 will retain. If there are this many more recent     noncurrent versions, Amazon S3 will take the associated action. For more information about noncurrent    versions, see Lifecycle configuration elements    in the Amazon S3 User Guide.
@@ -1599,7 +1622,7 @@ pub struct NoncurrentVersionExpiration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewerNoncurrentVersions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub newer_noncurrent_versions: Option<i64>,
 
     ///
@@ -1630,6 +1653,7 @@ impl cfn_resources::CfnResource for NoncurrentVersionExpiration {
 
 /// Container for the transition rule that describes when noncurrent objects transition to the     STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING,     GLACIER_IR, GLACIER, or DEEP_ARCHIVE storage class.    If your bucket is versioning-enabled (or versioning is suspended), you can set this action to    request that Amazon S3 transition noncurrent object versions to the STANDARD_IA,     ONEZONE_IA, INTELLIGENT_TIERING, GLACIER_IR,     GLACIER, or DEEP_ARCHIVE storage class at a specific period in the    object's lifetime. If you specify this property, don't specify the     NoncurrentVersionTransitions property.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NoncurrentVersionTransition {
     ///
     /// Specifies how many noncurrent versions Amazon S3 will retain. If there are this    many more recent noncurrent versions, Amazon S3 will take the associated action. For    more information about noncurrent versions, see Lifecycle configuration     elements in the Amazon S3 User Guide.
@@ -1640,7 +1664,7 @@ pub struct NoncurrentVersionTransition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewerNoncurrentVersions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub newer_noncurrent_versions: Option<i64>,
 
     ///
@@ -1717,6 +1741,7 @@ impl cfn_resources::CfnResource for NoncurrentVersionTransition {
 
 /// Describes the notification configuration for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationConfiguration {
     ///
     /// Enables delivery of events to Amazon EventBridge.
@@ -1727,7 +1752,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bridge_configuration: Option<EventBridgeConfiguration>,
 
     ///
@@ -1739,7 +1764,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_configurations: Option<Vec<LambdaConfiguration>>,
 
     ///
@@ -1751,7 +1776,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueueConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queue_configurations: Option<Vec<QueueConfiguration>>,
 
     ///
@@ -1763,7 +1788,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopicConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic_configurations: Option<Vec<TopicConfiguration>>,
 }
 
@@ -1787,6 +1812,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 
 /// Specifies object key name filtering rules. For information about key name filtering, see     Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationFilter {
     ///
     /// A container for object key name prefix and suffix filtering rules.
@@ -1818,6 +1844,7 @@ impl cfn_resources::CfnResource for NotificationFilter {
 
 /// Places an Object Lock configuration on the specified bucket. The rule specified in the    Object Lock configuration will be applied by default to every new object placed in the    specified bucket. For more information, see Locking Objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ObjectLockConfiguration {
     ///
     /// Indicates whether this bucket has an Object Lock configuration enabled. Enable       ObjectLockEnabled when you apply ObjectLockConfiguration to a     bucket.
@@ -1830,7 +1857,7 @@ pub struct ObjectLockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectLockEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_lock_enabled: Option<ObjectLockConfigurationObjectLockEnabledEnum>,
 
     ///
@@ -1842,7 +1869,7 @@ pub struct ObjectLockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule: Option<ObjectLockRule>,
 }
 
@@ -1877,6 +1904,7 @@ impl cfn_resources::CfnResource for ObjectLockConfiguration {
 
 /// Specifies the Object Lock rule for the specified object. Enable the this rule when you    apply ObjectLockConfiguration to a bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ObjectLockRule {
     ///
     /// The default Object Lock retention mode and period that you want to apply to new objects    placed in the specified bucket. If Object Lock is turned on, bucket settings require both     Mode and a period of either Days or Years. You cannot    specify Days and Years at the same time. For more information about    allowable values for mode and period, see DefaultRetention.
@@ -1887,7 +1915,7 @@ pub struct ObjectLockRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRetention")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_retention: Option<DefaultRetention>,
 }
 
@@ -1913,6 +1941,7 @@ impl cfn_resources::CfnResource for ObjectLockRule {
 ///
 /// S3 Object Ownership is an Amazon S3 bucket-level setting that you can use to disable    access control lists (ACLs) and take ownership of every object in your bucket, simplifying    access management for data stored in Amazon S3. For more information, see Controlling     ownership of objects and disabling ACLs in the Amazon S3 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OwnershipControls {
     ///
     /// Specifies the container element for Object Ownership rules.
@@ -1944,6 +1973,7 @@ impl cfn_resources::CfnResource for OwnershipControls {
 ///
 /// S3 Object Ownership is an Amazon S3 bucket-level setting that you can use to disable    access control lists (ACLs) and take ownership of every object in your bucket, simplifying    access management for data stored in Amazon S3. For more information, see Controlling     ownership of objects and disabling ACLs in the Amazon S3 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OwnershipControlsRule {
     ///
     /// Specifies an Object Ownership rule.
@@ -1956,7 +1986,7 @@ pub struct OwnershipControlsRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectOwnership")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_ownership: Option<OwnershipControlsRuleObjectOwnershipEnum>,
 }
 
@@ -1997,6 +2027,7 @@ impl cfn_resources::CfnResource for OwnershipControlsRule {
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -2011,7 +2042,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -2025,7 +2056,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -2039,7 +2070,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePublicAcls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -2053,7 +2084,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -2073,6 +2104,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 
 /// Specifies the configuration for publishing messages to an Amazon Simple Queue Service     (Amazon SQS) queue when Amazon S3 detects specified events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueueConfiguration {
     ///
     /// The Amazon S3 bucket event about which you want to publish messages to Amazon SQS. For    more information, see Supported Event Types in the     Amazon S3 User Guide.
@@ -2094,7 +2126,7 @@ pub struct QueueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<NotificationFilter>,
 
     ///
@@ -2127,6 +2159,7 @@ impl cfn_resources::CfnResource for QueueConfiguration {
 
 /// Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3     bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedirectAllRequestsTo {
     ///
     /// Name of the host where requests are redirected.
@@ -2150,7 +2183,7 @@ pub struct RedirectAllRequestsTo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<RedirectAllRequestsToProtocolEnum>,
 }
 
@@ -2187,6 +2220,7 @@ impl cfn_resources::CfnResource for RedirectAllRequestsTo {
 
 /// Specifies how requests are redirected. In the event of an error, you can specify a     different error code to return.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedirectRule {
     ///
     /// The host name to use in the redirect request.
@@ -2197,7 +2231,7 @@ pub struct RedirectRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2209,7 +2243,7 @@ pub struct RedirectRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRedirectCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_redirect_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -2223,7 +2257,7 @@ pub struct RedirectRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<RedirectRuleProtocolEnum>,
 
     ///
@@ -2237,7 +2271,7 @@ pub struct RedirectRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceKeyPrefixWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_key_prefix_with: Option<cfn_resources::StrVal>,
 
     ///
@@ -2251,7 +2285,7 @@ pub struct RedirectRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceKeyWith")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_key_with: Option<cfn_resources::StrVal>,
 }
 
@@ -2288,6 +2322,7 @@ impl cfn_resources::CfnResource for RedirectRule {
 
 /// A filter that you can specify for selection for modifications on replicas.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicaModifications {
     ///
     /// Specifies whether Amazon S3 replicates modifications on replicas.
@@ -2336,6 +2371,7 @@ impl cfn_resources::CfnResource for ReplicaModifications {
 
 /// A container for replication rules. You can add up to 1,000 rules. The maximum size of a     replication configuration is 2 MB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon S3 assumes when     replicating objects. For more information, see How to Set Up Replication     in the Amazon S3 User Guide.
@@ -2376,6 +2412,7 @@ impl cfn_resources::CfnResource for ReplicationConfiguration {
 
 /// A container for information about the replication destination and its configurations     including enabling the S3 Replication Time Control (S3 RTC).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationDestination {
     ///
     /// Specify this only in a cross-account scenario (where source and destination bucket     owners are not the same), and you want to change replica ownership to the AWS account     that owns the destination bucket. If this is not specified in the replication     configuration, the replicas are owned by same AWS account that owns the source     object.
@@ -2386,7 +2423,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlTranslation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_control_translation: Option<AccessControlTranslation>,
 
     ///
@@ -2400,7 +2437,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Account")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account: Option<cfn_resources::StrVal>,
 
     ///
@@ -2423,7 +2460,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -2435,7 +2472,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metrics: Option<Metrics>,
 
     ///
@@ -2447,7 +2484,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_time: Option<ReplicationTime>,
 
     ///
@@ -2463,7 +2500,7 @@ pub struct ReplicationDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_class: Option<ReplicationDestinationStorageClassEnum>,
 }
 
@@ -2546,6 +2583,7 @@ impl cfn_resources::CfnResource for ReplicationDestination {
 
 /// Specifies which Amazon S3 objects to replicate and where to store the replicas.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationRule {
     ///
     /// Specifies whether Amazon S3 replicates delete markers. If you specify a Filter     in your replication configuration, you must also include a       DeleteMarkerReplication element. If your Filter includes a       Tag element, the DeleteMarkerReplication       Status must be set to Disabled, because Amazon S3 does not support replicating     delete markers for tag-based rules. For an example configuration, see Basic Rule Configuration.
@@ -2560,7 +2598,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteMarkerReplication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_marker_replication: Option<DeleteMarkerReplication>,
 
     ///
@@ -2585,7 +2623,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<ReplicationRuleFilter>,
 
     ///
@@ -2597,7 +2635,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2611,7 +2649,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2625,7 +2663,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 
     ///
@@ -2637,7 +2675,7 @@ pub struct ReplicationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceSelectionCriteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_selection_criteria: Option<SourceSelectionCriteria>,
 
     ///
@@ -2701,6 +2739,7 @@ impl cfn_resources::CfnResource for ReplicationRule {
 ///
 /// For example:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationRuleAndOperator {
     ///
     /// An object key name prefix that identifies the subset of objects to which the rule     applies.
@@ -2711,7 +2750,7 @@ pub struct ReplicationRuleAndOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2723,7 +2762,7 @@ pub struct ReplicationRuleAndOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filters: Option<Vec<TagFilter>>,
 }
 
@@ -2743,6 +2782,7 @@ impl cfn_resources::CfnResource for ReplicationRuleAndOperator {
 
 /// A filter that identifies the subset of objects to which the replication rule applies. A     Filter must specify exactly one Prefix, TagFilter, or    an And child element.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationRuleFilter {
     ///
     /// A container for specifying rule filters. The filters determine the subset of objects to    which the rule applies. This element is required only if you specify more than one filter. For    example:
@@ -2755,7 +2795,7 @@ pub struct ReplicationRuleFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "And")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub and: Option<ReplicationRuleAndOperator>,
 
     ///
@@ -2769,7 +2809,7 @@ pub struct ReplicationRuleFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2783,7 +2823,7 @@ pub struct ReplicationRuleFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filter: Option<TagFilter>,
 }
 
@@ -2809,6 +2849,7 @@ impl cfn_resources::CfnResource for ReplicationRuleFilter {
 
 /// A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is     enabled and the time when all objects and operations on objects must be replicated. Must be     specified together with a Metrics block.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationTime {
     ///
     /// Specifies whether the replication time is enabled.
@@ -2870,6 +2911,7 @@ impl cfn_resources::CfnResource for ReplicationTime {
 
 /// A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics       EventThreshold.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationTimeValue {
     ///
     /// Contains an integer specifying time in minutes.
@@ -2901,6 +2943,7 @@ impl cfn_resources::CfnResource for ReplicationTimeValue {
 
 /// Specifies the redirect behavior and when a redirect is applied. For more information     about routing rules, see Configuring advanced conditional redirects in the       Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoutingRule {
     ///
     /// Container for redirect information. You can redirect requests to another host, to     another page, or with another protocol. In the event of an error, you can specify a     different error code to return.
@@ -2922,7 +2965,7 @@ pub struct RoutingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingRuleCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub routing_rule_condition: Option<RoutingRuleCondition>,
 }
 
@@ -2948,6 +2991,7 @@ impl cfn_resources::CfnResource for RoutingRule {
 
 /// A container for describing a condition that must be met for the specified redirect to     apply. For example, 1. If request is for pages in the /docs folder, redirect     to the /documents folder. 2. If request results in HTTP error 4xx, redirect     request to another host where you might process the error.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoutingRuleCondition {
     ///
     /// The HTTP error code when the redirect is applied. In the event of an error, if the error    code equals this value, then the specified redirect is applied.
@@ -2960,7 +3004,7 @@ pub struct RoutingRuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpErrorCodeReturnedEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_error_code_returned_equals: Option<cfn_resources::StrVal>,
 
     ///
@@ -2974,7 +3018,7 @@ pub struct RoutingRuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefixEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_prefix_equals: Option<cfn_resources::StrVal>,
 }
 
@@ -2996,6 +3040,7 @@ impl cfn_resources::CfnResource for RoutingRuleCondition {
 ///
 /// You must specify at least one of the following properties:     AbortIncompleteMultipartUpload, ExpirationDate,     ExpirationInDays, NoncurrentVersionExpirationInDays,     NoncurrentVersionTransition, NoncurrentVersionTransitions,     Transition, or Transitions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// Specifies a lifecycle rule that stops incomplete multipart uploads to an Amazon S3    bucket.
@@ -3006,7 +3051,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AbortIncompleteMultipartUpload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
 
     ///
@@ -3018,7 +3063,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expiration_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -3030,7 +3075,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expiration_in_days: Option<i64>,
 
     ///
@@ -3042,7 +3087,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpiredObjectDeleteMarker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expired_object_delete_marker: Option<bool>,
 
     ///
@@ -3054,7 +3099,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3066,7 +3111,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoncurrentVersionExpiration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub noncurrent_version_expiration: Option<NoncurrentVersionExpiration>,
 
     ///
@@ -3078,7 +3123,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoncurrentVersionExpirationInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub noncurrent_version_expiration_in_days: Option<i64>,
 
     ///
@@ -3090,7 +3135,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoncurrentVersionTransition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub noncurrent_version_transition: Option<NoncurrentVersionTransition>,
 
     ///
@@ -3102,7 +3147,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoncurrentVersionTransitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub noncurrent_version_transitions: Option<Vec<NoncurrentVersionTransition>>,
 
     ///
@@ -3114,7 +3159,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectSizeGreaterThan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_size_greater_than: Option<i64>,
 
     ///
@@ -3126,7 +3171,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectSizeLessThan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_size_less_than: Option<i64>,
 
     ///
@@ -3140,7 +3185,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -3165,7 +3210,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_filters: Option<Vec<TagFilter>>,
 
     ///
@@ -3177,7 +3222,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Transition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transition: Option<Transition>,
 
     ///
@@ -3189,7 +3234,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Transitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transitions: Option<Vec<Transition>>,
 }
 
@@ -3242,6 +3287,7 @@ impl cfn_resources::CfnResource for Rule {
 
 /// A container for object key name prefix and suffix filtering rules. For more information about object key name filtering, see Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3KeyFilter {
     ///
     /// A list of containers for the key-value pair that defines the criteria for the filter     rule.
@@ -3271,6 +3317,7 @@ impl cfn_resources::CfnResource for S3KeyFilter {
 
 /// Describes the default server-side encryption to apply to new objects in the bucket. If a     PUT Object request doesn't specify any server-side encryption, this default encryption will     be applied. If you don't specify a customer managed key at configuration, Amazon S3 automatically creates     an AWS KMS key in your AWS account the first time that you add an object encrypted     with SSE-KMS to a bucket. By default, Amazon S3 uses this KMS key for SSE-KMS. For more     information, see PUT Bucket encryption in     the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerSideEncryptionByDefault {
     ///
     /// KMS key ID to use for the default encryption. This parameter is allowed if SSEAlgorithm is    aws:kms.
@@ -3289,7 +3336,7 @@ pub struct ServerSideEncryptionByDefault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSMasterKeyID")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmsmaster_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3339,6 +3386,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionByDefault {
 
 /// Specifies the default server-side encryption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerSideEncryptionRule {
     ///
     /// Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using    KMS (SSE-KMS) for new objects in the bucket. Existing objects are not affected. Setting the     BucketKeyEnabled element to true causes Amazon S3 to use an S3    Bucket Key. By default, S3 Bucket Key is not enabled.
@@ -3351,7 +3399,7 @@ pub struct ServerSideEncryptionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketKeyEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_key_enabled: Option<bool>,
 
     ///
@@ -3363,7 +3411,7 @@ pub struct ServerSideEncryptionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionByDefault")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_side_encryption_by_default: Option<ServerSideEncryptionByDefault>,
 }
 
@@ -3387,6 +3435,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionRule {
 
 /// A container that describes additional filters for identifying the source objects that you    want to replicate. You can choose to enable or disable the replication of these    objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceSelectionCriteria {
     ///
     /// A filter that you can specify for selection for modifications on replicas.
@@ -3397,7 +3446,7 @@ pub struct SourceSelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicaModifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replica_modifications: Option<ReplicaModifications>,
 
     ///
@@ -3409,7 +3458,7 @@ pub struct SourceSelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SseKmsEncryptedObjects")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sse_kms_encrypted_objects: Option<SseKmsEncryptedObjects>,
 }
 
@@ -3437,6 +3486,7 @@ impl cfn_resources::CfnResource for SourceSelectionCriteria {
 
 /// A container for filter information for the selection of S3 objects encrypted with AWS     KMS.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SseKmsEncryptedObjects {
     ///
     /// Specifies whether Amazon S3 replicates objects created with server-side encryption using an     AWS KMS key stored in AWS Key Management Service.
@@ -3485,6 +3535,7 @@ impl cfn_resources::CfnResource for SseKmsEncryptedObjects {
 
 /// Specifies data related to access patterns to be collected and made available to analyze     the tradeoffs between different storage classes for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageClassAnalysis {
     ///
     /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be     exported.
@@ -3495,7 +3546,7 @@ pub struct StorageClassAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataExport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_export: Option<DataExport>,
 }
 
@@ -3525,6 +3576,7 @@ impl cfn_resources::CfnResource for StorageClassAnalysis {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -3563,6 +3615,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies tags to use to identify a subset of objects for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagFilter {
     ///
     /// The tag key.
@@ -3603,6 +3656,7 @@ impl cfn_resources::CfnResource for TagFilter {
 
 /// The S3 Intelligent-Tiering storage class is designed to optimize storage costs by     automatically moving data to the most cost-effective storage access tier, without     additional operational overhead.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tiering {
     ///
     /// S3 Intelligent-Tiering access tier. See Storage class       for automatically optimizing frequently and infrequently accessed objects for a     list of access tiers in the S3 Intelligent-Tiering storage class.
@@ -3662,6 +3716,7 @@ impl cfn_resources::CfnResource for Tiering {
 
 /// A container for specifying the configuration for publication of messages to an Amazon     Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicConfiguration {
     ///
     /// The Amazon S3 bucket event about which to send notifications. For more information, see       Supported       Event Types in the Amazon S3 User Guide.
@@ -3683,7 +3738,7 @@ pub struct TopicConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<NotificationFilter>,
 
     ///
@@ -3716,6 +3771,7 @@ impl cfn_resources::CfnResource for TopicConfiguration {
 
 /// Specifies when an object transitions to a specified storage class. For more information     about Amazon S3 lifecycle configuration rules, see Transitioning       Objects Using Amazon S3 Lifecycle in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Transition {
     ///
     /// The storage class to which you want the object to transition.
@@ -3739,7 +3795,7 @@ pub struct Transition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transition_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -3751,7 +3807,7 @@ pub struct Transition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transition_in_days: Option<i64>,
 }
 
@@ -3804,6 +3860,7 @@ impl cfn_resources::CfnResource for Transition {
 
 /// Describes the versioning state of an Amazon S3 bucket. For more information, see PUT       Bucket versioning in the Amazon S3 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VersioningConfiguration {
     ///
     /// The versioning state of the bucket.
@@ -3852,6 +3909,7 @@ impl cfn_resources::CfnResource for VersioningConfiguration {
 
 /// Specifies website configuration parameters for an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebsiteConfiguration {
     ///
     /// The name of the error document for the website.
@@ -3862,7 +3920,7 @@ pub struct WebsiteConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_document: Option<cfn_resources::StrVal>,
 
     ///
@@ -3874,7 +3932,7 @@ pub struct WebsiteConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub index_document: Option<cfn_resources::StrVal>,
 
     ///
@@ -3888,7 +3946,7 @@ pub struct WebsiteConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectAllRequestsTo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redirect_all_requests_to: Option<RedirectAllRequestsTo>,
 
     ///
@@ -3900,7 +3958,7 @@ pub struct WebsiteConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub routing_rules: Option<Vec<RoutingRule>>,
 }
 

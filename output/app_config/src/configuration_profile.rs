@@ -4,6 +4,7 @@
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigurationProfile {
     ///
     /// The application ID.
@@ -31,7 +32,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetrievalRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retrieval_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tags>>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validators")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validators: Option<Vec<Validators>>,
 }
 
@@ -241,6 +242,7 @@ impl cfn_resources::CfnResource for CfnConfigurationProfile {
 
 /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tags {
     ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
@@ -251,7 +253,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -263,7 +265,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -283,6 +285,7 @@ impl cfn_resources::CfnResource for Tags {
 
 /// A validator provides a syntactic or semantic check to ensure the configuration that you     want to deploy functions as intended. To validate your application configuration data, you     provide a schema or an AWS Lambda function that runs against the configuration. The     configuration deployment or update can only proceed when the configuration data is     valid.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Validators {
     ///
     /// Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda     function.
@@ -297,7 +300,7 @@ pub struct Validators {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content: Option<cfn_resources::StrVal>,
 
     ///
@@ -311,7 +314,7 @@ pub struct Validators {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ValidatorsTypeEnum>,
 }
 

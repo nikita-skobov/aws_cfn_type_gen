@@ -9,6 +9,7 @@
 /// When you create environments without a network bridge (CreateEnvironment:NetworkFabricType is NONE) and you use your own    networking infrastructure, you need to configure VPC to VPC connectivity between your network and the application proxy VPC. Route    creation from the application proxy to service endpoints will fail if your network is not    configured to connect to the application proxy VPC. For more information, see Create     a route in the Refactor Spaces User Guide.
 ///
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRoute {
     ///
     /// The unique identifier of the application.
@@ -30,7 +31,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_route: Option<DefaultRouteInput>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPathRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri_path_route: Option<UriPathRouteInput>,
 
     #[serde(skip_serializing)]
@@ -148,6 +149,7 @@ impl cfn_resources::CfnResource for CfnRoute {
 
 /// The configuration for the default route type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultRouteInput {
     ///
     /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.
@@ -183,6 +185,7 @@ impl cfn_resources::CfnResource for DefaultRouteInput {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -221,6 +224,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The configuration for the URI path route type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UriPathRouteInput {
     ///
     /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.
@@ -242,7 +246,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IncludeChildPaths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_child_paths: Option<bool>,
 
     ///
@@ -254,7 +258,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Methods")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub methods: Option<Vec<String>>,
 
     ///
@@ -266,7 +270,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_path: Option<cfn_resources::StrVal>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// Connector definitions can reference multiple connector definition versions. All connector definition versions      must be associated with a connector definition. Each connector definition version can contain one or more connectors.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnectorDefinition {
     ///
     /// The connector definition version to include when the connector definition is created.          A connector definition version contains a list of          connector property types.
@@ -14,7 +15,7 @@ pub struct CfnConnectorDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<ConnectorDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnConnectorDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnConnectorDefinition {
 ///
 /// In an AWS CloudFormation template, the Connectors 		 property of the ConnectorDefinitionVersion property type contains a list       of Connector property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Connector {
     ///
     /// The Amazon Resource Name (ARN) of the connector.
@@ -147,7 +149,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 }
 
@@ -169,6 +171,7 @@ impl cfn_resources::CfnResource for Connector {
 ///
 /// In an AWS CloudFormation template, ConnectorDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::ConnectorDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectorDefinitionVersion {
     ///
     /// The connectors in this version. Only one instance of a given connector can be added to           a connector definition version at a time.

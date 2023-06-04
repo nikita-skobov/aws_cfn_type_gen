@@ -2,6 +2,7 @@
 ///
 /// You can use a custom domain name to provide a URL that's more intuitive and easier          to recall. For more information about using custom domain names, see Set up             Custom Domain Name for an API in API Gateway in the API             Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomainName {
     ///
     /// The custom domain name for your API in Amazon API Gateway. Uppercase letters are          not supported.
@@ -23,7 +24,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainNameConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name_configurations: Option<Vec<DomainNameConfiguration>>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -95,6 +96,7 @@ impl cfn_resources::CfnResource for CfnDomainName {
 ///
 /// DomainNameConfiguration is a property of the AWS::ApiGatewayV2::DomainName resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainNameConfiguration {
     ///
     /// An AWS-managed certificate that will be used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
@@ -105,7 +107,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -117,7 +119,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -129,7 +131,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -141,7 +143,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ownership_verification_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +155,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -173,6 +175,7 @@ impl cfn_resources::CfnResource for DomainNameConfiguration {
 
 /// If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MutualTlsAuthentication {
     ///
     /// An Amazon S3 URL that specifies the truststore for mutual TLS           authentication, for example, s3://bucket-name/key-name           .           The truststore can contain certificates from public or private certificate           authorities. To update the truststore, upload a new version to S3, and then           update your custom domain name to use the new version. To update the truststore,           you must have permissions to access the S3 object.
@@ -183,7 +186,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truststore_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -195,7 +198,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truststore_version: Option<cfn_resources::StrVal>,
 }
 

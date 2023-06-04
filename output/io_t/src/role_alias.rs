@@ -2,6 +2,7 @@
 ///
 /// Requires permission to access the CreateRoleAlias action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRoleAlias {
     ///
     /// The number of seconds for which the credential is valid.
@@ -12,7 +13,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credential_duration_seconds: Option<i64>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleAlias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -86,6 +87,7 @@ impl cfn_resources::CfnResource for CfnRoleAlias {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

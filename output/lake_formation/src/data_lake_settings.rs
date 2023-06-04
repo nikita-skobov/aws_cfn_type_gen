@@ -1,5 +1,6 @@
 /// The AWS::LakeFormation::DataLakeSettings resource is an AWS Lake Formation resource type that manages the data lake settings for your account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataLakeSettings {
     ///
     /// A list of AWS Lake Formation principals.
@@ -10,7 +11,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Admins")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub admins: Option<Admins>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowExternalDataFiltering")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_external_data_filtering: Option<bool>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizedSessionTagValueList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorized_session_tag_value_list: Option<Vec<String>>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateDatabaseDefaultPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_database_default_permissions: Option<CreateDatabaseDefaultPermissions>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateTableDefaultPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_table_default_permissions: Option<CreateTableDefaultPermissions>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalDataFilteringAllowList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedResourceOwners")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trusted_resource_owners: Option<Vec<String>>,
 }
 
@@ -148,6 +149,7 @@ impl cfn_resources::CfnResource for CfnDataLakeSettings {
 
 /// A list of AWS Lake Formation principals.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Admins {}
 
 impl cfn_resources::CfnResource for Admins {
@@ -172,6 +174,7 @@ impl cfn_resources::CfnResource for Admins {
 ///
 /// For more information, see Changing the default security settings for your data lake.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateDatabaseDefaultPermissions {}
 
 impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
@@ -196,6 +199,7 @@ impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
 ///
 /// For more information, see Changing the Default Security Settings for Your Data Lake.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateTableDefaultPermissions {}
 
 impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
@@ -214,6 +218,7 @@ impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
 
 /// The Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the Lake Formation principal.
@@ -224,7 +229,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -244,6 +249,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 
 /// A list of the account IDs of AWS accounts with Amazon EMR     clusters that are allowed to perform data filtering.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExternalDataFilteringAllowList {}
 
 impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
@@ -262,6 +268,7 @@ impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
 
 /// Permissions granted to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Permissions {}
 
 impl cfn_resources::CfnResource for Permissions {
@@ -280,6 +287,7 @@ impl cfn_resources::CfnResource for Permissions {
 
 /// Permissions granted to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrincipalPermissions {
     ///
     /// The permissions that are granted to the principal.
@@ -290,7 +298,7 @@ pub struct PrincipalPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Permissions>,
 
     ///
@@ -302,7 +310,7 @@ pub struct PrincipalPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principal: Option<DataLakePrincipal>,
 }
 

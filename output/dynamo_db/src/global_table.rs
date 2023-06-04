@@ -2,6 +2,7 @@
 ///
 /// You should be aware of the following behaviors when working with DynamoDB global       tables.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGlobalTable {
     ///
     /// A list of attributes that describe the key schema for the global table and       indexes.
@@ -29,7 +30,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub billing_mode: Option<GlobalTableBillingModeEnum>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalSecondaryIndexes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_secondary_indexes: Option<Vec<GlobalSecondaryIndex>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalSecondaryIndexes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_secondary_indexes: Option<Vec<LocalSecondaryIndex>>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSESpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssespecification: Option<SSESpecification>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_specification: Option<StreamSpecification>,
 
     ///
@@ -125,7 +126,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +138,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeToLiveSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_to_live_specification: Option<TimeToLiveSpecification>,
 
     ///
@@ -149,7 +150,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteProvisionedThroughputSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_provisioned_throughput_settings: Option<WriteProvisionedThroughputSettings>,
 
     #[serde(skip_serializing)]
@@ -257,6 +258,7 @@ impl cfn_resources::CfnResource for CfnGlobalTable {
 
 /// Describes the type and format of extension access. Only one of 				CustomObjectIdentifier or AccessMethodType may be 			provided. Providing both results in InvalidArgsException.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributeDefinition {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-attributedefinition.html#cfn-dynamodb-globaltable-attributedefinition-attributename
     #[serde(rename = "AttributeName")]
@@ -283,6 +285,7 @@ impl cfn_resources::CfnResource for AttributeDefinition {
 
 /// Configures a scalable target and an autoscaling policy for a table or global secondary       index's read or write capacity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityAutoScalingSettings {
     ///
     /// The maximum provisioned capacity units for the global table.
@@ -319,7 +322,7 @@ pub struct CapacityAutoScalingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeedCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub seed_capacity: Option<i64>,
 
     ///
@@ -353,6 +356,7 @@ impl cfn_resources::CfnResource for CapacityAutoScalingSettings {
 
 /// Configures contributor insights settings for a replica or one of its indexes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContributorInsightsSpecification {
     ///
     /// Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled       (false).
@@ -384,6 +388,7 @@ impl cfn_resources::CfnResource for ContributorInsightsSpecification {
 
 /// Allows you to specify a global secondary index for the global table. The index will be       defined on all replicas.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlobalSecondaryIndex {
     ///
     /// The name of the global secondary index. The name must be unique among all other       indexes on this table.
@@ -439,7 +444,7 @@ pub struct GlobalSecondaryIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteProvisionedThroughputSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_provisioned_throughput_settings: Option<WriteProvisionedThroughputSettings>,
 }
 
@@ -500,6 +505,7 @@ impl cfn_resources::CfnResource for GlobalSecondaryIndex {
 ///
 /// A KeySchemaElement must be a scalar, top-level attribute (not a nested       attribute). The data type must be one of String, Number, or Binary. The attribute cannot       be nested within a List or a Map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KeySchema {
     ///
     /// The name of a key attribute.
@@ -589,6 +595,7 @@ impl cfn_resources::CfnResource for KeySchema {
 
 /// The Kinesis Data Streams configuration for the specified global table replica.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisStreamSpecification {
     ///
     /// The ARN for a specific Kinesis data stream.
@@ -644,6 +651,7 @@ impl cfn_resources::CfnResource for KinesisStreamSpecification {
 
 /// Represents the properties of a local secondary index. A local secondary index can only       be created when its parent table is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocalSecondaryIndex {
     ///
     /// The name of the local secondary index. The name must be unique among all other indexes       on this table.
@@ -740,6 +748,7 @@ impl cfn_resources::CfnResource for LocalSecondaryIndex {
 
 /// Represents the settings used to enable point in time recovery.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PointInTimeRecoverySpecification {
     ///
     /// Indicates whether point in time recovery is enabled (true) or disabled (false) on the       table.
@@ -750,7 +759,7 @@ pub struct PointInTimeRecoverySpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoveryEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub point_in_time_recovery_enabled: Option<bool>,
 }
 
@@ -770,6 +779,7 @@ impl cfn_resources::CfnResource for PointInTimeRecoverySpecification {
 
 /// Represents attributes that are copied (projected) from the table into an index. These       are in addition to the primary key attributes and index key attributes, which are       automatically projected.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Projection {
     ///
     /// Represents the non-key attribute names which will be projected into the index.
@@ -784,7 +794,7 @@ pub struct Projection {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NonKeyAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub non_key_attributes: Option<Vec<String>>,
 
     ///
@@ -800,7 +810,7 @@ pub struct Projection {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ProjectionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub projection_type: Option<ProjectionProjectionTypeEnum>,
 }
 
@@ -850,6 +860,7 @@ impl cfn_resources::CfnResource for Projection {
 
 /// Allows you to specify the read capacity settings for a replica table or a replica       global secondary index when the BillingMode is set to         PROVISIONED. You must specify a value for either         ReadCapacityUnits or ReadCapacityAutoScalingSettings, but       not both. You can switch between fixed capacity and auto scaling.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReadProvisionedThroughputSettings {
     ///
     /// Specifies auto scaling settings for the replica table or global secondary       index.
@@ -860,7 +871,7 @@ pub struct ReadProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadCapacityAutoScalingSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_capacity_auto_scaling_settings: Option<CapacityAutoScalingSettings>,
 
     ///
@@ -872,7 +883,7 @@ pub struct ReadProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadCapacityUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_capacity_units: Option<i64>,
 }
 
@@ -896,6 +907,7 @@ impl cfn_resources::CfnResource for ReadProvisionedThroughputSettings {
 
 /// Represents the properties of a global secondary index that can be set on a per-replica       basis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Updates the status for contributor insights for a specific table or index. CloudWatch       Contributor Insights for DynamoDB graphs display the partition key and (if applicable)       sort key of frequently accessed items and frequently throttled items in plaintext. If       you require the use of AWS Key Management Service (KMS) to encrypt this       table’s partition key and sort key data with an AWS managed key or       customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB       for this table.
@@ -906,7 +918,7 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -935,7 +947,7 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadProvisionedThroughputSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_provisioned_throughput_settings: Option<ReadProvisionedThroughputSettings>,
 }
 
@@ -985,6 +997,7 @@ impl cfn_resources::CfnResource for ReplicaGlobalSecondaryIndexSpecification {
 
 /// Allows you to specify a KMS key identifier to be used for server-side encryption. The       key can be specified via ARN, key ID, or alias. The key must be created in the same       region as the replica.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicaSSESpecification {
     ///
     /// The AWS KMS key that should be used for the AWS KMS encryption.       To specify a key, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN.       Note that you should only provide this parameter if the key is different from the       default DynamoDB key alias/aws/dynamodb.
@@ -1014,6 +1027,7 @@ impl cfn_resources::CfnResource for ReplicaSSESpecification {
 
 /// Defines settings specific to a single replica of a global table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicaSpecification {
     ///
     /// The settings used to enable or disable CloudWatch Contributor Insights for the       specified replica. When not specified, defaults to contributor insights disabled for the       replica.
@@ -1024,7 +1038,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -1036,7 +1050,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtectionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection_enabled: Option<bool>,
 
     ///
@@ -1048,7 +1062,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalSecondaryIndexes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub global_secondary_indexes: Option<Vec<ReplicaGlobalSecondaryIndexSpecification>>,
 
     ///
@@ -1060,7 +1074,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamSpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_stream_specification: Option<KinesisStreamSpecification>,
 
     ///
@@ -1072,7 +1086,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoverySpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub point_in_time_recovery_specification: Option<PointInTimeRecoverySpecification>,
 
     ///
@@ -1084,7 +1098,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadProvisionedThroughputSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_provisioned_throughput_settings: Option<ReadProvisionedThroughputSettings>,
 
     ///
@@ -1107,7 +1121,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSESpecification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssespecification: Option<ReplicaSSESpecification>,
 
     ///
@@ -1121,7 +1135,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_class: Option<ReplicaSpecificationTableClassEnum>,
 
     ///
@@ -1135,7 +1149,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -1192,6 +1206,7 @@ impl cfn_resources::CfnResource for ReplicaSpecification {
 
 /// Represents the settings used to enable server-side encryption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SSESpecification {
     ///
     /// Indicates whether server-side encryption is performed using an AWS       managed key or an AWS owned key. If enabled (true), server-side       encryption type is set to KMS and an AWS managed key is used (AWS KMS charges apply). If disabled (false) or not specified,server-side       encryption is set to an AWS owned key. If you choose to use KMS       encryption, you can also use customer managed KMS keys by specifying them in the         ReplicaSpecification.SSESpecification object. You cannot mix AWS managed and customer managed KMS keys.
@@ -1217,7 +1232,7 @@ pub struct SSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssetype: Option<SSESpecificationSSETypeEnum>,
 }
 
@@ -1256,6 +1271,7 @@ impl cfn_resources::CfnResource for SSESpecification {
 ///
 /// You can only modify this value if your AWS::DynamoDB::GlobalTable       contains only one entry in Replicas. You must specify a value for this       property if your AWS::DynamoDB::GlobalTable contains more than one       replica.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamSpecification {
     ///
     /// When an item in the table is modified, StreamViewType determines what       information is written to the stream for this table. Valid values for         StreamViewType are:
@@ -1320,6 +1336,7 @@ impl cfn_resources::CfnResource for StreamSpecification {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1358,6 +1375,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Defines a target tracking scaling policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Indicates whether scale in by the target tracking scaling policy is disabled. The       default value is false.
@@ -1368,7 +1386,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableScaleIn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_scale_in: Option<bool>,
 
     ///
@@ -1380,7 +1398,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleInCooldown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scale_in_cooldown: Option<i64>,
 
     ///
@@ -1392,7 +1410,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleOutCooldown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scale_out_cooldown: Option<i64>,
 
     ///
@@ -1423,6 +1441,7 @@ impl cfn_resources::CfnResource for TargetTrackingScalingPolicyConfiguration {
 
 /// Represents the settings used to enable or disable Time to Live (TTL) for the specified       table. All replicas will have the same time to live configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeToLiveSpecification {
     ///
     /// The name of the attribute used to store the expiration time for items in the       table.
@@ -1439,7 +1458,7 @@ pub struct TimeToLiveSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1492,6 +1511,7 @@ impl cfn_resources::CfnResource for TimeToLiveSpecification {
 
 /// Specifies an auto scaling policy for write capacity. This policy will be applied to       all replicas. This setting must be specified if BillingMode is set to         PROVISIONED.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WriteProvisionedThroughputSettings {
     ///
     /// Specifies auto scaling settings for the replica table or global secondary       index.
@@ -1502,7 +1522,7 @@ pub struct WriteProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteCapacityAutoScalingSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_capacity_auto_scaling_settings: Option<CapacityAutoScalingSettings>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// Specify a SnapshotS3Location to start a simulation from a snapshot instead of from     a schema. When you start a simulation from a snapshot, SimSpace Weaver initializes the entity     data in the State Fabric with data saved in the snapshot, starts the spatial and service apps that     were running when the snapshot was created, and restores the clock to the appropriate tick. Your app     zip files must be in the same location in Amazon S3 as they were in for the original simulation.     You must start any custom apps separately. For more information about snapshots, see     Snapshots     in the AWSSimSpace Weaver User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSimulation {
     ///
     /// The maximum running time of the simulation,    specified as a number of minutes (m or M), hours (h or H), or days (d or D). The simulation    stops when it reaches this limit. The maximum value is 14D, or its equivalent in the    other units. The default value is 14D. A value equivalent to 0 makes the    simulation immediately transition to STOPPING as soon as it reaches STARTED.
@@ -12,7 +13,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_duration: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema_s3_location: Option<S3Location>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_s3_location: Option<S3Location>,
 
     #[serde(skip_serializing)]
@@ -105,6 +106,7 @@ impl cfn_resources::CfnResource for CfnSimulation {
 
 /// A location in Amazon Simple Storage Service (Amazon S3) where SimSpace Weaver stores simulation data, such as your app .zip     files and schema file. For more information about Amazon S3, see the Amazon Simple Storage Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The name of an Amazon S3 bucket. For more information about buckets, see Creating,       configuring, and working with Amazon S3 buckets in the Amazon Simple Storage Service User       Guide.

@@ -2,6 +2,7 @@
 ///
 /// You specify a name, data source connector type and description for your data source. You also specify configuration information for the data source connector.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataSource {
     ///
     /// Configuration information for altering document metadata and content during the document ingestion process.
@@ -12,7 +13,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomDocumentEnrichmentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_document_enrichment_configuration: Option<CustomDocumentEnrichmentConfiguration>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source_configuration: Option<DataSourceConfiguration>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -280,6 +281,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 
 /// Specifies access control list files for the documents in a data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessControlListConfiguration {
     ///
     /// Path to the AWS S3 bucket that contains the access control list       files.
@@ -294,7 +296,7 @@ pub struct AccessControlListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_path: Option<cfn_resources::StrVal>,
 }
 
@@ -336,6 +338,7 @@ impl cfn_resources::CfnResource for AccessControlListConfiguration {
 
 /// Provides information about the column that should be used for filtering the query       response by groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AclConfiguration {
     ///
     /// A list of groups, separated by semi-colons, that filters a query       response based on user context. The document is only returned to       users that are in one of the groups specified in the         UserContext field of the Query operation.
@@ -387,6 +390,7 @@ impl cfn_resources::CfnResource for AclConfiguration {
 
 /// Provides information about how Amazon Kendra should use the columns of a database       in an index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnConfiguration {
     ///
     /// One to five columns that indicate when a document in the database has changed.
@@ -450,7 +454,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleColumnName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_column_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -464,7 +468,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -556,6 +560,7 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
 
 /// Configuration of attachment settings for the Confluence data source. Attachment       settings are optional, if you don't specify settings attachments, Amazon Kendra       won't index them.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -570,7 +575,7 @@ pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentFieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachment_field_mappings: Option<Vec<ConfluenceAttachmentToIndexFieldMapping>>,
 
     ///
@@ -582,7 +587,7 @@ pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_attachments: Option<bool>,
 }
 
@@ -608,6 +613,7 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
 
 /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confuence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceAttachmentToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -639,7 +645,7 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -773,6 +779,7 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
 
 /// Configuration of blog settings for the Confluence data source. Blogs are always       indexed unless filtered from the index by the ExclusionPatterns or         InclusionPatterns fields in the ConfluenceConfiguration       object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceBlogConfiguration {
     ///
     /// Maps attributes or field names of Confluence blogs to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -787,7 +794,7 @@ pub struct ConfluenceBlogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlogFieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blog_field_mappings: Option<Vec<ConfluenceBlogToIndexFieldMapping>>,
 }
 
@@ -816,6 +823,7 @@ impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
 
 /// Maps attributes or field names of Confluence blog to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceBlogToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -845,7 +853,7 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -971,6 +979,7 @@ impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
 
 /// Provides the configuration information to connect to Confluence as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceConfiguration {
     ///
     /// Configuration information for indexing attachments to Confluence blogs and       pages.
@@ -981,7 +990,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachment_configuration: Option<ConfluenceAttachmentConfiguration>,
 
     ///
@@ -993,7 +1002,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blog_configuration: Option<ConfluenceBlogConfiguration>,
 
     ///
@@ -1007,7 +1016,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -1021,7 +1030,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -1033,7 +1042,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub page_configuration: Option<ConfluencePageConfiguration>,
 
     ///
@@ -1081,7 +1090,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpaceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub space_configuration: Option<ConfluenceSpaceConfiguration>,
 
     ///
@@ -1106,7 +1115,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -1225,6 +1234,7 @@ impl cfn_resources::CfnResource for ConfluenceConfiguration {
 
 /// Configuration of the page settings for the Confluence data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluencePageConfiguration {
     ///
     /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -1239,7 +1249,7 @@ pub struct ConfluencePageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageFieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub page_field_mappings: Option<Vec<ConfluencePageToIndexFieldMapping>>,
 }
 
@@ -1268,6 +1278,7 @@ impl cfn_resources::CfnResource for ConfluencePageConfiguration {
 
 /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluencePageToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -1297,7 +1308,7 @@ pub struct ConfluencePageToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -1435,6 +1446,7 @@ impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
 
 /// Configuration information for indexing Confluence spaces.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceSpaceConfiguration {
     ///
     /// TRUE to index archived spaces.
@@ -1445,7 +1457,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlArchivedSpaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_archived_spaces: Option<bool>,
 
     ///
@@ -1457,7 +1469,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlPersonalSpaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_personal_spaces: Option<bool>,
 
     ///
@@ -1469,7 +1481,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeSpaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_spaces: Option<Vec<String>>,
 
     ///
@@ -1481,7 +1493,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSpaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_spaces: Option<Vec<String>>,
 
     ///
@@ -1497,7 +1509,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpaceFieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub space_field_mappings: Option<Vec<ConfluenceSpaceToIndexFieldMapping>>,
 }
 
@@ -1526,6 +1538,7 @@ impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
 
 /// Maps attributes or field names of Confluence spaces to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfluenceSpaceToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -1555,7 +1568,7 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -1661,6 +1674,7 @@ impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
 
 /// Provides the configuration information that's required to connect to a       database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionConfiguration {
     ///
     /// The name of the host for the database. Can be either a string       (host.subdomain.domain.tld) or an IPv4 or IPv6 address.
@@ -1868,6 +1882,7 @@ impl cfn_resources::CfnResource for ConnectionConfiguration {
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Configuration information to alter document attributes or metadata fields and content       when ingesting documents into Amazon Kendra.
@@ -1880,7 +1895,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InlineConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inline_configurations: Option<Vec<InlineCustomDocumentEnrichmentConfiguration>>,
 
     ///
@@ -1892,7 +1907,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostExtractionHookConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_extraction_hook_configuration: Option<HookConfiguration>,
 
     ///
@@ -1904,7 +1919,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreExtractionHookConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_extraction_hook_configuration: Option<HookConfiguration>,
 
     ///
@@ -1922,7 +1937,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1978,6 +1993,7 @@ impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
 
 /// Provides the configuration information for an Amazon Kendra data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceConfiguration {
     ///
     /// Provides the configuration information to connect to Confluence as your data    source.
@@ -1988,7 +2004,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfluenceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub confluence_configuration: Option<ConfluenceConfiguration>,
 
     ///
@@ -2000,7 +2016,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_configuration: Option<DatabaseConfiguration>,
 
     ///
@@ -2012,7 +2028,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleDriveConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub google_drive_configuration: Option<GoogleDriveConfiguration>,
 
     ///
@@ -2024,7 +2040,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub one_drive_configuration: Option<OneDriveConfiguration>,
 
     ///
@@ -2036,7 +2052,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_configuration: Option<S3DataSourceConfiguration>,
 
     ///
@@ -2048,7 +2064,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SalesforceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub salesforce_configuration: Option<SalesforceConfiguration>,
 
     ///
@@ -2060,7 +2076,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNowConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_now_configuration: Option<ServiceNowConfiguration>,
 
     ///
@@ -2072,7 +2088,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharePointConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub share_point_configuration: Option<SharePointConfiguration>,
 
     ///
@@ -2084,7 +2100,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebCrawlerConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub web_crawler_configuration: Option<WebCrawlerConfiguration>,
 
     ///
@@ -2096,7 +2112,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkDocsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub work_docs_configuration: Option<WorkDocsConfiguration>,
 }
 
@@ -2156,6 +2172,7 @@ impl cfn_resources::CfnResource for DataSourceConfiguration {
 
 /// Maps a column or attribute in the data source to an index field.       You must first create the fields in the index using the UpdateIndex operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceToIndexFieldMapping {
     ///
     /// The name of the column or attribute in the data source.
@@ -2189,7 +2206,7 @@ pub struct DataSourceToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -2289,6 +2306,7 @@ impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
 
 /// Provides the configuration information to connect to an Amazon VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceVpcConfiguration {
     ///
     /// A list of identifiers of security groups within your Amazon VPC. The security groups    should enable Amazon Kendra to connect to the data source.
@@ -2351,6 +2369,7 @@ impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
 
 /// Provides the configuration information to connect to a index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseConfiguration {
     ///
     /// Information about the database column that provides information for user context       filtering.
@@ -2361,7 +2380,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acl_configuration: Option<AclConfiguration>,
 
     ///
@@ -2408,7 +2427,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sql_configuration: Option<SqlConfiguration>,
 
     ///
@@ -2420,7 +2439,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -2485,6 +2504,7 @@ impl cfn_resources::CfnResource for DatabaseConfiguration {
 ///
 /// Amazon Kendra cannot create a target field if it has not already been created as       an index field. After you create your index field, you can create a document metadata       field using DocumentAttributeTarget. Amazon Kendra then will map your       newly created metadata field to your index field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentAttributeCondition {
     ///
     /// The identifier of the document attribute used for the condition.
@@ -2518,7 +2538,7 @@ pub struct DocumentAttributeCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionOnValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition_on_value: Option<DocumentAttributeValue>,
 
     ///
@@ -2632,6 +2652,7 @@ impl cfn_resources::CfnResource for DocumentAttributeCondition {
 ///
 /// You can also use this with DocumentAttributeCondition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentAttributeTarget {
     ///
     /// The identifier of the target document attribute or metadata field.
@@ -2663,7 +2684,7 @@ pub struct DocumentAttributeTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDocumentAttributeValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_document_attribute_value: Option<DocumentAttributeValue>,
 
     ///
@@ -2675,7 +2696,7 @@ pub struct DocumentAttributeTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDocumentAttributeValueDeletion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_document_attribute_value_deletion: Option<bool>,
 }
 
@@ -2715,6 +2736,7 @@ impl cfn_resources::CfnResource for DocumentAttributeTarget {
 
 /// The value of a document attribute. You can only provide one value for a document       attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentAttributeValue {
     ///
     /// A date expressed as an ISO 8601 string.
@@ -2727,7 +2749,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -2739,7 +2761,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LongValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub long_value: Option<i64>,
 
     ///
@@ -2751,7 +2773,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringListValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_list_value: Option<Vec<String>>,
 
     ///
@@ -2767,7 +2789,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_value: Option<cfn_resources::StrVal>,
 }
 
@@ -2809,6 +2831,7 @@ impl cfn_resources::CfnResource for DocumentAttributeValue {
 
 /// Document metadata files that contain information such as the document access control       information, source URI, document author, and custom attributes. Each metadata file       contains metadata about a single document.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentsMetadataConfiguration {
     ///
     /// A prefix used to filter metadata configuration files in the AWS S3       bucket. The S3 bucket might contain multiple metadata files. Use S3Prefix       to include only the desired metadata files.
@@ -2823,7 +2846,7 @@ pub struct DocumentsMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -2865,6 +2888,7 @@ impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
 
 /// Provides the configuration information to connect to Google Drive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GoogleDriveConfiguration {
     ///
     /// A list of MIME types to exclude from the index. All documents matching the specified       MIME type are excluded.
@@ -2879,7 +2903,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMimeTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_mime_types: Option<Vec<String>>,
 
     ///
@@ -2893,7 +2917,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeSharedDrives")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_shared_drives: Option<Vec<String>>,
 
     ///
@@ -2907,7 +2931,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeUserAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_user_accounts: Option<Vec<String>>,
 
     ///
@@ -2921,7 +2945,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -2935,7 +2959,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -2949,7 +2973,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3058,6 +3082,7 @@ impl cfn_resources::CfnResource for GoogleDriveConfiguration {
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HookConfiguration {
     ///
     /// The condition used for when a Lambda function should be invoked.
@@ -3070,7 +3095,7 @@ pub struct HookConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invocation_condition: Option<DocumentAttributeCondition>,
 
     ///
@@ -3174,6 +3199,7 @@ impl cfn_resources::CfnResource for HookConfiguration {
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Configuration of the condition used for the target document attribute or metadata       field when ingesting documents into Amazon Kendra.
@@ -3184,7 +3210,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition: Option<DocumentAttributeCondition>,
 
     ///
@@ -3196,7 +3222,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentContentDeletion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_content_deletion: Option<bool>,
 
     ///
@@ -3208,7 +3234,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<DocumentAttributeTarget>,
 }
 
@@ -3234,6 +3260,7 @@ impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration 
 
 /// Provides the configuration information to connect to OneDrive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OneDriveConfiguration {
     ///
     /// TRUE to disable local groups information.
@@ -3244,7 +3271,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableLocalGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_local_groups: Option<bool>,
 
     ///
@@ -3260,7 +3287,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3274,7 +3301,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -3290,7 +3317,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3428,6 +3455,7 @@ impl cfn_resources::CfnResource for OneDriveConfiguration {
 
 /// User accounts whose documents should be indexed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OneDriveUsers {
     ///
     /// A list of users whose documents should be indexed. Specify the user names in email       format, for example, username@tenantdomain. If you need to index the       documents of more than 100 users, use the OneDriveUserS3Path field to       specify the location of a file containing a list of users.
@@ -3440,7 +3468,7 @@ pub struct OneDriveUsers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveUserList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub one_drive_user_list: Option<Vec<String>>,
 
     ///
@@ -3452,7 +3480,7 @@ pub struct OneDriveUsers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveUserS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub one_drive_user_s3_path: Option<S3Path>,
 }
 
@@ -3485,6 +3513,7 @@ impl cfn_resources::CfnResource for OneDriveUsers {
 
 /// Provides the configuration information for a web proxy to connect to website       hosts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProxyConfiguration {
     ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
@@ -3503,7 +3532,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials: Option<cfn_resources::StrVal>,
 
     ///
@@ -3621,6 +3650,7 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
 
 /// Provides the configuration information to connect to an Amazon S3       bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3DataSourceConfiguration {
     ///
     /// Provides the path to the S3 bucket that contains the user context filtering files for       the data source. For the format of the file, see Access control for S3 data       sources.
@@ -3631,7 +3661,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlListConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_control_list_configuration: Option<AccessControlListConfiguration>,
 
     ///
@@ -3660,7 +3690,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentsMetadataConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub documents_metadata_configuration: Option<DocumentsMetadataConfiguration>,
 
     ///
@@ -3678,7 +3708,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3696,7 +3726,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3710,7 +3740,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPrefixes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_prefixes: Option<Vec<String>>,
 }
 
@@ -3787,6 +3817,7 @@ impl cfn_resources::CfnResource for S3DataSourceConfiguration {
 
 /// Information required to find a specific file in an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Path {
     ///
     /// The name of the S3 bucket that contains the file.
@@ -3881,6 +3912,7 @@ impl cfn_resources::CfnResource for S3Path {
 
 /// The configuration information for syncing a Salesforce chatter feed. The contents of       the object comes from the Salesforce FeedItem table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceChatterFeedConfiguration {
     ///
     /// The name of the column in the Salesforce FeedItem table that contains the content to       index. Typically this is the Body column.
@@ -3914,7 +3946,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3928,7 +3960,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -3942,7 +3974,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFilterTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_filter_types: Option<Vec<String>>,
 }
 
@@ -4015,6 +4047,7 @@ impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
 
 /// Provides the configuration information to connect to Salesforce as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceConfiguration {
     ///
     /// Configuration information for Salesforce chatter feeds.
@@ -4025,7 +4058,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatterFeedConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chatter_feed_configuration: Option<SalesforceChatterFeedConfiguration>,
 
     ///
@@ -4037,7 +4070,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -4053,7 +4086,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -4069,7 +4102,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -4081,7 +4114,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KnowledgeArticleConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub knowledge_article_configuration: Option<SalesforceKnowledgeArticleConfiguration>,
 
     ///
@@ -4129,7 +4162,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectAttachmentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub standard_object_attachment_configuration:
         Option<SalesforceStandardObjectAttachmentConfiguration>,
 
@@ -4144,7 +4177,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub standard_object_configurations: Option<Vec<SalesforceStandardObjectConfiguration>>,
 }
 
@@ -4238,6 +4271,7 @@ impl cfn_resources::CfnResource for SalesforceConfiguration {
 
 /// Provides the configuration information for indexing Salesforce custom articles.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// The name of the field in the custom knowledge article that contains the document data       to index.
@@ -4271,7 +4305,7 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4285,7 +4319,7 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -4388,6 +4422,7 @@ impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfigur
 
 /// Provides the configuration information for the knowledge article types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles and the       standard fields of knowledge articles, or the custom fields of custom knowledge       articles, but not both
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Configuration information for custom Salesforce knowledge articles.
@@ -4400,7 +4435,7 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomKnowledgeArticleTypeConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_knowledge_article_type_configurations:
         Option<Vec<SalesforceCustomKnowledgeArticleTypeConfiguration>>,
 
@@ -4426,7 +4461,7 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardKnowledgeArticleTypeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub standard_knowledge_article_type_configuration:
         Option<SalesforceStandardKnowledgeArticleTypeConfiguration>,
 }
@@ -4466,6 +4501,7 @@ impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
 
 /// Provides the configuration information for standard Salesforce knowledge       articles.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// The name of the field that contains the document data to index.
@@ -4499,7 +4535,7 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4513,7 +4549,7 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -4577,6 +4613,7 @@ impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfig
 
 /// Provides the configuration information for processing attachments to Salesforce       standard objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// The name of the field used for the document title.
@@ -4593,7 +4630,7 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4607,7 +4644,7 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -4652,6 +4689,7 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfigurat
 
 /// Specifies configuration information for indexing a single standard       object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SalesforceStandardObjectConfiguration {
     ///
     /// The name of the field in the standard object table that contains the document       contents.
@@ -4685,7 +4723,7 @@ pub struct SalesforceStandardObjectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4699,7 +4737,7 @@ pub struct SalesforceStandardObjectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -4853,6 +4891,7 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
 
 /// Provides the configuration information to connect to ServiceNow as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowConfiguration {
     ///
     /// The type of authentication used to connect to the ServiceNow instance. If you choose         HTTP_BASIC, Amazon Kendra is authenticated using the user name and       password provided in the AWS Secrets Manager secret in the SecretArn       field. If you choose OAUTH2, Amazon Kendra is authenticated using the       credentials of client ID, client secret, user name and password.
@@ -4867,7 +4906,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_type: Option<ServiceNowConfigurationAuthenticationTypeEnum>,
 
     ///
@@ -4896,7 +4935,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KnowledgeArticleConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub knowledge_article_configuration: Option<ServiceNowKnowledgeArticleConfiguration>,
 
     ///
@@ -4925,7 +4964,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceCatalogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_catalog_configuration: Option<ServiceNowServiceCatalogConfiguration>,
 
     ///
@@ -5044,6 +5083,7 @@ impl cfn_resources::CfnResource for ServiceNowConfiguration {
 
 /// Provides the configuration information for crawling knowledge articles in the       ServiceNow site.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// TRUE to index attachments to knowledge articles.
@@ -5054,7 +5094,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5089,7 +5129,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5105,7 +5145,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -5119,7 +5159,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5139,7 +5179,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterQuery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_query: Option<cfn_resources::StrVal>,
 
     ///
@@ -5155,7 +5195,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 }
 
@@ -5253,6 +5293,7 @@ impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
 
 /// Provides the configuration information for crawling service catalog items in the       ServiceNow site
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// TRUE to index attachments to service catalog items.
@@ -5263,7 +5304,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5298,7 +5339,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5314,7 +5355,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -5328,7 +5369,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5344,7 +5385,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 }
 
@@ -5420,6 +5461,7 @@ impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
 
 /// Provides the configuration information to connect to Microsoft SharePoint as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SharePointConfiguration {
     ///
     /// TRUE to index document attachments.
@@ -5430,7 +5472,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5442,7 +5484,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableLocalGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_local_groups: Option<bool>,
 
     ///
@@ -5460,7 +5502,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5476,7 +5518,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -5490,7 +5532,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5506,7 +5548,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -5548,7 +5590,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCertificateS3Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_certificate_s3_path: Option<S3Path>,
 
     ///
@@ -5573,7 +5615,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_change_log: Option<bool>,
 
     /// Provides information for connecting to an Amazon VPC.
@@ -5584,7 +5626,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -5711,6 +5753,7 @@ impl cfn_resources::CfnResource for SharePointConfiguration {
 
 /// Provides information that configures Amazon Kendra to use a SQL       database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SqlConfiguration {
     ///
     /// Determines whether Amazon Kendra encloses SQL identifiers for       tables and column names in double quotes (") when making a database       query. You can set the value to DOUBLE_QUOTES or         NONE.
@@ -5727,7 +5770,7 @@ pub struct SqlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryIdentifiersEnclosingOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_identifiers_enclosing_option: Option<cfn_resources::StrVal>,
 }
 
@@ -5753,6 +5796,7 @@ impl cfn_resources::CfnResource for SqlConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -5791,6 +5835,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Provides the configuration information to connect to websites that require 		  user authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerAuthenticationConfiguration {
     ///
     /// The list of configuration information that's required to connect to and crawl a       website host using basic authentication credentials.
@@ -5805,7 +5850,7 @@ pub struct WebCrawlerAuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic_authentication: Option<Vec<WebCrawlerBasicAuthentication>>,
 }
 
@@ -5834,6 +5879,7 @@ impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
 
 /// Provides the configuration information to connect to websites that require basic user       authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerBasicAuthentication {
     ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
@@ -5969,6 +6015,7 @@ impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
 
 /// Provides the configuration information required for Amazon Kendra       Web Crawler.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerConfiguration {
     ///
     /// Configuration information required to connect to websites using authentication.
@@ -5983,7 +6030,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_configuration: Option<WebCrawlerAuthenticationConfiguration>,
 
     ///
@@ -6003,7 +6050,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlDepth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_depth: Option<i64>,
 
     ///
@@ -6019,7 +6066,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxContentSizePerPageInMegaBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_content_size_per_page_in_mega_bytes: Option<f64>,
 
     ///
@@ -6039,7 +6086,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLinksPerPage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_links_per_page: Option<i64>,
 
     ///
@@ -6059,7 +6106,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUrlsPerMinuteCrawlRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_urls_per_minute_crawl_rate: Option<i64>,
 
     ///
@@ -6075,7 +6122,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProxyConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub proxy_configuration: Option<ProxyConfiguration>,
 
     ///
@@ -6089,7 +6136,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UrlExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url_exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6103,7 +6150,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UrlInclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url_inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6212,6 +6259,7 @@ impl cfn_resources::CfnResource for WebCrawlerConfiguration {
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerSeedUrlConfiguration {
     ///
     /// The list of seed or starting point URLs of the websites you want to crawl.
@@ -6243,7 +6291,7 @@ pub struct WebCrawlerSeedUrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebCrawlerMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub web_crawler_mode: Option<WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum>,
 }
 
@@ -6295,6 +6343,7 @@ impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerSiteMapsConfiguration {
     ///
     /// The list of sitemap URLs of the websites you want to crawl.
@@ -6343,6 +6392,7 @@ impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra       web crawler to index your own webpages, or webpages that you have       authorization to index.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WebCrawlerUrls {
     ///
     /// Configuration of the seed or starting point URLs of the websites you want to       crawl.
@@ -6357,7 +6407,7 @@ pub struct WebCrawlerUrls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeedUrlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub seed_url_configuration: Option<WebCrawlerSeedUrlConfiguration>,
 
     ///
@@ -6371,7 +6421,7 @@ pub struct WebCrawlerUrls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SiteMapsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub site_maps_configuration: Option<WebCrawlerSiteMapsConfiguration>,
 }
 
@@ -6401,6 +6451,7 @@ impl cfn_resources::CfnResource for WebCrawlerUrls {
 ///
 /// Amazon WorkDocs connector is available in Oregon, North Virginia, Sydney, Singapore and Ireland       regions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkDocsConfiguration {
     ///
     /// TRUE to include comments on documents       in your index. Including comments in your index means each comment       is a document that can be searched on.
@@ -6413,7 +6464,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlComments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crawl_comments: Option<bool>,
 
     ///
@@ -6427,7 +6478,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6441,7 +6492,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -6455,7 +6506,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6486,7 +6537,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_change_log: Option<bool>,
 }
 

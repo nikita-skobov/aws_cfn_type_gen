@@ -1,5 +1,6 @@
 /// Specifies an ingress authorization rule to add to a Client VPN endpoint. Ingress     authorization rules act as firewall rules that grant access to networks. You must configure     ingress authorization rules to enable clients to access resources in AWS     or on-premises networks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClientVpnAuthorizationRule {
     ///
     /// The ID of the group to grant access to, for example, the Active Directory group or identity provider (IdP) group. Required if AuthorizeAllGroups is false or not specified.
@@ -10,7 +11,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthorizeAllGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorize_all_groups: Option<bool>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

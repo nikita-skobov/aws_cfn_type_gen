@@ -1,5 +1,6 @@
 /// Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataSet {
     ///
     /// The AWS account ID.
@@ -16,7 +17,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_groups: Option<Vec<ColumnGroup>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnLevelPermissionRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_level_permission_rules: Option<Vec<ColumnLevelPermissionRule>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_set_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetUsageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_set_usage_configuration: Option<DataSetUsageConfiguration>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldFolders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_folders: Option<std::collections::HashMap<String, FieldFolder>>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub import_mode: Option<DataSetImportModeEnum>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestionWaitPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingestion_wait_policy: Option<IngestionWaitPolicy>,
 
     ///
@@ -116,7 +117,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalTableMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logical_table_map: Option<std::collections::HashMap<String, LogicalTable>>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhysicalTableMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub physical_table_map: Option<std::collections::HashMap<String, PhysicalTable>>,
 
     ///
@@ -170,7 +171,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowLevelPermissionDataSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_level_permission_data_set: Option<RowLevelPermissionDataSet>,
 
     ///
@@ -184,7 +185,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -337,6 +338,7 @@ impl cfn_resources::CfnResource for CfnDataSet {
 
 /// A calculated column for a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CalculatedColumn {
     ///
     /// A unique ID to identify a calculated column. During a dataset update, if the column ID       of a calculated column matches that of an existing calculated column, Amazon QuickSight       preserves the existing calculated column.
@@ -466,6 +468,7 @@ impl cfn_resources::CfnResource for CalculatedColumn {
 
 /// A transform operation that casts a column to a different type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CastColumnTypeOperation {
     ///
     /// Column name.
@@ -493,7 +496,7 @@ pub struct CastColumnTypeOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<cfn_resources::StrVal>,
 
     ///
@@ -584,6 +587,7 @@ impl cfn_resources::CfnResource for CastColumnTypeOperation {
 
 /// Metadata that contains a description for a column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnDescription {
     ///
     /// The text of a description for a column.
@@ -598,7 +602,7 @@ pub struct ColumnDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text: Option<cfn_resources::StrVal>,
 }
 
@@ -640,6 +644,7 @@ impl cfn_resources::CfnResource for ColumnDescription {
 
 /// Groupings of columns that work together in certain Amazon QuickSight features. This is       a variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnGroup {
     ///
     /// Geospatial column group that denotes a hierarchy.
@@ -650,7 +655,7 @@ pub struct ColumnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoSpatialColumnGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geo_spatial_column_group: Option<GeoSpatialColumnGroup>,
 }
 
@@ -674,6 +679,7 @@ impl cfn_resources::CfnResource for ColumnGroup {
 
 /// A rule defined to grant access on one or more restricted columns. Each dataset can have multiple rules. To  create a restricted column, you add it to one or more rules. Each rule must contain at least one column and at least  one user or group. To be able to see a restricted column, a user or group needs to be added to a rule for that  column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnLevelPermissionRule {
     ///
     /// An array of column names.
@@ -684,7 +690,7 @@ pub struct ColumnLevelPermissionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -696,7 +702,7 @@ pub struct ColumnLevelPermissionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principals: Option<Vec<String>>,
 }
 
@@ -716,6 +722,7 @@ impl cfn_resources::CfnResource for ColumnLevelPermissionRule {
 
 /// A tag for a column in a               TagColumnOperation             structure. This is a       variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnTag {
     ///
     /// A description for a column.
@@ -726,7 +733,7 @@ pub struct ColumnTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_description: Option<ColumnDescription>,
 
     ///
@@ -740,7 +747,7 @@ pub struct ColumnTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnGeographicRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_geographic_role: Option<ColumnTagColumnGeographicRoleEnum>,
 }
 
@@ -801,6 +808,7 @@ impl cfn_resources::CfnResource for ColumnTag {
 
 /// A transform operation that creates calculated columns. Columns created in one such       operation form a lexical closure.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateColumnsOperation {
     ///
     /// Calculated columns to create.
@@ -841,6 +849,7 @@ impl cfn_resources::CfnResource for CreateColumnsOperation {
 
 /// A physical table type built from the results of the custom SQL query.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomSql {
     ///
     /// The column schema from the SQL query result set.
@@ -966,6 +975,7 @@ impl cfn_resources::CfnResource for CustomSql {
 
 /// The usage configuration to apply to child datasets that reference this dataset as a source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSetUsageConfiguration {
     ///
     /// An option that controls whether a child dataset of a direct query can use this dataset as a source.
@@ -976,7 +986,7 @@ pub struct DataSetUsageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableUseAsDirectQuerySource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_use_as_direct_query_source: Option<bool>,
 
     ///
@@ -988,7 +998,7 @@ pub struct DataSetUsageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableUseAsImportedSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_use_as_imported_source: Option<bool>,
 }
 
@@ -1008,6 +1018,7 @@ impl cfn_resources::CfnResource for DataSetUsageConfiguration {
 
 /// A FieldFolder element is a folder that contains fields and nested subfolders.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldFolder {
     ///
     /// A folder has a list of columns. A column can only be in one folder.
@@ -1018,7 +1029,7 @@ pub struct FieldFolder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<String>>,
 
     ///
@@ -1030,7 +1041,7 @@ pub struct FieldFolder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 }
 
@@ -1050,6 +1061,7 @@ impl cfn_resources::CfnResource for FieldFolder {
 
 /// A transform operation that filters rows based on a condition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterOperation {
     ///
     /// An expression that must evaluate to a Boolean value. Rows for which the expression       evaluates to true are kept in the dataset.
@@ -1102,6 +1114,7 @@ impl cfn_resources::CfnResource for FilterOperation {
 
 /// Geospatial column group that denotes a hierarchy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeoSpatialColumnGroup {
     ///
     /// Columns in this hierarchy.
@@ -1127,7 +1140,7 @@ pub struct GeoSpatialColumnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub country_code: Option<GeoSpatialColumnGroupCountryCodeEnum>,
 
     ///
@@ -1206,6 +1219,7 @@ impl cfn_resources::CfnResource for GeoSpatialColumnGroup {
 
 /// The wait policy to use when creating or updating a Dataset. The default is to wait for SPICE ingestion to finish  with timeout of 36 hours.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IngestionWaitPolicy {
     ///
     /// The maximum time (in hours) to wait for Ingestion to complete. Default timeout is 36 hours. Applicable only when  DataSetImportMode mode is set to SPICE and WaitForSpiceIngestion is set to true.
@@ -1216,7 +1230,7 @@ pub struct IngestionWaitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestionWaitTimeInHours")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingestion_wait_time_in_hours: Option<f64>,
 
     ///
@@ -1228,7 +1242,7 @@ pub struct IngestionWaitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitForSpiceIngestion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wait_for_spice_ingestion: Option<bool>,
 }
 
@@ -1248,6 +1262,7 @@ impl cfn_resources::CfnResource for IngestionWaitPolicy {
 
 /// Metadata for a column that is used as the input of a transform operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputColumn {
     ///
     /// The name of this column in the underlying data source.
@@ -1353,6 +1368,7 @@ impl cfn_resources::CfnResource for InputColumn {
 
 /// The instructions associated with a join.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JoinInstruction {
     ///
     /// Join key properties of the left operand.
@@ -1363,7 +1379,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftJoinKeyProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub left_join_key_properties: Option<JoinKeyProperties>,
 
     ///
@@ -1401,7 +1417,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightJoinKeyProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub right_join_key_properties: Option<JoinKeyProperties>,
 
     ///
@@ -1500,6 +1516,7 @@ impl cfn_resources::CfnResource for JoinInstruction {
 
 /// Properties associated with the columns participating in a join.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JoinKeyProperties {
     ///
     /// A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used  by Amazon QuickSight to optimize query performance.
@@ -1510,7 +1527,7 @@ pub struct JoinKeyProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniqueKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unique_key: Option<bool>,
 }
 
@@ -1530,6 +1547,7 @@ impl cfn_resources::CfnResource for JoinKeyProperties {
 
 /// A logical table is a unit that joins and that data       transformations operate on. A logical table has a source, which can be either a physical       table or result of a join. When a logical table points to a physical table, the logical       table acts as a mutable copy of that physical table through transform operations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogicalTable {
     ///
     /// A display name for the logical table.
@@ -1557,7 +1575,7 @@ pub struct LogicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransforms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_transforms: Option<Vec<TransformOperation>>,
 
     ///
@@ -1621,6 +1639,7 @@ impl cfn_resources::CfnResource for LogicalTable {
 
 /// Information about the source of a logical table. This is a variant type structure. For       this structure to be valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogicalTableSource {
     ///
     /// The Amazon Resource Number (ARN) of the parent dataset.
@@ -1631,7 +1650,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_set_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1643,7 +1662,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinInstruction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub join_instruction: Option<JoinInstruction>,
 
     ///
@@ -1661,7 +1680,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhysicalTableId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub physical_table_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1707,6 +1726,7 @@ impl cfn_resources::CfnResource for LogicalTableSource {
 
 /// Output column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutputColumn {
     ///
     /// A description for a column.
@@ -1721,7 +1741,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -1737,7 +1757,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1751,7 +1771,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<OutputColumnTypeEnum>,
 }
 
@@ -1840,6 +1860,7 @@ impl cfn_resources::CfnResource for OutputColumn {
 
 /// A view of a data source that contains information about the shape of the data in the       underlying source. This is a variant type structure. For this structure to be valid,       only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PhysicalTable {
     ///
     /// A physical table type built from the results of the custom SQL query.
@@ -1850,7 +1871,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSql")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_sql: Option<CustomSql>,
 
     ///
@@ -1862,7 +1883,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relational_table: Option<RelationalTable>,
 
     ///
@@ -1874,7 +1895,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Source")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_source: Option<S3Source>,
 }
 
@@ -1906,6 +1927,7 @@ impl cfn_resources::CfnResource for PhysicalTable {
 
 /// A transform operation that projects columns. Operations that come after a projection       can only refer to projected columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProjectOperation {
     ///
     /// Projected columns.
@@ -1946,6 +1968,7 @@ impl cfn_resources::CfnResource for ProjectOperation {
 
 /// A physical table type for relational data sources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RelationalTable {
     /// Property description not available.
     ///
@@ -1955,7 +1978,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Catalog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog: Option<cfn_resources::StrVal>,
 
     ///
@@ -2008,7 +2031,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema: Option<cfn_resources::StrVal>,
 }
 
@@ -2070,6 +2093,7 @@ impl cfn_resources::CfnResource for RelationalTable {
 
 /// A transform operation that renames a column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RenameColumnOperation {
     ///
     /// The name of the column to be renamed.
@@ -2162,6 +2186,7 @@ impl cfn_resources::CfnResource for RenameColumnOperation {
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permisions on
@@ -2206,6 +2231,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 ///
 /// The option to deny permissions by setting PermissionPolicy to DENY_ACCESS is       not supported for new RLS datasets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RowLevelPermissionDataSet {
     ///
     /// The Amazon Resource Name (ARN) of the dataset that contains permissions for RLS.
@@ -2231,7 +2257,7 @@ pub struct RowLevelPermissionDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_version: Option<RowLevelPermissionDataSetFormatVersionEnum>,
 
     ///
@@ -2247,7 +2273,7 @@ pub struct RowLevelPermissionDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -2325,6 +2351,7 @@ impl cfn_resources::CfnResource for RowLevelPermissionDataSet {
 
 /// A physical table type for an S3 data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Source {
     ///
     /// The Amazon Resource Name (ARN) for the data source.
@@ -2361,7 +2388,7 @@ pub struct S3Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UploadSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upload_settings: Option<UploadSettings>,
 }
 
@@ -2400,6 +2427,7 @@ impl cfn_resources::CfnResource for S3Source {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2438,6 +2466,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// A transform operation that tags a column with additional information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagColumnOperation {
     ///
     /// The column that this operation acts on.
@@ -2517,6 +2546,7 @@ impl cfn_resources::CfnResource for TagColumnOperation {
 
 /// A data transformation on a logical table. This is a variant type structure. For this       structure to be valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformOperation {
     ///
     /// A transform operation that casts a column to a different type.
@@ -2527,7 +2557,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CastColumnTypeOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cast_column_type_operation: Option<CastColumnTypeOperation>,
 
     ///
@@ -2539,7 +2569,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateColumnsOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_columns_operation: Option<CreateColumnsOperation>,
 
     ///
@@ -2551,7 +2581,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_operation: Option<FilterOperation>,
 
     ///
@@ -2563,7 +2593,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project_operation: Option<ProjectOperation>,
 
     ///
@@ -2575,7 +2605,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenameColumnOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rename_column_operation: Option<RenameColumnOperation>,
 
     ///
@@ -2587,7 +2617,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagColumnOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_column_operation: Option<TagColumnOperation>,
 }
 
@@ -2631,6 +2661,7 @@ impl cfn_resources::CfnResource for TransformOperation {
 
 /// Information about the format for a source file or files.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UploadSettings {
     ///
     /// Whether the file has a header row, or the files each have a header row.
@@ -2641,7 +2672,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contains_header: Option<bool>,
 
     ///
@@ -2657,7 +2688,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -2671,7 +2702,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<UploadSettingsFormatEnum>,
 
     ///
@@ -2685,7 +2716,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartFromRow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_from_row: Option<f64>,
 
     ///
@@ -2699,7 +2730,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextQualifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_qualifier: Option<UploadSettingsTextQualifierEnum>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::Cognito::UserPool resource creates an Amazon Cognito user pool. For    more information on working with Amazon Cognito user pools, see Amazon Cognito User     Pools and CreateUserPool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPool {
     ///
     /// Use this setting to define which verified available method a user can use to recover their    password when they call ForgotPassword. It allows you to define a preferred    method when a user has more than one method available. With this setting, SMS does not qualify    for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence    of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS    is preferred over email.
@@ -10,7 +11,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountRecoverySetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_recovery_setting: Option<AccountRecoverySetting>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminCreateUserConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub admin_create_user_config: Option<AdminCreateUserConfig>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AliasAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alias_attributes: Option<Vec<String>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoVerifiedAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_verified_attributes: Option<Vec<String>>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deletion_protection: Option<UserPoolDeletionProtectionEnum>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_configuration: Option<DeviceConfiguration>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_configuration: Option<EmailConfiguration>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailVerificationMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_verification_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailVerificationSubject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_verification_subject: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnabledMfas")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled_mfas: Option<Vec<String>>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_config: Option<LambdaConfig>,
 
     ///
@@ -172,7 +173,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MfaConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mfa_configuration: Option<UserPoolMfaConfigurationEnum>,
 
     ///
@@ -184,7 +185,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policies: Option<Policies>,
 
     ///
@@ -200,7 +201,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schema: Option<Vec<SchemaAttribute>>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmsAuthenticationMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sms_authentication_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +231,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sms_configuration: Option<SmsConfiguration>,
 
     ///
@@ -248,7 +249,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmsVerificationMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sms_verification_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +261,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttributeUpdateSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attribute_update_settings: Option<UserAttributeUpdateSettings>,
 
     ///
@@ -272,7 +273,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolAddOns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_add_ons: Option<UserPoolAddOns>,
 
     ///
@@ -290,7 +291,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +303,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_pool_tags: Option<serde_json::Value>,
 
     ///
@@ -316,7 +317,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsernameAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username_attributes: Option<Vec<String>>,
 
     ///
@@ -328,7 +329,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsernameConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username_configuration: Option<UsernameConfiguration>,
 
     ///
@@ -340,7 +341,7 @@ pub struct CfnUserPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerificationMessageTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verification_message_template: Option<VerificationMessageTemplate>,
 
     #[serde(skip_serializing)]
@@ -570,6 +571,7 @@ impl cfn_resources::CfnResource for CfnUserPool {
 
 /// Use this setting to define which verified available method a user can use to recover their    password when they call ForgotPassword. It allows you to define a preferred    method when a user has more than one method available. With this setting, SMS does not qualify    for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence    of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS    is preferred over email.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountRecoverySetting {
     ///
     /// The list of RecoveryOptionTypes.
@@ -582,7 +584,7 @@ pub struct AccountRecoverySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecoveryMechanisms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recovery_mechanisms: Option<Vec<RecoveryOption>>,
 }
 
@@ -611,6 +613,7 @@ impl cfn_resources::CfnResource for AccountRecoverySetting {
 
 /// The configuration for AdminCreateUser requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdminCreateUserConfig {
     ///
     /// Set to True if only the administrator is allowed to create user profiles.       Set to False if users can sign themselves up via an app.
@@ -621,7 +624,7 @@ pub struct AdminCreateUserConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowAdminCreateUserOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_admin_create_user_only: Option<bool>,
 
     ///
@@ -635,7 +638,7 @@ pub struct AdminCreateUserConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InviteMessageTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invite_message_template: Option<InviteMessageTemplate>,
 
     ///
@@ -653,7 +656,7 @@ pub struct AdminCreateUserConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnusedAccountValidityDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unused_account_validity_days: Option<i64>,
 }
 
@@ -689,6 +692,7 @@ impl cfn_resources::CfnResource for AdminCreateUserConfig {
 
 /// A custom email sender AWS Lambda trigger.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomEmailSender {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Cognito triggers to send email notifications to users.
@@ -699,7 +703,7 @@ pub struct CustomEmailSender {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -711,7 +715,7 @@ pub struct CustomEmailSender {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_version: Option<cfn_resources::StrVal>,
 }
 
@@ -731,6 +735,7 @@ impl cfn_resources::CfnResource for CustomEmailSender {
 
 /// A custom SMS sender AWS Lambda trigger.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomSMSSender {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Cognito triggers to send SMS notifications to users.
@@ -741,7 +746,7 @@ pub struct CustomSMSSender {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -753,7 +758,7 @@ pub struct CustomSMSSender {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_version: Option<cfn_resources::StrVal>,
 }
 
@@ -775,6 +780,7 @@ impl cfn_resources::CfnResource for CustomSMSSender {
 ///
 /// To sign in with a remembered device, include DEVICE_KEY in the       authentication parameters in your user's         InitiateAuth request. If your app doesn't include a DEVICE_KEY       parameter, the response from Amazon Cognito includes newly-generated DEVICE_KEY and         DEVICE_GROUP_KEY values under NewDeviceMetadata. Store       these values to use in future device-authentication requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceConfiguration {
     ///
     /// When true, a remembered device can sign in with device authentication instead of SMS       and time-based one-time password (TOTP) factors for multi-factor authentication       (MFA).
@@ -787,7 +793,7 @@ pub struct DeviceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChallengeRequiredOnNewDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub challenge_required_on_new_device: Option<bool>,
 
     ///
@@ -801,7 +807,7 @@ pub struct DeviceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceOnlyRememberedOnUserPrompt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_only_remembered_on_user_prompt: Option<bool>,
 }
 
@@ -821,6 +827,7 @@ impl cfn_resources::CfnResource for DeviceConfiguration {
 
 /// The email configuration of your user pool. The email configuration type sets your       preferred sending method, AWS Region, and sender for messages from your user       pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EmailConfiguration {
     ///
     /// The set of configuration rules that can be applied to emails sent using Amazon SES. A    configuration set is applied to an email by including a reference to the configuration set in    the headers of the email. Once applied, all of the rules in that configuration set are applied    to the email. Configuration sets can be used to apply the following types of rules to emails:
@@ -839,7 +846,7 @@ pub struct EmailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_set: Option<cfn_resources::StrVal>,
 
     ///
@@ -855,7 +862,7 @@ pub struct EmailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailSendingAccount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_sending_account: Option<EmailConfigurationEmailSendingAccountEnum>,
 
     ///
@@ -867,7 +874,7 @@ pub struct EmailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from: Option<cfn_resources::StrVal>,
 
     ///
@@ -881,7 +888,7 @@ pub struct EmailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplyToEmailAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reply_to_email_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -903,7 +910,7 @@ pub struct EmailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -986,6 +993,7 @@ impl cfn_resources::CfnResource for EmailConfiguration {
 ///
 /// See also Customizing User Invitation Messages.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InviteMessageTemplate {
     ///
     /// The message template for email messages. EmailMessage is allowed only if EmailSendingAccount is DEVELOPER.
@@ -1002,7 +1010,7 @@ pub struct InviteMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -1020,7 +1028,7 @@ pub struct InviteMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailSubject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_subject: Option<cfn_resources::StrVal>,
 
     ///
@@ -1038,7 +1046,7 @@ pub struct InviteMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SMSMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub smsmessage: Option<cfn_resources::StrVal>,
 }
 
@@ -1124,6 +1132,7 @@ impl cfn_resources::CfnResource for InviteMessageTemplate {
 
 /// Specifies the configuration for AWS Lambda triggers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaConfig {
     ///
     /// Creates an authentication challenge.
@@ -1140,7 +1149,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateAuthChallenge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_auth_challenge: Option<cfn_resources::StrVal>,
 
     ///
@@ -1152,7 +1161,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEmailSender")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_email_sender: Option<CustomEmailSender>,
 
     ///
@@ -1170,7 +1179,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -1182,7 +1191,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSMSSender")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_smssender: Option<CustomSMSSender>,
 
     ///
@@ -1200,7 +1209,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefineAuthChallenge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub define_auth_challenge: Option<cfn_resources::StrVal>,
 
     ///
@@ -1212,7 +1221,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSKeyID")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1230,7 +1239,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_authentication: Option<cfn_resources::StrVal>,
 
     ///
@@ -1248,7 +1257,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostConfirmation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_confirmation: Option<cfn_resources::StrVal>,
 
     ///
@@ -1266,7 +1275,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_authentication: Option<cfn_resources::StrVal>,
 
     ///
@@ -1284,7 +1293,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreSignUp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_sign_up: Option<cfn_resources::StrVal>,
 
     ///
@@ -1302,7 +1311,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreTokenGeneration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_token_generation: Option<cfn_resources::StrVal>,
 
     ///
@@ -1320,7 +1329,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserMigration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_migration: Option<cfn_resources::StrVal>,
 
     ///
@@ -1338,7 +1347,7 @@ pub struct LambdaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifyAuthChallengeResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verify_auth_challenge_response: Option<cfn_resources::StrVal>,
 }
 
@@ -1556,6 +1565,7 @@ impl cfn_resources::CfnResource for LambdaConfig {
 
 /// The minimum and maximum values of an attribute that is of the number data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumberAttributeConstraints {
     ///
     /// The maximum value of an attribute that is of the number data type.
@@ -1566,7 +1576,7 @@ pub struct NumberAttributeConstraints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1578,7 +1588,7 @@ pub struct NumberAttributeConstraints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_value: Option<cfn_resources::StrVal>,
 }
 
@@ -1598,6 +1608,7 @@ impl cfn_resources::CfnResource for NumberAttributeConstraints {
 
 /// The password policy type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PasswordPolicy {
     ///
     /// The minimum length of the password in the policy that you have set. This value can't       be less than 6.
@@ -1612,7 +1623,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_length: Option<i64>,
 
     ///
@@ -1624,7 +1635,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireLowercase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_lowercase: Option<bool>,
 
     ///
@@ -1636,7 +1647,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireNumbers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_numbers: Option<bool>,
 
     ///
@@ -1648,7 +1659,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireSymbols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_symbols: Option<bool>,
 
     ///
@@ -1660,7 +1671,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireUppercase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_uppercase: Option<bool>,
 
     ///
@@ -1678,7 +1689,7 @@ pub struct PasswordPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemporaryPasswordValidityDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub temporary_password_validity_days: Option<i64>,
 }
 
@@ -1728,6 +1739,7 @@ impl cfn_resources::CfnResource for PasswordPolicy {
 
 /// The policy associated with a user pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Policies {
     ///
     /// The password policy.
@@ -1738,7 +1750,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password_policy: Option<PasswordPolicy>,
 }
 
@@ -1762,6 +1774,7 @@ impl cfn_resources::CfnResource for Policies {
 
 /// A map containing a priority as a key, and recovery method name as a value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecoveryOption {
     ///
     /// Specifies the recovery method for a user.
@@ -1774,7 +1787,7 @@ pub struct RecoveryOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<RecoveryOptionNameEnum>,
 
     ///
@@ -1790,7 +1803,7 @@ pub struct RecoveryOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 }
 
@@ -1849,6 +1862,7 @@ impl cfn_resources::CfnResource for RecoveryOption {
 
 /// Contains information about the schema attribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SchemaAttribute {
     ///
     /// The attribute data type.
@@ -1861,7 +1875,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeDataType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_data_type: Option<SchemaAttributeAttributeDataTypeEnum>,
 
     ///
@@ -1875,7 +1889,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeveloperOnlyAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub developer_only_attribute: Option<bool>,
 
     ///
@@ -1889,7 +1903,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mutable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mutable: Option<bool>,
 
     ///
@@ -1907,7 +1921,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1919,7 +1933,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberAttributeConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_attribute_constraints: Option<NumberAttributeConstraints>,
 
     ///
@@ -1931,7 +1945,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Required")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub required: Option<bool>,
 
     ///
@@ -1943,7 +1957,7 @@ pub struct SchemaAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringAttributeConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_attribute_constraints: Option<StringAttributeConstraints>,
 }
 
@@ -2018,6 +2032,7 @@ impl cfn_resources::CfnResource for SchemaAttribute {
 
 /// The SMS configuration type that includes the settings the Cognito User Pool needs to call    for the Amazon SNS service to send an SMS message from your AWS account. The    Cognito User Pool makes the request to the Amazon SNS Service by using an IAM    role that you provide for your AWS account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SmsConfiguration {
     ///
     /// The external ID is a value. We recommend you use ExternalIdto add security to    your IAM role, which is used to call Amazon SNS to send SMS messages for your user pool. If    you provide an ExternalId, the Cognito User Pool uses it when attempting to    assume your IAM role. You can also set your roles trust policy to require the     ExternalID. If you use the Cognito Management Console to create a role for SMS    MFA, Cognito creates a role with the required permissions and a trust policy that uses     ExternalId.
@@ -2028,7 +2043,7 @@ pub struct SmsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub external_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2046,7 +2061,7 @@ pub struct SmsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsCallerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_caller_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2064,7 +2079,7 @@ pub struct SmsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_region: Option<cfn_resources::StrVal>,
 }
 
@@ -2128,6 +2143,7 @@ impl cfn_resources::CfnResource for SmsConfiguration {
 
 /// The StringAttributeConstraints property type defines the string attribute    constraints of an Amazon Cognito user pool. StringAttributeConstraints is a    subproperty of the SchemaAttribute property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringAttributeConstraints {
     ///
     /// The maximum length.
@@ -2138,7 +2154,7 @@ pub struct StringAttributeConstraints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_length: Option<cfn_resources::StrVal>,
 
     ///
@@ -2150,7 +2166,7 @@ pub struct StringAttributeConstraints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_length: Option<cfn_resources::StrVal>,
 }
 
@@ -2170,6 +2186,7 @@ impl cfn_resources::CfnResource for StringAttributeConstraints {
 
 /// The settings for updates to user attributes. These settings include the property AttributesRequireVerificationBeforeUpdate, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see Verifying updates to email addresses and phone numbers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserAttributeUpdateSettings {
     ///
     /// Requires that your user verifies their email address, phone number, or both before       Amazon Cognito updates the value of that attribute. When you update a user attribute that has       this option activated, Amazon Cognito sends a verification message to the new phone number or       email address. Amazon Cognito doesn’t change the value of the attribute until your user responds       to the verification message and confirms the new value.
@@ -2203,6 +2220,7 @@ impl cfn_resources::CfnResource for UserAttributeUpdateSettings {
 
 /// The user pool add-ons type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserPoolAddOns {
     ///
     /// The advanced security mode.
@@ -2215,7 +2233,7 @@ pub struct UserPoolAddOns {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedSecurityMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_security_mode: Option<UserPoolAddOnsAdvancedSecurityModeEnum>,
 }
 
@@ -2256,6 +2274,7 @@ impl cfn_resources::CfnResource for UserPoolAddOns {
 
 /// The UsernameConfiguration property type specifies case sensitivity on the    username input for the selected sign-in option.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UsernameConfiguration {
     ///
     /// Specifies whether user name case sensitivity will be applied for all users in the user       pool through Amazon Cognito APIs. For most use cases, set case sensitivity to False       (case insensitive) as a best practice. When usernames and email addresses are case       insensitive, users can sign in as the same user when they enter a different       capitalization of their user name.
@@ -2270,7 +2289,7 @@ pub struct UsernameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_sensitive: Option<bool>,
 }
 
@@ -2290,6 +2309,7 @@ impl cfn_resources::CfnResource for UsernameConfiguration {
 
 /// The template for verification messages.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VerificationMessageTemplate {
     ///
     /// The default email option.
@@ -2302,7 +2322,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultEmailOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_email_option: Option<VerificationMessageTemplateDefaultEmailOptionEnum>,
 
     ///
@@ -2320,7 +2340,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_message: Option<cfn_resources::StrVal>,
 
     ///
@@ -2338,7 +2358,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailMessageByLink")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_message_by_link: Option<cfn_resources::StrVal>,
 
     ///
@@ -2356,7 +2376,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailSubject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_subject: Option<cfn_resources::StrVal>,
 
     ///
@@ -2374,7 +2394,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailSubjectByLink")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub email_subject_by_link: Option<cfn_resources::StrVal>,
 
     ///
@@ -2392,7 +2412,7 @@ pub struct VerificationMessageTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmsMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sms_message: Option<cfn_resources::StrVal>,
 }
 

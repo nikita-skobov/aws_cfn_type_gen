@@ -1,5 +1,6 @@
 /// The collection of compute resources in Amazon Redshift Serverless.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkgroup {
     ///
     /// The base compute capacity of the workgroup in Redshift Processing Units (RPUs).
@@ -10,7 +11,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_capacity: Option<i64>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedVpcRouting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enhanced_vpc_routing: Option<bool>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -214,6 +215,7 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
 
 /// A array of parameters to set for more control over a serverless database.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigParameter {
     ///
     /// The key of the parameter. The   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
@@ -224,7 +226,7 @@ pub struct ConfigParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -236,7 +238,7 @@ pub struct ConfigParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_value: Option<cfn_resources::StrVal>,
 }
 
@@ -256,6 +258,7 @@ impl cfn_resources::CfnResource for ConfigParameter {
 
 /// The VPC endpoint object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Endpoint {
     ///
     /// The DNS address of the VPC endpoint.
@@ -266,7 +269,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<cfn_resources::StrVal>,
 
     ///
@@ -278,7 +281,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -290,7 +293,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoints: Option<Vec<VpcEndpoint>>,
 }
 
@@ -310,6 +313,7 @@ impl cfn_resources::CfnResource for Endpoint {
 
 /// Contains information about a network interface      in an Amazon Redshift Serverless managed VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterface {
     ///
     /// The availability Zone.
@@ -320,7 +324,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -332,7 +336,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -344,7 +348,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +360,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
@@ -382,6 +386,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -420,6 +425,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The connection endpoint for connecting to Amazon Redshift Serverless through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcEndpoint {
     ///
     /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
@@ -430,7 +436,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaces")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -442,7 +448,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +460,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -474,6 +480,7 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 
 /// The collection of computing resources from which an endpoint is created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Workgroup {
     ///
     /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
@@ -484,7 +491,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_capacity: Option<i64>,
 
     ///
@@ -496,7 +503,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
     ///
@@ -508,7 +515,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreationDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub creation_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -520,7 +527,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint: Option<Endpoint>,
 
     ///
@@ -532,7 +539,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedVpcRouting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enhanced_vpc_routing: Option<bool>,
 
     ///
@@ -544,7 +551,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -556,7 +563,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -568,7 +575,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -580,7 +587,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -592,7 +599,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -604,7 +611,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workgroup_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -616,7 +623,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workgroup_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -628,7 +635,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workgroup_name: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// Creates a Kinesis stream that captures and transports data records that are emitted       from data sources. For information about creating streams, see CreateStream in the Amazon Kinesis API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStream {
     ///
     /// The name of the Kinesis stream. If you don't specify a name, AWS       CloudFormation generates a unique physical ID and uses that ID for the stream name. For       more information, see Name Type.
@@ -18,7 +19,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriodHours")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_period_hours: Option<i64>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShardCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shard_count: Option<i64>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_encryption: Option<StreamEncryption>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamModeDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_mode_details: Option<StreamModeDetails>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -156,6 +157,7 @@ impl cfn_resources::CfnResource for CfnStream {
 ///
 /// Note: It can take up to 5 seconds after the stream is in an ACTIVE status       before all records written to the stream are encrypted. After you enable encryption, you       can verify that encryption is applied by inspecting the API response from         PutRecord or PutRecords.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamEncryption {
     ///
     /// The encryption type to use. The only valid value is KMS.
@@ -224,6 +226,7 @@ impl cfn_resources::CfnResource for StreamEncryption {
 
 /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StreamModeDetails {
     ///
     /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
@@ -278,6 +281,7 @@ impl cfn_resources::CfnResource for StreamModeDetails {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

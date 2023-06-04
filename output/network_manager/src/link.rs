@@ -1,5 +1,6 @@
 /// Specifies a link for a site.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLink {
     ///
     /// The bandwidth for the link.
@@ -29,7 +30,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -269,6 +270,7 @@ impl cfn_resources::CfnResource for CfnLink {
 
 /// Describes bandwidth information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Bandwidth {
     ///
     /// Download speed in Mbps.
@@ -279,7 +281,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DownloadSpeed")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub download_speed: Option<i64>,
 
     ///
@@ -291,7 +293,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UploadSpeed")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upload_speed: Option<i64>,
 }
 
@@ -317,6 +319,7 @@ impl cfn_resources::CfnResource for Bandwidth {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// To specify an individual IP address, you specify the four-part IP address followed by a       /32, for example, 192.0.2.0/32. To block a range of IP addresses, you can     specify /8 or any range between /16 through /32 (for IPv4) or /24, /32, /48, /56, /64, or     /128 (for IPv6). For more information about CIDR notation, see the Wikipedia entry Classless       Inter-Domain Routing.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIPSet {
     ///
     /// The IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) that web requests originate from. 			If the WebACL is associated with an Amazon CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.
@@ -12,7 +13,7 @@ pub struct CfnIPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetDescriptors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
 
     ///
@@ -71,6 +72,7 @@ impl cfn_resources::CfnResource for CfnIPSet {
 
 /// Specifies the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) that web requests originate from.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSetDescriptor {
     ///
     /// Specify IPV4 or IPV6.

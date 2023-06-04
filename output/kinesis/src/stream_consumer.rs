@@ -4,6 +4,7 @@
 ///
 /// For more information, see Using Consumers         with Enhanced Fan-Out.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStreamConsumer {
     ///
     /// The name of the consumer is something you choose when you register the       consumer.

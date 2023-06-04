@@ -1,5 +1,6 @@
 /// Specifies a domain configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomainConfiguration {
     ///
     /// An object that specifies the authorization service for a domain.
@@ -10,7 +11,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_config: Option<AuthorizerConfig>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainConfigurationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainConfigurationStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_configuration_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_certificate_arns: Option<Vec<String>>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -99,7 +100,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls_config: Option<TlsConfig>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_certificate_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -161,6 +162,7 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
 
 /// An object that specifies the authorization service for a domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthorizerConfig {
     ///
     /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
@@ -171,7 +173,7 @@ pub struct AuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowAuthorizerOverride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_authorizer_override: Option<bool>,
 
     ///
@@ -183,7 +185,7 @@ pub struct AuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAuthorizerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_authorizer_name: Option<cfn_resources::StrVal>,
 }
 
@@ -203,6 +205,7 @@ impl cfn_resources::CfnResource for AuthorizerConfig {
 
 /// An object that contains information about a server certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerCertificateSummary {
     ///
     /// The ARN of the server certificate.
@@ -213,7 +216,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -225,7 +228,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_certificate_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -237,7 +240,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatusDetail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_certificate_status_detail: Option<cfn_resources::StrVal>,
 }
 
@@ -263,6 +266,7 @@ impl cfn_resources::CfnResource for ServerCertificateSummary {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -301,6 +305,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The TlsConfig property type specifies Property description not available. for an AWS::IoT::DomainConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TlsConfig {
     /// Property description not available.
     ///
@@ -310,7 +315,7 @@ pub struct TlsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_policy: Option<cfn_resources::StrVal>,
 }
 

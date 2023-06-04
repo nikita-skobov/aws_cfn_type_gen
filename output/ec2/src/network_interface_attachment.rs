@@ -1,5 +1,6 @@
 /// Attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this       resource type to attach additional network interfaces to an instance without       interruption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkInterfaceAttachment {
     ///
     /// Whether to delete the network interface when the instance terminates. By default, this       value is set to true.
@@ -10,7 +11,7 @@ pub struct CfnNetworkInterfaceAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     ///

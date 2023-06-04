@@ -1,5 +1,6 @@
 /// The AWS::ACMPCA::CertificateAuthorityActivation resource creates and       installs a CA certificate on a CA. If no status is specified, the         AWS::ACMPCA::CertificateAuthorityActivation resource status defaults to       ACTIVE. Once the CA has a CA certificate installed, you can use the resource to toggle       the CA status field between ACTIVE and DISABLED.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCertificateAuthorityActivation {
     ///
     /// The Base64 PEM-encoded certificate authority certificate.
@@ -32,7 +33,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

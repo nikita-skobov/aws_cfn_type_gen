@@ -1,5 +1,6 @@
 /// Describes an instance's Amazon EBS volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVolume {
     ///
     /// The Amazon EC2 volume ID.
@@ -21,7 +22,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_point: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///

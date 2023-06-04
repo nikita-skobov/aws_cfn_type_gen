@@ -4,6 +4,7 @@
 ///
 /// For more information, see Experiment templates     in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnExperimentTemplate {
     ///
     /// The actions for the experiment.
@@ -14,7 +15,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<std::collections::HashMap<String, ExperimentTemplateAction>>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_configuration: Option<ExperimentTemplateLogConfiguration>,
 
     ///
@@ -159,6 +160,7 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
 
 /// The CloudWatchLogsConfiguration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogsConfiguration {
     /// Property description not available.
     ///
@@ -189,6 +191,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsConfiguration {
 ///
 /// For more information, see Actions     in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExperimentTemplateAction {
     ///
     /// The ID of the action. The format of the action ID is: aws:service-name:action-type.
@@ -218,7 +221,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +233,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -242,7 +245,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAfter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_after: Option<Vec<String>>,
 
     ///
@@ -254,7 +257,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub targets: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -298,6 +301,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateAction {
 ///
 /// For more information, see Experiment logging    in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExperimentTemplateLogConfiguration {
     ///
     /// The configuration for experiment logging to Amazon CloudWatch Logs. The supported field     is LogGroupArn. For example:
@@ -310,7 +314,7 @@ pub struct ExperimentTemplateLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_configuration: Option<CloudWatchLogsConfiguration>,
 
     ///
@@ -339,7 +343,7 @@ pub struct ExperimentTemplateLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_configuration: Option<S3Configuration>,
 }
 
@@ -369,6 +373,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateLogConfiguration {
 ///
 /// For more information, see Stop conditions    in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExperimentTemplateStopCondition {
     ///
     /// The source for the stop condition. Specify aws:cloudwatch:alarm if the stop     condition is defined by a CloudWatch alarm. Specify none if there is no stop     condition.
@@ -400,7 +405,7 @@ pub struct ExperimentTemplateStopCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -455,6 +460,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
 ///
 /// For more information, see Targets     in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExperimentTemplateTarget {
     ///
     /// The filters to apply to identify target resources using specific attributes.
@@ -465,7 +471,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filters: Option<Vec<ExperimentTemplateTargetFilter>>,
 
     ///
@@ -477,7 +483,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -491,7 +497,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_arns: Option<Vec<String>>,
 
     ///
@@ -503,7 +509,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -588,6 +594,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateTarget {
 ///
 /// For more information, see Resource filters     in the AWS Fault Injection Simulator User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExperimentTemplateTargetFilter {
     ///
     /// The attribute path for the filter.
@@ -643,6 +650,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateTargetFilter {
 
 /// The S3Configuration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Configuration {
     /// Property description not available.
     ///
@@ -662,7 +670,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 

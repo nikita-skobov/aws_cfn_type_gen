@@ -2,6 +2,7 @@
 ///
 /// For Amazon RDS master user credentials, see AWS::RDS::DBCluster MasterUserSecret.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecretTargetAttachment {
     ///
     /// The ARN or name of the secret. To reference a secret also created in this template, use    the see Ref    function with the secret's logical ID.

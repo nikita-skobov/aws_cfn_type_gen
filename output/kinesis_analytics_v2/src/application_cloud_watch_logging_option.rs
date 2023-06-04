@@ -1,5 +1,6 @@
 /// Adds an Amazon CloudWatch log stream to monitor application configuration errors.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplicationCloudWatchLoggingOption {
     ///
     /// The name of the application.
@@ -70,6 +71,7 @@ impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
 
 /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLoggingOption {
     ///
     /// The ARN of the CloudWatch log to receive application messages.

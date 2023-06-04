@@ -2,6 +2,7 @@
 ///
 /// In environments created with a CreateEnvironment:NetworkFabricType of NONE you need to configure     VPC to VPC connectivity between your service VPC and the application proxy VPC to    route traffic through the application proxy to a service with a private URL endpoint. For more    information, see     Create an application in the Refactor Spaces User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// The endpoint URL of the Amazon API Gateway proxy.
@@ -12,7 +13,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiGatewayProxy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -180,6 +181,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 
 /// A wrapper object holding the Amazon API Gateway endpoint input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApiGatewayProxyInput {
     ///
     /// The type of endpoint to use for the API Gateway proxy. If no value is specified in    the request, the value is set to REGIONAL by default.
@@ -192,7 +194,7 @@ pub struct ApiGatewayProxyInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -204,7 +206,7 @@ pub struct ApiGatewayProxyInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_name: Option<cfn_resources::StrVal>,
 }
 
@@ -230,6 +232,7 @@ impl cfn_resources::CfnResource for ApiGatewayProxyInput {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

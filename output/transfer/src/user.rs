@@ -1,5 +1,6 @@
 /// The AWS::Transfer::User resource creates a user and associates them with an     existing server. You can only create and associate users with servers that have the       IdentityProviderType set to SERVICE_MANAGED. Using parameters     for CreateUser, you can specify the user name, set the home directory, store     the user's public key, and assign the user's AWS Identity and Access Management (IAM) role.     You can also optionally add a session policy, and assign metadata with tags that can be     used to group and search for users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUser {
     ///
     /// The landing directory (folder) for a user when they log in to the server using the client.
@@ -16,7 +17,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub home_directory: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectoryMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub home_directory_mappings: Option<Vec<HomeDirectoryMapEntry>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectoryType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PosixProfile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub posix_profile: Option<PosixProfile>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_public_keys: Option<Vec<SshPublicKey>>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -343,6 +344,7 @@ impl cfn_resources::CfnResource for CfnUser {
 
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HomeDirectoryMapEntry {
     ///
     /// Represents an entry for HomeDirectoryMappings.
@@ -413,6 +415,7 @@ impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
 
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PosixProfile {
     ///
     /// The POSIX group ID used for all EFS operations by this user.
@@ -436,7 +439,7 @@ pub struct PosixProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryGids")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_gids: Option<Vec<f64>>,
 
     ///
@@ -488,6 +491,7 @@ impl cfn_resources::CfnResource for PosixProfile {
 ///
 /// Required: Yes
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SshPublicKey {}
 
 impl cfn_resources::CfnResource for SshPublicKey {
@@ -512,6 +516,7 @@ impl cfn_resources::CfnResource for SshPublicKey {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

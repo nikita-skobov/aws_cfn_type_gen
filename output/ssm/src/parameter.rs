@@ -2,6 +2,7 @@
 ///
 /// For information about valid values for parameters, see Requirements     and Constraints for Parameter Names in the AWS Systems Manager User     Guide and PutParameter in the     AWS Systems Manager API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnParameter {
     ///
     /// A regular expression used to validate the parameter value. For example, for String types    with values restricted to numbers, you can specify the following:     AllowedPattern=^\d+$
@@ -16,7 +17,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policies: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tier: Option<ParameterTierEnum>,
 
     ///

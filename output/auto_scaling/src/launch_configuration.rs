@@ -2,6 +2,7 @@
 ///
 /// When you update the launch configuration for an Auto Scaling group, CloudFormation deletes    that resource and creates a new launch configuration with the updated properties and a new    name. Existing instances are not affected. To update existing instances when you update the     AWS::AutoScaling::LaunchConfiguration resource, you can specify an UpdatePolicy     attribute for the group. You can find sample update policies for rolling updates in     Auto scaling template     snippets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLaunchConfiguration {
     ///
     /// Specifies whether to assign a public IPv4 address to the group's instances. If the       instance is launched into a default subnet, the default is to assign a public IPv4       address, unless you disabled the option to assign a public IPv4 address on the subnet.       If the instance is launched into a nondefault subnet, the default is not to assign a       public IPv4 address, unless you enabled the option to assign a public IPv4 address on       the subnet.
@@ -16,7 +17,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatePublicIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockDeviceMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClassicLinkVPCId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classic_link_vpcid: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClassicLinkVPCSecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classic_link_vpcsecurity_groups: Option<Vec<String>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IamInstanceProfile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_instance_profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceMonitoring")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_monitoring: Option<bool>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KernelId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchConfigurationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -188,7 +189,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetadataOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata_options: Option<MetadataOptions>,
 
     ///
@@ -204,7 +205,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementTenancy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_tenancy: Option<cfn_resources::StrVal>,
 
     ///
@@ -218,7 +219,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RamDiskId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ram_disk_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -232,7 +233,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -248,7 +249,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spot_price: Option<cfn_resources::StrVal>,
 
     ///
@@ -264,7 +265,7 @@ pub struct CfnLaunchConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_data: Option<cfn_resources::StrVal>,
 }
 
@@ -315,6 +316,7 @@ impl cfn_resources::CfnResource for CfnLaunchConfiguration {
 
 /// BlockDevice is a property of the EBS property of the AWS::AutoScaling::LaunchConfiguration BlockDeviceMapping property type that    describes an Amazon EBS volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlockDevice {
     ///
     /// Indicates whether the volume is deleted on instance termination. For Amazon EC2 Auto Scaling, the       default value is true.
@@ -325,7 +327,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -339,7 +341,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -359,7 +361,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -373,7 +375,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -389,7 +391,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Throughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput: Option<i64>,
 
     ///
@@ -409,7 +411,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 
     ///
@@ -423,7 +425,7 @@ pub struct BlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 
@@ -483,6 +485,7 @@ impl cfn_resources::CfnResource for BlockDevice {
 ///
 /// For more information, see Example block device mapping in the Amazon EC2 User Guide for Linux     Instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name assigned to the volume (for example, /dev/sdh or         xvdh). For more information, see Device naming on Linux         instances in the Amazon EC2 User Guide for Linux Instances.
@@ -506,7 +509,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ebs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs: Option<BlockDevice>,
 
     ///
@@ -520,7 +523,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_device: Option<bool>,
 
     ///
@@ -532,7 +535,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
@@ -556,6 +559,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 ///
 /// For more information, see Configure the instance metadata options in the Amazon EC2 Auto Scaling     User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetadataOptions {
     ///
     /// This parameter enables or disables the HTTP metadata endpoint on your instances. If       the parameter is not specified, the default state is enabled.
@@ -570,7 +574,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HttpEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_endpoint: Option<MetadataOptionsHttpEndpointEnum>,
 
     ///
@@ -588,7 +592,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HttpPutResponseHopLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_put_response_hop_limit: Option<i64>,
 
     ///
@@ -606,7 +610,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HttpTokens")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_tokens: Option<MetadataOptionsHttpTokensEnum>,
 }
 

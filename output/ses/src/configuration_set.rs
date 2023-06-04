@@ -1,5 +1,6 @@
 /// Configuration sets let you create groups of rules that you can apply to the emails you       send using Amazon SES. For more information about using configuration sets, see Using Amazon         SES Configuration Sets in the Amazon SES Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigurationSet {
     ///
     /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
@@ -10,7 +11,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_options: Option<DeliveryOptions>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReputationOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reputation_options: Option<ReputationOptions>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sending_options: Option<SendingOptions>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressionOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suppression_options: Option<SuppressionOptions>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrackingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tracking_options: Option<TrackingOptions>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VdmOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vdm_options: Option<VdmOptions>,
 }
 
@@ -128,6 +129,7 @@ impl cfn_resources::CfnResource for CfnConfigurationSet {
 
 /// Settings for your VDM configuration as applicable to the Dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DashboardOptions {
     ///
     /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
@@ -159,6 +161,7 @@ impl cfn_resources::CfnResource for DashboardOptions {
 
 /// Specifies whether messages that use the configuration set are required to use       Transport Layer Security (TLS).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeliveryOptions {
     ///
     /// The name of the dedicated IP pool to associate with the configuration set.
@@ -169,7 +172,7 @@ pub struct DeliveryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingPoolName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sending_pool_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +186,7 @@ pub struct DeliveryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls_policy: Option<DeliveryOptionsTlsPolicyEnum>,
 }
 
@@ -220,6 +223,7 @@ impl cfn_resources::CfnResource for DeliveryOptions {
 
 /// Settings for your VDM configuration as applicable to the Guardian.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GuardianOptions {
     ///
     /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:
@@ -251,6 +255,7 @@ impl cfn_resources::CfnResource for GuardianOptions {
 
 /// Contains information about the reputation settings for a configuration set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReputationOptions {
     ///
     /// Describes whether or not Amazon SES publishes reputation metrics for the configuration set,       such as bounce and complaint rates, to Amazon CloudWatch.
@@ -263,7 +268,7 @@ pub struct ReputationOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReputationMetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reputation_metrics_enabled: Option<bool>,
 }
 
@@ -283,6 +288,7 @@ impl cfn_resources::CfnResource for ReputationOptions {
 
 /// Used to enable or disable email sending for messages that use this configuration set       in the current AWS Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SendingOptions {
     ///
     /// If true, email sending is enabled for the configuration set. If         false, email sending is disabled for the configuration set.
@@ -293,7 +299,7 @@ pub struct SendingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sending_enabled: Option<bool>,
 }
 
@@ -313,6 +319,7 @@ impl cfn_resources::CfnResource for SendingOptions {
 
 /// An object that contains information about the suppression list preferences for your       account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SuppressionOptions {
     ///
     /// A list that contains the reasons that email addresses are automatically added to the       suppression list for your account. This list can contain any or all of the       following:
@@ -325,7 +332,7 @@ pub struct SuppressionOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressedReasons")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suppressed_reasons: Option<Vec<String>>,
 }
 
@@ -347,6 +354,7 @@ impl cfn_resources::CfnResource for SuppressionOptions {
 ///
 /// For more information, see Configuring Custom         Domains to Handle Open and Click Tracking in the Amazon SES Developer         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrackingOptions {
     ///
     /// The custom subdomain that is used to redirect email recipients to the Amazon SES event       tracking domain.
@@ -357,7 +365,7 @@ pub struct TrackingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRedirectDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_redirect_domain: Option<cfn_resources::StrVal>,
 }
 
@@ -377,6 +385,7 @@ impl cfn_resources::CfnResource for TrackingOptions {
 
 /// The Virtual Deliverability Manager (VDM) options that apply to a configuration       set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VdmOptions {
     ///
     /// Settings for your VDM configuration as applicable to the Dashboard.
@@ -387,7 +396,7 @@ pub struct VdmOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dashboard_options: Option<DashboardOptions>,
 
     ///
@@ -399,7 +408,7 @@ pub struct VdmOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardianOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub guardian_options: Option<GuardianOptions>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// Once the index is active you can add documents to your index using       the BatchPutDocument operation or using one of the       supported data sources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIndex {
     /// Property description not available.
     ///
@@ -11,7 +12,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
     ///
@@ -23,7 +24,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentMetadataConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_metadata_configurations: Option<Vec<DocumentMetadataConfiguration>>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerSideEncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_side_encryption_configuration: Option<ServerSideEncryptionConfiguration>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserContextPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_context_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserTokenConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_token_configurations: Option<Vec<UserTokenConfiguration>>,
 
     #[serde(skip_serializing)]
@@ -223,6 +224,7 @@ impl cfn_resources::CfnResource for CfnIndex {
 
 /// Specifies additional capacity units configured for your Enterprise Edition index. You can    add and remove capacity units to fit your usage requirements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityUnitsConfiguration {
     ///
     /// The amount of extra query capacity for an index and GetQuerySuggestions    capacity.
@@ -289,6 +291,7 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
 
 /// Specifies the properties, such as relevance tuning and searchability, of an index       field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentMetadataConfiguration {
     ///
     /// The name of the index field.
@@ -314,7 +317,7 @@ pub struct DocumentMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Relevance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relevance: Option<Relevance>,
 
     ///
@@ -326,7 +329,7 @@ pub struct DocumentMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Search")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub search: Option<Search>,
 
     ///
@@ -412,6 +415,7 @@ impl cfn_resources::CfnResource for DocumentMetadataConfiguration {
 
 /// Provides the configuration information for the JSON token type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonTokenTypeConfiguration {
     ///
     /// The group attribute field.
@@ -498,6 +502,7 @@ impl cfn_resources::CfnResource for JsonTokenTypeConfiguration {
 
 /// Provides the configuration information for the JWT token type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JwtTokenTypeConfiguration {
     ///
     /// The regular expression that identifies the claim.
@@ -514,7 +519,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClaimRegex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub claim_regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -532,7 +537,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupAttributeField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_attribute_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -550,7 +555,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub issuer: Option<cfn_resources::StrVal>,
 
     ///
@@ -581,7 +586,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_manager_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -599,7 +604,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 
     ///
@@ -617,7 +622,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserNameAttributeField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_name_attribute_field: Option<cfn_resources::StrVal>,
 }
 
@@ -774,6 +779,7 @@ impl cfn_resources::CfnResource for JwtTokenTypeConfiguration {
 
 /// Provides information for tuning the relevance of a field in a search. When a query       includes terms that match the field, the results are given a boost in the response based       on these tuning parameters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Relevance {
     ///
     /// Specifies the time period that the boost applies to. For example, to make the boost       apply to documents with the field value within the last month, you would use "2628000s".       Once the field value is beyond the specified range, the effect of the boost drops off.       The higher the importance, the faster the effect drops off. If you don't specify a       value, the default is 3 months. The value of the field is a numeric string followed by       the character "s", for example "86400s" for one day, or "604800s" for one week.
@@ -792,7 +798,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Duration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration: Option<cfn_resources::StrVal>,
 
     ///
@@ -804,7 +810,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Freshness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub freshness: Option<bool>,
 
     ///
@@ -820,7 +826,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Importance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub importance: Option<i64>,
 
     ///
@@ -840,7 +846,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RankOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rank_order: Option<RelevanceRankOrderEnum>,
 
     ///
@@ -854,7 +860,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueImportanceItems")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_importance_items: Option<Vec<ValueImportanceItem>>,
 }
 
@@ -931,6 +937,7 @@ impl cfn_resources::CfnResource for Relevance {
 
 /// Provides information about how a custom index field is used during a search.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Search {
     ///
     /// Determines whether the field is returned in the query response. The default is         true.
@@ -941,7 +948,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Displayable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub displayable: Option<bool>,
 
     ///
@@ -953,7 +960,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Facetable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub facetable: Option<bool>,
 
     ///
@@ -965,7 +972,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Searchable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub searchable: Option<bool>,
 
     ///
@@ -977,7 +984,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sortable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sortable: Option<bool>,
 }
 
@@ -997,6 +1004,7 @@ impl cfn_resources::CfnResource for Search {
 
 /// Provides the identifier of the AWS KMS customer master key (CMK)       used to encrypt data indexed by Amazon Kendra. We suggest that you       use a CMK from your account to help secure your index. Amazon Kendra       doesn't support asymmetric CMKs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerSideEncryptionConfiguration {
     ///
     /// The identifier of the AWS KMS key. Amazon Kendra doesn't support       asymmetric keys.
@@ -1011,7 +1019,7 @@ pub struct ServerSideEncryptionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1059,6 +1067,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1097,6 +1106,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Provides the configuration information for a token.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserTokenConfiguration {
     ///
     /// Information about the JSON token type configuration.
@@ -1107,7 +1117,7 @@ pub struct UserTokenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonTokenTypeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_token_type_configuration: Option<JsonTokenTypeConfiguration>,
 
     ///
@@ -1119,7 +1129,7 @@ pub struct UserTokenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtTokenTypeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jwt_token_type_configuration: Option<JwtTokenTypeConfiguration>,
 }
 
@@ -1147,6 +1157,7 @@ impl cfn_resources::CfnResource for UserTokenConfiguration {
 
 /// Specifies a key-value pair of the search boost value       for a document when the key is part of the metadata of a       document.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValueImportanceItem {
     ///
     /// The document metadata value used for the search boost.
@@ -1157,7 +1168,7 @@ pub struct ValueImportanceItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -1169,7 +1180,7 @@ pub struct ValueImportanceItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<i64>,
 }
 

@@ -6,6 +6,7 @@
 ///
 /// For more information about managing schedules, changing the schedule state, setting up flexible time windows, and configuring a dead-letter queue for a schedule, see     Managing a schedule in the EventBridge Scheduler User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSchedule {
     ///
     /// The description you specify for the schedule.
@@ -16,7 +17,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpressionTimezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_expression_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<ScheduleStateEnum>,
 
     ///
@@ -197,6 +198,7 @@ impl cfn_resources::CfnResource for CfnSchedule {
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsVpcConfiguration {
     ///
     /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE.
@@ -207,7 +209,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assign_public_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -219,7 +221,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -250,6 +252,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 
 /// The details of a capacity provider strategy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.     If no value is specified, the default value of 0 is used.
@@ -260,7 +263,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<f64>,
 
     ///
@@ -283,7 +286,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<f64>,
 }
 
@@ -303,6 +306,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 
 /// An object that contains information about an Amazon SQS queue that EventBridge Scheduler uses as a dead-letter queue for your schedule. If specified, EventBridge Scheduler delivers failed events that could not be successfully delivered to a target to the queue.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeadLetterConfig {
     ///
     /// The Amazon Resource Name (ARN) of the SQS queue specified as the destination for the dead-letter queue.
@@ -313,7 +317,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 }
 
@@ -333,6 +337,7 @@ impl cfn_resources::CfnResource for DeadLetterConfig {
 
 /// The templated target type for the Amazon ECS RunTask API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EcsParameters {
     ///
     /// The capacity provider strategy to use for the task.
@@ -343,7 +348,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviderStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -355,7 +360,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableECSManagedTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_ecsmanaged_tags: Option<bool>,
 
     ///
@@ -367,7 +372,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableExecuteCommand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_execute_command: Option<bool>,
 
     ///
@@ -379,7 +384,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Group")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group: Option<cfn_resources::StrVal>,
 
     ///
@@ -391,7 +396,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -403,7 +408,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -415,7 +420,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_constraints: Option<Vec<PlacementConstraint>>,
 
     ///
@@ -427,7 +432,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_strategy: Option<Vec<PlacementStrategy>>,
 
     ///
@@ -439,7 +444,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -451,7 +456,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub propagate_tags: Option<cfn_resources::StrVal>,
 
     ///
@@ -463,7 +468,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -475,7 +480,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -487,7 +492,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_count: Option<f64>,
 
     ///
@@ -522,6 +527,7 @@ impl cfn_resources::CfnResource for EcsParameters {
 
 /// The templated target type for the EventBridge PutEvents API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventBridgeParameters {
     ///
     /// A free-form string, with a maximum of 128 characters, used to decide what fields to expect in the event detail.
@@ -562,6 +568,7 @@ impl cfn_resources::CfnResource for EventBridgeParameters {
 
 /// Allows you to configure a time window during which EventBridge Scheduler invokes the schedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FlexibleTimeWindow {
     ///
     /// The maximum time window during which a schedule can be invoked.
@@ -576,7 +583,7 @@ pub struct FlexibleTimeWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumWindowInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_window_in_minutes: Option<f64>,
 
     ///
@@ -641,6 +648,7 @@ impl cfn_resources::CfnResource for FlexibleTimeWindow {
 
 /// The templated target type for the Amazon Kinesis PutRecord API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisParameters {
     ///
     /// Specifies the shard to which EventBridge Scheduler sends the event. For more information, see Amazon Kinesis Data Streams terminology and concepts in the     Amazon Kinesis Streams Developer Guide.
@@ -670,6 +678,7 @@ impl cfn_resources::CfnResource for KinesisParameters {
 
 /// Specifies the network configuration for an ECS task.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// Specifies the Amazon VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode.
@@ -680,7 +689,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsvpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub awsvpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -704,6 +713,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
 /// An object representing a constraint on task placement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. You cannot specify an expression if the constraint type is distinctInstance.     For more information, see Cluster query language in the Amazon ECS Developer Guide.
@@ -714,7 +724,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -726,7 +736,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -746,6 +756,7 @@ impl cfn_resources::CfnResource for PlacementConstraint {
 
 /// The task placement strategy for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlacementStrategy {
     ///
     /// The field to apply the placement strategy against. For the spread placement strategy, valid values are instanceId (or instanceId, which has the same effect),     or any platform or custom attribute that is applied to a container instance, such as attribute:ecs.availability-zone. For the binpack placement strategy, valid values are     cpu and memory. For the random placement strategy, this field is not used.
@@ -756,7 +767,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -768,7 +779,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -788,6 +799,7 @@ impl cfn_resources::CfnResource for PlacementStrategy {
 
 /// A RetryPolicy object that includes information about the retry policy settings, including the maximum age of an event, and the maximum number of times EventBridge Scheduler will try to deliver the event to a target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetryPolicy {
     ///
     /// The maximum amount of time, in seconds, to continue to make retry attempts.
@@ -798,7 +810,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumEventAgeInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_event_age_in_seconds: Option<f64>,
 
     ///
@@ -810,7 +822,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_retry_attempts: Option<f64>,
 }
 
@@ -830,6 +842,7 @@ impl cfn_resources::CfnResource for RetryPolicy {
 
 /// The name and value pair of a parameter to use to start execution of a SageMaker Model Building Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SageMakerPipelineParameter {
     ///
     /// Name of parameter to start execution of a SageMaker Model Building Pipeline.
@@ -870,6 +883,7 @@ impl cfn_resources::CfnResource for SageMakerPipelineParameter {
 
 /// The templated target type for the Amazon SageMaker StartPipelineExecution API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SageMakerPipelineParameters {
     ///
     /// List of parameter names and values to use when executing the SageMaker Model Building Pipeline.
@@ -880,7 +894,7 @@ pub struct SageMakerPipelineParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineParameterList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
 }
 
@@ -900,6 +914,7 @@ impl cfn_resources::CfnResource for SageMakerPipelineParameters {
 
 /// The templated target type for the Amazon SQS SendMessage API operation.     Contains the message group ID to use when the target is a FIFO queue. If you specify an Amazon SQS FIFO queue as a target, the queue must have content-based deduplication enabled.     For more information, see Using the Amazon SQS message deduplication ID in the     Amazon SQS Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SqsParameters {
     ///
     /// The FIFO message group ID to use as the target.
@@ -910,7 +925,7 @@ pub struct SqsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_group_id: Option<cfn_resources::StrVal>,
 }
 
@@ -930,6 +945,7 @@ impl cfn_resources::CfnResource for SqsParameters {
 
 /// The schedule's target. EventBridge Scheduler supports templated target that invoke common API operations, as well as universal targets that you can customize to     invoke over 6,000 API operations across more than 270 services. You can only specify one templated or universal target for a schedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Target {
     ///
     /// The Amazon Resource Name (ARN) of the target.
@@ -951,7 +967,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     ///
@@ -963,7 +979,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcsParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ecs_parameters: Option<EcsParameters>,
 
     ///
@@ -975,7 +991,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bridge_parameters: Option<EventBridgeParameters>,
 
     ///
@@ -987,7 +1003,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input: Option<cfn_resources::StrVal>,
 
     ///
@@ -999,7 +1015,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_parameters: Option<KinesisParameters>,
 
     ///
@@ -1011,7 +1027,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_policy: Option<RetryPolicy>,
 
     ///
@@ -1034,7 +1050,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerPipelineParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_pipeline_parameters: Option<SageMakerPipelineParameters>,
 
     ///
@@ -1046,7 +1062,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sqs_parameters: Option<SqsParameters>,
 }
 

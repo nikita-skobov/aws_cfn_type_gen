@@ -2,6 +2,7 @@
 ///
 /// You cannot associate a customer gateway with more than one device and link.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCustomerGatewayAssociation {
     ///
     /// The Amazon Resource Name (ARN) of the customer gateway.
@@ -69,7 +70,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinkId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub link_id: Option<cfn_resources::StrVal>,
 }
 

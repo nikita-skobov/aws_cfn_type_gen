@@ -1,5 +1,6 @@
 /// Specifies an Access Control List. For more information, see Authenticating users with Access       Contol Lists (ACLs).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnACL {
     ///
     /// The name of the Access Control List.
@@ -23,7 +24,7 @@ pub struct CfnACL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnACL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_names: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -83,6 +84,7 @@ impl cfn_resources::CfnResource for CfnACL {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

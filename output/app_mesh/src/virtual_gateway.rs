@@ -4,6 +4,7 @@
 ///
 /// For more information about virtual gateways, see Virtual gateways.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVirtualGateway {
     ///
     /// The name of the service mesh that the virtual gateway resides in.
@@ -33,7 +34,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualGatewayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_gateway_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -234,6 +235,7 @@ impl cfn_resources::CfnResource for CfnVirtualGateway {
 
 /// An object that represents the key value pairs for the JSON.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonFormatRef {
     ///
     /// The specified key for the JSON.
@@ -326,6 +328,7 @@ impl cfn_resources::CfnResource for JsonFormatRef {
 
 /// An object that represents the format for the logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingFormat {
     ///
     /// The logging format for JSON.
@@ -336,7 +339,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json: Option<Vec<JsonFormatRef>>,
 
     ///
@@ -352,7 +355,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text: Option<cfn_resources::StrVal>,
 }
 
@@ -394,6 +397,7 @@ impl cfn_resources::CfnResource for LoggingFormat {
 
 /// An object that represents the methods by which a subject alternative name on a peer     Transport Layer Security (TLS) certificate can be matched.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubjectAlternativeNameMatchers {
     ///
     /// The values sent must match the specified values exactly.
@@ -404,7 +408,7 @@ pub struct SubjectAlternativeNameMatchers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<Vec<String>>,
 }
 
@@ -424,6 +428,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
 
 /// An object that represents the subject alternative names secured by the     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubjectAlternativeNames {
     ///
     /// An object that represents the criteria for determining a SANs match.
@@ -461,6 +466,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNames {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -499,6 +505,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The access log configuration for a virtual gateway.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayAccessLog {
     ///
     /// The file object to send virtual gateway access logs to.
@@ -509,7 +516,7 @@ pub struct VirtualGatewayAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<VirtualGatewayFileAccessLog>,
 }
 
@@ -531,6 +538,7 @@ impl cfn_resources::CfnResource for VirtualGatewayAccessLog {
 
 /// An object that represents the default properties for a backend.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayBackendDefaults {
     ///
     /// A reference to an object that represents a client policy.
@@ -541,7 +549,7 @@ pub struct VirtualGatewayBackendDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_policy: Option<VirtualGatewayClientPolicy>,
 }
 
@@ -565,6 +573,7 @@ impl cfn_resources::CfnResource for VirtualGatewayBackendDefaults {
 
 /// An object that represents a client policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayClientPolicy {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
@@ -575,7 +584,7 @@ pub struct VirtualGatewayClientPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<VirtualGatewayClientPolicyTls>,
 }
 
@@ -597,6 +606,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientPolicy {
 
 /// An object that represents a Transport Layer Security (TLS) client policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayClientPolicyTls {
     ///
     /// A reference to an object that represents a virtual gateway's client's Transport Layer Security (TLS)     certificate.
@@ -607,7 +617,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate: Option<VirtualGatewayClientTlsCertificate>,
 
     ///
@@ -619,7 +629,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enforce")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enforce: Option<bool>,
 
     ///
@@ -631,7 +641,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -668,6 +678,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientPolicyTls {
 
 /// An object that represents the virtual gateway's client's Transport Layer Security (TLS) certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// An object that represents a local file certificate. The certificate must meet specific     requirements and you must have proxy authorization enabled. For more information, see       Transport Layer Security (TLS)     .
@@ -678,7 +689,7 @@ pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<VirtualGatewayListenerTlsFileCertificate>,
 
     ///
@@ -690,7 +701,7 @@ pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<VirtualGatewayListenerTlsSdsCertificate>,
 }
 
@@ -718,6 +729,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientTlsCertificate {
 ///
 /// If not present the default value for maxPendingRequests is       2147483647.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayConnectionPool {
     ///
     /// An object that represents a type of connection pool.
@@ -728,7 +740,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grpc: Option<VirtualGatewayGrpcConnectionPool>,
 
     ///
@@ -740,7 +752,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http: Option<VirtualGatewayHttpConnectionPool>,
 
     ///
@@ -752,7 +764,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http2: Option<VirtualGatewayHttp2ConnectionPool>,
 }
 
@@ -778,6 +790,7 @@ impl cfn_resources::CfnResource for VirtualGatewayConnectionPool {
 
 /// An object that represents an access log file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayFileAccessLog {
     ///
     /// The specified format for the virtual gateway access logs. It can be either       json_format or text_format.
@@ -788,7 +801,7 @@ pub struct VirtualGatewayFileAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<LoggingFormat>,
 
     ///
@@ -847,6 +860,7 @@ impl cfn_resources::CfnResource for VirtualGatewayFileAccessLog {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayGrpcConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -887,6 +901,7 @@ impl cfn_resources::CfnResource for VirtualGatewayGrpcConnectionPool {
 
 /// An object that represents the health check policy for a virtual gateway's     listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// The number of consecutive successful health checks that must occur before declaring the     listener healthy.
@@ -923,7 +938,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -939,7 +954,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1073,6 +1088,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHealthCheckPolicy {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayHttp2ConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -1113,6 +1129,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHttp2ConnectionPool {
 
 /// An object that represents a type of connection pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayHttpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -1138,7 +1155,7 @@ pub struct VirtualGatewayHttpConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPendingRequests")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_pending_requests: Option<i64>,
 }
 
@@ -1176,6 +1193,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHttpConnectionPool {
 
 /// An object that represents a listener for a virtual gateway.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListener {
     ///
     /// The connection pool information for the listener.
@@ -1186,7 +1204,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPool")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_pool: Option<VirtualGatewayConnectionPool>,
 
     ///
@@ -1198,7 +1216,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check: Option<VirtualGatewayHealthCheckPolicy>,
 
     ///
@@ -1221,7 +1239,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<VirtualGatewayListenerTls>,
 }
 
@@ -1253,6 +1271,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListener {
 
 /// An object that represents the Transport Layer Security (TLS) properties for a listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTls {
     ///
     /// An object that represents a Transport Layer Security (TLS) certificate.
@@ -1289,7 +1308,7 @@ pub struct VirtualGatewayListenerTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation: Option<VirtualGatewayListenerTlsValidationContext>,
 }
 
@@ -1336,6 +1355,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTls {
 
 /// An object that represents an AWS Certificate Manager certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsAcmCertificate {
     ///
     /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
@@ -1365,6 +1385,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsAcmCertificate {
 
 /// An object that represents a listener's Transport Layer Security (TLS) certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// A reference to an object that represents an AWS Certificate Manager certificate.
@@ -1375,7 +1396,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acm: Option<VirtualGatewayListenerTlsAcmCertificate>,
 
     ///
@@ -1387,7 +1408,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<VirtualGatewayListenerTlsFileCertificate>,
 
     ///
@@ -1399,7 +1420,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<VirtualGatewayListenerTlsSdsCertificate>,
 }
 
@@ -1425,6 +1446,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsCertificate {
 
 /// An object that represents a local file certificate.     The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsFileCertificate {
     ///
     /// The certificate chain for the certificate.
@@ -1517,6 +1539,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsFileCertificate {
 
 /// An object that represents the virtual gateway's listener's Secret Discovery Service     certificate.The proxy must be configured with a local SDS provider via a Unix Domain     Socket. See App MeshTLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsSdsCertificate {
     ///
     /// A reference to an object that represents the name of the secret secret requested from     the Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or     certificate chain.
@@ -1546,6 +1569,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsSdsCertificate {
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) validation     context.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a virtual gateway listener's Transport Layer Security (TLS)     validation context.
@@ -1556,7 +1580,7 @@ pub struct VirtualGatewayListenerTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -1593,6 +1617,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContext {
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) validation context     trust.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
@@ -1603,7 +1628,7 @@ pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<VirtualGatewayTlsValidationContextFileTrust>,
 
     ///
@@ -1615,7 +1640,7 @@ pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<VirtualGatewayTlsValidationContextSdsTrust>,
 }
 
@@ -1639,6 +1664,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContextTr
 
 /// An object that represents logging information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayLogging {
     ///
     /// The access log configuration.
@@ -1649,7 +1675,7 @@ pub struct VirtualGatewayLogging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_log: Option<VirtualGatewayAccessLog>,
 }
 
@@ -1673,6 +1699,7 @@ impl cfn_resources::CfnResource for VirtualGatewayLogging {
 
 /// An object that represents a port mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayPortMapping {
     ///
     /// The port used for the port mapping. Specify one protocol.
@@ -1758,6 +1785,7 @@ impl cfn_resources::CfnResource for VirtualGatewayPortMapping {
 
 /// An object that represents the specification of a service mesh resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewaySpec {
     ///
     /// A reference to an object that represents the defaults for backends.
@@ -1768,7 +1796,7 @@ pub struct VirtualGatewaySpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackendDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backend_defaults: Option<VirtualGatewayBackendDefaults>,
 
     ///
@@ -1791,7 +1819,7 @@ pub struct VirtualGatewaySpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging: Option<VirtualGatewayLogging>,
 }
 
@@ -1817,6 +1845,7 @@ impl cfn_resources::CfnResource for VirtualGatewaySpec {
 
 /// An object that represents a Transport Layer Security (TLS) validation context.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a virtual gateway's listener's     Transport Layer Security (TLS) validation context.
@@ -1827,7 +1856,7 @@ pub struct VirtualGatewayTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -1864,6 +1893,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContext {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager     certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayTlsValidationContextAcmTrust {
     ///
     /// One or more ACM Amazon Resource Name (ARN)s.
@@ -1904,6 +1934,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextAcmTrust {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayTlsValidationContextFileTrust {
     ///
     /// The certificate trust chain for a certificate stored on the file system of the virtual     node that the proxy is running on.
@@ -1959,6 +1990,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextFileTrust 
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) Secret Discovery Service     validation context trust. The proxy must be configured with a local SDS provider via a Unix     Domain Socket. See App Mesh     TLS       documentation for more info.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayTlsValidationContextSdsTrust {
     ///
     /// A reference to an object that represents the name of the secret for a virtual gateway's     Transport Layer Security (TLS) Secret Discovery Service validation context trust.
@@ -1988,6 +2020,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextSdsTrust {
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager certificate.
@@ -1998,7 +2031,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acm: Option<VirtualGatewayTlsValidationContextAcmTrust>,
 
     ///
@@ -2010,7 +2043,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file: Option<VirtualGatewayTlsValidationContextFileTrust>,
 
     ///
@@ -2022,7 +2055,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sds: Option<VirtualGatewayTlsValidationContextSdsTrust>,
 }
 

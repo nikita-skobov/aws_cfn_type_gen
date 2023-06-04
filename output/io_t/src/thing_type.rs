@@ -1,5 +1,6 @@
 /// Creates a new thing type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnThingType {
     ///
     /// Deprecates a thing type. You can not associate new things with deprecated thing 			type.
@@ -12,7 +13,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateThingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deprecate_thing_type: Option<bool>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_type_properties: Option<ThingTypeProperties>,
 
     #[serde(skip_serializing)]
@@ -100,6 +101,7 @@ impl cfn_resources::CfnResource for CfnThingType {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -138,6 +140,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The ThingTypeProperties contains information about the thing type including: a thing type description, 			and a list of searchable thing attribute names.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThingTypeProperties {
     ///
     /// A list of searchable thing attribute names.
@@ -148,7 +151,7 @@ pub struct ThingTypeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SearchableAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub searchable_attributes: Option<Vec<String>>,
 
     ///
@@ -160,7 +163,7 @@ pub struct ThingTypeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thing_type_description: Option<cfn_resources::StrVal>,
 }
 

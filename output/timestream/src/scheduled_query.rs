@@ -1,5 +1,6 @@
 /// Create a scheduled query that will be run on your behalf at the configured schedule.    Timestream assumes the execution role provided as part of the     ScheduledQueryExecutionRoleArn parameter to run the query. You can use the     NotificationConfiguration parameter to configure notification for your    scheduled query operations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnScheduledQuery {
     ///
     /// Using a ClientToken makes the call to CreateScheduledQuery idempotent, in other words,    making the same request repeatedly will produce the same result. Making multiple identical    CreateScheduledQuery requests has the same effect as making a single request.
@@ -12,7 +13,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduledQueryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduled_query_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_configuration: Option<TargetConfiguration>,
 
     #[serde(skip_serializing)]
@@ -248,6 +249,7 @@ impl cfn_resources::CfnResource for CfnScheduledQuery {
 
 /// This type is used to map column(s) from the query result to a dimension in the destination    table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DimensionMapping {
     ///
     /// Type for the dimension: VARCHAR
@@ -288,6 +290,7 @@ impl cfn_resources::CfnResource for DimensionMapping {
 
 /// Configuration required for error reporting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ErrorReportConfiguration {
     ///
     /// The S3 configuration for the error reports.
@@ -319,6 +322,7 @@ impl cfn_resources::CfnResource for ErrorReportConfiguration {
 
 /// MixedMeasureMappings are mappings that can be used to ingest data into a mixture of narrow    and multi measures in the derived table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MixedMeasureMapping {
     ///
     /// Refers to the value of measure_name in a result row. This field is required if    MeasureNameColumn is provided.
@@ -329,7 +333,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -352,7 +356,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiMeasureAttributeMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_measure_attribute_mappings: Option<Vec<MultiMeasureAttributeMapping>>,
 
     ///
@@ -364,7 +368,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -376,7 +380,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMeasureName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_measure_name: Option<cfn_resources::StrVal>,
 }
 
@@ -396,6 +400,7 @@ impl cfn_resources::CfnResource for MixedMeasureMapping {
 
 /// Attribute mapping for MULTI value measures.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MultiMeasureAttributeMapping {
     ///
     /// Type of the attribute to be read from the source column.
@@ -428,7 +433,7 @@ pub struct MultiMeasureAttributeMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureAttributeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_multi_measure_attribute_name: Option<cfn_resources::StrVal>,
 }
 
@@ -448,6 +453,7 @@ impl cfn_resources::CfnResource for MultiMeasureAttributeMapping {
 
 /// Only one of MixedMeasureMappings or MultiMeasureMappings is to be provided.    MultiMeasureMappings can be used to ingest data as multi measures in the derived table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MultiMeasureMappings {
     ///
     /// Required. Attribute mappings to be used for mapping query results to ingest data for    multi-measure attributes.
@@ -469,7 +475,7 @@ pub struct MultiMeasureMappings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_multi_measure_name: Option<cfn_resources::StrVal>,
 }
 
@@ -489,6 +495,7 @@ impl cfn_resources::CfnResource for MultiMeasureMappings {
 
 /// Notification configuration for a scheduled query. A notification is sent by Timestream    when a scheduled query is created, its state is updated or when it is deleted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationConfiguration {
     ///
     /// Details on SNS configuration.
@@ -520,6 +527,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 
 /// Details on S3 location for error reports that result from running a query.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Configuration {
     ///
     /// Name of the S3 bucket under which error reports will be created.
@@ -549,7 +557,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_option: Option<S3ConfigurationEncryptionOptionEnum>,
 
     ///
@@ -567,7 +575,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -645,6 +653,7 @@ impl cfn_resources::CfnResource for S3Configuration {
 
 /// Configuration of the schedule of the query.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduleConfiguration {
     ///
     /// An expression that denotes when to trigger the scheduled query run. This can be a cron    expression or a rate expression.
@@ -674,6 +683,7 @@ impl cfn_resources::CfnResource for ScheduleConfiguration {
 
 /// Details on SNS that are required to send the notification.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnsConfiguration {
     ///
     /// SNS topic ARN that the scheduled query status notifications will be sent to.
@@ -709,6 +719,7 @@ impl cfn_resources::CfnResource for SnsConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -747,6 +758,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Configuration used for writing the output of a query.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetConfiguration {
     ///
     /// Configuration needed to write data into the Timestream database and table.
@@ -778,6 +790,7 @@ impl cfn_resources::CfnResource for TargetConfiguration {
 
 /// Configuration to write data into Timestream database and table. This configuration allows    the user to map the query result select columns into the destination table columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimestreamConfiguration {
     ///
     /// Name of Timestream database to which the query result will be written.
@@ -810,7 +823,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureNameColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_name_column: Option<cfn_resources::StrVal>,
 
     ///
@@ -822,7 +835,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MixedMeasureMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mixed_measure_mappings: Option<Vec<MixedMeasureMapping>>,
 
     ///
@@ -834,7 +847,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiMeasureMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_measure_mappings: Option<MultiMeasureMappings>,
 
     ///

@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::EndpointConfig resource creates a configuration       for an Amazon SageMaker endpoint. For more information, see CreateEndpointConfig       in the SageMaker Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpointConfig {
     ///
     /// Specifies configuration for how an endpoint performs asynchronous inference.
@@ -10,7 +11,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AsyncInferenceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub async_inference_config: Option<AsyncInferenceConfig>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCaptureConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_capture_config: Option<DataCaptureConfig>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_config_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -49,7 +50,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExplainerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explainer_config: Option<ExplainerConfig>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShadowProductionVariants")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shadow_production_variants: Option<Vec<ProductionVariant>>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -200,6 +201,7 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
 
 /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AsyncInferenceClientConfig {
     ///
     /// The maximum number of concurrent requests sent by the SageMaker client to the model       container. If no value is provided, SageMaker will choose an optimal value for       you.
@@ -210,7 +212,7 @@ pub struct AsyncInferenceClientConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxConcurrentInvocationsPerInstance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_concurrent_invocations_per_instance: Option<i64>,
 }
 
@@ -230,6 +232,7 @@ impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
 
 /// Specifies configuration for how an endpoint performs asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AsyncInferenceConfig {
     ///
     /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
@@ -240,7 +243,7 @@ pub struct AsyncInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_config: Option<AsyncInferenceClientConfig>,
 
     ///
@@ -277,6 +280,7 @@ impl cfn_resources::CfnResource for AsyncInferenceConfig {
 
 /// Specifies the configuration for notifications of inference results for asynchronous       inference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AsyncInferenceNotificationConfig {
     ///
     /// Amazon SNS topic to post a notification to when an inference fails. If no topic is       provided, no notification is sent on failure.
@@ -287,7 +291,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ErrorTopic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_topic: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -298,7 +302,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IncludeInferenceResponseIn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_inference_response_in: Option<Vec<String>>,
 
     ///
@@ -310,7 +314,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SuccessTopic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub success_topic: Option<cfn_resources::StrVal>,
 }
 
@@ -330,6 +334,7 @@ impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
 
 /// Specifies the configuration for asynchronous inference invocation outputs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AsyncInferenceOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon       SageMaker uses to encrypt the asynchronous inference output in Amazon S3.
@@ -340,7 +345,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -352,7 +357,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_config: Option<AsyncInferenceNotificationConfig>,
 
     /// Property description not available.
@@ -363,7 +368,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3FailurePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_failure_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -375,7 +380,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3OutputPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
@@ -399,6 +404,7 @@ impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
 
 /// Specifies the JSON and CSV content types of the data that the endpoint       captures.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CaptureContentTypeHeader {
     ///
     /// A list of the CSV content types of the data that the endpoint captures. For the       endpoint to capture the data, you must also specify the content type when you invoke the       endpoint.
@@ -411,7 +417,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CsvContentTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_content_types: Option<Vec<String>>,
 
     ///
@@ -425,7 +431,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JsonContentTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_content_types: Option<Vec<String>>,
 }
 
@@ -463,6 +469,7 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 
 /// Specifies whether the endpoint captures input data or output data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CaptureOption {
     ///
     /// Specifies whether the endpoint captures input data or output data.
@@ -511,6 +518,7 @@ impl cfn_resources::CfnResource for CaptureOption {
 
 /// The ClarifyExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyExplainerConfig {
     /// Property description not available.
     ///
@@ -520,7 +528,7 @@ pub struct ClarifyExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableExplanations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_explanations: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -531,7 +539,7 @@ pub struct ClarifyExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inference_config: Option<ClarifyInferenceConfig>,
 
     /// Property description not available.
@@ -567,6 +575,7 @@ impl cfn_resources::CfnResource for ClarifyExplainerConfig {
 
 /// The ClarifyFeatureType property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyFeatureType {}
 
 impl cfn_resources::CfnResource for ClarifyFeatureType {
@@ -585,6 +594,7 @@ impl cfn_resources::CfnResource for ClarifyFeatureType {
 
 /// The ClarifyHeader property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyHeader {}
 
 impl cfn_resources::CfnResource for ClarifyHeader {
@@ -603,6 +613,7 @@ impl cfn_resources::CfnResource for ClarifyHeader {
 
 /// The ClarifyInferenceConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyInferenceConfig {
     /// Property description not available.
     ///
@@ -612,7 +623,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_template: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -623,7 +634,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub feature_headers: Option<Vec<ClarifyHeader>>,
 
     /// Property description not available.
@@ -634,7 +645,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub feature_types: Option<Vec<ClarifyFeatureType>>,
 
     /// Property description not available.
@@ -645,7 +656,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub features_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -656,7 +667,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -667,7 +678,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_headers: Option<Vec<ClarifyHeader>>,
 
     /// Property description not available.
@@ -678,7 +689,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_index: Option<i64>,
 
     /// Property description not available.
@@ -689,7 +700,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxPayloadInMB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_payload_in_mb: Option<i64>,
 
     /// Property description not available.
@@ -700,7 +711,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxRecordCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_record_count: Option<i64>,
 
     /// Property description not available.
@@ -711,7 +722,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub probability_attribute: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -722,7 +733,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub probability_index: Option<i64>,
 }
 
@@ -742,6 +753,7 @@ impl cfn_resources::CfnResource for ClarifyInferenceConfig {
 
 /// The ClarifyShapBaselineConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyShapBaselineConfig {
     /// Property description not available.
     ///
@@ -751,7 +763,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MimeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mime_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -762,7 +774,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShapBaseline")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shap_baseline: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -773,7 +785,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShapBaselineUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shap_baseline_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -793,6 +805,7 @@ impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
 
 /// The ClarifyShapConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyShapConfig {
     /// Property description not available.
     ///
@@ -802,7 +815,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSamples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_samples: Option<i64>,
 
     /// Property description not available.
@@ -813,7 +826,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Seed")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub seed: Option<i64>,
 
     /// Property description not available.
@@ -834,7 +847,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TextConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_config: Option<ClarifyTextConfig>,
 
     /// Property description not available.
@@ -845,7 +858,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UseLogit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_logit: Option<bool>,
 }
 
@@ -871,6 +884,7 @@ impl cfn_resources::CfnResource for ClarifyShapConfig {
 
 /// The ClarifyTextConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClarifyTextConfig {
     /// Property description not available.
     ///
@@ -909,6 +923,7 @@ impl cfn_resources::CfnResource for ClarifyTextConfig {
 
 /// Specifies the configuration of your endpoint for model monitor data capture.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCaptureConfig {
     ///
     /// A list of the JSON and CSV content type that the endpoint captures.
@@ -919,7 +934,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CaptureContentTypeHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capture_content_type_header: Option<CaptureContentTypeHeader>,
 
     ///
@@ -959,7 +974,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableCapture")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_capture: Option<bool>,
 
     ///
@@ -990,7 +1005,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1060,6 +1075,7 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
 
 /// The ExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExplainerConfig {
     /// Property description not available.
     ///
@@ -1069,7 +1085,7 @@ pub struct ExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClarifyExplainerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clarify_explainer_config: Option<ClarifyExplainerConfig>,
 }
 
@@ -1093,6 +1109,7 @@ impl cfn_resources::CfnResource for ExplainerConfig {
 
 /// Specifies a model that you want to host and the resources to deploy for hosting it.       If you are deploying multiple models, tell Amazon SageMaker how to distribute traffic       among the models by specifying the InitialVariantWeight objects.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProductionVariant {
     ///
     /// The size of the Elastic Inference (EI) instance to use for the production variant. EI       instances provide on-demand GPU computing for inference. For more information, see         Using Elastic         Inference in Amazon SageMaker. For more information, see Using Elastic Inference in         Amazon SageMaker.
@@ -1105,7 +1122,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accelerator_type: Option<ProductionVariantAcceleratorTypeEnum>,
 
     /// Property description not available.
@@ -1116,7 +1133,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerStartupHealthCheckTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_startup_health_check_timeout_in_seconds: Option<i64>,
 
     /// Property description not available.
@@ -1127,7 +1144,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableSSMAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_ssmaccess: Option<bool>,
 
     ///
@@ -1141,7 +1158,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialInstanceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_instance_count: Option<i64>,
 
     ///
@@ -1166,7 +1183,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<ProductionVariantInstanceTypeEnum>,
 
     /// Property description not available.
@@ -1177,7 +1194,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataDownloadTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_download_timeout_in_seconds: Option<i64>,
 
     ///
@@ -1204,7 +1221,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerlessConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serverless_config: Option<ServerlessConfig>,
 
     ///
@@ -1230,7 +1247,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeSizeInGB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size_in_gb: Option<i64>,
 }
 
@@ -1915,6 +1932,7 @@ impl cfn_resources::CfnResource for ProductionVariant {
 
 /// Specifies the serverless configuration for an endpoint variant.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerlessConfig {
     ///
     /// The maximum number of concurrent invocations your serverless endpoint can process.
@@ -1954,7 +1972,7 @@ pub struct ServerlessConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisionedConcurrency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_concurrency: Option<i64>,
 }
 
@@ -2016,6 +2034,7 @@ impl cfn_resources::CfnResource for ServerlessConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

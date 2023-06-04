@@ -4,6 +4,7 @@
 ///
 /// For details about the settings for DB security group ingress, see AuthorizeDBSecurityGroupIngress.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBSecurityGroupIngress {
     ///
     /// The IP range to authorize.
@@ -14,7 +15,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CIDRIP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// You must specify at least one of the following properties:     DomainNameServers, NetbiosNameServers,     NtpServers. If you specify NetbiosNameServers, you must specify     NetbiosNodeType.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDHCPOptions {
     ///
     /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
@@ -12,7 +13,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainNameServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name_servers: Option<Vec<String>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetbiosNameServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub netbios_name_servers: Option<Vec<String>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetbiosNodeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub netbios_node_type: Option<i64>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NtpServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ntp_servers: Option<Vec<String>>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -109,6 +110,7 @@ impl cfn_resources::CfnResource for CfnDHCPOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -4,6 +4,7 @@
 ///
 /// For more information about virtual routers, see Virtual routers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVirtualRouter {
     ///
     /// The name of the service mesh to create the virtual router in.
@@ -33,7 +34,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualRouterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_router_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -234,6 +235,7 @@ impl cfn_resources::CfnResource for CfnVirtualRouter {
 
 /// An object representing a virtual router listener port mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortMapping {
     ///
     /// The port used for the port mapping.
@@ -329,6 +331,7 @@ impl cfn_resources::CfnResource for PortMapping {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -367,6 +370,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// An object that represents a virtual router listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualRouterListener {
     ///
     /// The port mapping information for the listener.
@@ -398,6 +402,7 @@ impl cfn_resources::CfnResource for VirtualRouterListener {
 
 /// An object that represents the specification of a virtual router.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VirtualRouterSpec {
     ///
     /// The listeners that the virtual router is expected to receive inbound traffic     from.

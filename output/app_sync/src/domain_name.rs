@@ -1,5 +1,6 @@
 /// The AWS::AppSync::DomainName resource creates a DomainNameConfig object to     configure a custom domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomainName {
     ///
     /// The Amazon Resource Name (ARN) of the certificate. This will be an AWS Certificate Manager     certificate.
@@ -21,7 +22,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///

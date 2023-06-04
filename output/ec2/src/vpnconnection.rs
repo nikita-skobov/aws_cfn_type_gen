@@ -6,6 +6,7 @@
 ///
 /// For more information, see AWS Site-to-Site VPN in the     AWS Site-to-Site VPN User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPNConnection {
     ///
     /// The ID of the customer gateway at your end of the VPN connection.
@@ -29,7 +30,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StaticRoutesOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_routes_only: Option<bool>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpnGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpnTunnelOptionsSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
 
     #[serde(skip_serializing)]
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnVPNConnection {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -182,6 +184,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The tunnel options for a single VPN tunnel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpnTunnelOptionsSpecification {
     ///
     /// The pre-shared key (PSK) to establish initial authentication between the virtual       private gateway and customer gateway.
@@ -194,7 +197,7 @@ pub struct VpnTunnelOptionsSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreSharedKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_shared_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +213,7 @@ pub struct VpnTunnelOptionsSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TunnelInsideCidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tunnel_inside_cidr: Option<cfn_resources::StrVal>,
 }
 

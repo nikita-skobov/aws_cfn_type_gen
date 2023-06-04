@@ -2,6 +2,7 @@
 ///
 /// For more information, see Getting started in the     Application Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnScalableTarget {
     ///
     /// The maximum value that you plan to scale out to. When a scaling policy is in effect,    Application Auto Scaling can scale out (expand) as needed to the maximum capacity limit in    response to changing demand.
@@ -81,7 +82,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduled_actions: Option<Vec<ScheduledAction>>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuspendedState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suspended_state: Option<SuspendedState>,
 }
 
@@ -314,6 +315,7 @@ impl cfn_resources::CfnResource for CfnScalableTarget {
 
 /// ScalableTargetAction specifies the minimum and maximum capacity for the     ScalableTargetAction property of the AWS::ApplicationAutoScaling::ScalableTarget ScheduledAction property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScalableTargetAction {
     ///
     /// The maximum capacity.
@@ -324,7 +326,7 @@ pub struct ScalableTargetAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity: Option<i64>,
 
     ///
@@ -336,7 +338,7 @@ pub struct ScalableTargetAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_capacity: Option<i64>,
 }
 
@@ -358,6 +360,7 @@ impl cfn_resources::CfnResource for ScalableTargetAction {
 ///
 /// For more information, see Scheduled scaling in the Application Auto Scaling User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduledAction {
     ///
     /// The date and time that the action is scheduled to end, in UTC.
@@ -368,7 +371,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -380,7 +383,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalableTargetAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scalable_target_action: Option<ScalableTargetAction>,
 
     ///
@@ -436,7 +439,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +457,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timezone: Option<cfn_resources::StrVal>,
 }
 
@@ -543,6 +546,7 @@ impl cfn_resources::CfnResource for ScheduledAction {
 ///
 /// For more information, see Suspending and resuming scaling in the Application Auto Scaling User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SuspendedState {
     ///
     /// Whether scale in by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    remove capacity when a scaling policy is triggered. The default is false.
@@ -553,7 +557,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicScalingInSuspended")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_scaling_in_suspended: Option<bool>,
 
     ///
@@ -565,7 +569,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicScalingOutSuspended")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_scaling_out_suspended: Option<bool>,
 
     ///
@@ -577,7 +581,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledScalingSuspended")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduled_scaling_suspended: Option<bool>,
 }
 

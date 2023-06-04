@@ -1,5 +1,6 @@
 /// The AWS::FSx::FileSystem resource is an Amazon FSx resource type       that specifies an Amazon FSx file system. You can create any of the following       supported file system types:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFileSystem {
     ///
     /// The ID of the file system backup that you are using to create a file system. For more information,       see CreateFileSystemFromBackup.
@@ -10,7 +11,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemTypeVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_type_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LustreConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lustre_configuration: Option<LustreConfiguration>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OntapConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ontap_configuration: Option<OntapConfiguration>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenZFSConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_zfsconfiguration: Option<OpenZFSConfiguration>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_capacity: Option<i64>,
 
     ///
@@ -157,7 +158,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_type: Option<FileSystemStorageTypeEnum>,
 
     ///
@@ -188,7 +189,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -200,7 +201,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub windows_configuration: Option<WindowsConfiguration>,
 
     #[serde(skip_serializing)]
@@ -355,6 +356,7 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 
 /// The configuration that Amazon FSx for Windows File Server uses to audit and log       user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server       file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuditLogConfiguration {
     ///
     /// The Amazon Resource Name (ARN) for the destination of the audit logs.       The destination can be any Amazon CloudWatch Logs log group ARN or       Amazon Kinesis Data Firehose delivery stream ARN.
@@ -375,7 +377,7 @@ pub struct AuditLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditLogDestination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audit_log_destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -494,6 +496,7 @@ impl cfn_resources::CfnResource for AuditLogConfiguration {
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientConfigurations {
     ///
     /// A value that specifies who can mount the file system. You can provide a wildcard       character (*), an IP address (0.0.0.0), or a CIDR address         (192.0.2.0/24). By default, Amazon FSx uses the wildcard       character when specifying the client.
@@ -510,7 +513,7 @@ pub struct ClientConfigurations {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Clients")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clients: Option<cfn_resources::StrVal>,
 
     ///
@@ -526,7 +529,7 @@ pub struct ClientConfigurations {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<Vec<String>>,
 }
 
@@ -577,6 +580,7 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 
 /// The SSD IOPS (input/output operations per second) configuration for an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS file system. The       default is 3 IOPS per GB of storage capacity, but you can provision additional IOPS per       GB of storage. The configuration consists of the total number of provisioned SSD IOPS       and how the amount was provisioned (by the customer or by the system).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DiskIopsConfiguration {
     ///
     /// The total number of SSD IOPS provisioned for the file system.
@@ -587,7 +591,7 @@ pub struct DiskIopsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -601,7 +605,7 @@ pub struct DiskIopsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<DiskIopsConfigurationModeEnum>,
 }
 
@@ -638,6 +642,7 @@ impl cfn_resources::CfnResource for DiskIopsConfiguration {
 
 /// The configuration for the Amazon FSx for Lustre file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LustreConfiguration {
     ///
     /// (Optional) Available with Scratch and Persistent_1 deployment types. When you       create your file system, your existing S3 objects appear as file and directory listings.       Use this property to choose how Amazon FSx keeps your file and directory listings up to date       as you add or modify objects in your linked S3 bucket. AutoImportPolicy can       have the following values:
@@ -656,7 +661,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImportPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_import_policy: Option<LustreConfigurationAutoImportPolicyEnum>,
 
     ///
@@ -668,7 +673,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -680,7 +685,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToBackups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -692,7 +697,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -710,7 +715,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCompressionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_compression_type: Option<LustreConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -734,7 +739,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_type: Option<LustreConfigurationDeploymentTypeEnum>,
 
     ///
@@ -750,7 +755,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriveCacheType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drive_cache_type: Option<LustreConfigurationDriveCacheTypeEnum>,
 
     ///
@@ -772,7 +777,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExportPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub export_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -792,7 +797,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImportPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub import_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -812,7 +817,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImportedFileChunkSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub imported_file_chunk_size: Option<i64>,
 
     ///
@@ -832,7 +837,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerUnitStorageThroughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub per_unit_storage_throughput: Option<i64>,
 
     ///
@@ -850,7 +855,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -1025,6 +1030,7 @@ impl cfn_resources::CfnResource for LustreConfiguration {
 
 /// The configuration object for mounting a file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NfsExports {
     ///
     /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
@@ -1037,7 +1043,7 @@ pub struct NfsExports {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_configurations: Option<Vec<ClientConfigurations>>,
 }
 
@@ -1066,6 +1072,7 @@ impl cfn_resources::CfnResource for NfsExports {
 
 /// The configuration for this Amazon FSx for NetApp ONTAP file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OntapConfiguration {
     ///
     /// The number of days to retain automatic backups. Setting this property to         0 disables automatic backups. You can retain automatic backups for a       maximum of 90 days. The default is 0.
@@ -1076,7 +1083,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -1088,7 +1095,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -1117,7 +1124,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DiskIopsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disk_iops_configuration: Option<DiskIopsConfiguration>,
 
     ///
@@ -1135,7 +1142,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointIpAddressRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_ip_address_range: Option<cfn_resources::StrVal>,
 
     ///
@@ -1153,7 +1160,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FsxAdminPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fsx_admin_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -1165,7 +1172,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1179,7 +1186,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_table_ids: Option<Vec<String>>,
 
     ///
@@ -1195,7 +1202,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput_capacity: Option<i64>,
 
     ///
@@ -1213,7 +1220,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -1313,6 +1320,7 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 
 /// The OpenZFS configuration for the file system that's being created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenZFSConfiguration {
     ///
     /// The number of days to retain automatic backups. Setting this property to         0 disables automatic backups. You can retain automatic backups for a       maximum of 90 days. The default is 0.
@@ -1323,7 +1331,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -1335,7 +1343,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToBackups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -1347,7 +1355,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToVolumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_volumes: Option<bool>,
 
     ///
@@ -1359,7 +1367,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -1388,7 +1396,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DiskIopsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disk_iops_configuration: Option<DiskIopsConfiguration>,
 
     ///
@@ -1402,7 +1410,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<Vec<String>>,
 
     ///
@@ -1414,7 +1422,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootVolumeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_volume_configuration: Option<RootVolumeConfiguration>,
 
     ///
@@ -1434,7 +1442,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput_capacity: Option<i64>,
 
     ///
@@ -1452,7 +1460,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -1521,6 +1529,7 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 
 /// The configuration of an Amazon FSx for OpenZFS root volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RootVolumeConfiguration {
     ///
     /// A Boolean value indicating whether tags for the volume should be copied to snapshots       of the volume. This value defaults to false. If it's set to true,       all tags for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true and you specify one or more tags, only the specified tags are       copied to snapshots. If you specify one or more tags when creating the snapshot, no tags       are copied from the volume, regardless of this value.
@@ -1531,7 +1540,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToSnapshots")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_snapshots: Option<bool>,
 
     ///
@@ -1547,7 +1556,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCompressionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_compression_type: Option<RootVolumeConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -1561,7 +1570,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NfsExports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nfs_exports: Option<Vec<NfsExports>>,
 
     ///
@@ -1573,7 +1582,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -1589,7 +1598,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecordSizeKiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_size_ki_b: Option<i64>,
 
     ///
@@ -1603,7 +1612,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserAndGroupQuotas")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
@@ -1677,6 +1686,7 @@ impl cfn_resources::CfnResource for RootVolumeConfiguration {
 
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
@@ -1689,7 +1699,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsIps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_ips: Option<Vec<String>>,
 
     ///
@@ -1707,7 +1717,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1725,7 +1735,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_administrators_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -1745,7 +1755,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1763,7 +1773,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -1781,7 +1791,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_name: Option<cfn_resources::StrVal>,
 }
 
@@ -1914,6 +1924,7 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1952,6 +1963,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The configuration for how much storage a user or group can use on the volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserAndGroupQuotas {
     ///
     /// The ID of the user or group.
@@ -1966,7 +1978,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<i64>,
 
     ///
@@ -1982,7 +1994,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageCapacityQuotaGiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_capacity_quota_gi_b: Option<i64>,
 
     ///
@@ -1996,7 +2008,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<UserAndGroupQuotasTypeEnum>,
 }
 
@@ -2063,6 +2075,7 @@ impl cfn_resources::CfnResource for UserAndGroupQuotas {
 
 /// The Microsoft Windows configuration for the file system that's being created.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WindowsConfiguration {
     ///
     /// The ID for an existing AWS Managed Microsoft Active Directory (AD)       instance that the file system should join when it's created. Required if you are joining the file system to an existing     AWS Managed Microsoft AD.
@@ -2079,7 +2092,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActiveDirectoryId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub active_directory_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2101,7 +2114,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aliases")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aliases: Option<Vec<String>>,
 
     ///
@@ -2113,7 +2126,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditLogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audit_log_configuration: Option<AuditLogConfiguration>,
 
     ///
@@ -2125,7 +2138,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -2137,7 +2150,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToBackups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -2149,7 +2162,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub daily_automatic_backup_start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -2167,7 +2180,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_type: Option<WindowsConfigurationDeploymentTypeEnum>,
 
     ///
@@ -2179,7 +2192,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2191,7 +2204,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_managed_active_directory_configuration:
         Option<SelfManagedActiveDirectoryConfiguration>,
 
@@ -2225,7 +2238,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 

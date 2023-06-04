@@ -1,5 +1,6 @@
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// A description for the AWS Verified Access trust provider.
@@ -10,7 +11,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_options: Option<DeviceOptions>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceTrustProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_trust_provider_type: Option<VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OidcOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oidc_options: Option<OidcOptions>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserTrustProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -211,6 +212,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
 
 /// Describes the options for an AWS Verified Access device-identity based trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeviceOptions {
     ///
     /// The ID of the tenant application with the device-identity provider.
@@ -221,7 +223,7 @@ pub struct DeviceOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TenantId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tenant_id: Option<cfn_resources::StrVal>,
 }
 
@@ -241,6 +243,7 @@ impl cfn_resources::CfnResource for DeviceOptions {
 
 /// Describes the options for an OpenID Connect-compatible user-identity trust     provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OidcOptions {
     ///
     /// The OIDC authorization endpoint.
@@ -251,7 +254,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_endpoint: Option<cfn_resources::StrVal>,
 
     ///
@@ -263,7 +266,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -275,7 +278,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
@@ -287,7 +290,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub issuer: Option<cfn_resources::StrVal>,
 
     ///
@@ -299,7 +302,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -311,7 +314,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_endpoint: Option<cfn_resources::StrVal>,
 
     ///
@@ -323,7 +326,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserInfoEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_info_endpoint: Option<cfn_resources::StrVal>,
 }
 
@@ -349,6 +352,7 @@ impl cfn_resources::CfnResource for OidcOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

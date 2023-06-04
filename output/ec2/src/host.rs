@@ -1,5 +1,6 @@
 /// Allocates a fully dedicated physical server for launching EC2 instances. Because the     host is fully dedicated for your use, it can help you address compliance requirements and     reduce costs by allowing you to use your existing server-bound software licenses. For more     information, see Dedicated Hosts in     the Amazon EC2 User Guide for Linux Instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHost {
     ///
     /// Indicates whether the host accepts any untargeted instance launches that match its       instance type configuration, or if it only accepts Host tenancy instance launches that       specify its unique host ID. For more information, see Understanding auto-placement and affinity in the         Amazon EC2 User Guide.
@@ -14,7 +15,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoPlacement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_placement: Option<HostAutoPlacementEnum>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostMaintenance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_maintenance: Option<HostHostMaintenanceEnum>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostRecovery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_recovery: Option<HostHostRecoveryEnum>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceFamily")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_family: Option<cfn_resources::StrVal>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

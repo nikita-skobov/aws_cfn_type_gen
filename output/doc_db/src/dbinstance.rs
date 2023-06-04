@@ -1,5 +1,6 @@
 /// The AWS::DocDB::DBInstance Amazon DocumentDB (with MongoDB compatibility) resource describes a DBInstance.      For more information, see DBInstance in the Amazon DocumentDB Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBInstance {
     ///
     /// This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set.
@@ -12,7 +13,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -79,7 +80,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceInsights")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_performance_insights: Option<bool>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -159,6 +160,7 @@ impl cfn_resources::CfnResource for CfnDBInstance {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

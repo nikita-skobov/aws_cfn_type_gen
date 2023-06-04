@@ -2,6 +2,7 @@
 ///
 /// Once you have activated a public third-party extension in your account and Region, use SetTypeConfiguration to specify configuration properties for the extension. For more information, see   Configuring extensions at   the account level in the CloudFormation User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTypeActivation {
     ///
     /// Whether to automatically update the extension in this account and Region when a new minor  version is published by the extension publisher. Major versions released by the publisher must be manually  updated.
@@ -14,7 +15,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoUpdate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_update: Option<bool>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_config: Option<LoggingConfig>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MajorVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub major_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicTypeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_type_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublisherId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publisher_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<TypeActivationTypeEnum>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +153,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeNameAlias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionBump")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_bump: Option<TypeActivationVersionBumpEnum>,
 
     #[serde(skip_serializing)]
@@ -337,6 +338,7 @@ impl cfn_resources::CfnResource for CfnTypeActivation {
 
 /// Contains logging configuration information for an extension.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.
@@ -353,7 +355,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -371,7 +373,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 }
 

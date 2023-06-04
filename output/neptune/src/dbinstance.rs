@@ -8,6 +8,7 @@
 ///
 /// When properties labeled Update requires: Replacement are updated,      AWS CloudFormation first creates a       replacement DB instance, changes references from other dependent resources to point to       the replacement DB instance, and finally deletes the old DB instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBInstance {
     ///
     /// Indicates that major version upgrades are allowed. Changing this    parameter doesn't result in an outage and the change is asynchronously    applied as soon as possible. This parameter must be set to true when specifying    a value for the EngineVersion parameter that is a different major version than    the DB instance's current version.
@@ -20,7 +21,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMajorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_major_version_upgrade: Option<bool>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBClusterIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBInstanceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbinstance_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBSnapshotIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsnapshot_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +124,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dbsubnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnDBInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -195,6 +196,7 @@ impl cfn_resources::CfnResource for CfnDBInstance {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::DataSync::StorageSystem resource creates an AWS resource for an on-premises storage system that you want DataSync Discovery to collect     information about. For more information, see discovering your storage with DataSync Discovery.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStorageSystem {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
@@ -27,7 +28,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_credentials: Option<ServerCredentials>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -217,6 +218,7 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
 
 /// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerConfiguration {
     ///
     /// The domain name or IP address of your storage system's management interface.
@@ -246,7 +248,7 @@ pub struct ServerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_port: Option<i64>,
 }
 
@@ -297,6 +299,7 @@ impl cfn_resources::CfnResource for ServerConfiguration {
 ///
 /// DataSync Discovery stores these credentials in AWS Secrets Manager. For more    information, see Accessing your on-premises     storage system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServerCredentials {
     ///
     /// Specifies the password for your storage system's management interface.
@@ -373,6 +376,7 @@ impl cfn_resources::CfnResource for ServerCredentials {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

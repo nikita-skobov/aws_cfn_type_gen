@@ -1,5 +1,6 @@
 /// The AWS::MediaConnect::FlowEntitlement resource defines the permission that an AWS account grants to another AWS account to allow access       to the content in a specific AWS Elemental MediaConnect flow. The       content originator grants an entitlement to a specific AWS account (the       subscriber). When an entitlement is granted, the subscriber can create a flow using the       originator's flow as the source. Each flow can have up to 50 entitlements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFlowEntitlement {
     ///
     /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
@@ -10,7 +11,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataTransferSubscriberFeePercent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_transfer_subscriber_fee_percent: Option<i64>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<Encryption>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitlementStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entitlement_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -113,6 +114,7 @@ impl cfn_resources::CfnResource for CfnFlowEntitlement {
 
 /// Information about the encryption of the flow.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
@@ -134,7 +136,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +148,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +160,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -170,7 +172,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,7 +184,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -205,7 +207,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -217,7 +219,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 }
 

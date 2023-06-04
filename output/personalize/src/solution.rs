@@ -1,5 +1,6 @@
 /// An object that provides information about a solution. A solution is a trained model    that can be deployed as a campaign.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSolution {
     ///
     /// The Amazon Resource Name (ARN) of the dataset group that provides the training data.
@@ -27,7 +28,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformAutoML")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub perform_auto_ml: Option<bool>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformHPO")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub perform_hpo: Option<bool>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecipeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SolutionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub solution_config: Option<SolutionConfig>,
 
     #[serde(skip_serializing)]
@@ -188,6 +189,7 @@ impl cfn_resources::CfnResource for CfnSolution {
 
 /// The AlgorithmHyperParameterRanges property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlgorithmHyperParameterRanges {
     /// Property description not available.
     ///
@@ -197,7 +199,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CategoricalHyperParameterRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub categorical_hyper_parameter_ranges: Option<Vec<CategoricalHyperParameterRange>>,
 
     /// Property description not available.
@@ -208,7 +210,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContinuousHyperParameterRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub continuous_hyper_parameter_ranges: Option<Vec<ContinuousHyperParameterRange>>,
 
     /// Property description not available.
@@ -219,7 +221,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntegerHyperParameterRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integer_hyper_parameter_ranges: Option<Vec<IntegerHyperParameterRange>>,
 }
 
@@ -239,6 +241,7 @@ impl cfn_resources::CfnResource for AlgorithmHyperParameterRanges {
 
 /// The AutoMLConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoMLConfig {
     /// Property description not available.
     ///
@@ -248,7 +251,7 @@ pub struct AutoMLConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -259,7 +262,7 @@ pub struct AutoMLConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecipeList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recipe_list: Option<Vec<String>>,
 }
 
@@ -279,6 +282,7 @@ impl cfn_resources::CfnResource for AutoMLConfig {
 
 /// The CategoricalHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoricalHyperParameterRange {
     /// Property description not available.
     ///
@@ -288,7 +292,7 @@ pub struct CategoricalHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -299,7 +303,7 @@ pub struct CategoricalHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -319,6 +323,7 @@ impl cfn_resources::CfnResource for CategoricalHyperParameterRange {
 
 /// The ContinuousHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContinuousHyperParameterRange {
     /// Property description not available.
     ///
@@ -328,7 +333,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_value: Option<f64>,
 
     /// Property description not available.
@@ -339,7 +344,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_value: Option<f64>,
 
     /// Property description not available.
@@ -350,7 +355,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -370,6 +375,7 @@ impl cfn_resources::CfnResource for ContinuousHyperParameterRange {
 
 /// The HpoConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HpoConfig {
     /// Property description not available.
     ///
@@ -379,7 +385,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlgorithmHyperParameterRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub algorithm_hyper_parameter_ranges: Option<AlgorithmHyperParameterRanges>,
 
     /// Property description not available.
@@ -390,7 +396,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoObjective")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hpo_objective: Option<HpoObjective>,
 
     /// Property description not available.
@@ -401,7 +407,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoResourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hpo_resource_config: Option<HpoResourceConfig>,
 }
 
@@ -433,6 +439,7 @@ impl cfn_resources::CfnResource for HpoConfig {
 
 /// The HpoObjective property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HpoObjective {
     /// Property description not available.
     ///
@@ -442,7 +449,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -453,7 +460,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricRegex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_regex: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -464,7 +471,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -484,6 +491,7 @@ impl cfn_resources::CfnResource for HpoObjective {
 
 /// The HpoResourceConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HpoResourceConfig {
     /// Property description not available.
     ///
@@ -493,7 +501,7 @@ pub struct HpoResourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxNumberOfTrainingJobs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_number_of_training_jobs: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -504,7 +512,7 @@ pub struct HpoResourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxParallelTrainingJobs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_parallel_training_jobs: Option<cfn_resources::StrVal>,
 }
 
@@ -524,6 +532,7 @@ impl cfn_resources::CfnResource for HpoResourceConfig {
 
 /// The IntegerHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerHyperParameterRange {
     /// Property description not available.
     ///
@@ -533,7 +542,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_value: Option<i64>,
 
     /// Property description not available.
@@ -544,7 +553,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_value: Option<i64>,
 
     /// Property description not available.
@@ -555,7 +564,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -575,6 +584,7 @@ impl cfn_resources::CfnResource for IntegerHyperParameterRange {
 
 /// Describes the configuration properties for the solution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SolutionConfig {
     ///
     /// Lists the hyperparameter names and ranges.
@@ -585,7 +595,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlgorithmHyperParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub algorithm_hyper_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -597,7 +607,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoMLConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_mlconfig: Option<AutoMLConfig>,
 
     ///
@@ -611,7 +621,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventValueThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_value_threshold: Option<cfn_resources::StrVal>,
 
     ///
@@ -623,7 +633,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureTransformationParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub feature_transformation_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -635,7 +645,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hpo_config: Option<HpoConfig>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// To attach a policy to this service-linked role, you must make the request using the       AWS service that depends on this role.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServiceLinkedRole {
     ///
     /// The service principal for the AWS service to which this role is attached. You use a       string similar to a URL but without the http:// in front. For example:         elasticbeanstalk.amazonaws.com.
@@ -41,7 +42,7 @@ pub struct CfnServiceLinkedRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomSuffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_suffix: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnServiceLinkedRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 }
 

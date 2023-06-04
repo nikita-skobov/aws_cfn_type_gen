@@ -4,6 +4,7 @@
 ///
 /// You can update an existing flow to add a VPC interface. If you haven’t created the       flow yet, you must create the flow with a temporary standard source by doing the       following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFlowVpcInterface {
     ///
     /// The Amazon Resource Name (ARN) of the flow.

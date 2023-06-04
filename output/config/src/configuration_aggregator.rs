@@ -1,5 +1,6 @@
 /// The details about the configuration aggregator, including 			information about source accounts, regions, and metadata of the 			aggregator.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigurationAggregator {
     ///
     /// Provides a list of source accounts and regions to be 			aggregated.
@@ -12,7 +13,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountAggregationSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_aggregation_sources: Option<Vec<AccountAggregationSource>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAggregatorName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_aggregator_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationAggregationSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_aggregation_source: Option<OrganizationAggregationSource>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -122,6 +123,7 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
 
 /// A collection of accounts and regions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountAggregationSource {
     ///
     /// The 12-digit account ID of the account being aggregated.
@@ -143,7 +145,7 @@ pub struct AccountAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllAwsRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_aws_regions: Option<bool>,
 
     ///
@@ -155,7 +157,7 @@ pub struct AccountAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_regions: Option<Vec<String>>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for AccountAggregationSource {
 
 /// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrganizationAggregationSource {
     ///
     /// If true, aggregate existing AWS Config regions and future 			regions.
@@ -185,7 +188,7 @@ pub struct OrganizationAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllAwsRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_aws_regions: Option<bool>,
 
     ///
@@ -197,7 +200,7 @@ pub struct OrganizationAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_regions: Option<Vec<String>>,
 
     ///
@@ -234,6 +237,7 @@ impl cfn_resources::CfnResource for OrganizationAggregationSource {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -6,6 +6,7 @@
 ///
 /// A Gateway Load Balancer endpoint provides private connectivity between your VPC and      virtual appliances from a service provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPCEndpoint {
     ///
     /// A policy that controls access to the service from the VPC.      If this parameter is not specified, the default policy allows full access to the service.     Endpoint policies are supported only for gateway and interface endpoints.
@@ -18,7 +19,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_document: Option<serde_json::Value>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_dns_enabled: Option<bool>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_table_ids: Option<Vec<String>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint_type: Option<VPCEndpointVpcEndpointTypeEnum>,
 
     ///

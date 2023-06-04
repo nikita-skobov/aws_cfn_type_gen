@@ -8,6 +8,7 @@
 ///
 /// The permission policy on the event bus cannot exceed 10 KB in size.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventBusPolicy {
     ///
     /// The action that you are enabling the other account to perform.
@@ -24,7 +25,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition: Option<Condition>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventBusName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_bus_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principal: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statement: Option<serde_json::Value>,
 
     ///
@@ -223,6 +224,7 @@ impl cfn_resources::CfnResource for CfnEventBusPolicy {
 ///
 /// '{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value":     "o-1234567890"}'
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Condition {
     ///
     /// Specifies the key for the condition. Currently the only supported key is     aws:PrincipalOrgID.
@@ -233,7 +235,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -245,7 +247,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -257,7 +259,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

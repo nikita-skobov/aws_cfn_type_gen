@@ -2,6 +2,7 @@
 ///
 /// A grant shares the use of license entitlements with specific AWS accounts. For more information,      see Granted       licenses in the AWS License Manager User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGrant {
     ///
     /// Allowed operations for the grant.
@@ -12,7 +13,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOperations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_operations: Option<Vec<String>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrantName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grant_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub home_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principals: Option<Vec<String>>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

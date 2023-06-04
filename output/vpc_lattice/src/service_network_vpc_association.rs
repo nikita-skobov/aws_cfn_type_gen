@@ -6,6 +6,7 @@
 ///
 /// If you add a security group to the service network and VPC association, the association must  continue to always have at least one security group. You can add or edit security groups at any  time. However, to remove all security groups, you must first delete the association and recreate  it without security groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// The IDs of the security groups. Security groups aren't added by default. You can add a  security group to apply network level controls to control which resources in a VPC are allowed to  access the service network and its services. For more information, see Control traffic to   resources using security groups in the Amazon VPC User  Guide.
@@ -16,7 +17,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceNetworkIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_network_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_identifier: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -166,6 +167,7 @@ impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// When you create a rule group, you define an immutable capacity limit. If you update a rule group, you must stay within the capacity. This allows others to reuse the rule group with confidence in its capacity requirements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRuleGroup {
     ///
     /// The labels that one or more rules in this rule group add to matching web requests. These labels are defined in the RuleLabels for a Rule.
@@ -12,7 +13,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailableLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub available_labels: Option<Vec<LabelSummary>>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsumedLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub consumed_labels: Option<Vec<LabelSummary>>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponseBodies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_response_bodies: Option<std::collections::HashMap<String, CustomResponseBody>>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules: Option<Vec<Rule>>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -242,6 +243,7 @@ impl cfn_resources::CfnResource for CfnRuleGroup {
 ///
 /// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AllowAction {
     ///
     /// Defines custom handling for the web request.
@@ -254,7 +256,7 @@ pub struct AllowAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -278,6 +280,7 @@ impl cfn_resources::CfnResource for AllowAction {
 
 /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AndStatement {
     ///
     /// The statements to combine with AND logic. You can use any statements that can be nested.
@@ -309,6 +312,7 @@ impl cfn_resources::CfnResource for AndStatement {
 ///
 /// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlockAction {
     ///
     /// Defines a custom response for the web request.
@@ -321,7 +325,7 @@ pub struct BlockAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_response: Option<CustomResponse>,
 }
 
@@ -347,6 +351,7 @@ impl cfn_resources::CfnResource for BlockAction {
 ///
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Body {
     ///
     /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
@@ -369,7 +374,7 @@ pub struct Body {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OversizeHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oversize_handling: Option<BodyOversizeHandlingEnum>,
 }
 
@@ -410,6 +415,7 @@ impl cfn_resources::CfnResource for Body {
 
 /// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ByteMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -472,7 +478,7 @@ pub struct ByteMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub search_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -486,7 +492,7 @@ pub struct ByteMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchStringBase64")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub search_string_base64: Option<cfn_resources::StrVal>,
 
     ///
@@ -552,6 +558,7 @@ impl cfn_resources::CfnResource for ByteMatchStatement {
 ///
 /// This action option is available for rules. It isn't available for web ACL default actions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CaptchaAction {
     ///
     /// Defines custom handling for the web request, used when the CAPTCHA inspection determines that the request's token is valid and unexpired.
@@ -564,7 +571,7 @@ pub struct CaptchaAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -588,6 +595,7 @@ impl cfn_resources::CfnResource for CaptchaAction {
 
 /// Specifies how AWS WAF should handle CAPTCHA evaluations. This is     available at the web ACL level and in each rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CaptchaConfig {
     ///
     /// Determines how long a CAPTCHA timestamp in the token remains valid after the client     successfully solves a CAPTCHA puzzle.
@@ -598,7 +606,7 @@ pub struct CaptchaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImmunityTimeProperty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub immunity_time_property: Option<ImmunityTimeProperty>,
 }
 
@@ -626,6 +634,7 @@ impl cfn_resources::CfnResource for CaptchaConfig {
 ///
 /// This action option is available for rules. It isn't available for web ACL default actions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChallengeAction {
     ///
     /// Defines custom handling for the web request, used when the challenge inspection determines that the request's token is valid and unexpired.
@@ -638,7 +647,7 @@ pub struct ChallengeAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -662,6 +671,7 @@ impl cfn_resources::CfnResource for ChallengeAction {
 
 /// Specifies how AWS WAF should handle Challenge evaluations. This is     available at the web ACL level and in each rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChallengeConfig {
     ///
     /// Determines how long a challenge timestamp in the token remains valid after the client     successfully responds to a challenge.
@@ -672,7 +682,7 @@ pub struct ChallengeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImmunityTimeProperty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub immunity_time_property: Option<ImmunityTimeProperty>,
 }
 
@@ -700,6 +710,7 @@ impl cfn_resources::CfnResource for ChallengeConfig {
 ///
 /// Example JSON: "MatchPattern": { "IncludedCookies": {"KeyToInclude1", "KeyToInclude2", "KeyToInclude3"} }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CookieMatchPattern {
     ///
     /// Inspect all cookies.
@@ -710,7 +721,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -724,7 +735,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedCookies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_cookies: Option<Vec<String>>,
 
     ///
@@ -738,7 +749,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedCookies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_cookies: Option<Vec<String>>,
 }
 
@@ -780,6 +791,7 @@ impl cfn_resources::CfnResource for CookieMatchPattern {
 ///
 /// Example JSON: "Cookies": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Cookies {
     ///
     /// The filter to use to identify the subset of cookies to inspect in a web request.
@@ -889,6 +901,7 @@ impl cfn_resources::CfnResource for Cookies {
 ///
 /// This is used in the context of other settings, for example to specify values for RuleAction and web ACL DefaultAction.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CountAction {
     ///
     /// Defines custom handling for the web request.
@@ -901,7 +914,7 @@ pub struct CountAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -925,6 +938,7 @@ impl cfn_resources::CfnResource for CountAction {
 
 /// A custom header for custom request and response handling. This is used in CustomResponse and CustomRequestHandling
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomHTTPHeader {
     ///
     /// The name of the custom header.
@@ -1025,6 +1039,7 @@ impl cfn_resources::CfnResource for CustomHTTPHeader {
 ///
 /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomRequestHandling {
     ///
     /// The HTTP headers to insert into the request. Duplicate header names are not allowed.
@@ -1058,6 +1073,7 @@ impl cfn_resources::CfnResource for CustomRequestHandling {
 ///
 /// For information about customizing web requests and responses, see Customizing web requests and responses in AWS WAF in the      AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomResponse {
     ///
     /// References the response body that you want AWS WAF to return to the web request     client. You can define a custom response for a rule action or a default web ACL action that     is set to block. To do this, you first define the response body key and value in the       CustomResponseBodies setting for the AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup where you want to use it. Then, in the rule action or web ACL     default action BlockAction setting, you reference the response body using this     key.
@@ -1074,7 +1090,7 @@ pub struct CustomResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponseBodyKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_response_body_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -1105,7 +1121,7 @@ pub struct CustomResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_headers: Option<Vec<CustomHTTPHeader>>,
 }
 
@@ -1159,6 +1175,7 @@ impl cfn_resources::CfnResource for CustomResponse {
 
 /// The response body to use in a custom response to a web request. This is referenced by     key from CustomResponse       CustomResponseBodyKey.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomResponseBody {
     ///
     /// The payload of the custom response.
@@ -1262,6 +1279,7 @@ impl cfn_resources::CfnResource for CustomResponseBody {
 ///
 /// "FieldToMatch": { "Method": { "Name": "DELETE" } }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     ///
     /// Inspect all query arguments.
@@ -1272,7 +1290,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllQueryArguments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_query_arguments: Option<serde_json::Value>,
 
     ///
@@ -1288,7 +1306,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub body: Option<Body>,
 
     ///
@@ -1302,7 +1320,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cookies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cookies: Option<Cookies>,
 
     ///
@@ -1316,7 +1334,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub headers: Option<Headers>,
 
     ///
@@ -1332,7 +1350,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_body: Option<JsonBody>,
 
     ///
@@ -1344,7 +1362,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method: Option<serde_json::Value>,
 
     ///
@@ -1356,7 +1374,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string: Option<serde_json::Value>,
 
     ///
@@ -1372,7 +1390,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_header: Option<SingleHeader>,
 
     ///
@@ -1386,7 +1404,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleQueryArgument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_query_argument: Option<SingleQueryArgument>,
 
     ///
@@ -1398,7 +1416,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri_path: Option<serde_json::Value>,
 }
 
@@ -1440,6 +1458,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 ///
 /// AWS WAF only evaluates the first IP address found in the specified HTTP header.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForwardedIPConfiguration {
     ///
     /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position.
@@ -1543,6 +1562,7 @@ impl cfn_resources::CfnResource for ForwardedIPConfiguration {
 ///
 /// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeoMatchStatement {
     ///
     /// An array of two-character country codes that you want to match against, for example, [ "US", "CN" ], from     the alpha-2 country ISO codes of the ISO 3166 international standard.
@@ -1555,7 +1575,7 @@ pub struct GeoMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCodes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub country_codes: Option<Vec<String>>,
 
     ///
@@ -1569,7 +1589,7 @@ pub struct GeoMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedIPConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
 }
 
@@ -1597,6 +1617,7 @@ impl cfn_resources::CfnResource for GeoMatchStatement {
 ///
 /// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeaderMatchPattern {
     ///
     /// Inspect all headers.
@@ -1607,7 +1628,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -1621,7 +1642,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_headers: Option<Vec<String>>,
 
     ///
@@ -1635,7 +1656,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_headers: Option<Vec<String>>,
 }
 
@@ -1679,6 +1700,7 @@ impl cfn_resources::CfnResource for HeaderMatchPattern {
 ///
 /// Example JSON: "Headers": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Headers {
     ///
     /// The filter to use to identify the subset of headers to inspect in a web request.
@@ -1788,6 +1810,7 @@ impl cfn_resources::CfnResource for Headers {
 ///
 /// This configuration is used only for IPSetReferenceStatement. For GeoMatchStatement and RateBasedStatement, use ForwardedIPConfig instead.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSetForwardedIPConfiguration {
     ///
     /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position.
@@ -1923,6 +1946,7 @@ impl cfn_resources::CfnResource for IPSetForwardedIPConfiguration {
 ///
 /// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IPSetReferenceStatement {
     ///
     /// The Amazon Resource Name (ARN) of the AWS::WAFv2::IPSet that this statement     references.
@@ -1952,7 +1976,7 @@ pub struct IPSetReferenceStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetForwardedIPConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipset_forwarded_ipconfig: Option<IPSetForwardedIPConfiguration>,
 }
 
@@ -1998,6 +2022,7 @@ impl cfn_resources::CfnResource for IPSetReferenceStatement {
 
 /// Used for CAPTCHA and challenge token settings. Determines     how long a CAPTCHA or challenge timestamp remains valid after AWS WAF updates it for a successful CAPTCHA or challenge response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImmunityTimeProperty {
     ///
     /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default      setting is 300.
@@ -2035,6 +2060,7 @@ impl cfn_resources::CfnResource for ImmunityTimeProperty {
 ///
 /// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonBody {
     ///
     /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
@@ -2057,7 +2083,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvalidFallbackBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
 
     ///
@@ -2105,7 +2131,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OversizeHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oversize_handling: Option<JsonBodyOversizeHandlingEnum>,
 }
 
@@ -2190,6 +2216,7 @@ impl cfn_resources::CfnResource for JsonBody {
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria. This is used with the FieldToMatch option JsonBody.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonMatchPattern {
     ///
     /// Match all of the elements. See also     MatchScope in the JsonBody FieldToMatch specification.
@@ -2202,7 +2229,7 @@ pub struct JsonMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -2220,7 +2247,7 @@ pub struct JsonMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPaths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_paths: Option<Vec<String>>,
 }
 
@@ -2240,6 +2267,7 @@ impl cfn_resources::CfnResource for JsonMatchPattern {
 
 /// A single label container. This is used as an element of a label array in RuleLabels inside a rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Label {
     ///
     /// The label string.
@@ -2299,6 +2327,7 @@ impl cfn_resources::CfnResource for Label {
 ///
 /// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LabelMatchStatement {
     ///
     /// The string to match against. The setting you provide for this depends on the match     statement's Scope setting:
@@ -2390,6 +2419,7 @@ impl cfn_resources::CfnResource for LabelMatchStatement {
 
 /// List of labels used by one or more of the rules of a AWS::WAFv2::RuleGroup. This     summary object is used for the following rule group lists:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LabelSummary {
     ///
     /// An individual label specification.
@@ -2406,7 +2436,7 @@ pub struct LabelSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -2448,6 +2478,7 @@ impl cfn_resources::CfnResource for LabelSummary {
 
 /// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotStatement {
     ///
     /// The statement to negate. You can use any statement that can be nested.
@@ -2479,6 +2510,7 @@ impl cfn_resources::CfnResource for NotStatement {
 
 /// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrStatement {
     ///
     /// The statements to combine with OR logic. You can use any statements that can be     nested.
@@ -2528,6 +2560,7 @@ impl cfn_resources::CfnResource for OrStatement {
 ///
 /// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RateBasedStatement {
     ///
     /// Setting that indicates how to aggregate the request counts.
@@ -2559,7 +2592,7 @@ pub struct RateBasedStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedIPConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
 
     ///
@@ -2586,7 +2619,7 @@ pub struct RateBasedStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScopeDownStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope_down_statement: Option<Statement>,
 }
 
@@ -2639,6 +2672,7 @@ impl cfn_resources::CfnResource for RateBasedStatement {
 
 /// A rule statement used to search web request components for a match against a single regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RegexMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -2722,6 +2756,7 @@ impl cfn_resources::CfnResource for RegexMatchStatement {
 ///
 /// Each regex pattern set rule statement references a regex pattern set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RegexPatternSetReferenceStatement {
     ///
     /// The Amazon Resource Name (ARN) of the AWS::WAFv2::RegexPatternSet that this     statement references.
@@ -2803,6 +2838,7 @@ impl cfn_resources::CfnResource for RegexPatternSetReferenceStatement {
 
 /// A single rule, which you can use in a AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup to identify web requests that you want to allow, block, or count.     Each rule includes one top-level Statement that AWS WAF uses to     identify matching web requests, and parameters that govern how AWS WAF handles them.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// The action that AWS WAF should take on a web request when it matches the rule statement. Settings at the web ACL level can override the rule action setting.
@@ -2813,7 +2849,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<RuleAction>,
 
     ///
@@ -2825,7 +2861,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptchaConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub captcha_config: Option<CaptchaConfig>,
 
     ///
@@ -2837,7 +2873,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChallengeConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub challenge_config: Option<ChallengeConfig>,
 
     ///
@@ -2887,7 +2923,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_labels: Option<Vec<Label>>,
 
     ///
@@ -2974,6 +3010,7 @@ impl cfn_resources::CfnResource for Rule {
 
 /// The action that AWS WAF should take on a web request when it matches a rule's     statement. Settings at the web ACL level can override the rule action setting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleAction {
     ///
     /// Instructs AWS WAF to allow the web request.
@@ -2984,7 +3021,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Allow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow: Option<AllowAction>,
 
     ///
@@ -2996,7 +3033,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Block")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block: Option<BlockAction>,
 
     ///
@@ -3014,7 +3051,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Captcha")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub captcha: Option<CaptchaAction>,
 
     ///
@@ -3026,7 +3063,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Challenge")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub challenge: Option<ChallengeAction>,
 
     ///
@@ -3038,7 +3075,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<CountAction>,
 }
 
@@ -3076,6 +3113,7 @@ impl cfn_resources::CfnResource for RuleAction {
 ///
 /// Example JSON: "SingleHeader": { "Name": "haystack" }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleHeader {
     ///
     /// The name of the query header to inspect.
@@ -3137,6 +3175,7 @@ impl cfn_resources::CfnResource for SingleHeader {
 ///
 /// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleQueryArgument {
     ///
     /// The name of the query argument to inspect.
@@ -3198,6 +3237,7 @@ impl cfn_resources::CfnResource for SingleQueryArgument {
 ///
 /// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SizeConstraintStatement {
     ///
     /// The operator to use to compare the request part to the size setting.
@@ -3297,6 +3337,7 @@ impl cfn_resources::CfnResource for SizeConstraintStatement {
 
 /// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SqliMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -3326,7 +3367,7 @@ pub struct SqliMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SensitivityLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sensitivity_level: Option<SqliMatchStatementSensitivityLevelEnum>,
 
     ///
@@ -3376,6 +3417,7 @@ impl cfn_resources::CfnResource for SqliMatchStatement {
 
 /// The processing guidance for a rule, used by AWS WAF to determine whether a web request matches the rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Statement {
     ///
     /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
@@ -3386,7 +3428,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AndStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub and_statement: Option<AndStatement>,
 
     ///
@@ -3398,7 +3440,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ByteMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub byte_match_statement: Option<ByteMatchStatement>,
 
     ///
@@ -3420,7 +3462,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geo_match_statement: Option<GeoMatchStatement>,
 
     ///
@@ -3434,7 +3476,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetReferenceStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipset_reference_statement: Option<IPSetReferenceStatement>,
 
     ///
@@ -3448,7 +3490,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_match_statement: Option<LabelMatchStatement>,
 
     ///
@@ -3460,7 +3502,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_statement: Option<Box<NotStatement>>,
 
     ///
@@ -3472,7 +3514,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub or_statement: Option<OrStatement>,
 
     ///
@@ -3508,7 +3550,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateBasedStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rate_based_statement: Option<Box<RateBasedStatement>>,
 
     ///
@@ -3520,7 +3562,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegexMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex_match_statement: Option<RegexMatchStatement>,
 
     ///
@@ -3534,7 +3576,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegexPatternSetReferenceStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex_pattern_set_reference_statement: Option<RegexPatternSetReferenceStatement>,
 
     ///
@@ -3550,7 +3592,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeConstraintStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_constraint_statement: Option<SizeConstraintStatement>,
 
     ///
@@ -3562,7 +3604,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqliMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sqli_match_statement: Option<SqliMatchStatement>,
 
     ///
@@ -3574,7 +3616,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XssMatchStatement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xss_match_statement: Option<XssMatchStatement>,
 }
 
@@ -3652,6 +3694,7 @@ impl cfn_resources::CfnResource for Statement {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -3690,6 +3733,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Text transformations eliminate some of the unusual formatting that attackers use in web     requests in an effort to bypass detection.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TextTransformation {
     ///
     /// Sets the relative processing order for multiple transformations.     AWS WAF processes all transformations, from lowest priority to highest,     before inspecting the transformed content. The priorities don't need to be consecutive, but     they must all be different.
@@ -3886,6 +3930,7 @@ impl cfn_resources::CfnResource for TextTransformation {
 
 /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisibilityConfig {
     ///
     /// A boolean indicating whether the associated resource sends metrics to Amazon CloudWatch. For the     list of available metrics, see AWS WAF       Metrics in the         AWS WAF Developer Guide.
@@ -3967,6 +4012,7 @@ impl cfn_resources::CfnResource for VisibilityConfig {
 
 /// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct XssMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.

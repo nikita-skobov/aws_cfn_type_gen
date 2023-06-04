@@ -1,5 +1,6 @@
 /// Describes the association between a device and a link.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLinkAssociation {
     ///
     /// The device ID for the link association.

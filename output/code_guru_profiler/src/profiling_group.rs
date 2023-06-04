@@ -1,5 +1,6 @@
 /// Creates a profiling group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnProfilingGroup {
     ///
     /// The agent permissions attached to this profiling group. This action group grants       ConfigureAgent and PostAgentProfile permissions to perform     actions required by the profiling agent. The Json consists of key     Principals.
@@ -14,7 +15,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentPermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub agent_permissions: Option<AgentPermissions>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectionNotificationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anomaly_detection_notification_configuration: Option<Vec<Channel>>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_platform: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -96,6 +97,7 @@ impl cfn_resources::CfnResource for CfnProfilingGroup {
 
 /// The AgentPermissions property type specifies Property description not available. for an AWS::CodeGuruProfiler::ProfilingGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AgentPermissions {
     /// Property description not available.
     ///
@@ -124,6 +126,7 @@ impl cfn_resources::CfnResource for AgentPermissions {
 
 /// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Channel {
     ///
     /// The channel ID.
@@ -134,7 +137,7 @@ pub struct Channel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "channelId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub channel_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,6 +174,7 @@ impl cfn_resources::CfnResource for Channel {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

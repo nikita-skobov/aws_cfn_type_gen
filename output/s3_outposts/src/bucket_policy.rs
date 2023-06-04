@@ -6,6 +6,7 @@
 ///
 /// For more information, see the AWS::IAM::Policy    PolicyDocument resource description in this guide and        Access Policy Language Overview.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBucketPolicy {
     ///
     /// The name of the Amazon S3 Outposts bucket to which the policy applies.

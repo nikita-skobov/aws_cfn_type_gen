@@ -1,5 +1,6 @@
 /// The     AWS::Greengrass::ConnectorDefinitionVersion resource represents a connector definition version for AWS IoT Greengrass.     A connector definition version contains a list of connectors.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnectorDefinitionVersion {
     ///
     /// The ID of the connector definition associated with this version. This value is a GUID.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnConnectorDefinitionVersion {
 ///
 /// In an AWS CloudFormation template, the Connectors 		 property of the AWS::Greengrass::ConnectorDefinitionVersion resource contains a      list of Connector property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Connector {
     ///
     /// The Amazon Resource Name (ARN) of the connector.
@@ -78,7 +80,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<serde_json::Value>,
 }
 

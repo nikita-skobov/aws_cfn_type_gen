@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::ApiKey resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key. To specify which API key clients must use, map the API key with the RestApi and Stage resources that include the methods that require a key.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApiKey {
     ///
     /// An AWS Marketplace customer identifier, when integrating with the AWS SaaS Marketplace.
@@ -10,7 +11,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GenerateDistinctId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generate_distinct_id: Option<bool>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_keys: Option<Vec<StageKey>>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -127,6 +128,7 @@ impl cfn_resources::CfnResource for CfnApiKey {
 
 /// StageKey is a property of the AWS::ApiGateway::ApiKey resource that specifies the stage to associate with the API key. This association allows only clients with the key to make requests to methods in that stage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StageKey {
     ///
     /// The string identifier of the associated RestApi.
@@ -137,7 +139,7 @@ pub struct StageKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestApiId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rest_api_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -149,7 +151,7 @@ pub struct StageKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_name: Option<cfn_resources::StrVal>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for StageKey {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

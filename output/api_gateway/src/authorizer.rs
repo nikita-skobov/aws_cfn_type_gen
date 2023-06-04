@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::Authorizer resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAuthorizer {
     ///
     /// Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
@@ -10,7 +11,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_credentials: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_result_ttl_in_seconds: Option<i64>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityValidationExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_validation_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderARNs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider_arns: Option<Vec<String>>,
 
     ///

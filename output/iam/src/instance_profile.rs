@@ -2,6 +2,7 @@
 ///
 /// For information about the number of instance profiles you can create, see IAM object quotas in the IAM User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInstanceProfile {
     ///
     /// The name of the instance profile to create.
@@ -20,7 +21,7 @@ pub struct CfnInstanceProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceProfileName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnInstanceProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///

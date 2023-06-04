@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::MonitoringSchedule resource is an Amazon SageMaker       resource type that regularly starts SageMaker processing Jobs to monitor the data       captured for a SageMaker endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMonitoringSchedule {
     ///
     /// The name of the endpoint using the monitoring schedule.
@@ -14,7 +15,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastMonitoringExecutionSummary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub last_monitoring_execution_summary: Option<MonitoringExecutionSummary>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringScheduleStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_schedule_status: Option<MonitoringScheduleMonitoringScheduleStatusEnum>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnMonitoringSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -208,6 +209,7 @@ impl cfn_resources::CfnResource for CfnMonitoringSchedule {
 
 /// Baseline configuration used to validate that the data conforms to the specified       constraints and statistics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BaselineConfig {
     ///
     /// The Amazon S3 URI for the constraints resource.
@@ -218,7 +220,7 @@ pub struct BaselineConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstraintsResource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constraints_resource: Option<ConstraintsResource>,
 
     ///
@@ -230,7 +232,7 @@ pub struct BaselineConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatisticsResource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub statistics_resource: Option<StatisticsResource>,
 }
 
@@ -258,6 +260,7 @@ impl cfn_resources::CfnResource for BaselineConfig {
 
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BatchTransformInput {
     /// Property description not available.
     ///
@@ -297,7 +300,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DataDistributionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_data_distribution_type: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -308,7 +311,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_mode: Option<cfn_resources::StrVal>,
 }
 
@@ -330,6 +333,7 @@ impl cfn_resources::CfnResource for BatchTransformInput {
 
 /// Configuration for the cluster used to run model monitoring jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterConfig {
     ///
     /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
@@ -362,7 +366,7 @@ pub struct ClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeKmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -393,6 +397,7 @@ impl cfn_resources::CfnResource for ClusterConfig {
 
 /// The Amazon S3 URI for the constraints resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConstraintsResource {
     ///
     /// The Amazon S3 URI for the constraints resource.
@@ -403,7 +408,7 @@ pub struct ConstraintsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Uri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -423,6 +428,7 @@ impl cfn_resources::CfnResource for ConstraintsResource {
 
 /// The Csv property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Csv {
     /// Property description not available.
     ///
@@ -432,7 +438,7 @@ pub struct Csv {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header: Option<bool>,
 }
 
@@ -452,6 +458,7 @@ impl cfn_resources::CfnResource for Csv {
 
 /// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetFormat {
     /// Property description not available.
     ///
@@ -461,7 +468,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csv")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv: Option<Csv>,
 
     /// Property description not available.
@@ -472,7 +479,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json: Option<Json>,
 
     /// Property description not available.
@@ -483,7 +490,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parquet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parquet: Option<bool>,
 }
 
@@ -507,6 +514,7 @@ impl cfn_resources::CfnResource for DatasetFormat {
 
 /// Input object for the endpoint
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointInput {
     ///
     /// An endpoint in customer's account which has enabled DataCaptureConfig     enabled.
@@ -549,7 +557,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DataDistributionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
 
     ///
@@ -563,7 +571,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
 }
 
@@ -639,6 +647,7 @@ impl cfn_resources::CfnResource for EndpointInput {
 
 /// The Json property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Json {
     /// Property description not available.
     ///
@@ -648,7 +657,7 @@ pub struct Json {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Line")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line: Option<bool>,
 }
 
@@ -668,6 +677,7 @@ impl cfn_resources::CfnResource for Json {
 
 /// Container image configuration object for the monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringAppSpecification {
     ///
     /// An array of arguments for the container used to run the monitoring job.
@@ -680,7 +690,7 @@ pub struct MonitoringAppSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerArguments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_arguments: Option<Vec<String>>,
 
     ///
@@ -694,7 +704,7 @@ pub struct MonitoringAppSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerEntrypoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_entrypoint: Option<Vec<String>>,
 
     ///
@@ -725,7 +735,7 @@ pub struct MonitoringAppSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostAnalyticsProcessorSourceUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub post_analytics_processor_source_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -741,7 +751,7 @@ pub struct MonitoringAppSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordPreprocessorSourceUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_preprocessor_source_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -806,6 +816,7 @@ impl cfn_resources::CfnResource for MonitoringAppSpecification {
 
 /// Summary of information about the last monitoring job to run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringExecutionSummary {
     ///
     /// The time at which the monitoring job was created.
@@ -831,7 +842,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -845,7 +856,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_reason: Option<cfn_resources::StrVal>,
 
     ///
@@ -902,7 +913,7 @@ pub struct MonitoringExecutionSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingJobArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub processing_job_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1019,6 +1030,7 @@ impl cfn_resources::CfnResource for MonitoringExecutionSummary {
 
 /// The inputs for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringInput {
     /// Property description not available.
     ///
@@ -1028,7 +1040,7 @@ pub struct MonitoringInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchTransformInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub batch_transform_input: Option<BatchTransformInput>,
 
     ///
@@ -1040,7 +1052,7 @@ pub struct MonitoringInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_input: Option<EndpointInput>,
 }
 
@@ -1068,6 +1080,7 @@ impl cfn_resources::CfnResource for MonitoringInput {
 
 /// Defines the monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringJobDefinition {
     ///
     /// Baseline configuration used to validate that the data conforms to the specified     constraints and statistics
@@ -1078,7 +1091,7 @@ pub struct MonitoringJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaselineConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub baseline_config: Option<BaselineConfig>,
 
     ///
@@ -1090,7 +1103,7 @@ pub struct MonitoringJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1148,7 +1161,7 @@ pub struct MonitoringJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_config: Option<NetworkConfig>,
 
     ///
@@ -1177,7 +1190,7 @@ pub struct MonitoringJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StoppingCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stopping_condition: Option<StoppingCondition>,
 }
 
@@ -1246,6 +1259,7 @@ impl cfn_resources::CfnResource for MonitoringJobDefinition {
 
 /// The output object for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringOutput {
     ///
     /// The Amazon S3 storage location where the results of a monitoring job are saved.
@@ -1277,6 +1291,7 @@ impl cfn_resources::CfnResource for MonitoringOutput {
 
 /// The output configuration for monitoring jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model     artifacts at rest using Amazon S3 server-side encryption.
@@ -1291,7 +1306,7 @@ pub struct MonitoringOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1344,6 +1359,7 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
 
 /// Identifies the resources to deploy for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringResources {
     ///
     /// The configuration for the cluster resources used to run the processing job.
@@ -1375,6 +1391,7 @@ impl cfn_resources::CfnResource for MonitoringResources {
 
 /// Configures the monitoring schedule and defines the monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringScheduleConfig {
     ///
     /// Defines the monitoring job.
@@ -1385,7 +1402,7 @@ pub struct MonitoringScheduleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringJobDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_job_definition: Option<MonitoringJobDefinition>,
 
     ///
@@ -1403,7 +1420,7 @@ pub struct MonitoringScheduleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringJobDefinitionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_job_definition_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1417,7 +1434,7 @@ pub struct MonitoringScheduleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub monitoring_type: Option<MonitoringScheduleConfigMonitoringTypeEnum>,
 
     ///
@@ -1429,7 +1446,7 @@ pub struct MonitoringScheduleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_config: Option<ScheduleConfig>,
 }
 
@@ -1498,6 +1515,7 @@ impl cfn_resources::CfnResource for MonitoringScheduleConfig {
 
 /// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfig {
     ///
     /// Whether to encrypt all communications between distributed processing jobs. Choose       True to encrypt communications. Encryption provides greater security for distributed       processing jobs, but the processing might take longer.
@@ -1508,7 +1526,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableInterContainerTrafficEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_inter_container_traffic_encryption: Option<bool>,
 
     ///
@@ -1520,7 +1538,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableNetworkIsolation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_network_isolation: Option<bool>,
 
     ///
@@ -1532,7 +1550,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -1556,6 +1574,7 @@ impl cfn_resources::CfnResource for NetworkConfig {
 
 /// Information about where and how you want to store the results of a monitoring       job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Output {
     ///
     /// The local path to the S3 storage location where SageMaker saves the results of a       monitoring job. LocalPath is an absolute path for the output data.
@@ -1577,7 +1596,7 @@ pub struct S3Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3UploadMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_upload_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -1608,6 +1627,7 @@ impl cfn_resources::CfnResource for S3Output {
 
 /// Configuration details about the monitoring schedule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduleConfig {
     ///
     /// A cron expression that describes details about the monitoring schedule.
@@ -1681,6 +1701,7 @@ impl cfn_resources::CfnResource for ScheduleConfig {
 
 /// The baseline statistics file in Amazon S3 that the current monitoring job should be       validated against.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatisticsResource {
     ///
     /// The S3 URI for the statistics resource.
@@ -1691,7 +1712,7 @@ pub struct StatisticsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Uri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -1715,6 +1736,7 @@ impl cfn_resources::CfnResource for StatisticsResource {
 ///
 /// The training algorithms provided by SageMaker automatically save the intermediate results       of a model training job when possible. This attempt to save artifacts is only a best       effort case as model might not be in a state from which it can be saved. For example, if       training has just started, the model might not be ready to save. When saved, this       intermediate data is a valid model artifact. You can use it to create a model with         CreateModel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StoppingCondition {
     ///
     /// The maximum length of time, in seconds, that a training or compilation job can run       before it is stopped.
@@ -1767,6 +1789,7 @@ impl cfn_resources::CfnResource for StoppingCondition {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1805,6 +1828,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.

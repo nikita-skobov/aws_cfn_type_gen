@@ -1,5 +1,6 @@
 /// The AWS::GameLift::Build resource creates a game server build that is    installed and run on instances in an Amazon GameLift fleet. This resource points to an Amazon    S3 location that contains a zip file with all of the components of the game server    build.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBuild {
     ///
     /// A descriptive label that is associated with a build. Build names do not need to be    unique.
@@ -14,7 +15,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operating_system: Option<BuildOperatingSystemEnum>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerSdkVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_sdk_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_location: Option<StorageLocation>,
 
     ///
@@ -76,7 +77,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -188,6 +189,7 @@ impl cfn_resources::CfnResource for CfnBuild {
 
 /// The location in Amazon S3 where build or script files are stored for access by Amazon    GameLift.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageLocation {
     ///
     /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
@@ -228,7 +230,7 @@ pub struct StorageLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_version: Option<cfn_resources::StrVal>,
 
     ///

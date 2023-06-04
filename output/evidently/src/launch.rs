@@ -2,6 +2,7 @@
 ///
 /// You can use a launch to safely validate new features by serving them to a specified       percentage of your users while you roll out the feature. You can monitor the performance of       the new feature to help you decide when to ramp up traffic to more users. This helps you       reduce risk and identify unintended consequences before you fully launch the feature.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLaunch {
     ///
     /// An optional description for the launch.
@@ -12,7 +13,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// A structure that you can use to start and stop     the launch.
@@ -23,7 +24,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_status: Option<ExecutionStatusObject>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricMonitors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_monitors: Option<Vec<MetricDefinitionObject>>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub randomization_salt: Option<cfn_resources::StrVal>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -146,6 +147,7 @@ impl cfn_resources::CfnResource for CfnLaunch {
 
 /// Use this structure to start and stop     the launch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExecutionStatusObject {
     ///
     /// If you are using AWS CloudFormation to stop this       launch, specify either COMPLETED or CANCELLED here to indicate how to classify this       experiment. If you omit this parameter, the default of COMPLETED is used.
@@ -156,7 +158,7 @@ pub struct ExecutionStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_state: Option<cfn_resources::StrVal>,
 
     /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
@@ -167,7 +169,7 @@ pub struct ExecutionStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reason: Option<cfn_resources::StrVal>,
 
     /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
@@ -197,6 +199,7 @@ impl cfn_resources::CfnResource for ExecutionStatusObject {
 
 /// A structure containing the percentage of launch traffic to allocate to one launch group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GroupToWeight {
     ///
     /// The name of the launch group. It can include up to 127 characters.
@@ -239,6 +242,7 @@ impl cfn_resources::CfnResource for GroupToWeight {
 
 /// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchGroupObject {
     ///
     /// A description of the launch group.
@@ -249,7 +253,7 @@ pub struct LaunchGroupObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,6 +306,7 @@ impl cfn_resources::CfnResource for LaunchGroupObject {
 
 /// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDefinitionObject {
     ///
     /// The entity, such as a user or session, that does an action that causes a metric       value to be recorded. An example is userDetails.userID.
@@ -325,7 +330,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -348,7 +353,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -383,6 +388,7 @@ impl cfn_resources::CfnResource for MetricDefinitionObject {
 ///
 /// This sructure is an array of up to six segment override objects. Each of these objects specifies a       segment that you have already created, and defines the traffic split for that segment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SegmentOverride {
     ///
     /// A number indicating the order to use to evaluate segment overrides, if there are more than       one. Segment overrides with lower numbers are evaluated first.
@@ -434,6 +440,7 @@ impl cfn_resources::CfnResource for SegmentOverride {
 
 /// A structure that defines when each step of the launch is to start, and how much launch traffic     is to be allocated to each variation during each step.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StepConfig {
     ///
     /// An array of structures that define how much launch traffic to allocate to each launch group     during this step of the launch.
@@ -457,7 +464,7 @@ pub struct StepConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub segment_overrides: Option<Vec<SegmentOverride>>,
 
     ///
@@ -494,6 +501,7 @@ impl cfn_resources::CfnResource for StepConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

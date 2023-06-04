@@ -1,5 +1,6 @@
 /// The AWS::RoboMaker::SimulationApplicationVersion resource creates a version     of an AWS RoboMaker simulation application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSimulationApplicationVersion {
     ///
     /// The application information for the simulation application.
@@ -33,7 +34,7 @@ pub struct CfnSimulationApplicationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CurrentRevisionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub current_revision_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

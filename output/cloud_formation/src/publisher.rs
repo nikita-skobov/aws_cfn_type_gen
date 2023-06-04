@@ -2,6 +2,7 @@
 ///
 /// For information on requirements for registering as a public extension publisher, see Registering your account   to publish CloudFormation extensions in the CloudFormation CLI User   Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPublisher {
     ///
     /// Whether you accept the Terms and Conditions for publishing extensions in the CloudFormation registry. You must accept the  terms and conditions in order to register to publish public extensions to the CloudFormation  registry.
@@ -33,7 +34,7 @@ pub struct CfnPublisher {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

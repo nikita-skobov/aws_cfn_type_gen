@@ -1,5 +1,6 @@
 /// Describes a network interface in an Amazon EC2 instance for AWS CloudFormation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkInterface {
     ///
     /// A description for the network interface.
@@ -10,7 +11,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_set: Option<Vec<String>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InterfaceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interface_type: Option<NetworkInterfaceInterfaceTypeEnum>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6AddressCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PrivateIpAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceDestCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_dest_check: Option<bool>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -196,6 +197,7 @@ impl cfn_resources::CfnResource for CfnNetworkInterface {
 
 /// Describes the IPv6 addresses to associate with the network interface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceIpv6Address {
     ///
     /// An IPv6 address to associate with the network interface.
@@ -225,6 +227,7 @@ impl cfn_resources::CfnResource for InstanceIpv6Address {
 
 /// Describes a secondary private IPv4 address for a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrivateIpAddressSpecification {
     ///
     /// Sets the private IP address as the primary private address. You can set only one primary       private IP address. If you don't specify a primary private IP address, Amazon EC2       automatically assigns a primary private IP address.
@@ -271,6 +274,7 @@ impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

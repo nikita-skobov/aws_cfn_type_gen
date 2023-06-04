@@ -1,5 +1,6 @@
 /// Specifies an Application Load Balancer, a Network Load Balancer, or a Gateway Load     Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoadBalancer {
     ///
     /// The IP address type. The possible values are ipv4 (for IPv4 addresses) and     dualstack (for IPv4 and IPv6 addresses).    You can’t specify     dualstack for a load balancer with a UDP or TCP_UDP listener.
@@ -12,7 +13,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpAddressType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_attributes: Option<Vec<LoadBalancerAttribute>>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scheme")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheme: Option<LoadBalancerSchemeEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_mappings: Option<Vec<SubnetMapping>>,
 
     ///
@@ -116,7 +117,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<LoadBalancerTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -267,6 +268,7 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
 
 /// Specifies an attribute for an Application Load Balancer, a Network Load Balancer, or a     Gateway Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadBalancerAttribute {
     ///
     /// The name of the attribute.
@@ -293,7 +295,7 @@ pub struct LoadBalancerAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -307,7 +309,7 @@ pub struct LoadBalancerAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -349,6 +351,7 @@ impl cfn_resources::CfnResource for LoadBalancerAttribute {
 
 /// Specifies a subnet for a load balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubnetMapping {
     ///
     /// [Network Load Balancers] The allocation ID of the Elastic IP address for an    internet-facing load balancer.
@@ -359,7 +362,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -371,7 +374,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPv6Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -383,7 +386,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIPv4Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ipv4_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -420,6 +423,7 @@ impl cfn_resources::CfnResource for SubnetMapping {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

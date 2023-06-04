@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::Method resource creates API Gateway methods that define the parameters and body that clients must send in their requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMethod {
     ///
     /// A boolean flag specifying whether a valid ApiKey is required to invoke this method.
@@ -10,7 +11,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyRequired")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_key_required: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration: Option<Integration>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MethodResponses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method_responses: Option<Vec<MethodResponse>>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestModels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_models: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_parameters: Option<std::collections::HashMap<String, bool>>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestValidatorId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_validator_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -177,6 +178,7 @@ impl cfn_resources::CfnResource for CfnMethod {
 
 /// Integration is a property of the AWS::ApiGateway::Method resource that specifies information about the target backend that a method calls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Integration {
     ///
     /// A list of request parameters whose values API Gateway caches. To be valid values for cacheKeyParameters, these parameters must also be specified for Method requestParameters.
@@ -187,7 +189,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheKeyParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_key_parameters: Option<Vec<String>>,
 
     ///
@@ -199,7 +201,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNamespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -211,7 +213,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -225,7 +227,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_type: Option<IntegrationConnectionTypeEnum>,
 
     ///
@@ -241,7 +243,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_handling: Option<IntegrationContentHandlingEnum>,
 
     ///
@@ -253,7 +255,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials: Option<cfn_resources::StrVal>,
 
     ///
@@ -265,7 +267,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationHttpMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_http_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -277,7 +279,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationResponses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integration_responses: Option<Vec<IntegrationResponse>>,
 
     ///
@@ -289,7 +291,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub passthrough_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -301,7 +303,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -313,7 +315,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestTemplates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_templates: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -325,7 +327,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_millis: Option<i64>,
 
     ///
@@ -341,7 +343,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<IntegrationTypeEnum>,
 
     ///
@@ -355,7 +357,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Uri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri: Option<cfn_resources::StrVal>,
 }
 
@@ -438,6 +440,7 @@ impl cfn_resources::CfnResource for Integration {
 
 /// IntegrationResponse is a property of the Amazon API Gateway Method Integration property type that specifies the response that API Gateway sends after a method's backend finishes processing a request.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegrationResponse {
     ///
     /// Specifies how to handle response payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
@@ -452,7 +455,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_handling: Option<IntegrationResponseContentHandlingEnum>,
 
     ///
@@ -464,7 +467,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -476,7 +479,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseTemplates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_templates: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -488,7 +491,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectionPattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selection_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -536,6 +539,7 @@ impl cfn_resources::CfnResource for IntegrationResponse {
 
 /// Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MethodResponse {
     ///
     /// Specifies the Model resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a Model name as the value.
@@ -546,7 +550,7 @@ pub struct MethodResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseModels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_models: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -558,7 +562,7 @@ pub struct MethodResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_parameters: Option<std::collections::HashMap<String, bool>>,
 
     ///

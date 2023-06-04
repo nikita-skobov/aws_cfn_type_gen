@@ -2,6 +2,7 @@
 ///
 /// Applies only to Hyperledger Fabric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMember {
     ///
     /// The unique identifier of the invitation to join the network sent to the account that creates the member.
@@ -16,7 +17,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvitationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invitation_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -123,6 +124,7 @@ impl cfn_resources::CfnResource for CfnMember {
 ///
 /// Applies only to Hyperledger Fabric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ApprovalThresholdPolicy {
     ///
     /// The duration from the time that a proposal is created until it expires. If members cast neither the required number of YES votes to approve the proposal nor the number of NO votes required to reject it before the duration expires, the proposal is EXPIRED and ProposalActions aren't carried out.
@@ -137,7 +139,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProposalDurationInHours")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub proposal_duration_in_hours: Option<i64>,
 
     ///
@@ -151,7 +153,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdComparator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold_comparator: Option<ApprovalThresholdPolicyThresholdComparatorEnum>,
 
     ///
@@ -167,7 +169,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold_percentage: Option<i64>,
 }
 
@@ -236,6 +238,7 @@ impl cfn_resources::CfnResource for ApprovalThresholdPolicy {
 ///
 /// Applies only to Hyperledger Fabric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemberConfiguration {
     ///
     /// An optional description of the member.
@@ -248,7 +251,7 @@ pub struct MemberConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +263,7 @@ pub struct MemberConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberFrameworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub member_framework_configuration: Option<MemberFrameworkConfiguration>,
 
     ///
@@ -334,6 +337,7 @@ impl cfn_resources::CfnResource for MemberConfiguration {
 
 /// Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemberFabricConfiguration {
     ///
     /// The password for the member's initial administrative user. The AdminPassword must be at least 8 characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quotation mark (‘), a double quotation marks (“), a forward slash(/), a backward slash(\), @, or a space.
@@ -430,6 +434,7 @@ impl cfn_resources::CfnResource for MemberFabricConfiguration {
 
 /// Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MemberFrameworkConfiguration {
     /// Configuration properties for Hyperledger Fabric.
     ///
@@ -439,7 +444,7 @@ pub struct MemberFrameworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberFabricConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub member_fabric_configuration: Option<MemberFabricConfiguration>,
 }
 
@@ -463,6 +468,7 @@ impl cfn_resources::CfnResource for MemberFrameworkConfiguration {
 
 /// Configuration properties of the network to which the member belongs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// Attributes of the blockchain framework for the network.
@@ -475,7 +481,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -532,7 +538,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFrameworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_framework_configuration: Option<NetworkFrameworkConfiguration>,
 
     ///
@@ -641,6 +647,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
 /// Hyperledger Fabric configuration properties for the network.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkFabricConfiguration {
     ///
     /// The edition of Amazon Managed Blockchain that the network uses. Valid values are       standard and starter. For more information, see Amazon Managed Blockchain Pricing
@@ -689,6 +696,7 @@ impl cfn_resources::CfnResource for NetworkFabricConfiguration {
 
 /// Configuration properties relevant to the network for the blockchain framework that the network uses.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkFrameworkConfiguration {
     ///
     /// Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
@@ -699,7 +707,7 @@ pub struct NetworkFrameworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFabricConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_fabric_configuration: Option<NetworkFabricConfiguration>,
 }
 
@@ -725,6 +733,7 @@ impl cfn_resources::CfnResource for NetworkFrameworkConfiguration {
 ///
 /// Applies only to Hyperledger Fabric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VotingPolicy {
     ///
     /// Defines the rules for the network for voting on proposals, such as the percentage of YES votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.
@@ -735,7 +744,7 @@ pub struct VotingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalThresholdPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub approval_threshold_policy: Option<ApprovalThresholdPolicy>,
 }
 

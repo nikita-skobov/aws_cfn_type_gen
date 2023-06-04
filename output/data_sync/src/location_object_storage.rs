@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationObjectStorage resource specifies an endpoint for     a self-managed object storage bucket. For more information about self-managed object     storage locations, see Creating a Location for       Object Storage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationObjectStorage {
     ///
     /// Specifies the access key (for example, a user name) if credentials are required to    authenticate with the object storage server.
@@ -16,7 +17,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_certificate: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_port: Option<i64>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_protocol: Option<LocationObjectStorageServerProtocolEnum>,
 
     ///
@@ -145,7 +146,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +160,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -348,6 +349,7 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

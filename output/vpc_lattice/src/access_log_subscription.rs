@@ -1,5 +1,6 @@
 /// Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner  can use the access logs to audit the services in the network. The service network owner will only  see access logs from clients and services that are associated with their service network. Access  log entries represent traffic originated from VPCs associated with that network. For more  information, see Access logs in the   Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessLogSubscription {
     ///
     /// The Amazon Resource Name (ARN) of the destination. The supported destination types are  CloudWatch Log groups, Kinesis Data Firehose delivery streams, and Amazon S3 buckets.
@@ -21,7 +22,7 @@ pub struct CfnAccessLogSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnAccessLogSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -103,6 +104,7 @@ impl cfn_resources::CfnResource for CfnAccessLogSubscription {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

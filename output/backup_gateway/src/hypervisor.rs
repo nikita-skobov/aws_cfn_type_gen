@@ -2,6 +2,7 @@
 ///
 /// A hypervisor is hardware, software, or firmware that creates and manages virtual machines,    and allocates resources to them.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHypervisor {
     ///
     /// The server host of the hypervisor. This can be either an IP address or a fully-qualified    domain name (FQDN).
@@ -18,7 +19,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -289,6 +290,7 @@ impl cfn_resources::CfnResource for CfnHypervisor {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// For an example of using the       CreateRescoreExecutionPlan API, including using       the Python and Java SDKs, see Semantically         ranking a search service's results.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnExecutionPlan {
     ///
     /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
@@ -12,7 +13,7 @@ pub struct CfnExecutionPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnExecutionPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnExecutionPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -160,6 +161,7 @@ impl cfn_resources::CfnResource for CfnExecutionPlan {
 
 /// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityUnitsConfiguration {
     ///
     /// The amount of extra capacity for your rescore execution       plan.
@@ -208,6 +210,7 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

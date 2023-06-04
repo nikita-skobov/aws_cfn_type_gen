@@ -2,6 +2,7 @@
 ///
 /// Updates are not supported for the BundleId, RootVolumeEncryptionEnabled,      UserVolumeEncryptionEnabled, or VolumeEncryptionKey properties. To update      these properties, you must also update a property that triggers a replacement, such as the      UserName property.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWorkspace {
     ///
     /// The identifier of the bundle for the WorkSpace.
@@ -42,7 +43,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RootVolumeEncryptionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_volume_encryption_enabled: Option<bool>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "UserVolumeEncryptionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_volume_encryption_enabled: Option<bool>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "VolumeEncryptionKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_encryption_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkspaceProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub workspace_properties: Option<WorkspaceProperties>,
 }
 
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnWorkspace {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -217,6 +219,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Information about a WorkSpace.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WorkspaceProperties {
     ///
     /// The compute type. For more information, see Amazon WorkSpaces     Bundles.
@@ -229,7 +232,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeTypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_type_name: Option<WorkspacePropertiesComputeTypeNameEnum>,
 
     ///
@@ -241,7 +244,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootVolumeSizeGib")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_volume_size_gib: Option<i64>,
 
     ///
@@ -257,7 +260,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub running_mode: Option<WorkspacePropertiesRunningModeEnum>,
 
     ///
@@ -269,7 +272,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningModeAutoStopTimeoutInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub running_mode_auto_stop_timeout_in_minutes: Option<i64>,
 
     ///
@@ -281,7 +284,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserVolumeSizeGib")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_volume_size_gib: Option<i64>,
 }
 

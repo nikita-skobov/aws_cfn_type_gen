@@ -1,5 +1,6 @@
 /// The AWS::ECS::Service resource creates an Amazon Elastic Container Service (Amazon ECS) service  that runs and maintains the requested number of tasks and associated load balancers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnService {
     ///
     /// The capacity provider strategy to use for the service.
@@ -14,7 +15,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviderStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cluster")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_configuration: Option<DeploymentConfiguration>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentController")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_controller: Option<DeploymentController>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_count: Option<i64>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableECSManagedTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_ecsmanaged_tags: Option<bool>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableExecuteCommand")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_execute_command: Option<bool>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckGracePeriodSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_grace_period_seconds: Option<i64>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_type: Option<ServiceLaunchTypeEnum>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancers: Option<Vec<LoadBalancer>>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_constraints: Option<Vec<PlacementConstraint>>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_strategies: Option<Vec<PlacementStrategy>>,
 
     ///
@@ -180,7 +181,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -194,7 +195,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub propagate_tags: Option<ServicePropagateTagsEnum>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Role")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role: Option<cfn_resources::StrVal>,
 
     ///
@@ -228,7 +229,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchedulingStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduling_strategy: Option<ServiceSchedulingStrategyEnum>,
 
     ///
@@ -242,7 +243,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceConnectConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_connect_configuration: Option<ServiceConnectConfiguration>,
 
     ///
@@ -256,7 +257,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -270,7 +271,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRegistries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_registries: Option<Vec<ServiceRegistry>>,
 
     ///
@@ -288,7 +289,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -304,7 +305,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_definition: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -430,6 +431,7 @@ impl cfn_resources::CfnResource for CfnService {
 
 /// An object representing the networking details for a task or service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsVpcConfiguration {
     ///
     /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
@@ -442,7 +444,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
 
     ///
@@ -456,7 +458,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -470,7 +472,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnets: Option<Vec<String>>,
 }
 
@@ -513,6 +515,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 ///
 /// To use an AWS Fargate capacity provider, specify either the FARGATE or   FARGATE_SPOT capacity providers. The AWS Fargate capacity providers are available to  all accounts and only need to be associated with a cluster to be used in a capacity provider strategy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
@@ -527,7 +530,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<i64>,
 
     ///
@@ -539,7 +542,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -559,7 +562,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 
@@ -621,6 +624,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 ///
 /// For more information, see Rolling 				update in the         Amazon Elastic Container Service Developer Guide       .
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentAlarms {
     ///
     /// One or more CloudWatch alarm names. Use a "," to separate the alarms.
@@ -672,6 +676,7 @@ impl cfn_resources::CfnResource for DeploymentAlarms {
 
 /// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If it is turned on, a 			service deployment will transition to a failed state and stop launching new tasks. You 			can also configure Amazon ECS to roll back your service to the last completed deployment 			after a failure. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentCircuitBreaker {
     ///
     /// Determines whether to use the deployment circuit breaker logic for the service.
@@ -712,6 +717,7 @@ impl cfn_resources::CfnResource for DeploymentCircuitBreaker {
 
 /// The DeploymentConfiguration property specifies optional deployment parameters that control how many  tasks run during the deployment and the ordering of stopping and starting tasks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentConfiguration {
     ///
     /// Information about the CloudWatch alarms.
@@ -722,7 +728,7 @@ pub struct DeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarms: Option<DeploymentAlarms>,
 
     ///
@@ -736,7 +742,7 @@ pub struct DeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentCircuitBreaker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_circuit_breaker: Option<DeploymentCircuitBreaker>,
 
     ///
@@ -750,7 +756,7 @@ pub struct DeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumPercent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_percent: Option<i64>,
 
     ///
@@ -772,7 +778,7 @@ pub struct DeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumHealthyPercent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_healthy_percent: Option<i64>,
 }
 
@@ -798,6 +804,7 @@ impl cfn_resources::CfnResource for DeploymentConfiguration {
 
 /// The deployment controller to use for the service. For more information, see Amazon ECS deployment types in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentController {
     ///
     /// The deployment controller type to use. There are three deployment controller types available:
@@ -812,7 +819,7 @@ pub struct DeploymentController {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<DeploymentControllerTypeEnum>,
 }
 
@@ -857,6 +864,7 @@ impl cfn_resources::CfnResource for DeploymentController {
 ///
 /// Services with tasks that use the awsvpc network mode (for example, those with the Fargate launch  type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not supported.  Also, when you create any target groups for these services, you must choose ip as the target type, not   instance. Tasks that use the awsvpc network mode are associated with an elastic network  interface, not an Amazon EC2 instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadBalancer {
     ///
     /// The name of the container (as it appears in a container definition) to associate with 			the load balancer.
@@ -867,7 +875,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -879,7 +887,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_port: Option<i64>,
 
     ///
@@ -893,7 +901,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -913,7 +921,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -937,6 +945,7 @@ impl cfn_resources::CfnResource for LoadBalancer {
 ///
 /// Understand the following when specifying a log configuration for your 			containers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container.
@@ -959,7 +968,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDriver")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_driver: Option<LogConfigurationLogDriverEnum>,
 
     ///
@@ -971,7 +980,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -983,7 +992,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_options: Option<Vec<Secret>>,
 }
 
@@ -1044,6 +1053,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 
 /// The NetworkConfiguration property specifies an object representing the network configuration for a  task or service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkConfiguration {
     ///
     /// The VPC subnets and security groups that are associated with a task.
@@ -1056,7 +1066,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsvpcConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub awsvpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -1080,6 +1090,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 
 /// The PlacementConstraint property specifies an object representing a constraint on task placement in  the task definition. For more information, see Task Placement Constraints in the   Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. The expression can 			have a maximum length of 2000 characters. You can't specify an expression if the 			constraint type is distinctInstance. For more information, see Cluster query language in the Amazon Elastic Container Service Developer Guide.
@@ -1090,7 +1101,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -1140,6 +1151,7 @@ impl cfn_resources::CfnResource for PlacementConstraint {
 
 /// The PlacementStrategy property specifies the task placement strategy for a task or service. For  more information, see Task Placement Strategies in the   Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlacementStrategy {
     ///
     /// The field to apply the placement strategy against. For the spread placement strategy, valid values  are instanceId (or host, which has the same effect), or any platform or custom attribute  that is applied to a container instance, such as attribute:ecs.availability-zone. For the   binpack placement strategy, valid values are CPU and MEMORY. For the   random placement strategy, this field is not used.
@@ -1150,7 +1162,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1206,6 +1218,7 @@ impl cfn_resources::CfnResource for PlacementStrategy {
 ///
 /// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -1254,6 +1267,7 @@ impl cfn_resources::CfnResource for Secret {
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceConnectClientAlias {
     ///
     /// The dnsName is the name that you use in the applications of client tasks 			to connect to this service. The name must be a valid DNS name but doesn't need to be 			fully-qualified. The name can include up to 127 characters. The name can include 			lowercase letters, numbers, underscores (_), hyphens (-), and periods (.). The name 			can't start with a hyphen.
@@ -1268,7 +1282,7 @@ pub struct ServiceConnectClientAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1325,6 +1339,7 @@ impl cfn_resources::CfnResource for ServiceConnectClientAlias {
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceConnectConfiguration {
     ///
     /// Specifies whether to use Service Connect with this service.
@@ -1352,7 +1367,7 @@ pub struct ServiceConnectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_configuration: Option<LogConfiguration>,
 
     ///
@@ -1364,7 +1379,7 @@ pub struct ServiceConnectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -1380,7 +1395,7 @@ pub struct ServiceConnectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Services")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub services: Option<Vec<ServiceConnectService>>,
 }
 
@@ -1404,6 +1419,7 @@ impl cfn_resources::CfnResource for ServiceConnectConfiguration {
 
 /// The Service Connect service object configuration. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceConnectService {
     ///
     /// The list of client aliases for this Service Connect service. You use these to assign 			names that can be used by client applications. The maximum number of client aliases that 			you can have in this list is 1.
@@ -1420,7 +1436,7 @@ pub struct ServiceConnectService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAliases")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_aliases: Option<Vec<ServiceConnectClientAlias>>,
 
     ///
@@ -1434,7 +1450,7 @@ pub struct ServiceConnectService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DiscoveryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub discovery_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1454,7 +1470,7 @@ pub struct ServiceConnectService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressPortOverride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingress_port_override: Option<i64>,
 
     ///
@@ -1500,6 +1516,7 @@ impl cfn_resources::CfnResource for ServiceConnectService {
 
 /// The ServiceRegistry property specifies details of the service registry. For more information, see   Service Discovery  in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceRegistry {
     ///
     /// The container name value to be used for your service discovery service. It's already 			specified in the task definition. If the task definition that your service task 			specifies uses the bridge or host network mode, you must 			specify a containerName and containerPort combination from the 			task definition. If the task definition that your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
@@ -1510,7 +1527,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1522,7 +1539,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_port: Option<i64>,
 
     ///
@@ -1534,7 +1551,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1546,7 +1563,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1572,6 +1589,7 @@ impl cfn_resources::CfnResource for ServiceRegistry {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

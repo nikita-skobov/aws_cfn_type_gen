@@ -1,5 +1,6 @@
 /// The AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation resource is a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverQueryLoggingConfigAssociation {
     ///
     /// The ID of the query logging configuration that a VPC is associated with.
@@ -14,7 +15,7 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResolverQueryLogConfigId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resolver_query_log_config_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

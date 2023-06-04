@@ -1,5 +1,6 @@
 /// The AWS::CodeDeploy::DeploymentGroup resource creates an AWS CodeDeploy deployment group that specifies which instances your application revisions    are deployed to, along with other deployment options. For more information, see CreateDeploymentGroup in the CodeDeploy API     Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeploymentGroup {
     ///
     /// Information about the Amazon CloudWatch alarms that are associated with the    deployment group.
@@ -10,7 +11,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_configuration: Option<AlarmConfiguration>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRollbackConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_rollback_configuration: Option<AutoRollbackConfiguration>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_scaling_groups: Option<Vec<String>>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlueGreenDeploymentConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blue_green_deployment_configuration: Option<BlueGreenDeploymentConfiguration>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deployment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment: Option<Deployment>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +124,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_style: Option<DeploymentStyle>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ECSServices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ecsservices: Option<Vec<ECSService>>,
 
     ///
@@ -149,7 +150,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_tag_filters: Option<Vec<EC2TagFilter>>,
 
     ///
@@ -161,7 +162,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_tag_set: Option<EC2TagSet>,
 
     ///
@@ -173,7 +174,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_info: Option<LoadBalancerInfo>,
 
     ///
@@ -187,7 +188,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesInstanceTagFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_premises_instance_tag_filters: Option<Vec<TagFilter>>,
 
     ///
@@ -201,7 +202,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_premises_tag_set: Option<OnPremisesTagSet>,
 
     /// Property description not available.
@@ -212,7 +213,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutdatedInstancesStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outdated_instances_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -236,7 +237,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -248,7 +249,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trigger_configurations: Option<Vec<TriggerConfig>>,
 }
 
@@ -357,6 +358,7 @@ impl cfn_resources::CfnResource for CfnDeploymentGroup {
 
 /// The Alarm property type specifies a CloudWatch alarm to use for an     AWS CodeDeploy deployment group. The Alarm property of the CodeDeploy DeploymentGroup AlarmConfiguration property contains a list of     Alarm property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Alarm {
     ///
     /// The name of the alarm. Maximum length is 255 characters. Each alarm name can be used       only once in a list of alarms.
@@ -367,7 +369,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -387,6 +389,7 @@ impl cfn_resources::CfnResource for Alarm {
 
 /// The AlarmConfiguration property type configures CloudWatch alarms    for an AWS CodeDeploy deployment group. AlarmConfiguration is a    property of the DeploymentGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmConfiguration {
     ///
     /// A list of alarms configured for the deployment or deployment group. A maximum of 10       alarms can be added.
@@ -397,7 +400,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarms: Option<Vec<Alarm>>,
 
     ///
@@ -409,7 +412,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -423,7 +426,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePollAlarmFailure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_poll_alarm_failure: Option<bool>,
 }
 
@@ -445,6 +448,7 @@ impl cfn_resources::CfnResource for AlarmConfiguration {
 ///
 /// AutoRollbackConfiguration is a property of the DeploymentGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoRollbackConfiguration {
     ///
     /// Indicates whether a defined automatic rollback configuration is currently       enabled.
@@ -455,7 +459,7 @@ pub struct AutoRollbackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -467,7 +471,7 @@ pub struct AutoRollbackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub events: Option<Vec<String>>,
 }
 
@@ -487,6 +491,7 @@ impl cfn_resources::CfnResource for AutoRollbackConfiguration {
 
 /// Information about blue/green deployment options for a deployment group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Information about the action to take when newly provisioned instances are ready to       receive traffic in a blue/green deployment.
@@ -497,7 +502,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentReadyOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_ready_option: Option<DeploymentReadyOption>,
 
     ///
@@ -509,7 +514,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreenFleetProvisioningOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub green_fleet_provisioning_option: Option<GreenFleetProvisioningOption>,
 
     ///
@@ -521,7 +526,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminateBlueInstancesOnDeploymentSuccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub terminate_blue_instances_on_deployment_success: Option<BlueInstanceTerminationOption>,
 }
 
@@ -553,6 +558,7 @@ impl cfn_resources::CfnResource for BlueGreenDeploymentConfiguration {
 
 /// Information about whether instances in the original environment are terminated when a       blue/green deployment is successful. BlueInstanceTerminationOption does not       apply to Lambda deployments.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BlueInstanceTerminationOption {
     ///
     /// The action to take on instances in the original environment after a successful       blue/green deployment.
@@ -567,7 +573,7 @@ pub struct BlueInstanceTerminationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<BlueInstanceTerminationOptionActionEnum>,
 
     ///
@@ -583,7 +589,7 @@ pub struct BlueInstanceTerminationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationWaitTimeInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub termination_wait_time_in_minutes: Option<i64>,
 }
 
@@ -620,6 +626,7 @@ impl cfn_resources::CfnResource for BlueInstanceTerminationOption {
 
 /// Deployment is a property of the DeploymentGroup resource that specifies an AWS CodeDeploy application    revision to be deployed to instances in the deployment group. If you specify an application    revision, your target revision is deployed as soon as the provisioning process is complete.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Deployment {
     ///
     /// A comment about the deployment.
@@ -630,7 +637,7 @@ pub struct Deployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -648,7 +655,7 @@ pub struct Deployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreApplicationStopFailures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_application_stop_failures: Option<bool>,
 
     ///
@@ -681,6 +688,7 @@ impl cfn_resources::CfnResource for Deployment {
 
 /// Information about how traffic is rerouted to instances in a replacement environment in       a blue/green deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentReadyOption {
     ///
     /// Information about when to reroute traffic from an original environment to a replacement    environment in a blue/green deployment.
@@ -695,7 +703,7 @@ pub struct DeploymentReadyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionOnTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action_on_timeout: Option<DeploymentReadyOptionActionOnTimeoutEnum>,
 
     ///
@@ -707,7 +715,7 @@ pub struct DeploymentReadyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitTimeInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wait_time_in_minutes: Option<i64>,
 }
 
@@ -744,6 +752,7 @@ impl cfn_resources::CfnResource for DeploymentReadyOption {
 
 /// Information about the type of deployment, either in-place or blue/green, you want to       run and whether to route deployment traffic behind a load balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeploymentStyle {
     ///
     /// Indicates whether to route deployment traffic behind a load balancer.
@@ -758,7 +767,7 @@ pub struct DeploymentStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_option: Option<DeploymentStyleDeploymentOptionEnum>,
 
     ///
@@ -772,7 +781,7 @@ pub struct DeploymentStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_type: Option<DeploymentStyleDeploymentTypeEnum>,
 }
 
@@ -828,6 +837,7 @@ impl cfn_resources::CfnResource for DeploymentStyle {
 ///
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EC2TagFilter {
     ///
     /// The tag filter key.
@@ -838,7 +848,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -854,7 +864,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<EC2TagFilterTypeEnum>,
 
     ///
@@ -866,7 +876,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -909,6 +919,7 @@ impl cfn_resources::CfnResource for EC2TagFilter {
 ///
 /// For information about using tags and tag groups to help manage your Amazon EC2    instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EC2TagSet {
     ///
     /// The Amazon EC2 tags that are already applied to Amazon EC2 instances    that you want to include in the deployment group. CodeDeploy includes all Amazon EC2 instances identified by any of the tags you specify in this deployment group.
@@ -921,7 +932,7 @@ pub struct EC2TagSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagSetList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_tag_set_list: Option<Vec<EC2TagSetListObject>>,
 }
 
@@ -945,6 +956,7 @@ impl cfn_resources::CfnResource for EC2TagSet {
 ///
 /// EC2TagSet is a property of the DeploymentGroup resource type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EC2TagSetListObject {
     ///
     /// A list that contains other lists of Amazon EC2 instance tag groups. For an       instance to be included in the deployment group, it must be identified by all of the tag       groups in the list.
@@ -955,7 +967,7 @@ pub struct EC2TagSetListObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_tag_group: Option<Vec<EC2TagFilter>>,
 }
 
@@ -975,6 +987,7 @@ impl cfn_resources::CfnResource for EC2TagSetListObject {
 
 /// Contains the service and cluster names used to identify an Amazon ECS       deployment's target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ECSService {
     ///
     /// The name of the cluster that the Amazon ECS service is associated with.
@@ -1019,6 +1032,7 @@ impl cfn_resources::CfnResource for ECSService {
 ///
 /// ELBInfo is a property of the AWS CodeDeploy DeploymentGroup LoadBalancerInfo property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ELBInfo {
     ///
     /// For blue/green deployments, the name of the load balancer that is used to route traffic    from original instances to replacement instances in a blue/green deployment. For in-place    deployments, the name of the load balancer that instances are deregistered from so they are    not serving traffic during a deployment, and then re-registered with after the deployment is    complete.
@@ -1031,7 +1045,7 @@ pub struct ELBInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1051,6 +1065,7 @@ impl cfn_resources::CfnResource for ELBInfo {
 
 /// GitHubLocation is a property of the CodeDeploy DeploymentGroup Revision property that specifies the    location of an application revision that is stored in GitHub.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GitHubLocation {
     ///
     /// The SHA1 commit ID of the GitHub commit that represents the bundled artifacts for the       application revision.
@@ -1093,6 +1108,7 @@ impl cfn_resources::CfnResource for GitHubLocation {
 
 /// Information about the instances that belong to the replacement environment in a       blue/green deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GreenFleetProvisioningOption {
     ///
     /// The method used to add instances to a replacement environment.
@@ -1107,7 +1123,7 @@ pub struct GreenFleetProvisioningOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub action: Option<GreenFleetProvisioningOptionActionEnum>,
 }
 
@@ -1148,6 +1164,7 @@ impl cfn_resources::CfnResource for GreenFleetProvisioningOption {
 ///
 /// LoadBalancerInfo is a property of the DeploymentGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadBalancerInfo {
     ///
     /// An array that contains information about the load balancer to use for load balancing       in a deployment. In Elastic Load Balancing, load balancers are used with Classic Load       Balancers.
@@ -1160,7 +1177,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElbInfoList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elb_info_list: Option<Vec<ELBInfo>>,
 
     ///
@@ -1174,7 +1191,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupInfoList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_info_list: Option<Vec<TargetGroupInfo>>,
 
     /// Property description not available.
@@ -1185,7 +1202,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupPairInfoList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_pair_info_list: Option<Vec<TargetGroupPairInfo>>,
 }
 
@@ -1209,6 +1226,7 @@ impl cfn_resources::CfnResource for LoadBalancerInfo {
 ///
 /// OnPremisesTagSet is a property of the DeploymentGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnPremisesTagSet {
     ///
     /// A list that contains other lists of on-premises instance tag groups. For an instance to be    included in the deployment group, it must be identified by all of the tag groups in the    list.
@@ -1221,7 +1239,7 @@ pub struct OnPremisesTagSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagSetList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_premises_tag_set_list: Option<Vec<OnPremisesTagSetListObject>>,
 }
 
@@ -1243,6 +1261,7 @@ impl cfn_resources::CfnResource for OnPremisesTagSet {
 ///
 /// OnPremisesTagSetListObject is a property of the CodeDeploy DeploymentGroup OnPremisesTagSet property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnPremisesTagSetListObject {
     ///
     /// Information about groups of on-premises instance tags.
@@ -1253,7 +1272,7 @@ pub struct OnPremisesTagSetListObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_premises_tag_group: Option<Vec<TagFilter>>,
 }
 
@@ -1273,6 +1292,7 @@ impl cfn_resources::CfnResource for OnPremisesTagSetListObject {
 
 /// RevisionLocation is a property that defines the location of the CodeDeploy application revision to deploy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RevisionLocation {
     ///
     /// Information about the location of application artifacts stored in GitHub.
@@ -1283,7 +1303,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GitHubLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub git_hub_location: Option<GitHubLocation>,
 
     ///
@@ -1299,7 +1319,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevisionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revision_type: Option<RevisionLocationRevisionTypeEnum>,
 
     ///
@@ -1311,7 +1331,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_location: Option<S3Location>,
 }
 
@@ -1364,6 +1384,7 @@ impl cfn_resources::CfnResource for RevisionLocation {
 
 /// S3Location is a property of the     CodeDeploy DeploymentGroup Revision property that specifies the location    of an application revision that is stored in Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The name of the Amazon S3 bucket where the application revision is       stored.
@@ -1389,7 +1410,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BundleType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bundle_type: Option<S3LocationBundleTypeEnum>,
 
     ///
@@ -1403,7 +1424,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub etag: Option<cfn_resources::StrVal>,
 
     ///
@@ -1428,7 +1449,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -1483,6 +1504,7 @@ impl cfn_resources::CfnResource for S3Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1523,6 +1545,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagFilter {
     ///
     /// The on-premises instance tag filter key.
@@ -1533,7 +1556,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -1549,7 +1572,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<TagFilterTypeEnum>,
 
     ///
@@ -1561,7 +1584,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1606,6 +1629,7 @@ impl cfn_resources::CfnResource for TagFilter {
 ///
 /// TargetGroupInfo is a property of the LoadBalancerInfo property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupInfo {
     ///
     /// For blue/green deployments, the name of the target group that instances in the original    environment are deregistered from, and instances in the replacement environment registered    with. For in-place deployments, the name of the target group that instances are deregistered    from, so they are not serving traffic during a deployment, and then re-registered with after    the deployment completes. No duplicates allowed.
@@ -1620,7 +1644,7 @@ pub struct TargetGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1640,6 +1664,7 @@ impl cfn_resources::CfnResource for TargetGroupInfo {
 
 /// The TargetGroupPairInfo property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupPairInfo {
     /// Property description not available.
     ///
@@ -1649,7 +1674,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProdTrafficRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prod_traffic_route: Option<TrafficRoute>,
 
     /// Property description not available.
@@ -1660,7 +1685,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_groups: Option<Vec<TargetGroupInfo>>,
 
     /// Property description not available.
@@ -1671,7 +1696,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TestTrafficRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub test_traffic_route: Option<TrafficRoute>,
 }
 
@@ -1699,6 +1724,7 @@ impl cfn_resources::CfnResource for TargetGroupPairInfo {
 
 /// The TrafficRoute property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrafficRoute {
     /// Property description not available.
     ///
@@ -1708,7 +1734,7 @@ pub struct TrafficRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ListenerArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub listener_arns: Option<Vec<String>>,
 }
 
@@ -1728,6 +1754,7 @@ impl cfn_resources::CfnResource for TrafficRoute {
 
 /// Information about notification triggers for the deployment group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TriggerConfig {
     ///
     /// The event type or types that trigger notifications.
@@ -1738,7 +1765,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trigger_events: Option<Vec<String>>,
 
     ///
@@ -1750,7 +1777,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trigger_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1762,7 +1789,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerTargetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trigger_target_arn: Option<cfn_resources::StrVal>,
 }
 

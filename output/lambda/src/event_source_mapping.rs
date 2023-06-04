@@ -2,6 +2,7 @@
 ///
 /// For details about each event source type, see the following topics. In particular, each of the topics    describes the required and optional parameters for the specific event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventSourceMapping {
     ///
     /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
@@ -12,7 +13,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmazonManagedKafkaEventSourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazon_managed_kafka_event_source_config: Option<AmazonManagedKafkaEventSourceConfig>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub batch_size: Option<i64>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BisectBatchOnFunctionError")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bisect_batch_on_function_error: Option<bool>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_config: Option<DestinationConfig>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentDBEventSourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_dbevent_source_config: Option<DocumentDBEventSourceConfig>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_source_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterCriteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_criteria: Option<FilterCriteria>,
 
     ///
@@ -145,7 +146,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionResponseTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_response_types: Option<Vec<String>>,
 
     ///
@@ -167,7 +168,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     ///
@@ -185,7 +186,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRecordAgeInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_record_age_in_seconds: Option<i64>,
 
     ///
@@ -201,7 +202,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_retry_attempts: Option<i64>,
 
     ///
@@ -217,7 +218,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelizationFactor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parallelization_factor: Option<i64>,
 
     ///
@@ -231,7 +232,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queues: Option<Vec<String>>,
 
     ///
@@ -243,7 +244,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scaling_config: Option<ScalingConfig>,
 
     ///
@@ -255,7 +256,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SelfManagedEventSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_managed_event_source: Option<SelfManagedEventSource>,
 
     ///
@@ -267,7 +268,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SelfManagedKafkaEventSourceConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub self_managed_kafka_event_source_config: Option<SelfManagedKafkaEventSourceConfig>,
 
     ///
@@ -281,7 +282,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceAccessConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_access_configurations: Option<Vec<SourceAccessConfiguration>>,
 
     ///
@@ -295,7 +296,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub starting_position: Option<cfn_resources::StrVal>,
 
     ///
@@ -307,7 +308,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPositionTimestamp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub starting_position_timestamp: Option<f64>,
 
     ///
@@ -321,7 +322,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Topics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topics: Option<Vec<String>>,
 
     ///
@@ -337,7 +338,7 @@ pub struct CfnEventSourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TumblingWindowInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tumbling_window_in_seconds: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -526,6 +527,7 @@ impl cfn_resources::CfnResource for CfnEventSourceMapping {
 
 /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonManagedKafkaEventSourceConfig {
     ///
     /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
@@ -542,7 +544,7 @@ pub struct AmazonManagedKafkaEventSourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub consumer_group_id: Option<cfn_resources::StrVal>,
 }
 
@@ -581,6 +583,7 @@ impl cfn_resources::CfnResource for AmazonManagedKafkaEventSourceConfig {
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationConfig {
     ///
     /// The destination configuration for failed invocations.
@@ -591,7 +594,7 @@ pub struct DestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnFailure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_failure: Option<OnFailure>,
 }
 
@@ -615,6 +618,7 @@ impl cfn_resources::CfnResource for DestinationConfig {
 
 /// Specific configuration settings for a DocumentDB event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentDBEventSourceConfig {
     ///
     /// The name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
@@ -631,7 +635,7 @@ pub struct DocumentDBEventSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -649,7 +653,7 @@ pub struct DocumentDBEventSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -663,7 +667,7 @@ pub struct DocumentDBEventSourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FullDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub full_document: Option<DocumentDBEventSourceConfigFullDocumentEnum>,
 }
 
@@ -744,6 +748,7 @@ impl cfn_resources::CfnResource for DocumentDBEventSourceConfig {
 
 /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Endpoints {
     ///
     /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
@@ -754,7 +759,7 @@ pub struct Endpoints {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KafkaBootstrapServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kafka_bootstrap_servers: Option<Vec<String>>,
 }
 
@@ -774,6 +779,7 @@ impl cfn_resources::CfnResource for Endpoints {
 
 /// A structure within a FilterCriteria object that defines an event filtering pattern.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     ///
     /// A filter pattern. For more information on the syntax of a filter pattern, see        Filter rule syntax.
@@ -790,7 +796,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern: Option<cfn_resources::StrVal>,
 }
 
@@ -832,6 +838,7 @@ impl cfn_resources::CfnResource for Filter {
 
 /// An object that contains the filters for an event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterCriteria {
     ///
     /// A list of filters.
@@ -842,7 +849,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filters: Option<Vec<Filter>>,
 }
 
@@ -862,6 +869,7 @@ impl cfn_resources::CfnResource for FilterCriteria {
 
 /// A destination for events that failed processing.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnFailure {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.
@@ -878,7 +886,7 @@ pub struct OnFailure {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<cfn_resources::StrVal>,
 }
 
@@ -920,6 +928,7 @@ impl cfn_resources::CfnResource for OnFailure {
 
 /// (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScalingConfig {
     ///
     /// Limits the number of concurrent instances that the Amazon SQS event source can invoke.
@@ -934,7 +943,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumConcurrency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_concurrency: Option<i64>,
 }
 
@@ -972,6 +981,7 @@ impl cfn_resources::CfnResource for ScalingConfig {
 
 /// The self-managed Apache Kafka cluster for your event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelfManagedEventSource {
     ///
     /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
@@ -982,7 +992,7 @@ pub struct SelfManagedEventSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Endpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoints: Option<Endpoints>,
 }
 
@@ -1006,6 +1016,7 @@ impl cfn_resources::CfnResource for SelfManagedEventSource {
 
 /// Specific configuration settings for a self-managed Apache Kafka event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelfManagedKafkaEventSourceConfig {
     ///
     /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
@@ -1022,7 +1033,7 @@ pub struct SelfManagedKafkaEventSourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub consumer_group_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1061,6 +1072,7 @@ impl cfn_resources::CfnResource for SelfManagedKafkaEventSourceConfig {
 
 /// An array of the authentication protocol, VPC components, or virtual host to secure and define your event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceAccessConfiguration {
     ///
     /// The type of authentication protocol, VPC components, or virtual host for your event source. For example: "Type":"SASL_SCRAM_512_AUTH".
@@ -1075,7 +1087,7 @@ pub struct SourceAccessConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<SourceAccessConfigurationTypeEnum>,
 
     ///
@@ -1093,7 +1105,7 @@ pub struct SourceAccessConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URI")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri: Option<cfn_resources::StrVal>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// To identify the requests that you want AWS WAF to filter, you associate the WebACL with an API Gateway API or an Application Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnWebACL {
     ///
     /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the      WafAction object.
@@ -57,7 +58,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules: Option<Vec<Rule>>,
 }
 
@@ -123,6 +124,7 @@ impl cfn_resources::CfnResource for CfnWebACL {
 
 /// Specifies the action AWS WAF takes when a web request matches or doesn't match all rule conditions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// For actions that are associated with a rule, the action that AWS WAF takes when a web request matches all conditions in a rule.
@@ -160,6 +162,7 @@ impl cfn_resources::CfnResource for Action {
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent     header for which the value is BadBot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// The action that AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request.

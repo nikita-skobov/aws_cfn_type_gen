@@ -1,5 +1,6 @@
 /// The AWS::Cognito::UserPoolUser resource creates an Amazon Cognito user pool    user.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnUserPoolUser {
     ///
     /// A map of custom key-value pairs that you can provide as input for the custom workflow that    is invoked by the pre sign-up trigger.
@@ -16,7 +17,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_metadata: Option<serde_json::Value>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DesiredDeliveryMediums")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_delivery_mediums: Option<Vec<String>>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ForceAliasCreation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub force_alias_creation: Option<bool>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MessageAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_action: Option<UserPoolUserMessageActionEnum>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attributes: Option<Vec<AttributeType>>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnUserPoolUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_data: Option<Vec<AttributeType>>,
 }
 
@@ -210,6 +211,7 @@ impl cfn_resources::CfnResource for CfnUserPoolUser {
 
 /// Specifies whether the attribute is standard or custom.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributeType {
     ///
     /// The name of the attribute.
@@ -226,7 +228,7 @@ pub struct AttributeType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -240,7 +242,7 @@ pub struct AttributeType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::GameLift::GameSessionQueue resource creates a placement queue    that processes requests for new game sessions. A queue uses FleetIQ algorithms to determine    the best placement locations and find an available game server, then prompts the game server    to start a new game session. Queues can have destinations (GameLift fleets or aliases), which    determine where the queue can place new game sessions. A queue can have destinations with    varied fleet type (Spot and On-Demand), instance type, and AWS Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGameSessionQueue {
     ///
     /// Information to be added to all events that are related to this game session       queue.
@@ -16,7 +17,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_event_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destinations: Option<Vec<Destination>>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_configuration: Option<FilterConfiguration>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_target: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +88,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlayerLatencyPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub player_latency_policies: Option<Vec<PlayerLatencyPolicy>>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriorityConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority_configuration: Option<PriorityConfiguration>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -127,7 +128,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_seconds: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -255,6 +256,7 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
 
 /// A fleet or alias designated in a game session queue. Queues fulfill requests for new       game sessions by placing a new game session on any of the queue's destinations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Destination {
     ///
     /// The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which       include a fleet ID or alias ID and a Region name, provide a unique identifier across all       Regions.
@@ -271,7 +273,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -313,6 +315,7 @@ impl cfn_resources::CfnResource for Destination {
 
 /// A list of fleet locations where a game session queue can place new game sessions. You    can use a filter to temporarily turn off placements for specific locations. For queues    that have multi-location fleets, you can use a filter configuration allow placement with    some, but not all of these locations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterConfiguration {
     ///
     /// A list of locations to allow game session placement in, in the form of AWS Region       codes such as us-west-2.
@@ -325,7 +328,7 @@ pub struct FilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedLocations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_locations: Option<Vec<String>>,
 }
 
@@ -354,6 +357,7 @@ impl cfn_resources::CfnResource for FilterConfiguration {
 
 /// The queue setting that determines the highest latency allowed for individual    players when placing a game session. When a latency policy is in force, a game session cannot    be placed with any fleet in a Region where a player reports latency higher than the cap.    Latency policies are only enforced when the placement request contains player latency    information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PlayerLatencyPolicy {
     ///
     /// The maximum latency value that is allowed for any player, in milliseconds. All       policies must have a value set for this property.
@@ -366,7 +370,7 @@ pub struct PlayerLatencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumIndividualPlayerLatencyMilliseconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_individual_player_latency_milliseconds: Option<i64>,
 
     ///
@@ -380,7 +384,7 @@ pub struct PlayerLatencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_duration_seconds: Option<i64>,
 }
 
@@ -417,6 +421,7 @@ impl cfn_resources::CfnResource for PlayerLatencyPolicy {
 ///
 /// Changing the priority order will affect how game sessions are placed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PriorityConfiguration {
     ///
     /// The prioritization order to use for fleet locations, when the         PriorityOrder property includes LOCATION. Locations are       identified by AWS Region codes such as us-west-2. Each location can only       be listed once.
@@ -429,7 +434,7 @@ pub struct PriorityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location_order: Option<Vec<String>>,
 
     ///
@@ -445,7 +450,7 @@ pub struct PriorityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriorityOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority_order: Option<Vec<String>>,
 }
 
@@ -489,6 +494,7 @@ impl cfn_resources::CfnResource for PriorityConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

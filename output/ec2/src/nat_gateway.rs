@@ -6,6 +6,7 @@
 ///
 /// For more information, see NAT Gateways in the       Amazon VPC User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNatGateway {
     ///
     /// [Public NAT gateway only] The allocation ID of the Elastic IP address that's associated with the NAT gateway.      This property is required for a public NAT gateway and cannot be specified with a private NAT gateway.
@@ -16,7 +17,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllocationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectivityType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxDrainDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_drain_duration_seconds: Option<i64>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryAllocationIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_allocation_ids: Option<Vec<String>>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_private_ip_addresses: Option<Vec<String>>,
 
     ///
@@ -125,7 +126,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -203,6 +204,7 @@ impl cfn_resources::CfnResource for CfnNatGateway {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

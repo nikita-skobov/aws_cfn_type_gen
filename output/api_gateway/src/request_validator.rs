@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming requests to your API. For more information, see Enable Basic Request Validation for an API in API Gateway in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRequestValidator {
     ///
     /// The name of this RequestValidator
@@ -10,7 +11,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidateRequestBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validate_request_body: Option<bool>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidateRequestParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validate_request_parameters: Option<bool>,
 
     #[serde(skip_serializing)]

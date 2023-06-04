@@ -1,5 +1,6 @@
 /// Use the AWS::EventSchemas::RegistryPolicy resource to specify       resource-based policies for an EventBridge Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRegistryPolicy {
     ///
     /// A resource-based policy.
@@ -32,7 +33,7 @@ pub struct CfnRegistryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevisionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revision_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

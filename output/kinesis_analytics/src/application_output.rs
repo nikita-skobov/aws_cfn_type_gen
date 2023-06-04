@@ -10,6 +10,7 @@
 ///
 /// This operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplicationOutput {
     ///
     /// Name of the application to which you want to add the output configuration.
@@ -80,6 +81,7 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
 
 /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationSchema {
     ///
     /// Specifies the format of the records on the output stream.
@@ -92,7 +94,7 @@ pub struct DestinationSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordFormatType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_format_type: Option<DestinationSchemaRecordFormatTypeEnum>,
 }
 
@@ -129,6 +131,7 @@ impl cfn_resources::CfnResource for DestinationSchema {
 
 /// When configuring application output, identifies an Amazon Kinesis Firehose delivery       stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM       role that enables Amazon Kinesis Analytics to write to the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisFirehoseOutput {
     ///
     /// ARN of the destination Amazon Kinesis Firehose delivery stream to write to.
@@ -225,6 +228,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
 
 /// When configuring application output, identifies an Amazon Kinesis stream as the       destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN       that Amazon Kinesis Analytics can use to write to the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisStreamsOutput {
     ///
     /// ARN of the destination Amazon Kinesis stream to write to.
@@ -321,6 +325,7 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
 
 /// When configuring application output, identifies an AWS Lambda function       as the destination. You provide the function Amazon Resource Name (ARN) and also an IAM       role ARN that Amazon Kinesis Analytics can use to write to the function on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaOutput {
     ///
     /// Amazon Resource Name (ARN) of the destination Lambda function to write to.
@@ -421,6 +426,7 @@ impl cfn_resources::CfnResource for LambdaOutput {
 ///
 /// For limits on how many destinations an application can write and other limitations,       see Limits.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Output {
     ///
     /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
@@ -442,7 +448,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseOutput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
 
     ///
@@ -454,7 +460,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamsOutput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_streams_output: Option<KinesisStreamsOutput>,
 
     ///
@@ -466,7 +472,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaOutput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_output: Option<LambdaOutput>,
 
     ///
@@ -482,7 +488,7 @@ pub struct Output {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// The AWS::ApiGateway::DocumentationPart resource creates a documentation part for an API. For more information, see Representation of API Documentation in API Gateway in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDocumentationPart {
     ///
     /// The location of the targeted API entity of the to-be-created documentation part.
@@ -64,6 +65,7 @@ impl cfn_resources::CfnResource for CfnDocumentationPart {
 
 /// The Location property specifies the location of the Amazon API Gateway API entity that the documentation applies to. Location is a property of the AWS::ApiGateway::DocumentationPart resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Location {
     ///
     /// The HTTP verb of a method. It is a valid field for the API entity types of METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is * for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other location attributes, the child entity's method attribute must match that of the parent entity exactly.
@@ -74,7 +76,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +88,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +100,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +114,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatusCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -126,7 +128,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<LocationTypeEnum>,
 }
 

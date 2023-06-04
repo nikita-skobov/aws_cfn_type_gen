@@ -1,5 +1,6 @@
 /// Creates or updates an Evidently feature that you want to launch or test. You can define up to       five variations of a feature, and use these variations in your launches and experiments. A feature must be created in       a project. For information about creating a project, see       CreateProject.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFeature {
     ///
     /// The name of the variation to use as the default variation. The default       variation is served to users who are not allocated to any ongoing launches       or experiments of this feature.
@@ -14,7 +15,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultVariation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_variation: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_overrides: Option<Vec<EntityOverride>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub evaluation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -136,6 +137,7 @@ impl cfn_resources::CfnResource for CfnFeature {
 
 /// A set of key-value pairs that specify users who should always be served a specific       variation of a feature. Each key specifies a user using their user ID, account ID, or some       other identifier. The value specifies the name of the variation that the user is to be       served.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EntityOverride {
     ///
     /// The entity ID to be served the variation specified in Variation.
@@ -146,7 +148,7 @@ pub struct EntityOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +160,7 @@ pub struct EntityOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variation: Option<cfn_resources::StrVal>,
 }
 
@@ -184,6 +186,7 @@ impl cfn_resources::CfnResource for EntityOverride {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -222,6 +225,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// This structure contains the name and variation value of one variation of a feature. It       can contain only one of the following parameters: BooleanValue, DoubleValue, LongValue       or StringValue.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VariationObject {
     ///
     /// The value assigned to this variation, if the variation type is boolean.
@@ -232,7 +236,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BooleanValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub boolean_value: Option<bool>,
 
     ///
@@ -244,7 +248,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub double_value: Option<f64>,
 
     ///
@@ -256,7 +260,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LongValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub long_value: Option<f64>,
 
     ///
@@ -268,7 +272,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_value: Option<cfn_resources::StrVal>,
 
     ///

@@ -2,6 +2,7 @@
 ///
 /// Required permissions: rolesanywhere:CreateTrustAnchor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTrustAnchor {
     ///
     /// Indicates whether the trust anchor is enabled.
@@ -12,7 +13,7 @@ pub struct CfnTrustAnchor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnTrustAnchor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -129,6 +130,7 @@ impl cfn_resources::CfnResource for CfnTrustAnchor {
 
 /// The trust anchor type and its related certificate data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Source {
     ///
     /// The data field of the trust anchor depending on its type.
@@ -139,7 +141,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_data: Option<SourceData>,
 
     ///
@@ -153,7 +155,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_type: Option<SourceSourceTypeEnum>,
 }
 
@@ -198,6 +200,7 @@ impl cfn_resources::CfnResource for Source {
 
 /// The data field of the trust anchor depending on its type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceData {
     ///
     /// The root certificate of the AWS Private Certificate Authority specified by this ARN is used in trust     validation for temporary credential requests. Included for trust anchors of type AWS_ACM_PCA.
@@ -208,7 +211,7 @@ pub struct SourceData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcmPcaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acm_pca_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -224,7 +227,7 @@ pub struct SourceData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "X509CertificateData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub x509_certificate_data: Option<cfn_resources::StrVal>,
 }
 
@@ -269,6 +272,7 @@ impl cfn_resources::CfnResource for SourceData {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

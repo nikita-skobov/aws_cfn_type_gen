@@ -1,5 +1,6 @@
 /// The AWS::DataSync::LocationHDFS resource specifies an endpoint for a Hadoop Distributed File System (HDFS).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLocationHDFS {
     ///
     /// The Amazon Resource Names (ARNs) of the agents that are used to connect to the HDFS    cluster.
@@ -37,7 +38,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_size: Option<i64>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosKeytab")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kerberos_keytab: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosKrb5Conf")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kerberos_krb5_conf: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosPrincipal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kerberos_principal: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyProviderUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_provider_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QopConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub qop_configuration: Option<QopConfiguration>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationFactor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_factor: Option<i64>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub simple_user: Option<cfn_resources::StrVal>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -188,7 +189,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -359,6 +360,7 @@ impl cfn_resources::CfnResource for CfnLocationHDFS {
 
 /// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NameNode {
     ///
     /// The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain    Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this    hostname to communicate with the NameNode in the network.
@@ -450,6 +452,7 @@ impl cfn_resources::CfnResource for NameNode {
 /// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
 ///
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QopConfiguration {
     ///
     /// The data transfer protection setting configured on the HDFS cluster. This setting    corresponds to your dfs.data.transfer.protection setting in the     hdfs-site.xml file on your Hadoop cluster.
@@ -462,7 +465,7 @@ pub struct QopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_transfer_protection: Option<QopConfigurationDataTransferProtectionEnum>,
 
     ///
@@ -476,7 +479,7 @@ pub struct QopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RpcProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rpc_protection: Option<QopConfigurationRpcProtectionEnum>,
 }
 
@@ -552,6 +555,7 @@ impl cfn_resources::CfnResource for QopConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

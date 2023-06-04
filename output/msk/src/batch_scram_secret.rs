@@ -1,5 +1,6 @@
 /// The AWS::MSK::BatchScramSecret resource Property description not available. for MSK.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBatchScramSecret {
     /// Property description not available.
     ///
@@ -19,7 +20,7 @@ pub struct CfnBatchScramSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArnList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn_list: Option<Vec<String>>,
 }
 

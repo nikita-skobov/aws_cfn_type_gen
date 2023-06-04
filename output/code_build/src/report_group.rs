@@ -1,5 +1,6 @@
 /// Represents a report group. A report group contains a collection of reports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnReportGroup {
     ///
     /// When deleting a report group, specifies if reports within the report group should be       deleted.
@@ -12,7 +13,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteReports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_reports: Option<bool>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -151,6 +152,7 @@ impl cfn_resources::CfnResource for CfnReportGroup {
 
 /// Information about the location where the run of a report is exported.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReportExportConfig {
     ///
     /// The export configuration type. Valid values are:
@@ -176,7 +178,7 @@ pub struct ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_destination: Option<S3ReportExportConfig>,
 }
 
@@ -217,6 +219,7 @@ impl cfn_resources::CfnResource for ReportExportConfig {
 
 /// Information about the S3 bucket where the raw data of a report are exported.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3ReportExportConfig {
     ///
     /// The name of the S3 bucket where the raw data of a report are exported.
@@ -240,7 +243,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -252,7 +255,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionDisabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_disabled: Option<bool>,
 
     ///
@@ -266,7 +269,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +285,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Packaging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub packaging: Option<S3ReportExportConfigPackagingEnum>,
 
     ///
@@ -294,7 +297,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -359,6 +362,7 @@ impl cfn_resources::CfnResource for S3ReportExportConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

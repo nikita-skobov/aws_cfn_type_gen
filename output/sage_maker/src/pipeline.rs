@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::Pipeline resource creates shell scripts that run when       you create and/or start a SageMaker Pipeline. For information about SageMaker Pipelines,       see SageMaker         Pipelines in the Amazon SageMaker Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPipeline {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelismConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parallelism_configuration: Option<ParallelismConfiguration>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -221,6 +222,7 @@ impl cfn_resources::CfnResource for CfnPipeline {
 
 /// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParallelismConfiguration {
     ///
     /// The max number of steps that can be executed in parallel.
@@ -261,6 +263,7 @@ impl cfn_resources::CfnResource for ParallelismConfiguration {
 
 /// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PipelineDefinition {
     /// Property description not available.
     ///
@@ -270,7 +273,7 @@ pub struct PipelineDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_definition_body: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -281,7 +284,7 @@ pub struct PipelineDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_definition_s3_location: Option<S3Location>,
 }
 
@@ -305,6 +308,7 @@ impl cfn_resources::CfnResource for PipelineDefinition {
 
 /// The S3Location property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     /// Property description not available.
     ///
@@ -324,7 +328,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub etag: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -345,7 +349,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -371,6 +375,7 @@ impl cfn_resources::CfnResource for S3Location {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

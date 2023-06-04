@@ -1,5 +1,6 @@
 /// Creates the local or partner profile to use for AS2 transfers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnProfile {
     ///
     /// The As2Id is the AS2-name, as defined in the   RFC 4130. For inbound transfers, this is the AS2-From header for the AS2 messages    sent from the partner. For outbound connectors, this is the AS2-To header for the    AS2 messages sent to the partner using the StartFileTransfer API operation. This ID cannot include spaces.
@@ -27,7 +28,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_ids: Option<Vec<String>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -150,6 +151,7 @@ impl cfn_resources::CfnResource for CfnProfile {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

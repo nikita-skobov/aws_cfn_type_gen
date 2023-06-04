@@ -1,5 +1,6 @@
 /// The AWS::AppSync::Resolver resource defines the logical GraphQL resolver that you attach to     fields in a schema. Request and response templates for resolvers are written in Apache Velocity Template     Language (VTL) format. For more information about resolvers, see Resolver Mapping Template       Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolver {
     ///
     /// The AWS AppSync GraphQL API to which you want to attach this resolver.
@@ -21,7 +22,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub caching_config: Option<CachingConfig>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Kind")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kind: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBatchSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_batch_size: Option<i64>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_config: Option<PipelineConfig>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplateS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +157,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplateS3Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +169,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime: Option<AppSyncRuntime>,
 
     ///
@@ -180,7 +181,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sync_config: Option<SyncConfig>,
 
     ///
@@ -258,6 +259,7 @@ impl cfn_resources::CfnResource for CfnResolver {
 
 /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync     function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must     also be specified.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AppSyncRuntime {
     ///
     /// The name of the runtime to use. Currently, the only allowed value is     APPSYNC_JS.
@@ -298,6 +300,7 @@ impl cfn_resources::CfnResource for AppSyncRuntime {
 
 /// The caching configuration for a resolver that has caching activated.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CachingConfig {
     ///
     /// The caching keys for a resolver that has caching activated.
@@ -310,7 +313,7 @@ pub struct CachingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingKeys")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub caching_keys: Option<Vec<String>>,
 
     ///
@@ -343,6 +346,7 @@ impl cfn_resources::CfnResource for CachingConfig {
 
 /// The LambdaConflictHandlerConfig when configuring LAMBDA as the Conflict Handler.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaConflictHandlerConfig {
     ///
     /// The Amazon Resource Name (ARN) for the Lambda function to use as the     Conflict Handler.
@@ -353,7 +357,7 @@ pub struct LambdaConflictHandlerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_conflict_handler_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -375,6 +379,7 @@ impl cfn_resources::CfnResource for LambdaConflictHandlerConfig {
 ///
 /// PipelineConfig is a property of the AWS::AppSync::Resolver     resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PipelineConfig {
     ///
     /// A list of Function objects.
@@ -385,7 +390,7 @@ pub struct PipelineConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Functions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub functions: Option<Vec<String>>,
 }
 
@@ -407,6 +412,7 @@ impl cfn_resources::CfnResource for PipelineConfig {
 ///
 /// Specifies which Conflict Detection strategy and Resolution strategy to use when the     resolver is invoked.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SyncConfig {
     ///
     /// The Conflict Detection strategy to use.
@@ -432,7 +438,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConflictHandler")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conflict_handler: Option<cfn_resources::StrVal>,
 
     ///
@@ -444,7 +450,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_conflict_handler_config: Option<LambdaConflictHandlerConfig>,
 }
 

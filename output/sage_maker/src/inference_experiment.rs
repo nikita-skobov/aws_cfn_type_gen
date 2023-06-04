@@ -6,6 +6,7 @@
 ///
 /// While the experiment is in progress or after it has concluded, you can view metrics that compare your model      variants. For more information, see View, monitor, and edit shadow tests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInferenceExperiment {
     ///
     /// The Amazon S3 location and configuration for storing inference request and response data.
@@ -16,7 +17,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataStorageConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_storage_config: Option<DataStorageConfig>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_state: Option<InferenceExperimentDesiredStateEnum>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<InferenceExperimentSchedule>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowModeConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shadow_mode_config: Option<ShadowModeConfig>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusReason")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status_reason: Option<cfn_resources::StrVal>,
 
     ///
@@ -180,7 +181,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -421,6 +422,7 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
 
 /// Configuration specifying how to treat different headers. If no headers are specified SageMaker      will by default base64 encode when capturing the data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CaptureContentTypeHeader {
     ///
     /// The list of all content type headers that SageMaker will treat as CSV and capture accordingly.
@@ -433,7 +435,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvContentTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_content_types: Option<Vec<String>>,
 
     ///
@@ -447,7 +449,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonContentTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_content_types: Option<Vec<String>>,
 }
 
@@ -487,6 +489,7 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 ///
 /// This is an optional parameter that you can use for data capture. For more information, see Capture data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataStorageConfig {
     ///
     /// Configuration specifying how to treat different headers. If no headers are specified SageMaker will by default base64 encode when capturing the data.
@@ -497,7 +500,7 @@ pub struct DataStorageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<CaptureContentTypeHeader>,
 
     ///
@@ -528,7 +531,7 @@ pub struct DataStorageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 }
 
@@ -574,6 +577,7 @@ impl cfn_resources::CfnResource for DataStorageConfig {
 
 /// The metadata of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointMetadata {
     ///
     /// The name of the endpoint configuration.
@@ -588,7 +592,7 @@ pub struct EndpointMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -617,7 +621,7 @@ pub struct EndpointMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_status: Option<EndpointMetadataEndpointStatusEnum>,
 }
 
@@ -699,6 +703,7 @@ impl cfn_resources::CfnResource for EndpointMetadata {
 ///
 /// The maximum duration that you can set for an inference experiment is 30 days.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InferenceExperimentSchedule {
     ///
     /// The timestamp at which the inference experiment ended or will end.
@@ -709,7 +714,7 @@ pub struct InferenceExperimentSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -721,7 +726,7 @@ pub struct InferenceExperimentSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -741,6 +746,7 @@ impl cfn_resources::CfnResource for InferenceExperimentSchedule {
 
 /// The configuration for the infrastructure that the model will be deployed to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelInfrastructureConfig {
     ///
     /// The inference option to which to deploy your model. Possible values are the following:
@@ -800,6 +806,7 @@ impl cfn_resources::CfnResource for ModelInfrastructureConfig {
 
 /// Contains information about the deployment options of a model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ModelVariantConfig {
     ///
     /// The configuration for the infrastructure that the model will be deployed to.
@@ -883,6 +890,7 @@ impl cfn_resources::CfnResource for ModelVariantConfig {
 
 /// The infrastructure configuration for deploying the model to a real-time inference endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RealTimeInferenceConfig {
     ///
     /// The number of instances of the type specified by InstanceType.
@@ -1221,6 +1229,7 @@ impl cfn_resources::CfnResource for RealTimeInferenceConfig {
 
 /// The configuration of ShadowMode inference experiment type, which specifies a production variant      to take all the inference requests, and a shadow variant to which Amazon SageMaker replicates a percentage of the      inference requests. For the shadow variant it also specifies the percentage of requests that Amazon SageMaker replicates.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShadowModeConfig {
     ///
     /// List of shadow variant configurations.
@@ -1284,6 +1293,7 @@ impl cfn_resources::CfnResource for ShadowModeConfig {
 
 /// The name and sampling percentage of a shadow variant.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShadowModelVariantConfig {
     ///
     /// The percentage of inference requests that Amazon SageMaker replicates from the production variant to the shadow variant.
@@ -1353,6 +1363,7 @@ impl cfn_resources::CfnResource for ShadowModelVariantConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

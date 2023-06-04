@@ -1,5 +1,6 @@
 /// Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action.       For example, you can create a schedule of when to run the ResizeCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnScheduledAction {
     ///
     /// If true, the schedule is enabled. If false, the scheduled action does not trigger.       For more information about state of the scheduled action, see AWS::Redshift::ScheduledAction.
@@ -10,7 +11,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable: Option<bool>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActionDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduled_action_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_action: Option<ScheduledActionType>,
 
     #[serde(skip_serializing)]
@@ -180,6 +181,7 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
 
 /// Describes a pause cluster operation. For example, a scheduled action to run the PauseCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PauseClusterMessage {
     ///
     /// The identifier of the cluster to be paused.
@@ -219,6 +221,7 @@ impl cfn_resources::CfnResource for PauseClusterMessage {
 
 /// Describes a resize cluster operation. For example, a scheduled action to run the ResizeCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResizeClusterMessage {
     ///
     /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
@@ -229,7 +232,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classic: Option<bool>,
 
     ///
@@ -256,7 +259,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -270,7 +273,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub node_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +285,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfNodes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_nodes: Option<i64>,
 }
 
@@ -329,6 +332,7 @@ impl cfn_resources::CfnResource for ResizeClusterMessage {
 
 /// Describes a resume cluster operation. For example, a scheduled action to run the ResumeCluster API operation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResumeClusterMessage {
     ///
     /// The identifier of the cluster to be resumed.
@@ -368,6 +372,7 @@ impl cfn_resources::CfnResource for ResumeClusterMessage {
 
 /// The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScheduledActionType {
     ///
     /// An action that runs a PauseCluster API operation.
@@ -378,7 +383,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PauseCluster")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pause_cluster: Option<PauseClusterMessage>,
 
     ///
@@ -390,7 +395,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResizeCluster")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resize_cluster: Option<ResizeClusterMessage>,
 
     ///
@@ -402,7 +407,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResumeCluster")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resume_cluster: Option<ResumeClusterMessage>,
 }
 

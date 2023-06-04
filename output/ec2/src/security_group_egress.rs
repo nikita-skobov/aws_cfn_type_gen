@@ -14,6 +14,7 @@
 ///
 /// Use AWS::EC2::SecurityGroupIngress and       AWS::EC2::SecurityGroupEgress only when necessary, typically to allow     security groups to reference each other in ingress and egress rules. Otherwise, use the     embedded ingress and egress rules of the security group. For more information, see Amazon       EC2 Security Groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityGroupEgress {
     ///
     /// The IPv4 address range, in CIDR format.
@@ -28,7 +29,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationSecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from_port: Option<i64>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to_port: Option<i64>,
 }
 

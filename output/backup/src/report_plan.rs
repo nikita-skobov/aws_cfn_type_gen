@@ -4,6 +4,7 @@
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnReportPlan {
     ///
     /// Contains information about where and how to deliver your reports, specifically your       Amazon S3 bucket name, S3 key prefix, and the formats of your reports.
@@ -31,7 +32,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportPlanDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report_plan_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReportPlanName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report_plan_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportPlanTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub report_plan_tags: Option<Vec<Tag>>,
 
     ///
@@ -149,6 +150,7 @@ impl cfn_resources::CfnResource for CfnReportPlan {
 
 /// Contains information from your report plan about where to deliver your reports,     specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your     reports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReportDeliveryChannel {
     ///
     /// A list of the format of your reports: CSV, JSON, or both. If     not specified, the default format is CSV.
@@ -159,7 +161,7 @@ pub struct ReportDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Formats")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub formats: Option<Vec<String>>,
 
     ///
@@ -182,7 +184,7 @@ pub struct ReportDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -202,6 +204,7 @@ impl cfn_resources::CfnResource for ReportDeliveryChannel {
 
 /// Contains detailed information about a report setting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReportSetting {
     ///
     /// These are the accounts to be included in the report.
@@ -212,7 +215,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accounts: Option<Vec<String>>,
 
     ///
@@ -224,7 +227,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework_arns: Option<Vec<String>>,
 
     ///
@@ -236,7 +239,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationUnits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_units: Option<Vec<String>>,
 
     ///
@@ -248,7 +251,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regions: Option<Vec<String>>,
 
     ///
@@ -287,6 +290,7 @@ impl cfn_resources::CfnResource for ReportSetting {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

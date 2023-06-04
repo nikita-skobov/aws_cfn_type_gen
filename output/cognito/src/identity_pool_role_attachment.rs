@@ -1,5 +1,6 @@
 /// The AWS::Cognito::IdentityPoolRoleAttachment resource manages the role    configuration for an Amazon Cognito identity pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// An identity pool ID in the format REGION:GUID.
@@ -25,7 +26,7 @@ pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_mappings: Option<serde_json::Value>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub roles: Option<serde_json::Value>,
 }
 
@@ -57,6 +58,7 @@ impl cfn_resources::CfnResource for CfnIdentityPoolRoleAttachment {
 
 /// Defines how to map a claim to a role ARN.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MappingRule {
     ///
     /// The claim name that must be present in the token. For example: "isAdmin" or "paid".
@@ -121,6 +123,7 @@ impl cfn_resources::CfnResource for MappingRule {
 
 /// RoleMapping is a property of the AWS::Cognito::IdentityPoolRoleAttachment resource that defines the role-mapping    attributes of an Amazon Cognito identity pool.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoleMapping {
     ///
     /// Specifies the action to be taken if either no rules match the claim value for the Rules    type, or there is no cognito:preferred_role claim and there are multiple     cognito:roles matches for the Token type. If you specify Token or Rules as the    Type, AmbiguousRoleResolution is required.
@@ -133,7 +136,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmbiguousRoleResolution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ambiguous_role_resolution: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +150,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityProvider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +162,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rules_configuration: Option<RulesConfigurationType>,
 
     ///
@@ -196,6 +199,7 @@ impl cfn_resources::CfnResource for RoleMapping {
 
 /// RulesConfigurationType is a subproperty of the RoleMapping property that defines the rules to be used for mapping users to    roles.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RulesConfigurationType {
     ///
     /// The rules. You can specify up to 25 rules per identity provider.

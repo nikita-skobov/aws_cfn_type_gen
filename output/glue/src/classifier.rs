@@ -1,5 +1,6 @@
 /// The AWS::Glue::Classifier resource creates an AWS Glue classifier that       categorizes data sources and specifies schemas. For more information, see Adding Classifiers to         a Crawler and Classifier Structure in the AWS Glue Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnClassifier {
     ///
     /// A classifier for comma-separated values (CSV).
@@ -10,7 +11,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvClassifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_classifier: Option<CsvClassifier>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrokClassifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grok_classifier: Option<GrokClassifier>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonClassifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub json_classifier: Option<JsonClassifier>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XMLClassifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xmlclassifier: Option<XMLClassifier>,
 }
 
@@ -82,6 +83,7 @@ impl cfn_resources::CfnResource for CfnClassifier {
 
 /// A classifier for custom CSV content.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CsvClassifier {
     ///
     /// Enables the processing of files that contain only one column.
@@ -92,7 +94,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSingleColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_single_column: Option<bool>,
 
     ///
@@ -112,7 +114,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contains_header: Option<CsvClassifierContainsHeaderEnum>,
 
     ///
@@ -130,7 +132,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +144,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableValueTrimming")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_value_trimming: Option<bool>,
 
     ///
@@ -154,7 +156,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header: Option<Vec<String>>,
 
     ///
@@ -172,7 +174,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +192,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
@@ -297,6 +299,7 @@ impl cfn_resources::CfnResource for CsvClassifier {
 
 /// A classifier that uses grok patterns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrokClassifier {
     ///
     /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
@@ -324,7 +327,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_patterns: Option<cfn_resources::StrVal>,
 
     ///
@@ -359,7 +362,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -442,6 +445,7 @@ impl cfn_resources::CfnResource for GrokClassifier {
 
 /// A classifier for JSON content.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JsonClassifier {
     ///
     /// A JsonPath string defining the JSON data for the classifier to classify.       AWS Glue supports a subset of JsonPath, as described in Writing JsonPath         Custom Classifiers.
@@ -469,7 +473,7 @@ pub struct JsonClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -511,6 +515,7 @@ impl cfn_resources::CfnResource for JsonClassifier {
 
 /// A classifier for XML content.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct XMLClassifier {
     ///
     /// An identifier of the data format that the classifier matches.
@@ -538,7 +543,7 @@ pub struct XMLClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///

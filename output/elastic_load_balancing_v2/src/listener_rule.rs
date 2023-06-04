@@ -2,6 +2,7 @@
 ///
 /// For more information, see Quotas for your Application Load Balancers in the      User Guide for Application Load Balancers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnListenerRule {
     ///
     /// The actions.
@@ -103,6 +104,7 @@ impl cfn_resources::CfnResource for CfnListenerRule {
 
 /// Specifies an action for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
@@ -113,7 +115,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateCognitoConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
     ///
@@ -125,7 +127,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateOidcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
 
     ///
@@ -137,7 +139,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponseConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fixed_response_config: Option<FixedResponseConfig>,
 
     ///
@@ -149,7 +151,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forward_config: Option<ForwardConfig>,
 
     ///
@@ -165,7 +167,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order: Option<i64>,
 
     ///
@@ -177,7 +179,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redirect_config: Option<RedirectConfig>,
 
     ///
@@ -189,7 +191,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -289,6 +291,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// Specifies information required when integrating with Amazon Cognito to authenticate     users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticateCognitoConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -299,7 +302,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -315,7 +318,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -329,7 +332,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -341,7 +344,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -353,7 +356,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout: Option<i64>,
 
     ///
@@ -427,6 +430,7 @@ impl cfn_resources::CfnResource for AuthenticateCognitoConfig {
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticateOidcConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -437,7 +441,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -471,7 +475,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
@@ -498,7 +502,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -512,7 +516,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -524,7 +528,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -536,7 +540,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout: Option<i64>,
 
     ///
@@ -559,7 +563,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseExistingClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_existing_client_secret: Option<bool>,
 
     ///
@@ -611,6 +615,7 @@ impl cfn_resources::CfnResource for AuthenticateOidcConfig {
 
 /// Specifies information required when returning a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FixedResponseConfig {
     ///
     /// The content type.
@@ -627,7 +632,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<FixedResponseConfigContentTypeEnum>,
 
     ///
@@ -643,7 +648,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -727,6 +732,7 @@ impl cfn_resources::CfnResource for FixedResponseConfig {
 
 /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForwardConfig {
     ///
     /// Information about the target group stickiness for a rule.
@@ -737,7 +743,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupStickinessConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
 
     ///
@@ -749,7 +755,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_groups: Option<Vec<TargetGroupTuple>>,
 }
 
@@ -773,6 +779,7 @@ impl cfn_resources::CfnResource for ForwardConfig {
 
 /// Information about a host header condition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HostHeaderConfig {
     ///
     /// The host names. The maximum size of each name is 128 characters. The comparison is    case insensitive. The following wildcard characters are supported: * (matches 0 or more    characters) and ? (matches exactly 1 character).
@@ -785,7 +792,7 @@ pub struct HostHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -807,6 +814,7 @@ impl cfn_resources::CfnResource for HostHeaderConfig {
 ///
 /// There is a set of standard HTTP header fields. You can also define custom HTTP header    fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpHeaderConfig {
     ///
     /// The name of the HTTP header field. The maximum size is 40 characters. The header name is     case insensitive. The allowed characters are specified by RFC 7230. Wildcards are not     supported.
@@ -817,7 +825,7 @@ pub struct HttpHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpHeaderName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_header_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -833,7 +841,7 @@ pub struct HttpHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -855,6 +863,7 @@ impl cfn_resources::CfnResource for HttpHeaderConfig {
 ///
 /// HTTP defines a set of request methods, also referred to as HTTP verbs. For more    information, see the HTTP Method     Registry. You can also define custom HTTP methods.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpRequestMethodConfig {
     ///
     /// The name of the request method. The maximum size is 40 characters. The allowed characters    are A-Z, hyphen (-), and underscore (_). The comparison is case sensitive. Wildcards are not    supported; therefore, the method name must be an exact match.
@@ -867,7 +876,7 @@ pub struct HttpRequestMethodConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -887,6 +896,7 @@ impl cfn_resources::CfnResource for HttpRequestMethodConfig {
 
 /// Information about a path pattern condition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathPatternConfig {
     ///
     /// The path patterns to compare against the request URL. The maximum size of each     string is 128 characters. The comparison is case sensitive. The following wildcard     characters are supported: * (matches 0 or more characters) and ? (matches exactly 1     character).
@@ -899,7 +909,7 @@ pub struct PathPatternConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -921,6 +931,7 @@ impl cfn_resources::CfnResource for PathPatternConfig {
 ///
 /// The query string component of a URI starts after the first '?' character and is terminated    by either a '#' character or the end of the URI. A typical query string contains key/value    pairs separated by '&' characters. The allowed characters are specified by RFC 3986. Any    character can be percentage encoded.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryStringConfig {
     ///
     /// The key/value pairs or values to find in the query string. The maximum size of    each string is 128 characters. The comparison is case insensitive. The following wildcard    characters are supported: * (matches 0 or more characters) and ? (matches exactly 1    character). To search for a literal '*' or '?' character in a query string, you must escape    these characters in Values using a '\' character.
@@ -933,7 +944,7 @@ pub struct QueryStringConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<QueryStringKeyValue>>,
 }
 
@@ -953,6 +964,7 @@ impl cfn_resources::CfnResource for QueryStringConfig {
 
 /// Information about a key/value pair.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryStringKeyValue {
     ///
     /// The key. You can omit the key.
@@ -963,7 +975,7 @@ pub struct QueryStringKeyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -975,7 +987,7 @@ pub struct QueryStringKeyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1001,6 +1013,7 @@ impl cfn_resources::CfnResource for QueryStringKeyValue {
 ///
 /// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedirectConfig {
     ///
     /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
@@ -1015,7 +1028,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -1031,7 +1044,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1043,7 +1056,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -1057,7 +1070,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -1073,7 +1086,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Query")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query: Option<cfn_resources::StrVal>,
 
     ///
@@ -1189,6 +1202,7 @@ impl cfn_resources::CfnResource for RedirectConfig {
 
 /// Specifies a condition for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuleCondition {
     ///
     /// The field in the HTTP request. The following are the possible values:
@@ -1203,7 +1217,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1215,7 +1229,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostHeaderConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_header_config: Option<HostHeaderConfig>,
 
     ///
@@ -1227,7 +1241,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpHeaderConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_header_config: Option<HttpHeaderConfig>,
 
     ///
@@ -1239,7 +1253,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRequestMethodConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_request_method_config: Option<HttpRequestMethodConfig>,
 
     ///
@@ -1251,7 +1265,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathPatternConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path_pattern_config: Option<PathPatternConfig>,
 
     ///
@@ -1263,7 +1277,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_string_config: Option<QueryStringConfig>,
 
     ///
@@ -1275,7 +1289,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIpConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ip_config: Option<SourceIpConfig>,
 
     ///
@@ -1295,7 +1309,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -1352,6 +1366,7 @@ impl cfn_resources::CfnResource for RuleCondition {
 ///
 /// You can use this condition to route based on the IP address of the source that connects to    the load balancer. If a client is behind a proxy, this is the IP address of the proxy not the    IP address of the client.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceIpConfig {
     ///
     /// The source IP addresses, in CIDR format. You can use both IPv4 and IPv6     addresses. Wildcards are not supported.
@@ -1364,7 +1379,7 @@ pub struct SourceIpConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -1384,6 +1399,7 @@ impl cfn_resources::CfnResource for SourceIpConfig {
 
 /// Information about the target group stickiness for a rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupStickinessConfig {
     ///
     /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
@@ -1394,7 +1410,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -1406,7 +1422,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -1426,6 +1442,7 @@ impl cfn_resources::CfnResource for TargetGroupStickinessConfig {
 
 /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupTuple {
     ///
     /// The Amazon Resource Name (ARN) of the target group.
@@ -1436,7 +1453,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1448,7 +1465,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

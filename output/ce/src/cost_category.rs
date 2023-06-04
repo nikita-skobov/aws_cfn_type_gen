@@ -1,5 +1,6 @@
 /// The AWS::CE::CostCategory resource creates groupings of cost that you can use    across products in the AWS Billing and Cost Management console, such as Cost Explorer and AWS Budgets. For more information, see Managing Your Costs with     Cost Categories in the AWS Billing and Cost Management User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCostCategory {
     ///
     /// The default value for the cost category.
@@ -10,7 +11,7 @@ pub struct CfnCostCategory {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnCostCategory {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplitChargeRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub split_charge_rules: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

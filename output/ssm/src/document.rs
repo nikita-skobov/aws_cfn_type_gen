@@ -1,5 +1,6 @@
 /// The AWS::SSM::Document resource creates a Systems Manager (SSM) document in AWS Systems Manager. This document defines the actions that Systems Manager performs on your AWS     resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDocument {
     ///
     /// A list of key-value pairs that describe attachments to a version of a document.
@@ -12,7 +13,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attachments")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachments: Option<Vec<AttachmentsSource>>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_format: Option<DocumentDocumentFormatEnum>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_type: Option<DocumentDocumentTypeEnum>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Requires")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requires: Option<Vec<DocumentRequires>>,
 
     ///
@@ -97,7 +98,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -125,7 +126,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub update_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -139,7 +140,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_name: Option<cfn_resources::StrVal>,
 }
 
@@ -250,6 +251,7 @@ impl cfn_resources::CfnResource for CfnDocument {
 
 /// Identifying information about a document attachment, including the file name and a key-value  pair that identifies the location of an attachment to a document.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttachmentsSource {
     ///
     /// The key of a key-value pair that identifies the location of an attachment to a  document.
@@ -262,7 +264,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<AttachmentsSourceKeyEnum>,
 
     ///
@@ -276,7 +278,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -292,7 +294,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -342,6 +344,7 @@ impl cfn_resources::CfnResource for AttachmentsSource {
 
 /// An SSM document required by the current document.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocumentRequires {
     ///
     /// The name of the required SSM document. The name can be an Amazon Resource Name (ARN).
@@ -354,7 +357,7 @@ pub struct DocumentRequires {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -368,7 +371,7 @@ pub struct DocumentRequires {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -394,6 +397,7 @@ impl cfn_resources::CfnResource for DocumentRequires {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

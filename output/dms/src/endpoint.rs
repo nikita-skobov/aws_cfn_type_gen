@@ -2,6 +2,7 @@
 ///
 /// Currently, AWS CloudFormation supports all AWS DMS endpoint types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpoint {
     ///
     /// The Amazon Resource Name (ARN) for the certificate.
@@ -12,7 +13,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocDbSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub doc_db_settings: Option<DocDbSettings>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDbSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamo_db_settings: Option<DynamoDbSettings>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elasticsearch_settings: Option<ElasticsearchSettings>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraConnectionAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extra_connection_attributes: Option<cfn_resources::StrVal>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GcpMySQLSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gcp_my_sqlsettings: Option<GcpMySQLSettings>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IbmDb2Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ibm_db2_settings: Option<IbmDb2Settings>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KafkaSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kafka_settings: Option<KafkaSettings>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_settings: Option<KinesisSettings>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MicrosoftSqlServerSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub microsoft_sql_server_settings: Option<MicrosoftSqlServerSettings>,
 
     ///
@@ -198,7 +199,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MongoDbSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mongo_db_settings: Option<MongoDbSettings>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MySqlSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub my_sql_settings: Option<MySqlSettings>,
 
     ///
@@ -222,7 +223,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeptuneSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub neptune_settings: Option<NeptuneSettings>,
 
     ///
@@ -234,7 +235,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OracleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oracle_settings: Option<OracleSettings>,
 
     ///
@@ -246,7 +247,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -258,7 +259,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -272,7 +273,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostgreSqlSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub postgre_sql_settings: Option<PostgreSqlSettings>,
 
     ///
@@ -284,7 +285,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedisSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redis_settings: Option<RedisSettings>,
 
     ///
@@ -298,7 +299,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift_settings: Option<RedshiftSettings>,
 
     ///
@@ -312,7 +313,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +325,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_settings: Option<S3Settings>,
 
     ///
@@ -336,7 +337,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -352,7 +353,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_mode: Option<EndpointSslModeEnum>,
 
     ///
@@ -364,7 +365,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SybaseSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sybase_settings: Option<SybaseSettings>,
 
     ///
@@ -376,7 +377,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -388,7 +389,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -529,6 +530,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
 /// Provides information that defines a DocumentDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using extra connections attributes with Amazon DocumentDB as a source and               Using Amazon DocumentDB as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DocDbSettings {
     ///
     /// Indicates the number of documents to preview to determine the document organization.     Use this setting when NestingLevel is set to "one".
@@ -541,7 +543,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocsToInvestigate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub docs_to_investigate: Option<i64>,
 
     ///
@@ -555,7 +557,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtractDocId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extract_doc_id: Option<bool>,
 
     ///
@@ -571,7 +573,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NestingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nesting_level: Option<DocDbSettingsNestingLevelEnum>,
 
     ///
@@ -585,7 +587,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -597,7 +599,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 }
 
@@ -634,6 +636,7 @@ impl cfn_resources::CfnResource for DocDbSettings {
 
 /// Provides information, including the Amazon Resource Name (ARN) of the IAM        role used to define an Amazon DynamoDB target endpoint. This       information also includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Using object mapping to migrate data to DynamoDB       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamoDbSettings {
     ///
     /// The Amazon Resource Name (ARN) used by the service to access the IAM role. The role must allow the iam:PassRole action.
@@ -644,7 +647,7 @@ pub struct DynamoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -664,6 +667,7 @@ impl cfn_resources::CfnResource for DynamoDbSettings {
 
 /// Provides information that defines an OpenSearch endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using OpenSearch as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticsearchSettings {
     ///
     /// The endpoint for the OpenSearch cluster. AWS DMS uses HTTPS if a transport      protocol (either HTTP or HTTPS) isn't specified.
@@ -674,7 +678,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -686,7 +690,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorRetryDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_retry_duration: Option<i64>,
 
     ///
@@ -700,7 +704,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FullLoadErrorPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub full_load_error_percentage: Option<i64>,
 
     ///
@@ -712,7 +716,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -732,6 +736,7 @@ impl cfn_resources::CfnResource for ElasticsearchSettings {
 
 /// Provides information that defines a GCP MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. These settings are much the same as       the settings for any MySQL-compatible endpoint. For more information, see               Extra connection attributes when using MySQL as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GcpMySQLSettings {
     ///
     /// Specifies a script to run immediately after AWS DMS connects to the endpoint.      The migration task continues running regardless if the SQL statement succeeds or fails.
@@ -744,7 +749,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
@@ -756,7 +761,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CleanSourceMetadataOnMismatch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clean_source_metadata_on_mismatch: Option<bool>,
 
     ///
@@ -768,7 +773,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -784,7 +789,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventsPollInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub events_poll_interval: Option<i64>,
 
     ///
@@ -798,7 +803,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -812,7 +817,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelLoadThreads")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parallel_load_threads: Option<i64>,
 
     ///
@@ -824,7 +829,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -836,7 +841,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -850,7 +855,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -862,7 +867,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -874,7 +879,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -888,7 +893,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -900,7 +905,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -920,6 +925,7 @@ impl cfn_resources::CfnResource for GcpMySQLSettings {
 
 /// Provides information that defines an IBMDB2 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Db2 LUW as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IbmDb2Settings {
     ///
     /// For ongoing replication (CDC), use CurrentLSN to specify a     log sequence number (LSN) where you want the replication     to start.
@@ -930,7 +936,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentLsn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub current_lsn: Option<cfn_resources::StrVal>,
 
     ///
@@ -942,7 +948,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxKBytesPerRead")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_kbytes_per_read: Option<i64>,
 
     ///
@@ -956,7 +962,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -968,7 +974,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -980,7 +986,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetDataCaptureChanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub set_data_capture_changes: Option<bool>,
 }
 
@@ -1000,6 +1006,7 @@ impl cfn_resources::CfnResource for IbmDb2Settings {
 
 /// Provides information that describes an Apache Kafka endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using object mapping to migrate data to a Kafka topic       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KafkaSettings {
     ///
     /// A comma-separated list of one or more broker locations in your Kafka cluster that host your Kafka instance. Specify each broker location       in the form broker-hostname-or-ip:port.       For example, "ec2-12-345-678-901.compute-1.amazonaws.com:2345".       For more information and examples of specifying a list of broker locations, see                Using Apache Kafka as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
@@ -1010,7 +1017,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Broker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub broker: Option<cfn_resources::StrVal>,
 
     ///
@@ -1022,7 +1029,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeControlDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_control_details: Option<bool>,
 
     ///
@@ -1034,7 +1041,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullAndEmpty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_null_and_empty: Option<bool>,
 
     ///
@@ -1046,7 +1053,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludePartitionValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_partition_value: Option<bool>,
 
     ///
@@ -1058,7 +1065,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTableAlterOperations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_table_alter_operations: Option<bool>,
 
     ///
@@ -1070,7 +1077,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTransactionDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_transaction_details: Option<bool>,
 
     ///
@@ -1084,7 +1091,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_format: Option<KafkaSettingsMessageFormatEnum>,
 
     ///
@@ -1096,7 +1103,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageMaxBytes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_max_bytes: Option<i64>,
 
     ///
@@ -1108,7 +1115,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoHexPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_hex_prefix: Option<bool>,
 
     ///
@@ -1120,7 +1127,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionIncludeSchemaTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition_include_schema_table: Option<bool>,
 
     ///
@@ -1132,7 +1139,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sasl_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -1144,7 +1151,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslUserName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sasl_user_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1158,7 +1165,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_protocol: Option<KafkaSettingsSecurityProtocolEnum>,
 
     ///
@@ -1170,7 +1177,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_ca_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1182,7 +1189,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_client_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1194,7 +1201,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_client_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1206,7 +1213,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_client_key_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -1218,7 +1225,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Topic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic: Option<cfn_resources::StrVal>,
 }
 
@@ -1280,6 +1287,7 @@ impl cfn_resources::CfnResource for KafkaSettings {
 
 /// Provides information that describes an Amazon Kinesis Data Stream endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Using object mapping to migrate data to a Kinesis data stream       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisSettings {
     ///
     /// Shows detailed control information for table definition, column definition, and table       and column changes in the Kinesis message output. The default is false.
@@ -1290,7 +1298,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeControlDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_control_details: Option<bool>,
 
     ///
@@ -1302,7 +1310,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullAndEmpty")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_null_and_empty: Option<bool>,
 
     ///
@@ -1314,7 +1322,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludePartitionValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_partition_value: Option<bool>,
 
     ///
@@ -1326,7 +1334,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTableAlterOperations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_table_alter_operations: Option<bool>,
 
     ///
@@ -1338,7 +1346,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTransactionDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_transaction_details: Option<bool>,
 
     ///
@@ -1352,7 +1360,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_format: Option<KinesisSettingsMessageFormatEnum>,
 
     ///
@@ -1364,7 +1372,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoHexPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_hex_prefix: Option<bool>,
 
     ///
@@ -1376,7 +1384,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionIncludeSchemaTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition_include_schema_table: Option<bool>,
 
     ///
@@ -1388,7 +1396,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1400,7 +1408,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stream_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1437,6 +1445,7 @@ impl cfn_resources::CfnResource for KinesisSettings {
 
 /// Provides information that defines a Microsoft SQL Server endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SQL Server as a source for AWS DMS and                Extra connection attributes when using SQL Server as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MicrosoftSqlServerSettings {
     ///
     /// The maximum size of the packets (in bytes) used to transfer     data using BCP.
@@ -1447,7 +1456,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BcpPacketSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bcp_packet_size: Option<i64>,
 
     ///
@@ -1459,7 +1468,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlTablesFileGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub control_tables_file_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -1471,7 +1480,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuerySingleAlwaysOnNode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_single_always_on_node: Option<bool>,
 
     ///
@@ -1483,7 +1492,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadBackupOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_backup_only: Option<bool>,
 
     ///
@@ -1499,7 +1508,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SafeguardPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub safeguard_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1513,7 +1522,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1525,7 +1534,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1537,7 +1546,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBcpFullLoad")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_bcp_full_load: Option<bool>,
 
     ///
@@ -1549,7 +1558,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseThirdPartyBackupDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_third_party_backup_device: Option<bool>,
 }
 
@@ -1569,6 +1578,7 @@ impl cfn_resources::CfnResource for MicrosoftSqlServerSettings {
 
 /// Provides information that defines a MongoDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Endpoint configuration settings when using MongoDB as a source for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MongoDbSettings {
     ///
     /// The authentication mechanism you use to access the MongoDB source endpoint.
@@ -1583,7 +1593,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthMechanism")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_mechanism: Option<MongoDbSettingsAuthMechanismEnum>,
 
     ///
@@ -1597,7 +1607,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -1613,7 +1623,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_type: Option<MongoDbSettingsAuthTypeEnum>,
 
     ///
@@ -1625,7 +1635,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1639,7 +1649,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocsToInvestigate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub docs_to_investigate: Option<cfn_resources::StrVal>,
 
     ///
@@ -1653,7 +1663,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtractDocId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extract_doc_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1669,7 +1679,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NestingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nesting_level: Option<MongoDbSettingsNestingLevelEnum>,
 
     ///
@@ -1681,7 +1691,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -1693,7 +1703,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1707,7 +1717,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1719,7 +1729,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1731,7 +1741,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1743,7 +1753,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -1818,6 +1828,7 @@ impl cfn_resources::CfnResource for MongoDbSettings {
 
 /// Provides information that defines a MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using MySQL as a source for AWS DMS and               Extra connection attributes when using a MySQL-compatible database as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MySqlSettings {
     ///
     /// Specifies a script to run immediately after AWS DMS     connects to the endpoint. The migration task continues     running regardless if the SQL statement succeeds or fails.
@@ -1830,7 +1841,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
@@ -1842,7 +1853,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CleanSourceMetadataOnMismatch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clean_source_metadata_on_mismatch: Option<bool>,
 
     ///
@@ -1858,7 +1869,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventsPollInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub events_poll_interval: Option<i64>,
 
     ///
@@ -1872,7 +1883,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -1886,7 +1897,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelLoadThreads")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parallel_load_threads: Option<i64>,
 
     ///
@@ -1900,7 +1911,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1912,7 +1923,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1928,7 +1939,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -1942,7 +1953,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDbType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_db_type: Option<cfn_resources::StrVal>,
 }
 
@@ -1962,6 +1973,7 @@ impl cfn_resources::CfnResource for MySqlSettings {
 
 /// Provides information that defines an Amazon Neptune endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Specifying endpoint settings for Amazon Neptune as a target       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NeptuneSettings {
     ///
     /// The number of milliseconds for AWS DMS to wait to retry a bulk-load of migrated graph     data to the Neptune target database before raising an error. The default is 250.
@@ -1972,7 +1984,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorRetryDuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_retry_duration: Option<i64>,
 
     ///
@@ -1984,7 +1996,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamAuthEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam_auth_enabled: Option<bool>,
 
     ///
@@ -1996,7 +2008,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -2008,7 +2020,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetryCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_retry_count: Option<i64>,
 
     ///
@@ -2020,7 +2032,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketFolder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
@@ -2032,7 +2044,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2046,7 +2058,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -2066,6 +2078,7 @@ impl cfn_resources::CfnResource for NeptuneSettings {
 
 /// Provides information that defines an Oracle endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using Oracle as a source for AWS DMS and                Extra connection attributes when using Oracle as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OracleSettings {
     ///
     /// Set this attribute to false in order to use the Binary Reader     to capture change data for an Amazon RDS for Oracle as the     source. This tells the DMS instance to not access redo logs     through any specified path prefix replacement using direct     file access.
@@ -2076,7 +2089,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessAlternateDirectly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_alternate_directly: Option<bool>,
 
     ///
@@ -2090,7 +2103,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddSupplementalLogging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_supplemental_logging: Option<bool>,
 
     ///
@@ -2104,7 +2117,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalArchivedLogDestId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_archived_log_dest_id: Option<i64>,
 
     ///
@@ -2116,7 +2129,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSelectNestedTables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_select_nested_tables: Option<bool>,
 
     ///
@@ -2128,7 +2141,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchivedLogDestId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub archived_log_dest_id: Option<i64>,
 
     ///
@@ -2140,7 +2153,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchivedLogsOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub archived_logs_only: Option<bool>,
 
     ///
@@ -2152,7 +2165,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asm_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -2164,7 +2177,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmServer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asm_server: Option<cfn_resources::StrVal>,
 
     ///
@@ -2176,7 +2189,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmUser")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asm_user: Option<cfn_resources::StrVal>,
 
     ///
@@ -2192,7 +2205,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CharLengthSemantics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub char_length_semantics: Option<OracleSettingsCharLengthSemanticsEnum>,
 
     ///
@@ -2204,7 +2217,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectPathNoLog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub direct_path_no_log: Option<bool>,
 
     ///
@@ -2216,7 +2229,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectPathParallelLoad")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub direct_path_parallel_load: Option<bool>,
 
     ///
@@ -2228,7 +2241,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableHomogenousTablespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_homogenous_tablespace: Option<bool>,
 
     ///
@@ -2250,7 +2263,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraArchivedLogDestIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extra_archived_log_dest_ids: Option<Vec<i64>>,
 
     ///
@@ -2264,7 +2277,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailTasksOnLobTruncation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fail_tasks_on_lob_truncation: Option<bool>,
 
     ///
@@ -2278,7 +2291,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDatatypeScale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_datatype_scale: Option<i64>,
 
     ///
@@ -2290,7 +2303,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OraclePathPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oracle_path_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -2302,7 +2315,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelAsmReadThreads")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parallel_asm_read_threads: Option<i64>,
 
     ///
@@ -2314,7 +2327,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadAheadBlocks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_ahead_blocks: Option<i64>,
 
     ///
@@ -2326,7 +2339,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadTableSpaceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_table_space_name: Option<bool>,
 
     ///
@@ -2338,7 +2351,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplacePathPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_path_prefix: Option<bool>,
 
     ///
@@ -2352,7 +2365,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_interval: Option<i64>,
 
     ///
@@ -2366,7 +2379,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2380,7 +2393,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_oracle_asm_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2392,7 +2405,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_oracle_asm_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2404,7 +2417,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2416,7 +2429,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_db_encryption: Option<cfn_resources::StrVal>,
 
     ///
@@ -2428,7 +2441,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryptionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_db_encryption_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2440,7 +2453,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpatialDataOptionToGeoJsonFunctionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spatial_data_option_to_geo_json_function_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2454,7 +2467,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandbyDelayTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub standby_delay_time: Option<i64>,
 
     ///
@@ -2466,7 +2479,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAlternateFolderForOnline")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_alternate_folder_for_online: Option<bool>,
 
     ///
@@ -2478,7 +2491,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBFile")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_bfile: Option<bool>,
 
     ///
@@ -2490,7 +2503,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseDirectPathFullLoad")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_direct_path_full_load: Option<bool>,
 
     ///
@@ -2502,7 +2515,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseLogminerReader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_logminer_reader: Option<bool>,
 
     ///
@@ -2514,7 +2527,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsePathPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_path_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -2555,6 +2568,7 @@ impl cfn_resources::CfnResource for OracleSettings {
 
 /// Provides information that defines a PostgreSQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using PostgreSQL as a source for AWS DMS and               Extra connection attributes when using PostgreSQL as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PostgreSqlSettings {
     ///
     /// For use with change data capture (CDC) only, this attribute     has AWS DMS bypass foreign keys and user triggers to     reduce the time it takes to bulk load data.
@@ -2567,7 +2581,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
@@ -2581,7 +2595,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptureDdls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capture_ddls: Option<bool>,
 
     ///
@@ -2595,7 +2609,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DdlArtifactsSchema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ddl_artifacts_schema: Option<cfn_resources::StrVal>,
 
     ///
@@ -2609,7 +2623,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecuteTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execute_timeout: Option<i64>,
 
     ///
@@ -2623,7 +2637,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailTasksOnLobTruncation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fail_tasks_on_lob_truncation: Option<bool>,
 
     ///
@@ -2635,7 +2649,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatEnable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heartbeat_enable: Option<bool>,
 
     ///
@@ -2647,7 +2661,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heartbeat_frequency: Option<i64>,
 
     ///
@@ -2659,7 +2673,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatSchema")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heartbeat_schema: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -2670,7 +2684,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapBooleanAsBoolean")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_boolean_as_boolean: Option<bool>,
 
     ///
@@ -2684,7 +2698,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -2696,7 +2710,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub plugin_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2710,7 +2724,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2722,7 +2736,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2738,7 +2752,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SlotName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slot_name: Option<cfn_resources::StrVal>,
 }
 
@@ -2758,6 +2772,7 @@ impl cfn_resources::CfnResource for PostgreSqlSettings {
 
 /// Provides information that defines a Redis target endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Specifying endpoint settings for Redis as a target       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedisSettings {
     ///
     /// The password provided with the auth-role and      auth-token options of the AuthType setting for a Redis      target endpoint.
@@ -2768,7 +2783,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthPassword")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -2782,7 +2797,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_type: Option<RedisSettingsAuthTypeEnum>,
 
     ///
@@ -2794,7 +2809,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthUserName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_user_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2806,7 +2821,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<f64>,
 
     ///
@@ -2818,7 +2833,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2830,7 +2845,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_ca_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2846,7 +2861,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslSecurityProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_security_protocol: Option<RedisSettingsSslSecurityProtocolEnum>,
 }
 
@@ -2904,6 +2919,7 @@ impl cfn_resources::CfnResource for RedisSettings {
 
 /// Provides information that defines an Amazon Redshift endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Amazon Redshift as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftSettings {
     ///
     /// A value that indicates to allow any date format, including invalid formats such as     00/00/00 00:00:00, to be loaded without generating an error. You can choose       true or false (the default).
@@ -2916,7 +2932,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptAnyDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_any_date: Option<bool>,
 
     ///
@@ -2928,7 +2944,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub after_connect_script: Option<cfn_resources::StrVal>,
 
     ///
@@ -2944,7 +2960,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
@@ -2956,7 +2972,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2968,7 +2984,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitiveNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub case_sensitive_names: Option<bool>,
 
     ///
@@ -2980,7 +2996,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompUpdate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comp_update: Option<bool>,
 
     ///
@@ -2992,7 +3008,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_timeout: Option<i64>,
 
     ///
@@ -3006,7 +3022,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -3018,7 +3034,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyAsNull")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub empty_as_null: Option<bool>,
 
     ///
@@ -3036,7 +3052,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_mode: Option<RedshiftSettingsEncryptionModeEnum>,
 
     ///
@@ -3048,7 +3064,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explicit_ids: Option<bool>,
 
     ///
@@ -3064,7 +3080,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileTransferUploadStreams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_transfer_upload_streams: Option<i64>,
 
     ///
@@ -3076,7 +3092,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_timeout: Option<i64>,
 
     /// Property description not available.
@@ -3087,7 +3103,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapBooleanAsBoolean")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_boolean_as_boolean: Option<bool>,
 
     ///
@@ -3099,7 +3115,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -3111,7 +3127,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveQuotes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_quotes: Option<bool>,
 
     ///
@@ -3123,7 +3139,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceChars")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_chars: Option<cfn_resources::StrVal>,
 
     ///
@@ -3135,7 +3151,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceInvalidChars")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_invalid_chars: Option<cfn_resources::StrVal>,
 
     ///
@@ -3149,7 +3165,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -3161,7 +3177,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3173,7 +3189,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_side_encryption_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3185,7 +3201,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -3199,7 +3215,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -3211,7 +3227,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrimBlanks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trim_blanks: Option<bool>,
 
     ///
@@ -3223,7 +3239,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruncateColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truncate_columns: Option<bool>,
 
     ///
@@ -3235,7 +3251,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteBufferSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub write_buffer_size: Option<i64>,
 }
 
@@ -3272,6 +3288,7 @@ impl cfn_resources::CfnResource for RedshiftSettings {
 
 /// Provides information that defines an Amazon S3 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using Amazon S3 as a source for AWS DMS and               Extra connection attributes when using Amazon S3 as a target for AWS DMS       in theAWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Settings {
     ///
     /// An optional parameter that, when set to true or y, you can use     to add column name information to the .csv output file.
@@ -3284,7 +3301,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddColumnName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_column_name: Option<bool>,
 
     ///
@@ -3296,7 +3313,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_folder: Option<cfn_resources::StrVal>,
 
     ///
@@ -3308,7 +3325,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3324,7 +3341,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAclForObjects")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub canned_acl_for_objects: Option<S3SettingsCannedAclForObjectsEnum>,
 
     ///
@@ -3340,7 +3357,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcInsertsAndUpdates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cdc_inserts_and_updates: Option<bool>,
 
     ///
@@ -3356,7 +3373,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcInsertsOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cdc_inserts_only: Option<bool>,
 
     ///
@@ -3372,7 +3389,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcMaxBatchInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cdc_max_batch_interval: Option<i64>,
 
     ///
@@ -3388,7 +3405,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcMinFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cdc_min_file_size: Option<i64>,
 
     ///
@@ -3408,7 +3425,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cdc_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -3422,7 +3439,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression_type: Option<S3SettingsCompressionTypeEnum>,
 
     ///
@@ -3434,7 +3451,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvDelimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -3448,7 +3465,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvNoSupValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_no_sup_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -3462,7 +3479,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvNullValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_null_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -3476,7 +3493,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvRowDelimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv_row_delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -3492,7 +3509,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_format: Option<S3SettingsDataFormatEnum>,
 
     ///
@@ -3504,7 +3521,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPageSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_page_size: Option<i64>,
 
     ///
@@ -3518,7 +3535,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionDelimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_partition_delimiter: Option<S3SettingsDatePartitionDelimiterEnum>,
 
     ///
@@ -3530,7 +3547,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_partition_enabled: Option<bool>,
 
     ///
@@ -3544,7 +3561,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionSequence")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_partition_sequence: Option<S3SettingsDatePartitionSequenceEnum>,
 
     ///
@@ -3558,7 +3575,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionTimezone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_partition_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -3570,7 +3587,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DictPageSizeLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dict_page_size_limit: Option<i64>,
 
     ///
@@ -3582,7 +3599,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableStatistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_statistics: Option<bool>,
 
     ///
@@ -3598,7 +3615,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncodingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encoding_type: Option<S3SettingsEncodingTypeEnum>,
 
     ///
@@ -3618,7 +3635,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_mode: Option<S3SettingsEncryptionModeEnum>,
 
     ///
@@ -3632,7 +3649,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalTableDefinition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub external_table_definition: Option<cfn_resources::StrVal>,
 
     ///
@@ -3646,7 +3663,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreHeaderRows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ignore_header_rows: Option<i64>,
 
     ///
@@ -3664,7 +3681,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeOpForFullLoad")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_op_for_full_load: Option<bool>,
 
     ///
@@ -3678,7 +3695,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -3698,7 +3715,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetTimestampInMillisecond")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parquet_timestamp_in_millisecond: Option<bool>,
 
     ///
@@ -3712,7 +3729,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parquet_version: Option<S3SettingsParquetVersionEnum>,
 
     ///
@@ -3726,7 +3743,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveTransactions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preserve_transactions: Option<bool>,
 
     ///
@@ -3742,7 +3759,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rfc4180")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rfc4180: Option<bool>,
 
     ///
@@ -3756,7 +3773,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowGroupLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_group_length: Option<i64>,
 
     ///
@@ -3770,7 +3787,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub server_side_encryption_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3782,7 +3799,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -3806,7 +3823,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampColumnName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timestamp_column_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3820,7 +3837,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseCsvNoSupValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_csv_no_sup_value: Option<bool>,
 
     ///
@@ -3834,7 +3851,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseTaskStartTimeForFullLoadTimestamp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_task_start_time_for_full_load_timestamp: Option<bool>,
 }
 
@@ -4038,6 +4055,7 @@ impl cfn_resources::CfnResource for S3Settings {
 
 /// Provides information that defines a SAP ASE endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SAP ASE as a source for AWS DMS and               Extra connection attributes when using SAP ASE as a target for AWS DMS       in the AWS Database Migration Service User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SybaseSettings {
     ///
     /// The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the       trusted entity and grants the required permissions to access the value in       SecretsManagerSecret. The role must allow the iam:PassRole action.       SecretsManagerSecret has the value of the AWS Secrets Manager       secret that allows access to the SAP ASE endpoint.
@@ -4050,7 +4068,7 @@ pub struct SybaseSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_access_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -4062,7 +4080,7 @@ pub struct SybaseSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 }
 
@@ -4088,6 +4106,7 @@ impl cfn_resources::CfnResource for SybaseSettings {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

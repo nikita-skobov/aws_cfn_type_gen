@@ -2,6 +2,7 @@
 ///
 /// After it's created, a channel provides static input URLs. These URLs remain the same throughout the lifetime of the channel, regardless of any failures or upgrades that might     occur. Use these URLs to configure the outputs of your upstream encoder.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnChannel {
     ///
     /// Any descriptive information that you want to add to the channel for future identification purposes.
@@ -12,7 +13,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressAccessLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_access_logs: Option<LogConfiguration>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsIngest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hls_ingest: Option<HlsIngest>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressAccessLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingress_access_logs: Option<LogConfiguration>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnChannel {
 
 /// HLS ingest configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HlsIngest {
     ///
     /// The input URL where the source stream should be sent.
@@ -124,7 +126,7 @@ pub struct HlsIngest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ingestEndpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingest_endpoints: Option<Vec<IngestEndpoint>>,
 }
 
@@ -144,6 +146,7 @@ impl cfn_resources::CfnResource for HlsIngest {
 
 /// An endpoint for ingesting source content for a channel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IngestEndpoint {
     ///
     /// The endpoint identifier.
@@ -206,6 +209,7 @@ impl cfn_resources::CfnResource for IngestEndpoint {
 
 /// The access log configuration parameters for your channel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfiguration {
     ///
     /// Sets a custom Amazon CloudWatch log group name.
@@ -216,7 +220,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 }
 
@@ -242,6 +246,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

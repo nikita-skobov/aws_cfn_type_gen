@@ -6,6 +6,7 @@
 ///
 /// An AWS::Macie::Session resource must exist for an AWS account before you can create an AWS::Macie::AllowList       resource for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAllowList {
     ///
     /// The criteria that specify the text or text pattern to ignore. The criteria can be the       location and name of an Amazon S3 object that lists specific text to ignore         (S3WordsList), or a regular expression (Regex) that       defines a text pattern to ignore.
@@ -27,7 +28,7 @@ pub struct CfnAllowList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnAllowList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -109,6 +110,7 @@ impl cfn_resources::CfnResource for CfnAllowList {
 ///
 /// The criteria must specify either an S3 object or a regular expression. It can't       specify both.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Criteria {
     ///
     /// The regular expression (regex) that defines the text pattern to       ignore. The expression can contain 1-512 characters.
@@ -119,7 +121,7 @@ pub struct Criteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -131,7 +133,7 @@ pub struct Criteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3WordsList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_words_list: Option<S3WordsList>,
 }
 
@@ -155,6 +157,7 @@ impl cfn_resources::CfnResource for Criteria {
 
 /// Specifies the location and name of an Amazon Simple Storage Service (Amazon S3)       object that lists specific, predefined text to ignore when inspecting data sources for sensitive       data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3WordsList {
     ///
     /// The full name of the S3 bucket that contains the object. This value correlates to the         Name field of a bucket's properties in Amazon S3.
@@ -205,6 +208,7 @@ impl cfn_resources::CfnResource for S3WordsList {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

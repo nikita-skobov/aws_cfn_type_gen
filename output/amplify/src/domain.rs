@@ -1,5 +1,6 @@
 /// The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomain {
     ///
     /// The unique ID for an Amplify app.
@@ -25,7 +26,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSubDomainCreationPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_sub_domain_creation_patterns: Option<Vec<String>>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSubDomainIAMRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_sub_domain_iamrole: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoSubDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_auto_sub_domain: Option<bool>,
 
     ///
@@ -165,6 +166,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 
 /// The SubDomainSetting property type enables you to connect a subdomain (for example,    example.exampledomain.com) to a specific branch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubDomainSetting {
     ///
     /// The branch name setting for the subdomain.

@@ -1,5 +1,6 @@
 /// The AWS::S3::StorageLens resource creates an Amazon S3 Storage Lens    configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStorageLens {
     ///
     /// This resource contains the details Amazon S3 Storage Lens configuration.
@@ -21,7 +22,7 @@ pub struct CfnStorageLens {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -55,6 +56,7 @@ impl cfn_resources::CfnResource for CfnStorageLens {
 
 /// This resource contains the details of the account-level metrics for Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccountLevel {
     ///
     /// This property contains the details of account-level activity metrics for S3    Storage Lens.
@@ -65,7 +67,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivityMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub activity_metrics: Option<ActivityMetrics>,
 
     ///
@@ -77,7 +79,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
     ///
@@ -89,7 +91,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedDataProtectionMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
     ///
@@ -112,7 +114,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedStatusCodesMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
 }
 
@@ -152,6 +154,7 @@ impl cfn_resources::CfnResource for AccountLevel {
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ActivityMetrics {
     ///
     /// A property that indicates whether the activity metrics is enabled.
@@ -162,7 +165,7 @@ pub struct ActivityMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_enabled: Option<bool>,
 }
 
@@ -184,6 +187,7 @@ impl cfn_resources::CfnResource for ActivityMetrics {
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedCostOptimizationMetrics {
     ///
     /// Indicates whether advanced cost optimization metrics are    enabled.
@@ -194,7 +198,7 @@ pub struct AdvancedCostOptimizationMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_enabled: Option<bool>,
 }
 
@@ -216,6 +220,7 @@ impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdvancedDataProtectionMetrics {
     ///
     /// Indicates whether advanced data protection metrics are enabled.
@@ -226,7 +231,7 @@ pub struct AdvancedDataProtectionMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_enabled: Option<bool>,
 }
 
@@ -246,6 +251,7 @@ impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
 
 /// This resource contains the details of the AWS Organization for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AwsOrg {
     ///
     /// This resource contains the ARN of the AWS Organization.
@@ -275,6 +281,7 @@ impl cfn_resources::CfnResource for AwsOrg {
 
 /// A property for the bucket-level storage metrics for Amazon S3 Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BucketLevel {
     ///
     /// A property for bucket-level activity metrics for S3 Storage Lens.
@@ -285,7 +292,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivityMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub activity_metrics: Option<ActivityMetrics>,
 
     ///
@@ -297,7 +304,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
     ///
@@ -309,7 +316,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedDataProtectionMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
     ///
@@ -321,7 +328,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedStatusCodesMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
 
     ///
@@ -333,7 +340,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_level: Option<PrefixLevel>,
 }
 
@@ -373,6 +380,7 @@ impl cfn_resources::CfnResource for BucketLevel {
 
 /// This resource contains the details of the buckets and Regions for the Amazon S3 Storage    Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BucketsAndRegions {
     ///
     /// This property contains the details of the buckets for the Amazon S3 Storage Lens    configuration. This should be the bucket Amazon Resource Name(ARN). For valid values, see     Buckets ARN     format here in the Amazon S3 API Reference.
@@ -383,7 +391,7 @@ pub struct BucketsAndRegions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Buckets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub buckets: Option<Vec<String>>,
 
     ///
@@ -395,7 +403,7 @@ pub struct BucketsAndRegions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regions: Option<Vec<String>>,
 }
 
@@ -417,6 +425,7 @@ impl cfn_resources::CfnResource for BucketsAndRegions {
 ///
 /// For more information, see Monitor S3     Storage Lens metrics in CloudWatch in the Amazon S3 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchMetrics {
     ///
     /// This property identifies whether the CloudWatch publishing option for S3 Storage    Lens is enabled.
@@ -446,6 +455,7 @@ impl cfn_resources::CfnResource for CloudWatchMetrics {
 
 /// This resource contains the details of the Amazon S3 Storage Lens metrics export.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataExport {
     ///
     /// This property enables the Amazon CloudWatch publishing option for S3 Storage Lens    metrics.
@@ -456,7 +466,7 @@ pub struct DataExport {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchMetrics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_metrics: Option<CloudWatchMetrics>,
 
     ///
@@ -468,7 +478,7 @@ pub struct DataExport {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketDestination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_destination: Option<S3BucketDestination>,
 }
 
@@ -498,6 +508,7 @@ impl cfn_resources::CfnResource for DataExport {
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DetailedStatusCodesMetrics {
     ///
     /// Indicates whether detailed status code metrics are enabled.
@@ -508,7 +519,7 @@ pub struct DetailedStatusCodesMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_enabled: Option<bool>,
 }
 
@@ -528,6 +539,7 @@ impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
 
 /// This resource contains the type of server-side encryption used to encrypt an Amazon S3    Storage Lens metrics export. For valid values, see the     StorageLensDataExportEncryption in the Amazon S3 API    Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Encryption {
     ///
     /// Specifies the use of AWS Key Management Service keys (SSE-KMS) to encrypt the S3 Storage Lens metrics export file.
@@ -538,7 +550,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEKMS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssekms: Option<SSEKMS>,
 
     ///
@@ -550,7 +562,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSES3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sses3: Option<serde_json::Value>,
 }
 
@@ -572,6 +584,7 @@ impl cfn_resources::CfnResource for Encryption {
 
 /// This resource contains the details of the prefix-level of the Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrefixLevel {
     ///
     /// A property for the prefix-level storage metrics for Amazon S3 Storage Lens.
@@ -603,6 +616,7 @@ impl cfn_resources::CfnResource for PrefixLevel {
 
 /// This resource contains the details of the prefix-level storage metrics for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrefixLevelStorageMetrics {
     ///
     /// This property identifies whether the details of the prefix-level storage metrics for S3    Storage Lens are enabled.
@@ -613,7 +627,7 @@ pub struct PrefixLevelStorageMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_enabled: Option<bool>,
 
     ///
@@ -625,7 +639,7 @@ pub struct PrefixLevelStorageMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectionCriteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selection_criteria: Option<SelectionCriteria>,
 }
 
@@ -649,6 +663,7 @@ impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
 
 /// This resource contains the details of the bucket where the Amazon S3 Storage Lens metrics    export will be placed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3BucketDestination {
     ///
     /// This property contains the details of the AWS account ID of the S3    Storage Lens export bucket destination.
@@ -681,7 +696,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption: Option<Encryption>,
 
     ///
@@ -715,7 +730,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -739,6 +754,7 @@ impl cfn_resources::CfnResource for S3BucketDestination {
 
 /// Specifies the use of server-side encryption using an AWS Key Management Service key (SSE-KMS) to    encrypt the delivered S3 Storage Lens metrics export file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SSEKMS {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the customer managed AWS KMS key to    use for encrypting the S3 Storage Lens metrics export file. Amazon S3 only supports symmetric    encryption keys. For more information, see Special-purpose keys in the      AWS Key Management Service Developer Guide.
@@ -768,6 +784,7 @@ impl cfn_resources::CfnResource for SSEKMS {
 
 /// This resource contains the details of the Amazon S3 Storage Lens selection    criteria.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelectionCriteria {
     ///
     /// This property contains the details of the S3 Storage Lens delimiter being used.
@@ -778,7 +795,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -790,7 +807,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxDepth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_depth: Option<i64>,
 
     ///
@@ -802,7 +819,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinStorageBytesPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_storage_bytes_percentage: Option<f64>,
 }
 
@@ -822,6 +839,7 @@ impl cfn_resources::CfnResource for SelectionCriteria {
 
 /// This is the property of the Amazon S3 Storage Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageLensConfiguration {
     ///
     /// This property contains the details of the account-level metrics for Amazon S3 Storage Lens    configuration.
@@ -843,7 +861,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsOrg")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_org: Option<AwsOrg>,
 
     ///
@@ -855,7 +873,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataExport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_export: Option<DataExport>,
 
     ///
@@ -867,7 +885,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclude")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude: Option<BucketsAndRegions>,
 
     ///
@@ -890,7 +908,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Include")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include: Option<BucketsAndRegions>,
 
     ///
@@ -913,7 +931,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageLensArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_lens_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -951,6 +969,7 @@ impl cfn_resources::CfnResource for StorageLensConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -2,6 +2,7 @@
 ///
 /// For information about the protocol value, see Protocol       Numbers on the Internet Assigned Numbers Authority (IANA) website.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkAclEntry {
     ///
     /// The IPv4 CIDR range to allow or deny, in CIDR notation (for example, 172.16.0.0/24).     Requirement is conditional: You must specify the CidrBlock or       Ipv6CidrBlock property.
@@ -12,7 +13,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Egress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress: Option<bool>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icmp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icmp: Option<Icmp>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6CidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -162,6 +163,7 @@ impl cfn_resources::CfnResource for CfnNetworkAclEntry {
 
 /// Describes the ICMP type and code.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Icmp {
     ///
     /// The Internet Control Message Protocol (ICMP) code. You can use -1 to specify all ICMP     codes for the given ICMP type. Requirement is conditional: Required if you specify 1 (ICMP)     for the protocol parameter.
@@ -172,7 +174,7 @@ pub struct Icmp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code: Option<i64>,
 
     ///
@@ -184,7 +186,7 @@ pub struct Icmp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<i64>,
 }
 
@@ -204,6 +206,7 @@ impl cfn_resources::CfnResource for Icmp {
 
 /// Describes a range of ports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortRange {
     ///
     /// The first port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the     protocol parameter.
@@ -214,7 +217,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from: Option<i64>,
 
     ///
@@ -226,7 +229,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to: Option<i64>,
 }
 

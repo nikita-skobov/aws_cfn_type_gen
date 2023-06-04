@@ -1,5 +1,6 @@
 /// An image build version. An image is a customized, secure, and up-to-date “golden” server     image that is pre-installed and pre-configured with software and settings to meet specific     IT standards.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnImage {
     ///
     /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
@@ -10,7 +11,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerRecipeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DistributionConfigurationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub distribution_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnhancedImageMetadataEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enhanced_image_metadata_enabled: Option<bool>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageRecipeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_recipe_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -61,7 +62,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageTestsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -168,6 +169,7 @@ impl cfn_resources::CfnResource for CfnImage {
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EcrConfiguration {
     /// Property description not available.
     ///
@@ -177,7 +179,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_tags: Option<Vec<String>>,
 
     /// Property description not available.
@@ -188,7 +190,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_name: Option<cfn_resources::StrVal>,
 }
 
@@ -208,6 +210,7 @@ impl cfn_resources::CfnResource for EcrConfiguration {
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageScanningConfiguration {
     /// Property description not available.
     ///
@@ -217,7 +220,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EcrConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ecr_configuration: Option<EcrConfiguration>,
 
     /// Property description not available.
@@ -228,7 +231,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scanning_enabled: Option<bool>,
 }
 
@@ -252,6 +255,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that are used to create the final image. You must have at least one build   		component to create a recipe, but test components are not required. If you have added tests,   		they run after the image is created, to ensure that the target image is functional and can   		be used reliably for launching Amazon EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageTestsConfiguration {
     ///
     /// Determines if tests should run after building the image. Image Builder defaults to enable tests 			to run following the image build, before image distribution.
@@ -262,7 +266,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageTestsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_tests_enabled: Option<bool>,
 
     ///
@@ -280,7 +284,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_minutes: Option<i64>,
 }
 

@@ -1,5 +1,6 @@
 /// For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, 			one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverRule {
     ///
     /// DNS queries for this domain name are forwarded to the IP addresses that are specified in TargetIps. If a query matches 			multiple Resolver rules (example.com and www.example.com), the query is routed using the Resolver rule that contains the most specific domain name 			(www.example.com).
@@ -29,7 +30,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resolver_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetIps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_ips: Option<Vec<TargetAddress>>,
 
     #[serde(skip_serializing)]
@@ -253,6 +254,7 @@ impl cfn_resources::CfnResource for CfnResolverRule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -291,6 +293,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// In a 			CreateResolverRule 			request, an array of the IPs that you want to forward DNS queries to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetAddress {
     ///
     /// One IPv4 address that you want to forward DNS queries to.
@@ -305,7 +308,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -321,7 +324,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -337,7 +340,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 }
 

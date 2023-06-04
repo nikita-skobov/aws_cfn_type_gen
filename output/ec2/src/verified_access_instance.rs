@@ -1,5 +1,6 @@
 /// Describes a Verified Access instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVerifiedAccessInstance {
     ///
     /// A description for the AWS Verified Access instance.
@@ -10,7 +11,7 @@ pub struct CfnVerifiedAccessInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnVerifiedAccessInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_configurations: Option<VerifiedAccessLogs>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnVerifiedAccessInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnVerifiedAccessInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviderIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verified_access_trust_provider_ids: Option<Vec<String>>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnVerifiedAccessInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verified_access_trust_providers: Option<Vec<VerifiedAccessTrustProvider>>,
 
     #[serde(skip_serializing)]
@@ -115,6 +116,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
 
 /// Options for CloudWatch Logs as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogs {
     ///
     /// Indicates whether logging is enabled.
@@ -125,7 +127,7 @@ pub struct CloudWatchLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -137,7 +139,7 @@ pub struct CloudWatchLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group: Option<cfn_resources::StrVal>,
 }
 
@@ -157,6 +159,7 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
 
 /// Options for Kinesis as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisDataFirehose {
     ///
     /// The ID of the delivery stream.
@@ -167,7 +170,7 @@ pub struct KinesisDataFirehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
@@ -179,7 +182,7 @@ pub struct KinesisDataFirehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -199,6 +202,7 @@ impl cfn_resources::CfnResource for KinesisDataFirehose {
 
 /// Options for Amazon S3 as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3 {
     ///
     /// The bucket name.
@@ -209,7 +213,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -221,7 +225,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +237,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -245,7 +249,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -271,6 +275,7 @@ impl cfn_resources::CfnResource for S3 {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -309,6 +314,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the destinations for Verified Access logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VerifiedAccessLogs {
     ///
     /// CloudWatch Logs logging destination.
@@ -319,7 +325,7 @@ pub struct VerifiedAccessLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs: Option<CloudWatchLogs>,
 
     ///
@@ -331,7 +337,7 @@ pub struct VerifiedAccessLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisDataFirehose")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_data_firehose: Option<KinesisDataFirehose>,
 
     ///
@@ -343,7 +349,7 @@ pub struct VerifiedAccessLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3>,
 }
 
@@ -373,6 +379,7 @@ impl cfn_resources::CfnResource for VerifiedAccessLogs {
 
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VerifiedAccessTrustProvider {
     ///
     /// A description for the AWS Verified Access trust provider.
@@ -383,7 +390,7 @@ pub struct VerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -397,7 +404,7 @@ pub struct VerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceTrustProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_trust_provider_type: Option<VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum>,
 
     ///
@@ -411,7 +418,7 @@ pub struct VerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trust_provider_type: Option<VerifiedAccessTrustProviderTrustProviderTypeEnum>,
 
     ///
@@ -425,7 +432,7 @@ pub struct VerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserTrustProviderType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
 
     ///
@@ -437,7 +444,7 @@ pub struct VerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviderId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verified_access_trust_provider_id: Option<cfn_resources::StrVal>,
 }
 

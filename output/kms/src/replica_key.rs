@@ -14,6 +14,7 @@
 ///
 /// AWS KMS CloudFormation resources are available in all AWS Regions in which AWS KMS and    AWS CloudFormation are supported. You can use the AWS::KMS::ReplicaKey    resource to create replica keys in all Regions that support multi-Region KMS keys. For    details, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnReplicaKey {
     ///
     /// A description of the KMS key.
@@ -32,7 +33,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PendingWindowInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pending_window_in_days: Option<i64>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -247,6 +248,7 @@ impl cfn_resources::CfnResource for CfnReplicaKey {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

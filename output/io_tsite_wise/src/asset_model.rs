@@ -1,5 +1,6 @@
 /// Creates an asset model from specified property and hierarchy definitions. You create    assets from asset models. With asset models, you can easily create assets of the same type    that have standardized definitions. Each asset created from a model inherits the asset model's    property and hierarchy definitions. For more information, see Defining asset models in the       AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAssetModel {
     ///
     /// The composite asset models that are part of this asset model.       Composite asset models are asset models that contain specific properties. Each composite model       has a type that defines the properties that the composite model supports. You can use composite asset       models to define alarms on this asset model.
@@ -10,7 +11,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelCompositeModels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_model_composite_models: Option<Vec<AssetModelCompositeModel>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_model_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_model_hierarchies: Option<Vec<AssetModelHierarchy>>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub asset_model_properties: Option<Vec<AssetModelProperty>>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -121,6 +122,7 @@ impl cfn_resources::CfnResource for CfnAssetModel {
 ///
 /// At the bottom of this page, we provide a YAML example that you can modify to create an alarm.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetModelCompositeModel {
     ///
     /// The asset property definitions for this composite model.
@@ -131,7 +133,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompositeModelProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub composite_model_properties: Option<Vec<AssetModelProperty>>,
 
     ///
@@ -143,7 +145,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -185,6 +187,7 @@ impl cfn_resources::CfnResource for AssetModelCompositeModel {
 
 /// Describes an asset hierarchy that contains a hierarchy's name, LogicalID, and child asset model    ID that specifies the type of asset that can be in this hierarchy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetModelHierarchy {
     ///
     /// The Id of the asset model.
@@ -240,6 +243,7 @@ impl cfn_resources::CfnResource for AssetModelHierarchy {
 
 /// Contains information about an asset model property.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AssetModelProperty {
     ///
     /// The data type of the asset model property. The value can be STRING, INTEGER, DOUBLE,      BOOLEAN, or STRUCT.
@@ -261,7 +265,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTypeSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_type_spec: Option<cfn_resources::StrVal>,
 
     ///
@@ -310,7 +314,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -332,6 +336,7 @@ impl cfn_resources::CfnResource for AssetModelProperty {
 
 /// Contains an asset attribute property. For more information, see       Defining data properties in the AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Attribute {
     ///
     /// The default value of the asset model property attribute. All assets that you create from    the asset model contain this attribute value. You can update an attribute's value after you    create an asset. For more information, see Updating attribute values in the       AWS IoT SiteWise User Guide.
@@ -342,7 +347,7 @@ pub struct Attribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 }
 
@@ -362,6 +367,7 @@ impl cfn_resources::CfnResource for Attribute {
 
 /// Contains expression variable information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExpressionVariable {
     ///
     /// The friendly name of the variable to be used in the expression.
@@ -410,6 +416,7 @@ impl cfn_resources::CfnResource for ExpressionVariable {
 ///
 /// For more information, see Defining data properties in the AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metric {
     ///
     /// The mathematical expression that defines the metric aggregation function. You can specify    up to 10 variables per expression. You can specify up to 10 functions    per expression.
@@ -465,6 +472,7 @@ impl cfn_resources::CfnResource for Metric {
 
 /// Contains a time interval window used for data aggregate computations (for example,    average, sum, count, and so on).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricWindow {
     ///
     /// The tumbling time interval window.
@@ -475,7 +483,7 @@ pub struct MetricWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tumbling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tumbling: Option<TumblingWindow>,
 }
 
@@ -499,6 +507,7 @@ impl cfn_resources::CfnResource for MetricWindow {
 
 /// Contains a property type, which can be one of Attribute,     Measurement, Metric, or Transform.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PropertyType {
     ///
     /// Specifies an asset attribute property. An attribute generally contains static information,    such as the serial number of an industrial IoT wind turbine.
@@ -511,7 +520,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute: Option<Attribute>,
 
     ///
@@ -525,7 +534,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric: Option<Metric>,
 
     ///
@@ -539,7 +548,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Transform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transform: Option<Transform>,
 
     ///
@@ -586,6 +595,7 @@ impl cfn_resources::CfnResource for PropertyType {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -626,6 +636,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// For more information, see Defining data properties in the AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Transform {
     ///
     /// The mathematical expression that defines the transformation function. You can specify up    to 10 variables per expression. You can specify up to 10 functions per    expression.
@@ -672,6 +683,7 @@ impl cfn_resources::CfnResource for Transform {
 ///
 /// The interval and offset parameters support the ISO 8601 format. For example,     PT5S represents 5 seconds, PT5M represents 5 minutes, and     PT5H represents 5 hours.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TumblingWindow {
     ///
     /// The time interval for the tumbling window. The interval time must be between 1 minute and    1 week.
@@ -699,7 +711,7 @@ pub struct TumblingWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub offset: Option<cfn_resources::StrVal>,
 }
 
@@ -719,6 +731,7 @@ impl cfn_resources::CfnResource for TumblingWindow {
 
 /// Identifies a property value used in an expression.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VariableValue {
     ///
     /// The LogicalID of the hierarchy to query for the PropertyLogicalID.
@@ -731,7 +744,7 @@ pub struct VariableValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyLogicalId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hierarchy_logical_id: Option<cfn_resources::StrVal>,
 
     ///

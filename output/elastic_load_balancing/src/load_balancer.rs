@@ -4,6 +4,7 @@
 ///
 /// If this resource has a public IP address and is also in a VPC that is defined in the same template, you must use     the DependsOn attribute    to declare a dependency on the VPC-gateway attachment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoadBalancer {
     ///
     /// Information about where and how access logs are stored for the load balancer.
@@ -14,7 +15,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLoggingPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_logging_policy: Option<AccessLoggingPolicy>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppCookieStickinessPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_cookie_stickiness_policy: Option<Vec<AppCookieStickinessPolicy>>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionDrainingPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_draining_policy: Option<ConnectionDrainingPolicy>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_settings: Option<ConnectionSettings>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrossZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cross_zone: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Instances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instances: Option<Vec<String>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LBCookieStickinessPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lbcookie_stickiness_policy: Option<Vec<LBCookieStickinessPolicy>>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +160,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policies: Option<Vec<Policies>>,
 
     ///
@@ -175,7 +176,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scheme")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheme: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +188,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -201,7 +202,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Subnets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -213,7 +214,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -304,6 +305,7 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
 
 /// Specifies where and how access logs are stored for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessLoggingPolicy {
     ///
     /// The interval for publishing the access logs. You can specify an interval of either 5 minutes or 60 minutes.
@@ -316,7 +318,7 @@ pub struct AccessLoggingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmitInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub emit_interval: Option<i64>,
 
     ///
@@ -350,7 +352,7 @@ pub struct AccessLoggingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -372,6 +374,7 @@ impl cfn_resources::CfnResource for AccessLoggingPolicy {
 ///
 /// To associate a policy with a listener, use the PolicyNames     property for the listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AppCookieStickinessPolicy {
     ///
     /// The name of the application cookie used for stickiness.
@@ -412,6 +415,7 @@ impl cfn_resources::CfnResource for AppCookieStickinessPolicy {
 
 /// Specifies the connection draining settings for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionDrainingPolicy {
     ///
     /// Specifies whether connection draining is enabled for the load balancer.
@@ -433,7 +437,7 @@ pub struct ConnectionDrainingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 }
 
@@ -453,6 +457,7 @@ impl cfn_resources::CfnResource for ConnectionDrainingPolicy {
 
 /// Specifies the idle timeout value for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionSettings {
     ///
     /// The time, in seconds, that the connection is allowed to be idle (no data has been sent over the connection) before it is closed by the load balancer.
@@ -504,6 +509,7 @@ impl cfn_resources::CfnResource for ConnectionSettings {
 
 /// Specifies health check settings for your Classic Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheck {
     ///
     /// The number of consecutive health checks successes required before moving the instance to the Healthy state.
@@ -693,6 +699,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 ///
 /// To associate a policy with a listener, use the PolicyNames     property for the listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LBCookieStickinessPolicy {
     ///
     /// The time period, in seconds, after which the cookie should be considered stale. If this parameter is not specified, the stickiness session lasts for the duration of the browser session.
@@ -703,7 +710,7 @@ pub struct LBCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CookieExpirationPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cookie_expiration_period: Option<cfn_resources::StrVal>,
 
     ///
@@ -715,7 +722,7 @@ pub struct LBCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_name: Option<cfn_resources::StrVal>,
 }
 
@@ -737,6 +744,7 @@ impl cfn_resources::CfnResource for LBCookieStickinessPolicy {
 ///
 /// Modifying any property replaces the listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Listeners {
     ///
     /// The port on which the instance is listening.
@@ -768,7 +776,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -791,7 +799,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PolicyNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_names: Option<Vec<String>>,
 
     ///
@@ -814,7 +822,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SSLCertificateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sslcertificate_id: Option<cfn_resources::StrVal>,
 }
 
@@ -858,6 +866,7 @@ impl cfn_resources::CfnResource for Listeners {
 ///
 /// To associate policies with a listener, use the PolicyNames     property for the listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Policies {
     ///
     /// The policy attributes.
@@ -879,7 +888,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancePorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_ports: Option<Vec<String>>,
 
     ///
@@ -891,7 +900,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerPorts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_ports: Option<Vec<String>>,
 
     ///
@@ -939,6 +948,7 @@ impl cfn_resources::CfnResource for Policies {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

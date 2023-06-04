@@ -1,5 +1,6 @@
 /// In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIPAMPool {
     ///
     /// The address family of the pool.
@@ -27,7 +28,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationDefaultNetmaskLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_default_netmask_length: Option<i64>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationMaxNetmaskLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_max_netmask_length: Option<i64>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationMinNetmaskLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_min_netmask_length: Option<i64>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationResourceTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allocation_resource_tags: Option<Vec<Tag>>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_import: Option<bool>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsService")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_service: Option<IPAMPoolAwsServiceEnum>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Locale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub locale: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedCidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_cidrs: Option<Vec<ProvisionedCidr>>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicIpSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_ip_source: Option<IPAMPoolPublicIpSourceEnum>,
 
     ///
@@ -172,7 +173,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PubliclyAdvertisable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub publicly_advertisable: Option<bool>,
 
     ///
@@ -184,7 +185,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIpamPoolId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -196,7 +197,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -376,6 +377,7 @@ impl cfn_resources::CfnResource for CfnIPAMPool {
 
 /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedCidr {
     ///
     /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
@@ -411,6 +413,7 @@ impl cfn_resources::CfnResource for ProvisionedCidr {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

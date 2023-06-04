@@ -1,5 +1,6 @@
 /// The AWS::MSK::ServerlessCluster resource Property description not available. for MSK.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnServerlessCluster {
     /// Property description not available.
     ///
@@ -29,7 +30,7 @@ pub struct CfnServerlessCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     /// Property description not available.
@@ -72,6 +73,7 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
 
 /// Includes all client authentication information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientAuthentication {
     ///
     /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
@@ -103,6 +105,7 @@ impl cfn_resources::CfnResource for ClientAuthentication {
 
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Iam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -132,6 +135,7 @@ impl cfn_resources::CfnResource for Iam {
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Sasl {
     ///
     /// Details for ClientAuthentication using IAM.
@@ -163,6 +167,7 @@ impl cfn_resources::CfnResource for Sasl {
 
 /// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     /// Property description not available.
     ///
@@ -172,7 +177,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     /// Property description not available.

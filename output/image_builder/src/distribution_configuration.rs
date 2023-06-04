@@ -1,5 +1,6 @@
 /// A distribution configuration allows you to specify the name and description of your 			output AMI, authorize other AWS accounts to launch the AMI, and replicate the AMI to other 			AWS Regions. It also allows you to export the AMI to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDistributionConfiguration {
     ///
     /// The description of this distribution configuration.
@@ -14,7 +15,7 @@ pub struct CfnDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
 
 /// Define and configure the output AMIs of the pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmiDistributionConfiguration {
     ///
     /// The tags to apply to AMIs distributed to this Region.
@@ -124,7 +126,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmiTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ami_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -140,7 +142,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +158,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +170,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchPermissionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_permission_configuration: Option<LaunchPermissionConfiguration>,
 
     ///
@@ -186,7 +188,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -200,7 +202,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccountIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_account_ids: Option<Vec<String>>,
 }
 
@@ -299,6 +301,7 @@ impl cfn_resources::CfnResource for AmiDistributionConfiguration {
 
 /// Container distribution settings for encryption, licensing, and sharing in a specific 			Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerDistributionConfiguration {
     ///
     /// Tags that are attached to the container distribution configuration.
@@ -309,7 +312,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_tags: Option<Vec<String>>,
 
     ///
@@ -325,7 +328,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -337,7 +340,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetRepository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_repository: Option<TargetContainerRepository>,
 }
 
@@ -383,6 +386,7 @@ impl cfn_resources::CfnResource for ContainerDistributionConfiguration {
 
 /// The distribution configuration distribution defines the settings for a specific Region 			in the Distribution Configuration. You must specify whether the distribution is for an AMI 			or a container image. To do so, include exactly one of the following data types for your 			distribution:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Distribution {
     ///
     /// The specific AMI settings, such as launch permissions and AMI tags. For details, 			see example schema below.
@@ -393,7 +397,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmiDistributionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ami_distribution_configuration: Option<AmiDistributionConfiguration>,
 
     ///
@@ -405,7 +409,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerDistributionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_distribution_configuration: Option<ContainerDistributionConfiguration>,
 
     /// Property description not available.
@@ -416,7 +420,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FastLaunchConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fast_launch_configurations: Option<Vec<FastLaunchConfiguration>>,
 
     ///
@@ -430,7 +434,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_configurations: Option<Vec<LaunchTemplateConfiguration>>,
 
     ///
@@ -444,7 +448,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub license_configuration_arns: Option<Vec<String>>,
 
     ///
@@ -521,6 +525,7 @@ impl cfn_resources::CfnResource for Distribution {
 
 /// The FastLaunchConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FastLaunchConfiguration {
     /// Property description not available.
     ///
@@ -530,7 +535,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -541,7 +546,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     /// Property description not available.
@@ -552,7 +557,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template: Option<FastLaunchLaunchTemplateSpecification>,
 
     /// Property description not available.
@@ -563,7 +568,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxParallelLaunches")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_parallel_launches: Option<i64>,
 
     /// Property description not available.
@@ -574,7 +579,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_configuration: Option<FastLaunchSnapshotConfiguration>,
 }
 
@@ -602,6 +607,7 @@ impl cfn_resources::CfnResource for FastLaunchConfiguration {
 
 /// The FastLaunchLaunchTemplateSpecification property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FastLaunchLaunchTemplateSpecification {
     /// Property description not available.
     ///
@@ -611,7 +617,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -622,7 +628,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -633,7 +639,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_version: Option<cfn_resources::StrVal>,
 }
 
@@ -653,6 +659,7 @@ impl cfn_resources::CfnResource for FastLaunchLaunchTemplateSpecification {
 
 /// The FastLaunchSnapshotConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FastLaunchSnapshotConfiguration {
     /// Property description not available.
     ///
@@ -662,7 +669,7 @@ pub struct FastLaunchSnapshotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetResourceCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_resource_count: Option<i64>,
 }
 
@@ -682,6 +689,7 @@ impl cfn_resources::CfnResource for FastLaunchSnapshotConfiguration {
 
 /// Describes the configuration for a launch permission. The launch permission 			modification request is sent to the Amazon EC2 				ModifyImageAttribute API on behalf of the user for each Region they have 			selected to distribute the AMI. To make an AMI public, set the launch permission 			authorized accounts to all. See the examples for making an AMI public at 				Amazon EC2 				ModifyImageAttribute.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchPermissionConfiguration {
     ///
     /// The ARN for an AWS Organization that you want to share your AMI with. For more 			information, see What is 				AWS Organizations?.
@@ -694,7 +702,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_arns: Option<Vec<String>>,
 
     ///
@@ -708,7 +716,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit_arns: Option<Vec<String>>,
 
     ///
@@ -720,7 +728,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_groups: Option<Vec<String>>,
 
     ///
@@ -734,7 +742,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_ids: Option<Vec<String>>,
 }
 
@@ -778,6 +786,7 @@ impl cfn_resources::CfnResource for LaunchPermissionConfiguration {
 
 /// Identifies an Amazon EC2 launch template to use for a specific account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LaunchTemplateConfiguration {
     ///
     /// The account ID that this configuration applies to.
@@ -790,7 +799,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -804,7 +813,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -816,7 +825,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetDefaultVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub set_default_version: Option<bool>,
 }
 
@@ -836,6 +845,7 @@ impl cfn_resources::CfnResource for LaunchTemplateConfiguration {
 
 /// The container repository where the output container image is stored.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetContainerRepository {
     ///
     /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
@@ -850,7 +860,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -864,7 +874,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Service")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service: Option<TargetContainerRepositoryServiceEnum>,
 }
 

@@ -1,5 +1,6 @@
 /// Associates an attribute group      with an application      to augment the application's metadata      with the group's attributes.      This feature enables applications      to be described      with user-defined details     that are machine-readable,      such as third-party integrations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAttributeGroupAssociation {
     ///
     /// The name or ID     of the application.

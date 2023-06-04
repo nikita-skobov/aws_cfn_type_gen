@@ -1,5 +1,6 @@
 /// When you create an extension or configure an AWS authored extension, you     associate the extension with an AWS AppConfig application, environment, or     configuration profile. For example, you can choose to run the         AWS AppConfig       deployment events to Amazon SNS       AWS authored extension and receive notifications on an Amazon SNS     topic anytime a configuration deployment is started for a specific application. Defining     which extension to associate with an AWS AppConfig resource is called an       extension association. An extension association is a specified     relationship between an extension and an AWS AppConfig resource, such as an     application or a configuration profile. For more information about extensions and     associations, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnExtensionAssociation {
     ///
     /// The name, the ID, or the Amazon Resource Name (ARN) of the extension.
@@ -14,7 +15,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtensionIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extension_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtensionVersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extension_version_number: Option<i64>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -174,6 +175,7 @@ impl cfn_resources::CfnResource for CfnExtensionAssociation {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

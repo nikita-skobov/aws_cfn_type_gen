@@ -1,5 +1,6 @@
 /// Creates the connector, which captures the parameters for an outbound connection for the    AS2 protocol. The connector is required for sending files to an externally hosted AS2 server.    For more details about connectors, see Create AS2 connectors.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConnector {
     ///
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
@@ -44,7 +45,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnConnector {
 
 /// A structure that contains the parameters for a connector object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct As2Config {
     ///
     /// Specifies whether the AS2 file is compressed.
@@ -191,7 +193,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression: Option<As2ConfigCompressionEnum>,
 
     ///
@@ -207,7 +209,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionAlgorithm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_algorithm: Option<As2ConfigEncryptionAlgorithmEnum>,
 
     ///
@@ -225,7 +227,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_profile_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -241,7 +243,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MdnResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mdn_response: Option<As2ConfigMdnResponseEnum>,
 
     ///
@@ -257,7 +259,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MdnSigningAlgorithm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
 
     ///
@@ -275,7 +277,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageSubject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_subject: Option<cfn_resources::StrVal>,
 
     ///
@@ -293,7 +295,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartnerProfileId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partner_profile_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -307,7 +309,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningAlgorithm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
 }
 
@@ -517,6 +519,7 @@ impl cfn_resources::CfnResource for As2Config {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

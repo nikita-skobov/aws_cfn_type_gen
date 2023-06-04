@@ -2,6 +2,7 @@
 ///
 /// You can create up to 1,000,000 log groups per Region per account. You must use the following guidelines when naming a log group:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLogGroup {
     ///
     /// Creates a data protection policy and assigns it to the log group. A data protection policy can help safeguard sensitive      data that's ingested by the log group by auditing and masking the sensitive log data. When a user who does not have      permission to view masked data     views a log event that includes masked data, the sensitive data is replaced by asterisks.
@@ -14,7 +15,7 @@ pub struct CfnLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataProtectionPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_protection_policy: Option<serde_json::Value>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnLogGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_in_days: Option<i64>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -150,6 +151,7 @@ impl cfn_resources::CfnResource for CfnLogGroup {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

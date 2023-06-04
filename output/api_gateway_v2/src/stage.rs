@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Stage resource specifies a stage for an API. Each stage is a named     reference to a deployment of the API and is made available for client applications to call. To learn more, see      Working with stages for      HTTP APIs and Deploy a WebSocket API in API Gateway.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStage {
     ///
     /// Settings for logging access in this stage.
@@ -10,7 +11,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_log_settings: Option<AccessLogSettings>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_deploy: Option<bool>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_route_settings: Option<RouteSettings>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_settings: Option<serde_json::Value>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage_variables: Option<serde_json::Value>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 }
 
@@ -168,6 +169,7 @@ impl cfn_resources::CfnResource for CfnStage {
 
 /// Settings for logging access in a stage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessLogSettings {
     ///
     /// The ARN of the CloudWatch Logs log group to receive access logs. This parameter is required to enable access logging.
@@ -178,7 +180,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +192,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<cfn_resources::StrVal>,
 }
 
@@ -210,6 +212,7 @@ impl cfn_resources::CfnResource for AccessLogSettings {
 
 /// Represents a collection of route settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RouteSettings {
     ///
     /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
@@ -220,7 +223,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -232,7 +235,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedMetricsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub detailed_metrics_enabled: Option<bool>,
 
     ///
@@ -244,7 +247,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -256,7 +259,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -268,7 +271,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throttling_rate_limit: Option<f64>,
 }
 

@@ -1,5 +1,6 @@
 /// A complex type that contains an optional comment, the name and ID of the hosted zone that you want to make changes in, 			and values for the records that you want to create.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRecordSetGroup {
     ///
     /// Optional: Any comments you want to include about a change batch 			request.
@@ -12,7 +13,7 @@ pub struct CfnRecordSetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnRecordSetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnRecordSetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnRecordSetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_sets: Option<Vec<RecordSet>>,
 }
 
@@ -110,6 +111,7 @@ impl cfn_resources::CfnResource for CfnRecordSetGroup {
 ///
 /// When creating records for a private hosted zone, note the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AliasTarget {
     ///
     /// Alias records only: The value that you specify depends on where you want to route queries:
@@ -141,7 +143,7 @@ pub struct AliasTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluateTargetHealth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub evaluate_target_health: Option<bool>,
 
     ///
@@ -200,6 +202,7 @@ impl cfn_resources::CfnResource for AliasTarget {
 ///
 /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CidrRoutingConfig {
     ///
     /// The CIDR collection ID.
@@ -270,6 +273,7 @@ impl cfn_resources::CfnResource for CidrRoutingConfig {
 
 /// A complex type that contains information about a geographic location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeoLocation {
     ///
     /// For geolocation resource record sets, a two-letter abbreviation that identifies a continent. Route 53 supports the following continent codes:
@@ -288,7 +292,7 @@ pub struct GeoLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContinentCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub continent_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -306,7 +310,7 @@ pub struct GeoLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub country_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +328,7 @@ pub struct GeoLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubdivisionCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subdivision_code: Option<cfn_resources::StrVal>,
 }
 
@@ -414,6 +418,7 @@ impl cfn_resources::CfnResource for GeoLocation {
 ///
 /// For more information, see ChangeResourceRecordSets 			in the Amazon Route 53 API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordSet {
     ///
     /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
@@ -428,7 +433,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AliasTarget")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alias_target: Option<AliasTarget>,
 
     ///
@@ -442,7 +447,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrRoutingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_routing_config: Option<CidrRoutingConfig>,
 
     ///
@@ -468,7 +473,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Failover")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failover: Option<RecordSetFailoverEnum>,
 
     ///
@@ -492,7 +497,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geo_location: Option<GeoLocation>,
 
     ///
@@ -534,7 +539,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -550,7 +555,7 @@ pub struct RecordSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -568,7 +573,7 @@ pub struct RecordSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -584,7 +589,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiValueAnswer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_value_answer: Option<bool>,
 
     ///
@@ -629,7 +634,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub region: Option<RecordSetRegionEnum>,
 
     ///
@@ -645,7 +650,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceRecords")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_records: Option<Vec<String>>,
 
     ///
@@ -663,7 +668,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub set_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -677,7 +682,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TTL")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ttl: Option<cfn_resources::StrVal>,
 
     ///
@@ -716,7 +721,7 @@ pub struct RecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

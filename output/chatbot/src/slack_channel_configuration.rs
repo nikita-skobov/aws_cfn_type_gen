@@ -2,6 +2,7 @@
 ///
 /// This resource requires some setup to be done in the AWS Chatbot console. To provide the required Slack workspace ID, you must perform the initial authorization flow with       Slack in the AWS Chatbot console, then copy and paste the workspace ID from the console.       For more details, see steps 1-4 in Setting Up AWS Chatbot with Slack in the AWS Chatbot User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSlackChannelConfiguration {
     ///
     /// The name of the configuration.
@@ -23,7 +24,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardrailPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub guardrail_policies: Option<Vec<String>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_arns: Option<Vec<String>>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserRoleRequired")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_role_required: Option<bool>,
 
     #[serde(skip_serializing)]

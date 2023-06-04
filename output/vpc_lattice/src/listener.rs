@@ -1,5 +1,6 @@
 /// Creates a listener for a service. Before you start using your Amazon VPC Lattice service, you must  add one or more listeners. A listener is a process that checks for connection requests to your  services. For more information, see Listeners in the  Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnListener {
     ///
     /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
@@ -23,7 +24,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -136,6 +137,7 @@ impl cfn_resources::CfnResource for CfnListener {
 
 /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultAction {
     ///
     /// Information about an action that returns a custom HTTP response.
@@ -146,7 +148,7 @@ pub struct DefaultAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fixed_response: Option<FixedResponse>,
 
     ///
@@ -158,7 +160,7 @@ pub struct DefaultAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forward: Option<Forward>,
 }
 
@@ -184,6 +186,7 @@ impl cfn_resources::CfnResource for DefaultAction {
 
 /// Information about an action that returns a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FixedResponse {
     ///
     /// The HTTP response code.
@@ -213,6 +216,7 @@ impl cfn_resources::CfnResource for FixedResponse {
 
 /// The forward action. Traffic that matches the rule is forwarded to the specified target  groups.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Forward {
     ///
     /// The target groups. Traffic matching the rule is forwarded to the specified target groups.  With forward actions, you can assign a weight that controls the prioritization and selection of  each target group. This means that requests are distributed to individual target groups based on  their weights. For example, if two target groups have the same weight, each target group receives  half of the traffic.
@@ -250,6 +254,7 @@ impl cfn_resources::CfnResource for Forward {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -288,6 +293,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes the weight of a target group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WeightedTargetGroup {
     ///
     /// The ID of the target group.
@@ -309,7 +315,7 @@ pub struct WeightedTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

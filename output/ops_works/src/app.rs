@@ -2,6 +2,7 @@
 ///
 /// Required Permissions: To use this action, an IAM user must have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApp {
     ///
     /// A Source object that specifies the app repository.
@@ -12,7 +13,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_source: Option<Source>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_sources: Option<Vec<DataSource>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domains: Option<Vec<String>>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSsl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_ssl: Option<bool>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Shortname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shortname: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +124,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_configuration: Option<SslConfiguration>,
 
     ///
@@ -212,6 +213,7 @@ impl cfn_resources::CfnResource for CfnApp {
 
 /// Describes an app's data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSource {
     ///
     /// The data source's ARN.
@@ -222,7 +224,7 @@ pub struct DataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +236,7 @@ pub struct DataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -246,7 +248,7 @@ pub struct DataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -266,6 +268,7 @@ impl cfn_resources::CfnResource for DataSource {
 
 /// Represents an app's environment variable.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnvironmentVariable {
     ///
     /// (Required) The environment variable's name, which can consist of up to 64 characters and must be specified.      The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.
@@ -287,7 +290,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Secure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secure: Option<bool>,
 
     ///
@@ -318,10 +321,11 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Source {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-stack-source.html#cfn-opsworks-custcookbooksource-pw
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -333,7 +337,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Revision")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revision: Option<cfn_resources::StrVal>,
 
     ///
@@ -347,7 +351,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -361,7 +365,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<SourceTypeEnum>,
 
     ///
@@ -373,7 +377,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 
     ///
@@ -387,7 +391,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -432,6 +436,7 @@ impl cfn_resources::CfnResource for Source {
 
 /// Describes an app's SSL configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SslConfiguration {
     ///
     /// The contents of the certificate's domain.crt file.
@@ -442,7 +447,7 @@ pub struct SslConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +459,7 @@ pub struct SslConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Chain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chain: Option<cfn_resources::StrVal>,
 
     ///
@@ -466,7 +471,7 @@ pub struct SslConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_key: Option<cfn_resources::StrVal>,
 }
 

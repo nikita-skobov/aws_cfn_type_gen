@@ -1,5 +1,6 @@
 /// The AWS::SageMaker::Model resource to create a model to host at an Amazon       SageMaker endpoint. For more information, see Deploying a Model on Amazon         SageMaker Hosting Services in the Amazon SageMaker Developer         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnModel {
     ///
     /// Specifies the containers in the inference pipeline.
@@ -12,7 +13,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Containers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub containers: Option<Vec<ContainerDefinition>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableNetworkIsolation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_network_isolation: Option<bool>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceExecutionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inference_execution_config: Option<InferenceExecutionConfig>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrimaryContainer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_container: Option<ContainerDefinition>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_config: Option<VpcConfig>,
 
     #[serde(skip_serializing)]
@@ -205,6 +206,7 @@ impl cfn_resources::CfnResource for CfnModel {
 
 /// Describes the container, as part of model definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerDefinition {
     ///
     /// This parameter is ignored for models that contain only a       PrimaryContainer.
@@ -221,7 +223,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerHostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +235,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<serde_json::Value>,
 
     ///
@@ -251,7 +253,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Image")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image: Option<cfn_resources::StrVal>,
 
     ///
@@ -265,7 +267,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_config: Option<ImageConfig>,
 
     ///
@@ -277,7 +279,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceSpecificationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inference_specification_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -291,7 +293,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<ContainerDefinitionModeEnum>,
 
     ///
@@ -313,7 +315,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_data_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -331,7 +333,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_package_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -343,7 +345,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiModelConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub multi_model_config: Option<MultiModelConfig>,
 }
 
@@ -437,6 +439,7 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 
 /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageConfig {
     ///
     /// Set this to one of the following values:
@@ -462,7 +465,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryAuthConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_auth_config: Option<RepositoryAuthConfig>,
 }
 
@@ -503,6 +506,7 @@ impl cfn_resources::CfnResource for ImageConfig {
 
 /// Specifies details about how containers in a multi-container endpoint are run.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InferenceExecutionConfig {
     ///
     /// How containers in a multi-container are run. The following values are valid.
@@ -534,6 +538,7 @@ impl cfn_resources::CfnResource for InferenceExecutionConfig {
 
 /// Specifies additional configuration for hosting multi-model endpoints.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MultiModelConfig {
     ///
     /// Whether to cache models for a multi-model endpoint. By default, multi-model endpoints       cache models so that a model does not have to be loaded into memory each time it is       invoked. Some use cases do not benefit from model caching. For example, if an endpoint       hosts a large number of models that are each invoked infrequently, the endpoint might       perform better if you disable model caching. To disable model caching, set the value of       this parameter to Disabled.
@@ -544,7 +549,7 @@ pub struct MultiModelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelCacheSetting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_cache_setting: Option<cfn_resources::StrVal>,
 }
 
@@ -564,6 +569,7 @@ impl cfn_resources::CfnResource for MultiModelConfig {
 
 /// Specifies an authentication configuration for the private docker registry where your       model image is hosted. Specify a value for this property only if you specified         Vpc as the value for the RepositoryAccessMode field of the         ImageConfig object that you passed to a call to         CreateModel and the private Docker registry where the model image is       hosted requires authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RepositoryAuthConfig {
     ///
     /// The Amazon Resource Name (ARN) of an AWS Lambda function that provides       credentials to authenticate to the private Docker registry where your model image is       hosted. For information about how to create an AWS Lambda function, see         Create a Lambda function         with the console in the         AWS Lambda Developer         Guide.
@@ -621,6 +627,7 @@ impl cfn_resources::CfnResource for RepositoryAuthConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -659,6 +666,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConfig {
     ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.

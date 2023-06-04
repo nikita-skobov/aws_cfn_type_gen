@@ -1,5 +1,6 @@
 /// The AWS::ElastiCache::CacheCluster type creates an Amazon ElastiCache cache cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCacheCluster {
     ///
     /// Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or       created across multiple Availability Zones in the cluster's region.
@@ -16,7 +17,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AZMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub azmode: Option<CacheClusterAZModeEnum>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheSecurityGroupNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_security_group_names: Option<Vec<String>>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpDiscovery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_discovery: Option<CacheClusterIpDiscoveryEnum>,
 
     /// Specifies the destination, format and type of the logs.
@@ -157,7 +158,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
 
     ///
@@ -171,7 +172,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_type: Option<CacheClusterNetworkTypeEnum>,
 
     ///
@@ -185,7 +186,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +211,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -226,7 +227,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredAvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -246,7 +247,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredAvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_availability_zones: Option<Vec<String>>,
 
     ///
@@ -266,7 +267,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +283,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_arns: Option<Vec<String>>,
 
     ///
@@ -296,7 +297,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -312,7 +313,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotRetentionLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_retention_limit: Option<i64>,
 
     ///
@@ -330,7 +331,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -342,7 +343,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -354,7 +355,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_encryption_enabled: Option<bool>,
 
     ///
@@ -368,7 +369,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -487,6 +488,7 @@ impl cfn_resources::CfnResource for CfnCacheCluster {
 
 /// Configuration details of a CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogsDestinationDetails {
     /// The name of the CloudWatch Logs log group.
     ///
@@ -515,6 +517,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
 
 /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationDetails {
     /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
     ///
@@ -524,7 +527,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
 
     /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
@@ -535,7 +538,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
 }
 
@@ -563,6 +566,7 @@ impl cfn_resources::CfnResource for DestinationDetails {
 
 /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked   as required but only if Kinesis Data Firehose was chosen as the destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisFirehoseDestinationDetails {
     /// The name of the Kinesis Data Firehose delivery stream.
     ///
@@ -591,6 +595,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
 
 /// Specifies the destination, format and type of the logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogDeliveryConfigurationRequest {
     /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
     ///
@@ -657,6 +662,7 @@ impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

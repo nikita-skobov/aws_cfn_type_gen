@@ -2,6 +2,7 @@
 ///
 /// For more information, see AWS Support App in Slack in the AWS Support User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccountAlias {
     ///
     /// An alias or short name for an AWS account.

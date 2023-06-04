@@ -1,5 +1,6 @@
 /// Creates a new MSK cluster. The following Python 3.6 examples shows how you can create a cluster that's distributed over two Availability Zones.         Before you run this Python script, replace the example subnet and security-group IDs with the IDs of your subnets and security group. When you create an MSK cluster, its brokers get evenly distributed over a number of Availability Zones that's equal to the number of subnets that you specify in the BrokerNodeGroupInfo parameter. In this example, you can add a third subnet to get a cluster that's distributed over three Availability Zones.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCluster {
     ///
     /// Information about the broker nodes in the cluster.
@@ -21,7 +22,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_authentication: Option<ClientAuthentication>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_info: Option<ConfigurationInfo>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub current_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_info: Option<EncryptionInfo>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedMonitoring")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enhanced_monitoring: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging_info: Option<LoggingInfo>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenMonitoring")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_monitoring: Option<OpenMonitoring>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -203,6 +204,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 
 /// The broker logs configuration for this MSK cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BrokerLogs {
     ///
     /// Details of the CloudWatch Logs destination for broker logs.
@@ -213,7 +215,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs: Option<CloudWatchLogs>,
 
     ///
@@ -225,7 +227,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Firehose")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firehose: Option<Firehose>,
 
     ///
@@ -237,7 +239,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3: Option<S3>,
 }
 
@@ -267,6 +269,7 @@ impl cfn_resources::CfnResource for BrokerLogs {
 
 /// Describes the setup to be used for the broker nodes in the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BrokerNodeGroupInfo {
     ///
     /// This parameter is currently not in use.
@@ -277,7 +280,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BrokerAZDistribution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub broker_azdistribution: Option<cfn_resources::StrVal>,
 
     ///
@@ -304,7 +307,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectivityInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connectivity_info: Option<ConnectivityInfo>,
 
     ///
@@ -327,7 +330,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -339,7 +342,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_info: Option<StorageInfo>,
 }
 
@@ -367,6 +370,7 @@ impl cfn_resources::CfnResource for BrokerNodeGroupInfo {
 
 /// Includes all client authentication information.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientAuthentication {
     ///
     /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
@@ -377,7 +381,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sasl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sasl: Option<Sasl>,
 
     ///
@@ -389,7 +393,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<Tls>,
 
     ///
@@ -401,7 +405,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unauthenticated")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unauthenticated: Option<Unauthenticated>,
 }
 
@@ -429,6 +433,7 @@ impl cfn_resources::CfnResource for ClientAuthentication {
 
 /// Details of the CloudWatch Logs destination for broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CloudWatchLogs {
     ///
     /// Specifies whether broker logs get sent to the specified CloudWatch Logs destination.
@@ -450,7 +455,7 @@ pub struct CloudWatchLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group: Option<cfn_resources::StrVal>,
 }
 
@@ -470,6 +475,7 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
 
 /// Specifies the configuration to use for the brokers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationInfo {
     ///
     /// ARN of the configuration to use.
@@ -510,6 +516,7 @@ impl cfn_resources::CfnResource for ConfigurationInfo {
 
 /// Broker access controls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectivityInfo {
     ///
     /// Access control settings for the cluster's brokers.
@@ -520,7 +527,7 @@ pub struct ConnectivityInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_access: Option<PublicAccess>,
 
     ///
@@ -532,7 +539,7 @@ pub struct ConnectivityInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectivity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_connectivity: Option<VpcConnectivity>,
 }
 
@@ -560,6 +567,7 @@ impl cfn_resources::CfnResource for ConnectivityInfo {
 
 /// Contains information about the EBS storage volumes attached to the broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EBSStorageInfo {
     ///
     /// EBS volume provisioned throughput information.
@@ -570,7 +578,7 @@ pub struct EBSStorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 
     ///
@@ -582,7 +590,7 @@ pub struct EBSStorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 }
 
@@ -606,6 +614,7 @@ impl cfn_resources::CfnResource for EBSStorageInfo {
 
 /// The data-volume encryption details. You can't update encryption at rest settings for existing clusters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionAtRest {
     ///
     /// The ARN of the Amazon KMS key for encrypting data at rest. If you don't specify a KMS key, MSK creates one for you and uses it.
@@ -635,6 +644,7 @@ impl cfn_resources::CfnResource for EncryptionAtRest {
 
 /// The settings for encrypting data in transit.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionInTransit {
     ///
     /// Indicates the encryption setting for data in transit between clients and brokers. You must set it to one of the following values.
@@ -653,7 +663,7 @@ pub struct EncryptionInTransit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientBroker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_broker: Option<cfn_resources::StrVal>,
 
     ///
@@ -667,7 +677,7 @@ pub struct EncryptionInTransit {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InCluster")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub in_cluster: Option<bool>,
 }
 
@@ -687,6 +697,7 @@ impl cfn_resources::CfnResource for EncryptionInTransit {
 
 /// Includes encryption-related information, such as the Amazon KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionInfo {
     ///
     /// The data-volume encryption details.
@@ -697,7 +708,7 @@ pub struct EncryptionInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionAtRest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_at_rest: Option<EncryptionAtRest>,
 
     ///
@@ -709,7 +720,7 @@ pub struct EncryptionInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionInTransit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_in_transit: Option<EncryptionInTransit>,
 }
 
@@ -737,6 +748,7 @@ impl cfn_resources::CfnResource for EncryptionInfo {
 
 /// Firehose details for BrokerLogs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Firehose {
     ///
     /// The Kinesis Data Firehose delivery stream that is the destination for broker logs.
@@ -747,7 +759,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
@@ -778,6 +790,7 @@ impl cfn_resources::CfnResource for Firehose {
 
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Iam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -807,6 +820,7 @@ impl cfn_resources::CfnResource for Iam {
 
 /// Indicates whether you want to enable or disable the JMX Exporter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JmxExporter {
     ///
     /// Indicates whether you want to enable or disable the JMX Exporter.
@@ -836,6 +850,7 @@ impl cfn_resources::CfnResource for JmxExporter {
 
 /// You can configure your MSK cluster to send broker logs to different destination types. This is a container for the configuration details related to broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingInfo {
     ///
     /// You can configure your MSK cluster to send broker logs to different destination types. This configuration specifies the details of these destinations.
@@ -867,6 +882,7 @@ impl cfn_resources::CfnResource for LoggingInfo {
 
 /// Indicates whether you want to enable or disable the Node Exporter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NodeExporter {
     ///
     /// Indicates whether you want to enable or disable the Node Exporter.
@@ -896,6 +912,7 @@ impl cfn_resources::CfnResource for NodeExporter {
 
 /// JMX and Node monitoring for the MSK cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenMonitoring {
     ///
     /// Prometheus exporter settings.
@@ -927,6 +944,7 @@ impl cfn_resources::CfnResource for OpenMonitoring {
 
 /// Prometheus settings for open monitoring.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Prometheus {
     ///
     /// Indicates whether you want to enable or disable the JMX Exporter.
@@ -937,7 +955,7 @@ pub struct Prometheus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JmxExporter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jmx_exporter: Option<JmxExporter>,
 
     ///
@@ -949,7 +967,7 @@ pub struct Prometheus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeExporter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub node_exporter: Option<NodeExporter>,
 }
 
@@ -977,6 +995,7 @@ impl cfn_resources::CfnResource for Prometheus {
 
 /// Contains information about provisioned throughput for EBS storage volumes attached to kafka broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisionedThroughput {
     ///
     /// Provisioned throughput is enabled or not.
@@ -987,7 +1006,7 @@ pub struct ProvisionedThroughput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -999,7 +1018,7 @@ pub struct ProvisionedThroughput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeThroughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_throughput: Option<i64>,
 }
 
@@ -1019,6 +1038,7 @@ impl cfn_resources::CfnResource for ProvisionedThroughput {
 
 /// Broker access controls
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PublicAccess {
     ///
     /// DISABLED means that public access is turned off. SERVICE_PROVIDED_EIPS means that public access is turned on.
@@ -1029,7 +1049,7 @@ pub struct PublicAccess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -1049,6 +1069,7 @@ impl cfn_resources::CfnResource for PublicAccess {
 
 /// The details of the Amazon S3 destination for broker logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3 {
     ///
     /// The name of the S3 bucket that is the destination for broker logs.
@@ -1059,7 +1080,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -1082,7 +1103,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -1102,6 +1123,7 @@ impl cfn_resources::CfnResource for S3 {
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Sasl {
     ///
     /// Details for ClientAuthentication using IAM.
@@ -1112,7 +1134,7 @@ pub struct Sasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iam")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam: Option<Iam>,
 
     ///
@@ -1124,7 +1146,7 @@ pub struct Sasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scram")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scram: Option<Scram>,
 }
 
@@ -1148,6 +1170,7 @@ impl cfn_resources::CfnResource for Sasl {
 
 /// Details for SASL/SCRAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Scram {
     ///
     /// SASL/SCRAM authentication is enabled or not.
@@ -1177,6 +1200,7 @@ impl cfn_resources::CfnResource for Scram {
 
 /// Contains information about storage volumes attached to Amazon MSK broker nodes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StorageInfo {
     ///
     /// EBS volume information.
@@ -1187,7 +1211,7 @@ pub struct StorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSStorageInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebsstorage_info: Option<EBSStorageInfo>,
 }
 
@@ -1211,6 +1235,7 @@ impl cfn_resources::CfnResource for StorageInfo {
 
 /// Details for client authentication using TLS.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tls {
     ///
     /// List of AWS Private CA ARNs.
@@ -1221,7 +1246,7 @@ pub struct Tls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateAuthorityArnList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_authority_arn_list: Option<Vec<String>>,
 
     ///
@@ -1233,7 +1258,7 @@ pub struct Tls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -1253,6 +1278,7 @@ impl cfn_resources::CfnResource for Tls {
 
 /// Details for allowing no client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Unauthenticated {
     ///
     /// Unauthenticated is enabled or not.
@@ -1282,6 +1308,7 @@ impl cfn_resources::CfnResource for Unauthenticated {
 
 /// VPC connection control settings for brokers.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivity {
     ///
     /// VPC connection control settings for brokers.
@@ -1292,7 +1319,7 @@ pub struct VpcConnectivity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAuthentication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_authentication: Option<VpcConnectivityClientAuthentication>,
 }
 
@@ -1316,6 +1343,7 @@ impl cfn_resources::CfnResource for VpcConnectivity {
 
 /// Includes all client authentication information for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivityClientAuthentication {
     ///
     /// Details for VpcConnectivity ClientAuthentication using SASL.
@@ -1326,7 +1354,7 @@ pub struct VpcConnectivityClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sasl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sasl: Option<VpcConnectivitySasl>,
 
     ///
@@ -1338,7 +1366,7 @@ pub struct VpcConnectivityClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls: Option<VpcConnectivityTls>,
 }
 
@@ -1362,6 +1390,7 @@ impl cfn_resources::CfnResource for VpcConnectivityClientAuthentication {
 
 /// Details for SASL/IAM client authentication for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivityIam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -1391,6 +1420,7 @@ impl cfn_resources::CfnResource for VpcConnectivityIam {
 
 /// Details for client authentication using SASL for VpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivitySasl {
     ///
     /// Details for ClientAuthentication using IAM for VpcConnectivity.
@@ -1401,7 +1431,7 @@ pub struct VpcConnectivitySasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iam")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam: Option<VpcConnectivityIam>,
 
     ///
@@ -1413,7 +1443,7 @@ pub struct VpcConnectivitySasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scram")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scram: Option<VpcConnectivityScram>,
 }
 
@@ -1437,6 +1467,7 @@ impl cfn_resources::CfnResource for VpcConnectivitySasl {
 
 /// Details for SASL/SCRAM client authentication for vpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivityScram {
     ///
     /// SASL/SCRAM authentication is enabled or not.
@@ -1466,6 +1497,7 @@ impl cfn_resources::CfnResource for VpcConnectivityScram {
 
 /// Details for client authentication using TLS for vpcConnectivity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectivityTls {
     ///
     /// TLS authentication is enabled or not.

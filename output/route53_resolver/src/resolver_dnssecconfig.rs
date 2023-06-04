@@ -1,5 +1,6 @@
 /// The AWS::Route53Resolver::ResolverDNSSECConfig resource is a complex type that contains information about a configuration for DNSSEC validation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverDNSSECConfig {
     ///
     /// The ID of the virtual private cloud (VPC) that you're configuring the DNSSEC validation status for.
@@ -14,7 +15,7 @@ pub struct CfnResolverDNSSECConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

@@ -1,5 +1,6 @@
 /// A complex type that contains information about a service, which defines the configuration of the following  entities:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnService {
     ///
     /// The description of the service.
@@ -12,7 +13,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_config: Option<DnsConfig>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_config: Option<HealthCheckConfig>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthCheckCustomConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_custom_config: Option<HealthCheckCustomConfig>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnService {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ServiceTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -221,6 +222,7 @@ impl cfn_resources::CfnResource for CfnService {
 
 /// A complex type that contains information about the Amazon Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DnsConfig {
     ///
     /// An array that contains one DnsRecord object for each Route 53 DNS record that you  want AWS Cloud Map to create when you register an instance.
@@ -246,7 +248,7 @@ pub struct DnsConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -266,7 +268,7 @@ pub struct DnsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub routing_policy: Option<DnsConfigRoutingPolicyEnum>,
 }
 
@@ -314,6 +316,7 @@ impl cfn_resources::CfnResource for DnsConfig {
 
 /// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DnsRecord {
     ///
     /// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this  record.
@@ -397,6 +400,7 @@ impl cfn_resources::CfnResource for DnsRecord {
 ///
 /// Note the following about configuring health checks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckConfig {
     ///
     /// The number of consecutive health checks that an endpoint must pass or fail for Route 53 to  change the current status of the endpoint from unhealthy to healthy or the other way around. For  more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
@@ -411,7 +415,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_threshold: Option<f64>,
 
     ///
@@ -427,7 +431,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -522,6 +526,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 ///
 /// Here's how custom health checks work:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckCustomConfig {
     ///
     /// ImportantThis parameter is no longer supported and is always set to 1. AWS Cloud Map waits for   approximately 30 seconds after receiving an UpdateInstanceCustomHealthStatus   request before changing the status of the service instance.
@@ -540,7 +545,7 @@ pub struct HealthCheckCustomConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_threshold: Option<f64>,
 }
 
@@ -584,6 +589,7 @@ impl cfn_resources::CfnResource for HealthCheckCustomConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// Creates a new subnet group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubnetGroup {
     ///
     /// The description of the subnet group.
@@ -10,7 +11,7 @@ pub struct CfnSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSubnetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///

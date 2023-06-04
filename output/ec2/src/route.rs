@@ -4,6 +4,7 @@
 ///
 /// If you create a route that references a transit gateway in the same template where you     create the transit gateway, you must declare a dependency on the transit gateway     attachment. The route table cannot use the transit gateway until it has successfully     attached to the VPC. Add a DependsOn       Attribute in the AWS::EC2::Route resource to explicitly declare a     dependency on the AWS::EC2::TransitGatewayAttachment resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRoute {
     ///
     /// The ID of the carrier gateway.
@@ -14,7 +15,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CarrierGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub carrier_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationIpv6CidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressOnlyInternetGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_only_internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NatGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nat_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -145,7 +146,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -157,7 +158,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnectionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_peering_connection_id: Option<cfn_resources::StrVal>,
 }
 

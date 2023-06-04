@@ -1,5 +1,6 @@
 /// The AWS::ECR::Repository resource specifies an Amazon Elastic Container       Registry (Amazon ECR) repository, where users can push and pull Docker images, Open       Container Initiative (OCI) images, and OCI compatible artifacts. For more information,       see Amazon ECR private repositories in the Amazon ECR User         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRepository {
     ///
     /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
@@ -10,7 +11,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTagMutability")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_tag_mutability: Option<RepositoryImageTagMutabilityEnum>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_policy: Option<LifecyclePolicy>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryPolicyText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_policy_text: Option<serde_json::Value>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -195,6 +196,7 @@ impl cfn_resources::CfnResource for CfnRepository {
 ///
 /// For more control over the encryption of the contents of your repository, you can use       server-side encryption with AWS Key Management Service key stored in AWS Key Management Service (AWS KMS) to encrypt your       images. For more information, see Amazon ECR encryption at         rest in the Amazon Elastic Container Registry User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// The encryption type to use.
@@ -226,7 +228,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key: Option<cfn_resources::StrVal>,
 }
 
@@ -285,6 +287,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
 /// The image scanning configuration for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageScanningConfiguration {
     ///
     /// The setting that determines whether images are scanned after being pushed to a       repository. If set to true, images will be scanned after being pushed. If       this parameter is not specified, it will default to false and images will       not be scanned unless a scan is manually started.
@@ -295,7 +298,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanOnPush")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scan_on_push: Option<bool>,
 }
 
@@ -315,6 +318,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 
 /// The LifecyclePolicy property type specifies a lifecycle policy. For       information about lifecycle policy syntax, see Lifecycle policy         template in the Amazon ECR User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecyclePolicy {
     ///
     /// The JSON repository policy text to apply to the repository.
@@ -329,7 +333,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicyText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_policy_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -343,7 +347,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registry_id: Option<cfn_resources::StrVal>,
 }
 
@@ -385,6 +389,7 @@ impl cfn_resources::CfnResource for LifecyclePolicy {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

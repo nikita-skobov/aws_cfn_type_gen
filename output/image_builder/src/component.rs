@@ -1,5 +1,6 @@
 /// Creates a new component that can be used to build, validate, test, and assess your 			image. The component is based on a YAML document that you specify using exactly one of 			the following methods:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnComponent {
     ///
     /// The change description of the component. Describes what change has been made in this 			version, or what makes this version different from other versions of this 			component.
@@ -14,7 +15,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ChangeDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub change_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedOsVersions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub supported_os_versions: Option<Vec<String>>,
 
     ///
@@ -116,7 +117,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Uri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uri: Option<cfn_resources::StrVal>,
 
     ///

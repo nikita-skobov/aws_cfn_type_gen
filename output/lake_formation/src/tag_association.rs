@@ -1,5 +1,6 @@
 /// The AWS::LakeFormation::TagAssociation resource represents an assignment of an LF-tag to a Data Catalog resource (database, table, or column).     During a stack operation, CloudFormation calls AWS Lake Formation AddLFTagsToResource API to create a TagAssociation resource and calls the RemoveLFTagsToResource API to delete it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTagAssociation {
     ///
     /// A structure containing an LF-tag key-value pair.
@@ -66,6 +67,7 @@ impl cfn_resources::CfnResource for CfnTagAssociation {
 
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseResource {
     ///
     /// The identifier for the Data Catalog. By default, it should be the account ID of the caller.
@@ -106,6 +108,7 @@ impl cfn_resources::CfnResource for DatabaseResource {
 
 /// A structure containing the catalog ID, tag key, and tag values of an LF-tag key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LFTagPair {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -157,6 +160,7 @@ impl cfn_resources::CfnResource for LFTagPair {
 
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Resource {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -167,7 +171,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog: Option<serde_json::Value>,
 
     ///
@@ -179,7 +183,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Database")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database: Option<DatabaseResource>,
 
     ///
@@ -191,7 +195,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Table")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table: Option<TableResource>,
 
     ///
@@ -203,7 +207,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWithColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 }
 
@@ -233,6 +237,7 @@ impl cfn_resources::CfnResource for Resource {
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -265,7 +270,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +284,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWildcard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_wildcard: Option<serde_json::Value>,
 }
 
@@ -301,6 +306,7 @@ impl cfn_resources::CfnResource for TableResource {
 ///
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableWithColumnsResource {
     ///
     /// A wildcard object representing every table under a database.

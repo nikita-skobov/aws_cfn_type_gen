@@ -1,5 +1,6 @@
 /// The HookTypeConfig resource specifies the configuration of a hook.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHookTypeConfig {
     ///
     /// Specifies the activated hook type configuration, in this AWS account and AWS Region.
@@ -25,7 +26,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAlias")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

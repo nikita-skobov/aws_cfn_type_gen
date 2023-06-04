@@ -1,5 +1,6 @@
 /// The AWS::Inspector::AssessmentTemplate resource creates an Amazon     Inspector assessment template, which specifies the Inspector assessment targets that will     be evaluated by an assessment run and its related configurations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAssessmentTemplate {
     ///
     /// The ARN of the assessment target to be included in the assessment template.
@@ -29,7 +30,7 @@ pub struct CfnAssessmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assessment_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnAssessmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserAttributesForFindings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attributes_for_findings: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -176,6 +177,7 @@ impl cfn_resources::CfnResource for CfnAssessmentTemplate {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

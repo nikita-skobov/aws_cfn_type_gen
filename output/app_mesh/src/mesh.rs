@@ -4,6 +4,7 @@
 ///
 /// For more information about service meshes, see Service meshes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMesh {
     ///
     /// The name to use for the service mesh.
@@ -18,7 +19,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Spec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spec: Option<MeshSpec>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -152,6 +153,7 @@ impl cfn_resources::CfnResource for CfnMesh {
 
 /// An object that represents the egress filter rules for a service mesh.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EgressFilter {
     ///
     /// The egress filter type. By default, the type is DROP_ALL, which allows     egress only from virtual nodes to other defined resources in the service mesh (and any     traffic to *.amazonaws.com for AWS API calls). You can set the     egress filter type to ALLOW_ALL to allow egress to any endpoint inside or     outside of the service mesh.
@@ -202,6 +204,7 @@ impl cfn_resources::CfnResource for EgressFilter {
 
 /// An object that represents the service discovery information for a service mesh.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MeshServiceDiscovery {
     ///
     /// The IP version to use to control traffic within the mesh.
@@ -214,7 +217,7 @@ pub struct MeshServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_preference: Option<MeshServiceDiscoveryIpPreferenceEnum>,
 }
 
@@ -259,6 +262,7 @@ impl cfn_resources::CfnResource for MeshServiceDiscovery {
 
 /// An object that represents the specification of a service mesh.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MeshSpec {
     ///
     /// The egress filter rules for the service mesh.
@@ -269,7 +273,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_filter: Option<EgressFilter>,
 
     /// Property description not available.
@@ -280,7 +284,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceDiscovery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_discovery: Option<MeshServiceDiscovery>,
 }
 
@@ -314,6 +318,7 @@ impl cfn_resources::CfnResource for MeshSpec {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

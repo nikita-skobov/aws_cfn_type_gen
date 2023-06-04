@@ -14,6 +14,7 @@
 ///
 /// For more information about developing and using AWS Config      rules, see Evaluating Resources with AWS Config Rules      in the AWS Config Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnConfigRule {
     ///
     /// A name for the AWS Config rule. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the rule name.       For more information, see Name Type.
@@ -30,7 +31,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigRuleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub config_rule_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_parameters: Option<serde_json::Value>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_frequency: Option<ConfigRuleMaximumExecutionFrequencyEnum>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<Scope>,
 
     ///
@@ -235,6 +236,7 @@ impl cfn_resources::CfnResource for CfnConfigRule {
 
 /// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomPolicyDetails {
     ///
     /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
@@ -245,7 +247,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDebugLogDelivery")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_debug_log_delivery: Option<bool>,
 
     ///
@@ -263,7 +265,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyRuntime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_runtime: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +281,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_text: Option<cfn_resources::StrVal>,
 }
 
@@ -343,6 +345,7 @@ impl cfn_resources::CfnResource for CustomPolicyDetails {
 
 /// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Scope {
     ///
     /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
@@ -357,7 +360,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -371,7 +374,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compliance_resource_types: Option<Vec<String>>,
 
     ///
@@ -387,7 +390,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -403,7 +406,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_value: Option<cfn_resources::StrVal>,
 }
 
@@ -489,6 +492,7 @@ impl cfn_resources::CfnResource for Scope {
 
 /// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Source {
     ///
     /// Provides the runtime system, policy definition, and whether debug logging is enabled. Required when owner is set to CUSTOM_POLICY.
@@ -499,7 +503,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomPolicyDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_policy_details: Option<CustomPolicyDetails>,
 
     ///
@@ -532,7 +536,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_details: Option<Vec<SourceDetail>>,
 
     ///
@@ -552,7 +556,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -625,6 +629,7 @@ impl cfn_resources::CfnResource for Source {
 
 /// Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also 			provides the frequency with which you want AWS Config to run 			evaluations for the rule if the trigger type is periodic. You can 			specify the parameter values for SourceDetail only for 			custom rules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceDetail {
     ///
     /// The source of the event, such as an AWS service, that triggers 			AWS Config to evaluate your AWS resources.
@@ -652,7 +657,7 @@ pub struct SourceDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_frequency: Option<SourceDetailMaximumExecutionFrequencyEnum>,
 
     ///

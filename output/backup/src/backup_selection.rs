@@ -2,6 +2,7 @@
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBackupSelection {
     ///
     /// Uniquely identifies a backup plan.
@@ -79,6 +80,7 @@ impl cfn_resources::CfnResource for CfnBackupSelection {
 
 /// Specifies an object containing properties used to assign a set of resources to a backup     plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BackupSelectionResourceType {
     ///
     /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
@@ -93,7 +95,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Conditions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditions: Option<Conditions>,
 
     ///
@@ -120,7 +122,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListOfTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub list_of_tags: Option<Vec<ConditionResourceType>>,
 
     ///
@@ -134,7 +136,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotResources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_resources: Option<Vec<String>>,
 
     ///
@@ -146,7 +148,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources: Option<Vec<String>>,
 
     ///
@@ -181,6 +183,7 @@ impl cfn_resources::CfnResource for BackupSelectionResourceType {
 
 /// Includes information about tags you define to assign tagged resources to a backup     plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionParameter {
     ///
     /// The key in a key-value pair. For example, in the tag Department:     Accounting, Department is the key.
@@ -191,7 +194,7 @@ pub struct ConditionParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -203,7 +206,7 @@ pub struct ConditionParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition_value: Option<cfn_resources::StrVal>,
 }
 
@@ -223,6 +226,7 @@ impl cfn_resources::CfnResource for ConditionParameter {
 
 /// Specifies an object that contains an array of triplets made up of a condition type (such     as STRINGEQUALS), a key, and a value. Conditions are used to filter resources     in a selection that is assigned to a backup plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionResourceType {
     ///
     /// The key in a key-value pair. For example, in "Department": "accounting",       "Department" is the key.
@@ -274,6 +278,7 @@ impl cfn_resources::CfnResource for ConditionResourceType {
 
 /// Contains information about which resources to include or exclude from a backup plan     using their tags. Conditions are case sensitive.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Conditions {
     ///
     /// Filters the values of your tagged resources for only those resources that you tagged     with the same value. Also called "exact matching."
@@ -284,7 +289,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_equals: Option<Vec<ConditionParameter>>,
 
     ///
@@ -296,7 +301,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringLike")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_like: Option<Vec<ConditionParameter>>,
 
     ///
@@ -308,7 +313,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringNotEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_not_equals: Option<Vec<ConditionParameter>>,
 
     ///
@@ -320,7 +325,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringNotLike")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_not_like: Option<Vec<ConditionParameter>>,
 }
 

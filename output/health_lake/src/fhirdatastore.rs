@@ -1,5 +1,6 @@
 /// Creates a Data Store that can ingest and export FHIR formatted data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFHIRDatastore {
     ///
     /// The user generated name for the Data Store.
@@ -16,7 +17,7 @@ pub struct CfnFHIRDatastore {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatastoreName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datastore_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnFHIRDatastore {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreloadDataConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preload_data_config: Option<PreloadDataConfig>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnFHIRDatastore {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SseConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sse_configuration: Option<SseConfiguration>,
 
     ///
@@ -67,7 +68,7 @@ pub struct CfnFHIRDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -185,6 +186,7 @@ impl cfn_resources::CfnResource for CfnFHIRDatastore {
 
 /// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreatedAt {
     /// Property description not available.
     ///
@@ -223,6 +225,7 @@ impl cfn_resources::CfnResource for CreatedAt {
 
 /// The customer-managed-key(CMK) used when creating a Data Store. If a customer owned key is not specified, an    Amazon owned key will be used for encryption.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KmsEncryptionConfig {
     ///
     /// The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned    CMKs and Amazon owned CMKs. For more information on CMK types, see KmsEncryptionConfig.
@@ -250,7 +253,7 @@ pub struct KmsEncryptionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -292,6 +295,7 @@ impl cfn_resources::CfnResource for KmsEncryptionConfig {
 
 /// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PreloadDataConfig {
     ///
     /// The type of preloaded data. Only Synthea preloaded data is supported.
@@ -336,6 +340,7 @@ impl cfn_resources::CfnResource for PreloadDataConfig {
 
 /// The server-side encryption key configuration for a customer provided encryption key.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SseConfiguration {
     ///
     /// The server-side encryption key configuration for a customer provided encryption key (CMK).
@@ -373,6 +378,7 @@ impl cfn_resources::CfnResource for SseConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

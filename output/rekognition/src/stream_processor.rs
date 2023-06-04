@@ -8,6 +8,7 @@
 ///
 /// For more information, see CreateStreamProcessor.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStreamProcessor {
     ///
     /// List of BoundingBox objects, each of which denotes a region of interest on screen.     For more information, see the BoundingBox field of RegionOfInterest.
@@ -18,7 +19,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BoundingBoxRegionsOfInterest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bounding_box_regions_of_interest: Option<Vec<BoundingBox>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectedHomeSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connected_home_settings: Option<ConnectedHomeSettings>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSharingPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_sharing_preference: Option<DataSharingPreference>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FaceSearchSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub face_search_settings: Option<FaceSearchSettings>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KinesisDataStream")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_data_stream: Option<KinesisDataStream>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +108,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +120,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationChannel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_channel: Option<NotificationChannel>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolygonRegionsOfInterest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub polygon_regions_of_interest: Option<serde_json::Value>,
 
     ///
@@ -154,7 +155,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_destination: Option<S3Destination>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -271,6 +272,7 @@ impl cfn_resources::CfnResource for CfnStreamProcessor {
 ///
 /// The width and height values represent the dimensions of the    bounding box as a ratio of the overall image dimension. For example, if the input image is    700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. For more information, see       BoundingBox.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoundingBox {
     ///
     /// Height of the bounding box as a ratio of the overall image height.
@@ -335,6 +337,7 @@ impl cfn_resources::CfnResource for BoundingBox {
 ///
 /// When the stream processor has started, one notification is sent      for each object class specified. For example, if packages and pets are selected, one SNS notification is published the first time a package is      detected and one SNS notification is published the first time a pet is detected. An end-of-session summary is also published.      For more information, see the ConnectedHome section of StreamProcessorSettings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectedHomeSettings {
     ///
     /// Specifies what you want to detect in the video, such as people, packages, or pets.      The current valid labels you can include in this list are: "PERSON", "PET", "PACKAGE", and "ALL".
@@ -356,7 +359,7 @@ pub struct ConnectedHomeSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinConfidence")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_confidence: Option<f64>,
 }
 
@@ -376,6 +379,7 @@ impl cfn_resources::CfnResource for ConnectedHomeSettings {
 
 /// Allows you to opt in or opt out to share data with Rekognition to improve model performance.      You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level, this setting is ignored on individual streams.     For more information, see StreamProcessorDataSharingPreference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSharingPreference {
     ///
     /// Describes the opt-in status applied to a stream processor's data sharing policy.
@@ -405,6 +409,7 @@ impl cfn_resources::CfnResource for DataSharingPreference {
 
 /// The input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor. FaceSearchSettings is a request      parameter for CreateStreamProcessor.       For more information, see FaceSearchSettings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FaceSearchSettings {
     ///
     /// The ID of a collection that contains faces that you want to search for.
@@ -432,7 +437,7 @@ pub struct FaceSearchSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FaceMatchThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub face_match_threshold: Option<f64>,
 }
 
@@ -474,6 +479,7 @@ impl cfn_resources::CfnResource for FaceSearchSettings {
 
 /// Amazon Rekognition Video Stream Processor take as input a Kinesis video stream (Input) and a Kinesis data stream (Output).      This is the Amazon Kinesis Data Streams instance to which the Amazon Rekognition stream processor streams the analysis results.      This must be created within the constraints specified at      KinesisDataStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisDataStream {
     ///
     /// ARN of the output Amazon Kinesis Data Streams stream.
@@ -505,6 +511,7 @@ impl cfn_resources::CfnResource for KinesisDataStream {
 
 /// The Kinesis video stream that provides the source of the streaming video for an Amazon Rekognition Video stream processor. For more information, see     KinesisVideoStream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisVideoStream {
     ///
     /// ARN of the Kinesis video stream stream that streams the source video.
@@ -536,6 +543,7 @@ impl cfn_resources::CfnResource for KinesisVideoStream {
 
 /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.      Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.       Amazon Rekognition also publishes an an end-of-session notification with a summary when the stream processing session is complete.      For more information, see StreamProcessorNotificationChannel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationChannel {
     ///
     /// The ARN of the SNS topic that receives notifications.
@@ -565,6 +573,7 @@ impl cfn_resources::CfnResource for NotificationChannel {
 
 /// The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation.      These results include the name of the stream processor resource, the session ID of the stream processing session,      and labeled timestamps and bounding boxes for detected labels. For more information, see      S3Destination.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Destination {
     ///
     /// Describes the destination Amazon Simple Storage Service (Amazon S3) bucket name of a stream processor's exports.
@@ -586,7 +595,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -612,6 +621,7 @@ impl cfn_resources::CfnResource for S3Destination {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

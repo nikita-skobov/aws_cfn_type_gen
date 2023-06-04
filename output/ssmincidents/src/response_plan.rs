@@ -1,5 +1,6 @@
 /// The AWS::SSMIncidents::ResponsePlan resource specifies the details of the       response plan that are used when creating an incident.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResponsePlan {
     ///
     /// The actions that the response plan starts at the beginning of an incident.
@@ -12,7 +13,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<Action>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatChannel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chat_channel: Option<ChatChannel>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Engagements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub engagements: Option<Vec<String>>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integrations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integrations: Option<Vec<Integration>>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -207,6 +208,7 @@ impl cfn_resources::CfnResource for CfnResponsePlan {
 
 /// The Action property type specifies the configuration to launch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// Details about the Systems Manager automation document that will be used as a       runbook during an incident.
@@ -217,7 +219,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmAutomation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssm_automation: Option<SsmAutomation>,
 }
 
@@ -241,6 +243,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// The AWS Chatbot chat channel used for collaboration during an       incident.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChatChannel {
     ///
     /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel by       using the SNS topics
@@ -253,7 +256,7 @@ pub struct ChatChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatbotSns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chatbot_sns: Option<Vec<String>>,
 }
 
@@ -290,6 +293,7 @@ impl cfn_resources::CfnResource for ChatChannel {
 ///
 /// When Incident Manager creates an incident, the system captures the ARNs of       the resources involved in the incident. These resource ARNs are then assigned to this       parameter in the runbook.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamicSsmParameter {
     ///
     /// The key parameter to use when running the Systems Manager Automation       runbook.
@@ -332,6 +336,7 @@ impl cfn_resources::CfnResource for DynamicSsmParameter {
 
 /// The dynamic parameter value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamicSsmParameterValue {
     ///
     /// Variable dynamic parameters. A parameter value is determined when an incident is       created.
@@ -344,7 +349,7 @@ pub struct DynamicSsmParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variable: Option<DynamicSsmParameterValueVariableEnum>,
 }
 
@@ -381,6 +386,7 @@ impl cfn_resources::CfnResource for DynamicSsmParameterValue {
 
 /// The IncidentTemplate property type specifies details used to create an       incident when using this response plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IncidentTemplate {
     ///
     /// Used to create only one incident record for an incident.
@@ -395,7 +401,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedupeString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dedupe_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -424,7 +430,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncidentTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub incident_tags: Option<Vec<Tag>>,
 
     ///
@@ -438,7 +444,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_targets: Option<Vec<NotificationTargetItem>>,
 
     ///
@@ -454,7 +460,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Summary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub summary: Option<cfn_resources::StrVal>,
 
     ///
@@ -582,6 +588,7 @@ impl cfn_resources::CfnResource for IncidentTemplate {
 
 /// Information about third-party services integrated into a response plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Integration {
     ///
     /// Information about the PagerDuty service where the response plan creates an       incident.
@@ -613,6 +620,7 @@ impl cfn_resources::CfnResource for Integration {
 
 /// The SNS topic that's used by AWS Chatbot to notify the incidents chat       channel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationTargetItem {
     ///
     /// The Amazon Resource Name (ARN) of the SNS topic.
@@ -629,7 +637,7 @@ pub struct NotificationTargetItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -671,6 +679,7 @@ impl cfn_resources::CfnResource for NotificationTargetItem {
 
 /// Details about the PagerDuty configuration for a response plan.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PagerDutyConfiguration {
     ///
     /// The name of the PagerDuty configuration.
@@ -724,6 +733,7 @@ impl cfn_resources::CfnResource for PagerDutyConfiguration {
 
 /// Details about the PagerDuty service where the response plan creates an       incident.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PagerDutyIncidentConfiguration {
     ///
     /// The ID of the PagerDuty service that the response plan associates with an incident       when it launches.
@@ -753,6 +763,7 @@ impl cfn_resources::CfnResource for PagerDutyIncidentConfiguration {
 
 /// The SsmAutomation property type specifies details about the Systems       Manager automation document that will be used as a runbook during an incident.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SsmAutomation {
     ///
     /// The automation document's name.
@@ -780,7 +791,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -792,7 +803,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_parameters: Option<Vec<DynamicSsmParameter>>,
 
     ///
@@ -804,7 +815,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Vec<SsmParameter>>,
 
     ///
@@ -835,7 +846,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_account: Option<SsmAutomationTargetAccountEnum>,
 }
 
@@ -916,6 +927,7 @@ impl cfn_resources::CfnResource for SsmAutomation {
 
 /// The key-value pair parameters to use when running the automation document.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SsmParameter {
     ///
     /// The key parameter to use when running the automation document.
@@ -962,6 +974,7 @@ impl cfn_resources::CfnResource for SsmParameter {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

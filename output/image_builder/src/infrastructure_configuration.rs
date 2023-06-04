@@ -1,5 +1,6 @@
 /// The infrastructure configuration allows you to specify the infrastructure within which     to build and test your image. In the infrastructure configuration, you can specify instance     types, subnets, and security groups to associate with your instance. You can also associate     an Amazon EC2 key pair with the instance used to build your image. This allows you to log     on to your instance to troubleshoot if your build fails and you set     terminateInstanceOnFailure to false.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInfrastructureConfiguration {
     ///
     /// The description of the infrastructure configuration.
@@ -14,7 +15,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_metadata_options: Option<InstanceMetadataOptions>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_types: Option<Vec<String>>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPair")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_pair: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging: Option<Logging>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +153,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +165,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminateInstanceOnFailure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub terminate_instance_on_failure: Option<bool>,
 
     #[serde(skip_serializing)]
@@ -331,6 +332,7 @@ impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
 
 /// The instance metadata options that apply to the HTTP requests that pipeline builds use 			to launch EC2 build and test instances. For more information about instance metadata 			options, see Configure the instance metadata options in the 				        Amazon EC2 User Guide       for Linux instances, or Configure the instance metadata options in the 				        Amazon EC2 Windows Guide       for Windows instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceMetadataOptions {
     ///
     /// Limit the number of hops that an instance metadata request can traverse to reach its 			destination. The default is one hop. However, if HTTP tokens are required, container 			image builds need a minimum of two hops.
@@ -345,7 +347,7 @@ pub struct InstanceMetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpPutResponseHopLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_put_response_hop_limit: Option<i64>,
 
     ///
@@ -363,7 +365,7 @@ pub struct InstanceMetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTokens")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_tokens: Option<cfn_resources::StrVal>,
 }
 
@@ -395,6 +397,7 @@ impl cfn_resources::CfnResource for InstanceMetadataOptions {
 
 /// Logging configuration defines where Image Builder uploads your logs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Logging {
     ///
     /// The Amazon S3 logging configuration.
@@ -405,7 +408,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Logs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_logs: Option<S3Logs>,
 }
 
@@ -427,6 +430,7 @@ impl cfn_resources::CfnResource for Logging {
 
 /// Amazon S3 logging configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Logs {
     ///
     /// The S3 bucket in which to store the logs.
@@ -441,7 +445,7 @@ pub struct S3Logs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -457,7 +461,7 @@ pub struct S3Logs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// An AWS Verified Access endpoint specifies the application that AWS Verified Access provides access to. It must be     attached to an AWS Verified Access group. An AWS Verified Access endpoint must also have an attached access policy     before you attached it to a group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVerifiedAccessEndpoint {
     ///
     /// The DNS name for users to reach your application.
@@ -34,7 +35,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_options: Option<LoadBalancerOptions>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_options: Option<NetworkInterfaceOptions>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_document: Option<cfn_resources::StrVal>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_enabled: Option<bool>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -141,7 +142,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -287,6 +288,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
 
 /// Describes the load balancer options when creating an AWS Verified Access endpoint using the       load-balancer type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadBalancerOptions {
     ///
     /// The ARN of the load balancer.
@@ -297,7 +299,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -313,7 +315,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -327,7 +329,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<LoadBalancerOptionsProtocolEnum>,
 
     ///
@@ -339,7 +341,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -394,6 +396,7 @@ impl cfn_resources::CfnResource for LoadBalancerOptions {
 
 /// Describes the network interface options when creating an AWS Verified Access endpoint using the       network-interface type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NetworkInterfaceOptions {
     ///
     /// The ID of the network interface.
@@ -404,7 +407,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -420,7 +423,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -434,7 +437,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
 }
 
@@ -495,6 +498,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

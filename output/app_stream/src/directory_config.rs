@@ -1,5 +1,6 @@
 /// The AWS::AppStream::DirectoryConfig resource specifies the configuration information required to join Amazon AppStream 2.0 fleets    and image builders to Microsoft Active Directory domains.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDirectoryConfig {
     ///
     /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
@@ -10,7 +11,7 @@ pub struct CfnDirectoryConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateBasedAuthProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_based_auth_properties: Option<CertificateBasedAuthProperties>,
 
     ///
@@ -69,6 +70,7 @@ impl cfn_resources::CfnResource for CfnDirectoryConfig {
 
 /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CertificateBasedAuthProperties {
     ///
     /// The ARN of the AWS Certificate Manager Private CA resource.
@@ -81,7 +83,7 @@ pub struct CertificateBasedAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateAuthorityArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_authority_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +97,7 @@ pub struct CertificateBasedAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<CertificateBasedAuthPropertiesStatusEnum>,
 }
 
@@ -136,6 +138,7 @@ impl cfn_resources::CfnResource for CertificateBasedAuthProperties {
 
 /// The credentials for the service account used by the streaming instance to connect to the directory.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceAccountCredentials {
     ///
     /// The user name of the account. This account must have the following privileges: create computer objects,       join computers to the domain, and change/reset the password on descendant computer objects for the       organizational units specified.

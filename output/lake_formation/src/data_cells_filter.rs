@@ -1,5 +1,6 @@
 /// A structure that represents a data cell filter with column-level, row-level, and/or cell-level security. Data cell filters belong to a specific table in a Data Catalog. During a stack operation,       AWS CloudFormation calls the AWS Lake Formation CreateDataCellsFilter API operation to create     a DataCellsFilter resource, and calls the DeleteDataCellsFilter API operation to delete it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataCellsFilter {
     ///
     /// An array of UTF-8 strings. A list of column names.
@@ -10,7 +11,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnWildcard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_wildcard: Option<ColumnWildcard>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RowFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_filter: Option<RowFilter>,
 
     ///
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnDataCellsFilter {
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnWildcard {
     ///
     /// Excludes column names. Any column with this name will be excluded.
@@ -124,7 +126,7 @@ pub struct ColumnWildcard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludedColumnNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_column_names: Option<Vec<String>>,
 }
 
@@ -144,6 +146,7 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 
 /// A PartiQL predicate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RowFilter {
     ///
     /// A wildcard for all rows.
@@ -154,7 +157,7 @@ pub struct RowFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllRowsWildcard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_rows_wildcard: Option<serde_json::Value>,
 
     ///
@@ -166,7 +169,7 @@ pub struct RowFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_expression: Option<cfn_resources::StrVal>,
 }
 

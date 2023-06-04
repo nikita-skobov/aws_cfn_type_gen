@@ -1,5 +1,6 @@
 /// The AWS::CodePipeline::CustomActionType resource creates a custom action    for activities that aren't included in the CodePipeline default actions, such as running an    internally developed build process or a test suite. You can use these custom actions in the    stage of a pipeline. For more information, see Create and Add a Custom     Action in AWS CodePipeline in the AWS CodePipeline User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCustomActionType {
     ///
     /// The category of the custom action, such as a build action or a test       action.
@@ -27,7 +28,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_properties: Option<Vec<ConfigurationProperties>>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub settings: Option<Settings>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -229,6 +230,7 @@ impl cfn_resources::CfnResource for CfnCustomActionType {
 
 /// Returns information about the details of an artifact.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArtifactDetails {
     ///
     /// The maximum number of artifacts allowed for the action type.
@@ -313,6 +315,7 @@ impl cfn_resources::CfnResource for ArtifactDetails {
 
 /// The configuration properties for the custom action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigurationProperties {
     ///
     /// The description of the action configuration property that is displayed to       users.
@@ -327,7 +330,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -367,7 +370,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Queryable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queryable: Option<bool>,
 
     ///
@@ -405,7 +408,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ConfigurationPropertiesTypeEnum>,
 }
 
@@ -490,6 +493,7 @@ impl cfn_resources::CfnResource for ConfigurationProperties {
 
 /// Settings is a property of the AWS::CodePipeline::CustomActionType    resource that provides URLs that users can access to view information about the CodePipeline    custom action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Settings {
     ///
     /// The URL returned to the CodePipeline console that provides a deep link to the       resources of the external system, such as the configuration page for a CodeDeploy       deployment group. This link is provided as part of the action display in the       pipeline.
@@ -504,7 +508,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntityUrlTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -520,7 +524,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionUrlTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -536,7 +540,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RevisionUrlTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revision_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -552,7 +556,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThirdPartyConfigurationUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub third_party_configuration_url: Option<cfn_resources::StrVal>,
 }
 
@@ -648,6 +652,7 @@ impl cfn_resources::CfnResource for Settings {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

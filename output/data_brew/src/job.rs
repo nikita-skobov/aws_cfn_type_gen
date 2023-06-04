@@ -1,5 +1,6 @@
 /// Specifies a new DataBrew job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJob {
     ///
     /// One or more artifacts that represent the AWS Glue Data Catalog output       from running the job.
@@ -10,7 +11,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogOutputs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_catalog_outputs: Option<Vec<DataCatalogOutput>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOutputs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_outputs: Option<Vec<DatabaseOutput>>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_mode: Option<JobEncryptionModeEnum>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobSample")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_sample: Option<JobSample>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogSubscription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_subscription: Option<JobLogSubscriptionEnum>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity: Option<i64>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_retries: Option<i64>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_location: Option<OutputLocation>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Outputs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outputs: Option<Vec<Output>>,
 
     ///
@@ -172,7 +173,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub profile_configuration: Option<ProfileConfiguration>,
 
     ///
@@ -188,7 +189,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub project_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -200,7 +201,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Recipe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recipe: Option<Recipe>,
 
     ///
@@ -227,7 +228,7 @@ pub struct CfnJob {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -241,7 +242,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 
     ///
@@ -268,7 +269,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_configurations: Option<Vec<ValidationConfiguration>>,
 }
 
@@ -478,6 +479,7 @@ impl cfn_resources::CfnResource for CfnJob {
 
 /// Configuration of statistics that are allowed to be run on columns that       contain detected entities. When undefined, no statistics will be computed       on columns that contain detected entities.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AllowedStatistics {
     ///
     /// One or more column statistics to allow for columns that contain detected entities.
@@ -507,6 +509,7 @@ impl cfn_resources::CfnResource for AllowedStatistics {
 
 /// Selector of a column from a dataset for profile job configuration.       One selector includes either a column name or a regular expression.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnSelector {
     ///
     /// The name of a column from a dataset.
@@ -521,7 +524,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -537,7 +540,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 }
 
@@ -601,6 +604,7 @@ impl cfn_resources::CfnResource for ColumnSelector {
 
 /// Configuration for column evaluations for a profile job. ColumnStatisticsConfiguration can be used to select       evaluations and override parameters of evaluations for particular columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnStatisticsConfiguration {
     ///
     /// List of column selectors. Selectors can be used to select columns from the dataset.       When selectors are undefined, configuration will be applied to all supported columns.
@@ -611,7 +615,7 @@ pub struct ColumnStatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Selectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selectors: Option<Vec<ColumnSelector>>,
 
     ///
@@ -644,6 +648,7 @@ impl cfn_resources::CfnResource for ColumnStatisticsConfiguration {
 
 /// Represents a set of options that define how DataBrew will write a       comma-separated value (CSV) file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CsvOutputOptions {
     ///
     /// A single character that specifies the delimiter used to create CSV job output.
@@ -658,7 +663,7 @@ pub struct CsvOutputOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 }
 
@@ -700,6 +705,7 @@ impl cfn_resources::CfnResource for CsvOutputOptions {
 
 /// Represents options that specify how and where in the AWS Glue Data Catalog DataBrew       writes the output generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataCatalogOutput {
     ///
     /// The unique identifier of the AWS account that holds the Data Catalog that       stores the data.
@@ -714,7 +720,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -741,7 +747,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_options: Option<DatabaseTableOutputOptions>,
 
     ///
@@ -753,7 +759,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overwrite")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overwrite: Option<bool>,
 
     ///
@@ -765,7 +771,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_options: Option<S3TableOutputOptions>,
 
     ///
@@ -874,6 +880,7 @@ impl cfn_resources::CfnResource for DataCatalogOutput {
 
 /// Represents a JDBC database output object which defines the output destination for       a DataBrew recipe job to write into.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseOutput {
     ///
     /// Represents options that specify how and where DataBrew writes the database output       generated by recipe jobs.
@@ -897,7 +904,7 @@ pub struct DatabaseOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOutputMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub database_output_mode: Option<DatabaseOutputDatabaseOutputModeEnum>,
 
     ///
@@ -969,6 +976,7 @@ impl cfn_resources::CfnResource for DatabaseOutput {
 
 /// Represents options that specify how and where DataBrew writes the database       output generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabaseTableOutputOptions {
     ///
     /// A prefix for the name of a table DataBrew will create in the database.
@@ -994,7 +1002,7 @@ pub struct DatabaseTableOutputOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -1040,6 +1048,7 @@ impl cfn_resources::CfnResource for DatabaseTableOutputOptions {
 
 /// Configuration of entity detection for a profile job. When undefined, entity       detection is disabled.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EntityDetectorConfiguration {
     ///
     /// Configuration of statistics that are allowed to be run on columns that       contain detected entities. When undefined, no statistics will be computed       on columns that contain detected entities.
@@ -1050,7 +1059,7 @@ pub struct EntityDetectorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedStatistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_statistics: Option<AllowedStatistics>,
 
     ///
@@ -1089,6 +1098,7 @@ impl cfn_resources::CfnResource for EntityDetectorConfiguration {
 
 /// A sample configuration for profile jobs only, which determines the number of rows on which the       profile job is run. If a JobSample value isn't provided, the       default is used. The default value is CUSTOM_ROWS for the mode parameter and       20,000 for the size parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JobSample {
     ///
     /// A value that determines whether the profile job is run on the entire dataset or a       specified number of rows. This value must be one of the following:
@@ -1103,7 +1113,7 @@ pub struct JobSample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mode: Option<JobSampleModeEnum>,
 
     ///
@@ -1117,7 +1127,7 @@ pub struct JobSample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<i64>,
 }
 
@@ -1154,6 +1164,7 @@ impl cfn_resources::CfnResource for JobSample {
 
 /// Represents options that specify how and where in Amazon S3 DataBrew writes the output generated by       recipe jobs or profile jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Output {
     ///
     /// The compression algorithm used to compress the output text of the job.
@@ -1166,7 +1177,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compression_format: Option<OutputCompressionFormatEnum>,
 
     ///
@@ -1180,7 +1191,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<OutputFormatEnum>,
 
     ///
@@ -1192,7 +1203,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_options: Option<OutputFormatOptions>,
 
     ///
@@ -1215,7 +1226,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxOutputFiles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_output_files: Option<i64>,
 
     ///
@@ -1227,7 +1238,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overwrite")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overwrite: Option<bool>,
 
     ///
@@ -1241,7 +1252,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub partition_columns: Option<Vec<String>>,
 }
 
@@ -1362,6 +1373,7 @@ impl cfn_resources::CfnResource for Output {
 
 /// Represents a set of options that define the structure of comma-separated (CSV) job output.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutputFormatOptions {
     ///
     /// Represents a set of options that define the structure of comma-separated value (CSV)       job output.
@@ -1372,7 +1384,7 @@ pub struct OutputFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csv")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csv: Option<CsvOutputOptions>,
 }
 
@@ -1394,6 +1406,7 @@ impl cfn_resources::CfnResource for OutputFormatOptions {
 
 /// The location in Amazon S3 or AWS Glue Data Catalog where the job       writes its output.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutputLocation {
     ///
     /// The Amazon S3 bucket name.
@@ -1414,7 +1427,7 @@ pub struct OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -1426,7 +1439,7 @@ pub struct OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 }
 
@@ -1446,6 +1459,7 @@ impl cfn_resources::CfnResource for OutputLocation {
 
 /// Configuration for profile jobs. Configuration can be used to select columns, do evaluations, and override default       parameters of evaluations. When configuration is undefined, the profile job will apply default settings to all       supported columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProfileConfiguration {
     ///
     /// List of configurations for column evaluations. ColumnStatisticsConfigurations are used to       select evaluations and override parameters of evaluations for particular columns. When       ColumnStatisticsConfigurations is undefined, the profile job will profile all supported columns       and run all supported evaluations.
@@ -1456,7 +1470,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnStatisticsConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_statistics_configurations: Option<Vec<ColumnStatisticsConfiguration>>,
 
     ///
@@ -1468,7 +1482,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetStatisticsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_statistics_configuration: Option<StatisticsConfiguration>,
 
     ///
@@ -1480,7 +1494,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityDetectorConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_detector_configuration: Option<EntityDetectorConfiguration>,
 
     ///
@@ -1492,7 +1506,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub profile_columns: Option<Vec<ColumnSelector>>,
 }
 
@@ -1520,6 +1534,7 @@ impl cfn_resources::CfnResource for ProfileConfiguration {
 
 /// Represents one or more actions to be performed on a DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Recipe {
     ///
     /// The unique name for the recipe.
@@ -1545,7 +1560,7 @@ pub struct Recipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -1587,6 +1602,7 @@ impl cfn_resources::CfnResource for Recipe {
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Location {
     ///
     /// The Amazon S3 bucket name.
@@ -1618,7 +1634,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bucket_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -1634,7 +1650,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 }
 
@@ -1720,6 +1736,7 @@ impl cfn_resources::CfnResource for S3Location {
 
 /// Represents options that specify how and where DataBrew writes the Amazon S3 output       generated by recipe jobs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3TableOutputOptions {
     ///
     /// Represents an Amazon S3 location (bucket name and object key) where DataBrew can write output       from a job.
@@ -1751,6 +1768,7 @@ impl cfn_resources::CfnResource for S3TableOutputOptions {
 
 /// Override of a particular evaluation for a profile job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatisticOverride {
     ///
     /// A map that includes overrides of an evaluation’s parameters.
@@ -1819,6 +1837,7 @@ impl cfn_resources::CfnResource for StatisticOverride {
 
 /// Configuration of evaluations for a profile job. This configuration can be used to select       evaluations and override the parameters of selected evaluations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StatisticsConfiguration {
     ///
     /// List of included evaluations. When the list is undefined, all supported       evaluations will be included.
@@ -1829,7 +1848,7 @@ pub struct StatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedStatistics")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub included_statistics: Option<Vec<String>>,
 
     ///
@@ -1841,7 +1860,7 @@ pub struct StatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overrides: Option<Vec<StatisticOverride>>,
 }
 
@@ -1867,6 +1886,7 @@ impl cfn_resources::CfnResource for StatisticsConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1905,6 +1925,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Configuration for data quality validation. Used to select the Rulesets and Validation Mode       to be used in the profile job. When ValidationConfiguration is null, the profile       job will run without data quality validation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValidationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) for the ruleset to be validated in the profile job.       The TargetArn of the selected ruleset should be the same as the Amazon Resource Name (ARN) of       the dataset that is associated with the profile job.
@@ -1926,7 +1947,7 @@ pub struct ValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_mode: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// Use the AWS::XRay::Group resource to specify a group with a name and a filter expression.      Groups enable the collection of traces that match the filter expression, can be used to filter service graphs and traces, and to supply Amazon CloudWatch metrics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGroup {
     ///
     /// The filter expression defining the parameters to include traces.
@@ -10,7 +11,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insights_configuration: Option<InsightsConfiguration>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -82,6 +83,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 
 /// The structure containing configurations related to insights.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InsightsConfiguration {
     ///
     /// Set the InsightsEnabled value to true to enable insights or false to disable       insights.
@@ -92,7 +94,7 @@ pub struct InsightsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insights_enabled: Option<bool>,
 
     ///
@@ -104,7 +106,7 @@ pub struct InsightsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notifications_enabled: Option<bool>,
 }
 
@@ -130,6 +132,7 @@ impl cfn_resources::CfnResource for InsightsConfiguration {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

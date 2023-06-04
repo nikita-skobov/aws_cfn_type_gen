@@ -1,5 +1,6 @@
 /// The AWS::CodeDeploy::Application resource creates an AWS CodeDeploy    application. In CodeDeploy, an application is a name that functions as a container    to ensure that the correct combination of revision, deployment configuration, and deployment    group are referenced during a deployment. You can use the     AWS::CodeDeploy::DeploymentGroup resource to associate the application with a     CodeDeploy deployment group. For more information, see CodeDeploy     Deployments in the AWS CodeDeploy User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// A name for the application. If you don't specify a name, AWS CloudFormation generates a    unique physical ID and uses that ID for the application name. For more information, see Name     Type.
@@ -16,7 +17,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_platform: Option<ApplicationComputePlatformEnum>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

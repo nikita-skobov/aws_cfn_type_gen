@@ -2,6 +2,7 @@
 ///
 /// For more information, see the following topics in the AWS Support User Guide:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSlackChannelConfiguration {
     ///
     /// The channel ID in Slack. This ID identifies a channel within a Slack workspace.
@@ -23,7 +24,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub channel_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnAddCorrespondenceToCase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notify_on_add_correspondence_to_case: Option<bool>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnCreateOrReopenCase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notify_on_create_or_reopen_case: Option<bool>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnResolveCase")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notify_on_resolve_case: Option<bool>,
 
     ///

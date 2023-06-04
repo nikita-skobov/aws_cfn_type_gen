@@ -2,6 +2,7 @@
 ///
 /// Only capacity providers that use an Auto Scaling group can be created. Amazon ECS tasks on 			AWS Fargate use the FARGATE and FARGATE_SPOT capacity providers. 			These providers are available to all accounts in the AWS Regions that AWS Fargate 			supports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCapacityProvider {
     ///
     /// The Auto Scaling group settings for the capacity provider.
@@ -23,7 +24,7 @@ pub struct CfnCapacityProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnCapacityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -72,6 +73,7 @@ impl cfn_resources::CfnResource for CfnCapacityProvider {
 
 /// The details of the Auto Scaling group for the capacity provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoScalingGroupProvider {
     ///
     /// The Amazon Resource Name (ARN) that identifies the Auto Scaling group.
@@ -93,7 +95,7 @@ pub struct AutoScalingGroupProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_scaling: Option<ManagedScaling>,
 
     ///
@@ -113,7 +115,7 @@ pub struct AutoScalingGroupProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedTerminationProtection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_termination_protection:
         Option<AutoScalingGroupProviderManagedTerminationProtectionEnum>,
 }
@@ -159,6 +161,7 @@ impl cfn_resources::CfnResource for AutoScalingGroupProvider {
 ///
 /// If managed scaling is off, the user must manage the scaling of the Auto Scaling 			group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ManagedScaling {
     ///
     /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
@@ -173,7 +176,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceWarmupPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_warmup_period: Option<i64>,
 
     ///
@@ -189,7 +192,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumScalingStepSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_scaling_step_size: Option<i64>,
 
     ///
@@ -209,7 +212,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumScalingStepSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_scaling_step_size: Option<i64>,
 
     ///
@@ -223,7 +226,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<ManagedScalingStatusEnum>,
 
     ///
@@ -239,7 +242,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_capacity: Option<i64>,
 }
 
@@ -345,6 +348,7 @@ impl cfn_resources::CfnResource for ManagedScaling {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

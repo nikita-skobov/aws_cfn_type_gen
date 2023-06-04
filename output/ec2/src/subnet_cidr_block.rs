@@ -1,5 +1,6 @@
 /// Associates a CIDR block with your subnet. You can associate a single IPv6 CIDR block     with your subnet. An IPv6 CIDR block must have a prefix length of /64.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubnetCidrBlock {
     ///
     /// The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a       /64 prefix length.

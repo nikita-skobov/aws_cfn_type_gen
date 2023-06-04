@@ -8,6 +8,7 @@
 ///
 /// In most cases, it takes several minutes to create a cluster. After you create an         Amazon EKS cluster, you must configure your Kubernetes tooling to       communicate with the API server and launch nodes into your cluster. For more       information, see Managing Cluster Authentication and Launching           Amazon EKS nodes in the Amazon EKS User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCluster {
     ///
     /// The encryption configuration for the cluster.
@@ -20,7 +21,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_config: Option<Vec<EncryptionConfig>>,
 
     ///
@@ -32,7 +33,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KubernetesNetworkConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kubernetes_network_config: Option<KubernetesNetworkConfig>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging: Option<Logging>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outpost_config: Option<OutpostConfig>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -278,6 +279,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 
 /// The cluster control plane logging configuration for your cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterLogging {
     ///
     /// The enabled control plane logs for your cluster. All log types are disabled if the       array is empty.
@@ -290,7 +292,7 @@ pub struct ClusterLogging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnabledTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled_types: Option<Vec<LoggingTypeConfig>>,
 }
 
@@ -310,6 +312,7 @@ impl cfn_resources::CfnResource for ClusterLogging {
 
 /// The placement configuration for all the control plane instances of your local Amazon EKS cluster on an AWS Outpost. For more information, see         Capacity           considerations in the Amazon EKS User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ControlPlanePlacement {
     ///
     /// The name of the placement group for the Kubernetes control plane instances.
@@ -320,7 +323,7 @@ pub struct ControlPlanePlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 }
 
@@ -340,6 +343,7 @@ impl cfn_resources::CfnResource for ControlPlanePlacement {
 
 /// The encryption configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfig {
     ///
     /// The encryption provider for the cluster.
@@ -350,7 +354,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Provider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provider: Option<Provider>,
 
     ///
@@ -362,7 +366,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources: Option<Vec<String>>,
 }
 
@@ -386,6 +390,7 @@ impl cfn_resources::CfnResource for EncryptionConfig {
 
 /// The Kubernetes network configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KubernetesNetworkConfig {
     ///
     /// Specify which IP family is used to assign Kubernetes pod and service IP addresses. If       you don't specify a value, ipv4 is used by default. You can only specify an       IP family when you create a cluster and can't change this value once the cluster is       created. If you specify ipv6, the VPC and subnets that you specify for       cluster creation must have both IPv4 and IPv6 CIDR blocks assigned to them. You can't       specify ipv6 for clusters in China Regions.
@@ -400,7 +405,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpFamily")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_family: Option<KubernetesNetworkConfigIpFamilyEnum>,
 
     ///
@@ -416,7 +421,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv4Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_ipv4_cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,7 +433,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv6Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_ipv6_cidr: Option<cfn_resources::StrVal>,
 }
 
@@ -465,6 +470,7 @@ impl cfn_resources::CfnResource for KubernetesNetworkConfig {
 
 /// Enable or disable exporting the Kubernetes control plane logs for your cluster to       CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch       Logs. For more information, see Amazon EKS Cluster control plane         logs in the         Amazon EKS User Guide       .
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Logging {
     ///
     /// The cluster control plane logging configuration for your cluster.
@@ -475,7 +481,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterLogging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_logging: Option<ClusterLogging>,
 }
 
@@ -499,6 +505,7 @@ impl cfn_resources::CfnResource for Logging {
 
 /// The enabled logging type. For a list of the valid logging types, see the types property of LogSetup in the           Amazon EKS API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingTypeConfig {
     ///
     /// The name of the log type.
@@ -509,7 +516,7 @@ pub struct LoggingTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -529,6 +536,7 @@ impl cfn_resources::CfnResource for LoggingTypeConfig {
 
 /// The configuration of your local Amazon EKS cluster on an AWS       Outpost. Before creating a cluster on an Outpost, review Creating a local         cluster on an Outpost in the Amazon EKS User Guide. This API isn't available for         Amazon EKS clusters on the AWS cloud.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutpostConfig {
     ///
     /// The Amazon EC2 instance type that you want to use for your local Amazon EKS cluster on Outposts. Choose an instance type based on the number of nodes       that your cluster will have. For more information, see Capacity         considerations in the Amazon EKS User Guide.
@@ -554,7 +562,7 @@ pub struct OutpostConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ControlPlanePlacement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub control_plane_placement: Option<ControlPlanePlacement>,
 
     ///
@@ -589,6 +597,7 @@ impl cfn_resources::CfnResource for OutpostConfig {
 
 /// Identifies the AWS Key Management Service (AWS KMS) key used to encrypt the       secrets.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Provider {
     ///
     /// Amazon Resource Name (ARN) or alias of the KMS key. The KMS key must be       symmetric and created in the same AWS Region as the cluster. If the         KMS key was created in a different account, the IAM principal must       have access to the KMS key. For more information, see Allowing         users in other accounts to use a KMS key in the                   AWS Key Management Service Developer Guide.
@@ -599,7 +608,7 @@ pub struct Provider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -619,6 +628,7 @@ impl cfn_resources::CfnResource for Provider {
 
 /// An object representing the VPC configuration to use for an Amazon EKS cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourcesVpcConfig {
     ///
     /// Set this value to true to enable private access for your cluster's       Kubernetes API server endpoint. If you enable private access, Kubernetes API requests       from within your cluster's VPC use the private VPC endpoint. The default value for this       parameter is false, which disables private access for your Kubernetes API       server. If you disable private access and you have nodes or AWS Fargate       pods in the cluster, then ensure that publicAccessCidrs includes the       necessary CIDR blocks for communication with the nodes or Fargate pods.       For more information, see Amazon EKS cluster endpoint access control in       the         Amazon EKS User Guide       .
@@ -629,7 +639,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointPrivateAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_private_access: Option<bool>,
 
     ///
@@ -641,7 +651,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointPublicAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_public_access: Option<bool>,
 
     ///
@@ -653,7 +663,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccessCidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub public_access_cidrs: Option<Vec<String>>,
 
     ///
@@ -665,7 +675,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -702,6 +712,7 @@ impl cfn_resources::CfnResource for ResourcesVpcConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

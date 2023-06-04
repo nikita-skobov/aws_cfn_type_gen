@@ -1,5 +1,6 @@
 /// The AWS::KinesisAnalytics::Application resource creates an Amazon Kinesis Data Analytics application. For more information, see the Amazon Kinesis Data Analytics Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplication {
     ///
     /// One or more SQL statements that read input data, transform it, and generate output.       For example, you can write a SQL statement that reads data from one in-application       stream, generates a running average of the number of advertisement clicks by vendor, and       insert resulting rows in another in-application stream using pumps. For more information       about the typical pattern, see Application         Code.
@@ -18,7 +19,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,6 +151,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 ///
 /// "name2", "address2"
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CSVMappingParameters {
     ///
     /// Column delimiter. For example, in a CSV format, a comma (",") is the typical column       delimiter.
@@ -216,6 +218,7 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
 
 /// When you configure the application input, you specify the streaming source, the       in-application stream name that is created, and the mapping between the two. For more       information, see Configuring Application         Input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Input {
     ///
     /// Describes the number of in-application streams to create.
@@ -230,7 +233,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParallelism")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_parallelism: Option<InputParallelism>,
 
     ///
@@ -242,7 +245,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputProcessingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_processing_configuration: Option<InputProcessingConfiguration>,
 
     ///
@@ -269,7 +272,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_firehose_input: Option<KinesisFirehoseInput>,
 
     ///
@@ -283,7 +286,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamsInput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kinesis_streams_input: Option<KinesisStreamsInput>,
 
     ///
@@ -358,6 +361,7 @@ impl cfn_resources::CfnResource for Input {
 
 /// An object that contains the Amazon Resource Name (ARN) of the AWS Lambda function that is used to preprocess records in the       stream, and the ARN of the IAM role that is used to access the AWS Lambda       function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputLambdaProcessor {
     ///
     /// The ARN of the AWS Lambda function that operates on records in the       stream.
@@ -456,6 +460,7 @@ impl cfn_resources::CfnResource for InputLambdaProcessor {
 
 /// Describes the number of in-application streams to create for a given streaming source.       For information about parallelism, see Configuring Application         Input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputParallelism {
     ///
     /// Number of in-application streams to create. For more information, see Limits.
@@ -470,7 +475,7 @@ pub struct InputParallelism {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 }
 
@@ -508,6 +513,7 @@ impl cfn_resources::CfnResource for InputParallelism {
 
 /// Provides a description of a processor that is used to preprocess the records in the       stream before being processed by your application code. Currently, the only input       processor available is AWS Lambda.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputProcessingConfiguration {
     ///
     /// The InputLambdaProcessor that is used to preprocess the records       in the stream before being processed by your application code.
@@ -518,7 +524,7 @@ pub struct InputProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLambdaProcessor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_lambda_processor: Option<InputLambdaProcessor>,
 }
 
@@ -544,6 +550,7 @@ impl cfn_resources::CfnResource for InputProcessingConfiguration {
 ///
 /// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputSchema {
     ///
     /// A list of RecordColumn objects.
@@ -569,7 +576,7 @@ pub struct InputSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordEncoding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -611,6 +618,7 @@ impl cfn_resources::CfnResource for InputSchema {
 
 /// Provides additional mapping information when JSON is the record format on the       streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JSONMappingParameters {
     ///
     /// Path to the top-level parent that contains the records.
@@ -653,6 +661,7 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
 
 /// Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You       provide the delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that       enables Amazon Kinesis Analytics to access the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisFirehoseInput {
     ///
     /// ARN of the input delivery stream.
@@ -749,6 +758,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseInput {
 
 /// Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's       Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to       access the stream on your behalf.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KinesisStreamsInput {
     ///
     /// ARN of the input Amazon Kinesis stream to read.
@@ -845,6 +855,7 @@ impl cfn_resources::CfnResource for KinesisStreamsInput {
 
 /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MappingParameters {
     ///
     /// Provides additional mapping information when the record format uses delimiters (for       example, CSV).
@@ -855,7 +866,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSVMappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
     ///
@@ -867,7 +878,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
 }
 
@@ -897,6 +908,7 @@ impl cfn_resources::CfnResource for MappingParameters {
 ///
 /// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordColumn {
     ///
     /// Reference to the data element in the streaming input or the reference data source.       This element is required if the RecordFormatType is JSON.
@@ -907,7 +919,7 @@ pub struct RecordColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mapping")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapping: Option<cfn_resources::StrVal>,
 
     ///
@@ -962,6 +974,7 @@ impl cfn_resources::CfnResource for RecordColumn {
 
 /// Describes the record format and relevant mapping information that should be applied       to schematize the records on the stream.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RecordFormat {
     ///
     /// When configuring application input at the time of creating or updating an application,       provides additional mapping information specific to the record format (such as JSON,       CSV, or record fields delimited by some delimiter) on the streaming source.
@@ -972,7 +985,7 @@ pub struct RecordFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapping_parameters: Option<MappingParameters>,
 
     ///

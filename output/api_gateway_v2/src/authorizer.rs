@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Authorizer resource creates an authorizer for a       WebSocket API or an HTTP API. To learn more, see Controlling and managing access to a WebSocket API in API Gateway and         Controlling and         managing access to an HTTP API in API Gateway in the API Gateway         Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAuthorizer {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerCredentialsArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_credentials_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerPayloadFormatVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_payload_format_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerResultTtlInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_result_ttl_in_seconds: Option<i64>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSimpleResponses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_simple_responses: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_source: Option<Vec<String>>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityValidationExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_validation_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jwt_configuration: Option<JWTConfiguration>,
 
     ///
@@ -166,6 +167,7 @@ impl cfn_resources::CfnResource for CfnAuthorizer {
 
 /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JWTConfiguration {
     ///
     /// A list of the intended recipients of the JWT. A valid JWT must provide an          aud that matches at least one entry in this list. See RFC 7519.        Required for the JWT authorizer type. Supported only for HTTP APIs.
@@ -176,7 +178,7 @@ pub struct JWTConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Audience")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub audience: Option<Vec<String>>,
 
     ///
@@ -188,7 +190,7 @@ pub struct JWTConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub issuer: Option<cfn_resources::StrVal>,
 }
 

@@ -2,6 +2,7 @@
 ///
 /// For information about quotas on the number of keys you can create, see IAM and        AWS STS quotas in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAccessKey {
     ///
     /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
@@ -12,7 +13,7 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Serial")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serial: Option<i64>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<AccessKeyStatusEnum>,
 
     ///

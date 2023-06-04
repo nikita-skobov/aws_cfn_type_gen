@@ -1,5 +1,6 @@
 /// A complex type that contains SizeConstraint objects, which specify the parts of web requests that you             want AWS WAF to inspect the size of. If a SizeConstraintSet contains more than one SizeConstraint 			object, a request only needs to match one constraint to be considered a match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSizeConstraintSet {
     ///
     /// The name, if any, of the SizeConstraintSet.
@@ -68,6 +69,7 @@ impl cfn_resources::CfnResource for CfnSizeConstraintSet {
 
 /// The part of a web request that you want to inspect, such as a specified header or a query string.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     ///
     /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
@@ -88,7 +90,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,6 +184,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
 /// Specifies a constraint on the size of a part of the web request. AWS WAF uses the Size, ComparisonOperator, and FieldToMatch to build 			an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression is true, the 			SizeConstraint is considered to match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SizeConstraint {
     ///
     /// The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided Size and FieldToMatch 			to build an expression in the form of "Size       ComparisonOperator size in bytes of FieldToMatch". If that expression 			is true, the SizeConstraint is considered to match.

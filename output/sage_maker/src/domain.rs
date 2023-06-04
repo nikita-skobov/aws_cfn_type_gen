@@ -12,6 +12,7 @@
 ///
 /// For more information, see   Connect    SageMaker Studio Notebooks to Resources in a VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomain {
     ///
     /// Specifies the VPC used for non-EFS traffic. The default value is         PublicInternetOnly.
@@ -26,7 +27,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppNetworkAccessType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_network_access_type: Option<DomainAppNetworkAccessTypeEnum>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppSecurityGroupManagement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_security_group_management: Option<DomainAppSecurityGroupManagementEnum>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSpaceSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_space_settings: Option<DefaultSpaceSettings>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_settings: Option<DomainSettings>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +152,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -325,6 +326,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomImage {
     ///
     /// The name of the AppImageConfig.
@@ -369,7 +371,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_version_number: Option<i64>,
 }
 
@@ -431,6 +433,7 @@ impl cfn_resources::CfnResource for CustomImage {
 
 /// A collection of settings that apply to spaces created in the Domain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultSpaceSettings {
     ///
     /// The ARN of the execution role for the space.
@@ -458,7 +461,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -470,7 +473,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
     ///
@@ -484,7 +487,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 }
 
@@ -543,6 +546,7 @@ impl cfn_resources::CfnResource for DefaultSpaceSettings {
 
 /// A collection of settings that apply to the SageMaker Domain. These       settings are specified through the CreateDomain API call.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainSettings {
     ///
     /// A collection of settings that configure the RStudioServerPro Domain-level       app.
@@ -553,7 +557,7 @@ pub struct DomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioServerProDomainSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rstudio_server_pro_domain_settings: Option<RStudioServerProDomainSettings>,
 
     ///
@@ -567,7 +571,7 @@ pub struct DomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 }
 
@@ -600,6 +604,7 @@ impl cfn_resources::CfnResource for DomainSettings {
 
 /// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JupyterServerAppSettings {
     ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker       image used by the JupyterServer app.
@@ -610,7 +615,7 @@ pub struct JupyterServerAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -634,6 +639,7 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
 
 /// The KernelGateway app settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KernelGatewayAppSettings {
     ///
     /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
@@ -646,7 +652,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -660,7 +666,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -693,6 +699,7 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
 
 /// A collection of settings that apply to an RSessionGateway app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RSessionAppSettings {
     ///
     /// A list of custom SageMaker images that are configured to run as a RSession app.
@@ -705,7 +712,7 @@ pub struct RSessionAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -717,7 +724,7 @@ pub struct RSessionAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -750,6 +757,7 @@ impl cfn_resources::CfnResource for RSessionAppSettings {
 
 /// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RStudioServerProAppSettings {
     ///
     /// Indicates whether the current user has access to the RStudioServerPro       app.
@@ -762,7 +770,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
 
     ///
@@ -776,7 +784,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
 }
 
@@ -830,6 +838,7 @@ impl cfn_resources::CfnResource for RStudioServerProAppSettings {
 
 /// A collection of settings that configure the RStudioServerPro Domain-level       app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RStudioServerProDomainSettings {
     ///
     /// A collection that defines the default InstanceType,         SageMakerImageArn, and SageMakerImageVersionArn for the       Domain.
@@ -840,7 +849,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_resource_spec: Option<ResourceSpec>,
 
     ///
@@ -869,7 +878,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioConnectUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rstudio_connect_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -881,7 +890,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioPackageManagerUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rstudio_package_manager_url: Option<cfn_resources::StrVal>,
 }
 
@@ -921,6 +930,7 @@ impl cfn_resources::CfnResource for RStudioServerProDomainSettings {
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceSpec {
     ///
     /// The instance type that the image version runs on.
@@ -935,7 +945,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -951,7 +961,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LifecycleConfigArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -967,7 +977,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SageMakerImageArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -983,7 +993,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SageMakerImageVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1276,6 +1286,7 @@ impl cfn_resources::CfnResource for ResourceSpec {
 
 /// Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are       specified as part of DefaultUserSettings when the CreateDomain API is called, and as part of UserSettings when       the CreateUserProfile API is called.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SharingSettings {
     ///
     /// Whether to include the notebook cell output when sharing the notebook. The default     is Disabled.
@@ -1288,7 +1299,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotebookOutputOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
 
     ///
@@ -1304,7 +1315,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1320,7 +1331,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OutputPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
@@ -1385,6 +1396,7 @@ impl cfn_resources::CfnResource for SharingSettings {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1425,6 +1437,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// SecurityGroups is aggregated when specified in both calls. For all other       settings in UserSettings, the values specified in         CreateUserProfile take precedence over those specified in         CreateDomain.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserSettings {
     ///
     /// The execution role for the user.
@@ -1452,7 +1465,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -1464,7 +1477,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
     ///
@@ -1476,7 +1489,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RSessionAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rsession_app_settings: Option<RSessionAppSettings>,
 
     ///
@@ -1488,7 +1501,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioServerProAppSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
 
     ///
@@ -1508,7 +1521,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -1520,7 +1533,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharingSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sharing_settings: Option<SharingSettings>,
 }
 

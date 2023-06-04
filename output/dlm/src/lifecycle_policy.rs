@@ -2,6 +2,7 @@
 ///
 /// The properties are required when you add a lifecycle policy and optional when you update a lifecycle policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLifecyclePolicy {
     ///
     /// A description of the lifecycle policy. The characters ^[0-9A-Za-z _-]+$ are 			supported.
@@ -18,7 +19,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_details: Option<PolicyDetails>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<LifecyclePolicyStateEnum>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -171,6 +172,7 @@ impl cfn_resources::CfnResource for CfnLifecyclePolicy {
 
 /// [Event-based policies only] Specifies an action for an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// The rule for copying shared snapshots across Regions.
@@ -250,6 +252,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// The ArchiveRetainRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArchiveRetainRule {
     /// Property description not available.
     ///
@@ -280,6 +283,7 @@ impl cfn_resources::CfnResource for ArchiveRetainRule {
 
 /// The ArchiveRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArchiveRule {
     /// Property description not available.
     ///
@@ -310,6 +314,7 @@ impl cfn_resources::CfnResource for ArchiveRule {
 
 /// [Snapshot and AMI policies only] Specifies when the policy should create snapshots or AMIs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateRule {
     ///
     /// The schedule, as a Cron expression. The schedule interval must be between 1 hour and 1 			year. For more information, see Cron 				expressions in the Amazon CloudWatch User Guide.
@@ -326,7 +331,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CronExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cron_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -340,7 +345,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     ///
@@ -354,7 +359,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_unit: Option<CreateRuleIntervalUnitEnum>,
 
     ///
@@ -370,7 +375,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub location: Option<CreateRuleLocationEnum>,
 
     ///
@@ -386,7 +391,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Times")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub times: Option<Vec<String>>,
 }
 
@@ -476,6 +481,7 @@ impl cfn_resources::CfnResource for CreateRule {
 
 /// [Event-based policies only] Specifies a cross-Region copy action for event-based policies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CrossRegionCopyAction {
     ///
     /// The encryption settings for the copied snapshot.
@@ -497,7 +503,7 @@ pub struct CrossRegionCopyAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_rule: Option<CrossRegionCopyRetainRule>,
 
     ///
@@ -562,6 +568,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyAction {
 
 /// The CrossRegionCopyDeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CrossRegionCopyDeprecateRule {
     /// Property description not available.
     ///
@@ -600,6 +607,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyDeprecateRule {
 
 /// Specifies a retention rule for cross-Region snapshot copies created by snapshot or 			event-based policies, or cross-Region AMI copies created by AMI policies. After the 			retention period expires, the cross-Region copy is deleted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CrossRegionCopyRetainRule {
     ///
     /// The amount of time to retain a cross-Region snapshot or AMI copy. The maximum is 100 years. 			This is equivalent to 1200 months, 5200 weeks, or 36500 days.
@@ -678,6 +686,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyRetainRule {
 
 /// [Snapshot and AMI policies only] Specifies a cross-Region copy rule for snapshot and AMI policies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CrossRegionCopyRule {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS key to use for EBS encryption. If this 			parameter is not specified, the default KMS key for the account is used.
@@ -694,7 +703,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -706,7 +715,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags: Option<bool>,
 
     /// Property description not available.
@@ -717,7 +726,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deprecate_rule: Option<CrossRegionCopyDeprecateRule>,
 
     ///
@@ -740,7 +749,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_rule: Option<CrossRegionCopyRetainRule>,
 
     ///
@@ -760,7 +769,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<cfn_resources::StrVal>,
 
     ///
@@ -778,7 +787,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_region: Option<cfn_resources::StrVal>,
 }
 
@@ -872,6 +881,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyRule {
 
 /// The DeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeprecateRule {
     /// Property description not available.
     ///
@@ -881,7 +891,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     /// Property description not available.
@@ -892,7 +902,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     /// Property description not available.
@@ -903,7 +913,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
@@ -923,6 +933,7 @@ impl cfn_resources::CfnResource for DeprecateRule {
 
 /// [Event-based policies only] Specifies the encryption settings for cross-Region snapshot copies created by 			event-based policies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS key to use for EBS encryption. If 			this parameter is not specified, the default KMS key for the account is used.
@@ -939,7 +950,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -992,6 +1003,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventParameters {
     ///
     /// The snapshot description that can trigger the policy. The description pattern is specified using 			a regular expression. The policy runs only if a snapshot with a description that matches the 			specified pattern is shared with your account.
@@ -1010,7 +1022,7 @@ pub struct EventParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DescriptionRegex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description_regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -1097,6 +1109,7 @@ impl cfn_resources::CfnResource for EventParameters {
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventSource {
     ///
     /// Information about the event.
@@ -1107,7 +1120,7 @@ pub struct EventSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<EventParameters>,
 
     ///
@@ -1157,6 +1170,7 @@ impl cfn_resources::CfnResource for EventSource {
 
 /// [Snapshot policies only] Specifies a rule for enabling fast snapshot restore for snapshots created by 			snapshot policies. You can enable fast snapshot restore based on either a count or a 			time interval.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FastRestoreRule {
     ///
     /// The Availability Zones in which to enable fast snapshot restore.
@@ -1169,7 +1183,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -1185,7 +1199,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     ///
@@ -1199,7 +1213,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     ///
@@ -1213,7 +1227,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_unit: Option<FastRestoreRuleIntervalUnitEnum>,
 }
 
@@ -1296,6 +1310,7 @@ impl cfn_resources::CfnResource for FastRestoreRule {
 ///
 /// If you choose to exclude boot volumes and you specify tags that consequently exclude 			all of the additional data volumes attached to an instance, then Amazon Data Lifecycle Manager will not create 			any snapshots for the affected instance, and it will emit a SnapshotsCreateFailed 			Amazon CloudWatch metric. For more information, see Monitor your policies 				using Amazon CloudWatch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Parameters {
     ///
     /// [Snapshot policies that target instances only] Indicates whether to exclude the root volume from multi-volume 			snapshot sets. The default is false. If you specify true, 			then the root volumes attached to targeted instances will be excluded from the multi-volume 			snapshot sets created by the policy.
@@ -1306,7 +1321,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeBootVolume")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_boot_volume: Option<bool>,
 
     /// Property description not available.
@@ -1317,7 +1332,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeDataVolumeTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_data_volume_tags: Option<Vec<Tag>>,
 
     ///
@@ -1329,7 +1344,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoReboot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_reboot: Option<bool>,
 }
 
@@ -1349,6 +1364,7 @@ impl cfn_resources::CfnResource for Parameters {
 
 /// [All policy types] Specifies the configuration of a lifecycle policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PolicyDetails {
     ///
     /// [Event-based policies only] The actions to be performed when the event-based policy is activated. You can specify 			only one action per policy.
@@ -1361,7 +1377,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<Action>>,
 
     ///
@@ -1373,7 +1389,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_source: Option<EventSource>,
 
     ///
@@ -1387,7 +1403,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Parameters>,
 
     ///
@@ -1403,7 +1419,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policy_type: Option<PolicyDetailsPolicyTypeEnum>,
 
     ///
@@ -1419,7 +1435,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLocations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_locations: Option<Vec<String>>,
 
     ///
@@ -1433,7 +1449,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types: Option<Vec<String>>,
 
     ///
@@ -1447,7 +1463,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedules: Option<Vec<Schedule>>,
 
     ///
@@ -1461,7 +1477,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_tags: Option<Vec<Tag>>,
 }
 
@@ -1557,6 +1573,7 @@ impl cfn_resources::CfnResource for PolicyDetails {
 ///
 /// You can retain snapshots based on either a count or a time interval.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetainRule {
     ///
     /// The number of snapshots to retain for each volume, up to a maximum of 1000. For example if you want to 			retain a maximum of three snapshots, specify 3. When the fourth snapshot is created, the 			oldest retained snapshot is deleted, or it is moved to the archive tier if you have specified an 			ArchiveRule.
@@ -1571,7 +1588,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     ///
@@ -1585,7 +1602,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     ///
@@ -1599,7 +1616,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_unit: Option<RetainRuleIntervalUnitEnum>,
 }
 
@@ -1671,6 +1688,7 @@ impl cfn_resources::CfnResource for RetainRule {
 
 /// The RetentionArchiveTier property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetentionArchiveTier {
     /// Property description not available.
     ///
@@ -1680,7 +1698,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub count: Option<i64>,
 
     /// Property description not available.
@@ -1691,7 +1709,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     /// Property description not available.
@@ -1702,7 +1720,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
@@ -1722,6 +1740,7 @@ impl cfn_resources::CfnResource for RetentionArchiveTier {
 
 /// [Snapshot and AMI policies only] Specifies a schedule for a snapshot or AMI lifecycle policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     /// Property description not available.
     ///
@@ -1731,7 +1750,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub archive_rule: Option<ArchiveRule>,
 
     ///
@@ -1743,7 +1762,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags: Option<bool>,
 
     ///
@@ -1755,7 +1774,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub create_rule: Option<CreateRule>,
 
     ///
@@ -1771,7 +1790,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrossRegionCopyRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cross_region_copy_rules: Option<Vec<CrossRegionCopyRule>>,
 
     /// Property description not available.
@@ -1782,7 +1801,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deprecate_rule: Option<DeprecateRule>,
 
     ///
@@ -1794,7 +1813,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FastRestoreRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fast_restore_rule: Option<FastRestoreRule>,
 
     ///
@@ -1812,7 +1831,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1824,7 +1843,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retain_rule: Option<RetainRule>,
 
     ///
@@ -1838,7 +1857,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub share_rules: Option<Vec<ShareRule>>,
 
     ///
@@ -1852,7 +1871,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagsToAdd")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags_to_add: Option<Vec<Tag>>,
 
     ///
@@ -1866,7 +1885,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variable_tags: Option<Vec<Tag>>,
 }
 
@@ -1961,6 +1980,7 @@ impl cfn_resources::CfnResource for Schedule {
 
 /// [Snapshot policies only] Specifies a rule for sharing snapshots across AWS accounts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShareRule {
     ///
     /// The IDs of the AWS accounts with which to share the snapshots.
@@ -1971,7 +1991,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_accounts: Option<Vec<String>>,
 
     ///
@@ -1985,7 +2005,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnshareInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unshare_interval: Option<i64>,
 
     ///
@@ -1999,7 +2019,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnshareIntervalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unshare_interval_unit: Option<ShareRuleUnshareIntervalUnitEnum>,
 }
 
@@ -2059,6 +2079,7 @@ impl cfn_resources::CfnResource for ShareRule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

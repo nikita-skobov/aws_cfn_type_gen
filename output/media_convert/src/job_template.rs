@@ -4,6 +4,7 @@
 ///
 /// For information about job templates,       see Working with AWS Elemental MediaConvert Job Templates in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJobTemplate {
     ///
     /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
@@ -14,7 +15,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccelerationSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acceleration_settings: Option<AccelerationSettings>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HopDestinations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hop_destinations: Option<Vec<HopDestination>>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queue: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusUpdateInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status_update_interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -157,7 +158,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -212,6 +213,7 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
 
 /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see       Job         Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccelerationSettings {
     ///
     /// Specify the conditions when the service will run your job with accelerated transcoding.
@@ -241,6 +243,7 @@ impl cfn_resources::CfnResource for AccelerationSettings {
 
 /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HopDestination {
     ///
     /// Optional. When you set up a job to use queue hopping, you can specify a different relative priority for the job in the destination queue. If you don't specify, the relative priority will remain the same as in the previous queue.
@@ -251,7 +254,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 
     ///
@@ -263,7 +266,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub queue: Option<cfn_resources::StrVal>,
 
     ///
@@ -275,7 +278,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub wait_minutes: Option<i64>,
 }
 

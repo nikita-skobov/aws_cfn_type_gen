@@ -1,5 +1,6 @@
 /// Use the AWS::ACMPCA::CertificateAuthority resource to create a private       CA. Once the CA exists, you can use the AWS::ACMPCA::Certificate resource       to issue a new CA certificate. Alternatively, you can issue a CA certificate using an       on-premises CA, and then use the         AWS::ACMPCA::CertificateAuthorityActivation resource to import the new       CA certificate and activate the CA.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCertificateAuthority {
     ///
     /// Specifies information to be added to the extension section of the certificate signing 			request (CSR).
@@ -10,7 +11,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CsrExtensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub csr_extensions: Option<CsrExtensions>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyStorageSecurityStandard")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_storage_security_standard: Option<CertificateAuthorityKeyStorageSecurityStandardEnum>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevocationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revocation_configuration: Option<RevocationConfiguration>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsageMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub usage_mode: Option<CertificateAuthorityUsageModeEnum>,
 
     #[serde(skip_serializing)]
@@ -283,6 +284,7 @@ impl cfn_resources::CfnResource for CfnCertificateAuthority {
 
 /// Provides access information used by the authorityInfoAccess and 				subjectInfoAccess extensions described in RFC 5280.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessDescription {
     ///
     /// The location of AccessDescription information.
@@ -327,6 +329,7 @@ impl cfn_resources::CfnResource for AccessDescription {
 
 /// Describes the type and format of extension access. Only one of 				CustomObjectIdentifier or AccessMethodType may be 			provided. Providing both results in InvalidArgsException.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessMethod {
     ///
     /// Specifies the AccessMethod.
@@ -339,7 +342,7 @@ pub struct AccessMethod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessMethodType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_method_type: Option<AccessMethodAccessMethodTypeEnum>,
 
     ///
@@ -357,7 +360,7 @@ pub struct AccessMethod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomObjectIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_object_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -428,6 +431,7 @@ impl cfn_resources::CfnResource for AccessMethod {
 ///
 /// For more information, see Planning a certificate revocation list 				(CRL) in the         AWS Private Certificate Authority User Guide
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CrlConfiguration {
     ///
     /// Name inserted into the certificate CRL Distribution         Points extension that enables the use of an alias for the CRL       distribution point. Use this value if you don't want the name of your S3 bucket to be       public.
@@ -446,7 +450,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_cname: Option<cfn_resources::StrVal>,
 
     ///
@@ -458,7 +462,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -474,7 +478,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expiration_in_days: Option<i64>,
 
     ///
@@ -494,7 +498,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -512,7 +516,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectAcl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_object_acl: Option<cfn_resources::StrVal>,
 }
 
@@ -594,6 +598,7 @@ impl cfn_resources::CfnResource for CrlConfiguration {
 
 /// Describes the certificate extensions to be added to the certificate signing request 			(CSR).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CsrExtensions {
     ///
     /// Indicates the purpose of the certificate and of the key contained in the 			certificate.
@@ -604,7 +609,7 @@ pub struct CsrExtensions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyUsage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_usage: Option<KeyUsage>,
 
     ///
@@ -616,7 +621,7 @@ pub struct CsrExtensions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubjectInformationAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_information_access: Option<Vec<AccessDescription>>,
 }
 
@@ -640,6 +645,7 @@ impl cfn_resources::CfnResource for CsrExtensions {
 
 /// Defines the X.500 relative distinguished name (RDN).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomAttribute {
     ///
     /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
@@ -736,6 +742,7 @@ impl cfn_resources::CfnResource for CustomAttribute {
 
 /// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EdiPartyName {
     ///
     /// Specifies the name assigner.
@@ -828,6 +835,7 @@ impl cfn_resources::CfnResource for EdiPartyName {
 
 /// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeneralName {
     ///
     /// Contains information about the certificate subject. The certificate can be one issued       by your private certificate authority (CA) or it can be your private CA certificate. The       Subject field in the certificate identifies the entity that owns or controls the public       key in the certificate. The entity can be a user, computer, device, or service. The       Subject must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN       must be unique for each entity, but your private CA can issue more than one certificate       with the same DN to the same entity.
@@ -838,7 +846,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DirectoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub directory_name: Option<Subject>,
 
     ///
@@ -854,7 +862,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -866,7 +874,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EdiPartyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub edi_party_name: Option<EdiPartyName>,
 
     ///
@@ -882,7 +890,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -894,7 +902,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OtherName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub other_name: Option<OtherName>,
 
     ///
@@ -912,7 +920,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegisteredId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registered_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -928,7 +936,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Rfc822Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rfc822_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -944,7 +952,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UniformResourceIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uniform_resource_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -1080,6 +1088,7 @@ impl cfn_resources::CfnResource for GeneralName {
 
 /// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KeyUsage {
     ///
     /// Key can be used to sign CRLs.
@@ -1090,7 +1099,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CRLSign")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crlsign: Option<bool>,
 
     ///
@@ -1102,7 +1111,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataEncipherment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_encipherment: Option<bool>,
 
     ///
@@ -1114,7 +1123,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DecipherOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decipher_only: Option<bool>,
 
     ///
@@ -1126,7 +1135,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DigitalSignature")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub digital_signature: Option<bool>,
 
     ///
@@ -1138,7 +1147,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncipherOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encipher_only: Option<bool>,
 
     ///
@@ -1150,7 +1159,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyAgreement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_agreement: Option<bool>,
 
     ///
@@ -1162,7 +1171,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyCertSign")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_cert_sign: Option<bool>,
 
     ///
@@ -1174,7 +1183,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyEncipherment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key_encipherment: Option<bool>,
 
     ///
@@ -1186,7 +1195,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NonRepudiation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub non_repudiation: Option<bool>,
 }
 
@@ -1206,6 +1215,7 @@ impl cfn_resources::CfnResource for KeyUsage {
 
 /// Contains information to enable and configure Online Certificate Status Protocol (OCSP)       for validating certificate revocation status.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OcspConfiguration {
     ///
     /// Flag enabling use of the Online Certificate Status Protocol (OCSP) for validating       certificate revocation status.
@@ -1216,7 +1226,7 @@ pub struct OcspConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -1236,7 +1246,7 @@ pub struct OcspConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcspCustomCname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ocsp_custom_cname: Option<cfn_resources::StrVal>,
 }
 
@@ -1275,6 +1285,7 @@ impl cfn_resources::CfnResource for OcspConfiguration {
 
 /// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OtherName {
     ///
     /// Specifies an OID.
@@ -1369,6 +1380,7 @@ impl cfn_resources::CfnResource for OtherName {
 
 /// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RevocationConfiguration {
     ///
     /// Configuration of the certificate revocation list (CRL), if any, maintained by your       private CA.
@@ -1379,7 +1391,7 @@ pub struct RevocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub crl_configuration: Option<CrlConfiguration>,
 
     ///
@@ -1391,7 +1403,7 @@ pub struct RevocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcspConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ocsp_configuration: Option<OcspConfiguration>,
 }
 
@@ -1419,6 +1431,7 @@ impl cfn_resources::CfnResource for RevocationConfiguration {
 
 /// ASN1 subject for the certificate authority.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Subject {
     ///
     /// Fully qualified domain name (FQDN) associated with the certificate subject.
@@ -1429,7 +1442,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CommonName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub common_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1441,7 +1454,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Country")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub country: Option<cfn_resources::StrVal>,
 
     ///
@@ -1459,7 +1472,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomAttributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_attributes: Option<Vec<CustomAttribute>>,
 
     ///
@@ -1471,7 +1484,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DistinguishedNameQualifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub distinguished_name_qualifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -1483,7 +1496,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GenerationQualifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub generation_qualifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -1495,7 +1508,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GivenName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub given_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1507,7 +1520,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Initials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initials: Option<cfn_resources::StrVal>,
 
     ///
@@ -1519,7 +1532,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Locality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub locality: Option<cfn_resources::StrVal>,
 
     ///
@@ -1531,7 +1544,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Organization")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization: Option<cfn_resources::StrVal>,
 
     ///
@@ -1543,7 +1556,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organizational_unit: Option<cfn_resources::StrVal>,
 
     ///
@@ -1555,7 +1568,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Pseudonym")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pseudonym: Option<cfn_resources::StrVal>,
 
     ///
@@ -1567,7 +1580,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SerialNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub serial_number: Option<cfn_resources::StrVal>,
 
     ///
@@ -1579,7 +1592,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<cfn_resources::StrVal>,
 
     ///
@@ -1591,7 +1604,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Surname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub surname: Option<cfn_resources::StrVal>,
 
     ///
@@ -1603,7 +1616,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<cfn_resources::StrVal>,
 }
 
@@ -1638,6 +1651,7 @@ impl cfn_resources::CfnResource for Subject {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

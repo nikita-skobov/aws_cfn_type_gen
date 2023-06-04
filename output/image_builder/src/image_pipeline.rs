@@ -1,5 +1,6 @@
 /// An image pipeline is the automation configuration for building secure OS images on AWS.     The Image Builder image pipeline is associated with an image recipe that defines the build,     validation, and test phases for an image build lifecycle. An image pipeline can be     associated with an infrastructure configuration that defines where your image is built. You     can define attributes, such as instance type, subnets, security groups, logging, and other     infrastructure-related configurations. You can also associate your image pipeline with a     distribution configuration to define how you would like to deploy your image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnImagePipeline {
     ///
     /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
@@ -10,7 +11,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerRecipeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DistributionConfigurationArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub distribution_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedImageMetadataEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enhanced_image_metadata_enabled: Option<bool>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageRecipeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_recipe_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -73,7 +74,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTestsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
     ///
@@ -121,7 +122,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<ImagePipelineStatusEnum>,
 
     ///
@@ -147,7 +148,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -240,6 +241,7 @@ impl cfn_resources::CfnResource for CfnImagePipeline {
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EcrConfiguration {
     /// Property description not available.
     ///
@@ -249,7 +251,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_tags: Option<Vec<String>>,
 
     /// Property description not available.
@@ -260,7 +262,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_name: Option<cfn_resources::StrVal>,
 }
 
@@ -280,6 +282,7 @@ impl cfn_resources::CfnResource for EcrConfiguration {
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageScanningConfiguration {
     /// Property description not available.
     ///
@@ -289,7 +292,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ecr_configuration: Option<EcrConfiguration>,
 
     /// Property description not available.
@@ -300,7 +303,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scanning_enabled: Option<bool>,
 }
 
@@ -324,6 +327,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that your image pipeline uses to create the final image. You must   		have at least one build component to create a recipe, but test components are not required.   		Your pipeline runs tests after it builds the image, to ensure that the target image is   		functional and can be used reliably for launching Amazon EC2 instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ImageTestsConfiguration {
     ///
     /// Defines if tests should be executed when building this image. For example,       true or false.
@@ -334,7 +338,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTestsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_tests_enabled: Option<bool>,
 
     ///
@@ -352,7 +356,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_minutes: Option<i64>,
 }
 
@@ -390,6 +394,7 @@ impl cfn_resources::CfnResource for ImageTestsConfiguration {
 
 /// A schedule configures how often and when a pipeline will automatically create a new 			image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     ///
     /// The condition configures when the pipeline should trigger a new image build. When the 	    pipelineExecutionStartCondition is set to 	    EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE, and you use semantic version 			filters on the base image or components in your image recipe, Image Builder will build a 			new image only when there are new versions of the image or components in your recipe that 			match the semantic version filter. When it is set to EXPRESSION_MATCH_ONLY, it 			will build a new image every time the CRON expression matches the current time. For semantic 			version syntax, see CreateComponent      	in the Image Builder API Reference.
@@ -402,7 +407,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineExecutionStartCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pipeline_execution_start_condition: Option<SchedulePipelineExecutionStartConditionEnum>,
 
     ///
@@ -420,7 +425,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 

@@ -1,5 +1,6 @@
 /// A complex type that contains information about an instance that AWS Cloud Map creates when you  submit a RegisterInstance request.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnInstance {
     ///
     /// A string map that contains the following information for the service that you specify in  ServiceId:
@@ -35,7 +36,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///

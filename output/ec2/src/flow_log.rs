@@ -1,5 +1,6 @@
 /// Specifies a VPC flow log that captures IP traffic for a specified network interface,     subnet, or VPC. To view the log data, use Amazon CloudWatch Logs (CloudWatch Logs) to help     troubleshoot connection issues. For example, you can use a flow log to investigate why     certain traffic isn't reaching an instance, which can help you diagnose overly restrictive     security group rules. For more information, see VPC Flow Logs in the Amazon       VPC User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFlowLog {
     ///
     /// The ARN of the IAM role that allows Amazon EC2 to publish flow logs to a CloudWatch Logs log group in       your account.
@@ -12,7 +13,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliverLogsPermissionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deliver_logs_permission_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_options: Option<DestinationOptions>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDestination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDestinationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_destination_type: Option<FlowLogLogDestinationTypeEnum>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxAggregationInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_aggregation_interval: Option<i64>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrafficType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub traffic_type: Option<FlowLogTrafficTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -256,6 +257,7 @@ impl cfn_resources::CfnResource for CfnFlowLog {
 
 /// Describes the destination options for a flow log.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationOptions {
     ///
     /// The format for the flow log. The default is plain-text.
@@ -332,6 +334,7 @@ impl cfn_resources::CfnResource for DestinationOptions {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::ElastiCache::SecurityGroupIngress type authorizes ingress to a cache security group from hosts in specified Amazon EC2 security groups. For more information about ElastiCache security group ingress,     go to AuthorizeCacheSecurityGroupIngress in the Amazon ElastiCache API Reference Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityGroupIngress {
     ///
     /// The name of the Cache Security Group to authorize.
@@ -32,7 +33,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 

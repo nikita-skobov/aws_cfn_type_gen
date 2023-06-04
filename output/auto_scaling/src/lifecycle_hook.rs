@@ -4,6 +4,7 @@
 ///
 /// For more information, see Amazon EC2 Auto Scaling lifecycle     hooks in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLifecycleHook {
     ///
     /// The name of the Auto Scaling group.
@@ -27,7 +28,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_result: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heartbeat_timeout: Option<i64>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LifecycleHookName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_hook_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_target_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 

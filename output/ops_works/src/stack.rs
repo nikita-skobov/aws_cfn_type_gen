@@ -2,6 +2,7 @@
 ///
 /// Required Permissions: To use this action, an IAM user must have an attached policy    that explicitly grants permissions. For more information about user permissions, see Managing User     Permissions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnStack {
     ///
     /// The default AWS OpsWorks Stacks agent version. You have the following options:
@@ -18,7 +19,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub agent_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChefConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chef_configuration: Option<ChefConfiguration>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CloneAppIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clone_app_ids: Option<Vec<String>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClonePermissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clone_permissions: Option<bool>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationManager")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration_manager: Option<StackConfigurationManager>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCookbooksSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_cookbooks_source: Option<Source>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomJson")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_json: Option<serde_json::Value>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -145,7 +146,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultOs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_os: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +160,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRootDeviceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_root_device_type: Option<StackDefaultRootDeviceTypeEnum>,
 
     ///
@@ -171,7 +172,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSshKeyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_ssh_key_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +184,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSubnetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -197,7 +198,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcsClusterArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ecs_cluster_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -211,7 +212,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticIps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_ips: Option<Vec<ElasticIp>>,
 
     ///
@@ -227,7 +228,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameTheme")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname_theme: Option<cfn_resources::StrVal>,
 
     ///
@@ -252,7 +253,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsDbInstances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rds_db_instances: Option<Vec<RdsDbInstance>>,
 
     ///
@@ -275,7 +276,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceStackId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_stack_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -289,7 +290,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -301,7 +302,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseCustomCookbooks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_custom_cookbooks: Option<bool>,
 
     ///
@@ -319,7 +320,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseOpsworksSecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_opsworks_security_groups: Option<bool>,
 
     ///
@@ -341,7 +342,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -390,6 +391,7 @@ impl cfn_resources::CfnResource for CfnStack {
 
 /// Describes the Chef configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChefConfiguration {
     ///
     /// The Berkshelf version.
@@ -400,7 +402,7 @@ pub struct ChefConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BerkshelfVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub berkshelf_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -412,7 +414,7 @@ pub struct ChefConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManageBerkshelf")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub manage_berkshelf: Option<bool>,
 }
 
@@ -432,6 +434,7 @@ impl cfn_resources::CfnResource for ChefConfiguration {
 
 /// Describes an Elastic IP address.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticIp {
     ///
     /// The IP address.
@@ -453,7 +456,7 @@ pub struct ElasticIp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -473,6 +476,7 @@ impl cfn_resources::CfnResource for ElasticIp {
 
 /// Describes an Amazon RDS instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RdsDbInstance {
     ///
     /// AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
@@ -524,6 +528,7 @@ impl cfn_resources::CfnResource for RdsDbInstance {
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Source {
     ///
     /// When included in a request, the parameter depends on the repository type.
@@ -540,7 +545,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -552,7 +557,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Revision")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub revision: Option<cfn_resources::StrVal>,
 
     ///
@@ -566,7 +571,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssh_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -580,7 +585,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<SourceTypeEnum>,
 
     ///
@@ -592,7 +597,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url: Option<cfn_resources::StrVal>,
 
     ///
@@ -606,7 +611,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -651,6 +656,7 @@ impl cfn_resources::CfnResource for Source {
 
 /// Describes the configuration manager.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StackConfigurationManager {
     ///
     /// The name. This parameter must be set to Chef.
@@ -661,7 +667,7 @@ pub struct StackConfigurationManager {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -673,7 +679,7 @@ pub struct StackConfigurationManager {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -699,6 +705,7 @@ impl cfn_resources::CfnResource for StackConfigurationManager {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

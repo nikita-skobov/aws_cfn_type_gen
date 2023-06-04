@@ -1,5 +1,6 @@
 /// The AWS::IoT1Click::Placement resource creates a placement to be associated with an AWS IoT 1-Click project. A placement is an instance of a device in a location.      For more information, see Projects, Templates, and Placements in the AWS IoT 1-Click Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPlacement {
     ///
     /// The devices to associate with the placement, as defined by a mapping of zero or more key-value pairs wherein the key is a template name and the value is a device ID.
@@ -10,7 +11,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatedDevices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub associated_devices: Option<serde_json::Value>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<serde_json::Value>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_name: Option<cfn_resources::StrVal>,
 
     ///

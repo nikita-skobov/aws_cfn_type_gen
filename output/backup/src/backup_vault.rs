@@ -4,6 +4,7 @@
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBackupVault {
     ///
     /// A resource-based policy that is used to manage access permissions on the target backup     vault.
@@ -14,7 +15,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_policy: Option<serde_json::Value>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupVaultTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_vault_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LockConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lock_configuration: Option<LockConfigurationType>,
 
     ///
@@ -77,7 +78,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Notifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notifications: Option<NotificationObjectType>,
 
     #[serde(skip_serializing)]
@@ -127,6 +128,7 @@ impl cfn_resources::CfnResource for CfnBackupVault {
 
 /// The LockConfigurationType property type specifies configuration for AWS Backup Vault Lock.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LockConfigurationType {
     ///
     /// The AWS Backup Vault Lock configuration that specifies the number of days     before the lock date. For example, setting ChangeableForDays to 30 on Jan. 1,     2022 at 8pm UTC will set the lock date to Jan. 31, 2022 at 8pm UTC.
@@ -143,7 +145,7 @@ pub struct LockConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChangeableForDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub changeable_for_days: Option<i64>,
 
     ///
@@ -159,7 +161,7 @@ pub struct LockConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetentionDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_retention_days: Option<i64>,
 
     ///
@@ -194,6 +196,7 @@ impl cfn_resources::CfnResource for LockConfigurationType {
 
 /// Specifies an object containing SNS event notification properties for the target backup     vault.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NotificationObjectType {
     ///
     /// An array of events that indicate the status of jobs to back up resources to the backup     vault. For valid events, see BackupVaultEvents in the AWS Backup API     Guide.

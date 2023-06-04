@@ -1,5 +1,6 @@
 /// The AWS::GameLift::MatchmakingConfiguration resource defines a new    matchmaking configuration for use with FlexMatch. Whether you're using FlexMatch with GameLift hosting or as a    standalone matchmaking service, the matchmaking configuration sets out rules for matching players and forming teams.    If you're using GameLift hosting, it also defines how to start game sessions for each match. Your matchmaking system    can use multiple configurations to handle different game scenarios. All matchmaking requests identify the    matchmaking configuration to use and provide player attributes that are consistent with that configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMatchmakingConfiguration {
     ///
     /// A flag that determines whether a match that was created with this configuration must       be accepted by the matched players. To require acceptance, set to TRUE.       With this option enabled, matchmaking tickets use the status         REQUIRES_ACCEPTANCE to indicate when a completed potential match is       waiting for player acceptance.
@@ -25,7 +26,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptanceTimeoutSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acceptance_timeout_seconds: Option<i64>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalPlayerCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_player_count: Option<i64>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackfillMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backfill_mode: Option<MatchmakingConfigurationBackfillModeEnum>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_event_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlexMatchMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub flex_match_mode: Option<MatchmakingConfigurationFlexMatchModeEnum>,
 
     ///
@@ -115,7 +116,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub game_properties: Option<Vec<GameProperty>>,
 
     ///
@@ -131,7 +132,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub game_session_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +144,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionQueueArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub game_session_queue_arns: Option<Vec<String>>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_target: Option<cfn_resources::StrVal>,
 
     ///
@@ -222,7 +223,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -464,6 +465,7 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
 
 /// Set of key-value pairs that contain information about a game session. When included in       a game session request, these properties communicate details to be used when setting up       the new game session. For example, a game property might specify a game mode, level, or       map. Game properties are passed to the game server process when initiating a new game       session. For more information, see the Amazon GameLift Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GameProperty {
     ///
     /// The game property identifier.
@@ -536,6 +538,7 @@ impl cfn_resources::CfnResource for GameProperty {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

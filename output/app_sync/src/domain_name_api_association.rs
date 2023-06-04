@@ -1,5 +1,6 @@
 /// The AWS::AppSync::DomainNameApiAssociation resource represents the mapping of your custom     domain name to the assigned API URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDomainNameApiAssociation {
     ///
     /// The API ID.

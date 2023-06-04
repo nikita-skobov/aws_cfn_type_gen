@@ -4,6 +4,7 @@
 ///
 /// For a complete list of restrictions and Amazon S3 feature limitations on S3 on Outposts,     see     Amazon S3 on Outposts Restrictions and Limitations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBucket {
     ///
     /// A name for the S3 on Outposts bucket. If you don't specify a name, AWS CloudFormation generates a    unique ID and uses that ID for the bucket name.    The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-)    and must follow     Amazon S3 bucket restrictions and limitations.    For more information, see Bucket     naming rules.
@@ -27,7 +28,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_configuration: Option<LifecycleConfiguration>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -91,6 +92,7 @@ impl cfn_resources::CfnResource for CfnBucket {
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 on Outposts waits    before permanently removing all parts of the upload. For more information, see Aborting Incomplete     Multipart Uploads Using a Bucket Lifecycle Policy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AbortIncompleteMultipartUpload {
     ///
     /// Specifies the number of days after initiation that Amazon S3 on Outposts aborts an incomplete multipart upload.
@@ -120,6 +122,7 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
 
 /// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     /// Property description not available.
     ///
@@ -129,7 +132,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AndOperator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub and_operator: Option<FilterAndOperator>,
 
     /// Property description not available.
@@ -140,7 +143,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -151,7 +154,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tag")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag: Option<FilterTag>,
 }
 
@@ -177,6 +180,7 @@ impl cfn_resources::CfnResource for Filter {
 
 /// The FilterAndOperator property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterAndOperator {
     /// Property description not available.
     ///
@@ -186,7 +190,7 @@ pub struct FilterAndOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -216,6 +220,7 @@ impl cfn_resources::CfnResource for FilterAndOperator {
 
 /// The FilterTag property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterTag {
     /// Property description not available.
     ///
@@ -254,6 +259,7 @@ impl cfn_resources::CfnResource for FilterTag {
 
 /// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecycleConfiguration {
     ///
     /// The container for the lifecycle configuration rules for the objects stored in the S3 on Outposts bucket.
@@ -283,6 +289,7 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
 
 /// A container for an Amazon S3 on Outposts bucket lifecycle rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Rule {
     ///
     /// The container for the abort incomplete multipart upload rule.
@@ -293,7 +300,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AbortIncompleteMultipartUpload")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
 
     ///
@@ -305,7 +312,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expiration_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -317,7 +324,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationInDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expiration_in_days: Option<i64>,
 
     ///
@@ -329,7 +336,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter: Option<Filter>,
 
     ///
@@ -341,7 +348,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -384,6 +391,7 @@ impl cfn_resources::CfnResource for Rule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

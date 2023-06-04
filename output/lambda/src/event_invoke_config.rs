@@ -2,6 +2,7 @@
 ///
 /// By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains    events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous    invocation queue for too long, Lambda discards it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventInvokeConfig {
     ///
     /// A destination for events after they have been sent to a function for processing.
@@ -14,7 +15,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_config: Option<DestinationConfig>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumEventAgeInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_event_age_in_seconds: Option<i64>,
 
     ///
@@ -63,7 +64,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_retry_attempts: Option<i64>,
 
     ///
@@ -180,6 +181,7 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationConfig {
     ///
     /// The destination configuration for failed invocations.
@@ -190,7 +192,7 @@ pub struct DestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnFailure")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_failure: Option<OnFailure>,
 
     ///
@@ -202,7 +204,7 @@ pub struct DestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnSuccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_success: Option<OnSuccess>,
 }
 
@@ -230,6 +232,7 @@ impl cfn_resources::CfnResource for DestinationConfig {
 
 /// A destination for events that failed processing.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnFailure {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.
@@ -287,6 +290,7 @@ impl cfn_resources::CfnResource for OnFailure {
 
 /// A destination for events that were processed successfully.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OnSuccess {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.

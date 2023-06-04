@@ -1,5 +1,6 @@
 /// Creates a new event bus within your account. This can be a custom event bus which you can    use to receive events from your custom applications and services, or it can be a partner event    bus which can be matched to a partner event source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEventBus {
     ///
     /// If you are creating a partner event bus, this specifies the partner event source that the    new event bus will be matched with.
@@ -16,7 +17,7 @@ pub struct CfnEventBus {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSourceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_source_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnEventBus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagEntry>>,
 
     #[serde(skip_serializing)]
@@ -143,6 +144,7 @@ impl cfn_resources::CfnResource for CfnEventBus {
 
 /// A key-value pair associated with an AWS resource. In EventBridge, rules and event buses    support tagging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagEntry {
     ///
     /// A string you can use to assign a value. The combination of tag keys and values can help    you organize and categorize your resources.

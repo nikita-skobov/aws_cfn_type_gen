@@ -1,5 +1,6 @@
 /// Represents a job template.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJobTemplate {
     ///
     /// The criteria that determine when and how a job abort takes place.
@@ -10,7 +11,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AbortConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub abort_config: Option<AbortConfig>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Document")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub document_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobExecutionsRetryConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_executions_retry_config: Option<JobExecutionsRetryConfig>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobExecutionsRolloutConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_executions_rollout_config: Option<JobExecutionsRolloutConfig>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maintenance_windows: Option<Vec<MaintenanceWindow>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PresignedUrlConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub presigned_url_config: Option<PresignedUrlConfig>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_config: Option<TimeoutConfig>,
 
     #[serde(skip_serializing)]
@@ -195,6 +196,7 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
 
 /// The criteria that determine when and how a job abort takes place.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AbortConfig {
     ///
     /// The list of criteria that determine when and how to abort the job.
@@ -224,6 +226,7 @@ impl cfn_resources::CfnResource for AbortConfig {
 
 /// The criteria that determine when and how a job abort takes place.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AbortCriteria {
     ///
     /// The type of job action to take to initiate the job abort.
@@ -288,6 +291,7 @@ impl cfn_resources::CfnResource for AbortCriteria {
 
 /// Allows you to create an exponential rate of rollout for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExponentialRolloutRate {
     ///
     /// The minimum number of things that will be notified of a pending job, per minute at the start of job rollout.       This parameter allows you to define the initial rate of rollout.
@@ -343,6 +347,7 @@ impl cfn_resources::CfnResource for ExponentialRolloutRate {
 
 /// The configuration that determines how many retries are allowed for each failure       type for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JobExecutionsRetryConfig {
     /// Property description not available.
     ///
@@ -352,7 +357,7 @@ pub struct JobExecutionsRetryConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryCriteriaList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retry_criteria_list: Option<Vec<RetryCriteria>>,
 }
 
@@ -372,6 +377,7 @@ impl cfn_resources::CfnResource for JobExecutionsRetryConfig {
 
 /// Allows you to create a staged rollout of a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JobExecutionsRolloutConfig {
     /// Property description not available.
     ///
@@ -381,7 +387,7 @@ pub struct JobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExponentialRolloutRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exponential_rollout_rate: Option<ExponentialRolloutRate>,
 
     ///
@@ -393,7 +399,7 @@ pub struct JobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumPerMinute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_per_minute: Option<i64>,
 }
 
@@ -417,6 +423,7 @@ impl cfn_resources::CfnResource for JobExecutionsRolloutConfig {
 
 /// An optional configuration within the SchedulingConfig to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaintenanceWindow {
     ///
     /// Displays the duration of the next maintenance window.
@@ -427,7 +434,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInMinutes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_in_minutes: Option<i64>,
 
     ///
@@ -439,7 +446,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -459,6 +466,7 @@ impl cfn_resources::CfnResource for MaintenanceWindow {
 
 /// Configuration for pre-signed S3 URLs.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PresignedUrlConfig {
     ///
     /// How long (in seconds) pre-signed URLs are valid. Valid values are 60 - 3600, the default value is 3600       seconds. Pre-signed URLs are generated when Jobs receives an MQTT request for the job document.
@@ -469,7 +477,7 @@ pub struct PresignedUrlConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExpiresInSec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expires_in_sec: Option<i64>,
 
     ///
@@ -502,6 +510,7 @@ impl cfn_resources::CfnResource for PresignedUrlConfig {
 
 /// Allows you to define a criteria to initiate the increase in rate of rollout for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RateIncreaseCriteria {
     ///
     /// The threshold for number of notified things that will initiate the increase in rate of rollout.
@@ -512,7 +521,7 @@ pub struct RateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfNotifiedThings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_notified_things: Option<i64>,
 
     ///
@@ -524,7 +533,7 @@ pub struct RateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSucceededThings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_succeeded_things: Option<i64>,
 }
 
@@ -544,6 +553,7 @@ impl cfn_resources::CfnResource for RateIncreaseCriteria {
 
 /// The criteria that determines how many retries are allowed for each failure       type for a job.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetryCriteria {
     ///
     /// The type of job execution failures that can initiate a job retry.
@@ -554,7 +564,7 @@ pub struct RetryCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -566,7 +576,7 @@ pub struct RetryCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfRetries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_retries: Option<i64>,
 }
 
@@ -592,6 +602,7 @@ impl cfn_resources::CfnResource for RetryCriteria {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -630,6 +641,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Specifies the amount of time each device has to finish its execution of the job. A timer       is started when the job execution status is set to IN_PROGRESS. If the job       execution status is not set to another terminal state before the timer expires, it will      be automatically set to TIMED_OUT.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeoutConfig {
     ///
     /// Specifies the amount of time, in minutes, this device has to finish execution of this job.       The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The       in progress timer can't be updated and will apply to all job executions for the job. Whenever a job       execution remains in the IN_PROGRESS status for longer than this interval, the job execution will fail       and switch to the terminal TIMED_OUT status.

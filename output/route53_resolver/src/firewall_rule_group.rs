@@ -1,5 +1,6 @@
 /// High-level information for a firewall rule group. A firewall             rule group is a collection of rules that DNS Firewall uses to filter DNS network traffic for a VPC. To retrieve the rules for the rule group, call        ListFirewallRules.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFirewallRuleGroup {
     ///
     /// A list of the rules that you have defined.
@@ -10,7 +11,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firewall_rules: Option<Vec<FirewallRule>>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroup {
 
 /// A single firewall rule in a rule group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FirewallRule {
     ///
     /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list:
@@ -206,7 +208,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideDnsType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_override_dns_type: Option<FirewallRuleBlockOverrideDnsTypeEnum>,
 
     ///
@@ -222,7 +224,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_override_domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +236,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideTtl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_override_ttl: Option<i64>,
 
     ///
@@ -250,7 +252,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockResponse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_response: Option<FirewallRuleBlockResponseEnum>,
 
     ///
@@ -395,6 +397,7 @@ impl cfn_resources::CfnResource for FirewallRule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

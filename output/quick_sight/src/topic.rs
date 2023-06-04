@@ -1,5 +1,6 @@
 /// Creates a new Q topic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTopic {
     ///
     /// The ID of the AWS account that you want to create a topic in.
@@ -16,7 +17,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_sets: Option<Vec<DatasetMetadata>>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -171,6 +172,7 @@ impl cfn_resources::CfnResource for CfnTopic {
 
 /// A structure that represents the cell value synonym.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CellValueSynonym {
     ///
     /// The cell value.
@@ -183,7 +185,7 @@ pub struct CellValueSynonym {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -195,7 +197,7 @@ pub struct CellValueSynonym {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Synonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub synonyms: Option<Vec<String>>,
 }
 
@@ -226,6 +228,7 @@ impl cfn_resources::CfnResource for CellValueSynonym {
 
 /// A structure that represents a collective constant.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CollectiveConstant {
     ///
     /// A list of values for the collective constant.
@@ -236,7 +239,7 @@ pub struct CollectiveConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_list: Option<Vec<String>>,
 }
 
@@ -256,6 +259,7 @@ impl cfn_resources::CfnResource for CollectiveConstant {
 
 /// The order in which data is displayed for the column when     it's used in a comparative context.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComparativeOrder {
     ///
     /// The list of columns to be used in the ordering.
@@ -266,7 +270,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpecifedOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub specifed_order: Option<Vec<String>>,
 
     ///
@@ -280,7 +284,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatUndefinedSpecifiedValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub treat_undefined_specified_values: Option<ComparativeOrderTreatUndefinedSpecifiedValuesEnum>,
 
     ///
@@ -294,7 +298,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseOrdering")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_ordering: Option<ComparativeOrderUseOrderingEnum>,
 }
 
@@ -352,6 +356,7 @@ impl cfn_resources::CfnResource for ComparativeOrder {
 
 /// The definition of a data aggregation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataAggregation {
     ///
     /// The level of time precision that is used to aggregate DateTime values.
@@ -364,7 +369,7 @@ pub struct DataAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetRowDateGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_row_date_granularity: Option<DataAggregationDatasetRowDateGranularityEnum>,
 
     ///
@@ -378,7 +383,7 @@ pub struct DataAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultDateColumnName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_date_column_name: Option<cfn_resources::StrVal>,
 }
 
@@ -447,6 +452,7 @@ impl cfn_resources::CfnResource for DataAggregation {
 
 /// A structure that represents a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetMetadata {
     ///
     /// The list of calculated field definitions.
@@ -457,7 +463,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calculated_fields: Option<Vec<TopicCalculatedField>>,
 
     ///
@@ -469,7 +475,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<TopicColumn>>,
 
     ///
@@ -481,7 +487,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataAggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_aggregation: Option<DataAggregation>,
 
     ///
@@ -506,7 +512,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -520,7 +526,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -532,7 +538,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filters: Option<Vec<TopicFilter>>,
 
     ///
@@ -544,7 +550,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamedEntities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub named_entities: Option<Vec<TopicNamedEntity>>,
 }
 
@@ -587,6 +593,7 @@ impl cfn_resources::CfnResource for DatasetMetadata {
 
 /// A structure that represents a default formatting definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultFormatting {
     ///
     /// The display format. Valid values for this structure are AUTO,       PERCENT, CURRENCY, NUMBER, DATE, and       STRING.
@@ -599,7 +606,7 @@ pub struct DefaultFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_format: Option<DefaultFormattingDisplayFormatEnum>,
 
     ///
@@ -611,7 +618,7 @@ pub struct DefaultFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayFormatOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_format_options: Option<DisplayFormatOptions>,
 }
 
@@ -668,6 +675,7 @@ impl cfn_resources::CfnResource for DefaultFormatting {
 
 /// A structure that represents additional options for display formatting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DisplayFormatOptions {
     ///
     /// Determines the blank cell format.
@@ -680,7 +688,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlankCellFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub blank_cell_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -694,7 +702,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrencySymbol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub currency_symbol: Option<cfn_resources::StrVal>,
 
     ///
@@ -708,7 +716,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -722,7 +730,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalSeparator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_separator: Option<DisplayFormatOptionsDecimalSeparatorEnum>,
 
     ///
@@ -734,7 +742,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FractionDigits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fraction_digits: Option<f64>,
 
     ///
@@ -748,7 +756,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupingSeparator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grouping_separator: Option<cfn_resources::StrVal>,
 
     ///
@@ -760,7 +768,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub negative_format: Option<NegativeFormat>,
 
     ///
@@ -774,7 +782,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -788,7 +796,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 
     ///
@@ -802,7 +810,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitScaler")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit_scaler: Option<DisplayFormatOptionsUnitScalerEnum>,
 
     ///
@@ -814,7 +822,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBlankCellFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_blank_cell_format: Option<bool>,
 
     ///
@@ -826,7 +834,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseGrouping")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_grouping: Option<bool>,
 }
 
@@ -960,6 +968,7 @@ impl cfn_resources::CfnResource for DisplayFormatOptions {
 
 /// A structure that represents a named entity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NamedEntityDefinition {
     ///
     /// The name of the entity.
@@ -972,7 +981,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -984,7 +993,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric: Option<NamedEntityDefinitionMetric>,
 
     ///
@@ -998,7 +1007,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1012,7 +1021,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_role: Option<NamedEntityDefinitionPropertyRoleEnum>,
 
     ///
@@ -1026,7 +1035,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyUsage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub property_usage: Option<NamedEntityDefinitionPropertyUsageEnum>,
 }
 
@@ -1108,6 +1117,7 @@ impl cfn_resources::CfnResource for NamedEntityDefinition {
 
 /// A structure that represents a metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NamedEntityDefinitionMetric {
     ///
     /// The aggregation of a named entity. Valid values for this structure are SUM,       MIN, MAX, COUNT, AVERAGE,       DISTINCT_COUNT, STDEV, STDEVP, VAR,       VARP, PERCENTILE,     MEDIAN,     and CUSTOM.
@@ -1120,7 +1130,7 @@ pub struct NamedEntityDefinitionMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<NamedEntityDefinitionMetricAggregationEnum>,
 
     ///
@@ -1132,7 +1142,7 @@ pub struct NamedEntityDefinitionMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunctionParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1213,6 +1223,7 @@ impl cfn_resources::CfnResource for NamedEntityDefinitionMetric {
 
 /// A structure that represents a negative format.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NegativeFormat {
     ///
     /// The prefix for a negative format.
@@ -1225,7 +1236,7 @@ pub struct NegativeFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1239,7 +1250,7 @@ pub struct NegativeFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -1281,6 +1292,7 @@ impl cfn_resources::CfnResource for NegativeFormat {
 
 /// The value of the constant that is used to specify the endpoints of a range filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RangeConstant {
     ///
     /// The maximum value for a range constant.
@@ -1293,7 +1305,7 @@ pub struct RangeConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum: Option<cfn_resources::StrVal>,
 
     ///
@@ -1307,7 +1319,7 @@ pub struct RangeConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum: Option<cfn_resources::StrVal>,
 }
 
@@ -1349,6 +1361,7 @@ impl cfn_resources::CfnResource for RangeConstant {
 
 /// A structure that represents a semantic entity type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SemanticEntityType {
     ///
     /// The semantic entity sub type name.
@@ -1361,7 +1374,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubTypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sub_type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1375,7 +1388,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1387,7 +1400,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1429,6 +1442,7 @@ impl cfn_resources::CfnResource for SemanticEntityType {
 
 /// A structure that represents a semantic type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SemanticType {
     ///
     /// The semantic type falsey cell value.
@@ -1439,7 +1453,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseyCellValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub falsey_cell_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1451,7 +1465,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseyCellValueSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub falsey_cell_value_synonyms: Option<Vec<String>>,
 
     ///
@@ -1465,7 +1479,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubTypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sub_type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1477,7 +1491,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruthyCellValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truthy_cell_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1489,7 +1503,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruthyCellValueSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub truthy_cell_value_synonyms: Option<Vec<String>>,
 
     ///
@@ -1503,7 +1517,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1515,7 +1529,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub type_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1557,6 +1571,7 @@ impl cfn_resources::CfnResource for SemanticType {
 
 /// A structure that represents a calculated field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicCalculatedField {
     ///
     /// The default aggregation. Valid values for this structure are SUM,       MAX, MIN, COUNT,     DISTINCT_COUNT,     and AVERAGE.
@@ -1569,7 +1584,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<TopicCalculatedFieldAggregationEnum>,
 
     ///
@@ -1581,7 +1596,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedAggregations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -1595,7 +1610,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFieldDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calculated_field_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -1620,7 +1635,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFieldSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calculated_field_synonyms: Option<Vec<String>>,
 
     ///
@@ -1632,7 +1647,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValueSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell_value_synonyms: Option<Vec<CellValueSynonym>>,
 
     ///
@@ -1646,7 +1661,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_data_role: Option<TopicCalculatedFieldColumnDataRoleEnum>,
 
     ///
@@ -1658,7 +1673,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparativeOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparative_order: Option<ComparativeOrder>,
 
     ///
@@ -1670,7 +1685,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_formatting: Option<DefaultFormatting>,
 
     ///
@@ -1697,7 +1712,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsIncludedInTopic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_included_in_topic: Option<bool>,
 
     ///
@@ -1709,7 +1724,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeverAggregateInFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub never_aggregate_in_filter: Option<bool>,
 
     ///
@@ -1721,7 +1736,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotAllowedAggregations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -1733,7 +1748,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub semantic_type: Option<SemanticType>,
 
     ///
@@ -1747,7 +1762,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TopicCalculatedFieldTimeGranularityEnum>,
 }
 
@@ -1908,6 +1923,7 @@ impl cfn_resources::CfnResource for TopicCalculatedField {
 
 /// A structure that represents a category filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicCategoryFilter {
     ///
     /// The category filter function. Valid values for this structure are EXACT and CONTAINS.
@@ -1920,7 +1936,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilterFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_filter_function: Option<TopicCategoryFilterCategoryFilterFunctionEnum>,
 
     ///
@@ -1934,7 +1950,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_filter_type: Option<TopicCategoryFilterCategoryFilterTypeEnum>,
 
     ///
@@ -1946,7 +1962,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant: Option<TopicCategoryFilterConstant>,
 
     ///
@@ -1958,7 +1974,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inverse")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inverse: Option<bool>,
 }
 
@@ -2020,6 +2036,7 @@ impl cfn_resources::CfnResource for TopicCategoryFilter {
 
 /// A constant used in a category filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicCategoryFilterConstant {
     ///
     /// A collective constant used in a category filter. This element is used to specify a list of values for the constant.
@@ -2030,7 +2047,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectiveConstant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub collective_constant: Option<CollectiveConstant>,
 
     ///
@@ -2044,7 +2061,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_type: Option<TopicCategoryFilterConstantConstantTypeEnum>,
 
     ///
@@ -2058,7 +2075,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingularConstant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub singular_constant: Option<cfn_resources::StrVal>,
 }
 
@@ -2111,6 +2128,7 @@ impl cfn_resources::CfnResource for TopicCategoryFilterConstant {
 
 /// Represents a column in a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicColumn {
     ///
     /// The type of aggregation that is performed on the column data when     it's queried. Valid values for this structure are SUM, MAX,       MIN, COUNT,     DISTINCT_COUNT, and AVERAGE.
@@ -2123,7 +2141,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<TopicColumnAggregationEnum>,
 
     ///
@@ -2135,7 +2153,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedAggregations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -2147,7 +2165,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValueSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell_value_synonyms: Option<Vec<CellValueSynonym>>,
 
     ///
@@ -2161,7 +2179,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_data_role: Option<TopicColumnColumnDataRoleEnum>,
 
     ///
@@ -2175,7 +2193,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -2189,7 +2207,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnFriendlyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_friendly_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2214,7 +2232,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_synonyms: Option<Vec<String>>,
 
     ///
@@ -2226,7 +2244,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparativeOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparative_order: Option<ComparativeOrder>,
 
     ///
@@ -2238,7 +2256,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_formatting: Option<DefaultFormatting>,
 
     ///
@@ -2250,7 +2268,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsIncludedInTopic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_included_in_topic: Option<bool>,
 
     ///
@@ -2262,7 +2280,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeverAggregateInFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub never_aggregate_in_filter: Option<bool>,
 
     ///
@@ -2274,7 +2292,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotAllowedAggregations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -2286,7 +2304,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub semantic_type: Option<SemanticType>,
 
     ///
@@ -2300,7 +2318,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TopicColumnTimeGranularityEnum>,
 }
 
@@ -2450,6 +2468,7 @@ impl cfn_resources::CfnResource for TopicColumn {
 
 /// A filter used to restrict data based on a range of dates or times.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicDateRangeFilter {
     ///
     /// The constant used in a date range filter.
@@ -2460,7 +2479,7 @@ pub struct TopicDateRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant: Option<TopicRangeFilterConstant>,
 
     ///
@@ -2472,7 +2491,7 @@ pub struct TopicDateRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inclusive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusive: Option<bool>,
 }
 
@@ -2496,6 +2515,7 @@ impl cfn_resources::CfnResource for TopicDateRangeFilter {
 
 /// A structure that represents a filter used to select items for a topic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicFilter {
     ///
     /// The category filter that is associated with this filter.
@@ -2506,7 +2526,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_filter: Option<TopicCategoryFilter>,
 
     ///
@@ -2518,7 +2538,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateRangeFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_range_filter: Option<TopicDateRangeFilter>,
 
     ///
@@ -2532,7 +2552,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_class: Option<TopicFilterFilterClassEnum>,
 
     ///
@@ -2546,7 +2566,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -2571,7 +2591,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterSynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_synonyms: Option<Vec<String>>,
 
     ///
@@ -2585,7 +2605,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_type: Option<TopicFilterFilterTypeEnum>,
 
     ///
@@ -2597,7 +2617,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_equality_filter: Option<TopicNumericEqualityFilter>,
 
     ///
@@ -2609,7 +2629,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericRangeFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_range_filter: Option<TopicNumericRangeFilter>,
 
     ///
@@ -2634,7 +2654,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_date_filter: Option<TopicRelativeDateFilter>,
 }
 
@@ -2754,6 +2774,7 @@ impl cfn_resources::CfnResource for TopicFilter {
 
 /// A structure that represents a named entity.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicNamedEntity {
     ///
     /// The definition of a named entity.
@@ -2764,7 +2785,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<Vec<NamedEntityDefinition>>,
 
     ///
@@ -2778,7 +2799,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -2803,7 +2824,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitySynonyms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entity_synonyms: Option<Vec<String>>,
 
     ///
@@ -2815,7 +2836,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticEntityType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub semantic_entity_type: Option<SemanticEntityType>,
 }
 
@@ -2858,6 +2879,7 @@ impl cfn_resources::CfnResource for TopicNamedEntity {
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value matches the specified value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicNumericEqualityFilter {
     ///
     /// An aggregation function that specifies how to calculate the value of a numeric field for     a topic. Valid values for this structure are NO_AGGREGATION, SUM,       AVERAGE, COUNT, DISTINCT_COUNT, MAX,       MEDIAN, MIN, STDEV, STDEVP,       VAR,     and VARP.
@@ -2870,7 +2892,7 @@ pub struct TopicNumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<TopicNumericEqualityFilterAggregationEnum>,
 
     ///
@@ -2882,7 +2904,7 @@ pub struct TopicNumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant: Option<TopicSingularFilterConstant>,
 }
 
@@ -2963,6 +2985,7 @@ impl cfn_resources::CfnResource for TopicNumericEqualityFilter {
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value falls within the specified range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicNumericRangeFilter {
     ///
     /// An aggregation function that specifies how to calculate the value of a numeric field for     a topic, Valid values for this structure are NO_AGGREGATION, SUM,       AVERAGE, COUNT, DISTINCT_COUNT, MAX,       MEDIAN, MIN, STDEV, STDEVP,       VAR,     and VARP.
@@ -2975,7 +2998,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<TopicNumericRangeFilterAggregationEnum>,
 
     ///
@@ -2987,7 +3010,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant: Option<TopicRangeFilterConstant>,
 
     ///
@@ -2999,7 +3022,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inclusive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inclusive: Option<bool>,
 }
 
@@ -3080,6 +3103,7 @@ impl cfn_resources::CfnResource for TopicNumericRangeFilter {
 
 /// A constant value that is used in a range filter to specify the endpoints of the range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicRangeFilterConstant {
     ///
     /// The data type of the constant value that is used in a range filter. Valid values for this structure are RANGE.
@@ -3092,7 +3116,7 @@ pub struct TopicRangeFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_type: Option<TopicRangeFilterConstantConstantTypeEnum>,
 
     ///
@@ -3104,7 +3128,7 @@ pub struct TopicRangeFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeConstant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_constant: Option<RangeConstant>,
 }
 
@@ -3149,6 +3173,7 @@ impl cfn_resources::CfnResource for TopicRangeFilterConstant {
 
 /// A structure that represents a relative date filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicRelativeDateFilter {
     ///
     /// The constant used in a     relative date filter.
@@ -3159,7 +3184,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant: Option<TopicSingularFilterConstant>,
 
     ///
@@ -3173,7 +3198,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateFilterFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_date_filter_function:
         Option<TopicRelativeDateFilterRelativeDateFilterFunctionEnum>,
 
@@ -3188,7 +3213,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TopicRelativeDateFilterTimeGranularityEnum>,
 }
 
@@ -3282,6 +3307,7 @@ impl cfn_resources::CfnResource for TopicRelativeDateFilter {
 
 /// A structure that represents a singular filter constant, used in filters to specify a single value to match against.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopicSingularFilterConstant {
     ///
     /// The type of the singular filter constant. Valid values for this structure are SINGULAR.
@@ -3294,7 +3320,7 @@ pub struct TopicSingularFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub constant_type: Option<TopicSingularFilterConstantConstantTypeEnum>,
 
     ///
@@ -3308,7 +3334,7 @@ pub struct TopicSingularFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingularConstant")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub singular_constant: Option<cfn_resources::StrVal>,
 }
 

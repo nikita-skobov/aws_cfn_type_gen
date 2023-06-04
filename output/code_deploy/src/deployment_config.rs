@@ -1,5 +1,6 @@
 /// The AWS::CodeDeploy::DeploymentConfig resource creates a set of deployment    rules, deployment success conditions, and deployment failure conditions that AWS CodeDeploy uses during a deployment. The deployment configuration specifies, through    the use of a MinimumHealthyHosts value, the number or percentage of instances    that must remain available at any time during a deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDeploymentConfig {
     ///
     /// The destination platform type for the deployment (Lambda,         Server, or ECS).
@@ -12,7 +13,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub compute_platform: Option<DeploymentConfigComputePlatformEnum>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinimumHealthyHosts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_healthy_hosts: Option<MinimumHealthyHosts>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrafficRoutingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub traffic_routing_config: Option<TrafficRoutingConfig>,
 }
 
@@ -129,6 +130,7 @@ impl cfn_resources::CfnResource for CfnDeploymentConfig {
 
 /// MinimumHealthyHosts is a property of the DeploymentConfig resource that defines how many instances must remain healthy    during an AWS CodeDeploy deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MinimumHealthyHosts {
     ///
     /// The minimum healthy instance type:
@@ -196,6 +198,7 @@ impl cfn_resources::CfnResource for MinimumHealthyHosts {
 
 /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeBasedCanary {
     ///
     /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
@@ -236,6 +239,7 @@ impl cfn_resources::CfnResource for TimeBasedCanary {
 
 /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeBasedLinear {
     ///
     /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
@@ -276,6 +280,7 @@ impl cfn_resources::CfnResource for TimeBasedLinear {
 
 /// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrafficRoutingConfig {
     ///
     /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in two increments. The original and target Lambda       function versions or ECS task sets are specified in the deployment's AppSpec       file.
@@ -286,7 +291,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedCanary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_based_canary: Option<TimeBasedCanary>,
 
     ///
@@ -298,7 +303,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedLinear")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_based_linear: Option<TimeBasedLinear>,
 
     ///

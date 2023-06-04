@@ -1,5 +1,6 @@
 /// Create remote VPC connection.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVpcConnection {
     ///
     /// The type of private link authentication.
@@ -43,7 +44,7 @@ pub struct CfnVpcConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///

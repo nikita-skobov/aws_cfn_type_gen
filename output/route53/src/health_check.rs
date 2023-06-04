@@ -10,6 +10,7 @@
 ///
 /// You can associate health checks with failover records in a private hosted zone. Note the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHealthCheck {
     ///
     /// A complex type that contains detailed information about one health check.
@@ -33,7 +34,7 @@ pub struct CfnHealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_tags: Option<Vec<HealthCheckTag>>,
 
     #[serde(skip_serializing)]
@@ -66,6 +67,7 @@ impl cfn_resources::CfnResource for CfnHealthCheck {
 
 /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlarmIdentifier {
     ///
     /// The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use 			to determine whether this health check is healthy.
@@ -263,6 +265,7 @@ impl cfn_resources::CfnResource for AlarmIdentifier {
 
 /// A complex type that contains information about the health check.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckConfig {
     ///
     /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
@@ -273,7 +276,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alarm_identifier: Option<AlarmIdentifier>,
 
     ///
@@ -287,7 +290,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChildHealthChecks")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub child_health_checks: Option<Vec<String>>,
 
     ///
@@ -303,7 +306,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSNI")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_sni: Option<bool>,
 
     ///
@@ -321,7 +324,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub failure_threshold: Option<i64>,
 
     ///
@@ -357,7 +360,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FullyQualifiedDomainName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fully_qualified_domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -377,7 +380,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthThreshold")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_threshold: Option<i64>,
 
     ///
@@ -407,7 +410,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipaddress: Option<cfn_resources::StrVal>,
 
     ///
@@ -423,7 +426,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsufficientDataHealthStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insufficient_data_health_status: Option<HealthCheckConfigInsufficientDataHealthStatusEnum>,
 
     ///
@@ -435,7 +438,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inverted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inverted: Option<bool>,
 
     ///
@@ -449,7 +452,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureLatency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_latency: Option<bool>,
 
     ///
@@ -467,7 +470,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -485,7 +488,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regions: Option<Vec<String>>,
 
     ///
@@ -505,7 +508,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequestInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_interval: Option<i64>,
 
     ///
@@ -519,7 +522,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_path: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -530,7 +533,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingControlArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub routing_control_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -546,7 +549,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchString")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub search_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -784,6 +787,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 
 /// The HealthCheckTag property describes one key-value pair that is associated with an AWS::Route53::HealthCheck resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheckTag {
     ///
     /// The value of Key depends on the operation that you want to 			perform:

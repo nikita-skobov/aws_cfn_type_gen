@@ -1,5 +1,6 @@
 /// The AWS::Glue::MLTransform is an AWS Glue resource type that manages machine learning transforms.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMLTransform {
     ///
     /// A user-defined, long-form description text for the machine learning transform.
@@ -16,7 +17,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub glue_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_capacity: Option<f64>,
 
     ///
@@ -71,7 +72,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_retries: Option<i64>,
 
     ///
@@ -91,7 +92,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfWorkers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_workers: Option<i64>,
 
     ///
@@ -130,7 +131,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransformEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transform_encryption: Option<TransformEncryption>,
 
     ///
@@ -189,7 +190,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub worker_type: Option<MLTransformWorkerTypeEnum>,
 }
 
@@ -295,6 +296,7 @@ impl cfn_resources::CfnResource for CfnMLTransform {
 
 /// The parameters to configure the find matches transform.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FindMatchesParameters {
     ///
     /// The value that is selected when tuning your transform for a balance between accuracy and    cost. A value of 0.5 means that the system balances accuracy and cost concerns. A value of 1.0    means a bias purely for accuracy, which typically results in a higher cost, sometimes    substantially higher. A value of 0.0 means a bias purely for cost, which results in a less    accurate FindMatches transform, sometimes with unacceptable accuracy.
@@ -309,7 +311,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccuracyCostTradeoff")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accuracy_cost_tradeoff: Option<f64>,
 
     ///
@@ -323,7 +325,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceProvidedLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enforce_provided_labels: Option<bool>,
 
     ///
@@ -339,7 +341,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrecisionRecallTradeoff")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub precision_recall_tradeoff: Option<f64>,
 
     ///
@@ -395,6 +397,7 @@ impl cfn_resources::CfnResource for FindMatchesParameters {
 
 /// The database and table in the AWS Glue Data Catalog that is used for input or output data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlueTables {
     /// A unique identifier for the AWS Glue Data Catalog.
     ///
@@ -404,7 +407,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub catalog_id: Option<cfn_resources::StrVal>,
 
     /// The name of the connection to the AWS Glue Data Catalog.
@@ -415,7 +418,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     /// A database name in the AWS Glue Data Catalog.
@@ -455,6 +458,7 @@ impl cfn_resources::CfnResource for GlueTables {
 
 /// A list of AWS Glue table definitions used by the transform.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InputRecordTables {
     /// The database and table in the AWS Glue Data Catalog that is used for input or output data.
     ///
@@ -464,7 +468,7 @@ pub struct InputRecordTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueTables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub glue_tables: Option<Vec<GlueTables>>,
 }
 
@@ -484,6 +488,7 @@ impl cfn_resources::CfnResource for InputRecordTables {
 
 /// The encryption-at-rest settings of the transform that apply to accessing user data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MLUserDataEncryption {
     ///
     /// The ID for the customer-provided KMS key.
@@ -494,7 +499,7 @@ pub struct MLUserDataEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -529,6 +534,7 @@ impl cfn_resources::CfnResource for MLUserDataEncryption {
 ///
 /// Additionally, imported labels and trained transforms can now be encrypted using a customer provided KMS key.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformEncryption {
     ///
     /// The encryption-at-rest settings of the transform that apply to accessing user data.
@@ -539,7 +545,7 @@ pub struct TransformEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MLUserDataEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mluser_data_encryption: Option<MLUserDataEncryption>,
 
     ///
@@ -551,7 +557,7 @@ pub struct TransformEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskRunSecurityConfigurationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_run_security_configuration_name: Option<cfn_resources::StrVal>,
 }
 
@@ -575,6 +581,7 @@ impl cfn_resources::CfnResource for TransformEncryption {
 
 /// The algorithm-specific parameters that are associated with the machine learning    transform.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransformParameters {
     ///
     /// The parameters for the find matches algorithm.
@@ -585,7 +592,7 @@ pub struct TransformParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindMatchesParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub find_matches_parameters: Option<FindMatchesParameters>,
 
     ///

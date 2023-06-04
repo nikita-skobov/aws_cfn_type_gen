@@ -1,5 +1,6 @@
 /// The AWS::Amplify::Branch resource specifies a new branch within an app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBranch {
     ///
     /// The unique ID for an Amplify app.
@@ -25,7 +26,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBuild")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_auto_build: Option<bool>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_performance_mode: Option<bool>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePullRequestPreview")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_pull_request_preview: Option<bool>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pull_request_environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -174,7 +175,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage: Option<BranchStageEnum>,
 
     ///
@@ -186,7 +187,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -261,6 +262,7 @@ impl cfn_resources::CfnResource for CfnBranch {
 
 /// Use the BasicAuthConfig property type to set password protection for a specific    branch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BasicAuthConfig {
     ///
     /// Enables basic authorization for the branch.
@@ -271,7 +273,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBasicAuth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_basic_auth: Option<bool>,
 
     ///
@@ -317,6 +319,7 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
 
 /// The EnvironmentVariable property type sets environment variables for a specific branch.    Environment variables are key-value pairs that are available at build time.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable name.
@@ -371,6 +374,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// Creates a new container recipe. Container recipes define how images are configured, 			tested, and assessed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnContainerRecipe {
     ///
     /// Build and test components that are included in the container recipe. 			Recipes require a minimum of one build component, and can 			have a maximum of 20 build and test components in any combination.
@@ -38,7 +39,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerfileTemplateData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dockerfile_template_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +63,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerfileTemplateUri")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dockerfile_template_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageOsVersionOverride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_os_version_override: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_configuration: Option<InstanceConfiguration>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformOverride")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform_override: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +155,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -196,7 +197,7 @@ pub struct CfnContainerRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkingDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub working_directory: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -342,6 +343,7 @@ impl cfn_resources::CfnResource for CfnContainerRecipe {
 
 /// Configuration details of the component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -354,7 +356,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -365,7 +367,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Vec<ComponentParameter>>,
 }
 
@@ -385,6 +387,7 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 
 /// The ComponentParameter property type specifies Property description not available. for an AWS::ImageBuilder::ContainerRecipe.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentParameter {
     /// Property description not available.
     ///
@@ -423,6 +426,7 @@ impl cfn_resources::CfnResource for ComponentParameter {
 
 /// Amazon EBS-specific block device mapping specifications.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Use to configure delete on termination of the associated device.
@@ -433,7 +437,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -445,7 +449,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -461,7 +465,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iops: Option<i64>,
 
     ///
@@ -477,7 +481,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -493,7 +497,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -509,7 +513,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Throughput")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput: Option<i64>,
 
     ///
@@ -525,7 +529,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_size: Option<i64>,
 
     ///
@@ -539,7 +543,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<EbsInstanceBlockDeviceSpecificationVolumeTypeEnum>,
 }
 
@@ -694,6 +698,7 @@ impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
 
 /// Defines block device mappings for the instance used to configure your image.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceBlockDeviceMapping {
     ///
     /// The device to which these mappings apply.
@@ -708,7 +713,7 @@ pub struct InstanceBlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -720,7 +725,7 @@ pub struct InstanceBlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ebs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs: Option<EbsInstanceBlockDeviceSpecification>,
 
     ///
@@ -736,7 +741,7 @@ pub struct InstanceBlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub no_device: Option<cfn_resources::StrVal>,
 
     ///
@@ -752,7 +757,7 @@ pub struct InstanceBlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
@@ -840,6 +845,7 @@ impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
 
 /// Defines a custom base AMI and block device mapping configurations of an instance    used for building and testing container images.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InstanceConfiguration {
     ///
     /// Defines the block devices to attach for building an instance from this Image Builder 			AMI.
@@ -850,7 +856,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockDeviceMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub block_device_mappings: Option<Vec<InstanceBlockDeviceMapping>>,
 
     ///
@@ -866,7 +872,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Image")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image: Option<cfn_resources::StrVal>,
 }
 
@@ -908,6 +914,7 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
 
 /// The container repository where the output container image is stored.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetContainerRepository {
     ///
     /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
@@ -922,7 +929,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -936,7 +943,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Service")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service: Option<TargetContainerRepositoryServiceEnum>,
 }
 

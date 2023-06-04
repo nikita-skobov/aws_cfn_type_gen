@@ -1,5 +1,6 @@
 /// The AWS::Amplify::App resource specifies Apps in Amplify Hosting. An App is a    collection of branches.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApp {
     ///
     /// The personal access token for a GitHub repository for an Amplify app. The personal access    token is used to authorize access to a GitHub repository using the Amplify GitHub App. The    token is not stored.
@@ -18,7 +19,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoBranchCreationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_branch_creation_config: Option<AutoBranchCreationConfig>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomHeaders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_headers: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_rules: Option<Vec<CustomRule>>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBranchAutoDeletion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_branch_auto_deletion: Option<bool>,
 
     ///
@@ -126,7 +127,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -142,7 +143,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMServiceRole")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iamservice_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -179,7 +180,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OauthToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oauth_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +192,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Platform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub platform: Option<cfn_resources::StrVal>,
 
     ///
@@ -205,7 +206,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Repository")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository: Option<cfn_resources::StrVal>,
 
     ///
@@ -217,7 +218,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -289,6 +290,7 @@ impl cfn_resources::CfnResource for CfnApp {
 
 /// Use the AutoBranchCreationConfig property type to automatically create branches that    match a certain pattern.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AutoBranchCreationConfig {
     ///
     /// Automated branch creation glob patterns for the Amplify app.
@@ -299,7 +301,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoBranchCreationPatterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_branch_creation_patterns: Option<Vec<String>>,
 
     ///
@@ -311,7 +313,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -325,7 +327,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub build_spec: Option<cfn_resources::StrVal>,
 
     ///
@@ -337,7 +339,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBranchCreation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_auto_branch_creation: Option<bool>,
 
     ///
@@ -349,7 +351,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBuild")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_auto_build: Option<bool>,
 
     ///
@@ -363,7 +365,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_performance_mode: Option<bool>,
 
     ///
@@ -379,7 +381,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePullRequestPreview")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_pull_request_preview: Option<bool>,
 
     ///
@@ -391,7 +393,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -403,7 +405,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub framework: Option<cfn_resources::StrVal>,
 
     ///
@@ -425,7 +427,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pull_request_environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -437,7 +439,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stage: Option<cfn_resources::StrVal>,
 }
 
@@ -461,6 +463,7 @@ impl cfn_resources::CfnResource for AutoBranchCreationConfig {
 
 /// Use the BasicAuthConfig property type to set password protection at an app level to all    your branches.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BasicAuthConfig {
     ///
     /// Enables basic authorization for the Amplify app's branches.
@@ -471,7 +474,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBasicAuth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_basic_auth: Option<bool>,
 
     ///
@@ -485,7 +488,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -499,7 +502,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -519,6 +522,7 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
 
 /// The CustomRule property type allows you to specify redirects, rewrites, and reverse    proxies. Redirects enable a web app to reroute navigation from one URL to another.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomRule {
     ///
     /// The condition for a URL rewrite or redirect rule, such as a country code.
@@ -533,7 +537,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition: Option<cfn_resources::StrVal>,
 
     ///
@@ -566,7 +570,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -601,6 +605,7 @@ impl cfn_resources::CfnResource for CustomRule {
 
 /// Environment variables are key-value pairs that are available at build time. Set    environment variables for all branches in your app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable name.
@@ -655,6 +660,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

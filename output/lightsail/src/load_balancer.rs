@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::LoadBalancer resource specifies a load balancer that     can be used with Lightsail instances.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLoadBalancer {
     ///
     /// The Lightsail instances to attach to the load balancer.
@@ -10,7 +11,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachedInstances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attached_instances: Option<Vec<String>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IpAddressType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_stickiness_enabled: Option<bool>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessLBCookieDurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_stickiness_lbcookie_duration_seconds: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsPolicyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tls_policy_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -174,6 +175,7 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

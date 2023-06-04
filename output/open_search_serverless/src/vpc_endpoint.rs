@@ -1,5 +1,6 @@
 /// Creates an OpenSearch Serverless-managed interface VPC endpoint. For more information, see Access         Amazon OpenSearch Serverless using an interface endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVpcEndpoint {
     ///
     /// The name of the endpoint.
@@ -21,7 +22,7 @@ pub struct CfnVpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///

@@ -2,6 +2,7 @@
 ///
 /// VPC Reachability Analyzer enables you to analyze and debug network reachability between     two resources in your virtual private cloud (VPC). For more information, see the Reachability Analyzer User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkInsightsPath {
     ///
     /// The ID or ARN of the destination. If the resource is in another account, you must specify an ARN.
@@ -12,7 +13,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_port: Option<i64>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterAtDestination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_at_destination: Option<PathFilter>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterAtSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_at_source: Option<PathFilter>,
 
     ///
@@ -112,7 +113,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIp")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -286,6 +287,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
 
 /// Describes a port range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterPortRange {
     ///
     /// The first port in the range.
@@ -300,7 +302,7 @@ pub struct FilterPortRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from_port: Option<i64>,
 
     ///
@@ -316,7 +318,7 @@ pub struct FilterPortRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to_port: Option<i64>,
 }
 
@@ -372,6 +374,7 @@ impl cfn_resources::CfnResource for FilterPortRange {
 
 /// Describes a set of filters for a path analysis. Use path filters to scope the analysis when      there can be multiple resulting paths.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathFilter {
     ///
     /// The destination IPv4 address.
@@ -388,7 +391,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -400,7 +403,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_port_range: Option<FilterPortRange>,
 
     ///
@@ -418,7 +421,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -430,7 +433,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_port_range: Option<FilterPortRange>,
 }
 
@@ -505,6 +508,7 @@ impl cfn_resources::CfnResource for PathFilter {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

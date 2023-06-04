@@ -1,5 +1,6 @@
 /// Creates a version of the SageMaker image specified by ImageName. The       version represents the Amazon Container Registry (ECR) container image specified by         BaseImage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnImageVersion {
     ///
     /// The container image that the SageMaker image version is based on.

@@ -1,5 +1,6 @@
 /// Create a new configuration in the AWS AppConfig hosted configuration store.    Configurations must be 1 MB or smaller. The AWS AppConfig hosted configuration store    provides the following benefits over other configuration store options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnHostedConfigurationVersion {
     ///
     /// The application ID.
@@ -66,7 +67,7 @@ pub struct CfnHostedConfigurationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnHostedConfigurationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LatestVersionNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub latest_version_number: Option<f64>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnHostedConfigurationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VersionLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_label: Option<cfn_resources::StrVal>,
 }
 

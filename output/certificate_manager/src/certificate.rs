@@ -1,5 +1,6 @@
 /// The AWS::CertificateManager::Certificate resource requests an AWS Certificate Manager (ACM) certificate that you can use to enable secure     connections. For example, you can deploy an ACM certificate to an Elastic Load Balancer to     enable HTTPS support. For more information, see RequestCertificate in     the AWS Certificate Manager API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCertificate {
     ///
     /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
@@ -18,7 +19,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateAuthorityArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_authority_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateTransparencyLoggingPreference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_transparency_logging_preference:
         Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
 
@@ -70,7 +71,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainValidationOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub domain_validation_options: Option<Vec<DomainValidationOption>>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subject_alternative_names: Option<Vec<String>>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_method: Option<CertificateValidationMethodEnum>,
 }
 
@@ -227,6 +228,7 @@ impl cfn_resources::CfnResource for CfnCertificate {
 
 /// DomainValidationOption is a property of the AWS::CertificateManager::Certificate resource that specifies the AWS Certificate Manager (ACM) certificate domain to validate. Depending on the     chosen validation method, ACM checks the domain's DNS record for a validation CNAME, or it     attempts to send a validation email message to the domain owner.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DomainValidationOption {
     ///
     /// A fully qualified domain name (FQDN) in the certificate request.
@@ -262,7 +264,7 @@ pub struct DomainValidationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hosted_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -282,7 +284,7 @@ pub struct DomainValidationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationDomain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_domain: Option<cfn_resources::StrVal>,
 }
 
@@ -349,6 +351,7 @@ impl cfn_resources::CfnResource for DomainValidationOption {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

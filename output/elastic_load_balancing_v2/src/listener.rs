@@ -1,5 +1,6 @@
 /// Specifies a listener for an Application Load Balancer, Network Load Balancer, or     Gateway Load Balancer.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnListener {
     ///
     /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)    policy.
@@ -10,7 +11,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlpnPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alpn_policy: Option<Vec<String>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificates: Option<Vec<Certificate>>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<ListenerProtocolEnum>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_policy: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -178,6 +179,7 @@ impl cfn_resources::CfnResource for CfnListener {
 
 /// Specifies an action for a listener rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
@@ -188,7 +190,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateCognitoConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
     ///
@@ -200,7 +202,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateOidcConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
 
     ///
@@ -212,7 +214,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponseConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fixed_response_config: Option<FixedResponseConfig>,
 
     ///
@@ -224,7 +226,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forward_config: Option<ForwardConfig>,
 
     ///
@@ -240,7 +242,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order: Option<i64>,
 
     ///
@@ -252,7 +254,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redirect_config: Option<RedirectConfig>,
 
     ///
@@ -264,7 +266,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -364,6 +366,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// Specifies information required when integrating with Amazon Cognito to authenticate     users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticateCognitoConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -374,7 +377,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -390,7 +393,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -404,7 +407,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -416,7 +419,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,7 +431,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout: Option<cfn_resources::StrVal>,
 
     ///
@@ -502,6 +505,7 @@ impl cfn_resources::CfnResource for AuthenticateCognitoConfig {
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthenticateOidcConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -512,7 +516,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -546,7 +550,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
@@ -573,7 +577,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -587,7 +591,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -599,7 +603,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -611,7 +615,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout: Option<cfn_resources::StrVal>,
 
     ///
@@ -634,7 +638,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseExistingClientSecret")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub use_existing_client_secret: Option<bool>,
 
     ///
@@ -686,6 +690,7 @@ impl cfn_resources::CfnResource for AuthenticateOidcConfig {
 
 /// Specifies an SSL server certificate to use as the default certificate for a secure     listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Certificate {
     ///
     /// The Amazon Resource Name (ARN) of the certificate.
@@ -696,7 +701,7 @@ pub struct Certificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -716,6 +721,7 @@ impl cfn_resources::CfnResource for Certificate {
 
 /// Specifies information required when returning a custom HTTP response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FixedResponseConfig {
     ///
     /// The content type.
@@ -732,7 +738,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<FixedResponseConfigContentTypeEnum>,
 
     ///
@@ -748,7 +754,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -832,6 +838,7 @@ impl cfn_resources::CfnResource for FixedResponseConfig {
 
 /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForwardConfig {
     ///
     /// Information about the target group stickiness for a rule.
@@ -842,7 +849,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupStickinessConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
 
     ///
@@ -854,7 +861,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_groups: Option<Vec<TargetGroupTuple>>,
 }
 
@@ -884,6 +891,7 @@ impl cfn_resources::CfnResource for ForwardConfig {
 ///
 /// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedirectConfig {
     ///
     /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
@@ -898,7 +906,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -914,7 +922,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -926,7 +934,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -940,7 +948,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -956,7 +964,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Query")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query: Option<cfn_resources::StrVal>,
 
     ///
@@ -1072,6 +1080,7 @@ impl cfn_resources::CfnResource for RedirectConfig {
 
 /// Information about the target group stickiness for a rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupStickinessConfig {
     ///
     /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
@@ -1082,7 +1091,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -1094,7 +1103,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 }
 
@@ -1114,6 +1123,7 @@ impl cfn_resources::CfnResource for TargetGroupStickinessConfig {
 
 /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TargetGroupTuple {
     ///
     /// The Amazon Resource Name (ARN) of the target group.
@@ -1124,7 +1134,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1136,7 +1146,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 

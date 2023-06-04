@@ -1,5 +1,6 @@
 /// The AWS::GlobalAccelerator::EndpointGroup resource is a Global Accelerator resource type that contains information about 		how you create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one AWS Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpointGroup {
     ///
     /// The list of endpoint objects.
@@ -12,7 +13,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckIntervalSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_interval_seconds: Option<i64>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_port: Option<i64>,
 
     ///
@@ -89,7 +90,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check_protocol: Option<EndpointGroupHealthCheckProtocolEnum>,
 
     ///
@@ -116,7 +117,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_overrides: Option<Vec<PortOverride>>,
 
     ///
@@ -132,7 +133,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub threshold_count: Option<i64>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficDialPercentage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub traffic_dial_percentage: Option<f64>,
 
     #[serde(skip_serializing)]
@@ -290,6 +291,7 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 
 /// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointConfiguration {
     ///
     /// Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint. 			The value is true or false. The default value is true for new accelerators.
@@ -304,7 +306,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientIPPreservationEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_ippreservation_enabled: Option<bool>,
 
     ///
@@ -335,7 +337,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 
@@ -386,6 +388,7 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 ///
 /// For more information, see 			Port overrides in the AWS Global Accelerator Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortOverride {
     ///
     /// The endpoint port that you want a listener port to be mapped to. This is the port on the endpoint, 		  such as the Application Load Balancer or Amazon EC2 instance.

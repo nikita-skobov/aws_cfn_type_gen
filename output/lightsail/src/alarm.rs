@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::Alarm resource specifies an alarm that can be used to     monitor a single metric for one of your Lightsail resources.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAlarm {
     ///
     /// The name of the alarm.
@@ -36,7 +37,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactProtocols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contact_protocols: Option<Vec<String>>,
 
     ///
@@ -48,7 +49,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatapointsToAlarm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub datapoints_to_alarm: Option<i64>,
 
     ///
@@ -95,7 +96,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_enabled: Option<bool>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTriggers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub notification_triggers: Option<Vec<String>>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatMissingData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub treat_missing_data: Option<AlarmTreatMissingDataEnum>,
 
     #[serde(skip_serializing)]

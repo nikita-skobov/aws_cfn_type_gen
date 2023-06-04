@@ -1,5 +1,6 @@
 /// Associates a subnet with a route table. The subnet and route table must be in the same     VPC. This association causes traffic originating from the subnet to be routed according to     the routes in the route table. A route table can be associated with multiple subnets. To     create a route table, see AWS::EC2::RouteTable.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubnetRouteTableAssociation {
     ///
     /// The ID of the route table.

@@ -1,5 +1,6 @@
 /// The AWS::IoTAnalytics::Dataset resource stores data retrieved from a data store by applying a       queryAction (an SQL query) or a containerAction (executing a containerized application).       The data set can be populated manually by calling CreateDatasetContent or automatically according       to a trigger you specify. For more information, see             How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataset {
     ///
     /// The DatasetAction objects that automatically create the dataset    contents.
@@ -25,7 +26,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentDeliveryRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_delivery_rules: Option<Vec<DatasetContentDeliveryRule>>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LateDataRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub late_data_rules: Option<Vec<LateDataRule>>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retention_period: Option<RetentionPeriod>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Triggers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub triggers: Option<Vec<Trigger>>,
 
     ///
@@ -111,7 +112,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersioningConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub versioning_configuration: Option<VersioningConfiguration>,
 
     #[serde(skip_serializing)]
@@ -214,6 +215,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 
 /// Information needed to run the "containerAction" to produce data set contents.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Action {
     ///
     /// The name of the data set action by which data set contents are automatically created.
@@ -241,7 +243,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_action: Option<ContainerAction>,
 
     ///
@@ -253,7 +255,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_action: Option<QueryAction>,
 }
 
@@ -303,6 +305,7 @@ impl cfn_resources::CfnResource for Action {
 
 /// Information needed to run the "containerAction" to produce data set contents.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerAction {
     ///
     /// The ARN of the role which gives permission to the system to access needed resources in order      to run the "containerAction". This includes, at minimum, permission to retrieve the data set      contents which are the input to the containerized application.
@@ -354,7 +357,7 @@ pub struct ContainerAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variables: Option<Vec<Variable>>,
 }
 
@@ -418,6 +421,7 @@ impl cfn_resources::CfnResource for ContainerAction {
 
 /// When dataset contents are created, they are delivered to destination specified    here.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetContentDeliveryRule {
     ///
     /// The destination to which dataset contents are delivered.
@@ -439,7 +443,7 @@ pub struct DatasetContentDeliveryRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entry_name: Option<cfn_resources::StrVal>,
 }
 
@@ -461,6 +465,7 @@ impl cfn_resources::CfnResource for DatasetContentDeliveryRule {
 
 /// The destination to which dataset contents are delivered.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetContentDeliveryRuleDestination {
     ///
     /// Configuration information for delivery of dataset contents to AWS IoT Events.
@@ -471,7 +476,7 @@ pub struct DatasetContentDeliveryRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotEventsDestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iot_events_destination_configuration: Option<IotEventsDestinationConfiguration>,
 
     ///
@@ -483,7 +488,7 @@ pub struct DatasetContentDeliveryRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DestinationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_destination_configuration: Option<S3DestinationConfiguration>,
 }
 
@@ -511,6 +516,7 @@ impl cfn_resources::CfnResource for DatasetContentDeliveryRuleDestination {
 
 /// The dataset whose latest contents are used as input to the notebook or application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetContentVersionValue {
     ///
     /// The name of the dataset whose latest contents are used as input to the notebook or    application.
@@ -568,6 +574,7 @@ impl cfn_resources::CfnResource for DatasetContentVersionValue {
 
 /// Used to limit data to that which has arrived since the last execution of the    action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeltaTime {
     ///
     /// The number of seconds of estimated in-flight lag time of message data. When you create    dataset contents using message data from a specified timeframe, some message data might still    be in flight when processing begins, and so do not arrive in time to be processed. Use this    field to make allowances for the in flight time of your message data, so that data not    processed from a previous timeframe is included with the next timeframe. Otherwise, missed    message data would be excluded from processing during the next timeframe too, because its    timestamp places it within the previous timeframe.
@@ -610,6 +617,7 @@ impl cfn_resources::CfnResource for DeltaTime {
 ///
 /// DeltaTime specifies a time interval. You can use     DeltaTime to create dataset contents with data that has arrived in the data    store since the last execution. For an example of DeltaTime, see Creating     a SQL dataset with a delta window (CLI) in the             AWS IoT Analytics User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeltaTimeSessionWindowConfiguration {
     ///
     /// A time interval. You can use timeoutInMinutes so that AWS IoT Analytics can batch up late    data notifications that have been generated since the last execution. AWS IoT Analytics sends one batch of    notifications to Amazon CloudWatch Events at one time.
@@ -663,6 +671,7 @@ impl cfn_resources::CfnResource for DeltaTimeSessionWindowConfiguration {
 
 /// Information which is used to filter message data, to segregate it according to the time      frame in which it arrives.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     ///
     /// Used to limit data to that which has arrived since the last execution of the action.
@@ -673,7 +682,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delta_time: Option<DeltaTime>,
 }
 
@@ -697,6 +706,7 @@ impl cfn_resources::CfnResource for Filter {
 
 /// Configuration information for coordination with AWS Glue, a fully managed extract, transform    and load (ETL) service.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlueConfiguration {
     ///
     /// The name of the database in your AWS Glue Data Catalog in which the table is located. An    AWS Glue Data Catalog database contains metadata tables.
@@ -793,6 +803,7 @@ impl cfn_resources::CfnResource for GlueConfiguration {
 
 /// Configuration information for delivery of dataset contents to AWS IoT Events.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IotEventsDestinationConfiguration {
     ///
     /// The name of the AWS IoT Events input to which dataset contents are delivered.
@@ -887,6 +898,7 @@ impl cfn_resources::CfnResource for IotEventsDestinationConfiguration {
 
 /// A structure that contains the name and configuration information of a late data    rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LateDataRule {
     ///
     /// The information needed to configure the late data rule.
@@ -914,7 +926,7 @@ pub struct LateDataRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_name: Option<cfn_resources::StrVal>,
 }
 
@@ -958,6 +970,7 @@ impl cfn_resources::CfnResource for LateDataRule {
 
 /// The information needed to configure a delta time session window.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LateDataRuleConfiguration {
     ///
     /// The information needed to configure a delta time session window.
@@ -968,7 +981,7 @@ pub struct LateDataRuleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTimeSessionWindowConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delta_time_session_window_configuration: Option<DeltaTimeSessionWindowConfiguration>,
 }
 
@@ -992,6 +1005,7 @@ impl cfn_resources::CfnResource for LateDataRuleConfiguration {
 
 /// The value of the variable as a structure that specifies an output file URI.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OutputFileUriValue {
     ///
     /// The URI of the location where dataset contents are stored, usually the URI of a file in an    S3 bucket.
@@ -1023,6 +1037,7 @@ impl cfn_resources::CfnResource for OutputFileUriValue {
 
 /// An "SqlQueryDatasetAction" object that uses an SQL query to automatically create data set contents.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryAction {
     ///
     /// Pre-filters applied to message data.
@@ -1035,7 +1050,7 @@ pub struct QueryAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filters: Option<Vec<Filter>>,
 
     ///
@@ -1075,6 +1090,7 @@ impl cfn_resources::CfnResource for QueryAction {
 
 /// The configuration of the resource used to execute the containerAction.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceConfiguration {
     ///
     /// The type of the compute resource used to execute the containerAction.    Possible values are: ACU_1 (vCPU=4, memory=16 GiB) or ACU_2 (vCPU=8,    memory=32 GiB).
@@ -1156,6 +1172,7 @@ impl cfn_resources::CfnResource for ResourceConfiguration {
 
 /// How long, in days, message data is kept.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RetentionPeriod {
     ///
     /// The number of days that message data is kept. The unlimited parameter must be    false.
@@ -1168,7 +1185,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_of_days: Option<i64>,
 
     ///
@@ -1180,7 +1197,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unlimited: Option<bool>,
 }
 
@@ -1209,6 +1226,7 @@ impl cfn_resources::CfnResource for RetentionPeriod {
 
 /// Configuration information for delivery of dataset contents to Amazon Simple Storage Service (Amazon S3).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3DestinationConfiguration {
     ///
     /// The name of the S3 bucket to which dataset contents are delivered.
@@ -1236,7 +1254,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub glue_configuration: Option<GlueConfiguration>,
 
     ///
@@ -1366,6 +1384,7 @@ impl cfn_resources::CfnResource for S3DestinationConfiguration {
 
 /// The schedule for when to trigger an update.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schedule {
     ///
     /// The expression that defines when to trigger an update. For more information, see            Schedule Expressions for Rules in the Amazon CloudWatch documentation.
@@ -1401,6 +1420,7 @@ impl cfn_resources::CfnResource for Schedule {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1439,6 +1459,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The "DatasetTrigger"   that specifies when the data set is automatically updated.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Trigger {
     ///
     /// The "Schedule" when the trigger is initiated.
@@ -1449,7 +1470,7 @@ pub struct Trigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -1461,7 +1482,7 @@ pub struct Trigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggeringDataset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub triggering_dataset: Option<TriggeringDataset>,
 }
 
@@ -1489,6 +1510,7 @@ impl cfn_resources::CfnResource for Trigger {
 
 /// Information about the dataset whose content generation triggers the new dataset content    generation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TriggeringDataset {
     ///
     /// The name of the data set whose content generation triggers the new data set content      generation.
@@ -1546,6 +1568,7 @@ impl cfn_resources::CfnResource for TriggeringDataset {
 
 /// An instance of a variable to be passed to the containerAction execution. Each    variable must have a name and a value given by one of stringValue,     datasetContentVersionValue, or outputFileUriValue.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Variable {
     ///
     /// The value of the variable as a structure that specifies a dataset content version.
@@ -1556,7 +1579,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetContentVersionValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_content_version_value: Option<DatasetContentVersionValue>,
 
     ///
@@ -1568,7 +1591,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub double_value: Option<f64>,
 
     ///
@@ -1580,7 +1603,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFileUriValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub output_file_uri_value: Option<OutputFileUriValue>,
 
     ///
@@ -1596,7 +1619,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1683,6 +1706,7 @@ impl cfn_resources::CfnResource for Variable {
 
 /// Information about the versioning of dataset contents.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VersioningConfiguration {
     ///
     /// How many versions of dataset contents are kept. The unlimited parameter must    be false.
@@ -1697,7 +1721,7 @@ pub struct VersioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVersions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_versions: Option<i64>,
 
     ///
@@ -1709,7 +1733,7 @@ pub struct VersioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unlimited: Option<bool>,
 }
 

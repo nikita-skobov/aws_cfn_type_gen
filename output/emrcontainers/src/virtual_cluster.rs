@@ -1,5 +1,6 @@
 /// The AWS::EMRContainers::VirtualCluster resource specifies a virtual cluster. A virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list, and delete virtual clusters. They do not consume any additional resources in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVirtualCluster {
     ///
     /// The container provider of the virtual cluster.
@@ -40,7 +41,7 @@ pub struct CfnVirtualCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -106,6 +107,7 @@ impl cfn_resources::CfnResource for CfnVirtualCluster {
 
 /// The information about the container used for a job run or a managed endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerInfo {
     ///
     /// The information about the Amazon EKS cluster.
@@ -137,6 +139,7 @@ impl cfn_resources::CfnResource for ContainerInfo {
 
 /// The information about the container provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerProvider {
     ///
     /// The ID of the container cluster.
@@ -233,6 +236,7 @@ impl cfn_resources::CfnResource for ContainerProvider {
 
 /// The information about the Amazon EKS cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EksInfo {
     ///
     /// The namespaces of the EKS cluster.
@@ -296,6 +300,7 @@ impl cfn_resources::CfnResource for EksInfo {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

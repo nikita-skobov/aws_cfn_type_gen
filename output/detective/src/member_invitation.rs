@@ -1,5 +1,6 @@
 /// The AWS::Detective::MemberInvitation resource is an Amazon Detective       resource type that creates an invitation to join a Detective behavior graph. The       administrator account can choose whether to send an email notification of the invitation       to the root user email address of the AWS account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMemberInvitation {
     ///
     /// Whether to send an invitation email to the member account. If set to true, the member account does not receive an invitation email.
@@ -10,7 +11,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableEmailNotification")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_email_notification: Option<bool>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message: Option<cfn_resources::StrVal>,
 }
 

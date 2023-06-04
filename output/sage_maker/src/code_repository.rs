@@ -2,6 +2,7 @@
 ///
 /// The repository can be hosted either in AWS CodeCommit       or in any other Git repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCodeRepository {
     ///
     /// The name of the Git repository.
@@ -18,7 +19,7 @@ pub struct CfnCodeRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CodeRepositoryName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_repository_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnCodeRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -93,6 +94,7 @@ impl cfn_resources::CfnResource for CfnCodeRepository {
 
 /// Specifies configuration details for a Git repository in your AWS       account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GitConfig {
     ///
     /// The default branch for the Git repository.
@@ -109,7 +111,7 @@ pub struct GitConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Branch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub branch: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +144,7 @@ pub struct GitConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -212,6 +214,7 @@ impl cfn_resources::CfnResource for GitConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::ECS::Cluster resource creates an Amazon Elastic Container Service (Amazon ECS)  cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCluster {
     ///
     /// The short name of one or more capacity providers to associate with the cluster. A 			capacity provider must be associated with a cluster before it can be included as part of 			the default capacity provider strategy of the cluster or used in a capacity provider 			strategy when calling the CreateService or RunTask 			actions.
@@ -16,7 +17,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviders")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_providers: Option<Vec<String>>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +41,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_settings: Option<Vec<ClusterSettings>>,
 
     ///
@@ -52,7 +53,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<ClusterConfiguration>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultCapacityProviderStrategy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceConnectDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_connect_defaults: Option<ServiceConnectDefaults>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -144,6 +145,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 
 /// The CapacityProviderStrategyItem property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
@@ -158,7 +160,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<i64>,
 
     ///
@@ -170,7 +172,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capacity_provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +192,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<i64>,
 }
 
@@ -246,6 +248,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 
 /// The execute command configuration for the cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterConfiguration {
     ///
     /// The details of the execute command configuration.
@@ -256,7 +259,7 @@ pub struct ClusterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecuteCommandConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execute_command_configuration: Option<ExecuteCommandConfiguration>,
 }
 
@@ -280,6 +283,7 @@ impl cfn_resources::CfnResource for ClusterConfiguration {
 
 /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterSettings {
     ///
     /// The name of the cluster setting. The value is containerInsights .
@@ -292,7 +296,7 @@ pub struct ClusterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<ClusterSettingsNameEnum>,
 
     ///
@@ -306,7 +310,7 @@ pub struct ClusterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -339,6 +343,7 @@ impl cfn_resources::CfnResource for ClusterSettings {
 
 /// The details of the execute command configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExecuteCommandConfiguration {
     ///
     /// Specify an AWS Key Management Service key ID to encrypt the data between the local client 			and the container.
@@ -349,7 +354,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -361,7 +366,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_configuration: Option<ExecuteCommandLogConfiguration>,
 
     ///
@@ -377,7 +382,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logging: Option<ExecuteCommandConfigurationLoggingEnum>,
 }
 
@@ -422,6 +427,7 @@ impl cfn_resources::CfnResource for ExecuteCommandConfiguration {
 
 /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExecuteCommandLogConfiguration {
     ///
     /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption 			will be off.
@@ -432,7 +438,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchEncryptionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_encryption_enabled: Option<bool>,
 
     ///
@@ -446,7 +452,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -460,7 +466,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -472,7 +478,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3EncryptionEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_encryption_enabled: Option<bool>,
 
     ///
@@ -484,7 +490,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -506,6 +512,7 @@ impl cfn_resources::CfnResource for ExecuteCommandLogConfiguration {
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ServiceConnectDefaults {
     ///
     /// The namespace name or full Amazon Resource Name (ARN) of the AWS Cloud Map namespace that's used when you create a service and don't specify 			a Service Connect configuration. The namespace name can include up to 1024 characters. 			The name is case-sensitive. The name can't include hyphens (-), tilde (~), greater than 			(>), less than (<), or slash (/).
@@ -524,7 +531,7 @@ pub struct ServiceConnectDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 }
 
@@ -550,6 +557,7 @@ impl cfn_resources::CfnResource for ServiceConnectDefaults {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

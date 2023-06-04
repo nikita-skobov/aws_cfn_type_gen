@@ -14,6 +14,7 @@
 ///
 /// If you are adding a new AWS Config Custom Lambda rule, you first need to create an AWS Lambda function in the management account or a delegated       administrator that the rule invokes to evaluate your resources. You also need to create an IAM role in the managed account that can be assumed by the Lambda function.       When you use PutOrganizationConfigRule to add a Custom Lambda rule to AWS Config, you must       specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnOrganizationConfigRule {
     ///
     /// A comma-separated list of accounts excluded from organization AWS Config rule.
@@ -26,7 +27,7 @@ pub struct CfnOrganizationConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_accounts: Option<Vec<String>>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnOrganizationConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationCustomPolicyRuleMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_custom_policy_rule_metadata: Option<OrganizationCustomPolicyRuleMetadata>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnOrganizationConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationCustomRuleMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_custom_rule_metadata: Option<OrganizationCustomRuleMetadata>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnOrganizationConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationManagedRuleMetadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_managed_rule_metadata: Option<OrganizationManagedRuleMetadata>,
 }
 
@@ -135,6 +136,7 @@ impl cfn_resources::CfnResource for CfnOrganizationConfigRule {
 
 /// The OrganizationCustomPolicyRuleMetadata property type specifies Property description not available. for an AWS::Config::OrganizationConfigRule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrganizationCustomPolicyRuleMetadata {
     /// Property description not available.
     ///
@@ -144,7 +146,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DebugLogDeliveryAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub debug_log_delivery_accounts: Option<Vec<String>>,
 
     /// Property description not available.
@@ -155,7 +157,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -166,7 +168,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_parameters: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -177,7 +179,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_frequency: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -188,7 +190,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationConfigRuleTriggerTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_config_rule_trigger_types: Option<Vec<String>>,
 
     /// Property description not available.
@@ -209,7 +211,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -220,7 +222,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypesScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types_scope: Option<Vec<String>>,
 
     /// Property description not available.
@@ -241,7 +243,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -252,7 +254,7 @@ pub struct OrganizationCustomPolicyRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
@@ -272,6 +274,7 @@ impl cfn_resources::CfnResource for OrganizationCustomPolicyRuleMetadata {
 
 /// An object that specifies organization custom rule metadata such as resource type, resource ID of AWS resource, Lambda function ARN, 			and organization trigger types that trigger AWS Config to evaluate your AWS resources against a rule. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrganizationCustomRuleMetadata {
     ///
     /// The description that you provide for your organization AWS Config rule.
@@ -286,7 +289,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +305,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_parameters: Option<cfn_resources::StrVal>,
 
     ///
@@ -333,7 +336,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_frequency:
         Option<OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum>,
 
@@ -363,7 +366,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -377,7 +380,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypesScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types_scope: Option<Vec<String>>,
 
     ///
@@ -393,7 +396,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -409,7 +412,7 @@ pub struct OrganizationCustomRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
@@ -593,6 +596,7 @@ impl cfn_resources::CfnResource for OrganizationCustomRuleMetadata {
 
 /// An object that specifies organization managed rule metadata such as resource type and ID of AWS resource along with the rule identifier. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OrganizationManagedRuleMetadata {
     ///
     /// The description that you provide for your organization AWS Config rule.
@@ -607,7 +611,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -623,7 +627,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_parameters: Option<cfn_resources::StrVal>,
 
     ///
@@ -639,7 +643,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_execution_frequency:
         Option<OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum>,
 
@@ -656,7 +660,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -670,7 +674,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypesScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_types_scope: Option<Vec<String>>,
 
     ///
@@ -701,7 +705,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKeyScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_key_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -717,7 +721,7 @@ pub struct OrganizationManagedRuleMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValueScope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 

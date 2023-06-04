@@ -2,6 +2,7 @@
 ///
 /// After it's created, the asset starts ingesting content and generates playback URLs for the packaging configurations associated with it. When ingest is complete, downstream         devices use the appropriate URL to request VOD content from AWS Elemental MediaPackage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAsset {
     ///
     /// List of playback endpoints that are available for this asset.
@@ -12,7 +13,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressEndpoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_endpoints: Option<Vec<EgressEndpoint>>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -122,6 +123,7 @@ impl cfn_resources::CfnResource for CfnAsset {
 
 /// The playback endpoint for a packaging configuration on an asset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EgressEndpoint {
     ///
     /// The ID of a packaging configuration that's applied to this asset.
@@ -168,6 +170,7 @@ impl cfn_resources::CfnResource for EgressEndpoint {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

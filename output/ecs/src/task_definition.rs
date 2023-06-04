@@ -1,5 +1,6 @@
 /// The details of a task definition which describes the container and volume definitions 			of an Amazon Elastic Container Service task. You can specify which Docker images to use, the required 			resources, and other configurations related to launching the task definition through an 			Amazon ECS service or task.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTaskDefinition {
     ///
     /// A list of container definitions in JSON format that describe the different containers 			that make up your task. For more information about container definition parameters and 			defaults, see Amazon ECS Task 				Definitions in the Amazon Elastic Container Service Developer Guide.
@@ -10,7 +11,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerDefinitions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_definitions: Option<Vec<ContainerDefinition>>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EphemeralStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ephemeral_storage: Option<EphemeralStorage>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub family: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceAccelerators")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inference_accelerators: Option<Vec<InferenceAccelerator>>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpcMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipc_mode: Option<TaskDefinitionIpcModeEnum>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +145,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_mode: Option<TaskDefinitionNetworkModeEnum>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PidMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pid_mode: Option<TaskDefinitionPidModeEnum>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementConstraints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_constraints: Option<Vec<TaskDefinitionPlacementConstraint>>,
 
     ///
@@ -190,7 +191,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProxyConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub proxy_configuration: Option<ProxyConfiguration>,
 
     ///
@@ -202,7 +203,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequiresCompatibilities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub requires_compatibilities: Option<Vec<String>>,
 
     ///
@@ -216,7 +217,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuntimePlatform")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub runtime_platform: Option<RuntimePlatform>,
 
     ///
@@ -234,7 +235,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -248,7 +249,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TaskRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub task_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -262,7 +263,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes: Option<Vec<Volume>>,
 
     #[serde(skip_serializing)]
@@ -377,6 +378,7 @@ impl cfn_resources::CfnResource for CfnTaskDefinition {
 
 /// The authorization configuration details for the Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthorizationConfig {
     ///
     /// The Amazon EFS access point ID to use. If an access point is specified, the root directory 			value specified in the EFSVolumeConfiguration must either be omitted or set 			to / which will enforce the path set on the EFS access point. If an access 			point is used, transit encryption must be on in the 				EFSVolumeConfiguration. For more information, see Working with Amazon 				EFS access points in the Amazon Elastic File System User Guide.
@@ -387,7 +389,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessPointId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_point_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -401,7 +403,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IAM")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iam: Option<AuthorizationConfigIAMEnum>,
 }
 
@@ -438,6 +440,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 
 /// The ContainerDefinition property specifies a container definition. Container definitions are used  in task definitions to describe the different containers that are launched as part of a task.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerDefinition {
     ///
     /// The command that's passed to the container. This parameter maps to Cmd in 			the Create a container section of the Docker Remote API and the 				COMMAND parameter to docker 				run. For more information, see https://docs.docker.com/engine/reference/builder/#cmd. If there are multiple arguments, each 			argument is a separated string in the array.
@@ -448,7 +451,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -472,7 +475,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpu")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu: Option<i64>,
 
     ///
@@ -492,7 +495,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DependsOn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub depends_on: Option<Vec<ContainerDependency>>,
 
     ///
@@ -506,7 +509,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DisableNetworking")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_networking: Option<bool>,
 
     ///
@@ -520,7 +523,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsSearchDomains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_search_domains: Option<Vec<String>>,
 
     ///
@@ -534,7 +537,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsServers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_servers: Option<Vec<String>>,
 
     ///
@@ -546,7 +549,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub docker_labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -570,7 +573,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerSecurityOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub docker_security_options: Option<Vec<String>>,
 
     ///
@@ -584,7 +587,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntryPoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub entry_point: Option<Vec<String>>,
 
     ///
@@ -598,7 +601,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Vec<KeyValuePair>>,
 
     ///
@@ -614,7 +617,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentFiles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_files: Option<Vec<EnvironmentFile>>,
 
     ///
@@ -628,7 +631,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Essential")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub essential: Option<bool>,
 
     ///
@@ -642,7 +645,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtraHosts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub extra_hosts: Option<Vec<HostEntry>>,
 
     ///
@@ -654,7 +657,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirelensConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub firelens_configuration: Option<FirelensConfiguration>,
 
     ///
@@ -666,7 +669,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -680,7 +683,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -705,7 +708,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Interactive")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interactive: Option<bool>,
 
     ///
@@ -721,7 +724,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Links")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub links: Option<Vec<String>>,
 
     ///
@@ -735,7 +738,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinuxParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub linux_parameters: Option<LinuxParameters>,
 
     ///
@@ -755,7 +758,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub log_configuration: Option<LogConfiguration>,
 
     ///
@@ -775,7 +778,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory: Option<i64>,
 
     ///
@@ -795,7 +798,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemoryReservation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_reservation: Option<i64>,
 
     ///
@@ -811,7 +814,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountPoints")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_points: Option<Vec<MountPoint>>,
 
     ///
@@ -842,7 +845,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_mappings: Option<Vec<PortMapping>>,
 
     ///
@@ -856,7 +859,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Privileged")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub privileged: Option<bool>,
 
     ///
@@ -868,7 +871,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PseudoTerminal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pseudo_terminal: Option<bool>,
 
     ///
@@ -882,7 +885,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadonlyRootFilesystem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub readonly_root_filesystem: Option<bool>,
 
     ///
@@ -894,7 +897,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryCredentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub repository_credentials: Option<RepositoryCredentials>,
 
     ///
@@ -906,7 +909,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceRequirements")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_requirements: Option<Vec<ResourceRequirement>>,
 
     ///
@@ -918,7 +921,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Secrets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secrets: Option<Vec<Secret>>,
 
     ///
@@ -938,7 +941,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_timeout: Option<i64>,
 
     ///
@@ -958,7 +961,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StopTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stop_timeout: Option<i64>,
 
     ///
@@ -972,7 +975,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SystemControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub system_controls: Option<Vec<SystemControl>>,
 
     ///
@@ -986,7 +989,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ulimits")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ulimits: Option<Vec<Ulimit>>,
 
     ///
@@ -1006,7 +1009,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "User")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user: Option<cfn_resources::StrVal>,
 
     ///
@@ -1018,7 +1021,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumesFrom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes_from: Option<Vec<VolumeFrom>>,
 
     ///
@@ -1030,7 +1033,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkingDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub working_directory: Option<cfn_resources::StrVal>,
 }
 
@@ -1072,6 +1075,7 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 ///
 /// Your Amazon ECS container instances require at least version 1.26.0 of the container agent to enable container  dependencies. However, we recommend using the latest container agent version. For information about checking your  agent version and updating to the latest version, see Updating the Amazon ECS Container Agent in the   Amazon Elastic Container Service Developer Guide. If you are using an Amazon ECS-optimized  Linux AMI, your instance needs at least version 1.26.0-1 of the ecs-init package. If your container  instances are launched from version 20190301 or later, then they contain the required versions of the  container agent and ecs-init. For more information, see Amazon ECS-optimized Linux AMI in the   Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContainerDependency {
     ///
     /// The dependency condition of the container. The following are the available conditions 			and their behavior:
@@ -1086,7 +1090,7 @@ pub struct ContainerDependency {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub condition: Option<ContainerDependencyConditionEnum>,
 
     ///
@@ -1098,7 +1102,7 @@ pub struct ContainerDependency {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_name: Option<cfn_resources::StrVal>,
 }
 
@@ -1143,6 +1147,7 @@ impl cfn_resources::CfnResource for ContainerDependency {
 
 /// The Device property specifies an object representing a container instance host device.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Device {
     ///
     /// The path inside the container at which to expose the host device.
@@ -1153,7 +1158,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1165,7 +1170,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1177,7 +1182,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<String>>,
 }
 
@@ -1197,6 +1202,7 @@ impl cfn_resources::CfnResource for Device {
 
 /// The DockerVolumeConfiguration property specifies a Docker volume configuration and is used when you  use Docker volumes. Docker volumes are only supported when you are using the EC2 launch type. Windows containers only  support the use of the local driver. To use bind mounts, specify a host instead.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DockerVolumeConfiguration {
     ///
     /// If this value is true, the Docker volume is created if it doesn't already 			exist.
@@ -1209,7 +1215,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Autoprovision")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub autoprovision: Option<bool>,
 
     ///
@@ -1221,7 +1227,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Driver")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub driver: Option<cfn_resources::StrVal>,
 
     ///
@@ -1233,7 +1239,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriverOpts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub driver_opts: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1245,7 +1251,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Labels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1259,7 +1265,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<DockerVolumeConfigurationScopeEnum>,
 }
 
@@ -1296,6 +1302,7 @@ impl cfn_resources::CfnResource for DockerVolumeConfiguration {
 
 /// This parameter is specified when you're using an Amazon Elastic File System file system for task 			storage. For more information, see Amazon EFS volumes in the 			Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EFSVolumeConfiguration {
     ///
     /// The authorization configuration details for the Amazon EFS file system.
@@ -1306,7 +1313,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthorizationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_config: Option<AuthorizationConfig>,
 
     ///
@@ -1331,7 +1338,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootDirectory")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub root_directory: Option<cfn_resources::StrVal>,
 
     ///
@@ -1345,7 +1352,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitEncryption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_encryption: Option<EFSVolumeConfigurationTransitEncryptionEnum>,
 
     ///
@@ -1357,7 +1364,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitEncryptionPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_encryption_port: Option<i64>,
 }
 
@@ -1402,6 +1409,7 @@ impl cfn_resources::CfnResource for EFSVolumeConfiguration {
 ///
 /// This parameter is only supported for tasks hosted on Fargate using the 			following platform versions:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EnvironmentFile {
     ///
     /// The file type to use. The only supported value is s3.
@@ -1414,7 +1422,7 @@ pub struct EnvironmentFile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<EnvironmentFileTypeEnum>,
 
     ///
@@ -1426,7 +1434,7 @@ pub struct EnvironmentFile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1459,6 +1467,7 @@ impl cfn_resources::CfnResource for EnvironmentFile {
 
 /// The amount of ephemeral storage to allocate for the task. This parameter is used to 			expand the total amount of ephemeral storage available, beyond the default amount, for 			tasks hosted on AWS Fargate. For more information, see Fargate task 				storage in the Amazon ECS User Guide for AWS Fargate       .
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EphemeralStorage {
     ///
     /// The total amount, in GiB, of ephemeral storage to set for the task. The minimum 			supported value is 21 GiB and the maximum supported value is 				200 GiB.
@@ -1469,7 +1478,7 @@ pub struct EphemeralStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SizeInGiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_in_gi_b: Option<i64>,
 }
 
@@ -1489,6 +1498,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 
 /// The FireLens configuration for the container. This is used to specify and configure a 			log router for container logs. For more information, see Custom log routing 			in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FirelensConfiguration {
     ///
     /// The options to use when configuring the log router. This field is optional and can be used to add additional  metadata, such as the task, task definition, cluster, and container instance details to the log event.
@@ -1503,7 +1513,7 @@ pub struct FirelensConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1517,7 +1527,7 @@ pub struct FirelensConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<FirelensConfigurationTypeEnum>,
 }
 
@@ -1558,6 +1568,7 @@ impl cfn_resources::CfnResource for FirelensConfiguration {
 ///
 /// The following are notes about container health check support:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HealthCheck {
     ///
     /// A string array representing the command that the container runs to determine if it is 			healthy. The string array must start with CMD to run the command arguments 			directly, or CMD-SHELL to run the command with the container's default 			shell.
@@ -1578,7 +1589,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -1590,7 +1601,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interval: Option<i64>,
 
     ///
@@ -1602,7 +1613,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Retries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub retries: Option<i64>,
 
     ///
@@ -1616,7 +1627,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_period: Option<i64>,
 
     ///
@@ -1628,7 +1639,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 }
 
@@ -1648,6 +1659,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 
 /// The HostEntry property specifies a hostname and an IP address that are added to the   /etc/hosts file of a container through the extraHosts parameter of its   ContainerDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HostEntry {
     ///
     /// The hostname to use in the /etc/hosts entry.
@@ -1658,7 +1670,7 @@ pub struct HostEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -1670,7 +1682,7 @@ pub struct HostEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip_address: Option<cfn_resources::StrVal>,
 }
 
@@ -1690,6 +1702,7 @@ impl cfn_resources::CfnResource for HostEntry {
 
 /// The HostVolumeProperties property specifies details on a container instance bind mount host  volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HostVolumeProperties {
     ///
     /// When the host parameter is used, specify a sourcePath to 			declare the path on the host container instance that's presented to the container. If 			this parameter is empty, then the Docker daemon has assigned a host path for you. If the 				host parameter contains a sourcePath file location, then 			the data volume persists at the specified location on the host container instance until 			you delete it manually. If the sourcePath value doesn't exist on the host 			container instance, the Docker daemon creates it. If the location does exist, the 			contents of the source path folder are exported.
@@ -1702,7 +1715,7 @@ pub struct HostVolumeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_path: Option<cfn_resources::StrVal>,
 }
 
@@ -1722,6 +1735,7 @@ impl cfn_resources::CfnResource for HostVolumeProperties {
 
 /// Details on an Elastic Inference accelerator. For more information, see Working with Amazon Elastic Inference on 				Amazon ECS in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InferenceAccelerator {
     ///
     /// The Elastic Inference accelerator device name. The deviceName must also 			be referenced in a container definition as a ResourceRequirement.
@@ -1732,7 +1746,7 @@ pub struct InferenceAccelerator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1744,7 +1758,7 @@ pub struct InferenceAccelerator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_type: Option<cfn_resources::StrVal>,
 }
 
@@ -1764,6 +1778,7 @@ impl cfn_resources::CfnResource for InferenceAccelerator {
 
 /// The KernelCapabilities property specifies the Linux capabilities for the container that are added  to or dropped from the default configuration that is provided by Docker. For more information on the default  capabilities and the non-default available capabilities, see Runtime privilege and   Linux capabilities in the Docker run reference. For more detailed information on these  Linux capabilities, see the capabilities(7) Linux manual page.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KernelCapabilities {
     ///
     /// The Linux capabilities for the container that have been added to the default 			configuration provided by Docker. This parameter maps to CapAdd in the 			Create a container section of the Docker Remote API and the 				--cap-add option to docker 				run.
@@ -1778,7 +1793,7 @@ pub struct KernelCapabilities {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Add")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add: Option<Vec<String>>,
 
     ///
@@ -1792,7 +1807,7 @@ pub struct KernelCapabilities {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Drop")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drop: Option<Vec<String>>,
 }
 
@@ -1812,6 +1827,7 @@ impl cfn_resources::CfnResource for KernelCapabilities {
 
 /// A key-value pair object.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KeyValuePair {
     ///
     /// The name of the key-value pair. For environment variables, this is the name of the 			environment variable.
@@ -1822,7 +1838,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1834,7 +1850,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1854,6 +1870,7 @@ impl cfn_resources::CfnResource for KeyValuePair {
 
 /// The Linux-specific options that are applied to the container, such as Linux KernelCapabilities.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LinuxParameters {
     ///
     /// The Linux capabilities for the container that are added to or dropped from the default 			configuration provided by Docker.
@@ -1866,7 +1883,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Capabilities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub capabilities: Option<KernelCapabilities>,
 
     ///
@@ -1880,7 +1897,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Devices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub devices: Option<Vec<Device>>,
 
     ///
@@ -1892,7 +1909,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitProcessEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub init_process_enabled: Option<bool>,
 
     ///
@@ -1908,7 +1925,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxSwap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_swap: Option<i64>,
 
     ///
@@ -1922,7 +1939,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SharedMemorySize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shared_memory_size: Option<i64>,
 
     ///
@@ -1936,7 +1953,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Swappiness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub swappiness: Option<i64>,
 
     ///
@@ -1950,7 +1967,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tmpfs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tmpfs: Option<Vec<Tmpfs>>,
 }
 
@@ -1974,6 +1991,7 @@ impl cfn_resources::CfnResource for LinuxParameters {
 
 /// The LogConfiguration property specifies log configuration options to send to a custom log driver  for the container.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container.
@@ -2007,7 +2025,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -2019,7 +2037,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_options: Option<Vec<Secret>>,
 }
 
@@ -2080,6 +2098,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 
 /// The details for a volume mount point that's used in a container definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MountPoint {
     ///
     /// The path on the container to mount the host volume at.
@@ -2090,7 +2109,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -2102,7 +2121,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -2114,7 +2133,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceVolume")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_volume: Option<cfn_resources::StrVal>,
 }
 
@@ -2138,6 +2157,7 @@ impl cfn_resources::CfnResource for MountPoint {
 ///
 /// After a task reaches the RUNNING status, manual and automatic host and container port assignments  are visible in the networkBindings section of DescribeTasks API responses.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortMapping {
     ///
     /// The application protocol that's used for the port mapping. This parameter only applies 			to Service Connect. We recommend that you set this parameter to be consistent with the 			protocol that your application uses. If you set this parameter, Amazon ECS adds 			protocol-specific connection handling to the Service Connect proxy. If you set this 			parameter, Amazon ECS adds protocol-specific telemetry in the Amazon ECS console and CloudWatch.
@@ -2154,7 +2174,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppProtocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_protocol: Option<PortMappingAppProtocolEnum>,
 
     ///
@@ -2170,7 +2190,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_port: Option<i64>,
 
     ///
@@ -2188,7 +2208,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_port_range: Option<cfn_resources::StrVal>,
 
     ///
@@ -2212,7 +2232,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host_port: Option<i64>,
 
     ///
@@ -2226,7 +2246,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2240,7 +2260,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<PortMappingProtocolEnum>,
 }
 
@@ -2300,6 +2320,7 @@ impl cfn_resources::CfnResource for PortMapping {
 ///
 /// For tasks that use the EC2 launch type, the container instances require 			at least version 1.26.0 of the container agent and at least version 1.26.0-1 of the 				ecs-init package to use a proxy configuration. If your container 			instances are launched from the Amazon ECS optimized AMI version 20190301 or 			later, then they contain the required versions of the container agent and 				ecs-init. For more information, see Amazon ECS-optimized Linux AMI
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProxyConfiguration {
     ///
     /// The name of the container that will serve as the App Mesh proxy.
@@ -2323,7 +2344,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProxyConfigurationProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub proxy_configuration_properties: Option<Vec<KeyValuePair>>,
 
     ///
@@ -2337,7 +2358,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ProxyConfigurationTypeEnum>,
 }
 
@@ -2370,6 +2391,7 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
 
 /// The repository credentials for private registry authentication.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RepositoryCredentials {
     ///
     /// The Amazon Resource Name (ARN) of the secret containing the private repository 			credentials.
@@ -2382,7 +2404,7 @@ pub struct RepositoryCredentials {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CredentialsParameter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials_parameter: Option<cfn_resources::StrVal>,
 }
 
@@ -2402,6 +2424,7 @@ impl cfn_resources::CfnResource for RepositoryCredentials {
 
 /// The type and amount of a resource to assign to a container. The supported resource types are 			GPUs and Elastic Inference accelerators. For more information, see Working with 				GPUs on Amazon ECS or Working with 				Amazon Elastic Inference on Amazon ECS in the Amazon Elastic Container Service Developer Guide
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported values are 				GPU or InferenceAccelerator.
@@ -2467,6 +2490,7 @@ impl cfn_resources::CfnResource for ResourceRequirement {
 ///
 /// For more information about RuntimePlatform, see RuntimePlatform in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RuntimePlatform {
     ///
     /// The CPU architecture.
@@ -2481,7 +2505,7 @@ pub struct RuntimePlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CpuArchitecture")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cpu_architecture: Option<RuntimePlatformCpuArchitectureEnum>,
 
     ///
@@ -2495,7 +2519,7 @@ pub struct RuntimePlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystemFamily")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operating_system_family: Option<RuntimePlatformOperatingSystemFamilyEnum>,
 }
 
@@ -2575,6 +2599,7 @@ impl cfn_resources::CfnResource for RuntimePlatform {
 ///
 /// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -2621,6 +2646,7 @@ impl cfn_resources::CfnResource for Secret {
 ///
 /// We don't recommend that you specify network-related systemControls 			parameters for multiple containers in a single task. This task also uses either the 				awsvpc or host network mode. It does it for the following 			reasons.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SystemControl {
     ///
     /// The namespaced kernel parameter to set a value for.
@@ -2631,7 +2657,7 @@ pub struct SystemControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -2643,7 +2669,7 @@ pub struct SystemControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -2669,6 +2695,7 @@ impl cfn_resources::CfnResource for SystemControl {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2707,6 +2734,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The constraint on task placement in the task definition. For more 			information, see Task placement constraints in the 			Amazon Elastic Container Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TaskDefinitionPlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. For more information, 			see Cluster query language in the Amazon Elastic Container Service Developer Guide.
@@ -2717,7 +2745,7 @@ pub struct TaskDefinitionPlacementConstraint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -2763,6 +2791,7 @@ impl cfn_resources::CfnResource for TaskDefinitionPlacementConstraint {
 
 /// The container path, mount options, and size of the tmpfs mount.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tmpfs {
     ///
     /// The absolute file path where the tmpfs volume is to be mounted.
@@ -2773,7 +2802,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -2787,7 +2816,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_options: Option<Vec<String>>,
 
     ///
@@ -2822,6 +2851,7 @@ impl cfn_resources::CfnResource for Tmpfs {
 ///
 /// You can specify the ulimit settings for a container in a task 			definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ulimit {
     ///
     /// The hard limit for the ulimit type.
@@ -2944,6 +2974,7 @@ impl cfn_resources::CfnResource for Ulimit {
 
 /// The Volume property specifies a data volume used in a task definition. For tasks that use a Docker  volume, specify a DockerVolumeConfiguration. For tasks that use a bind mount host volume, specify a   host and optional sourcePath. For more information about host and optional   sourcePath, see Volumes and Using Data Volumes in   Tasks.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Volume {
     ///
     /// This parameter is specified when you use Docker volumes.
@@ -2958,7 +2989,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerVolumeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub docker_volume_configuration: Option<DockerVolumeConfiguration>,
 
     ///
@@ -2970,7 +3001,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EFSVolumeConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub efsvolume_configuration: Option<EFSVolumeConfiguration>,
 
     ///
@@ -2984,7 +3015,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<HostVolumeProperties>,
 
     ///
@@ -2996,7 +3027,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -3026,6 +3057,7 @@ impl cfn_resources::CfnResource for Volume {
 
 /// Details on a data volume from another container in the same task definition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VolumeFrom {
     ///
     /// If this value is true, the container has read-only access to the volume. 			If this value is false, then the container can write to the volume. The 			default value is false.
@@ -3036,7 +3068,7 @@ pub struct VolumeFrom {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -3048,7 +3080,7 @@ pub struct VolumeFrom {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceContainer")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_container: Option<cfn_resources::StrVal>,
 }
 

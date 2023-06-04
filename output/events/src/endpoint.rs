@@ -1,5 +1,6 @@
 /// A global endpoint used to improve your application's availability by making it regional-fault tolerant. For more information about global endpoints, see Making applications Regional-fault tolerant with global endpoints and event replication in the Amazon EventBridge User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEndpoint {
     ///
     /// A description for the endpoint.
@@ -14,7 +15,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replication_config: Option<ReplicationConfig>,
 
     ///
@@ -75,7 +76,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -222,6 +223,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 
 /// The event buses the endpoint is associated with.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EndpointEventBus {
     ///
     /// The ARN of the event bus the endpoint is associated with.
@@ -279,6 +281,7 @@ impl cfn_resources::CfnResource for EndpointEventBus {
 
 /// The failover configuration for an endpoint. This includes what triggers failover and what happens when it's triggered.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FailoverConfig {
     ///
     /// The main Region of the endpoint.
@@ -323,6 +326,7 @@ impl cfn_resources::CfnResource for FailoverConfig {
 
 /// The primary Region of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Primary {
     ///
     /// The ARN of the health check used by the endpoint to determine whether failover is triggered.
@@ -380,6 +384,7 @@ impl cfn_resources::CfnResource for Primary {
 
 /// Endpoints can replicate all events to the secondary Region.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationConfig {
     ///
     /// The state of event replication.
@@ -428,6 +433,7 @@ impl cfn_resources::CfnResource for ReplicationConfig {
 
 /// The routing configuration of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RoutingConfig {
     ///
     /// The failover configuration for an endpoint. This includes what triggers failover and what happens when it's triggered.
@@ -459,6 +465,7 @@ impl cfn_resources::CfnResource for RoutingConfig {
 
 /// The secondary Region that processes events when failover is triggered or replication is enabled.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Secondary {
     ///
     /// Defines the secondary Region.

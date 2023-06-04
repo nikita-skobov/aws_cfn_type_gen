@@ -1,5 +1,6 @@
 /// Creates a fleet provisioning template.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnProvisioningTemplate {
     ///
     /// The description of the fleet provisioning template.
@@ -10,7 +11,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enabled: Option<bool>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreProvisioningHook")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pre_provisioning_hook: Option<ProvisioningHook>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +93,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -127,6 +128,7 @@ impl cfn_resources::CfnResource for CfnProvisioningTemplate {
 
 /// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisioningHook {
     ///
     /// The payload that was sent to the target function. The valid payload is "2020-04-01".
@@ -137,7 +139,7 @@ pub struct ProvisioningHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payload_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -149,7 +151,7 @@ pub struct ProvisioningHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -175,6 +177,7 @@ impl cfn_resources::CfnResource for ProvisioningHook {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

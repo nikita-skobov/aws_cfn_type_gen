@@ -1,5 +1,6 @@
 /// Creates a CIDR collection in the current AWS account.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCidrCollection {
     ///
     /// A complex type that contains information about the list of CIDR locations.
@@ -10,7 +11,7 @@ pub struct CfnCidrCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Locations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub locations: Option<Vec<Location>>,
 
     ///
@@ -91,6 +92,7 @@ impl cfn_resources::CfnResource for CfnCidrCollection {
 
 /// Specifies the list of CIDR blocks for a CIDR location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Location {
     ///
     /// List of CIDR blocks.

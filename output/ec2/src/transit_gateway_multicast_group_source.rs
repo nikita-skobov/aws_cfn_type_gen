@@ -2,6 +2,7 @@
 ///
 /// A multicast source is a network interface attached to a supported instance that sends     multicast traffic. For information about supported instances, see Multicast Considerations in Amazon VPC Transit       Gateways.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGatewayMulticastGroupSource {
     ///
     /// The IP address assigned to the transit gateway multicast group.

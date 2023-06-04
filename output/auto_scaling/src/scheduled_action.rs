@@ -4,6 +4,7 @@
 ///
 /// For more information, see Scheduled scaling and Suspending and resuming scaling processes in the Amazon EC2 Auto Scaling     User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnScheduledAction {
     ///
     /// The name of the Auto Scaling group.
@@ -33,7 +34,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub desired_capacity: Option<i64>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_size: Option<i64>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_size: Option<i64>,
 
     ///
@@ -85,7 +86,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Recurrence")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub recurrence: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +100,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -113,7 +114,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_zone: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

@@ -2,6 +2,7 @@
 ///
 /// Applies to Hyperledger Fabric and Ethereum.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNode {
     ///
     /// The unique identifier of the member to which the node belongs. Applies only to Hyperledger Fabric.
@@ -129,6 +130,7 @@ impl cfn_resources::CfnResource for CfnNode {
 
 /// Configuration properties of a peer node within a membership.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NodeConfiguration {
     ///
     /// The Availability Zone in which the node exists. Required for Ethereum nodes.

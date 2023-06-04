@@ -2,6 +2,7 @@
 ///
 /// For information about the number of groups you can create, see Limitations       on IAM Entities in the IAM User       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGroup {
     ///
     /// The name of the group to create. Do not include the path in this value.
@@ -20,7 +21,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_policy_arns: Option<Vec<String>>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub policies: Option<Vec<Policy>>,
 
     #[serde(skip_serializing)]
@@ -129,6 +130,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Policy {
     ///
     /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.

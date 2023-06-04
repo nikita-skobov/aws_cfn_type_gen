@@ -1,5 +1,6 @@
 /// The AWS::ElasticBeanstalk::ApplicationVersion resource is an AWS Elastic Beanstalk    resource type that specifies an application version, an iteration of deployable code, for an    Elastic Beanstalk application.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApplicationVersion {
     ///
     /// The name of the Elastic Beanstalk application that is associated with this application    version.
@@ -27,7 +28,7 @@ pub struct CfnApplicationVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,6 +107,7 @@ impl cfn_resources::CfnResource for CfnApplicationVersion {
 
 /// The SourceBundle property is an embedded property of the AWS::ElasticBeanstalk::ApplicationVersion resource. It specifies the Amazon S3     location of the source bundle for an AWS Elastic Beanstalk application version.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceBundle {
     ///
     /// The Amazon S3 bucket where the data is located.

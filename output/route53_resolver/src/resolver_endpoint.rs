@@ -1,5 +1,6 @@
 /// Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResolverEndpoint {
     ///
     /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
@@ -42,7 +43,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -53,7 +54,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -64,7 +65,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredInstanceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub preferred_instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resolver_endpoint_type: Option<ResolverEndpointResolverEndpointTypeEnum>,
 
     ///
@@ -103,7 +104,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -289,6 +290,7 @@ impl cfn_resources::CfnResource for CfnResolverEndpoint {
 
 /// In a 			CreateResolverEndpoint 			request, the IP address that DNS queries originate from (for outbound endpoints) or that you forward DNS queries to (for inbound endpoints). 			IpAddressRequest also includes the ID of the subnet that contains the IP address.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IpAddressRequest {
     ///
     /// The IPv4 address that you want to use for DNS queries.
@@ -303,7 +305,7 @@ pub struct IpAddressRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -319,7 +321,7 @@ pub struct IpAddressRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -426,6 +428,7 @@ impl cfn_resources::CfnResource for IpAddressRequest {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

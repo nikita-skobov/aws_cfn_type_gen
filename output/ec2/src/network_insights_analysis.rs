@@ -1,5 +1,6 @@
 /// Specifies a network insights analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkInsightsAnalysis {
     ///
     /// The member accounts that contain resources that the path can traverse.
@@ -10,7 +11,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_accounts: Option<Vec<String>>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterInArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_in_arns: Option<Vec<String>>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -120,6 +121,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
 
 /// Describes an additional detail for a path analysis. For more information, see Reachability Analyzer additional detail codes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AdditionalDetail {
     ///
     /// The additional detail code.
@@ -130,7 +132,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalDetailType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_detail_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +144,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -154,7 +156,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancers: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -166,7 +168,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_name: Option<cfn_resources::StrVal>,
 }
 
@@ -190,6 +192,7 @@ impl cfn_resources::CfnResource for AdditionalDetail {
 
 /// Describes an potential intermediate component of a feasible path.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AlternatePathHint {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -200,7 +203,7 @@ pub struct AlternatePathHint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +215,7 @@ pub struct AlternatePathHint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_id: Option<cfn_resources::StrVal>,
 }
 
@@ -232,6 +235,7 @@ impl cfn_resources::CfnResource for AlternatePathHint {
 
 /// Describes a network access control (ACL) rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisAclRule {
     ///
     /// The IPv4 address range, in CIDR notation.
@@ -242,7 +246,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -254,7 +258,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Egress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress: Option<bool>,
 
     ///
@@ -266,7 +270,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -278,7 +282,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -290,7 +294,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleAction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +306,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rule_number: Option<i64>,
 }
 
@@ -326,6 +330,7 @@ impl cfn_resources::CfnResource for AnalysisAclRule {
 
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisComponent {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -336,7 +341,7 @@ pub struct AnalysisComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -348,7 +353,7 @@ pub struct AnalysisComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub id: Option<cfn_resources::StrVal>,
 }
 
@@ -368,6 +373,7 @@ impl cfn_resources::CfnResource for AnalysisComponent {
 
 /// Describes a load balancer listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisLoadBalancerListener {
     ///
     /// [Classic Load Balancers] The back-end port for the listener.
@@ -382,7 +388,7 @@ pub struct AnalysisLoadBalancerListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancePort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_port: Option<i64>,
 
     ///
@@ -398,7 +404,7 @@ pub struct AnalysisLoadBalancerListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_port: Option<i64>,
 }
 
@@ -454,6 +460,7 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
 
 /// Describes a load balancer target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisLoadBalancerTarget {
     ///
     /// The IP address.
@@ -470,7 +477,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<cfn_resources::StrVal>,
 
     ///
@@ -482,7 +489,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -494,7 +501,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Instance")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance: Option<AnalysisComponent>,
 
     ///
@@ -510,7 +517,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 }
 
@@ -574,6 +581,7 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
 
 /// Describes a header. Reflects any changes made by a component as traffic passes through.     The fields of an inbound header are null except for the first component of a path.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisPacketHeader {
     ///
     /// The destination addresses.
@@ -584,7 +592,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_addresses: Option<Vec<String>>,
 
     ///
@@ -596,7 +604,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPortRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_port_ranges: Option<Vec<PortRange>>,
 
     ///
@@ -608,7 +616,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -620,7 +628,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceAddresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_addresses: Option<Vec<String>>,
 
     ///
@@ -632,7 +640,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePortRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_port_ranges: Option<Vec<PortRange>>,
 }
 
@@ -652,6 +660,7 @@ impl cfn_resources::CfnResource for AnalysisPacketHeader {
 
 /// Describes a route table route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisRouteTableRoute {
     ///
     /// The ID of a NAT gateway.
@@ -662,7 +671,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NatGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nat_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -674,7 +683,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -688,7 +697,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Origin")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub origin: Option<cfn_resources::StrVal>,
 
     ///
@@ -702,7 +711,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<cfn_resources::StrVal>,
 
     ///
@@ -714,7 +723,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -726,7 +735,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnectionId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_peering_connection_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -738,7 +747,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "destinationCidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -750,7 +759,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "destinationPrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -762,7 +771,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "egressOnlyInternetGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub egress_only_internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -774,7 +783,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -786,7 +795,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "instanceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_id: Option<cfn_resources::StrVal>,
 }
 
@@ -806,6 +815,7 @@ impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
 
 /// Describes a security group rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisSecurityGroupRule {
     ///
     /// The IPv4 address range, in CIDR notation.
@@ -816,7 +826,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -830,7 +840,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub direction: Option<cfn_resources::StrVal>,
 
     ///
@@ -842,7 +852,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -854,7 +864,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -866,7 +876,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -878,7 +888,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_id: Option<cfn_resources::StrVal>,
 }
 
@@ -902,6 +912,7 @@ impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
 
 /// Describes an explanation code for an unreachable path. For more information, see Reachability Analyzer explanation codes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Explanation {
     ///
     /// The network ACL.
@@ -912,7 +923,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Acl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acl: Option<AnalysisComponent>,
 
     ///
@@ -924,7 +935,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acl_rule: Option<AnalysisAclRule>,
 
     ///
@@ -942,7 +953,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub address: Option<cfn_resources::StrVal>,
 
     ///
@@ -954,7 +965,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Addresses")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub addresses: Option<Vec<String>>,
 
     ///
@@ -966,7 +977,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachedTo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attached_to: Option<AnalysisComponent>,
 
     ///
@@ -978,7 +989,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -990,7 +1001,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -1002,7 +1013,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClassicLoadBalancerListener")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub classic_load_balancer_listener: Option<AnalysisLoadBalancerListener>,
 
     ///
@@ -1014,7 +1025,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -1028,7 +1039,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentAccount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_account: Option<cfn_resources::StrVal>,
 
     ///
@@ -1042,7 +1053,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentRegion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -1054,7 +1065,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub customer_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1066,7 +1077,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<AnalysisComponent>,
 
     ///
@@ -1078,7 +1089,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationVpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1092,7 +1103,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub direction: Option<cfn_resources::StrVal>,
 
     ///
@@ -1104,7 +1115,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticLoadBalancerListener")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
     ///
@@ -1116,7 +1127,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplanationCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explanation_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -1128,7 +1139,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressRouteTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ingress_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1140,7 +1151,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub internet_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1156,7 +1167,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1172,7 +1183,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerListenerPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_listener_port: Option<i64>,
 
     ///
@@ -1184,7 +1195,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTarget")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_target: Option<AnalysisLoadBalancerTarget>,
 
     ///
@@ -1196,7 +1207,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_target_group: Option<AnalysisComponent>,
 
     ///
@@ -1208,7 +1219,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_target_groups: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -1224,7 +1235,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetPort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub load_balancer_target_port: Option<i64>,
 
     ///
@@ -1236,7 +1247,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingComponent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub missing_component: Option<cfn_resources::StrVal>,
 
     ///
@@ -1248,7 +1259,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NatGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nat_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1260,7 +1271,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterface")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_interface: Option<AnalysisComponent>,
 
     ///
@@ -1272,7 +1283,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PacketField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub packet_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1288,7 +1299,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1300,7 +1311,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port_ranges: Option<Vec<PortRange>>,
 
     ///
@@ -1312,7 +1323,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_list: Option<AnalysisComponent>,
 
     ///
@@ -1324,7 +1335,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocols: Option<Vec<String>>,
 
     ///
@@ -1336,7 +1347,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_table: Option<AnalysisComponent>,
 
     ///
@@ -1348,7 +1359,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
     ///
@@ -1360,7 +1371,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group: Option<AnalysisComponent>,
 
     ///
@@ -1372,7 +1383,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
     ///
@@ -1384,7 +1395,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_groups: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -1396,7 +1407,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1408,7 +1419,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<cfn_resources::StrVal>,
 
     ///
@@ -1420,7 +1431,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet: Option<AnalysisComponent>,
 
     ///
@@ -1432,7 +1443,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetRouteTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1444,7 +1455,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1456,7 +1467,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayAttachment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_attachment: Option<AnalysisComponent>,
 
     ///
@@ -1468,7 +1479,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1480,7 +1491,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTableRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
     ///
@@ -1492,7 +1503,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc: Option<AnalysisComponent>,
 
     ///
@@ -1504,7 +1515,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_peering_connection: Option<AnalysisComponent>,
 
     ///
@@ -1516,7 +1527,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnConnection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_connection: Option<AnalysisComponent>,
 
     ///
@@ -1528,7 +1539,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1540,7 +1551,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "vpcEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_endpoint: Option<AnalysisComponent>,
 }
 
@@ -1768,6 +1779,7 @@ impl cfn_resources::CfnResource for Explanation {
 
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PathComponent {
     ///
     /// The network ACL rule.
@@ -1778,7 +1790,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acl_rule: Option<AnalysisAclRule>,
 
     ///
@@ -1790,7 +1802,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalDetails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub additional_details: Option<Vec<AdditionalDetail>>,
 
     ///
@@ -1802,7 +1814,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -1814,7 +1826,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationVpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1826,7 +1838,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticLoadBalancerListener")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
     ///
@@ -1838,7 +1850,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Explanations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explanations: Option<Vec<Explanation>>,
 
     ///
@@ -1850,7 +1862,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InboundHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inbound_header: Option<AnalysisPacketHeader>,
 
     ///
@@ -1862,7 +1874,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutboundHeader")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outbound_header: Option<AnalysisPacketHeader>,
 
     ///
@@ -1874,7 +1886,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
     ///
@@ -1886,7 +1898,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
     ///
@@ -1898,7 +1910,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SequenceNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sequence_number: Option<i64>,
 
     ///
@@ -1910,7 +1922,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1922,7 +1934,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1934,7 +1946,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subnet: Option<AnalysisComponent>,
 
     ///
@@ -1946,7 +1958,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGateway")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1958,7 +1970,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTableRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
     ///
@@ -1970,7 +1982,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc: Option<AnalysisComponent>,
 }
 
@@ -2038,6 +2050,7 @@ impl cfn_resources::CfnResource for PathComponent {
 
 /// Describes a range of ports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortRange {
     ///
     /// The first port in the range.
@@ -2048,7 +2061,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from: Option<i64>,
 
     ///
@@ -2060,7 +2073,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to: Option<i64>,
 }
 
@@ -2086,6 +2099,7 @@ impl cfn_resources::CfnResource for PortRange {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2124,6 +2138,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// Describes a route in a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TransitGatewayRouteTableRoute {
     ///
     /// The ID of the route attachment.
@@ -2134,7 +2149,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attachment_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2146,7 +2161,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationCidr")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -2158,7 +2173,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2170,7 +2185,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2182,7 +2197,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -2196,7 +2211,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteOrigin")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_origin: Option<cfn_resources::StrVal>,
 
     ///
@@ -2208,7 +2223,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<cfn_resources::StrVal>,
 }
 

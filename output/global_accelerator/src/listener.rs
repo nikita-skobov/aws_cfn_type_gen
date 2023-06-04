@@ -1,5 +1,6 @@
 /// The AWS::GlobalAccelerator::Listener resource is a Global Accelerator resource type that contains information about 	   		how you create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static 			IP addresses on a port, port range, or list of port ranges that you specify.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnListener {
     ///
     /// The Amazon Resource Name (ARN) of your accelerator.
@@ -31,7 +32,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAffinity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_affinity: Option<ListenerClientAffinityEnum>,
 
     ///
@@ -142,6 +143,7 @@ impl cfn_resources::CfnResource for CfnListener {
 
 /// A complex type for a range of ports for a listener.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PortRange {
     ///
     /// The first port in the range of ports, inclusive.

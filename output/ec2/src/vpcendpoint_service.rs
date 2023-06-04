@@ -4,6 +4,7 @@
 ///
 /// For more information, see the AWS PrivateLink User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPCEndpointService {
     ///
     /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
@@ -14,7 +15,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptanceRequired")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub acceptance_required: Option<bool>,
 
     ///
@@ -26,7 +27,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contributor_insights_enabled: Option<bool>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GatewayLoadBalancerArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gateway_load_balancer_arns: Option<Vec<String>>,
 
     ///
@@ -50,7 +51,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkLoadBalancerArns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub network_load_balancer_arns: Option<Vec<String>>,
 
     ///
@@ -64,7 +65,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayerResponsibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub payer_responsibility: Option<VPCEndpointServicePayerResponsibilityEnum>,
 
     #[serde(skip_serializing)]

@@ -1,5 +1,6 @@
 /// Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTrail {
     ///
     /// Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that     represents the log group to which CloudTrail logs are delivered. You must use a log     group that exists in your account.
@@ -12,7 +13,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsRoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_watch_logs_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +39,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableLogFileValidation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_log_file_validation: Option<bool>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventSelectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_selectors: Option<Vec<EventSelector>>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeGlobalServiceEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_global_service_events: Option<bool>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightSelectors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insight_selectors: Option<Vec<InsightSelector>>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsMultiRegionTrail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_multi_region_trail: Option<bool>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsOrganizationTrail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_organization_trail: Option<bool>,
 
     ///
@@ -135,7 +136,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +159,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -170,7 +171,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sns_topic_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -182,7 +183,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -196,7 +197,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrailName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trail_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -242,6 +243,7 @@ impl cfn_resources::CfnResource for CfnTrail {
 ///
 /// The following example demonstrates how logging works when you configure logging of AWS Lambda data events for a      Lambda function named MyLambdaFunction, but not for all Lambda functions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataResource {
     ///
     /// The resource type in which you want to log data events. You can specify     the following basic event selector resource types:
@@ -267,7 +269,7 @@ pub struct DataResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -291,6 +293,7 @@ impl cfn_resources::CfnResource for DataResource {
 ///
 /// You cannot apply both event selectors and advanced event selectors to a trail.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EventSelector {
     ///
     /// In AWS CloudFormation, CloudTrail supports data event logging for Amazon S3 objects,      Amazon DynamoDB tables, and AWS Lambda functions. Currently, advanced event selectors for      data events are not supported in AWS CloudFormation templates.      You can specify      up to 250 resources for an individual event selector, but the total number of data resources cannot exceed      250 across all event selectors in a trail. This limit does not apply if you configure resource logging for all data events.
@@ -303,7 +306,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataResources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_resources: Option<Vec<DataResource>>,
 
     ///
@@ -315,7 +318,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeManagementEventSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_management_event_sources: Option<Vec<String>>,
 
     ///
@@ -333,7 +336,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeManagementEvents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_management_events: Option<bool>,
 
     ///
@@ -349,7 +352,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadWriteType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_write_type: Option<EventSelectorReadWriteTypeEnum>,
 }
 
@@ -390,6 +393,7 @@ impl cfn_resources::CfnResource for EventSelector {
 
 /// A JSON string that contains a list of Insights types that are logged on a trail.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InsightSelector {
     ///
     /// The type of Insights events to log on a trail. ApiCallRateInsight and       ApiErrorRateInsight are valid Insight types.
@@ -406,7 +410,7 @@ pub struct InsightSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insight_type: Option<InsightSelectorInsightTypeEnum>,
 }
 
@@ -449,6 +453,7 @@ impl cfn_resources::CfnResource for InsightSelector {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

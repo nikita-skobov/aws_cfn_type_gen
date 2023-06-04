@@ -2,6 +2,7 @@
 ///
 /// The transit gateway attachment must be in the available state before you can add a     resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGatewayMulticastDomainAssociation {
     ///
     /// The IDs of the subnets to associate with the transit gateway multicast domain.

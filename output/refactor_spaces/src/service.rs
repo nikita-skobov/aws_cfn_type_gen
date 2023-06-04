@@ -1,5 +1,6 @@
 /// Creates an AWS Migration Hub Refactor Spaces service. The account owner of the service is always the    environment owner, regardless of which account in the environment creates the service.    Services have either a URL endpoint in a virtual private cloud (VPC), or a Lambda    function endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnService {
     ///
     /// The unique identifier of the application.
@@ -21,7 +22,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_endpoint: Option<LambdaEndpointInput>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -90,7 +91,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UrlEndpoint")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub url_endpoint: Option<UrlEndpointInput>,
 
     ///
@@ -102,7 +103,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -152,6 +153,7 @@ impl cfn_resources::CfnResource for CfnService {
 
 /// The input for the AWS Lambda endpoint type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaEndpointInput {
     ///
     /// The Amazon Resource Name (ARN) of the Lambda function or alias.
@@ -187,6 +189,7 @@ impl cfn_resources::CfnResource for LambdaEndpointInput {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -225,6 +228,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The configuration for the URL endpoint type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UrlEndpointInput {
     ///
     /// The health check URL of the URL endpoint type. If the URL is a public endpoint, the     HealthUrl must also be a public endpoint. If the URL is a private endpoint    inside a virtual private cloud (VPC), the health URL must also be a private endpoint, and the    host must be the same as the URL.
@@ -235,7 +239,7 @@ pub struct UrlEndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub health_url: Option<cfn_resources::StrVal>,
 
     ///

@@ -2,6 +2,7 @@
 ///
 /// If you want to authenticate identities using an identity provider, you can create an       identity provider configuration and associate it to your cluster. After configuring       authentication to your cluster you can create Kubernetes roles and         clusterroles to assign permissions to the roles, and then bind the       roles to the identities using Kubernetes rolebindings and         clusterrolebindings. For more information see Using RBAC         Authorization in the Kubernetes documentation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnIdentityProviderConfig {
     ///
     /// The cluster that the configuration is associated to.
@@ -23,7 +24,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityProviderConfigName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub identity_provider_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +36,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Oidc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oidc: Option<OidcIdentityProviderConfig>,
 
     ///
@@ -47,7 +48,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -91,6 +92,7 @@ impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
 
 /// An object representing the configuration for an OpenID Connect (OIDC) identity       provider.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OidcIdentityProviderConfig {
     ///
     /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
@@ -112,7 +114,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupsClaim")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups_claim: Option<cfn_resources::StrVal>,
 
     ///
@@ -124,7 +126,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupsPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +149,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequiredClaims")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub required_claims: Option<Vec<RequiredClaim>>,
 
     ///
@@ -159,7 +161,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsernameClaim")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username_claim: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,7 +173,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsernamePrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -191,6 +193,7 @@ impl cfn_resources::CfnResource for OidcIdentityProviderConfig {
 
 /// A key-value pair that describes a required claim in the identity token. If set, each       claim is verified to be present in the token with a matching value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RequiredClaim {
     ///
     /// The key to match from the token.
@@ -237,6 +240,7 @@ impl cfn_resources::CfnResource for RequiredClaim {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

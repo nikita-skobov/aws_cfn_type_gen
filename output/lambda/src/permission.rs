@@ -6,6 +6,7 @@
 ///
 /// This resource adds a statement to a resource-based permission policy for the function. For more information    about function policies, see Lambda Function Policies.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPermission {
     ///
     /// The action that the principal can use on the function. For example, lambda:InvokeFunction or     lambda:GetFunction.
@@ -35,7 +36,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSourceToken")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_source_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionUrlAuthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_url_auth_type: Option<PermissionFunctionUrlAuthTypeEnum>,
 
     ///
@@ -101,7 +102,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrincipalOrgID")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub principal_org_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -117,7 +118,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAccount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_account: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +134,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_arn: Option<cfn_resources::StrVal>,
 }
 

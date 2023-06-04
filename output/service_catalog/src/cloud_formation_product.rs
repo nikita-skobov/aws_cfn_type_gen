@@ -1,5 +1,6 @@
 /// Specifies a product.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCloudFormationProduct {
     ///
     /// The language code.
@@ -14,7 +15,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Distributor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub distributor: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub product_type: Option<CloudFormationProductProductTypeEnum>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioning_artifact_parameters: Option<Vec<ProvisioningArtifactProperties>>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceProvisioningArtifacts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub replace_provisioning_artifacts: Option<bool>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceConnection")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_connection: Option<SourceConnection>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportDescription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub support_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportEmail")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub support_email: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +165,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub support_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +179,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -350,6 +351,7 @@ impl cfn_resources::CfnResource for CfnCloudFormationProduct {
 
 /// The subtype containing details about the Codestar connection Type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CodeStarParameters {
     ///
     /// The absolute path wehre the artifact resides within the repo and branch, formatted as      "folder/file.json."
@@ -518,6 +520,7 @@ impl cfn_resources::CfnResource for CodeStarParameters {
 
 /// Provides connection details.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConnectionParameters {
     ///
     /// Provides ConnectionType details.
@@ -528,7 +531,7 @@ pub struct ConnectionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeStar")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub code_star: Option<CodeStarParameters>,
 }
 
@@ -552,6 +555,7 @@ impl cfn_resources::CfnResource for ConnectionParameters {
 
 /// Information about a provisioning artifact (also known as a version) for a product.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProvisioningArtifactProperties {
     ///
     /// The description of the provisioning artifact, including how it differs from the previous provisioning artifact.
@@ -564,7 +568,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -576,7 +580,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableTemplateValidation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_template_validation: Option<bool>,
 
     ///
@@ -607,7 +611,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -623,7 +627,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ProvisioningArtifactPropertiesTypeEnum>,
 }
 
@@ -690,6 +694,7 @@ impl cfn_resources::CfnResource for ProvisioningArtifactProperties {
 
 /// A top level ProductViewDetail response containing details about the product’s connection.     AWS Service Catalog returns this field for the CreateProduct, UpdateProduct,      DescribeProductAsAdmin, and SearchProductAsAdmin APIs.      This response contains the same fields as the ConnectionParameters request, with the      addition of the LastSync response.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SourceConnection {
     ///
     /// The connection details based on the connection Type.
@@ -738,6 +743,7 @@ impl cfn_resources::CfnResource for SourceConnection {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

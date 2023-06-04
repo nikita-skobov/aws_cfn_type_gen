@@ -6,6 +6,7 @@
 ///
 /// For more information about managed policies in general, see Managed         policies and inline policies in the       IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnManagedPolicy {
     ///
     /// A friendly description of the policy.
@@ -22,7 +23,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ManagedPolicyName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub managed_policy_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -129,7 +130,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub roles: Option<Vec<String>>,
 
     ///
@@ -149,7 +150,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub users: Option<Vec<String>>,
 }
 

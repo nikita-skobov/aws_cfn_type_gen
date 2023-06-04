@@ -1,5 +1,6 @@
 /// Creates a new Capacity Reservation with the specified attributes. For more information,     see Capacity       Reservations in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCapacityReservation {
     ///
     /// The Availability Zone in which to create the Capacity Reservation.
@@ -21,7 +22,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +54,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDateType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub end_date_type: Option<CapacityReservationEndDateTypeEnum>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EphemeralStorage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ephemeral_storage: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceMatchCriteria")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub instance_match_criteria: Option<CapacityReservationInstanceMatchCriteriaEnum>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutPostArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub out_post_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -148,7 +149,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementGroupArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +161,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -176,7 +177,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tenancy: Option<CapacityReservationTenancyEnum>,
 
     #[serde(skip_serializing)]
@@ -374,6 +375,7 @@ impl cfn_resources::CfnResource for CfnCapacityReservation {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -414,6 +416,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// For more information, see Tag.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag. Specify capacity-reservation.
@@ -426,7 +429,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
     ///
@@ -438,7 +441,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 

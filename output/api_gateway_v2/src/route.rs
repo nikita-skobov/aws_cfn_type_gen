@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::Route resource creates a route for an          API.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRoute {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyRequired")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_key_required: Option<bool>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +58,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelSelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestModels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_models: Option<serde_json::Value>,
 
     ///
@@ -105,7 +106,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub request_parameters: Option<serde_json::Value>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteResponseSelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub route_response_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

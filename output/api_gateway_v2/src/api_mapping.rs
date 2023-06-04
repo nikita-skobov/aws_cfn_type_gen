@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::ApiMapping resource contains an API mapping.          An API mapping relates a path of your custom domain name to a stage of your API. A          custom domain name can have multiple API mappings, but the paths can't overlap. A          custom domain can map only to APIs of the same protocol type. For more          information, see CreateApiMapping in the Amazon API Gateway V2 API             Reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnApiMapping {
     ///
     /// The identifier of the API.
@@ -21,7 +22,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiMappingKey")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub api_mapping_key: Option<cfn_resources::StrVal>,
 
     ///

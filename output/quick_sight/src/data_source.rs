@@ -1,5 +1,6 @@
 /// Creates a data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataSource {
     ///
     /// A set of alternate data source parameters that you want to share for the credentials       stored with this data source. The credentials are applied in tandem with the data source       parameters when you copy a data source by using a create or update request. The API       operation compares the DataSourceParameters structure that's in the request       with the structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the credentials from this       existing data source. If the AlternateDataSourceParameters list is null,       the Credentials originally used with this DataSourceParameters       are automatically allowed.
@@ -12,7 +13,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateDataSourceParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credentials: Option<DataSourceCredentials>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSourceId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +67,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source_parameters: Option<DataSourceParameters>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorInfo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub error_info: Option<DataSourceErrorInfo>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -120,7 +121,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ssl_properties: Option<SslProperties>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<DataSourceTypeEnum>,
 
     ///
@@ -162,7 +163,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectionProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_connection_properties: Option<VpcConnectionProperties>,
 
     #[serde(skip_serializing)]
@@ -427,6 +428,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 
 /// The parameters for OpenSearch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonElasticsearchParameters {
     ///
     /// The OpenSearch domain.
@@ -482,6 +484,7 @@ impl cfn_resources::CfnResource for AmazonElasticsearchParameters {
 
 /// The parameters for OpenSearch.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AmazonOpenSearchParameters {
     ///
     /// The OpenSearch domain.
@@ -537,6 +540,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchParameters {
 
 /// Parameters for Amazon Athena.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AthenaParameters {
     ///
     /// The workgroup that Amazon Athena uses.
@@ -551,7 +555,7 @@ pub struct AthenaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkGroup")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub work_group: Option<cfn_resources::StrVal>,
 }
 
@@ -593,6 +597,7 @@ impl cfn_resources::CfnResource for AthenaParameters {
 
 /// Parameters for Amazon Aurora.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuroraParameters {
     ///
     /// Database.
@@ -718,6 +723,7 @@ impl cfn_resources::CfnResource for AuroraParameters {
 
 /// Parameters for Amazon Aurora PostgreSQL-Compatible Edition.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuroraPostgreSqlParameters {
     ///
     /// The Amazon Aurora PostgreSQL database to connect to.
@@ -843,6 +849,7 @@ impl cfn_resources::CfnResource for AuroraPostgreSqlParameters {
 
 /// The combination of user name and password that are used as credentials.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CredentialPair {
     ///
     /// A set of alternate data source parameters that you want to share for these       credentials. The credentials are applied in tandem with the data source parameters when       you copy a data source by using a create or update request. The API operation compares       the DataSourceParameters structure that's in the request with the       structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the new data source with       the existing credentials. If the AlternateDataSourceParameters list is       null, the DataSourceParameters originally used with these         Credentials is automatically allowed.
@@ -855,7 +862,7 @@ pub struct CredentialPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateDataSourceParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
 
     ///
@@ -955,6 +962,7 @@ impl cfn_resources::CfnResource for CredentialPair {
 
 /// Data source credentials. This is a variant type structure. For this structure to be       valid, only one of the attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceCredentials {
     ///
     /// The Amazon Resource Name (ARN) of a data source that has the credential pair that you       want to use. When CopySourceArn is not null, the credential pair from the       data source in the ARN is used as the credentials for the       DataSourceCredentials structure.
@@ -967,7 +975,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopySourceArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_source_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -979,7 +987,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialPair")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub credential_pair: Option<CredentialPair>,
 
     ///
@@ -991,7 +999,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1015,6 +1023,7 @@ impl cfn_resources::CfnResource for DataSourceCredentials {
 
 /// Error information for the data source creation or update.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceErrorInfo {
     ///
     /// Error message.
@@ -1025,7 +1034,7 @@ pub struct DataSourceErrorInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message: Option<cfn_resources::StrVal>,
 
     ///
@@ -1039,7 +1048,7 @@ pub struct DataSourceErrorInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<DataSourceErrorInfoTypeEnum>,
 }
 
@@ -1100,6 +1109,7 @@ impl cfn_resources::CfnResource for DataSourceErrorInfo {
 
 /// The parameters that Amazon QuickSight uses to connect to your underlying data source.       This is a variant type structure. For this structure to be valid, only one of the       attributes can be non-null.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSourceParameters {
     ///
     /// The parameters for OpenSearch.
@@ -1110,7 +1120,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonElasticsearchParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazon_elasticsearch_parameters: Option<AmazonElasticsearchParameters>,
 
     ///
@@ -1122,7 +1132,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonOpenSearchParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub amazon_open_search_parameters: Option<AmazonOpenSearchParameters>,
 
     ///
@@ -1134,7 +1144,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AthenaParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub athena_parameters: Option<AthenaParameters>,
 
     ///
@@ -1146,7 +1156,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuroraParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aurora_parameters: Option<AuroraParameters>,
 
     ///
@@ -1158,7 +1168,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuroraPostgreSqlParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aurora_postgre_sql_parameters: Option<AuroraPostgreSqlParameters>,
 
     ///
@@ -1170,7 +1180,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabricksParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub databricks_parameters: Option<DatabricksParameters>,
 
     ///
@@ -1182,7 +1192,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MariaDbParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maria_db_parameters: Option<MariaDbParameters>,
 
     ///
@@ -1194,7 +1204,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MySqlParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub my_sql_parameters: Option<MySqlParameters>,
 
     ///
@@ -1206,7 +1216,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OracleParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub oracle_parameters: Option<OracleParameters>,
 
     ///
@@ -1218,7 +1228,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostgreSqlParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub postgre_sql_parameters: Option<PostgreSqlParameters>,
 
     ///
@@ -1230,7 +1240,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrestoParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub presto_parameters: Option<PrestoParameters>,
 
     ///
@@ -1242,7 +1252,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rds_parameters: Option<RdsParameters>,
 
     ///
@@ -1254,7 +1264,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub redshift_parameters: Option<RedshiftParameters>,
 
     ///
@@ -1266,7 +1276,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub s3_parameters: Option<S3Parameters>,
 
     ///
@@ -1278,7 +1288,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnowflakeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snowflake_parameters: Option<SnowflakeParameters>,
 
     ///
@@ -1290,7 +1300,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SparkParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub spark_parameters: Option<SparkParameters>,
 
     ///
@@ -1302,7 +1312,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlServerParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sql_server_parameters: Option<SqlServerParameters>,
 
     ///
@@ -1314,7 +1324,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeradataParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub teradata_parameters: Option<TeradataParameters>,
 }
 
@@ -1406,6 +1416,7 @@ impl cfn_resources::CfnResource for DataSourceParameters {
 
 /// The required parameters that are needed to connect to a Databricks data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatabricksParameters {
     ///
     /// The host name of the Databricks data source.
@@ -1457,6 +1468,7 @@ impl cfn_resources::CfnResource for DatabricksParameters {
 
 /// Amazon S3 manifest file location.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ManifestFileLocation {
     ///
     /// Amazon S3 bucket.
@@ -1549,6 +1561,7 @@ impl cfn_resources::CfnResource for ManifestFileLocation {
 
 /// The parameters for MariaDB.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MariaDbParameters {
     ///
     /// Database.
@@ -1674,6 +1687,7 @@ impl cfn_resources::CfnResource for MariaDbParameters {
 
 /// The parameters for MySQL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MySqlParameters {
     ///
     /// Database.
@@ -1799,6 +1813,7 @@ impl cfn_resources::CfnResource for MySqlParameters {
 
 /// Oracle parameters.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OracleParameters {
     ///
     /// Database.
@@ -1850,6 +1865,7 @@ impl cfn_resources::CfnResource for OracleParameters {
 
 /// The parameters for PostgreSQL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PostgreSqlParameters {
     ///
     /// Database.
@@ -1975,6 +1991,7 @@ impl cfn_resources::CfnResource for PostgreSqlParameters {
 
 /// The parameters for Presto.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrestoParameters {
     ///
     /// Catalog.
@@ -2087,6 +2104,7 @@ impl cfn_resources::CfnResource for PrestoParameters {
 
 /// The parameters for Amazon RDS.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RdsParameters {
     ///
     /// Database.
@@ -2179,6 +2197,7 @@ impl cfn_resources::CfnResource for RdsParameters {
 
 /// The parameters for Amazon Redshift. The ClusterId field can be blank if       Host and Port are both set. The Host and       Port fields can be blank if the ClusterId field is set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RedshiftParameters {
     ///
     /// Cluster ID. This field can be blank if the Host and Port are       provided.
@@ -2193,7 +2212,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2224,7 +2243,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -2240,7 +2259,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<f64>,
 }
 
@@ -2344,6 +2363,7 @@ impl cfn_resources::CfnResource for RedshiftParameters {
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -2386,6 +2406,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 
 /// The parameters for S3.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct S3Parameters {
     ///
     /// Location of the Amazon S3 manifest file. This is NULL if the manifest file was       uploaded into Amazon QuickSight.
@@ -2417,6 +2438,7 @@ impl cfn_resources::CfnResource for S3Parameters {
 
 /// The parameters for Snowflake.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SnowflakeParameters {
     ///
     /// Database.
@@ -2533,6 +2555,7 @@ impl cfn_resources::CfnResource for SnowflakeParameters {
 
 /// The parameters for Spark.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SparkParameters {
     ///
     /// Host.
@@ -2621,6 +2644,7 @@ impl cfn_resources::CfnResource for SparkParameters {
 
 /// The parameters for SQL Server.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SqlServerParameters {
     ///
     /// Database.
@@ -2746,6 +2770,7 @@ impl cfn_resources::CfnResource for SqlServerParameters {
 
 /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your       underlying data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SslProperties {
     ///
     /// A Boolean option to control whether SSL should be disabled.
@@ -2756,7 +2781,7 @@ pub struct SslProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableSsl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub disable_ssl: Option<bool>,
 }
 
@@ -2782,6 +2807,7 @@ impl cfn_resources::CfnResource for SslProperties {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2820,6 +2846,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The parameters for Teradata.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TeradataParameters {
     ///
     /// Database.
@@ -2945,6 +2972,7 @@ impl cfn_resources::CfnResource for TeradataParameters {
 
 /// VPC connection properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VpcConnectionProperties {
     ///
     /// The Amazon Resource Name (ARN) for the VPC connection.

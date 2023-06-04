@@ -1,5 +1,6 @@
 /// The AWS::Batch::JobQueue resource specifies the parameters for an AWS Batch job queue  definition. For more information, see Job   Queues in the AWS Batch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnJobQueue {
     ///
     /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler  uses this parameter to determine which compute environment runs a specific job. Compute environments must be in  the VALID state before you can associate them with a job queue. You can associate up to three compute  environments with a job queue. All of the compute environments must be either EC2 (EC2 or   SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and Fargate compute  environments can't be mixed.
@@ -23,7 +24,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobQueueName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_queue_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulingPolicyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scheduling_policy_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +61,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub state: Option<JobQueueStateEnum>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -120,6 +121,7 @@ impl cfn_resources::CfnResource for CfnJobQueue {
 
 /// The order that compute environments are tried in for job placement within a queue. Compute  environments are tried in ascending order. For example, if two compute environments are  associated with a job queue, the compute environment with a lower order integer value is tried  for job placement first. Compute environments must be in the VALID state before you  can associate them with a job queue. All of the compute environments must be either EC2   (EC2 or SPOT) or Fargate (FARGATE or   FARGATE_SPOT); EC2 and Fargate compute environments can't be mixed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComputeEnvironmentOrder {
     ///
     /// The Amazon Resource Name (ARN) of the compute environment.

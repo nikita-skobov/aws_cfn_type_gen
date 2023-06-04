@@ -1,5 +1,6 @@
 /// The AWS::ApiGatewayV2::RouteResponse resource creates a route          response for a WebSocket API. For more information, see Set up Route Responses for a WebSocket API in API Gateway in the             API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRouteResponse {
     ///
     /// The API identifier.
@@ -21,7 +22,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelSelectionExpression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub model_selection_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseModels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_models: Option<serde_json::Value>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub response_parameters: Option<serde_json::Value>,
 
     ///
@@ -87,6 +88,7 @@ impl cfn_resources::CfnResource for CfnRouteResponse {
 
 /// Specifies whether the parameter is required.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterConstraints {
     ///
     /// Specifies whether the parameter is required.

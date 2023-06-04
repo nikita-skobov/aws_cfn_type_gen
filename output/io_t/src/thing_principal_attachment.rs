@@ -2,6 +2,7 @@
 ///
 /// For more information about working with AWS IoT things and principals, see Authorization in the AWS IoT Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnThingPrincipalAttachment {
     ///
     /// The principal, which can be a certificate ARN (as returned from the       CreateCertificate operation) or an Amazon Cognito ID.

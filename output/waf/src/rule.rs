@@ -2,6 +2,7 @@
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent 			header for which the value is BadBot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnRule {
     ///
     /// The name of the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
@@ -46,7 +47,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicates")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predicates: Option<Vec<Predicate>>,
 }
 
@@ -110,6 +111,7 @@ impl cfn_resources::CfnResource for CfnRule {
 
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Predicate {
     ///
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.

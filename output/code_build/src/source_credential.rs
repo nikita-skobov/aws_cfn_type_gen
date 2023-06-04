@@ -1,5 +1,6 @@
 /// Information about the credentials for a GitHub, GitHub Enterprise, or Bitbucket repository. We strongly recommend that you      use AWS Secrets Manager to store your credentials. If you use      Secrets Manager, you must have secrets in your secrets manager. For more       information, see         Using Dynamic References to Specify Template Values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSourceCredential {
     ///
     /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
@@ -51,7 +52,7 @@ pub struct CfnSourceCredential {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub username: Option<cfn_resources::StrVal>,
 }
 

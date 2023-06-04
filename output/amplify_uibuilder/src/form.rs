@@ -1,5 +1,6 @@
 /// The AWS::AmplifyUIBuilder::Form resource specifies all of the information that is required to create a form.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnForm {
     ///
     /// The unique ID of the Amplify app associated with the form.
@@ -10,7 +11,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cta")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cta: Option<FormCTA>,
 
     ///
@@ -45,7 +46,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -78,7 +79,7 @@ pub struct CfnForm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelDecorator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_decorator: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnForm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -171,6 +172,7 @@ impl cfn_resources::CfnResource for CfnForm {
 
 /// The FieldConfig property specifies the configuration information for a field in a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldConfig {
     ///
     /// Specifies whether to hide a field.
@@ -181,7 +183,7 @@ pub struct FieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excluded")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded: Option<bool>,
 
     ///
@@ -193,7 +195,7 @@ pub struct FieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_type: Option<FieldInputConfig>,
 
     ///
@@ -205,7 +207,7 @@ pub struct FieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -217,7 +219,7 @@ pub struct FieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<FieldPosition>,
 
     ///
@@ -229,7 +231,7 @@ pub struct FieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validations: Option<Vec<FieldValidationConfiguration>>,
 }
 
@@ -257,6 +259,7 @@ impl cfn_resources::CfnResource for FieldConfig {
 
 /// The FieldInputConfig property specifies the configuration for the default input values to display for a field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldInputConfig {
     ///
     /// Specifies whether a field has a default value.
@@ -267,7 +270,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultChecked")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_checked: Option<bool>,
 
     ///
@@ -279,7 +282,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultCountryCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_country_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -291,7 +294,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -303,7 +306,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DescriptiveText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub descriptive_text: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -314,7 +317,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileUploaderConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_uploader_config: Option<FileUploaderFieldConfig>,
 
     /// Property description not available.
@@ -325,7 +328,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsArray")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_array: Option<bool>,
 
     ///
@@ -337,7 +340,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_value: Option<f64>,
 
     ///
@@ -349,7 +352,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_value: Option<f64>,
 
     ///
@@ -361,7 +364,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -373,7 +376,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placeholder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placeholder: Option<cfn_resources::StrVal>,
 
     ///
@@ -385,7 +388,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -397,7 +400,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Required")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub required: Option<bool>,
 
     ///
@@ -409,7 +412,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Step")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step: Option<f64>,
 
     ///
@@ -432,7 +435,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 
     ///
@@ -444,7 +447,7 @@ pub struct FieldInputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_mappings: Option<ValueMappings>,
 }
 
@@ -472,6 +475,7 @@ impl cfn_resources::CfnResource for FieldInputConfig {
 
 /// The FieldPosition property specifies the field position.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldPosition {
     /// Property description not available.
     ///
@@ -481,7 +485,7 @@ pub struct FieldPosition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Below")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub below: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -492,7 +496,7 @@ pub struct FieldPosition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Fixed")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fixed: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -503,7 +507,7 @@ pub struct FieldPosition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightOf")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub right_of: Option<cfn_resources::StrVal>,
 }
 
@@ -523,6 +527,7 @@ impl cfn_resources::CfnResource for FieldPosition {
 
 /// The FieldValidationConfiguration property specifies the validation configuration for a field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldValidationConfiguration {
     ///
     /// The validation to perform on a number value.
@@ -533,7 +538,7 @@ pub struct FieldValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub num_values: Option<Vec<f64>>,
 
     ///
@@ -545,7 +550,7 @@ pub struct FieldValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StrValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub str_values: Option<Vec<String>>,
 
     ///
@@ -568,7 +573,7 @@ pub struct FieldValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationMessage")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub validation_message: Option<cfn_resources::StrVal>,
 }
 
@@ -588,6 +593,7 @@ impl cfn_resources::CfnResource for FieldValidationConfiguration {
 
 /// The FileUploaderFieldConfig property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Form.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FileUploaderFieldConfig {
     /// Property description not available.
     ///
@@ -617,7 +623,7 @@ pub struct FileUploaderFieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsResumable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub is_resumable: Option<bool>,
 
     /// Property description not available.
@@ -628,7 +634,7 @@ pub struct FileUploaderFieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_file_count: Option<f64>,
 
     /// Property description not available.
@@ -639,7 +645,7 @@ pub struct FileUploaderFieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_size: Option<f64>,
 
     /// Property description not available.
@@ -650,7 +656,7 @@ pub struct FileUploaderFieldConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShowThumbnails")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub show_thumbnails: Option<bool>,
 }
 
@@ -670,6 +676,7 @@ impl cfn_resources::CfnResource for FileUploaderFieldConfig {
 
 /// The FormButton property specifies the configuration for a button UI element that is a part of a form.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormButton {
     ///
     /// Describes the button's properties.
@@ -680,7 +687,7 @@ pub struct FormButton {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub children: Option<cfn_resources::StrVal>,
 
     ///
@@ -692,7 +699,7 @@ pub struct FormButton {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excluded")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded: Option<bool>,
 
     ///
@@ -704,7 +711,7 @@ pub struct FormButton {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<FieldPosition>,
 }
 
@@ -728,6 +735,7 @@ impl cfn_resources::CfnResource for FormButton {
 
 /// The FormCTA property specifies the call to action button configuration for the form.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormCTA {
     ///
     /// Displays a cancel button.
@@ -738,7 +746,7 @@ pub struct FormCTA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cancel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cancel: Option<FormButton>,
 
     ///
@@ -750,7 +758,7 @@ pub struct FormCTA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Clear")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub clear: Option<FormButton>,
 
     ///
@@ -762,7 +770,7 @@ pub struct FormCTA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<cfn_resources::StrVal>,
 
     ///
@@ -774,7 +782,7 @@ pub struct FormCTA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Submit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub submit: Option<FormButton>,
 }
 
@@ -800,6 +808,7 @@ impl cfn_resources::CfnResource for FormCTA {
 
 /// The FormDataTypeConfig property specifies the data type configuration for the data source associated with a form.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormDataTypeConfig {
     ///
     /// The data source type, either an Amplify DataStore model or a custom data type.
@@ -840,6 +849,7 @@ impl cfn_resources::CfnResource for FormDataTypeConfig {
 
 /// The FormInputValueProperty property specifies the configuration for an input field on a form. Use    FormInputValueProperty to specify the values to render or bind by    default.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormInputValueProperty {
     ///
     /// The value to assign to the input field.
@@ -850,7 +860,7 @@ pub struct FormInputValueProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -870,6 +880,7 @@ impl cfn_resources::CfnResource for FormInputValueProperty {
 
 /// The FormStyle property specifies the configuration for the form's style.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormStyle {
     ///
     /// The spacing for the horizontal gap.
@@ -880,7 +891,7 @@ pub struct FormStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalGap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub horizontal_gap: Option<FormStyleConfig>,
 
     ///
@@ -892,7 +903,7 @@ pub struct FormStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OuterPadding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outer_padding: Option<FormStyleConfig>,
 
     ///
@@ -904,7 +915,7 @@ pub struct FormStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalGap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vertical_gap: Option<FormStyleConfig>,
 }
 
@@ -936,6 +947,7 @@ impl cfn_resources::CfnResource for FormStyle {
 
 /// The FormStyleConfig property specifies the configuration settings for the form's style properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormStyleConfig {
     /// Property description not available.
     ///
@@ -945,7 +957,7 @@ pub struct FormStyleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenReference")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub token_reference: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -956,7 +968,7 @@ pub struct FormStyleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -976,6 +988,7 @@ impl cfn_resources::CfnResource for FormStyleConfig {
 
 /// The SectionalElement property specifies the configuration information for a visual helper element for a form. A sectional    element can be a header, a text block, or a divider. These elements are static and not    associated with any data.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionalElement {
     /// Property description not available.
     ///
@@ -985,7 +998,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excluded")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded: Option<bool>,
 
     ///
@@ -997,7 +1010,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Level")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub level: Option<f64>,
 
     ///
@@ -1009,7 +1022,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub orientation: Option<cfn_resources::StrVal>,
 
     ///
@@ -1021,7 +1034,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<FieldPosition>,
 
     ///
@@ -1033,7 +1046,7 @@ pub struct SectionalElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text: Option<cfn_resources::StrVal>,
 
     ///
@@ -1068,6 +1081,7 @@ impl cfn_resources::CfnResource for SectionalElement {
 
 /// The ValueMapping property specifies the association between a complex object and a display value. Use ValueMapping to store    how to represent complex objects when they are displayed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValueMapping {
     ///
     /// The value to display for the complex object.
@@ -1078,7 +1092,7 @@ pub struct ValueMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_value: Option<FormInputValueProperty>,
 
     ///
@@ -1115,6 +1129,7 @@ impl cfn_resources::CfnResource for ValueMapping {
 
 /// The ValueMappings property specifies the data binding configuration for a value map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ValueMappings {
     ///
     /// The value and display value pairs.

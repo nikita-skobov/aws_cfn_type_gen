@@ -1,5 +1,6 @@
 /// Specifies a VPC attachment.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTransitGatewayVpcAttachment {
     ///
     /// The IDs of one or more subnets to add. You can specify at most one subnet per Availability Zone.
@@ -10,7 +11,7 @@ pub struct CfnTransitGatewayVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddSubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_subnet_ids: Option<Vec<String>>,
 
     ///
@@ -24,7 +25,7 @@ pub struct CfnTransitGatewayVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<Options>,
 
     ///
@@ -36,7 +37,7 @@ pub struct CfnTransitGatewayVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSubnetIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_subnet_ids: Option<Vec<String>>,
 
     ///
@@ -59,7 +60,7 @@ pub struct CfnTransitGatewayVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnTransitGatewayVpcAttachment {
 
 /// Describes the VPC attachment options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Options {
     ///
     /// Indicates whether appliance mode support is enabled.
@@ -126,7 +128,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplianceModeSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub appliance_mode_support: Option<OptionsApplianceModeSupportEnum>,
 
     ///
@@ -140,7 +142,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsSupport")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dns_support: Option<OptionsDnsSupportEnum>,
 
     ///
@@ -154,7 +156,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Support")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_support: Option<OptionsIpv6SupportEnum>,
 }
 
@@ -231,6 +233,7 @@ impl cfn_resources::CfnResource for Options {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

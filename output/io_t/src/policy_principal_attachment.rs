@@ -2,6 +2,7 @@
 ///
 /// For information about working with AWS IoT policies and principals, see Authorization in the AWS IoT Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnPolicyPrincipalAttachment {
     ///
     /// The name of the AWS IoT policy.

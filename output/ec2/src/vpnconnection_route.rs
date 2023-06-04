@@ -2,6 +2,7 @@
 ///
 /// For more information, see AWS Site-to-Site VPN in the        AWS Site-to-Site VPN User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPNConnectionRoute {
     ///
     /// The CIDR block associated with the local subnet of the customer network.

@@ -1,5 +1,6 @@
 /// [IPv6 only] Specifies an egress-only internet gateway for your VPC. An egress-only     internet gateway is used to enable outbound communication over IPv6 from instances in your     VPC to the internet, and prevents hosts outside of your VPC from initiating an IPv6     connection with your instance.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnEgressOnlyInternetGateway {
     ///
     /// The ID of the VPC for which to create the egress-only internet gateway.

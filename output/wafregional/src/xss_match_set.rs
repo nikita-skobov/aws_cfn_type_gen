@@ -1,5 +1,6 @@
 /// A complex type that contains XssMatchTuple objects, which specify the parts of web requests that you           want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a 			XssMatchSet contains more than one XssMatchTuple object, a request needs to 			include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnXssMatchSet {
     ///
     /// The name, if any, of the XssMatchSet.
@@ -27,7 +28,7 @@ pub struct CfnXssMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XssMatchTuples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xss_match_tuples: Option<Vec<XssMatchTuple>>,
 }
 
@@ -69,6 +70,7 @@ impl cfn_resources::CfnResource for CfnXssMatchSet {
 
 /// The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldToMatch {
     ///
     /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
@@ -89,7 +91,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,6 +185,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct XssMatchTuple {
     ///
     /// The part of a web request that you want AWS WAF to inspect, such as a specified header or a query string.

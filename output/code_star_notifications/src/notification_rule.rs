@@ -1,5 +1,6 @@
 /// Creates a notification rule for a resource. The rule specifies the events you want       notifications about and the targets (such as AWS Chatbot topics or AWS Chatbot clients configured for Slack) where you want to receive       them.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNotificationRule {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub created_by: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +34,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventTypeId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_type_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<NotificationRuleStatusEnum>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     /// Property description not available.
@@ -111,7 +112,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAddress")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -220,6 +221,7 @@ impl cfn_resources::CfnResource for CfnNotificationRule {
 
 /// Information about the AWS Chatbot topics or AWS Chatbot clients associated with a notification rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Target {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Chatbot topic or AWS Chatbot client.

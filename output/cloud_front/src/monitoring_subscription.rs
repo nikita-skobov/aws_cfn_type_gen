@@ -1,5 +1,6 @@
 /// A monitoring subscription. This structure contains information about whether 			additional CloudWatch metrics are enabled for a given CloudFront distribution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnMonitoringSubscription {
     ///
     /// The ID of the distribution that you are enabling metrics for.
@@ -42,6 +43,7 @@ impl cfn_resources::CfnResource for CfnMonitoringSubscription {
 
 /// A monitoring subscription. This structure contains information about whether 			additional CloudWatch metrics are enabled for a given CloudFront distribution.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MonitoringSubscription {
     ///
     /// A subscription configuration for additional CloudWatch metrics.
@@ -52,7 +54,7 @@ pub struct MonitoringSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RealtimeMetricsSubscriptionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub realtime_metrics_subscription_config: Option<RealtimeMetricsSubscriptionConfig>,
 }
 
@@ -76,6 +78,7 @@ impl cfn_resources::CfnResource for MonitoringSubscription {
 
 /// A subscription configuration for additional CloudWatch metrics.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RealtimeMetricsSubscriptionConfig {
     ///
     /// A flag that indicates whether additional CloudWatch metrics are enabled for a given 			CloudFront distribution.

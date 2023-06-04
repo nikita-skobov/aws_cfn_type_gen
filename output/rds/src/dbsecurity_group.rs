@@ -1,5 +1,6 @@
 /// The AWS::RDS::DBSecurityGroup resource creates or updates an Amazon RDS       DB security group.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBSecurityGroup {
     ///
     /// Ingress rules to be applied to the DB security group.
@@ -23,7 +24,7 @@ pub struct CfnDBSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2VpcId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_vpc_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnDBSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -66,6 +67,7 @@ impl cfn_resources::CfnResource for CfnDBSecurityGroup {
 
 /// The Ingress property type specifies an individual ingress rule within an         AWS::RDS::DBSecurityGroup resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ingress {
     ///
     /// The IP range to authorize.
@@ -76,7 +78,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CIDRIP")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +90,7 @@ pub struct Ingress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +102,7 @@ pub struct Ingress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -112,7 +114,7 @@ pub struct Ingress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 
@@ -138,6 +140,7 @@ impl cfn_resources::CfnResource for Ingress {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

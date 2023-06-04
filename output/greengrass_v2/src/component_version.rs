@@ -2,6 +2,7 @@
 ///
 /// You can use this operation to do the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnComponentVersion {
     ///
     /// The recipe to use to create the component. The recipe defines the component's metadata,    parameters, dependencies, lifecycle, artifacts, and platform compatibility.
@@ -14,7 +15,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InlineRecipe")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inline_recipe: Option<cfn_resources::StrVal>,
 
     ///
@@ -28,7 +29,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_function: Option<LambdaFunctionRecipeSource>,
 
     ///
@@ -44,7 +45,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -101,6 +102,7 @@ impl cfn_resources::CfnResource for CfnComponentVersion {
 
 /// Contains information about a component dependency for a Lambda function    component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentDependencyRequirement {
     ///
     /// The type of this dependency. Choose from the following options:
@@ -115,7 +117,7 @@ pub struct ComponentDependencyRequirement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DependencyType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dependency_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -129,7 +131,7 @@ pub struct ComponentDependencyRequirement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VersionRequirement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub version_requirement: Option<cfn_resources::StrVal>,
 }
 
@@ -149,6 +151,7 @@ impl cfn_resources::CfnResource for ComponentDependencyRequirement {
 
 /// Contains information about a platform that a component supports.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComponentPlatform {
     ///
     /// A dictionary of attributes for the platform. The AWS IoT Greengrass Core software defines    the os and platform by default. You can specify additional platform    attributes for a core device when you deploy the AWS IoT Greengrass nucleus component. For    more information, see the AWS IoT Greengrass     nucleus component in the AWS IoT Greengrass V2 Developer    Guide.
@@ -159,7 +162,7 @@ pub struct ComponentPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -173,7 +176,7 @@ pub struct ComponentPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -193,6 +196,7 @@ impl cfn_resources::CfnResource for ComponentPlatform {
 
 /// Contains information about a container in which AWS Lambda functions run on     AWS IoT Greengrass core devices.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaContainerParams {
     ///
     /// The list of system devices that the container can access.
@@ -203,7 +207,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Devices")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub devices: Option<Vec<LambdaDeviceMount>>,
 
     ///
@@ -217,7 +221,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemorySizeInKB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_size_in_kb: Option<i64>,
 
     ///
@@ -231,7 +235,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountROSysfs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mount_rosysfs: Option<bool>,
 
     ///
@@ -243,7 +247,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volumes: Option<Vec<LambdaVolumeMount>>,
 }
 
@@ -263,6 +267,7 @@ impl cfn_resources::CfnResource for LambdaContainerParams {
 
 /// Contains information about a device that Linux processes in a container can access.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaDeviceMount {
     ///
     /// Whether or not to add the component's system user as an owner of the device.
@@ -275,7 +280,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AddGroupOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_group_owner: Option<bool>,
 
     ///
@@ -287,7 +292,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -301,7 +306,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permission: Option<cfn_resources::StrVal>,
 }
 
@@ -321,6 +326,7 @@ impl cfn_resources::CfnResource for LambdaDeviceMount {
 
 /// Contains information about an event source for an AWS Lambda function. The    event source defines the topics on which this Lambda function subscribes to    receive messages that run the function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaEventSource {
     ///
     /// The topic to which to subscribe to receive event messages.
@@ -331,7 +337,7 @@ pub struct LambdaEventSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Topic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic: Option<cfn_resources::StrVal>,
 
     ///
@@ -345,7 +351,7 @@ pub struct LambdaEventSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -365,6 +371,7 @@ impl cfn_resources::CfnResource for LambdaEventSource {
 
 /// Contains parameters for a Lambda function that runs on AWS IoT Greengrass.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaExecutionParameters {
     ///
     /// The map of environment variables that are available to the Lambda function    when it runs.
@@ -375,7 +382,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_variables: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -387,7 +394,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSources")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub event_sources: Option<Vec<LambdaEventSource>>,
 
     ///
@@ -399,7 +406,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exec_args: Option<Vec<String>>,
 
     ///
@@ -413,7 +420,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputPayloadEncodingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub input_payload_encoding_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -425,7 +432,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinuxProcessParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub linux_process_params: Option<LambdaLinuxProcessParams>,
 
     ///
@@ -437,7 +444,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxIdleTimeInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_idle_time_in_seconds: Option<i64>,
 
     ///
@@ -449,7 +456,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxInstancesCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_instances_count: Option<i64>,
 
     ///
@@ -461,7 +468,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxQueueSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_queue_size: Option<i64>,
 
     ///
@@ -477,7 +484,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Pinned")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pinned: Option<bool>,
 
     ///
@@ -489,7 +496,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatusTimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status_timeout_in_seconds: Option<i64>,
 
     ///
@@ -501,7 +508,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -525,6 +532,7 @@ impl cfn_resources::CfnResource for LambdaExecutionParameters {
 
 /// Contains information about an AWS Lambda function to import to create a    component.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaFunctionRecipeSource {
     ///
     /// The component versions on which this Lambda function component    depends.
@@ -535,7 +543,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentDependencies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_dependencies:
         Option<std::collections::HashMap<String, ComponentDependencyRequirement>>,
 
@@ -548,7 +556,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentLambdaParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_lambda_parameters: Option<LambdaExecutionParameters>,
 
     ///
@@ -562,7 +570,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -574,7 +582,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentPlatforms")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_platforms: Option<Vec<ComponentPlatform>>,
 
     ///
@@ -588,7 +596,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub component_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -600,7 +608,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lambda_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -624,6 +632,7 @@ impl cfn_resources::CfnResource for LambdaFunctionRecipeSource {
 
 /// Contains parameters for a Linux process that contains an AWS Lambda    function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaLinuxProcessParams {
     ///
     /// The parameters for the container in which the Lambda function runs.
@@ -634,7 +643,7 @@ pub struct LambdaLinuxProcessParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerParams")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub container_params: Option<LambdaContainerParams>,
 
     ///
@@ -648,7 +657,7 @@ pub struct LambdaLinuxProcessParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub isolation_mode: Option<cfn_resources::StrVal>,
 }
 
@@ -672,6 +681,7 @@ impl cfn_resources::CfnResource for LambdaLinuxProcessParams {
 
 /// Contains information about a volume that Linux processes in a container can access. When    you define a volume, the AWS IoT Greengrass Core software mounts the source files to the    destination inside the container.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LambdaVolumeMount {
     ///
     /// Whether or not to add the AWS IoT Greengrass user group as an owner of the    volume.
@@ -684,7 +694,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AddGroupOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub add_group_owner: Option<bool>,
 
     ///
@@ -696,7 +706,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -710,7 +720,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permission: Option<cfn_resources::StrVal>,
 
     ///
@@ -722,7 +732,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_path: Option<cfn_resources::StrVal>,
 }
 

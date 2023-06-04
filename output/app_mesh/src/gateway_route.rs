@@ -4,6 +4,7 @@
 ///
 /// For more information about gateway routes, see Gateway routes.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGatewayRoute {
     ///
     /// The name of the gateway route.
@@ -18,7 +19,7 @@ pub struct CfnGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GatewayRouteName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gateway_route_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +75,7 @@ pub struct CfnGatewayRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -282,6 +283,7 @@ impl cfn_resources::CfnResource for CfnGatewayRoute {
 
 /// An object representing the gateway route host name to match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteHostnameMatch {
     ///
     /// The exact host name to match on.
@@ -296,7 +298,7 @@ pub struct GatewayRouteHostnameMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -312,7 +314,7 @@ pub struct GatewayRouteHostnameMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -376,6 +378,7 @@ impl cfn_resources::CfnResource for GatewayRouteHostnameMatch {
 
 /// An object representing the gateway route host name to rewrite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteHostnameRewrite {
     ///
     /// The default target host name to write to.
@@ -388,7 +391,7 @@ pub struct GatewayRouteHostnameRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTargetHostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_target_hostname: Option<GatewayRouteHostnameRewriteDefaultTargetHostnameEnum>,
 }
 
@@ -425,6 +428,7 @@ impl cfn_resources::CfnResource for GatewayRouteHostnameRewrite {
 
 /// An object representing the method header to be matched.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteMetadataMatch {
     ///
     /// The exact method header to be matched on.
@@ -439,7 +443,7 @@ pub struct GatewayRouteMetadataMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -455,7 +459,7 @@ pub struct GatewayRouteMetadataMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -467,7 +471,7 @@ pub struct GatewayRouteMetadataMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range: Option<GatewayRouteRangeMatch>,
 
     ///
@@ -483,7 +487,7 @@ pub struct GatewayRouteMetadataMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -499,7 +503,7 @@ pub struct GatewayRouteMetadataMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -609,6 +613,7 @@ impl cfn_resources::CfnResource for GatewayRouteMetadataMatch {
 
 /// An object that represents the range of values to match on. The first character of the range is included in the range, though the last character is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteRangeMatch {
     ///
     /// The end of the range.
@@ -649,6 +654,7 @@ impl cfn_resources::CfnResource for GatewayRouteRangeMatch {
 
 /// An object that represents a gateway route specification. Specify one gateway route     type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteSpec {
     ///
     /// An object that represents the specification of a gRPC gateway route.
@@ -659,7 +665,7 @@ pub struct GatewayRouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrpcRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grpc_route: Option<GrpcGatewayRoute>,
 
     ///
@@ -671,7 +677,7 @@ pub struct GatewayRouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Http2Route")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http2_route: Option<HttpGatewayRoute>,
 
     ///
@@ -683,7 +689,7 @@ pub struct GatewayRouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRoute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub http_route: Option<HttpGatewayRoute>,
 
     ///
@@ -699,7 +705,7 @@ pub struct GatewayRouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub priority: Option<i64>,
 }
 
@@ -749,6 +755,7 @@ impl cfn_resources::CfnResource for GatewayRouteSpec {
 
 /// An object that represents a gateway route target.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteTarget {
     ///
     /// The port number of the gateway route target.
@@ -763,7 +770,7 @@ pub struct GatewayRouteTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -814,6 +821,7 @@ impl cfn_resources::CfnResource for GatewayRouteTarget {
 
 /// An object that represents the virtual service that traffic is routed to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GatewayRouteVirtualService {
     ///
     /// The name of the virtual service that traffic is routed to.
@@ -869,6 +877,7 @@ impl cfn_resources::CfnResource for GatewayRouteVirtualService {
 
 /// An object that represents a gRPC gateway route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcGatewayRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -913,6 +922,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRoute {
 
 /// An object that represents the action to take if a match is determined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcGatewayRouteAction {
     ///
     /// The gateway route action to rewrite.
@@ -923,7 +933,7 @@ pub struct GrpcGatewayRouteAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rewrite")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rewrite: Option<GrpcGatewayRouteRewrite>,
 
     ///
@@ -958,6 +968,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteAction {
 
 /// An object that represents the criteria for determining a request match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcGatewayRouteMatch {
     ///
     /// The gateway route host name to be matched on.
@@ -968,7 +979,7 @@ pub struct GrpcGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<GatewayRouteHostnameMatch>,
 
     ///
@@ -982,7 +993,7 @@ pub struct GrpcGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metadata: Option<Vec<GrpcGatewayRouteMetadata>>,
 
     ///
@@ -998,7 +1009,7 @@ pub struct GrpcGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1010,7 +1021,7 @@ pub struct GrpcGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub service_name: Option<cfn_resources::StrVal>,
 }
 
@@ -1061,6 +1072,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteMatch {
 
 /// An object representing the metadata of the gateway route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcGatewayRouteMetadata {
     ///
     /// Specify True to match anything except the match criteria. The default value     is False.
@@ -1071,7 +1083,7 @@ pub struct GrpcGatewayRouteMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Invert")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invert: Option<bool>,
 
     ///
@@ -1083,7 +1095,7 @@ pub struct GrpcGatewayRouteMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_match: Option<GatewayRouteMetadataMatch>,
 
     ///
@@ -1144,6 +1156,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteMetadata {
 
 /// An object that represents the gateway route to rewrite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrpcGatewayRouteRewrite {
     ///
     /// The host name of the gateway route to rewrite.
@@ -1154,7 +1167,7 @@ pub struct GrpcGatewayRouteRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<GatewayRouteHostnameRewrite>,
 }
 
@@ -1178,6 +1191,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteRewrite {
 
 /// An object that represents an HTTP gateway route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -1222,6 +1236,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoute {
 
 /// An object that represents the action to take if a match is determined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRouteAction {
     ///
     /// The gateway route action to rewrite.
@@ -1232,7 +1247,7 @@ pub struct HttpGatewayRouteAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rewrite")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rewrite: Option<HttpGatewayRouteRewrite>,
 
     ///
@@ -1267,6 +1282,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteAction {
 
 /// An object that represents the HTTP header in the gateway route.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRouteHeader {
     ///
     /// Specify True to match anything except the match criteria. The default value     is False.
@@ -1277,7 +1293,7 @@ pub struct HttpGatewayRouteHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Invert")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub invert: Option<bool>,
 
     ///
@@ -1289,7 +1305,7 @@ pub struct HttpGatewayRouteHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_match: Option<HttpGatewayRouteHeaderMatch>,
 
     ///
@@ -1350,6 +1366,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteHeader {
 
 /// An object that represents the method and value to match with the header value sent in a     request. Specify one match method.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// The value sent by the client must match the specified value exactly.
@@ -1364,7 +1381,7 @@ pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -1380,7 +1397,7 @@ pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1392,7 +1409,7 @@ pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range: Option<GatewayRouteRangeMatch>,
 
     ///
@@ -1408,7 +1425,7 @@ pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -1424,7 +1441,7 @@ pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -1534,6 +1551,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteHeaderMatch {
 
 /// An object that represents the criteria for determining a request match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRouteMatch {
     ///
     /// The client request headers to match on.
@@ -1546,7 +1564,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub headers: Option<Vec<HttpGatewayRouteHeader>>,
 
     ///
@@ -1558,7 +1576,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<GatewayRouteHostnameMatch>,
 
     ///
@@ -1572,7 +1590,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub method: Option<HttpGatewayRouteMatchMethodEnum>,
 
     ///
@@ -1584,7 +1602,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<HttpPathMatch>,
 
     ///
@@ -1600,7 +1618,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub port: Option<i64>,
 
     ///
@@ -1612,7 +1630,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1626,7 +1644,7 @@ pub struct HttpGatewayRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub query_parameters: Option<Vec<QueryParameter>>,
 }
 
@@ -1733,6 +1751,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteMatch {
 
 /// An object that represents the path to rewrite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRoutePathRewrite {
     ///
     /// The exact path to rewrite.
@@ -1747,7 +1766,7 @@ pub struct HttpGatewayRoutePathRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 }
 
@@ -1789,6 +1808,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoutePathRewrite {
 
 /// An object representing the beginning characters of the route to rewrite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRoutePrefixRewrite {
     ///
     /// The default prefix used to replace the incoming route prefix when rewritten.
@@ -1801,7 +1821,7 @@ pub struct HttpGatewayRoutePrefixRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultPrefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_prefix: Option<HttpGatewayRoutePrefixRewriteDefaultPrefixEnum>,
 
     ///
@@ -1817,7 +1837,7 @@ pub struct HttpGatewayRoutePrefixRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1876,6 +1896,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoutePrefixRewrite {
 
 /// An object representing the gateway route to rewrite.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpGatewayRouteRewrite {
     ///
     /// The host name to rewrite.
@@ -1886,7 +1907,7 @@ pub struct HttpGatewayRouteRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hostname")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname: Option<GatewayRouteHostnameRewrite>,
 
     ///
@@ -1898,7 +1919,7 @@ pub struct HttpGatewayRouteRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<HttpGatewayRoutePathRewrite>,
 
     ///
@@ -1910,7 +1931,7 @@ pub struct HttpGatewayRouteRewrite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<HttpGatewayRoutePrefixRewrite>,
 }
 
@@ -1938,6 +1959,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteRewrite {
 
 /// An object representing the path to match in the request.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpPathMatch {
     ///
     /// The exact path to match on.
@@ -1952,7 +1974,7 @@ pub struct HttpPathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -1968,7 +1990,7 @@ pub struct HttpPathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub regex: Option<cfn_resources::StrVal>,
 }
 
@@ -2032,6 +2054,7 @@ impl cfn_resources::CfnResource for HttpPathMatch {
 
 /// An object representing the query parameter to match.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HttpQueryParameterMatch {
     ///
     /// The exact query parameter to match on.
@@ -2042,7 +2065,7 @@ pub struct HttpQueryParameterMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exact: Option<cfn_resources::StrVal>,
 }
 
@@ -2062,6 +2085,7 @@ impl cfn_resources::CfnResource for HttpQueryParameterMatch {
 
 /// An object that represents the query parameter in the request.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryParameter {
     ///
     /// The query parameter to match on.
@@ -2072,7 +2096,7 @@ pub struct QueryParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_match: Option<HttpQueryParameterMatch>,
 
     ///
@@ -2113,6 +2137,7 @@ impl cfn_resources::CfnResource for QueryParameter {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

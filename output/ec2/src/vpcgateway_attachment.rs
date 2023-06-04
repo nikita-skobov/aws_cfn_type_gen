@@ -1,5 +1,6 @@
 /// Attaches an internet gateway, or a virtual private gateway to a VPC, enabling     connectivity between the internet and the VPC.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVPCGatewayAttachment {
     ///
     /// The ID of the internet gateway.
@@ -12,7 +13,7 @@ pub struct CfnVPCGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub internet_gateway_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnVPCGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnGatewayId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpn_gateway_id: Option<cfn_resources::StrVal>,
 }
 

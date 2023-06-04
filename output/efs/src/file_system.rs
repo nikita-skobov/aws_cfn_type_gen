@@ -1,5 +1,6 @@
 /// The AWS::EFS::FileSystem resource creates a new, empty file system in     Amazon Elastic File System (Amazon EFS). You must create a mount target      (AWS::EFS::MountTarget) to mount your EFS file system on an      Amazon EC2 or other AWS cloud compute resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFileSystem {
     ///
     /// Used to create a file system that uses One Zone storage classes. It specifies the AWS    Availability Zone in which to create the file system. Use the format us-east-1a    to specify the Availability Zone. For    more information about One Zone storage classes, see Using EFS storage classes in the Amazon EFS User Guide.
@@ -18,7 +19,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_policy: Option<BackupPolicy>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BypassPolicyLockoutSafetyCheck")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bypass_policy_lockout_safety_check: Option<bool>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encrypted: Option<bool>,
 
     ///
@@ -72,7 +73,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_policy: Option<serde_json::Value>,
 
     ///
@@ -84,7 +85,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
 
     ///
@@ -104,7 +105,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -122,7 +123,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lifecycle_policies: Option<Vec<LifecyclePolicy>>,
 
     ///
@@ -138,7 +139,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformanceMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub performance_mode: Option<FileSystemPerformanceModeEnum>,
 
     ///
@@ -150,7 +151,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughputInMibps")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub provisioned_throughput_in_mibps: Option<f64>,
 
     ///
@@ -166,7 +167,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub throughput_mode: Option<FileSystemThroughputModeEnum>,
 
     #[serde(skip_serializing)]
@@ -286,6 +287,7 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 
 /// The backup policy turns automatic backups for the file system on or off.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BackupPolicy {
     ///
     /// Set the backup policy status for the file system.
@@ -344,6 +346,7 @@ impl cfn_resources::CfnResource for BackupPolicy {
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ElasticFileSystemTag {
     ///
     /// The tag key (String). The key can't start with aws:.
@@ -427,6 +430,7 @@ impl cfn_resources::CfnResource for ElasticFileSystemTag {
 
 /// Describes a policy used by EFS lifecycle management and EFS Intelligent-Tiering that    specifies when to transition files into and out of the file system's Infrequent Access (IA)    storage class. For more information, see EFS Intelligent‐Tiering and EFS Lifecycle     Management.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LifecyclePolicy {
     ///
     /// Describes the period of time that a file is not accessed, after which it transitions to IA storage. Metadata    operations such as listing the contents of a directory don't count as file access    events.
@@ -439,7 +443,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToIA")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transition_to_ia: Option<LifecyclePolicyTransitionToIAEnum>,
 
     ///
@@ -453,7 +457,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToPrimaryStorageClass")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub transition_to_primary_storage_class:
         Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
 }

@@ -1,5 +1,6 @@
 /// The AWS::SNS::Topic resource creates a topic to which notifications can be     published.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTopic {
     ///
     /// Enables content-based deduplication for FIFO topics.
@@ -12,7 +13,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentBasedDeduplication")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_based_deduplication: Option<bool>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataProtectionPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_protection_policy: Option<serde_json::Value>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FifoTopic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fifo_topic: Option<bool>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_master_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SignatureVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub signature_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subscription")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subscription: Option<Vec<Subscription>>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -124,7 +125,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub topic_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +137,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tracing_config: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -178,6 +179,7 @@ impl cfn_resources::CfnResource for CfnTopic {
 
 /// Subscription is an embedded property that describes the subscription endpoints     of an Amazon SNS topic.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Subscription {
     ///
     /// The endpoint that receives notifications from the Amazon SNS topic. The endpoint     value depends on the protocol that you specify. For more information, see the       Endpoint parameter of the       Subscribe      action in the Amazon SNS API Reference.
@@ -224,6 +226,7 @@ impl cfn_resources::CfnResource for Subscription {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

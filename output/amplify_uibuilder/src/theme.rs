@@ -1,5 +1,6 @@
 /// The AWS::AmplifyUIBuilder::Theme resource specifies a theme within an Amplify app. A theme    is a collection of style settings that apply globally to the components associated with the    app.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTheme {
     /// Property description not available.
     ///
@@ -9,7 +10,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub app_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -20,7 +21,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +44,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overrides: Option<Vec<ThemeValues>>,
 
     ///
@@ -55,7 +56,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -97,6 +98,7 @@ impl cfn_resources::CfnResource for CfnTheme {
 
 /// The ThemeValue property specifies the configuration of a theme's    properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThemeValue {
     ///
     /// A list of key-value pairs that define the theme's properties.
@@ -107,7 +109,7 @@ pub struct ThemeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub children: Option<Vec<ThemeValues>>,
 
     ///
@@ -119,7 +121,7 @@ pub struct ThemeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -139,6 +141,7 @@ impl cfn_resources::CfnResource for ThemeValue {
 
 /// The ThemeValues property specifies key-value pair that defines a property of a theme.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThemeValues {
     ///
     /// The name of the property.
@@ -149,7 +152,7 @@ pub struct ThemeValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -161,7 +164,7 @@ pub struct ThemeValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<ThemeValue>,
 }
 

@@ -1,5 +1,6 @@
 /// Creates an analysis in Amazon QuickSight.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAnalysis {
     ///
     /// The ID for the analysis that you're creating. This ID displays in the URL of the       analysis.
@@ -43,7 +44,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub definition: Option<AnalysisDefinition>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameters: Option<Parameters>,
 
     ///
@@ -86,7 +87,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceEntity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_entity: Option<AnalysisSourceEntity>,
 
     ///
@@ -114,7 +115,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<AnalysisStatusEnum>,
 
     ///
@@ -128,7 +129,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -140,7 +141,7 @@ pub struct CfnAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThemeArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub theme_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -328,6 +329,7 @@ impl cfn_resources::CfnResource for CfnAnalysis {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AggregationFunction {
     ///
     /// Aggregation for categorical values.
@@ -342,7 +344,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalAggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub categorical_aggregation_function:
         Option<AggregationFunctionCategoricalAggregationFunctionEnum>,
 
@@ -359,7 +361,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_aggregation_function: Option<AggregationFunctionDateAggregationFunctionEnum>,
 
     ///
@@ -371,7 +373,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalAggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numerical_aggregation_function: Option<NumericalAggregationFunction>,
 }
 
@@ -437,6 +439,7 @@ impl cfn_resources::CfnResource for AggregationFunction {
 
 /// The configuration options to sort aggregated values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AggregationSortConfiguration {
     ///
     /// The function that aggregates the values in Column.
@@ -513,6 +516,7 @@ impl cfn_resources::CfnResource for AggregationSortConfiguration {
 
 /// The configuration for default analysis settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisDefaults {
     ///
     /// The configuration for default new sheet settings.
@@ -544,6 +548,7 @@ impl cfn_resources::CfnResource for AnalysisDefaults {
 
 /// The definition of an analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisDefinition {
     /// Property description not available.
     ///
@@ -553,7 +558,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalysisDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub analysis_defaults: Option<AnalysisDefaults>,
 
     ///
@@ -567,7 +572,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calculated_fields: Option<Vec<CalculatedField>>,
 
     ///
@@ -581,7 +586,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_configurations: Option<Vec<ColumnConfiguration>>,
 
     ///
@@ -610,7 +615,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_groups: Option<Vec<FilterGroup>>,
 
     ///
@@ -628,7 +633,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterDeclarations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_declarations: Option<Vec<ParameterDeclaration>>,
 
     ///
@@ -642,7 +647,7 @@ pub struct AnalysisDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sheets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheets: Option<Vec<SheetDefinition>>,
 }
 
@@ -711,6 +716,7 @@ impl cfn_resources::CfnResource for AnalysisDefinition {
 
 /// Analysis error.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisError {
     ///
     /// The message associated with the analysis error.
@@ -723,7 +729,7 @@ pub struct AnalysisError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub message: Option<cfn_resources::StrVal>,
 
     ///
@@ -737,7 +743,7 @@ pub struct AnalysisError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<AnalysisErrorTypeEnum>,
 
     ///
@@ -751,7 +757,7 @@ pub struct AnalysisError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViolatedEntities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub violated_entities: Option<Vec<Entity>>,
 }
 
@@ -829,6 +835,7 @@ impl cfn_resources::CfnResource for AnalysisError {
 
 /// The source entity of an analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisSourceEntity {
     ///
     /// The source template for the source entity of the analysis.
@@ -839,7 +846,7 @@ pub struct AnalysisSourceEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceTemplate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_template: Option<AnalysisSourceTemplate>,
 }
 
@@ -863,6 +870,7 @@ impl cfn_resources::CfnResource for AnalysisSourceEntity {
 
 /// The source template of an analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnalysisSourceTemplate {
     ///
     /// The Amazon Resource Name (ARN) of the source template of an analysis.
@@ -903,6 +911,7 @@ impl cfn_resources::CfnResource for AnalysisSourceTemplate {
 
 /// The date configuration of the filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AnchorDateConfiguration {
     ///
     /// The options for the date configuration. Choose one of the options below:
@@ -917,7 +926,7 @@ pub struct AnchorDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnchorOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub anchor_option: Option<AnchorDateConfigurationAnchorOptionEnum>,
 
     ///
@@ -935,7 +944,7 @@ pub struct AnchorDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 }
 
@@ -990,6 +999,7 @@ impl cfn_resources::CfnResource for AnchorDateConfiguration {
 
 /// The arc axis configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArcAxisConfiguration {
     ///
     /// The arc axis range of a GaugeChartVisual.
@@ -1000,7 +1010,7 @@ pub struct ArcAxisConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range: Option<ArcAxisDisplayRange>,
 
     ///
@@ -1012,7 +1022,7 @@ pub struct ArcAxisConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReserveRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reserve_range: Option<f64>,
 }
 
@@ -1034,6 +1044,7 @@ impl cfn_resources::CfnResource for ArcAxisConfiguration {
 
 /// The arc axis range of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArcAxisDisplayRange {
     ///
     /// The maximum value of the arc axis range.
@@ -1044,7 +1055,7 @@ pub struct ArcAxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max: Option<f64>,
 
     ///
@@ -1056,7 +1067,7 @@ pub struct ArcAxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min: Option<f64>,
 }
 
@@ -1076,6 +1087,7 @@ impl cfn_resources::CfnResource for ArcAxisDisplayRange {
 
 /// The arc configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArcConfiguration {
     ///
     /// The option that determines the arc angle of a GaugeChartVisual.
@@ -1086,7 +1098,7 @@ pub struct ArcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcAngle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc_angle: Option<f64>,
 
     ///
@@ -1100,7 +1112,7 @@ pub struct ArcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcThickness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc_thickness: Option<ArcConfigurationArcThicknessEnum>,
 }
 
@@ -1141,6 +1153,7 @@ impl cfn_resources::CfnResource for ArcConfiguration {
 
 /// The options that determine the arc thickness of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ArcOptions {
     ///
     /// The arc thickness of a GaugeChartVisual.
@@ -1153,7 +1166,7 @@ pub struct ArcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcThickness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc_thickness: Option<ArcOptionsArcThicknessEnum>,
 }
 
@@ -1200,6 +1213,7 @@ impl cfn_resources::CfnResource for ArcOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisDataOptions {
     ///
     /// The options for an axis with a date field.
@@ -1210,7 +1224,7 @@ pub struct AxisDataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAxisOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_axis_options: Option<DateAxisOptions>,
 
     ///
@@ -1222,7 +1236,7 @@ pub struct AxisDataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericAxisOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_axis_options: Option<NumericAxisOptions>,
 }
 
@@ -1250,6 +1264,7 @@ impl cfn_resources::CfnResource for AxisDataOptions {
 
 /// The minimum and maximum setup for an axis display range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisDisplayMinMaxRange {
     ///
     /// The maximum setup for an axis display range.
@@ -1260,7 +1275,7 @@ pub struct AxisDisplayMinMaxRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum: Option<f64>,
 
     ///
@@ -1272,7 +1287,7 @@ pub struct AxisDisplayMinMaxRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum: Option<f64>,
 }
 
@@ -1292,6 +1307,7 @@ impl cfn_resources::CfnResource for AxisDisplayMinMaxRange {
 
 /// The display options for the axis label.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisDisplayOptions {
     ///
     /// Determines whether or not the axis line is visible.
@@ -1304,7 +1320,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisLineVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_line_visibility: Option<AxisDisplayOptionsAxisLineVisibilityEnum>,
 
     ///
@@ -1316,7 +1332,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisOffset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_offset: Option<cfn_resources::StrVal>,
 
     ///
@@ -1328,7 +1344,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_options: Option<AxisDataOptions>,
 
     ///
@@ -1342,7 +1358,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLineVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grid_line_visibility: Option<AxisDisplayOptionsGridLineVisibilityEnum>,
 
     ///
@@ -1354,7 +1370,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollbarOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scrollbar_options: Option<ScrollBarOptions>,
 
     ///
@@ -1366,7 +1382,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TickLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tick_label_options: Option<AxisTickLabelOptions>,
 }
 
@@ -1434,6 +1450,7 @@ impl cfn_resources::CfnResource for AxisDisplayOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisDisplayRange {
     ///
     /// The data-driven setup of an axis display range.
@@ -1444,7 +1461,7 @@ pub struct AxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataDriven")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_driven: Option<serde_json::Value>,
 
     ///
@@ -1456,7 +1473,7 @@ pub struct AxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinMax")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub min_max: Option<AxisDisplayMinMaxRange>,
 }
 
@@ -1478,6 +1495,7 @@ impl cfn_resources::CfnResource for AxisDisplayRange {
 
 /// The label options for a chart axis. You must specify the field that the label is targeted to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisLabelOptions {
     ///
     /// The options that indicate which field the label belongs to.
@@ -1488,7 +1506,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyTo")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub apply_to: Option<AxisLabelReferenceOptions>,
 
     ///
@@ -1500,7 +1518,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -1512,7 +1530,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_configuration: Option<FontConfiguration>,
 }
 
@@ -1540,6 +1558,7 @@ impl cfn_resources::CfnResource for AxisLabelOptions {
 
 /// The reference that specifies where the axis label is applied to.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisLabelReferenceOptions {
     ///
     /// The column that the axis label is targeted to.
@@ -1610,6 +1629,7 @@ impl cfn_resources::CfnResource for AxisLabelReferenceOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisLinearScale {
     ///
     /// The step count setup of a linear axis.
@@ -1620,7 +1640,7 @@ pub struct AxisLinearScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step_count: Option<f64>,
 
     ///
@@ -1632,7 +1652,7 @@ pub struct AxisLinearScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub step_size: Option<f64>,
 }
 
@@ -1652,6 +1672,7 @@ impl cfn_resources::CfnResource for AxisLinearScale {
 
 /// The logarithmic axis scale setup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisLogarithmicScale {
     ///
     /// The base setup of a logarithmic axis scale.
@@ -1662,7 +1683,7 @@ pub struct AxisLogarithmicScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base: Option<f64>,
 }
 
@@ -1684,6 +1705,7 @@ impl cfn_resources::CfnResource for AxisLogarithmicScale {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisScale {
     ///
     /// The linear axis scale setup.
@@ -1694,7 +1716,7 @@ pub struct AxisScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Linear")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub linear: Option<AxisLinearScale>,
 
     ///
@@ -1706,7 +1728,7 @@ pub struct AxisScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logarithmic")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logarithmic: Option<AxisLogarithmicScale>,
 }
 
@@ -1732,6 +1754,7 @@ impl cfn_resources::CfnResource for AxisScale {
 
 /// The tick label options of an axis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AxisTickLabelOptions {
     ///
     /// Determines whether or not the axis ticks are visible.
@@ -1742,7 +1765,7 @@ pub struct AxisTickLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_options: Option<LabelOptions>,
 
     ///
@@ -1754,7 +1777,7 @@ pub struct AxisTickLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationAngle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rotation_angle: Option<f64>,
 }
 
@@ -1778,6 +1801,7 @@ impl cfn_resources::CfnResource for AxisTickLabelOptions {
 
 /// The aggregated field wells of a bar chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BarChartAggregatedFieldWells {
     ///
     /// The category (y-axis) field well of a bar chart.
@@ -1790,7 +1814,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -1804,7 +1828,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -1818,7 +1842,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -1832,7 +1856,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -1888,6 +1912,7 @@ impl cfn_resources::CfnResource for BarChartAggregatedFieldWells {
 
 /// The configuration of a BarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BarChartConfiguration {
     ///
     /// Determines the arrangement of the bars. The orientation and arrangement of bars determine the type of bar that is used in the visual.
@@ -1900,7 +1925,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarsArrangement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bars_arrangement: Option<BarChartConfigurationBarsArrangementEnum>,
 
     ///
@@ -1912,7 +1937,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -1924,7 +1949,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -1936,7 +1961,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -1950,7 +1975,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -1962,7 +1987,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -1974,7 +1999,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<BarChartFieldWells>,
 
     ///
@@ -1986,7 +2011,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -2002,7 +2027,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub orientation: Option<BarChartConfigurationOrientationEnum>,
 
     ///
@@ -2016,7 +2041,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -2028,7 +2053,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -2040,7 +2065,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<BarChartSortConfiguration>,
 
     ///
@@ -2052,7 +2077,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -2064,7 +2089,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -2076,7 +2101,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -2088,7 +2113,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -2207,6 +2232,7 @@ impl cfn_resources::CfnResource for BarChartConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BarChartFieldWells {
     ///
     /// The aggregated field wells of a bar chart.
@@ -2217,7 +2243,7 @@ pub struct BarChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bar_chart_aggregated_field_wells: Option<BarChartAggregatedFieldWells>,
 }
 
@@ -2241,6 +2267,7 @@ impl cfn_resources::CfnResource for BarChartFieldWells {
 
 /// sort-configuration-description
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BarChartSortConfiguration {
     ///
     /// The limit on the number of categories displayed in a bar chart.
@@ -2251,7 +2278,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -2265,7 +2292,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -2277,7 +2304,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -2291,7 +2318,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -2303,7 +2330,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -2317,7 +2344,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -2380,6 +2407,7 @@ impl cfn_resources::CfnResource for BarChartSortConfiguration {
 ///
 /// For more information, see Using bar charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BarChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -2392,7 +2420,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -2404,7 +2432,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<BarChartConfiguration>,
 
     ///
@@ -2418,7 +2446,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -2430,7 +2458,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -2442,7 +2470,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -2529,6 +2557,7 @@ impl cfn_resources::CfnResource for BarChartVisual {
 
 /// The options that determine the bin count of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BinCountOptions {
     ///
     /// The options that determine the bin count value.
@@ -2541,7 +2570,7 @@ pub struct BinCountOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<f64>,
 }
 
@@ -2570,6 +2599,7 @@ impl cfn_resources::CfnResource for BinCountOptions {
 
 /// The options that determine the bin width of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BinWidthOptions {
     ///
     /// The options that determine the bin count limit.
@@ -2580,7 +2610,7 @@ pub struct BinWidthOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinCountLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bin_count_limit: Option<f64>,
 
     ///
@@ -2592,7 +2622,7 @@ pub struct BinWidthOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<f64>,
 }
 
@@ -2612,6 +2642,7 @@ impl cfn_resources::CfnResource for BinWidthOptions {
 
 /// The configuration of a body section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BodySectionConfiguration {
     ///
     /// The configuration of content in a body section.
@@ -2633,7 +2664,7 @@ pub struct BodySectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageBreakConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub page_break_configuration: Option<SectionPageBreakConfiguration>,
 
     ///
@@ -2662,7 +2693,7 @@ pub struct BodySectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub style: Option<SectionStyle>,
 }
 
@@ -2712,6 +2743,7 @@ impl cfn_resources::CfnResource for BodySectionConfiguration {
 
 /// The configuration of content in a body section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BodySectionContent {
     ///
     /// The layout configuration of a body section.
@@ -2722,7 +2754,7 @@ pub struct BodySectionContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub layout: Option<SectionLayoutConfiguration>,
 }
 
@@ -2744,6 +2776,7 @@ impl cfn_resources::CfnResource for BodySectionContent {
 
 /// The aggregated field well for a box plot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotAggregatedFieldWells {
     ///
     /// The group by field well of a box plot chart. Values are grouped based on group by fields.
@@ -2756,7 +2789,7 @@ pub struct BoxPlotAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -2770,7 +2803,7 @@ pub struct BoxPlotAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -2808,6 +2841,7 @@ impl cfn_resources::CfnResource for BoxPlotAggregatedFieldWells {
 
 /// The configuration of a BoxPlotVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotChartConfiguration {
     ///
     /// The box plot chart options for a box plot visual
@@ -2818,7 +2852,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub box_plot_options: Option<BoxPlotOptions>,
 
     ///
@@ -2830,7 +2864,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -2842,7 +2876,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -2854,7 +2888,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<BoxPlotFieldWells>,
 
     /// Property description not available.
@@ -2865,7 +2899,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -2877,7 +2911,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -2889,7 +2923,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -2903,7 +2937,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -2915,7 +2949,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<BoxPlotSortConfiguration>,
 
     ///
@@ -2927,7 +2961,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -2939,7 +2973,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -3006,6 +3040,7 @@ impl cfn_resources::CfnResource for BoxPlotChartConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotFieldWells {
     ///
     /// The aggregated field wells of a box plot.
@@ -3016,7 +3051,7 @@ pub struct BoxPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub box_plot_aggregated_field_wells: Option<BoxPlotAggregatedFieldWells>,
 }
 
@@ -3040,6 +3075,7 @@ impl cfn_resources::CfnResource for BoxPlotFieldWells {
 
 /// The options of a box plot visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotOptions {
     ///
     /// Determines the visibility of all data points of the box plot.
@@ -3052,7 +3088,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllDataPointsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub all_data_points_visibility: Option<BoxPlotOptionsAllDataPointsVisibilityEnum>,
 
     ///
@@ -3066,7 +3102,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlierVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outlier_visibility: Option<BoxPlotOptionsOutlierVisibilityEnum>,
 
     ///
@@ -3078,7 +3114,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub style_options: Option<BoxPlotStyleOptions>,
 }
 
@@ -3136,6 +3172,7 @@ impl cfn_resources::CfnResource for BoxPlotOptions {
 
 /// The sort configuration of a BoxPlotVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotSortConfiguration {
     ///
     /// The sort configuration of a group by fields.
@@ -3148,7 +3185,7 @@ pub struct BoxPlotSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -3160,7 +3197,7 @@ pub struct BoxPlotSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pagination_configuration: Option<PaginationConfiguration>,
 }
 
@@ -3193,6 +3230,7 @@ impl cfn_resources::CfnResource for BoxPlotSortConfiguration {
 
 /// The style options of the box plot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotStyleOptions {
     ///
     /// The fill styles (solid, transparent) of the box plot.
@@ -3205,7 +3243,7 @@ pub struct BoxPlotStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FillStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub fill_style: Option<BoxPlotStyleOptionsFillStyleEnum>,
 }
 
@@ -3244,6 +3282,7 @@ impl cfn_resources::CfnResource for BoxPlotStyleOptions {
 ///
 /// For more information, see Using box plots in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BoxPlotVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -3256,7 +3295,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -3268,7 +3307,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<BoxPlotChartConfiguration>,
 
     ///
@@ -3282,7 +3321,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -3294,7 +3333,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -3306,7 +3345,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -3393,6 +3432,7 @@ impl cfn_resources::CfnResource for BoxPlotVisual {
 
 /// The calculated field of an analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CalculatedField {
     ///
     /// The data set that is used in this calculated field.
@@ -3522,6 +3562,7 @@ impl cfn_resources::CfnResource for CalculatedField {
 
 /// The table calculation measure field for pivot tables.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CalculatedMeasureField {
     ///
     /// The expression in the table calculation.
@@ -3614,6 +3655,7 @@ impl cfn_resources::CfnResource for CalculatedMeasureField {
 
 /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CascadingControlConfiguration {
     ///
     /// A list of source controls that determine the values that are used in the current control.
@@ -3626,7 +3668,7 @@ pub struct CascadingControlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_controls: Option<Vec<CascadingControlSource>>,
 }
 
@@ -3655,6 +3697,7 @@ impl cfn_resources::CfnResource for CascadingControlConfiguration {
 
 /// The source controls that are used in a CascadingControlConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CascadingControlSource {
     ///
     /// The column identifier that determines which column to look up for the source sheet control.
@@ -3665,7 +3708,7 @@ pub struct CascadingControlSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnToMatch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_to_match: Option<ColumnIdentifier>,
 
     ///
@@ -3677,7 +3720,7 @@ pub struct CascadingControlSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceSheetControlId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_sheet_control_id: Option<cfn_resources::StrVal>,
 }
 
@@ -3701,6 +3744,7 @@ impl cfn_resources::CfnResource for CascadingControlSource {
 
 /// The dimension type field with categorical type columns..
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoricalDimensionField {
     ///
     /// The column that is used in the CategoricalDimensionField.
@@ -3737,7 +3781,7 @@ pub struct CategoricalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<StringFormatConfiguration>,
 
     ///
@@ -3753,7 +3797,7 @@ pub struct CategoricalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hierarchy_id: Option<cfn_resources::StrVal>,
 }
 
@@ -3823,6 +3867,7 @@ impl cfn_resources::CfnResource for CategoricalDimensionField {
 
 /// The measure type field with categorical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoricalMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -3835,7 +3880,7 @@ pub struct CategoricalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<CategoricalMeasureFieldAggregationFunctionEnum>,
 
     ///
@@ -3873,7 +3918,7 @@ pub struct CategoricalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<StringFormatConfiguration>,
 }
 
@@ -3938,6 +3983,7 @@ impl cfn_resources::CfnResource for CategoricalMeasureField {
 
 /// The numeric equality type drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoryDrillDownFilter {
     ///
     /// A list of the string inputs that are the values of the category drill down filter.
@@ -3993,6 +4039,7 @@ impl cfn_resources::CfnResource for CategoryDrillDownFilter {
 ///
 /// For more information, see Adding text filters in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoryFilter {
     ///
     /// The column that the filter is applied to.
@@ -4078,6 +4125,7 @@ impl cfn_resources::CfnResource for CategoryFilter {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CategoryFilterConfiguration {
     ///
     /// A custom filter that filters based on a single value. This filter can be partially matched.
@@ -4088,7 +4136,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomFilterConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_filter_configuration: Option<CustomFilterConfiguration>,
 
     ///
@@ -4100,7 +4148,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomFilterListConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_filter_list_configuration: Option<CustomFilterListConfiguration>,
 
     ///
@@ -4112,7 +4160,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterListConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_list_configuration: Option<FilterListConfiguration>,
 }
 
@@ -4144,6 +4192,7 @@ impl cfn_resources::CfnResource for CategoryFilterConfiguration {
 
 /// The label options for an axis on a chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChartAxisLabelOptions {
     ///
     /// The label options for a chart axis.
@@ -4156,7 +4205,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_label_options: Option<Vec<AxisLabelOptions>>,
 
     ///
@@ -4170,7 +4219,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortIconVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_icon_visibility: Option<ChartAxisLabelOptionsSortIconVisibilityEnum>,
 
     ///
@@ -4186,7 +4235,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ChartAxisLabelOptionsVisibilityEnum>,
 }
 
@@ -4249,6 +4298,7 @@ impl cfn_resources::CfnResource for ChartAxisLabelOptions {
 
 /// The cluster marker that is a part of the cluster marker       configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterMarker {
     ///
     /// The simple cluster marker of the cluster marker.
@@ -4259,7 +4309,7 @@ pub struct ClusterMarker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleClusterMarker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub simple_cluster_marker: Option<SimpleClusterMarker>,
 }
 
@@ -4283,6 +4333,7 @@ impl cfn_resources::CfnResource for ClusterMarker {
 
 /// The cluster marker configuration of the geospatial map selected point style.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClusterMarkerConfiguration {
     ///
     /// The cluster marker that is a part of the cluster marker configuration
@@ -4293,7 +4344,7 @@ pub struct ClusterMarkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterMarker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_marker: Option<ClusterMarker>,
 }
 
@@ -4317,6 +4368,7 @@ impl cfn_resources::CfnResource for ClusterMarkerConfiguration {
 
 /// Determines the color scale that is applied to the visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColorScale {
     ///
     /// Determines the color fill type.
@@ -4353,7 +4405,7 @@ pub struct ColorScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_color: Option<DataColor>,
 }
 
@@ -4403,6 +4455,7 @@ impl cfn_resources::CfnResource for ColorScale {
 
 /// The ColorsConfiguration property type specifies Property description not available. for an AWS::QuickSight::Analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColorsConfiguration {
     /// Property description not available.
     ///
@@ -4412,7 +4465,7 @@ pub struct ColorsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomColors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_colors: Option<Vec<CustomColor>>,
 }
 
@@ -4432,6 +4485,7 @@ impl cfn_resources::CfnResource for ColorsConfiguration {
 
 /// The general configuration of a column.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnConfiguration {
     /// Property description not available.
     ///
@@ -4441,7 +4495,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorsConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors_configuration: Option<ColorsConfiguration>,
 
     ///
@@ -4464,7 +4518,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<FormatConfiguration>,
 
     ///
@@ -4478,7 +4532,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role: Option<ColumnConfigurationRoleEnum>,
 }
 
@@ -4525,6 +4579,7 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
 
 /// The option that determines the hierarchy of the fields for a visual element.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnHierarchy {
     ///
     /// The option that determines the hierarchy of any DateTime fields.
@@ -4535,7 +4590,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeHierarchy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_hierarchy: Option<DateTimeHierarchy>,
 
     ///
@@ -4547,7 +4602,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitHierarchy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub explicit_hierarchy: Option<ExplicitHierarchy>,
 
     ///
@@ -4559,7 +4614,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedHierarchy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub predefined_hierarchy: Option<PredefinedHierarchy>,
 }
 
@@ -4591,6 +4646,7 @@ impl cfn_resources::CfnResource for ColumnHierarchy {
 
 /// A column of a data set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnIdentifier {
     ///
     /// The name of the column.
@@ -4683,6 +4739,7 @@ impl cfn_resources::CfnResource for ColumnIdentifier {
 
 /// The sort configuration for a column that is not used in a field well.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnSort {
     ///
     /// The aggregation function that is defined in the column sort.
@@ -4693,7 +4750,7 @@ pub struct ColumnSort {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -4759,6 +4816,7 @@ impl cfn_resources::CfnResource for ColumnSort {
 
 /// The tooltip item for the columns that are not part of a field well.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ColumnTooltipItem {
     ///
     /// The aggregation function of the column tooltip item.
@@ -4769,7 +4827,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation: Option<AggregationFunction>,
 
     ///
@@ -4792,7 +4850,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -4806,7 +4864,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ColumnTooltipItemVisibilityEnum>,
 }
 
@@ -4849,6 +4907,7 @@ impl cfn_resources::CfnResource for ColumnTooltipItem {
 
 /// The aggregated field wells of a combo chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComboChartAggregatedFieldWells {
     ///
     /// The aggregated BarValues field well of a combo chart.
@@ -4861,7 +4920,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bar_values: Option<Vec<MeasureField>>,
 
     ///
@@ -4875,7 +4934,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -4889,7 +4948,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -4903,7 +4962,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_values: Option<Vec<MeasureField>>,
 }
 
@@ -4959,6 +5018,7 @@ impl cfn_resources::CfnResource for ComboChartAggregatedFieldWells {
 
 /// The configuration of a ComboChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComboChartConfiguration {
     ///
     /// The options that determine if visual data labels are displayed.
@@ -4971,7 +5031,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarDataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bar_data_labels: Option<DataLabelOptions>,
 
     ///
@@ -4987,7 +5047,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarsArrangement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bars_arrangement: Option<ComboChartConfigurationBarsArrangementEnum>,
 
     ///
@@ -4999,7 +5059,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -5011,7 +5071,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -5023,7 +5083,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -5035,7 +5095,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<ComboChartFieldWells>,
 
     ///
@@ -5047,7 +5107,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -5061,7 +5121,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineDataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_data_labels: Option<DataLabelOptions>,
 
     ///
@@ -5073,7 +5133,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -5085,7 +5145,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -5099,7 +5159,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -5111,7 +5171,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -5123,7 +5183,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -5135,7 +5195,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<ComboChartSortConfiguration>,
 
     ///
@@ -5147,7 +5207,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -5159,7 +5219,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -5263,6 +5323,7 @@ impl cfn_resources::CfnResource for ComboChartConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComboChartFieldWells {
     ///
     /// The aggregated field wells of a combo chart. Combo charts only have aggregated field wells. Columns in a combo chart are aggregated by category.
@@ -5273,7 +5334,7 @@ pub struct ComboChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComboChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub combo_chart_aggregated_field_wells: Option<ComboChartAggregatedFieldWells>,
 }
 
@@ -5297,6 +5358,7 @@ impl cfn_resources::CfnResource for ComboChartFieldWells {
 
 /// The sort configuration of a ComboChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComboChartSortConfiguration {
     ///
     /// The item limit configuration for the category field well of a combo chart.
@@ -5307,7 +5369,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -5321,7 +5383,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -5333,7 +5395,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -5347,7 +5409,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -5397,6 +5459,7 @@ impl cfn_resources::CfnResource for ComboChartSortConfiguration {
 ///
 /// For more information, see Using combo charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComboChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -5409,7 +5472,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -5421,7 +5484,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<ComboChartConfiguration>,
 
     ///
@@ -5435,7 +5498,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -5447,7 +5510,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -5459,7 +5522,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -5546,6 +5609,7 @@ impl cfn_resources::CfnResource for ComboChartVisual {
 
 /// The comparison display configuration of a KPI or gauge chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComparisonConfiguration {
     ///
     /// The format of the comparison.
@@ -5556,7 +5620,7 @@ pub struct ComparisonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparison_format: Option<ComparisonFormatConfiguration>,
 
     ///
@@ -5572,7 +5636,7 @@ pub struct ComparisonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonMethod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparison_method: Option<ComparisonConfigurationComparisonMethodEnum>,
 }
 
@@ -5619,6 +5683,7 @@ impl cfn_resources::CfnResource for ComparisonConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ComparisonFormatConfiguration {
     ///
     /// The number display format.
@@ -5629,7 +5694,7 @@ pub struct ComparisonFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDisplayFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_display_format_configuration: Option<NumberDisplayFormatConfiguration>,
 
     ///
@@ -5641,7 +5706,7 @@ pub struct ComparisonFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentageDisplayFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percentage_display_format_configuration: Option<PercentageDisplayFormatConfiguration>,
 }
 
@@ -5671,6 +5736,7 @@ impl cfn_resources::CfnResource for ComparisonFormatConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Computation {
     ///
     /// The forecast computation configuration.
@@ -5681,7 +5747,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forecast")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forecast: Option<ForecastComputation>,
 
     ///
@@ -5693,7 +5759,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrowthRate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub growth_rate: Option<GrowthRateComputation>,
 
     ///
@@ -5705,7 +5771,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumMinimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_minimum: Option<MaximumMinimumComputation>,
 
     ///
@@ -5717,7 +5783,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricComparison")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_comparison: Option<MetricComparisonComputation>,
 
     ///
@@ -5729,7 +5795,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodOverPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period_over_period: Option<PeriodOverPeriodComputation>,
 
     ///
@@ -5741,7 +5807,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodToDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period_to_date: Option<PeriodToDateComputation>,
 
     ///
@@ -5753,7 +5819,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomMovers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub top_bottom_movers: Option<TopBottomMoversComputation>,
 
     ///
@@ -5765,7 +5831,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomRanked")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub top_bottom_ranked: Option<TopBottomRankedComputation>,
 
     ///
@@ -5777,7 +5843,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalAggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_aggregation: Option<TotalAggregationComputation>,
 
     ///
@@ -5789,7 +5855,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniqueValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unique_values: Option<UniqueValuesComputation>,
 }
 
@@ -5849,6 +5915,7 @@ impl cfn_resources::CfnResource for Computation {
 
 /// The formatting configuration for the color.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingColor {
     ///
     /// Formatting configuration for gradient color.
@@ -5859,7 +5926,7 @@ pub struct ConditionalFormattingColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gradient")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gradient: Option<ConditionalFormattingGradientColor>,
 
     ///
@@ -5871,7 +5938,7 @@ pub struct ConditionalFormattingColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Solid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub solid: Option<ConditionalFormattingSolidColor>,
 }
 
@@ -5897,6 +5964,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingColor {
 
 /// Determines the custom condition for an icon set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Determines the color of the icon.
@@ -5909,7 +5977,7 @@ pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -5921,7 +5989,7 @@ pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_configuration: Option<ConditionalFormattingIconDisplayConfiguration>,
 
     ///
@@ -5995,6 +6063,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingCustomIconCondition {
 
 /// Custom icon options for an icon set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Determines the type of icon.
@@ -6007,7 +6076,7 @@ pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon: Option<ConditionalFormattingCustomIconOptionsIconEnum>,
 
     ///
@@ -6021,7 +6090,7 @@ pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnicodeIcon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unicode_icon: Option<cfn_resources::StrVal>,
 }
 
@@ -6154,6 +6223,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingCustomIconOptions {
 
 /// Formatting configuration for gradient color.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingGradientColor {
     ///
     /// Determines the color.
@@ -6222,6 +6292,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingGradientColor {
 
 /// The formatting configuration for the icon.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingIcon {
     ///
     /// Determines the custom condition for an icon set.
@@ -6232,7 +6303,7 @@ pub struct ConditionalFormattingIcon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCondition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_condition: Option<ConditionalFormattingCustomIconCondition>,
 
     ///
@@ -6244,7 +6315,7 @@ pub struct ConditionalFormattingIcon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon_set: Option<ConditionalFormattingIconSet>,
 }
 
@@ -6272,6 +6343,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIcon {
 
 /// Determines the icon display configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingIconDisplayConfiguration {
     ///
     /// Determines the icon display configuration.
@@ -6284,7 +6356,7 @@ pub struct ConditionalFormattingIconDisplayConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconDisplayOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon_display_option:
         Option<ConditionalFormattingIconDisplayConfigurationIconDisplayOptionEnum>,
 }
@@ -6318,6 +6390,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIconDisplayConfiguratio
 
 /// Formatting configuration for icon set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingIconSet {
     ///
     /// The expression that determines the formatting configuration for the icon set.
@@ -6345,7 +6418,7 @@ pub struct ConditionalFormattingIconSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconSetType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon_set_type: Option<ConditionalFormattingIconSetIconSetTypeEnum>,
 }
 
@@ -6440,6 +6513,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIconSet {
 
 /// Formatting configuration for solid color.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConditionalFormattingSolidColor {
     ///
     /// Determines the color.
@@ -6452,7 +6526,7 @@ pub struct ConditionalFormattingSolidColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -6509,6 +6583,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingSolidColor {
 
 /// The contribution analysis visual display for a line, pie, or bar chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ContributionAnalysisDefault {
     ///
     /// The dimensions columns that are used in the contribution analysis,       usually a list of ColumnIdentifiers.
@@ -6586,6 +6661,7 @@ impl cfn_resources::CfnResource for ContributionAnalysisDefault {
 
 /// The options that determine the currency display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -6596,7 +6672,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -6608,7 +6684,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -6620,7 +6696,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -6634,7 +6710,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberScale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_scale: Option<CurrencyDisplayFormatConfigurationNumberScaleEnum>,
 
     ///
@@ -6650,7 +6726,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -6662,7 +6738,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -6678,7 +6754,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 
     ///
@@ -6692,7 +6768,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Symbol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub symbol: Option<cfn_resources::StrVal>,
 }
 
@@ -6805,6 +6881,7 @@ impl cfn_resources::CfnResource for CurrencyDisplayFormatConfiguration {
 
 /// The filter operation that filters data included in a visual or in an entire sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomActionFilterOperation {
     ///
     /// The configuration that chooses the fields to be filtered.
@@ -6851,6 +6928,7 @@ impl cfn_resources::CfnResource for CustomActionFilterOperation {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomActionNavigationOperation {
     ///
     /// The configuration that chooses the navigation target.
@@ -6861,7 +6939,7 @@ pub struct CustomActionNavigationOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalNavigationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub local_navigation_configuration: Option<LocalNavigationConfiguration>,
 }
 
@@ -6885,6 +6963,7 @@ impl cfn_resources::CfnResource for CustomActionNavigationOperation {
 
 /// The set parameter operation that sets parameters in custom action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomActionSetParametersOperation {
     ///
     /// The parameter that determines the value configuration.
@@ -6922,6 +7001,7 @@ impl cfn_resources::CfnResource for CustomActionSetParametersOperation {
 
 /// The URL operation that opens a link to another webpage.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomActionURLOperation {
     ///
     /// The target of the CustomActionURLOperation.
@@ -7015,6 +7095,7 @@ impl cfn_resources::CfnResource for CustomActionURLOperation {
 
 /// The CustomColor property type specifies Property description not available. for an AWS::QuickSight::Analysis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomColor {
     /// Property description not available.
     ///
@@ -7034,7 +7115,7 @@ pub struct CustomColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_value: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -7045,7 +7126,7 @@ pub struct CustomColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpecialValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub special_value: Option<cfn_resources::StrVal>,
 }
 
@@ -7065,6 +7146,7 @@ impl cfn_resources::CfnResource for CustomColor {
 
 /// The configuration of a CustomContentVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomContentConfiguration {
     ///
     /// The content type of the custom content visual. You can use this to have the visual render as an image.
@@ -7077,7 +7159,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<CustomContentConfigurationContentTypeEnum>,
 
     ///
@@ -7093,7 +7175,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentUrl")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -7107,7 +7189,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_scaling: Option<CustomContentConfigurationImageScalingEnum>,
 }
 
@@ -7193,6 +7275,7 @@ impl cfn_resources::CfnResource for CustomContentConfiguration {
 ///
 /// For more information, see Using custom visual content in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomContentVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -7205,7 +7288,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -7217,7 +7300,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<CustomContentConfiguration>,
 
     ///
@@ -7244,7 +7327,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -7256,7 +7339,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -7356,6 +7439,7 @@ impl cfn_resources::CfnResource for CustomContentVisual {
 
 /// A custom filter that filters based on a single value. This filter can be partially matched.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomFilterConfiguration {
     ///
     /// The category value for the filter.
@@ -7370,7 +7454,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -7418,7 +7502,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -7434,7 +7518,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<CustomFilterConfigurationSelectAllOptionsEnum>,
 }
 
@@ -7554,6 +7638,7 @@ impl cfn_resources::CfnResource for CustomFilterConfiguration {
 
 /// A list of custom filter values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomFilterListConfiguration {
     ///
     /// The list of category values for the filter.
@@ -7566,7 +7651,7 @@ pub struct CustomFilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_values: Option<Vec<String>>,
 
     ///
@@ -7610,7 +7695,7 @@ pub struct CustomFilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<CustomFilterListConfigurationSelectAllOptionsEnum>,
 }
 
@@ -7706,6 +7791,7 @@ impl cfn_resources::CfnResource for CustomFilterListConfiguration {
 
 /// The custom narrative options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomNarrativeOptions {
     ///
     /// The string input of custom narrative.
@@ -7750,6 +7836,7 @@ impl cfn_resources::CfnResource for CustomNarrativeOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomParameterValues {
     ///
     /// A list of datetime-type parameter values.
@@ -7762,7 +7849,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_values: Option<Vec<String>>,
 
     ///
@@ -7776,7 +7863,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_values: Option<Vec<f64>>,
 
     ///
@@ -7790,7 +7877,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integer_values: Option<Vec<f64>>,
 
     ///
@@ -7804,7 +7891,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_values: Option<Vec<String>>,
 }
 
@@ -7860,6 +7947,7 @@ impl cfn_resources::CfnResource for CustomParameterValues {
 
 /// The configuration of custom values for the destination parameter in DestinationParameterValueConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CustomValuesConfiguration {
     /// Property description not available.
     ///
@@ -7880,7 +7968,7 @@ pub struct CustomValuesConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_null_value: Option<bool>,
 }
 
@@ -7902,6 +7990,7 @@ impl cfn_resources::CfnResource for CustomValuesConfiguration {
 
 /// The options for data bars.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataBarsOptions {
     ///
     /// The field ID for the data bars options.
@@ -7929,7 +8018,7 @@ pub struct DataBarsOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub negative_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -7943,7 +8032,7 @@ pub struct DataBarsOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PositiveColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub positive_color: Option<cfn_resources::StrVal>,
 }
 
@@ -7985,6 +8074,7 @@ impl cfn_resources::CfnResource for DataBarsOptions {
 
 /// Determines the color that is applied to a particular data value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataColor {
     ///
     /// The color that is applied to the data value.
@@ -7997,7 +8087,7 @@ pub struct DataColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -8009,7 +8099,7 @@ pub struct DataColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_value: Option<f64>,
 }
 
@@ -8029,6 +8119,7 @@ impl cfn_resources::CfnResource for DataColor {
 
 /// The data field series item configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataFieldSeriesItem {
     ///
     /// The axis that you are binding the field to.
@@ -8067,7 +8158,7 @@ pub struct DataFieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -8079,7 +8170,7 @@ pub struct DataFieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub settings: Option<LineChartSeriesSettings>,
 }
 
@@ -8142,6 +8233,7 @@ impl cfn_resources::CfnResource for DataFieldSeriesItem {
 
 /// The options that determine the presentation of the data labels.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLabelOptions {
     ///
     /// Determines the visibility of the category field labels.
@@ -8154,7 +8246,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_visibility: Option<DataLabelOptionsCategoryLabelVisibilityEnum>,
 
     ///
@@ -8168,7 +8260,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabelTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_label_types: Option<Vec<DataLabelType>>,
 
     ///
@@ -8182,7 +8274,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -8196,7 +8288,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelContent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_content: Option<DataLabelOptionsLabelContentEnum>,
 
     ///
@@ -8208,7 +8300,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelFontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -8222,7 +8314,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureLabelVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_label_visibility: Option<DataLabelOptionsMeasureLabelVisibilityEnum>,
 
     ///
@@ -8236,7 +8328,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overlap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overlap: Option<DataLabelOptionsOverlapEnum>,
 
     ///
@@ -8250,7 +8342,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<DataLabelOptionsPositionEnum>,
 
     ///
@@ -8264,7 +8356,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<DataLabelOptionsVisibilityEnum>,
 }
 
@@ -8421,6 +8513,7 @@ impl cfn_resources::CfnResource for DataLabelOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataLabelType {
     ///
     /// The option that specifies individual data values for labels.
@@ -8431,7 +8524,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPathLabelType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_path_label_type: Option<DataPathLabelType>,
 
     ///
@@ -8443,7 +8536,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLabelType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_label_type: Option<FieldLabelType>,
 
     ///
@@ -8455,7 +8548,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumLabelType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_label_type: Option<MaximumLabelType>,
 
     ///
@@ -8467,7 +8560,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumLabelType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_label_type: Option<MinimumLabelType>,
 
     ///
@@ -8479,7 +8572,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeEndsLabelType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_ends_label_type: Option<RangeEndsLabelType>,
 }
 
@@ -8519,6 +8612,7 @@ impl cfn_resources::CfnResource for DataLabelType {
 
 /// The color map that determines the color options for a particular element.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataPathColor {
     ///
     /// The color that needs to be applied to the element.
@@ -8555,7 +8649,7 @@ pub struct DataPathColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<DataPathColorTimeGranularityEnum>,
 }
 
@@ -8622,6 +8716,7 @@ impl cfn_resources::CfnResource for DataPathColor {
 
 /// The option that specifies individual data values for labels.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataPathLabelType {
     ///
     /// The field ID of the field that the data label needs to be applied to.
@@ -8636,7 +8731,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -8650,7 +8745,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -8664,7 +8759,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<DataPathLabelTypeVisibilityEnum>,
 }
 
@@ -8734,6 +8829,7 @@ impl cfn_resources::CfnResource for DataPathLabelType {
 
 /// Allows data paths to be sorted by a specific data value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataPathSort {
     ///
     /// Determines the sort direction.
@@ -8804,6 +8900,7 @@ impl cfn_resources::CfnResource for DataPathSort {
 
 /// The data path that needs to be sorted.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataPathValue {
     ///
     /// The field ID of the field that needs to be sorted.
@@ -8883,6 +8980,7 @@ impl cfn_resources::CfnResource for DataPathValue {
 
 /// A data set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSetIdentifierDeclaration {
     ///
     /// The Amazon Resource Name (ARN) of the data set.
@@ -8949,6 +9047,7 @@ impl cfn_resources::CfnResource for DataSetIdentifierDeclaration {
 
 /// Dataset reference.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSetReference {
     ///
     /// Dataset Amazon Resource Name (ARN).
@@ -8991,6 +9090,7 @@ impl cfn_resources::CfnResource for DataSetReference {
 
 /// The options that determine how a date axis is displayed.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateAxisOptions {
     ///
     /// Determines whether or not missing dates are displayed.
@@ -9003,7 +9103,7 @@ pub struct DateAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingDateVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub missing_date_visibility: Option<DateAxisOptionsMissingDateVisibilityEnum>,
 }
 
@@ -9040,6 +9140,7 @@ impl cfn_resources::CfnResource for DateAxisOptions {
 
 /// The dimension type field with date type columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateDimensionField {
     ///
     /// The column that is used in the DateDimensionField.
@@ -9065,7 +9166,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_granularity: Option<DateDimensionFieldDateGranularityEnum>,
 
     ///
@@ -9092,7 +9193,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<DateTimeFormatConfiguration>,
 
     ///
@@ -9108,7 +9209,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hierarchy_id: Option<cfn_resources::StrVal>,
 }
 
@@ -9223,6 +9324,7 @@ impl cfn_resources::CfnResource for DateDimensionField {
 
 /// The measure type field with date type columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -9235,7 +9337,7 @@ pub struct DateMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<DateMeasureFieldAggregationFunctionEnum>,
 
     ///
@@ -9273,7 +9375,7 @@ pub struct DateMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<DateTimeFormatConfiguration>,
 }
 
@@ -9346,6 +9448,7 @@ impl cfn_resources::CfnResource for DateMeasureField {
 
 /// The default values of the DateTimeParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeDefaultValues {
     ///
     /// The dynamic value of the DataTimeDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -9356,7 +9459,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -9368,7 +9471,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RollingDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rolling_date: Option<RollingDateConfiguration>,
 
     ///
@@ -9382,7 +9485,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_values: Option<Vec<String>>,
 }
 
@@ -9419,6 +9522,7 @@ impl cfn_resources::CfnResource for DateTimeDefaultValues {
 
 /// Formatting configuration for DateTime fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeFormatConfiguration {
     ///
     /// Determines the DateTime format.
@@ -9433,7 +9537,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -9445,7 +9549,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -9457,7 +9561,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -9507,6 +9611,7 @@ impl cfn_resources::CfnResource for DateTimeFormatConfiguration {
 
 /// The option that determines the hierarchy of any DateTime fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeHierarchy {
     ///
     /// The option that determines the drill down filters for the         DateTime hierarchy.
@@ -9519,7 +9624,7 @@ pub struct DateTimeHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -9585,6 +9690,7 @@ impl cfn_resources::CfnResource for DateTimeHierarchy {
 
 /// A date-time parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeParameter {
     ///
     /// A display name for the date-time parameter.
@@ -9627,6 +9733,7 @@ impl cfn_resources::CfnResource for DateTimeParameter {
 
 /// A parameter declaration for the DateTime data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -9637,7 +9744,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_values: Option<DateTimeDefaultValues>,
 
     /// Property description not available.
@@ -9648,7 +9755,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -9679,7 +9786,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<DateTimeParameterDeclarationTimeGranularityEnum>,
 
     ///
@@ -9691,7 +9798,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset: Option<DateTimeValueWhenUnsetConfiguration>,
 }
 
@@ -9786,6 +9893,7 @@ impl cfn_resources::CfnResource for DateTimeParameterDeclaration {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Customize how dates are formatted in controls.
@@ -9800,7 +9908,7 @@ pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -9812,7 +9920,7 @@ pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -9858,6 +9966,7 @@ impl cfn_resources::CfnResource for DateTimePickerControlDisplayOptions {
 
 /// The configuration that defines the default value of a DateTime parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -9868,7 +9977,7 @@ pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -9884,7 +9993,7 @@ pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset_option:
         Option<DateTimeValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
@@ -9922,6 +10031,7 @@ impl cfn_resources::CfnResource for DateTimeValueWhenUnsetConfiguration {
 
 /// The default values of the DecimalParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecimalDefaultValues {
     ///
     /// The dynamic value of the DecimalDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -9932,7 +10042,7 @@ pub struct DecimalDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -9946,7 +10056,7 @@ pub struct DecimalDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_values: Option<Vec<f64>>,
 }
 
@@ -9979,6 +10089,7 @@ impl cfn_resources::CfnResource for DecimalDefaultValues {
 
 /// A decimal parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecimalParameter {
     ///
     /// A display name for the decimal parameter.
@@ -10021,6 +10132,7 @@ impl cfn_resources::CfnResource for DecimalParameter {
 
 /// A parameter declaration for the Decimal data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecimalParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -10031,7 +10143,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_values: Option<DecimalDefaultValues>,
 
     /// Property description not available.
@@ -10042,7 +10154,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -10084,7 +10196,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset: Option<DecimalValueWhenUnsetConfiguration>,
 }
 
@@ -10151,6 +10263,7 @@ impl cfn_resources::CfnResource for DecimalParameterDeclaration {
 
 /// The option that determines the decimal places configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecimalPlacesConfiguration {
     ///
     /// The values of the decimal places.
@@ -10180,6 +10293,7 @@ impl cfn_resources::CfnResource for DecimalPlacesConfiguration {
 
 /// The configuration that defines the default value of a Decimal parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -10190,7 +10304,7 @@ pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_value: Option<f64>,
 
     ///
@@ -10206,7 +10320,7 @@ pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset_option: Option<DecimalValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -10243,6 +10357,7 @@ impl cfn_resources::CfnResource for DecimalValueWhenUnsetConfiguration {
 
 /// The options that determine the default settings of a free-form layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultFreeFormLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a free-form layout.
@@ -10274,6 +10389,7 @@ impl cfn_resources::CfnResource for DefaultFreeFormLayoutConfiguration {
 
 /// The options that determine the default settings for a grid layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultGridLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a grid layout.
@@ -10305,6 +10421,7 @@ impl cfn_resources::CfnResource for DefaultGridLayoutConfiguration {
 
 /// The options that determine the default settings for interactive layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// The options that determine the default settings of a free-form layout configuration.
@@ -10315,7 +10432,7 @@ pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FreeForm")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub free_form: Option<DefaultFreeFormLayoutConfiguration>,
 
     ///
@@ -10327,7 +10444,7 @@ pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Grid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grid: Option<DefaultGridLayoutConfiguration>,
 }
 
@@ -10353,6 +10470,7 @@ impl cfn_resources::CfnResource for DefaultInteractiveLayoutConfiguration {
 
 /// The configuration for default new sheet settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultNewSheetConfiguration {
     ///
     /// The options that determine the default settings for interactive layout configuration.
@@ -10363,7 +10481,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InteractiveLayoutConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub interactive_layout_configuration: Option<DefaultInteractiveLayoutConfiguration>,
 
     ///
@@ -10375,7 +10493,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedLayoutConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paginated_layout_configuration: Option<DefaultPaginatedLayoutConfiguration>,
 
     ///
@@ -10389,7 +10507,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_content_type: Option<DefaultNewSheetConfigurationSheetContentTypeEnum>,
 }
 
@@ -10434,6 +10552,7 @@ impl cfn_resources::CfnResource for DefaultNewSheetConfiguration {
 
 /// The options that determine the default settings for a paginated layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultPaginatedLayoutConfiguration {
     ///
     /// The options that determine the default settings for a section-based layout configuration.
@@ -10444,7 +10563,7 @@ pub struct DefaultPaginatedLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SectionBased")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub section_based: Option<DefaultSectionBasedLayoutConfiguration>,
 }
 
@@ -10468,6 +10587,7 @@ impl cfn_resources::CfnResource for DefaultPaginatedLayoutConfiguration {
 
 /// The options that determine the default settings for a section-based layout configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultSectionBasedLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a section-based layout.
@@ -10501,6 +10621,7 @@ impl cfn_resources::CfnResource for DefaultSectionBasedLayoutConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DestinationParameterValueConfiguration {
     ///
     /// The configuration of custom values for destination parameter in DestinationParameterValueConfiguration.
@@ -10511,7 +10632,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValuesConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_values_configuration: Option<CustomValuesConfiguration>,
 
     ///
@@ -10525,7 +10646,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllValueOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_value_options:
         Option<DestinationParameterValueConfigurationSelectAllValueOptionsEnum>,
 
@@ -10542,7 +10663,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -10554,7 +10675,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_parameter_name: Option<cfn_resources::StrVal>,
 }
 
@@ -10613,6 +10734,7 @@ impl cfn_resources::CfnResource for DestinationParameterValueConfiguration {
 
 /// The dimension type field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DimensionField {
     ///
     /// The dimension type field with categorical type columns.
@@ -10623,7 +10745,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalDimensionField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub categorical_dimension_field: Option<CategoricalDimensionField>,
 
     ///
@@ -10635,7 +10757,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateDimensionField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_dimension_field: Option<DateDimensionField>,
 
     ///
@@ -10647,7 +10769,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalDimensionField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numerical_dimension_field: Option<NumericalDimensionField>,
 }
 
@@ -10679,6 +10801,7 @@ impl cfn_resources::CfnResource for DimensionField {
 
 /// The label options of the label that is displayed in the center of a donut chart. This option isn't available for pie charts.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DonutCenterOptions {
     ///
     /// Determines the visibility of the label in a donut chart. In the Amazon QuickSight console, this option is called 'Show total'.
@@ -10691,7 +10814,7 @@ pub struct DonutCenterOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_visibility: Option<DonutCenterOptionsLabelVisibilityEnum>,
 }
 
@@ -10728,6 +10851,7 @@ impl cfn_resources::CfnResource for DonutCenterOptions {
 
 /// The options for configuring a donut chart or pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DonutOptions {
     ///
     /// The option for define the arc of the chart shape. Valid values are as follows:
@@ -10740,7 +10864,7 @@ pub struct DonutOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc_options: Option<ArcOptions>,
 
     ///
@@ -10752,7 +10876,7 @@ pub struct DonutOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DonutCenterOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub donut_center_options: Option<DonutCenterOptions>,
 }
 
@@ -10782,6 +10906,7 @@ impl cfn_resources::CfnResource for DonutOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DrillDownFilter {
     ///
     /// The category type drill down filter. This filter is used for string type columns.
@@ -10792,7 +10917,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_filter: Option<CategoryDrillDownFilter>,
 
     ///
@@ -10804,7 +10929,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_equality_filter: Option<NumericEqualityDrillDownFilter>,
 
     ///
@@ -10816,7 +10941,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeRangeFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_range_filter: Option<TimeRangeDrillDownFilter>,
 }
 
@@ -10848,6 +10973,7 @@ impl cfn_resources::CfnResource for DrillDownFilter {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DropDownControlDisplayOptions {
     ///
     /// The configuration of the Select all options in a       dropdown control.
@@ -10858,7 +10984,7 @@ pub struct DropDownControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<ListControlSelectAllOptions>,
 
     ///
@@ -10870,7 +10996,7 @@ pub struct DropDownControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -10898,6 +11024,7 @@ impl cfn_resources::CfnResource for DropDownControlDisplayOptions {
 
 /// Defines different defaults to the users or groups based on mapping.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DynamicDefaultValue {
     ///
     /// The column that contains the default value of each user or group.
@@ -10919,7 +11046,7 @@ pub struct DynamicDefaultValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupNameColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_name_column: Option<ColumnIdentifier>,
 
     ///
@@ -10931,7 +11058,7 @@ pub struct DynamicDefaultValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserNameColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_name_column: Option<ColumnIdentifier>,
 }
 
@@ -10963,6 +11090,7 @@ impl cfn_resources::CfnResource for DynamicDefaultValue {
 ///
 /// Empty visuals are used in layouts but have not been configured to show any data. A new visual created in the Amazon QuickSight console is considered an EmptyVisual until a visual type is selected.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EmptyVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -10975,7 +11103,7 @@ pub struct EmptyVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -11080,6 +11208,7 @@ impl cfn_resources::CfnResource for EmptyVisual {
 
 /// An object, structure, or sub-structure of an analysis, template, or dashboard.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Entity {
     ///
     /// The hierarchical path of the entity within the analysis, template, or dashboard definition tree.
@@ -11092,7 +11221,7 @@ pub struct Entity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -11112,6 +11241,7 @@ impl cfn_resources::CfnResource for Entity {
 
 /// The exclude period of TimeRangeFilter or RelativeDatesFilter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExcludePeriodConfiguration {
     ///
     /// The amount or number of the exclude period.
@@ -11150,7 +11280,7 @@ pub struct ExcludePeriodConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<ExcludePeriodConfigurationStatusEnum>,
 }
 
@@ -11232,6 +11362,7 @@ impl cfn_resources::CfnResource for ExcludePeriodConfiguration {
 
 /// The option that determines the hierarchy of the fields that are built within a visual's field wells. These fields can't be duplicated to other visuals.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ExplicitHierarchy {
     ///
     /// The list of columns that define the explicit hierarchy.
@@ -11257,7 +11388,7 @@ pub struct ExplicitHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -11332,6 +11463,7 @@ impl cfn_resources::CfnResource for ExplicitHierarchy {
 
 /// The setup for the detailed tooltip.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldBasedTooltip {
     ///
     /// The visibility of Show aggregations.
@@ -11344,7 +11476,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_visibility: Option<FieldBasedTooltipAggregationVisibilityEnum>,
 
     ///
@@ -11358,7 +11490,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip_fields: Option<Vec<TooltipItem>>,
 
     ///
@@ -11374,7 +11506,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipTitleType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip_title_type: Option<FieldBasedTooltipTooltipTitleTypeEnum>,
 }
 
@@ -11437,6 +11569,7 @@ impl cfn_resources::CfnResource for FieldBasedTooltip {
 
 /// The field label type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldLabelType {
     ///
     /// Indicates the field that is targeted by the field       label.
@@ -11451,7 +11584,7 @@ pub struct FieldLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -11465,7 +11598,7 @@ pub struct FieldLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FieldLabelTypeVisibilityEnum>,
 }
 
@@ -11524,6 +11657,7 @@ impl cfn_resources::CfnResource for FieldLabelType {
 
 /// The field series item configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldSeriesItem {
     ///
     /// The axis that you are binding the field to.
@@ -11562,7 +11696,7 @@ pub struct FieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub settings: Option<LineChartSeriesSettings>,
 }
 
@@ -11625,6 +11759,7 @@ impl cfn_resources::CfnResource for FieldSeriesItem {
 
 /// The sort configuration for a field in a       field well.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldSort {
     ///
     /// The sort direction. Choose one of the following       options:
@@ -11712,6 +11847,7 @@ impl cfn_resources::CfnResource for FieldSort {
 
 /// The field sort options in a chart configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldSortOptions {
     ///
     /// The sort configuration for a column that is not used in a field well.
@@ -11722,7 +11858,7 @@ pub struct FieldSortOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_sort: Option<ColumnSort>,
 
     ///
@@ -11734,7 +11870,7 @@ pub struct FieldSortOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_sort: Option<FieldSort>,
 }
 
@@ -11762,6 +11898,7 @@ impl cfn_resources::CfnResource for FieldSortOptions {
 
 /// The tooltip item for the fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FieldTooltipItem {
     ///
     /// The unique ID of the field that is targeted by the tooltip.
@@ -11787,7 +11924,7 @@ pub struct FieldTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -11801,7 +11938,7 @@ pub struct FieldTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FieldTooltipItemVisibilityEnum>,
 }
 
@@ -11860,6 +11997,7 @@ impl cfn_resources::CfnResource for FieldTooltipItem {
 
 /// The aggregated field well of the filled map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapAggregatedFieldWells {
     ///
     /// The aggregated location field well of the filled map. Values are grouped by location fields.
@@ -11872,7 +12010,7 @@ pub struct FilledMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Geospatial")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geospatial: Option<Vec<DimensionField>>,
 
     ///
@@ -11886,7 +12024,7 @@ pub struct FilledMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -11924,6 +12062,7 @@ impl cfn_resources::CfnResource for FilledMapAggregatedFieldWells {
 
 /// The conditional formatting of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapConditionalFormatting {
     ///
     /// Conditional formatting options of a FilledMapVisual.
@@ -11961,6 +12100,7 @@ impl cfn_resources::CfnResource for FilledMapConditionalFormatting {
 
 /// Conditional formatting options of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapConditionalFormattingOption {
     ///
     /// The conditional formatting that determines the shape of the filled map.
@@ -11992,6 +12132,7 @@ impl cfn_resources::CfnResource for FilledMapConditionalFormattingOption {
 
 /// The configuration for a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapConfiguration {
     ///
     /// The field wells of the visual.
@@ -12002,7 +12143,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<FilledMapFieldWells>,
 
     ///
@@ -12014,7 +12155,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -12026,7 +12167,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapStyleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_style_options: Option<GeospatialMapStyleOptions>,
 
     ///
@@ -12038,7 +12179,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<FilledMapSortConfiguration>,
 
     ///
@@ -12050,7 +12191,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -12062,7 +12203,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub window_options: Option<GeospatialWindowOptions>,
 }
 
@@ -12104,6 +12245,7 @@ impl cfn_resources::CfnResource for FilledMapConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapFieldWells {
     ///
     /// The aggregated field well of the filled map.
@@ -12114,7 +12256,7 @@ pub struct FilledMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilledMapAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filled_map_aggregated_field_wells: Option<FilledMapAggregatedFieldWells>,
 }
 
@@ -12138,6 +12280,7 @@ impl cfn_resources::CfnResource for FilledMapFieldWells {
 
 /// The conditional formatting that determines the shape of the filled map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapShapeConditionalFormatting {
     ///
     /// The field ID of the filled map shape.
@@ -12163,7 +12306,7 @@ pub struct FilledMapShapeConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format: Option<ShapeConditionalFormat>,
 }
 
@@ -12207,6 +12350,7 @@ impl cfn_resources::CfnResource for FilledMapShapeConditionalFormatting {
 
 /// The sort configuration of a FilledMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapSortConfiguration {
     ///
     /// The sort configuration of the location fields.
@@ -12219,7 +12363,7 @@ pub struct FilledMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -12250,6 +12394,7 @@ impl cfn_resources::CfnResource for FilledMapSortConfiguration {
 ///
 /// For more information, see Creating filled maps in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilledMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -12262,7 +12407,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -12274,7 +12419,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<FilledMapConfiguration>,
 
     ///
@@ -12288,7 +12433,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -12300,7 +12445,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting: Option<FilledMapConditionalFormatting>,
 
     ///
@@ -12312,7 +12457,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -12324,7 +12469,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -12417,6 +12562,7 @@ impl cfn_resources::CfnResource for FilledMapVisual {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Filter {
     ///
     /// A CategoryFilter filters text values.
@@ -12429,7 +12575,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_filter: Option<CategoryFilter>,
 
     ///
@@ -12441,7 +12587,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_equality_filter: Option<NumericEqualityFilter>,
 
     ///
@@ -12453,7 +12599,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericRangeFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_range_filter: Option<NumericRangeFilter>,
 
     ///
@@ -12465,7 +12611,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDatesFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_dates_filter: Option<RelativeDatesFilter>,
 
     ///
@@ -12477,7 +12623,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeEqualityFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_equality_filter: Option<TimeEqualityFilter>,
 
     ///
@@ -12489,7 +12635,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeRangeFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_range_filter: Option<TimeRangeFilter>,
 
     ///
@@ -12501,7 +12647,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomFilter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub top_bottom_filter: Option<TopBottomFilter>,
 }
 
@@ -12551,6 +12697,7 @@ impl cfn_resources::CfnResource for Filter {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterControl {
     ///
     /// A control from a date filter that is used to specify date and time.
@@ -12561,7 +12708,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimePicker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_picker: Option<FilterDateTimePickerControl>,
 
     ///
@@ -12573,7 +12720,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dropdown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dropdown: Option<FilterDropDownControl>,
 
     ///
@@ -12585,7 +12732,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "List")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub list: Option<FilterListControl>,
 
     ///
@@ -12597,7 +12744,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateTime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_date_time: Option<FilterRelativeDateTimeControl>,
 
     ///
@@ -12609,7 +12756,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slider: Option<FilterSliderControl>,
 
     ///
@@ -12621,7 +12768,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextArea")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_area: Option<FilterTextAreaControl>,
 
     ///
@@ -12633,7 +12780,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_field: Option<FilterTextFieldControl>,
 }
 
@@ -12677,6 +12824,7 @@ impl cfn_resources::CfnResource for FilterControl {
 
 /// A control from a date filter that is used to specify date and time.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterDateTimePickerControl {
     ///
     /// The display options of a control.
@@ -12687,7 +12835,7 @@ pub struct FilterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<DateTimePickerControlDisplayOptions>,
 
     ///
@@ -12752,7 +12900,7 @@ pub struct FilterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<FilterDateTimePickerControlTypeEnum>,
 }
 
@@ -12859,6 +13007,7 @@ impl cfn_resources::CfnResource for FilterDateTimePickerControl {
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterDropDownControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -12869,7 +13018,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -12881,7 +13030,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<DropDownControlDisplayOptions>,
 
     ///
@@ -12910,7 +13059,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selectable_values: Option<FilterSelectableValues>,
 
     ///
@@ -12958,7 +13107,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<FilterDropDownControlTypeEnum>,
 }
 
@@ -13075,6 +13224,7 @@ impl cfn_resources::CfnResource for FilterDropDownControl {
 ///
 /// For more information, see Adding filter conditions (group filters) with AND and OR operators in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterGroup {
     ///
     /// The filter new feature which can apply filter group to all data sets. Choose one of the following options:
@@ -13145,7 +13295,7 @@ pub struct FilterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<FilterGroupStatusEnum>,
 }
 
@@ -13232,6 +13382,7 @@ impl cfn_resources::CfnResource for FilterGroup {
 
 /// A list of filter configurations.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterListConfiguration {
     ///
     /// The list of category values for the filter.
@@ -13244,7 +13395,7 @@ pub struct FilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_values: Option<Vec<String>>,
 
     ///
@@ -13273,7 +13424,7 @@ pub struct FilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<FilterListConfigurationSelectAllOptionsEnum>,
 }
 
@@ -13348,6 +13499,7 @@ impl cfn_resources::CfnResource for FilterListConfiguration {
 
 /// A control to display a list of buttons or boxes. This is used to select either a single value or multiple values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterListControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -13358,7 +13510,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -13370,7 +13522,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<ListControlDisplayOptions>,
 
     ///
@@ -13399,7 +13551,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selectable_values: Option<FilterSelectableValues>,
 
     ///
@@ -13447,7 +13599,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<FilterListControlTypeEnum>,
 }
 
@@ -13564,6 +13716,7 @@ impl cfn_resources::CfnResource for FilterListControl {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// A structure that contains the options that choose which fields are filtered in the CustomActionFilterOperation.
@@ -13580,7 +13733,7 @@ pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_field_options:
         Option<FilterOperationSelectedFieldsConfigurationSelectedFieldOptionsEnum>,
 
@@ -13595,7 +13748,7 @@ pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFields")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_fields: Option<Vec<String>>,
 }
 
@@ -13639,6 +13792,7 @@ impl cfn_resources::CfnResource for FilterOperationSelectedFieldsConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterOperationTargetVisualsConfiguration {
     ///
     /// The configuration of the same-sheet target visuals that you want to be filtered.
@@ -13649,7 +13803,7 @@ pub struct FilterOperationTargetVisualsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SameSheetTargetVisualConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub same_sheet_target_visual_configuration: Option<SameSheetTargetVisualConfiguration>,
 }
 
@@ -13673,6 +13827,7 @@ impl cfn_resources::CfnResource for FilterOperationTargetVisualsConfiguration {
 
 /// A control from a date filter that is used to specify the relative date.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterRelativeDateTimeControl {
     ///
     /// The display options of a control.
@@ -13683,7 +13838,7 @@ pub struct FilterRelativeDateTimeControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<RelativeDateTimeControlDisplayOptions>,
 
     ///
@@ -13824,6 +13979,7 @@ impl cfn_resources::CfnResource for FilterRelativeDateTimeControl {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterScopeConfiguration {
     ///
     /// The configuration for applying a filter to specific sheets.
@@ -13834,7 +13990,7 @@ pub struct FilterScopeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedSheets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_sheets: Option<SelectedSheetsFilterScopeConfiguration>,
 }
 
@@ -13858,6 +14014,7 @@ impl cfn_resources::CfnResource for FilterScopeConfiguration {
 
 /// A list of selectable values that are used in a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterSelectableValues {
     ///
     /// The values that are used in the FilterSelectableValues.
@@ -13870,7 +14027,7 @@ pub struct FilterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -13899,6 +14056,7 @@ impl cfn_resources::CfnResource for FilterSelectableValues {
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterSliderControl {
     ///
     /// The display options of a control.
@@ -13909,7 +14067,7 @@ pub struct FilterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<SliderControlDisplayOptions>,
 
     ///
@@ -14007,7 +14165,7 @@ pub struct FilterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<FilterSliderControlTypeEnum>,
 }
 
@@ -14114,6 +14272,7 @@ impl cfn_resources::CfnResource for FilterSliderControl {
 
 /// A control to display a text box that is used to enter multiple entries.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterTextAreaControl {
     ///
     /// The delimiter that is used to separate the lines in text.
@@ -14128,7 +14287,7 @@ pub struct FilterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -14140,7 +14299,7 @@ pub struct FilterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<TextAreaControlDisplayOptions>,
 
     ///
@@ -14301,6 +14460,7 @@ impl cfn_resources::CfnResource for FilterTextAreaControl {
 
 /// A control to display a text box that is used to enter a single entry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FilterTextFieldControl {
     ///
     /// The display options of a control.
@@ -14311,7 +14471,7 @@ pub struct FilterTextFieldControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<TextFieldControlDisplayOptions>,
 
     ///
@@ -14450,6 +14610,7 @@ impl cfn_resources::CfnResource for FilterTextFieldControl {
 
 /// Configures the display properties of the given text.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FontConfiguration {
     ///
     /// Determines the color of the text.
@@ -14462,7 +14623,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -14476,7 +14637,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontDecoration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_decoration: Option<FontConfigurationFontDecorationEnum>,
 
     ///
@@ -14488,7 +14649,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_size: Option<FontSize>,
 
     ///
@@ -14502,7 +14663,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_style: Option<FontConfigurationFontStyleEnum>,
 
     ///
@@ -14514,7 +14675,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontWeight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_weight: Option<FontWeight>,
 }
 
@@ -14576,6 +14737,7 @@ impl cfn_resources::CfnResource for FontConfiguration {
 
 /// The option that determines the text display size.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FontSize {
     ///
     /// The lexical name for the text size, proportional to its surrounding context.
@@ -14588,7 +14750,7 @@ pub struct FontSize {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Relative")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative: Option<FontSizeRelativeEnum>,
 }
 
@@ -14637,6 +14799,7 @@ impl cfn_resources::CfnResource for FontSize {
 
 /// The option that determines the text display weight, or boldness.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FontWeight {
     ///
     /// The lexical name for the level of boldness of the text display.
@@ -14649,7 +14812,7 @@ pub struct FontWeight {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<FontWeightNameEnum>,
 }
 
@@ -14686,6 +14849,7 @@ impl cfn_resources::CfnResource for FontWeight {
 
 /// The forecast computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForecastComputation {
     ///
     /// The ID for a computation.
@@ -14717,7 +14881,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSeasonalityValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_seasonality_value: Option<f64>,
 
     ///
@@ -14729,7 +14893,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lower_boundary: Option<f64>,
 
     ///
@@ -14741,7 +14905,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -14757,7 +14921,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsBackward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub periods_backward: Option<f64>,
 
     ///
@@ -14773,7 +14937,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsForward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub periods_forward: Option<f64>,
 
     ///
@@ -14789,7 +14953,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictionInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prediction_interval: Option<f64>,
 
     ///
@@ -14805,7 +14969,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Seasonality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub seasonality: Option<ForecastComputationSeasonalityEnum>,
 
     ///
@@ -14828,7 +14992,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upper_boundary: Option<f64>,
 
     ///
@@ -14840,7 +15004,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -14972,6 +15136,7 @@ impl cfn_resources::CfnResource for ForecastComputation {
 
 /// The forecast configuration that is used in a line chart's display properties.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForecastConfiguration {
     ///
     /// The forecast properties setup of a forecast in the line       chart.
@@ -14982,7 +15147,7 @@ pub struct ForecastConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForecastProperties")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forecast_properties: Option<TimeBasedForecastProperties>,
 
     ///
@@ -14994,7 +15159,7 @@ pub struct ForecastConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scenario")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scenario: Option<ForecastScenario>,
 }
 
@@ -15022,6 +15187,7 @@ impl cfn_resources::CfnResource for ForecastConfiguration {
 
 /// The forecast scenario of a forecast in the line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ForecastScenario {
     ///
     /// The what-if analysis forecast setup with the target date.
@@ -15032,7 +15198,7 @@ pub struct ForecastScenario {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhatIfPointScenario")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub what_if_point_scenario: Option<WhatIfPointScenario>,
 
     ///
@@ -15044,7 +15210,7 @@ pub struct ForecastScenario {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhatIfRangeScenario")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub what_if_range_scenario: Option<WhatIfRangeScenario>,
 }
 
@@ -15072,6 +15238,7 @@ impl cfn_resources::CfnResource for ForecastScenario {
 
 /// The formatting configuration for all types of field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FormatConfiguration {
     ///
     /// Formatting configuration for DateTime fields.
@@ -15082,7 +15249,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_format_configuration: Option<DateTimeFormatConfiguration>,
 
     ///
@@ -15094,7 +15261,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_format_configuration: Option<NumberFormatConfiguration>,
 
     ///
@@ -15106,7 +15273,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_format_configuration: Option<StringFormatConfiguration>,
 }
 
@@ -15138,6 +15305,7 @@ impl cfn_resources::CfnResource for FormatConfiguration {
 
 /// Configuration options for the canvas of a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutCanvasSizeOptions {
     ///
     /// The options that determine the sizing of the canvas used in a free-form layout.
@@ -15148,7 +15316,7 @@ pub struct FreeFormLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScreenCanvasSizeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub screen_canvas_size_options: Option<FreeFormLayoutScreenCanvasSizeOptions>,
 }
 
@@ -15172,6 +15340,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutCanvasSizeOptions {
 
 /// The configuration of a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutConfiguration {
     /// Property description not available.
     ///
@@ -15181,7 +15350,7 @@ pub struct FreeFormLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanvasSizeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub canvas_size_options: Option<FreeFormLayoutCanvasSizeOptions>,
 
     ///
@@ -15227,6 +15396,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutConfiguration {
 
 /// An element within a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutElement {
     ///
     /// The background style configuration of a free-form layout element.
@@ -15237,7 +15407,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_style: Option<FreeFormLayoutElementBackgroundStyle>,
 
     ///
@@ -15249,7 +15419,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border_style: Option<FreeFormLayoutElementBorderStyle>,
 
     ///
@@ -15302,7 +15472,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadingAnimation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub loading_animation: Option<LoadingAnimation>,
 
     ///
@@ -15316,7 +15486,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenderingRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rendering_rules: Option<Vec<SheetElementRenderingRule>>,
 
     ///
@@ -15328,7 +15498,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedBorderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_border_style: Option<FreeFormLayoutElementBorderStyle>,
 
     ///
@@ -15342,7 +15512,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FreeFormLayoutElementVisibilityEnum>,
 
     ///
@@ -15484,6 +15654,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElement {
 
 /// The background style configuration of a free-form layout element.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// The background color of a free-form layout element.
@@ -15496,7 +15667,7 @@ pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -15510,7 +15681,7 @@ pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FreeFormLayoutElementBackgroundStyleVisibilityEnum>,
 }
 
@@ -15547,6 +15718,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElementBackgroundStyle {
 
 /// The background style configuration of a free-form layout element.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// The border color of a free-form layout element.
@@ -15559,7 +15731,7 @@ pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -15573,7 +15745,7 @@ pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FreeFormLayoutElementBorderStyleVisibilityEnum>,
 }
 
@@ -15610,6 +15782,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElementBorderStyle {
 
 /// The options that determine the sizing of the canvas used in a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormLayoutScreenCanvasSizeOptions {
     ///
     /// The width that the view port will be optimized for when the layout renders.
@@ -15639,6 +15812,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutScreenCanvasSizeOptions {
 
 /// The free-form layout configuration of a section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FreeFormSectionLayoutConfiguration {
     ///
     /// The elements that are included in the free-form layout.
@@ -15679,6 +15853,7 @@ impl cfn_resources::CfnResource for FreeFormSectionLayoutConfiguration {
 
 /// The field well configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartAggregatedFieldWells {
     ///
     /// The category field wells of a funnel chart. Values are grouped by category fields.
@@ -15691,7 +15866,7 @@ pub struct FunnelChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -15705,7 +15880,7 @@ pub struct FunnelChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -15743,6 +15918,7 @@ impl cfn_resources::CfnResource for FunnelChartAggregatedFieldWells {
 
 /// The configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartConfiguration {
     ///
     /// The label options of the categories that are displayed in a FunnelChartVisual.
@@ -15753,7 +15929,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -15765,7 +15941,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_label_options: Option<FunnelChartDataLabelOptions>,
 
     ///
@@ -15777,7 +15953,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<FunnelChartFieldWells>,
 
     ///
@@ -15789,7 +15965,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<FunnelChartSortConfiguration>,
 
     ///
@@ -15801,7 +15977,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -15813,7 +15989,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -15825,7 +16001,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -15871,6 +16047,7 @@ impl cfn_resources::CfnResource for FunnelChartConfiguration {
 
 /// The options that determine the presentation of the data labels.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartDataLabelOptions {
     ///
     /// The visibility of the category labels within the data labels.
@@ -15883,7 +16060,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_visibility: Option<FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum>,
 
     ///
@@ -15897,7 +16074,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -15911,7 +16088,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelFontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -15925,7 +16102,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureDataLabelStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_data_label_style: Option<FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum>,
 
     ///
@@ -15939,7 +16116,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureLabelVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub measure_label_visibility: Option<FunnelChartDataLabelOptionsMeasureLabelVisibilityEnum>,
 
     ///
@@ -15953,7 +16130,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<FunnelChartDataLabelOptionsPositionEnum>,
 
     ///
@@ -15967,7 +16144,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<FunnelChartDataLabelOptionsVisibilityEnum>,
 }
 
@@ -16106,6 +16283,7 @@ impl cfn_resources::CfnResource for FunnelChartDataLabelOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartFieldWells {
     ///
     /// The field well configuration of a FunnelChartVisual.
@@ -16116,7 +16294,7 @@ pub struct FunnelChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunnelChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub funnel_chart_aggregated_field_wells: Option<FunnelChartAggregatedFieldWells>,
 }
 
@@ -16140,6 +16318,7 @@ impl cfn_resources::CfnResource for FunnelChartFieldWells {
 
 /// The sort configuration of a FunnelChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartSortConfiguration {
     ///
     /// The limit on the number of categories displayed.
@@ -16150,7 +16329,7 @@ pub struct FunnelChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -16164,7 +16343,7 @@ pub struct FunnelChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -16199,6 +16378,7 @@ impl cfn_resources::CfnResource for FunnelChartSortConfiguration {
 ///
 /// For more information, see Using funnel charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunnelChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -16211,7 +16391,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -16223,7 +16403,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<FunnelChartConfiguration>,
 
     ///
@@ -16237,7 +16417,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -16249,7 +16429,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -16261,7 +16441,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -16348,6 +16528,7 @@ impl cfn_resources::CfnResource for FunnelChartVisual {
 
 /// The options that determine the presentation of the arc of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartArcConditionalFormatting {
     ///
     /// The conditional formatting of the arc foreground color.
@@ -16358,7 +16539,7 @@ pub struct GaugeChartArcConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForegroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub foreground_color: Option<ConditionalFormattingColor>,
 }
 
@@ -16382,6 +16563,7 @@ impl cfn_resources::CfnResource for GaugeChartArcConditionalFormatting {
 
 /// The conditional formatting of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartConditionalFormatting {
     ///
     /// Conditional formatting options of a GaugeChartVisual.
@@ -16394,7 +16576,7 @@ pub struct GaugeChartConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting_options: Option<Vec<GaugeChartConditionalFormattingOption>>,
 }
 
@@ -16420,6 +16602,7 @@ impl cfn_resources::CfnResource for GaugeChartConditionalFormatting {
 
 /// Conditional formatting options of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartConditionalFormattingOption {
     ///
     /// The options that determine the presentation of the arc of a GaugeChartVisual.
@@ -16430,7 +16613,7 @@ pub struct GaugeChartConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc: Option<GaugeChartArcConditionalFormatting>,
 
     ///
@@ -16442,7 +16625,7 @@ pub struct GaugeChartConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value: Option<GaugeChartPrimaryValueConditionalFormatting>,
 }
 
@@ -16468,6 +16651,7 @@ impl cfn_resources::CfnResource for GaugeChartConditionalFormattingOption {
 
 /// The configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartConfiguration {
     ///
     /// The data label configuration of a GaugeChartVisual.
@@ -16478,7 +16662,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -16490,7 +16674,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<GaugeChartFieldWells>,
 
     ///
@@ -16502,7 +16686,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GaugeChartOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gauge_chart_options: Option<GaugeChartOptions>,
 
     ///
@@ -16514,7 +16698,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip_options: Option<TooltipOptions>,
 
     ///
@@ -16526,7 +16710,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -16566,6 +16750,7 @@ impl cfn_resources::CfnResource for GaugeChartConfiguration {
 
 /// The field well configuration of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartFieldWells {
     ///
     /// The target value field wells of a GaugeChartVisual.
@@ -16578,7 +16763,7 @@ pub struct GaugeChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_values: Option<Vec<MeasureField>>,
 
     ///
@@ -16592,7 +16777,7 @@ pub struct GaugeChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -16630,6 +16815,7 @@ impl cfn_resources::CfnResource for GaugeChartFieldWells {
 
 /// The options that determine the presentation of the GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartOptions {
     ///
     /// The arc configuration of a GaugeChartVisual.
@@ -16640,7 +16826,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arc")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc: Option<ArcConfiguration>,
 
     ///
@@ -16652,7 +16838,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub arc_axis: Option<ArcAxisConfiguration>,
 
     ///
@@ -16664,7 +16850,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparison: Option<ComparisonConfiguration>,
 
     ///
@@ -16678,7 +16864,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueDisplayType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value_display_type: Option<GaugeChartOptionsPrimaryValueDisplayTypeEnum>,
 
     ///
@@ -16690,7 +16876,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueFontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value_font_configuration: Option<FontConfiguration>,
 }
 
@@ -16745,6 +16931,7 @@ impl cfn_resources::CfnResource for GaugeChartOptions {
 
 /// The conditional formatting for the primary value of a GaugeChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// The conditional formatting of the primary value icon.
@@ -16755,7 +16942,7 @@ pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -16767,7 +16954,7 @@ pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -16795,6 +16982,7 @@ impl cfn_resources::CfnResource for GaugeChartPrimaryValueConditionalFormatting 
 ///
 /// For more information, see Using gauge charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GaugeChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -16807,7 +16995,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -16819,7 +17007,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<GaugeChartConfiguration>,
 
     ///
@@ -16831,7 +17019,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting: Option<GaugeChartConditionalFormatting>,
 
     ///
@@ -16843,7 +17031,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -16855,7 +17043,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -16937,6 +17125,7 @@ impl cfn_resources::CfnResource for GaugeChartVisual {
 
 /// The bound       options (north, south, west, east) of the geospatial window options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialCoordinateBounds {
     ///
     /// The longitude of the east bound of the geospatial coordinate bounds.
@@ -16999,6 +17188,7 @@ impl cfn_resources::CfnResource for GeospatialCoordinateBounds {
 
 /// The aggregated field wells for a geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// The color field wells of a geospatial map.
@@ -17011,7 +17201,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -17025,7 +17215,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Geospatial")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geospatial: Option<Vec<DimensionField>>,
 
     ///
@@ -17039,7 +17229,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -17086,6 +17276,7 @@ impl cfn_resources::CfnResource for GeospatialMapAggregatedFieldWells {
 
 /// The configuration of a GeospatialMapVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialMapConfiguration {
     ///
     /// The field wells of the visual.
@@ -17096,7 +17287,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<GeospatialMapFieldWells>,
 
     ///
@@ -17108,7 +17299,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -17120,7 +17311,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapStyleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_style_options: Option<GeospatialMapStyleOptions>,
 
     ///
@@ -17132,7 +17323,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointStyleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub point_style_options: Option<GeospatialPointStyleOptions>,
 
     ///
@@ -17144,7 +17335,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     /// Property description not available.
@@ -17155,7 +17346,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -17167,7 +17358,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub window_options: Option<GeospatialWindowOptions>,
 }
 
@@ -17213,6 +17404,7 @@ impl cfn_resources::CfnResource for GeospatialMapConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialMapFieldWells {
     ///
     /// The aggregated field well for a geospatial map.
@@ -17223,7 +17415,7 @@ pub struct GeospatialMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeospatialMapAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geospatial_map_aggregated_field_wells: Option<GeospatialMapAggregatedFieldWells>,
 }
 
@@ -17247,6 +17439,7 @@ impl cfn_resources::CfnResource for GeospatialMapFieldWells {
 
 /// The map style options of the geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialMapStyleOptions {
     ///
     /// The base map style of the geospatial map.
@@ -17259,7 +17452,7 @@ pub struct GeospatialMapStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseMapStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_map_style: Option<GeospatialMapStyleOptionsBaseMapStyleEnum>,
 }
 
@@ -17306,6 +17499,7 @@ impl cfn_resources::CfnResource for GeospatialMapStyleOptions {
 ///
 /// For more information, see Creating point maps in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -17318,7 +17512,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -17330,7 +17524,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<GeospatialMapConfiguration>,
 
     ///
@@ -17344,7 +17538,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -17356,7 +17550,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -17368,7 +17562,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -17455,6 +17649,7 @@ impl cfn_resources::CfnResource for GeospatialMapVisual {
 
 /// The point style of the geospatial map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialPointStyleOptions {
     ///
     /// The cluster marker configuration of the geospatial point style.
@@ -17465,7 +17660,7 @@ pub struct GeospatialPointStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterMarkerConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cluster_marker_configuration: Option<ClusterMarkerConfiguration>,
 
     ///
@@ -17479,7 +17674,7 @@ pub struct GeospatialPointStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedPointStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_point_style: Option<GeospatialPointStyleOptionsSelectedPointStyleEnum>,
 }
 
@@ -17520,6 +17715,7 @@ impl cfn_resources::CfnResource for GeospatialPointStyleOptions {
 
 /// The window options of the geospatial map visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GeospatialWindowOptions {
     ///
     /// The bounds options (north, south, west, east) of the geospatial window options.
@@ -17530,7 +17726,7 @@ pub struct GeospatialWindowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bounds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bounds: Option<GeospatialCoordinateBounds>,
 
     ///
@@ -17544,7 +17740,7 @@ pub struct GeospatialWindowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapZoomMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_zoom_mode: Option<GeospatialWindowOptionsMapZoomModeEnum>,
 }
 
@@ -17583,6 +17779,7 @@ impl cfn_resources::CfnResource for GeospatialWindowOptions {
 
 /// Determines the border options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GlobalTableBorderOptions {
     ///
     /// Determines the options for side specific border.
@@ -17593,7 +17790,7 @@ pub struct GlobalTableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SideSpecificBorder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub side_specific_border: Option<TableSideBorderOptions>,
 
     ///
@@ -17605,7 +17802,7 @@ pub struct GlobalTableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniformBorder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uniform_border: Option<TableBorderOptions>,
 }
 
@@ -17633,6 +17830,7 @@ impl cfn_resources::CfnResource for GlobalTableBorderOptions {
 
 /// Determines the gradient color settings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GradientColor {
     ///
     /// The list of gradient color stops.
@@ -17645,7 +17843,7 @@ pub struct GradientColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stops")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stops: Option<Vec<GradientStop>>,
 }
 
@@ -17674,6 +17872,7 @@ impl cfn_resources::CfnResource for GradientColor {
 
 /// Determines the gradient stop configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GradientStop {
     ///
     /// Determines the color.
@@ -17686,7 +17885,7 @@ pub struct GradientStop {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -17698,7 +17897,7 @@ pub struct GradientStop {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_value: Option<f64>,
 
     ///
@@ -17729,6 +17928,7 @@ impl cfn_resources::CfnResource for GradientStop {
 
 /// Configuration options for the canvas of a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GridLayoutCanvasSizeOptions {
     ///
     /// The options that determine the sizing of the canvas used in a grid layout.
@@ -17739,7 +17939,7 @@ pub struct GridLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScreenCanvasSizeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub screen_canvas_size_options: Option<GridLayoutScreenCanvasSizeOptions>,
 }
 
@@ -17765,6 +17965,7 @@ impl cfn_resources::CfnResource for GridLayoutCanvasSizeOptions {
 ///
 /// Visuals snap to a grid with standard spacing and alignment. Dashboards are displayed as designed, with options to fit to screen or view at actual size.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GridLayoutConfiguration {
     /// Property description not available.
     ///
@@ -17774,7 +17975,7 @@ pub struct GridLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanvasSizeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub canvas_size_options: Option<GridLayoutCanvasSizeOptions>,
 
     ///
@@ -17820,6 +18021,7 @@ impl cfn_resources::CfnResource for GridLayoutConfiguration {
 
 /// An element within a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GridLayoutElement {
     ///
     /// The column index for the upper left corner of an element.
@@ -17834,7 +18036,7 @@ pub struct GridLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_index: Option<f64>,
 
     ///
@@ -17895,7 +18097,7 @@ pub struct GridLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowIndex")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_index: Option<f64>,
 
     ///
@@ -18049,6 +18251,7 @@ impl cfn_resources::CfnResource for GridLayoutElement {
 
 /// The options that determine the sizing of the canvas used in a grid layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GridLayoutScreenCanvasSizeOptions {
     ///
     /// The width that the view port will be optimized for when the layout renders.
@@ -18059,7 +18262,7 @@ pub struct GridLayoutScreenCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizedViewPortWidth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub optimized_view_port_width: Option<cfn_resources::StrVal>,
 
     ///
@@ -18111,6 +18314,7 @@ impl cfn_resources::CfnResource for GridLayoutScreenCanvasSizeOptions {
 
 /// The growth rate computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GrowthRateComputation {
     ///
     /// The ID for a computation.
@@ -18138,7 +18342,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -18154,7 +18358,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period_size: Option<f64>,
 
     ///
@@ -18177,7 +18381,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -18241,6 +18445,7 @@ impl cfn_resources::CfnResource for GrowthRateComputation {
 
 /// The configuration of a header or footer section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeaderFooterSectionConfiguration {
     ///
     /// The layout configuration of the header or footer section.
@@ -18279,7 +18484,7 @@ pub struct HeaderFooterSectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub style: Option<SectionStyle>,
 }
 
@@ -18325,6 +18530,7 @@ impl cfn_resources::CfnResource for HeaderFooterSectionConfiguration {
 
 /// The aggregated field wells of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeatMapAggregatedFieldWells {
     ///
     /// The columns field well of a heat map.
@@ -18337,7 +18543,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<DimensionField>>,
 
     ///
@@ -18351,7 +18557,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rows: Option<Vec<DimensionField>>,
 
     ///
@@ -18365,7 +18571,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -18412,6 +18618,7 @@ impl cfn_resources::CfnResource for HeatMapAggregatedFieldWells {
 
 /// The configuration of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeatMapConfiguration {
     ///
     /// The color options (gradient color, point of divergence) in a heat map.
@@ -18422,7 +18629,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorScale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_scale: Option<ColorScale>,
 
     ///
@@ -18434,7 +18641,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -18446,7 +18653,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -18458,7 +18665,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<HeatMapFieldWells>,
 
     ///
@@ -18470,7 +18677,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -18482,7 +18689,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -18494,7 +18701,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<HeatMapSortConfiguration>,
 
     ///
@@ -18506,7 +18713,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 }
 
@@ -18556,6 +18763,7 @@ impl cfn_resources::CfnResource for HeatMapConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeatMapFieldWells {
     ///
     /// The aggregated field wells of a heat map.
@@ -18566,7 +18774,7 @@ pub struct HeatMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_aggregated_field_wells: Option<HeatMapAggregatedFieldWells>,
 }
 
@@ -18590,6 +18798,7 @@ impl cfn_resources::CfnResource for HeatMapFieldWells {
 
 /// The sort configuration of a heat map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeatMapSortConfiguration {
     ///
     /// The limit on the number of columns that are displayed in a heat map.
@@ -18600,7 +18809,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapColumnItemsLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_column_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -18614,7 +18823,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapColumnSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_column_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -18626,7 +18835,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapRowItemsLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_row_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -18640,7 +18849,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapRowSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_row_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -18688,6 +18897,7 @@ impl cfn_resources::CfnResource for HeatMapSortConfiguration {
 ///
 /// For more information, see Using heat maps in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HeatMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -18700,7 +18910,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -18712,7 +18922,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<HeatMapConfiguration>,
 
     ///
@@ -18726,7 +18936,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -18738,7 +18948,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -18750,7 +18960,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -18837,6 +19047,7 @@ impl cfn_resources::CfnResource for HeatMapVisual {
 
 /// The field well configuration of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistogramAggregatedFieldWells {
     ///
     /// The value field wells of a histogram. Values are aggregated by COUNT or DISTINCT_COUNT.
@@ -18849,7 +19060,7 @@ pub struct HistogramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -18878,6 +19089,7 @@ impl cfn_resources::CfnResource for HistogramAggregatedFieldWells {
 
 /// The options that determine the presentation of histogram bins.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistogramBinOptions {
     ///
     /// The options that determine the bin count of a histogram.
@@ -18888,7 +19100,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinCount")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bin_count: Option<BinCountOptions>,
 
     ///
@@ -18900,7 +19112,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinWidth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bin_width: Option<BinWidthOptions>,
 
     ///
@@ -18914,7 +19126,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedBinType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_bin_type: Option<HistogramBinOptionsSelectedBinTypeEnum>,
 
     ///
@@ -18926,7 +19138,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_value: Option<f64>,
 }
 
@@ -18971,6 +19183,7 @@ impl cfn_resources::CfnResource for HistogramBinOptions {
 
 /// The configuration for a HistogramVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistogramConfiguration {
     ///
     /// The options that determine the presentation of histogram bins.
@@ -18981,7 +19194,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bin_options: Option<HistogramBinOptions>,
 
     ///
@@ -18993,7 +19206,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -19005,7 +19218,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<HistogramFieldWells>,
 
     ///
@@ -19017,7 +19230,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -19029,7 +19242,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -19041,7 +19254,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -19053,7 +19266,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -19065,7 +19278,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub yaxis_display_options: Option<AxisDisplayOptions>,
 }
 
@@ -19115,6 +19328,7 @@ impl cfn_resources::CfnResource for HistogramConfiguration {
 
 /// The field well configuration of a histogram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistogramFieldWells {
     ///
     /// The field well configuration of a histogram.
@@ -19125,7 +19339,7 @@ pub struct HistogramFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistogramAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub histogram_aggregated_field_wells: Option<HistogramAggregatedFieldWells>,
 }
 
@@ -19151,6 +19365,7 @@ impl cfn_resources::CfnResource for HistogramFieldWells {
 ///
 /// For more information, see Using histograms in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct HistogramVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -19163,7 +19378,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -19175,7 +19390,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<HistogramConfiguration>,
 
     ///
@@ -19187,7 +19402,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -19199,7 +19414,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -19277,6 +19492,7 @@ impl cfn_resources::CfnResource for HistogramVisual {
 
 /// The configuration of an insight visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InsightConfiguration {
     ///
     /// The computations configurations of the insight visual
@@ -19289,7 +19505,7 @@ pub struct InsightConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Computations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub computations: Option<Vec<Computation>>,
 
     ///
@@ -19301,7 +19517,7 @@ pub struct InsightConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomNarrative")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_narrative: Option<CustomNarrativeOptions>,
 }
 
@@ -19336,6 +19552,7 @@ impl cfn_resources::CfnResource for InsightConfiguration {
 ///
 /// For more information, see Working with insights in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InsightVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -19348,7 +19565,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -19375,7 +19592,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insight_configuration: Option<InsightConfiguration>,
 
     ///
@@ -19387,7 +19604,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -19399,7 +19616,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -19499,6 +19716,7 @@ impl cfn_resources::CfnResource for InsightVisual {
 
 /// The default values of the IntegerParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerDefaultValues {
     ///
     /// The dynamic value of the IntegerDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -19509,7 +19727,7 @@ pub struct IntegerDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -19523,7 +19741,7 @@ pub struct IntegerDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_values: Option<Vec<f64>>,
 }
 
@@ -19556,6 +19774,7 @@ impl cfn_resources::CfnResource for IntegerDefaultValues {
 
 /// An integer parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerParameter {
     ///
     /// The name of the integer parameter.
@@ -19598,6 +19817,7 @@ impl cfn_resources::CfnResource for IntegerParameter {
 
 /// A parameter declaration for the Integer data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -19608,7 +19828,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_values: Option<IntegerDefaultValues>,
 
     /// Property description not available.
@@ -19619,7 +19839,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -19661,7 +19881,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset: Option<IntegerValueWhenUnsetConfiguration>,
 }
 
@@ -19730,6 +19950,7 @@ impl cfn_resources::CfnResource for IntegerParameterDeclaration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -19740,7 +19961,7 @@ pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_value: Option<f64>,
 
     ///
@@ -19756,7 +19977,7 @@ pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset_option: Option<IntegerValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -19793,6 +20014,7 @@ impl cfn_resources::CfnResource for IntegerValueWhenUnsetConfiguration {
 
 /// The limit configuration of the visual display for an axis.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ItemsLimitConfiguration {
     ///
     /// The limit on how many items of a field are showed in the chart. For       example, the number of slices that are displayed in a pie chart.
@@ -19803,7 +20025,7 @@ pub struct ItemsLimitConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub items_limit: Option<f64>,
 
     ///
@@ -19819,7 +20041,7 @@ pub struct ItemsLimitConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OtherCategories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub other_categories: Option<ItemsLimitConfigurationOtherCategoriesEnum>,
 }
 
@@ -19856,6 +20078,7 @@ impl cfn_resources::CfnResource for ItemsLimitConfiguration {
 
 /// The conditional formatting of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIConditionalFormatting {
     ///
     /// The conditional formatting options of a KPI visual.
@@ -19868,7 +20091,7 @@ pub struct KPIConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting_options: Option<Vec<KPIConditionalFormattingOption>>,
 }
 
@@ -19894,6 +20117,7 @@ impl cfn_resources::CfnResource for KPIConditionalFormatting {
 
 /// The conditional formatting options of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIConditionalFormattingOption {
     ///
     /// The conditional formatting for the primary value of a KPI visual.
@@ -19904,7 +20128,7 @@ pub struct KPIConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value: Option<KPIPrimaryValueConditionalFormatting>,
 
     ///
@@ -19916,7 +20140,7 @@ pub struct KPIConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgressBar")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub progress_bar: Option<KPIProgressBarConditionalFormatting>,
 }
 
@@ -19944,6 +20168,7 @@ impl cfn_resources::CfnResource for KPIConditionalFormattingOption {
 
 /// The configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIConfiguration {
     ///
     /// The field well configuration of a KPI visual.
@@ -19954,7 +20179,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<KPIFieldWells>,
 
     ///
@@ -19966,7 +20191,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KPIOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kpioptions: Option<KPIOptions>,
 
     ///
@@ -19978,7 +20203,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<KPISortConfiguration>,
 }
 
@@ -20010,6 +20235,7 @@ impl cfn_resources::CfnResource for KPIConfiguration {
 
 /// The field well configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIFieldWells {
     ///
     /// The target value field wells of a KPI visual.
@@ -20022,7 +20248,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_values: Option<Vec<MeasureField>>,
 
     ///
@@ -20036,7 +20262,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendGroups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trend_groups: Option<Vec<DimensionField>>,
 
     ///
@@ -20050,7 +20276,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -20097,6 +20323,7 @@ impl cfn_resources::CfnResource for KPIFieldWells {
 
 /// The options that determine the presentation of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIOptions {
     ///
     /// The comparison configuration of a KPI visual.
@@ -20107,7 +20334,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub comparison: Option<ComparisonConfiguration>,
 
     ///
@@ -20121,7 +20348,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueDisplayType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value_display_type: Option<KPIOptionsPrimaryValueDisplayTypeEnum>,
 
     ///
@@ -20133,7 +20360,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueFontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_value_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -20145,7 +20372,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgressBar")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub progress_bar: Option<ProgressBarOptions>,
 
     ///
@@ -20157,7 +20384,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_value: Option<SecondaryValueOptions>,
 
     ///
@@ -20169,7 +20396,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryValueFontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_value_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -20181,7 +20408,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendArrows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trend_arrows: Option<TrendArrowOptions>,
 }
 
@@ -20246,6 +20473,7 @@ impl cfn_resources::CfnResource for KPIOptions {
 
 /// The conditional formatting for the primary value of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// The conditional formatting of the primary value's icon.
@@ -20256,7 +20484,7 @@ pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -20268,7 +20496,7 @@ pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -20294,6 +20522,7 @@ impl cfn_resources::CfnResource for KPIPrimaryValueConditionalFormatting {
 
 /// The conditional formatting for the progress bar of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIProgressBarConditionalFormatting {
     ///
     /// The conditional formatting of the progress bar's foreground color.
@@ -20304,7 +20533,7 @@ pub struct KPIProgressBarConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForegroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub foreground_color: Option<ConditionalFormattingColor>,
 }
 
@@ -20328,6 +20557,7 @@ impl cfn_resources::CfnResource for KPIProgressBarConditionalFormatting {
 
 /// The sort configuration of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPISortConfiguration {
     ///
     /// The sort configuration of the trend group fields.
@@ -20340,7 +20570,7 @@ pub struct KPISortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendGroupSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub trend_group_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -20371,6 +20601,7 @@ impl cfn_resources::CfnResource for KPISortConfiguration {
 ///
 /// For more information, see Using KPIs in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct KPIVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -20383,7 +20614,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -20395,7 +20626,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<KPIConfiguration>,
 
     ///
@@ -20409,7 +20640,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -20421,7 +20652,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting: Option<KPIConditionalFormatting>,
 
     ///
@@ -20433,7 +20664,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -20445,7 +20676,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -20536,6 +20767,7 @@ impl cfn_resources::CfnResource for KPIVisual {
 
 /// The share label options for the labels.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LabelOptions {
     ///
     /// The text for the label.
@@ -20546,7 +20778,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -20558,7 +20790,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -20572,7 +20804,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<LabelOptionsVisibilityEnum>,
 }
 
@@ -20617,6 +20849,7 @@ impl cfn_resources::CfnResource for LabelOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Layout {
     ///
     /// The configuration that determines what the type of layout for a sheet.
@@ -20650,6 +20883,7 @@ impl cfn_resources::CfnResource for Layout {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LayoutConfiguration {
     ///
     /// A free-form is optimized for a fixed width and has more control over the exact placement of layout elements.
@@ -20660,7 +20894,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FreeFormLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub free_form_layout: Option<FreeFormLayoutConfiguration>,
 
     ///
@@ -20672,7 +20906,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grid_layout: Option<GridLayoutConfiguration>,
 
     ///
@@ -20684,7 +20918,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SectionBasedLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub section_based_layout: Option<SectionBasedLayoutConfiguration>,
 }
 
@@ -20716,6 +20950,7 @@ impl cfn_resources::CfnResource for LayoutConfiguration {
 
 /// The options for the legend setup of a visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LegendOptions {
     ///
     /// The height of the legend. If this value is omitted, a default height is used when       rendering.
@@ -20726,7 +20961,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub height: Option<cfn_resources::StrVal>,
 
     ///
@@ -20742,7 +20977,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub position: Option<LegendOptionsPositionEnum>,
 
     ///
@@ -20754,7 +20989,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<LabelOptions>,
 
     ///
@@ -20768,7 +21003,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<LegendOptionsVisibilityEnum>,
 
     ///
@@ -20780,7 +21015,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub width: Option<cfn_resources::StrVal>,
 }
 
@@ -20844,6 +21079,7 @@ impl cfn_resources::CfnResource for LegendOptions {
 
 /// The field well configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartAggregatedFieldWells {
     ///
     /// The category field wells of a line chart. Values are grouped by category fields.
@@ -20856,7 +21092,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -20870,7 +21106,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -20884,7 +21120,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -20898,7 +21134,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -20954,6 +21190,7 @@ impl cfn_resources::CfnResource for LineChartAggregatedFieldWells {
 
 /// The configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartConfiguration {
     ///
     /// The default configuration of a line chart's contribution analysis.
@@ -20966,7 +21203,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -20978,7 +21215,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -20990,7 +21227,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSeriesSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_series_settings: Option<LineChartDefaultSeriesSettings>,
 
     ///
@@ -21002,7 +21239,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<LineChartFieldWells>,
 
     ///
@@ -21016,7 +21253,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForecastConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub forecast_configurations: Option<Vec<ForecastConfiguration>>,
 
     ///
@@ -21028,7 +21265,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -21040,7 +21277,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_display_options: Option<LineSeriesAxisDisplayOptions>,
 
     ///
@@ -21052,7 +21289,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -21066,7 +21303,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -21078,7 +21315,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_yaxis_display_options: Option<LineSeriesAxisDisplayOptions>,
 
     ///
@@ -21090,7 +21327,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secondary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -21104,7 +21341,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Series")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub series: Option<Vec<SeriesItem>>,
 
     ///
@@ -21116,7 +21353,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -21128,7 +21365,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<LineChartSortConfiguration>,
 
     ///
@@ -21140,7 +21377,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -21154,7 +21391,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<LineChartConfigurationTypeEnum>,
 
     ///
@@ -21166,7 +21403,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -21178,7 +21415,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -21190,7 +21427,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 }
 
@@ -21313,6 +21550,7 @@ impl cfn_resources::CfnResource for LineChartConfiguration {
 
 /// The options that determine the default presentation of all line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartDefaultSeriesSettings {
     ///
     /// The axis to which you are binding all line series to.
@@ -21325,7 +21563,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisBinding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_binding: Option<LineChartDefaultSeriesSettingsAxisBindingEnum>,
 
     ///
@@ -21337,7 +21575,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_style_settings: Option<LineChartLineStyleSettings>,
 
     ///
@@ -21349,7 +21587,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerStyleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_style_settings: Option<LineChartMarkerStyleSettings>,
 }
 
@@ -21394,6 +21632,7 @@ impl cfn_resources::CfnResource for LineChartDefaultSeriesSettings {
 
 /// The field well configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartFieldWells {
     ///
     /// The field well configuration of a line chart.
@@ -21404,7 +21643,7 @@ pub struct LineChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_chart_aggregated_field_wells: Option<LineChartAggregatedFieldWells>,
 }
 
@@ -21428,6 +21667,7 @@ impl cfn_resources::CfnResource for LineChartFieldWells {
 
 /// Line styles options for a line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartLineStyleSettings {
     ///
     /// Interpolation style for line series.
@@ -21442,7 +21682,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineInterpolation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_interpolation: Option<LineChartLineStyleSettingsLineInterpolationEnum>,
 
     ///
@@ -21458,7 +21698,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_style: Option<LineChartLineStyleSettingsLineStyleEnum>,
 
     ///
@@ -21472,7 +21712,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_visibility: Option<LineChartLineStyleSettingsLineVisibilityEnum>,
 
     ///
@@ -21484,7 +21724,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineWidth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_width: Option<cfn_resources::StrVal>,
 }
 
@@ -21563,6 +21803,7 @@ impl cfn_resources::CfnResource for LineChartLineStyleSettings {
 
 /// Marker styles options for a line series in LineChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartMarkerStyleSettings {
     ///
     /// Color of marker in the series.
@@ -21575,7 +21816,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -21591,7 +21832,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerShape")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_shape: Option<LineChartMarkerStyleSettingsMarkerShapeEnum>,
 
     ///
@@ -21603,7 +21844,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_size: Option<cfn_resources::StrVal>,
 
     ///
@@ -21617,7 +21858,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_visibility: Option<LineChartMarkerStyleSettingsMarkerVisibilityEnum>,
 }
 
@@ -21683,6 +21924,7 @@ impl cfn_resources::CfnResource for LineChartMarkerStyleSettings {
 
 /// The options that determine the presentation of a line series in the visual
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartSeriesSettings {
     ///
     /// Line styles options for a line series in LineChartVisual.
@@ -21693,7 +21935,7 @@ pub struct LineChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_style_settings: Option<LineChartLineStyleSettings>,
 
     ///
@@ -21705,7 +21947,7 @@ pub struct LineChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerStyleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub marker_style_settings: Option<LineChartMarkerStyleSettings>,
 }
 
@@ -21733,6 +21975,7 @@ impl cfn_resources::CfnResource for LineChartSeriesSettings {
 
 /// The sort configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartSortConfiguration {
     ///
     /// The limit on the number of categories that are displayed in a line chart.
@@ -21743,7 +21986,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21757,7 +22000,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -21769,7 +22012,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21781,7 +22024,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21795,7 +22038,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -21847,6 +22090,7 @@ impl cfn_resources::CfnResource for LineChartSortConfiguration {
 ///
 /// For more information, see Using line charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -21859,7 +22103,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -21871,7 +22115,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<LineChartConfiguration>,
 
     ///
@@ -21885,7 +22129,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -21897,7 +22141,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -21909,7 +22153,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -21996,6 +22240,7 @@ impl cfn_resources::CfnResource for LineChartVisual {
 
 /// The series axis configuration of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LineSeriesAxisDisplayOptions {
     ///
     /// The options that determine the presentation of the line series axis.
@@ -22006,7 +22251,7 @@ pub struct LineSeriesAxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_options: Option<AxisDisplayOptions>,
 
     ///
@@ -22020,7 +22265,7 @@ pub struct LineSeriesAxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingDataConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub missing_data_configurations: Option<Vec<MissingDataConfiguration>>,
 }
 
@@ -22050,6 +22295,7 @@ impl cfn_resources::CfnResource for LineSeriesAxisDisplayOptions {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListControlDisplayOptions {
     ///
     /// The configuration of the search options in a list control.
@@ -22060,7 +22306,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub search_options: Option<ListControlSearchOptions>,
 
     ///
@@ -22072,7 +22318,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<ListControlSelectAllOptions>,
 
     ///
@@ -22084,7 +22330,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -22116,6 +22362,7 @@ impl cfn_resources::CfnResource for ListControlDisplayOptions {
 
 /// The configuration of the search options in a list control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListControlSearchOptions {
     ///
     /// The visibility configuration of the search options in a list control.
@@ -22128,7 +22375,7 @@ pub struct ListControlSearchOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ListControlSearchOptionsVisibilityEnum>,
 }
 
@@ -22165,6 +22412,7 @@ impl cfn_resources::CfnResource for ListControlSearchOptions {
 
 /// The configuration of the Select all options in a list control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ListControlSelectAllOptions {
     ///
     /// The visibility configuration of the Select all options in a list control.
@@ -22177,7 +22425,7 @@ pub struct ListControlSelectAllOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ListControlSelectAllOptionsVisibilityEnum>,
 }
 
@@ -22214,6 +22462,7 @@ impl cfn_resources::CfnResource for ListControlSelectAllOptions {
 
 /// The configuration of loading animation in free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoadingAnimation {
     ///
     /// The visibility configuration of LoadingAnimation.
@@ -22226,7 +22475,7 @@ pub struct LoadingAnimation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<LoadingAnimationVisibilityEnum>,
 }
 
@@ -22263,6 +22512,7 @@ impl cfn_resources::CfnResource for LoadingAnimation {
 
 /// The navigation configuration for CustomActionNavigationOperation.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LocalNavigationConfiguration {
     ///
     /// The sheet that is targeted for navigation in the same analysis.
@@ -22322,6 +22572,7 @@ impl cfn_resources::CfnResource for LocalNavigationConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LongFormatText {
     ///
     /// Plain text format.
@@ -22336,7 +22587,7 @@ pub struct LongFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlainText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub plain_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -22352,7 +22603,7 @@ pub struct LongFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RichText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rich_text: Option<cfn_resources::StrVal>,
 }
 
@@ -22416,6 +22667,7 @@ impl cfn_resources::CfnResource for LongFormatText {
 
 /// A dataset parameter that is mapped to an analysis parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MappedDataSetParameter {
     ///
     /// A unique name that identifies a dataset within the analysis or dashboard.
@@ -22507,6 +22759,7 @@ impl cfn_resources::CfnResource for MappedDataSetParameter {
 
 /// The maximum label of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaximumLabelType {
     ///
     /// The visibility of the maximum label.
@@ -22519,7 +22772,7 @@ pub struct MaximumLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<MaximumLabelTypeVisibilityEnum>,
 }
 
@@ -22556,6 +22809,7 @@ impl cfn_resources::CfnResource for MaximumLabelType {
 
 /// The maximum and minimum computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MaximumMinimumComputation {
     ///
     /// The ID for a computation.
@@ -22583,7 +22837,7 @@ pub struct MaximumMinimumComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -22621,7 +22875,7 @@ pub struct MaximumMinimumComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -22684,6 +22938,7 @@ impl cfn_resources::CfnResource for MaximumMinimumComputation {
 
 /// The measure (metric) type field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MeasureField {
     ///
     /// The calculated measure field only used in pivot tables.
@@ -22694,7 +22949,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedMeasureField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub calculated_measure_field: Option<CalculatedMeasureField>,
 
     ///
@@ -22706,7 +22961,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalMeasureField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub categorical_measure_field: Option<CategoricalMeasureField>,
 
     ///
@@ -22718,7 +22973,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateMeasureField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_measure_field: Option<DateMeasureField>,
 
     ///
@@ -22730,7 +22985,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalMeasureField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numerical_measure_field: Option<NumericalMeasureField>,
 }
 
@@ -22766,6 +23021,7 @@ impl cfn_resources::CfnResource for MeasureField {
 
 /// The metric comparison computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricComparisonComputation {
     ///
     /// The ID for a computation.
@@ -22804,7 +23060,7 @@ pub struct MetricComparisonComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -22874,6 +23130,7 @@ impl cfn_resources::CfnResource for MetricComparisonComputation {
 
 /// The minimum label of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MinimumLabelType {
     ///
     /// The visibility of the minimum label.
@@ -22886,7 +23143,7 @@ pub struct MinimumLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<MinimumLabelTypeVisibilityEnum>,
 }
 
@@ -22923,6 +23180,7 @@ impl cfn_resources::CfnResource for MinimumLabelType {
 
 /// The configuration options that determine how missing data is treated during the rendering of a line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MissingDataConfiguration {
     ///
     /// The treatment option that determines how missing data should be rendered. Choose       from the following options:
@@ -22937,7 +23195,7 @@ pub struct MissingDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatmentOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub treatment_option: Option<MissingDataConfigurationTreatmentOptionEnum>,
 }
 
@@ -22978,6 +23236,7 @@ impl cfn_resources::CfnResource for MissingDataConfiguration {
 
 /// The options that determine the negative value configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NegativeValueConfiguration {
     ///
     /// Determines the display mode of the negative value configuration.
@@ -23026,6 +23285,7 @@ impl cfn_resources::CfnResource for NegativeValueConfiguration {
 
 /// The options that determine the null value format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NullValueFormatConfiguration {
     ///
     /// Determines the null string of null values.
@@ -23081,6 +23341,7 @@ impl cfn_resources::CfnResource for NullValueFormatConfiguration {
 
 /// The options that determine the number display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumberDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -23091,7 +23352,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -23103,7 +23364,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -23115,7 +23376,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -23129,7 +23390,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberScale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_scale: Option<NumberDisplayFormatConfigurationNumberScaleEnum>,
 
     ///
@@ -23145,7 +23406,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -23157,7 +23418,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -23173,7 +23434,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -23286,6 +23547,7 @@ impl cfn_resources::CfnResource for NumberDisplayFormatConfiguration {
 
 /// Formatting configuration for number fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumberFormatConfiguration {
     ///
     /// The options that determine the numeric format configuration.
@@ -23296,7 +23558,7 @@ pub struct NumberFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -23320,6 +23582,7 @@ impl cfn_resources::CfnResource for NumberFormatConfiguration {
 
 /// The options for an axis with a numeric field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericAxisOptions {
     ///
     /// The range setup of a numeric axis.
@@ -23330,7 +23593,7 @@ pub struct NumericAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range: Option<AxisDisplayRange>,
 
     ///
@@ -23342,7 +23605,7 @@ pub struct NumericAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scale: Option<AxisScale>,
 }
 
@@ -23366,6 +23629,7 @@ impl cfn_resources::CfnResource for NumericAxisOptions {
 
 /// The category drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericEqualityDrillDownFilter {
     ///
     /// The column that the filter is applied to.
@@ -23408,6 +23672,7 @@ impl cfn_resources::CfnResource for NumericEqualityDrillDownFilter {
 
 /// A NumericEqualityFilter filters values that are equal to the specified value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericEqualityFilter {
     ///
     /// The aggregation function of the filter.
@@ -23418,7 +23683,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -23492,7 +23757,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -23508,7 +23773,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<NumericEqualityFilterSelectAllOptionsEnum>,
 
     ///
@@ -23520,7 +23785,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<f64>,
 }
 
@@ -23643,6 +23908,7 @@ impl cfn_resources::CfnResource for NumericEqualityFilter {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericFormatConfiguration {
     ///
     /// The options that determine the currency display format configuration.
@@ -23653,7 +23919,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrencyDisplayFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub currency_display_format_configuration: Option<CurrencyDisplayFormatConfiguration>,
 
     ///
@@ -23665,7 +23931,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDisplayFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub number_display_format_configuration: Option<NumberDisplayFormatConfiguration>,
 
     ///
@@ -23677,7 +23943,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentageDisplayFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percentage_display_format_configuration: Option<PercentageDisplayFormatConfiguration>,
 }
 
@@ -23709,6 +23975,7 @@ impl cfn_resources::CfnResource for NumericFormatConfiguration {
 
 /// A NumericRangeFilter filters values that are within the value range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericRangeFilter {
     ///
     /// The aggregation function of the filter.
@@ -23719,7 +23986,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -23759,7 +24026,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMaximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_maximum: Option<bool>,
 
     ///
@@ -23771,7 +24038,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMinimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_minimum: Option<bool>,
 
     ///
@@ -23798,7 +24065,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMaximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_maximum: Option<NumericRangeFilterValue>,
 
     ///
@@ -23810,7 +24077,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMinimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_minimum: Option<NumericRangeFilterValue>,
 
     ///
@@ -23826,7 +24093,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub select_all_options: Option<NumericRangeFilterSelectAllOptionsEnum>,
 }
 
@@ -23916,6 +24183,7 @@ impl cfn_resources::CfnResource for NumericRangeFilter {
 
 /// The value input pf the numeric range filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericRangeFilterValue {
     ///
     /// The parameter that is used in the numeric range.
@@ -23932,7 +24200,7 @@ pub struct NumericRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter: Option<cfn_resources::StrVal>,
 
     ///
@@ -23944,7 +24212,7 @@ pub struct NumericRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_value: Option<f64>,
 }
 
@@ -23986,6 +24254,7 @@ impl cfn_resources::CfnResource for NumericRangeFilterValue {
 
 /// The options that determine the numeric separator configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericSeparatorConfiguration {
     ///
     /// Determines the decimal separator.
@@ -23998,7 +24267,7 @@ pub struct NumericSeparatorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalSeparator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_separator: Option<NumericSeparatorConfigurationDecimalSeparatorEnum>,
 
     ///
@@ -24010,7 +24279,7 @@ pub struct NumericSeparatorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThousandsSeparator")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thousands_separator: Option<ThousandSeparatorOptions>,
 }
 
@@ -24055,6 +24324,7 @@ impl cfn_resources::CfnResource for NumericSeparatorConfiguration {
 
 /// Aggregation for numerical values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericalAggregationFunction {
     ///
     /// An aggregation based on the percentile of values in a dimension or measure.
@@ -24065,7 +24335,7 @@ pub struct NumericalAggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentileAggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percentile_aggregation: Option<PercentileAggregation>,
 
     ///
@@ -24081,7 +24351,7 @@ pub struct NumericalAggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleNumericalAggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub simple_numerical_aggregation:
         Option<NumericalAggregationFunctionSimpleNumericalAggregationEnum>,
 }
@@ -24159,6 +24429,7 @@ impl cfn_resources::CfnResource for NumericalAggregationFunction {
 
 /// The dimension type field with numerical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericalDimensionField {
     ///
     /// The column that is used in the NumericalDimensionField.
@@ -24195,7 +24466,7 @@ pub struct NumericalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<NumberFormatConfiguration>,
 
     ///
@@ -24211,7 +24482,7 @@ pub struct NumericalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hierarchy_id: Option<cfn_resources::StrVal>,
 }
 
@@ -24281,6 +24552,7 @@ impl cfn_resources::CfnResource for NumericalDimensionField {
 
 /// The measure type field with numerical type columns.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NumericalMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -24291,7 +24563,7 @@ pub struct NumericalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub aggregation_function: Option<NumericalAggregationFunction>,
 
     ///
@@ -24329,7 +24601,7 @@ pub struct NumericalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<NumberFormatConfiguration>,
 }
 
@@ -24381,6 +24653,7 @@ impl cfn_resources::CfnResource for NumericalMeasureField {
 
 /// The pagination configuration for a table visual or boxplot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PaginationConfiguration {
     ///
     /// Indicates the page number.
@@ -24421,6 +24694,7 @@ impl cfn_resources::CfnResource for PaginationConfiguration {
 
 /// A collection of options that configure how each panel displays in a small multiples chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PanelConfiguration {
     ///
     /// Sets the background color for each panel.
@@ -24433,7 +24707,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -24447,7 +24721,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_visibility: Option<PanelConfigurationBackgroundVisibilityEnum>,
 
     ///
@@ -24461,7 +24735,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -24475,7 +24749,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border_style: Option<PanelConfigurationBorderStyleEnum>,
 
     ///
@@ -24487,7 +24761,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderThickness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border_thickness: Option<cfn_resources::StrVal>,
 
     ///
@@ -24501,7 +24775,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border_visibility: Option<PanelConfigurationBorderVisibilityEnum>,
 
     ///
@@ -24513,7 +24787,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GutterSpacing")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gutter_spacing: Option<cfn_resources::StrVal>,
 
     ///
@@ -24527,7 +24801,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GutterVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gutter_visibility: Option<PanelConfigurationGutterVisibilityEnum>,
 
     ///
@@ -24539,7 +24813,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<PanelTitleOptions>,
 }
 
@@ -24633,6 +24907,7 @@ impl cfn_resources::CfnResource for PanelConfiguration {
 
 /// The options that determine the title styles for each small multiples       panel.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PanelTitleOptions {
     /// Property description not available.
     ///
@@ -24642,7 +24917,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -24656,7 +24931,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalTextAlignment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub horizontal_text_alignment: Option<PanelTitleOptionsHorizontalTextAlignmentEnum>,
 
     ///
@@ -24670,7 +24945,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<PanelTitleOptionsVisibilityEnum>,
 }
 
@@ -24738,6 +25013,7 @@ impl cfn_resources::CfnResource for PanelTitleOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterControl {
     ///
     /// A control from a date parameter that specifies date and time.
@@ -24748,7 +25024,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimePicker")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_picker: Option<ParameterDateTimePickerControl>,
 
     ///
@@ -24760,7 +25036,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dropdown")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dropdown: Option<ParameterDropDownControl>,
 
     ///
@@ -24772,7 +25048,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "List")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub list: Option<ParameterListControl>,
 
     ///
@@ -24784,7 +25060,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slider")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub slider: Option<ParameterSliderControl>,
 
     ///
@@ -24796,7 +25072,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextArea")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_area: Option<ParameterTextAreaControl>,
 
     ///
@@ -24808,7 +25084,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextField")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_field: Option<ParameterTextFieldControl>,
 }
 
@@ -24848,6 +25124,7 @@ impl cfn_resources::CfnResource for ParameterControl {
 
 /// A control from a date parameter that specifies date and time.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterDateTimePickerControl {
     ///
     /// The display options of a control.
@@ -24858,7 +25135,7 @@ pub struct ParameterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<DateTimePickerControlDisplayOptions>,
 
     ///
@@ -24998,6 +25275,7 @@ impl cfn_resources::CfnResource for ParameterDateTimePickerControl {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterDeclaration {
     ///
     /// A parameter declaration for the DateTime data type.
@@ -25008,7 +25286,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameterDeclaration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_parameter_declaration: Option<DateTimeParameterDeclaration>,
 
     ///
@@ -25020,7 +25298,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalParameterDeclaration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_parameter_declaration: Option<DecimalParameterDeclaration>,
 
     ///
@@ -25032,7 +25310,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerParameterDeclaration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integer_parameter_declaration: Option<IntegerParameterDeclaration>,
 
     ///
@@ -25044,7 +25322,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringParameterDeclaration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_parameter_declaration: Option<StringParameterDeclaration>,
 }
 
@@ -25080,6 +25358,7 @@ impl cfn_resources::CfnResource for ParameterDeclaration {
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterDropDownControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -25090,7 +25369,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -25102,7 +25381,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<DropDownControlDisplayOptions>,
 
     ///
@@ -25131,7 +25410,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selectable_values: Option<ParameterSelectableValues>,
 
     ///
@@ -25177,7 +25456,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ParameterDropDownControlTypeEnum>,
 }
 
@@ -25289,6 +25568,7 @@ impl cfn_resources::CfnResource for ParameterDropDownControl {
 
 /// A control to display a list with buttons or boxes that are used to select either a single value or multiple values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterListControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -25299,7 +25579,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -25311,7 +25591,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<ListControlDisplayOptions>,
 
     ///
@@ -25340,7 +25620,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selectable_values: Option<ParameterSelectableValues>,
 
     ///
@@ -25386,7 +25666,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<ParameterListControlTypeEnum>,
 }
 
@@ -25498,6 +25778,7 @@ impl cfn_resources::CfnResource for ParameterListControl {
 
 /// A list of selectable values that are used in a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterSelectableValues {
     ///
     /// The column identifier that fetches values from the data set.
@@ -25508,7 +25789,7 @@ pub struct ParameterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinkToDataSetColumn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub link_to_data_set_column: Option<ColumnIdentifier>,
 
     ///
@@ -25522,7 +25803,7 @@ pub struct ParameterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<String>>,
 }
 
@@ -25555,6 +25836,7 @@ impl cfn_resources::CfnResource for ParameterSelectableValues {
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterSliderControl {
     ///
     /// The display options of a control.
@@ -25565,7 +25847,7 @@ pub struct ParameterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<SliderControlDisplayOptions>,
 
     ///
@@ -25734,6 +26016,7 @@ impl cfn_resources::CfnResource for ParameterSliderControl {
 
 /// A control to display a text box that is used to enter multiple entries.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterTextAreaControl {
     ///
     /// The delimiter that is used to separate the lines in text.
@@ -25748,7 +26031,7 @@ pub struct ParameterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -25760,7 +26043,7 @@ pub struct ParameterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<TextAreaControlDisplayOptions>,
 
     ///
@@ -25918,6 +26201,7 @@ impl cfn_resources::CfnResource for ParameterTextAreaControl {
 
 /// A control to display a text box that is used to enter a single entry.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ParameterTextFieldControl {
     ///
     /// The display options of a control.
@@ -25928,7 +26212,7 @@ pub struct ParameterTextFieldControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub display_options: Option<TextFieldControlDisplayOptions>,
 
     ///
@@ -26064,6 +26348,7 @@ impl cfn_resources::CfnResource for ParameterTextFieldControl {
 
 /// A list of Amazon QuickSight parameters and the list's override values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Parameters {
     ///
     /// The parameters that have a data type of date-time.
@@ -26076,7 +26361,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_parameters: Option<Vec<DateTimeParameter>>,
 
     ///
@@ -26090,7 +26375,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_parameters: Option<Vec<DecimalParameter>>,
 
     ///
@@ -26104,7 +26389,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub integer_parameters: Option<Vec<IntegerParameter>>,
 
     ///
@@ -26118,7 +26403,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub string_parameters: Option<Vec<StringParameter>>,
 }
 
@@ -26174,6 +26459,7 @@ impl cfn_resources::CfnResource for Parameters {
 
 /// The percent range in the visible range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PercentVisibleRange {
     ///
     /// The lower bound of the range.
@@ -26184,7 +26470,7 @@ pub struct PercentVisibleRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub from: Option<f64>,
 
     ///
@@ -26196,7 +26482,7 @@ pub struct PercentVisibleRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub to: Option<f64>,
 }
 
@@ -26216,6 +26502,7 @@ impl cfn_resources::CfnResource for PercentVisibleRange {
 
 /// The options that determine the percentage display format configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PercentageDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -26226,7 +26513,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -26238,7 +26525,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -26250,7 +26537,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -26266,7 +26553,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -26278,7 +26565,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -26294,7 +26581,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -26374,6 +26661,7 @@ impl cfn_resources::CfnResource for PercentageDisplayFormatConfiguration {
 
 /// An aggregation based on the percentile of values in a dimension or measure.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PercentileAggregation {
     ///
     /// The percentile value. This value can be any numeric constant 0–100. A percentile value of 50 computes the median value of the measure.
@@ -26384,7 +26672,7 @@ pub struct PercentileAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentileValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percentile_value: Option<f64>,
 }
 
@@ -26404,6 +26692,7 @@ impl cfn_resources::CfnResource for PercentileAggregation {
 
 /// The period over period computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PeriodOverPeriodComputation {
     ///
     /// The ID for a computation.
@@ -26431,7 +26720,7 @@ pub struct PeriodOverPeriodComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -26454,7 +26743,7 @@ pub struct PeriodOverPeriodComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -26500,6 +26789,7 @@ impl cfn_resources::CfnResource for PeriodOverPeriodComputation {
 
 /// The period to date computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PeriodToDateComputation {
     ///
     /// The ID for a computation.
@@ -26527,7 +26817,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -26543,7 +26833,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodTimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period_time_granularity: Option<PeriodToDateComputationPeriodTimeGranularityEnum>,
 
     ///
@@ -26566,7 +26856,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -26657,6 +26947,7 @@ impl cfn_resources::CfnResource for PeriodToDateComputation {
 
 /// The field well configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PieChartAggregatedFieldWells {
     ///
     /// The category (group/color) field wells of a pie chart.
@@ -26669,7 +26960,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -26683,7 +26974,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -26697,7 +26988,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -26744,6 +27035,7 @@ impl cfn_resources::CfnResource for PieChartAggregatedFieldWells {
 
 /// The configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PieChartConfiguration {
     ///
     /// The label options of the group/color that is displayed in a pie chart.
@@ -26754,7 +27046,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -26768,7 +27060,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -26780,7 +27072,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -26792,7 +27084,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DonutOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub donut_options: Option<DonutOptions>,
 
     ///
@@ -26804,7 +27096,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<PieChartFieldWells>,
 
     ///
@@ -26816,7 +27108,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -26828,7 +27120,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -26840,7 +27132,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<PieChartSortConfiguration>,
 
     ///
@@ -26852,7 +27144,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -26864,7 +27156,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -26876,7 +27168,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -26940,6 +27232,7 @@ impl cfn_resources::CfnResource for PieChartConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PieChartFieldWells {
     ///
     /// The field well configuration of a pie chart.
@@ -26950,7 +27243,7 @@ pub struct PieChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PieChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pie_chart_aggregated_field_wells: Option<PieChartAggregatedFieldWells>,
 }
 
@@ -26974,6 +27267,7 @@ impl cfn_resources::CfnResource for PieChartFieldWells {
 
 /// The sort configuration of a pie chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PieChartSortConfiguration {
     ///
     /// The limit on the number of categories that are displayed in a pie chart.
@@ -26984,7 +27278,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -26998,7 +27292,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -27010,7 +27304,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -27024,7 +27318,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -27078,6 +27372,7 @@ impl cfn_resources::CfnResource for PieChartSortConfiguration {
 ///
 /// For more information, see Using donut charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PieChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -27090,7 +27385,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -27102,7 +27397,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<PieChartConfiguration>,
 
     ///
@@ -27116,7 +27411,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -27128,7 +27423,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -27140,7 +27435,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -27227,6 +27522,7 @@ impl cfn_resources::CfnResource for PieChartVisual {
 
 /// The field sort options for a pivot table sort configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotFieldSortOptions {
     ///
     /// The field ID for the field sort options.
@@ -27295,6 +27591,7 @@ impl cfn_resources::CfnResource for PivotFieldSortOptions {
 
 /// The aggregated field well for the pivot table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableAggregatedFieldWells {
     ///
     /// The columns field well for a pivot table. Values are grouped by columns fields.
@@ -27307,7 +27604,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub columns: Option<Vec<DimensionField>>,
 
     ///
@@ -27321,7 +27618,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rows: Option<Vec<DimensionField>>,
 
     ///
@@ -27335,7 +27632,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -27382,6 +27679,7 @@ impl cfn_resources::CfnResource for PivotTableAggregatedFieldWells {
 
 /// The cell conditional formatting option for a pivot table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableCellConditionalFormatting {
     ///
     /// The field ID of the cell for conditional formatting.
@@ -27407,7 +27705,7 @@ pub struct PivotTableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scope: Option<PivotTableConditionalFormattingScope>,
 
     ///
@@ -27419,7 +27717,7 @@ pub struct PivotTableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_format: Option<TextConditionalFormat>,
 }
 
@@ -27467,6 +27765,7 @@ impl cfn_resources::CfnResource for PivotTableCellConditionalFormatting {
 
 /// The conditional formatting for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableConditionalFormatting {
     ///
     /// Conditional formatting options for a PivotTableVisual.
@@ -27479,7 +27778,7 @@ pub struct PivotTableConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting_options: Option<Vec<PivotTableConditionalFormattingOption>>,
 }
 
@@ -27505,6 +27804,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormatting {
 
 /// Conditional formatting options for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableConditionalFormattingOption {
     ///
     /// The cell conditional formatting option for a pivot table.
@@ -27515,7 +27815,7 @@ pub struct PivotTableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cell")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell: Option<PivotTableCellConditionalFormatting>,
 }
 
@@ -27537,6 +27837,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormattingOption {
 
 /// The scope of the cell for conditional formatting.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableConditionalFormattingScope {
     ///
     /// The role (field, field total, grand total) of the cell for conditional formatting.
@@ -27549,7 +27850,7 @@ pub struct PivotTableConditionalFormattingScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role: Option<PivotTableConditionalFormattingScopeRoleEnum>,
 }
 
@@ -27590,6 +27891,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormattingScope {
 
 /// The configuration for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableConfiguration {
     ///
     /// The field options for a pivot table visual.
@@ -27600,7 +27902,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_options: Option<PivotTableFieldOptions>,
 
     ///
@@ -27612,7 +27914,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<PivotTableFieldWells>,
 
     ///
@@ -27624,7 +27926,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedReportOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paginated_report_options: Option<PivotTablePaginatedReportOptions>,
 
     ///
@@ -27636,7 +27938,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<PivotTableSortConfiguration>,
 
     ///
@@ -27648,7 +27950,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_options: Option<PivotTableOptions>,
 
     ///
@@ -27660,7 +27962,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_options: Option<PivotTableTotalOptions>,
 }
 
@@ -27704,6 +28006,7 @@ impl cfn_resources::CfnResource for PivotTableConfiguration {
 
 /// The data path options for the pivot table field options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableDataPathOption {
     ///
     /// The list of data path values for the data path options.
@@ -27727,7 +28030,7 @@ pub struct PivotTableDataPathOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub width: Option<cfn_resources::StrVal>,
 }
 
@@ -27756,6 +28059,7 @@ impl cfn_resources::CfnResource for PivotTableDataPathOption {
 
 /// The selected field options for the pivot table field options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableFieldOption {
     ///
     /// The custom label of the pivot table field.
@@ -27770,7 +28074,7 @@ pub struct PivotTableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -27799,7 +28103,7 @@ pub struct PivotTableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<PivotTableFieldOptionVisibilityEnum>,
 }
 
@@ -27880,6 +28184,7 @@ impl cfn_resources::CfnResource for PivotTableFieldOption {
 
 /// The field options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableFieldOptions {
     ///
     /// The data path options for the pivot table field options.
@@ -27892,7 +28197,7 @@ pub struct PivotTableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPathOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_path_options: Option<Vec<PivotTableDataPathOption>>,
 
     ///
@@ -27906,7 +28211,7 @@ pub struct PivotTableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_field_options: Option<Vec<PivotTableFieldOption>>,
 }
 
@@ -27941,6 +28246,7 @@ impl cfn_resources::CfnResource for PivotTableFieldOptions {
 
 /// The optional configuration of subtotals cells.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableFieldSubtotalOptions {
     ///
     /// The field ID of the subtotal options.
@@ -27955,7 +28261,7 @@ pub struct PivotTableFieldSubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_id: Option<cfn_resources::StrVal>,
 }
 
@@ -27999,6 +28305,7 @@ impl cfn_resources::CfnResource for PivotTableFieldSubtotalOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableFieldWells {
     ///
     /// The aggregated field well for the pivot table.
@@ -28009,7 +28316,7 @@ pub struct PivotTableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PivotTableAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pivot_table_aggregated_field_wells: Option<PivotTableAggregatedFieldWells>,
 }
 
@@ -28033,6 +28340,7 @@ impl cfn_resources::CfnResource for PivotTableFieldWells {
 
 /// The table options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableOptions {
     ///
     /// The table cell style of cells.
@@ -28043,7 +28351,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell_style: Option<TableCellStyle>,
 
     ///
@@ -28055,7 +28363,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHeaderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_header_style: Option<TableCellStyle>,
 
     ///
@@ -28069,7 +28377,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnNamesVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_names_visibility: Option<PivotTableOptionsColumnNamesVisibilityEnum>,
 
     ///
@@ -28083,7 +28391,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricPlacement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_placement: Option<PivotTableOptionsMetricPlacementEnum>,
 
     ///
@@ -28095,7 +28403,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColorOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_alternate_color_options: Option<RowAlternateColorOptions>,
 
     ///
@@ -28107,7 +28415,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowFieldNamesStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_field_names_style: Option<TableCellStyle>,
 
     ///
@@ -28119,7 +28427,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowHeaderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_header_style: Option<TableCellStyle>,
 
     ///
@@ -28133,7 +28441,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleMetricVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_metric_visibility: Option<PivotTableOptionsSingleMetricVisibilityEnum>,
 
     ///
@@ -28147,7 +28455,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToggleButtonsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub toggle_buttons_visibility: Option<PivotTableOptionsToggleButtonsVisibilityEnum>,
 }
 
@@ -28255,6 +28563,7 @@ impl cfn_resources::CfnResource for PivotTableOptions {
 
 /// The paginated report options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTablePaginatedReportOptions {
     ///
     /// The visibility of the repeating header rows on each page.
@@ -28267,7 +28576,7 @@ pub struct PivotTablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverflowColumnHeaderVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overflow_column_header_visibility:
         Option<PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum>,
 
@@ -28282,7 +28591,7 @@ pub struct PivotTablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalOverflowVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vertical_overflow_visibility:
         Option<PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
@@ -28337,6 +28646,7 @@ impl cfn_resources::CfnResource for PivotTablePaginatedReportOptions {
 
 /// The sort by field for the field sort options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableSortBy {
     ///
     /// The column sort (field id, direction) for the pivot table sort by options.
@@ -28347,7 +28657,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Column")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column: Option<ColumnSort>,
 
     ///
@@ -28359,7 +28669,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_path: Option<DataPathSort>,
 
     ///
@@ -28371,7 +28681,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field: Option<FieldSort>,
 }
 
@@ -28399,6 +28709,7 @@ impl cfn_resources::CfnResource for PivotTableSortBy {
 
 /// The sort configuration for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableSortConfiguration {
     ///
     /// The field sort options for a pivot table sort configuration.
@@ -28411,7 +28722,7 @@ pub struct PivotTableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSortOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_sort_options: Option<Vec<PivotFieldSortOptions>>,
 }
 
@@ -28440,6 +28751,7 @@ impl cfn_resources::CfnResource for PivotTableSortConfiguration {
 
 /// The total options for a pivot table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableTotalOptions {
     ///
     /// The column subtotal options.
@@ -28450,7 +28762,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSubtotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_subtotal_options: Option<SubtotalOptions>,
 
     ///
@@ -28462,7 +28774,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnTotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_total_options: Option<PivotTotalOptions>,
 
     ///
@@ -28474,7 +28786,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowSubtotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_subtotal_options: Option<SubtotalOptions>,
 
     ///
@@ -28486,7 +28798,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowTotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_total_options: Option<PivotTotalOptions>,
 }
 
@@ -28524,6 +28836,7 @@ impl cfn_resources::CfnResource for PivotTableTotalOptions {
 ///
 /// For more information, see Using pivot tables in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTableVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -28536,7 +28849,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -28548,7 +28861,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<PivotTableConfiguration>,
 
     ///
@@ -28560,7 +28873,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting: Option<PivotTableConditionalFormatting>,
 
     ///
@@ -28572,7 +28885,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -28584,7 +28897,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -28666,6 +28979,7 @@ impl cfn_resources::CfnResource for PivotTableVisual {
 
 /// The optional configuration of totals cells in a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PivotTotalOptions {
     ///
     /// The custom label string for the total cells.
@@ -28676,7 +28990,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -28688,7 +29002,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricHeaderCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_header_cell_style: Option<TableCellStyle>,
 
     ///
@@ -28702,7 +29016,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement: Option<PivotTotalOptionsPlacementEnum>,
 
     ///
@@ -28716,7 +29030,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scroll_status: Option<PivotTotalOptionsScrollStatusEnum>,
 
     ///
@@ -28728,7 +29042,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -28742,7 +29056,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub totals_visibility: Option<PivotTotalOptionsTotalsVisibilityEnum>,
 
     ///
@@ -28754,7 +29068,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_cell_style: Option<TableCellStyle>,
 }
 
@@ -28837,6 +29151,7 @@ impl cfn_resources::CfnResource for PivotTotalOptions {
 
 /// The option that determines the hierarchy of the fields that are defined during data preparation. These fields are available to use in any analysis that uses the data source.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PredefinedHierarchy {
     ///
     /// The list of columns that define the predefined hierarchy.
@@ -28862,7 +29177,7 @@ pub struct PredefinedHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -28937,6 +29252,7 @@ impl cfn_resources::CfnResource for PredefinedHierarchy {
 
 /// The options that determine the presentation of the progress bar of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ProgressBarOptions {
     ///
     /// The visibility of the progress bar.
@@ -28949,7 +29265,7 @@ pub struct ProgressBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ProgressBarOptionsVisibilityEnum>,
 }
 
@@ -28986,6 +29302,7 @@ impl cfn_resources::CfnResource for ProgressBarOptions {
 
 /// The aggregated field well configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartAggregatedFieldWells {
     ///
     /// The aggregated field well categories of a radar chart.
@@ -28998,7 +29315,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -29012,7 +29329,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<Vec<DimensionField>>,
 
     ///
@@ -29026,7 +29343,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -29073,6 +29390,7 @@ impl cfn_resources::CfnResource for RadarChartAggregatedFieldWells {
 
 /// The configured style settings of a radar chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartAreaStyleSettings {
     ///
     /// The visibility settings of a radar chart.
@@ -29085,7 +29403,7 @@ pub struct RadarChartAreaStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<RadarChartAreaStyleSettingsVisibilityEnum>,
 }
 
@@ -29122,6 +29440,7 @@ impl cfn_resources::CfnResource for RadarChartAreaStyleSettings {
 
 /// The configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartConfiguration {
     ///
     /// Determines the visibility of the colors of alternatign bands in a radar chart.
@@ -29134,7 +29453,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandColorsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alternate_band_colors_visibility:
         Option<RadarChartConfigurationAlternateBandColorsVisibilityEnum>,
 
@@ -29149,7 +29468,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandEvenColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alternate_band_even_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -29163,7 +29482,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandOddColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub alternate_band_odd_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -29175,7 +29494,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseSeriesSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub base_series_settings: Option<RadarChartSeriesSettings>,
 
     ///
@@ -29187,7 +29506,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -29199,7 +29518,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -29211,7 +29530,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -29223,7 +29542,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -29235,7 +29554,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<RadarChartFieldWells>,
 
     ///
@@ -29247,7 +29566,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -29261,7 +29580,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Shape")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub shape: Option<RadarChartConfigurationShapeEnum>,
 
     ///
@@ -29273,7 +29592,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<RadarChartSortConfiguration>,
 
     ///
@@ -29285,7 +29604,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAngle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub start_angle: Option<f64>,
 
     ///
@@ -29297,7 +29616,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -29385,6 +29704,7 @@ impl cfn_resources::CfnResource for RadarChartConfiguration {
 
 /// The field wells of a radar chart visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartFieldWells {
     ///
     /// The aggregated field wells of a radar chart visual.
@@ -29395,7 +29715,7 @@ pub struct RadarChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RadarChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub radar_chart_aggregated_field_wells: Option<RadarChartAggregatedFieldWells>,
 }
 
@@ -29419,6 +29739,7 @@ impl cfn_resources::CfnResource for RadarChartFieldWells {
 
 /// The series settings of a radar chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartSeriesSettings {
     ///
     /// The area style settings of a radar chart.
@@ -29429,7 +29750,7 @@ pub struct RadarChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AreaStyleSettings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub area_style_settings: Option<RadarChartAreaStyleSettings>,
 }
 
@@ -29453,6 +29774,7 @@ impl cfn_resources::CfnResource for RadarChartSeriesSettings {
 
 /// The sort configuration of a RadarChartVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartSortConfiguration {
     ///
     /// The category items limit for a radar chart.
@@ -29463,7 +29785,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -29477,7 +29799,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -29489,7 +29811,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -29503,7 +29825,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -29549,6 +29871,7 @@ impl cfn_resources::CfnResource for RadarChartSortConfiguration {
 
 /// A radar chart visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RadarChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -29561,7 +29884,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -29573,7 +29896,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<RadarChartConfiguration>,
 
     ///
@@ -29587,7 +29910,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -29599,7 +29922,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -29611,7 +29934,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -29698,6 +30021,7 @@ impl cfn_resources::CfnResource for RadarChartVisual {
 
 /// The range ends label type of a data path label.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RangeEndsLabelType {
     ///
     /// The visibility of the range ends label.
@@ -29710,7 +30034,7 @@ pub struct RangeEndsLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<RangeEndsLabelTypeVisibilityEnum>,
 }
 
@@ -29747,6 +30071,7 @@ impl cfn_resources::CfnResource for RangeEndsLabelType {
 
 /// The reference line visual display options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLine {
     ///
     /// The data configuration of the reference line.
@@ -29768,7 +30093,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label_configuration: Option<ReferenceLineLabelConfiguration>,
 
     ///
@@ -29784,7 +30109,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<ReferenceLineStatusEnum>,
 
     ///
@@ -29796,7 +30121,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub style_configuration: Option<ReferenceLineStyleConfiguration>,
 }
 
@@ -29843,6 +30168,7 @@ impl cfn_resources::CfnResource for ReferenceLine {
 
 /// The configuration for a custom label on a ReferenceLine.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineCustomLabelConfiguration {
     ///
     /// The string text of the custom label.
@@ -29874,6 +30200,7 @@ impl cfn_resources::CfnResource for ReferenceLineCustomLabelConfiguration {
 
 /// The data configuration of the reference line.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineDataConfiguration {
     ///
     /// The axis binding type of the reference line. Choose one of the following options:
@@ -29888,7 +30215,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisBinding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub axis_binding: Option<ReferenceLineDataConfigurationAxisBindingEnum>,
 
     ///
@@ -29900,7 +30227,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_configuration: Option<ReferenceLineDynamicDataConfiguration>,
 
     ///
@@ -29912,7 +30239,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_configuration: Option<ReferenceLineStaticDataConfiguration>,
 }
 
@@ -29957,6 +30284,7 @@ impl cfn_resources::CfnResource for ReferenceLineDataConfiguration {
 
 /// The dynamic configuration of the reference line data configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineDynamicDataConfiguration {
     ///
     /// The calculation that is used in the dynamic data.
@@ -30014,6 +30342,7 @@ impl cfn_resources::CfnResource for ReferenceLineDynamicDataConfiguration {
 
 /// The label configuration of a reference line.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineLabelConfiguration {
     ///
     /// The custom label configuration of the label in a reference line.
@@ -30024,7 +30353,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabelConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label_configuration: Option<ReferenceLineCustomLabelConfiguration>,
 
     ///
@@ -30038,7 +30367,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -30050,7 +30379,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -30066,7 +30395,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalPosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub horizontal_position: Option<ReferenceLineLabelConfigurationHorizontalPositionEnum>,
 
     ///
@@ -30078,7 +30407,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_label_configuration: Option<ReferenceLineValueLabelConfiguration>,
 
     ///
@@ -30094,7 +30423,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalPosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vertical_position: Option<ReferenceLineLabelConfigurationVerticalPositionEnum>,
 }
 
@@ -30164,6 +30493,7 @@ impl cfn_resources::CfnResource for ReferenceLineLabelConfiguration {
 
 /// The static data configuration of the reference line data configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineStaticDataConfiguration {
     ///
     /// The double input of the static data.
@@ -30193,6 +30523,7 @@ impl cfn_resources::CfnResource for ReferenceLineStaticDataConfiguration {
 
 /// The style configuration of the reference       line.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineStyleConfiguration {
     ///
     /// The hex color of the reference line.
@@ -30205,7 +30536,7 @@ pub struct ReferenceLineStyleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -30221,7 +30552,7 @@ pub struct ReferenceLineStyleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pattern: Option<ReferenceLineStyleConfigurationPatternEnum>,
 }
 
@@ -30262,6 +30593,7 @@ impl cfn_resources::CfnResource for ReferenceLineStyleConfiguration {
 
 /// The value label configuration of the label in a reference line.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// The format configuration of the value label.
@@ -30272,7 +30604,7 @@ pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<NumericFormatConfiguration>,
 
     ///
@@ -30288,7 +30620,7 @@ pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativePosition")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_position: Option<ReferenceLineValueLabelConfigurationRelativePositionEnum>,
 }
 
@@ -30329,6 +30661,7 @@ impl cfn_resources::CfnResource for ReferenceLineValueLabelConfiguration {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Customize how dates are formatted in controls.
@@ -30343,7 +30676,7 @@ pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub date_time_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -30355,7 +30688,7 @@ pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -30401,6 +30734,7 @@ impl cfn_resources::CfnResource for RelativeDateTimeControlDisplayOptions {
 
 /// A RelativeDatesFilter filters relative dates values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RelativeDatesFilter {
     ///
     /// The date configuration of the filter.
@@ -30433,7 +30767,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePeriodConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_period_configuration: Option<ExcludePeriodConfiguration>,
 
     ///
@@ -30464,7 +30798,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub minimum_granularity: Option<RelativeDatesFilterMinimumGranularityEnum>,
 
     ///
@@ -30497,7 +30831,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -30524,7 +30858,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub relative_date_value: Option<f64>,
 
     ///
@@ -30749,6 +31083,7 @@ impl cfn_resources::CfnResource for RelativeDatesFilter {
 
 /// Permission for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -30782,7 +31117,7 @@ pub struct ResourcePermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource: Option<cfn_resources::StrVal>,
 }
 
@@ -30802,6 +31137,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 
 /// The rolling date configuration of a date time filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RollingDateConfiguration {
     ///
     /// The data set that is used in the rolling date configuration.
@@ -30816,7 +31152,7 @@ pub struct RollingDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetIdentifier")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_set_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -30892,6 +31228,7 @@ impl cfn_resources::CfnResource for RollingDateConfiguration {
 
 /// Determines the row alternate color options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RowAlternateColorOptions {
     ///
     /// Determines the list of row alternate colors.
@@ -30904,7 +31241,7 @@ pub struct RowAlternateColorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_alternate_colors: Option<Vec<String>>,
 
     ///
@@ -30918,7 +31255,7 @@ pub struct RowAlternateColorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<RowAlternateColorOptionsStatusEnum>,
 }
 
@@ -30966,6 +31303,7 @@ impl cfn_resources::CfnResource for RowAlternateColorOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SameSheetTargetVisualConfiguration {
     ///
     /// The options that choose the target visual in the same sheet.
@@ -30982,7 +31320,7 @@ pub struct SameSheetTargetVisualConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVisualOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_visual_options: Option<SameSheetTargetVisualConfigurationTargetVisualOptionsEnum>,
 
     ///
@@ -30996,7 +31334,7 @@ pub struct SameSheetTargetVisualConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVisuals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub target_visuals: Option<Vec<String>>,
 }
 
@@ -31038,6 +31376,7 @@ impl cfn_resources::CfnResource for SameSheetTargetVisualConfiguration {
 
 /// The field well configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// The destination field wells of a sankey diagram.
@@ -31050,7 +31389,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination: Option<Vec<DimensionField>>,
 
     ///
@@ -31064,7 +31403,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source: Option<Vec<DimensionField>>,
 
     ///
@@ -31078,7 +31417,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight: Option<Vec<MeasureField>>,
 }
 
@@ -31125,6 +31464,7 @@ impl cfn_resources::CfnResource for SankeyDiagramAggregatedFieldWells {
 
 /// The configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SankeyDiagramChartConfiguration {
     ///
     /// The data label configuration of a sankey diagram.
@@ -31135,7 +31475,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -31147,7 +31487,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<SankeyDiagramFieldWells>,
 
     ///
@@ -31159,7 +31499,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<SankeyDiagramSortConfiguration>,
 }
 
@@ -31191,6 +31531,7 @@ impl cfn_resources::CfnResource for SankeyDiagramChartConfiguration {
 
 /// The field well configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SankeyDiagramFieldWells {
     ///
     /// The field well configuration of a sankey diagram.
@@ -31201,7 +31542,7 @@ pub struct SankeyDiagramFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SankeyDiagramAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sankey_diagram_aggregated_field_wells: Option<SankeyDiagramAggregatedFieldWells>,
 }
 
@@ -31225,6 +31566,7 @@ impl cfn_resources::CfnResource for SankeyDiagramFieldWells {
 
 /// The sort configuration of a sankey diagram.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SankeyDiagramSortConfiguration {
     ///
     /// The limit on the number of destination nodes that are displayed in a sankey diagram.
@@ -31235,7 +31577,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -31247,7 +31589,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -31261,7 +31603,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub weight_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -31300,6 +31642,7 @@ impl cfn_resources::CfnResource for SankeyDiagramSortConfiguration {
 ///
 /// For more information, see Using Sankey diagrams in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SankeyDiagramVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -31312,7 +31655,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -31324,7 +31667,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<SankeyDiagramChartConfiguration>,
 
     ///
@@ -31336,7 +31679,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -31348,7 +31691,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -31426,6 +31769,7 @@ impl cfn_resources::CfnResource for SankeyDiagramVisual {
 
 /// The aggregated field well of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// The category field well of a scatter plot.
@@ -31438,7 +31782,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -31452,7 +31796,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<Vec<MeasureField>>,
 
     ///
@@ -31468,7 +31812,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis: Option<Vec<MeasureField>>,
 
     ///
@@ -31484,7 +31828,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub yaxis: Option<Vec<MeasureField>>,
 }
 
@@ -31540,6 +31884,7 @@ impl cfn_resources::CfnResource for ScatterPlotCategoricallyAggregatedFieldWells
 
 /// The configuration of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScatterPlotConfiguration {
     ///
     /// The options that determine if visual data labels are displayed.
@@ -31550,7 +31895,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -31562,7 +31907,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<ScatterPlotFieldWells>,
 
     ///
@@ -31574,7 +31919,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -31586,7 +31931,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -31598,7 +31943,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -31610,7 +31955,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -31622,7 +31967,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -31634,7 +31979,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -31646,7 +31991,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub yaxis_label_options: Option<ChartAxisLabelOptions>,
 }
 
@@ -31700,6 +32045,7 @@ impl cfn_resources::CfnResource for ScatterPlotConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScatterPlotFieldWells {
     ///
     /// The aggregated field wells of a scatter plot. The x and y-axes of scatter plots with aggregated field wells are aggregated by category, label, or both.
@@ -31710,7 +32056,7 @@ pub struct ScatterPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotCategoricallyAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scatter_plot_categorically_aggregated_field_wells:
         Option<ScatterPlotCategoricallyAggregatedFieldWells>,
 
@@ -31723,7 +32069,7 @@ pub struct ScatterPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotUnaggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scatter_plot_unaggregated_field_wells: Option<ScatterPlotUnaggregatedFieldWells>,
 }
 
@@ -31751,6 +32097,7 @@ impl cfn_resources::CfnResource for ScatterPlotFieldWells {
 
 /// The unaggregated field wells of a scatter plot.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// The size field well of a scatter plot.
@@ -31763,7 +32110,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<Vec<MeasureField>>,
 
     ///
@@ -31779,7 +32126,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub xaxis: Option<Vec<DimensionField>>,
 
     ///
@@ -31795,7 +32142,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxis")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub yaxis: Option<Vec<DimensionField>>,
 }
 
@@ -31844,6 +32191,7 @@ impl cfn_resources::CfnResource for ScatterPlotUnaggregatedFieldWells {
 ///
 /// For more information, see Using scatter plots in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScatterPlotVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -31856,7 +32204,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -31868,7 +32216,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<ScatterPlotConfiguration>,
 
     ///
@@ -31882,7 +32230,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -31894,7 +32242,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -31906,7 +32254,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -31993,6 +32341,7 @@ impl cfn_resources::CfnResource for ScatterPlotVisual {
 
 /// The visual display options for a data zoom scroll bar.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ScrollBarOptions {
     ///
     /// The visibility of the data zoom scroll bar.
@@ -32005,7 +32354,7 @@ pub struct ScrollBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ScrollBarOptionsVisibilityEnum>,
 
     ///
@@ -32017,7 +32366,7 @@ pub struct ScrollBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisibleRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visible_range: Option<VisibleRangeOptions>,
 }
 
@@ -32058,6 +32407,7 @@ impl cfn_resources::CfnResource for ScrollBarOptions {
 
 /// The options that determine the presentation of the secondary value of a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SecondaryValueOptions {
     ///
     /// Determines the visibility of the secondary value.
@@ -32070,7 +32420,7 @@ pub struct SecondaryValueOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<SecondaryValueOptionsVisibilityEnum>,
 }
 
@@ -32107,6 +32457,7 @@ impl cfn_resources::CfnResource for SecondaryValueOptions {
 
 /// The configuration of a page break after a section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionAfterPageBreak {
     ///
     /// The option that enables or disables a page break at the end of a section.
@@ -32119,7 +32470,7 @@ pub struct SectionAfterPageBreak {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<SectionAfterPageBreakStatusEnum>,
 }
 
@@ -32156,6 +32507,7 @@ impl cfn_resources::CfnResource for SectionAfterPageBreak {
 
 /// The options for the canvas of a section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionBasedLayoutCanvasSizeOptions {
     ///
     /// The options for a paper canvas of a section-based layout.
@@ -32166,7 +32518,7 @@ pub struct SectionBasedLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperCanvasSizeOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paper_canvas_size_options: Option<SectionBasedLayoutPaperCanvasSizeOptions>,
 }
 
@@ -32190,6 +32542,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutCanvasSizeOptions {
 
 /// The configuration for a       section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionBasedLayoutConfiguration {
     ///
     /// A list of body section configurations.
@@ -32287,6 +32640,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutConfiguration {
 
 /// The options for a paper canvas of a section-based layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Defines the spacing between the canvas content and the top, bottom, left, and right edges.
@@ -32297,7 +32651,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperMargin")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paper_margin: Option<Spacing>,
 
     ///
@@ -32313,7 +32667,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperOrientation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paper_orientation: Option<SectionBasedLayoutPaperCanvasSizeOptionsPaperOrientationEnum>,
 
     ///
@@ -32327,7 +32681,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paper_size: Option<SectionBasedLayoutPaperCanvasSizeOptionsPaperSizeEnum>,
 }
 
@@ -32421,6 +32775,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutPaperCanvasSizeOptions {
 
 /// The layout configuration of a section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionLayoutConfiguration {
     ///
     /// The free-form layout configuration of a section.
@@ -32452,6 +32807,7 @@ impl cfn_resources::CfnResource for SectionLayoutConfiguration {
 
 /// The configuration of a page break for a section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionPageBreakConfiguration {
     ///
     /// The configuration of a page break after a section.
@@ -32462,7 +32818,7 @@ pub struct SectionPageBreakConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "After")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub after: Option<SectionAfterPageBreak>,
 }
 
@@ -32484,6 +32840,7 @@ impl cfn_resources::CfnResource for SectionPageBreakConfiguration {
 
 /// The options that style a section.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SectionStyle {
     ///
     /// The height of a section.
@@ -32496,7 +32853,7 @@ pub struct SectionStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub height: Option<cfn_resources::StrVal>,
 
     ///
@@ -32510,7 +32867,7 @@ pub struct SectionStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Padding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub padding: Option<Spacing>,
 }
 
@@ -32534,6 +32891,7 @@ impl cfn_resources::CfnResource for SectionStyle {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SelectedSheetsFilterScopeConfiguration {
     ///
     /// The sheet ID and visual IDs of the sheet and visuals that the filter is applied to.
@@ -32546,7 +32904,7 @@ pub struct SelectedSheetsFilterScopeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetVisualScopingConfigurations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_visual_scoping_configurations: Option<Vec<SheetVisualScopingConfiguration>>,
 }
 
@@ -32574,6 +32932,7 @@ impl cfn_resources::CfnResource for SelectedSheetsFilterScopeConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SeriesItem {
     ///
     /// The data field series item configuration of a line chart.
@@ -32584,7 +32943,7 @@ pub struct SeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFieldSeriesItem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_field_series_item: Option<DataFieldSeriesItem>,
 
     ///
@@ -32596,7 +32955,7 @@ pub struct SeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSeriesItem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_series_item: Option<FieldSeriesItem>,
 }
 
@@ -32624,6 +32983,7 @@ impl cfn_resources::CfnResource for SeriesItem {
 
 /// The configuration of adding parameters in action.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SetParameterValueConfiguration {
     ///
     /// The destination parameter name of the SetParameterValueConfiguration.
@@ -32687,6 +33047,7 @@ impl cfn_resources::CfnResource for SetParameterValueConfiguration {
 
 /// The shape conditional formatting of a filled map visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShapeConditionalFormat {
     ///
     /// The conditional formatting for the shape background color of a filled map visual.
@@ -32718,6 +33079,7 @@ impl cfn_resources::CfnResource for ShapeConditionalFormat {
 
 /// A sheet, which is an object that contains a set of visuals that       are viewed together on one page in Amazon QuickSight. Every analysis and dashboard       contains at least one sheet. Each sheet contains at least one visualization widget, for       example a chart, pivot table, or narrative insight. Sheets can be associated with other       components, such as controls, filters, and so on.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Sheet {
     ///
     /// The name of a sheet. This name is displayed on the sheet's tab in the Amazon QuickSight       console.
@@ -32732,7 +33094,7 @@ pub struct Sheet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -32750,7 +33112,7 @@ pub struct Sheet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_id: Option<cfn_resources::StrVal>,
 }
 
@@ -32814,6 +33176,7 @@ impl cfn_resources::CfnResource for Sheet {
 
 /// A grid layout to define the placement of sheet control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetControlLayout {
     ///
     /// The configuration that determines the elements and canvas size options of sheet control.
@@ -32845,6 +33208,7 @@ impl cfn_resources::CfnResource for SheetControlLayout {
 
 /// The configuration that determines the elements and canvas size options of sheet control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetControlLayoutConfiguration {
     ///
     /// The configuration that determines the elements and canvas size options of sheet control.
@@ -32855,7 +33219,7 @@ pub struct SheetControlLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub grid_layout: Option<GridLayoutConfiguration>,
 }
 
@@ -32879,6 +33243,7 @@ impl cfn_resources::CfnResource for SheetControlLayoutConfiguration {
 
 /// A sheet is an object that contains a set of visuals that       are viewed together on one page in a paginated report. Every analysis and dashboard must contain at least one sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetDefinition {
     ///
     /// The layout content type of the sheet. Choose one of the following options:
@@ -32893,7 +33258,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content_type: Option<SheetDefinitionContentTypeEnum>,
 
     ///
@@ -32909,7 +33274,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -32925,7 +33290,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_controls: Option<Vec<FilterControl>>,
 
     ///
@@ -32941,7 +33306,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layouts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub layouts: Option<Vec<Layout>>,
 
     ///
@@ -32957,7 +33322,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -32973,7 +33338,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterControls")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_controls: Option<Vec<ParameterControl>>,
 
     ///
@@ -32987,7 +33352,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetControlLayouts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sheet_control_layouts: Option<Vec<SheetControlLayout>>,
 
     ///
@@ -33018,7 +33383,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextBoxes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_boxes: Option<Vec<SheetTextBox>>,
 
     ///
@@ -33034,7 +33399,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<cfn_resources::StrVal>,
 
     ///
@@ -33048,7 +33413,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visuals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visuals: Option<Vec<Visual>>,
 }
 
@@ -33227,6 +33592,7 @@ impl cfn_resources::CfnResource for SheetDefinition {
 
 /// The override configuration of the rendering rules of a sheet.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetElementConfigurationOverrides {
     ///
     /// Determines whether or not the overrides are visible. Choose one of the following options:
@@ -33241,7 +33607,7 @@ pub struct SheetElementConfigurationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<SheetElementConfigurationOverridesVisibilityEnum>,
 }
 
@@ -33278,6 +33644,7 @@ impl cfn_resources::CfnResource for SheetElementConfigurationOverrides {
 
 /// The rendering rules of a sheet that uses a free-form layout.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetElementRenderingRule {
     ///
     /// The override configuration of the rendering rules of a sheet.
@@ -33346,6 +33713,7 @@ impl cfn_resources::CfnResource for SheetElementRenderingRule {
 
 /// A text box.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetTextBox {
     ///
     /// The content that is displayed in the text box.
@@ -33358,7 +33726,7 @@ pub struct SheetTextBox {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub content: Option<cfn_resources::StrVal>,
 
     ///
@@ -33428,6 +33796,7 @@ impl cfn_resources::CfnResource for SheetTextBox {
 
 /// The filter that is applied to the options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SheetVisualScopingConfiguration {
     ///
     /// The scope of the applied entities. Choose one of the following options:
@@ -33472,7 +33841,7 @@ pub struct SheetVisualScopingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_ids: Option<Vec<String>>,
 }
 
@@ -33542,6 +33911,7 @@ impl cfn_resources::CfnResource for SheetVisualScopingConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ShortFormatText {
     ///
     /// Plain text format.
@@ -33556,7 +33926,7 @@ pub struct ShortFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlainText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub plain_text: Option<cfn_resources::StrVal>,
 
     ///
@@ -33572,7 +33942,7 @@ pub struct ShortFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RichText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rich_text: Option<cfn_resources::StrVal>,
 }
 
@@ -33636,6 +34006,7 @@ impl cfn_resources::CfnResource for ShortFormatText {
 
 /// The simple cluster marker of the cluster marker.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SimpleClusterMarker {
     ///
     /// The color of the simple cluster marker.
@@ -33648,7 +34019,7 @@ pub struct SimpleClusterMarker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 }
 
@@ -33668,6 +34039,7 @@ impl cfn_resources::CfnResource for SimpleClusterMarker {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SliderControlDisplayOptions {
     ///
     /// The options to configure the title visibility, name, and font size.
@@ -33678,7 +34050,7 @@ pub struct SliderControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -33702,6 +34074,7 @@ impl cfn_resources::CfnResource for SliderControlDisplayOptions {
 
 /// Options that determine the layout and display options of a chart's small multiples.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SmallMultiplesOptions {
     ///
     /// Sets the maximum number of visible columns to display in the grid of small multiples panels.
@@ -33714,7 +34087,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVisibleColumns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_visible_columns: Option<f64>,
 
     ///
@@ -33728,7 +34101,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVisibleRows")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub max_visible_rows: Option<f64>,
 
     ///
@@ -33740,7 +34113,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PanelConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub panel_configuration: Option<PanelConfiguration>,
 }
 
@@ -33764,6 +34137,7 @@ impl cfn_resources::CfnResource for SmallMultiplesOptions {
 
 /// The configuration of spacing (often a margin or padding).
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Spacing {
     ///
     /// Define the bottom spacing.
@@ -33774,7 +34148,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bottom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bottom: Option<cfn_resources::StrVal>,
 
     ///
@@ -33786,7 +34160,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Left")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub left: Option<cfn_resources::StrVal>,
 
     ///
@@ -33798,7 +34172,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Right")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub right: Option<cfn_resources::StrVal>,
 
     ///
@@ -33810,7 +34184,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Top")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub top: Option<cfn_resources::StrVal>,
 }
 
@@ -33830,6 +34204,7 @@ impl cfn_resources::CfnResource for Spacing {
 
 /// The default values of the StringParameterDeclaration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringDefaultValues {
     ///
     /// The dynamic value of the StringDefaultValues. Different defaults displayed according to users, groups, and values mapping.
@@ -33840,7 +34215,7 @@ pub struct StringDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -33854,7 +34229,7 @@ pub struct StringDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_values: Option<Vec<String>>,
 }
 
@@ -33887,6 +34262,7 @@ impl cfn_resources::CfnResource for StringDefaultValues {
 
 /// Formatting configuration for string fields.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringFormatConfiguration {
     ///
     /// The options that determine the null value format configuration.
@@ -33897,7 +34273,7 @@ pub struct StringFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -33909,7 +34285,7 @@ pub struct StringFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericFormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub numeric_format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -33937,6 +34313,7 @@ impl cfn_resources::CfnResource for StringFormatConfiguration {
 
 /// A string parameter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringParameter {
     ///
     /// A display name for a string parameter.
@@ -33979,6 +34356,7 @@ impl cfn_resources::CfnResource for StringParameter {
 
 /// A parameter declaration for the String data type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -33989,7 +34367,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_values: Option<StringDefaultValues>,
 
     /// Property description not available.
@@ -34000,7 +34378,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -34042,7 +34420,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset: Option<StringValueWhenUnsetConfiguration>,
 }
 
@@ -34109,6 +34487,7 @@ impl cfn_resources::CfnResource for StringParameterDeclaration {
 
 /// The configuration that defines the default value of a String parameter when a value has not been set.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct StringValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -34119,7 +34498,7 @@ pub struct StringValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -34135,7 +34514,7 @@ pub struct StringValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_when_unset_option: Option<StringValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -34172,6 +34551,7 @@ impl cfn_resources::CfnResource for StringValueWhenUnsetConfiguration {
 
 /// The subtotal options.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubtotalOptions {
     ///
     /// The custom label string for the subtotal cells.
@@ -34182,7 +34562,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -34196,7 +34576,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_level: Option<SubtotalOptionsFieldLevelEnum>,
 
     ///
@@ -34210,7 +34590,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_level_options: Option<Vec<PivotTableFieldSubtotalOptions>>,
 
     ///
@@ -34222,7 +34602,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricHeaderCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_header_cell_style: Option<TableCellStyle>,
 
     ///
@@ -34234,7 +34614,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -34248,7 +34628,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub totals_visibility: Option<SubtotalOptionsTotalsVisibilityEnum>,
 
     ///
@@ -34260,7 +34640,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value_cell_style: Option<TableCellStyle>,
 }
 
@@ -34339,6 +34719,7 @@ impl cfn_resources::CfnResource for SubtotalOptions {
 
 /// The aggregated field well for the table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableAggregatedFieldWells {
     ///
     /// The group by field well for a pivot table. Values are grouped by group by fields.
@@ -34351,7 +34732,7 @@ pub struct TableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -34365,7 +34746,7 @@ pub struct TableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -34403,6 +34784,7 @@ impl cfn_resources::CfnResource for TableAggregatedFieldWells {
 
 /// The border options for a table border.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableBorderOptions {
     ///
     /// The color of a table border.
@@ -34415,7 +34797,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color: Option<cfn_resources::StrVal>,
 
     ///
@@ -34429,7 +34811,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub style: Option<TableBorderOptionsStyleEnum>,
 
     ///
@@ -34445,7 +34827,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Thickness")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub thickness: Option<f64>,
 }
 
@@ -34500,6 +34882,7 @@ impl cfn_resources::CfnResource for TableBorderOptions {
 
 /// The cell conditional formatting option for a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableCellConditionalFormatting {
     ///
     /// The field ID of the cell for conditional formatting.
@@ -34525,7 +34908,7 @@ pub struct TableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextFormat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_format: Option<TextConditionalFormat>,
 }
 
@@ -34571,6 +34954,7 @@ impl cfn_resources::CfnResource for TableCellConditionalFormatting {
 
 /// The sizing options for the table image configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableCellImageSizingConfiguration {
     ///
     /// The cell scaling configuration of the sizing options for the table image configuration.
@@ -34583,7 +34967,7 @@ pub struct TableCellImageSizingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableCellImageScalingConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_cell_image_scaling_configuration:
         Option<TableCellImageSizingConfigurationTableCellImageScalingConfigurationEnum>,
 }
@@ -34625,6 +35009,7 @@ impl cfn_resources::CfnResource for TableCellImageSizingConfiguration {
 
 /// The table cell style for a cell in pivot table or table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableCellStyle {
     ///
     /// The background color for the table cells.
@@ -34637,7 +35022,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -34649,7 +35034,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Border")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub border: Option<GlobalTableBorderOptions>,
 
     ///
@@ -34661,7 +35046,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -34677,7 +35062,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub height: Option<f64>,
 
     ///
@@ -34691,7 +35076,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalTextAlignment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub horizontal_text_alignment: Option<TableCellStyleHorizontalTextAlignmentEnum>,
 
     ///
@@ -34705,7 +35090,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextWrap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_wrap: Option<TableCellStyleTextWrapEnum>,
 
     ///
@@ -34719,7 +35104,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalTextAlignment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vertical_text_alignment: Option<TableCellStyleVerticalTextAlignmentEnum>,
 
     ///
@@ -34733,7 +35118,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<TableCellStyleVisibilityEnum>,
 }
 
@@ -34857,6 +35242,7 @@ impl cfn_resources::CfnResource for TableCellStyle {
 
 /// The conditional formatting for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableConditionalFormatting {
     ///
     /// Conditional formatting options for a PivotTableVisual.
@@ -34869,7 +35255,7 @@ pub struct TableConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting_options: Option<Vec<TableConditionalFormattingOption>>,
 }
 
@@ -34895,6 +35281,7 @@ impl cfn_resources::CfnResource for TableConditionalFormatting {
 
 /// Conditional formatting options for a PivotTableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableConditionalFormattingOption {
     ///
     /// The cell conditional formatting option for a table.
@@ -34905,7 +35292,7 @@ pub struct TableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cell")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell: Option<TableCellConditionalFormatting>,
 
     ///
@@ -34917,7 +35304,7 @@ pub struct TableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Row")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row: Option<TableRowConditionalFormatting>,
 }
 
@@ -34941,6 +35328,7 @@ impl cfn_resources::CfnResource for TableConditionalFormattingOption {
 
 /// The configuration for a TableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableConfiguration {
     ///
     /// The field options for a table visual.
@@ -34951,7 +35339,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_options: Option<TableFieldOptions>,
 
     ///
@@ -34963,7 +35351,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<TableFieldWells>,
 
     ///
@@ -34975,7 +35363,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedReportOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub paginated_report_options: Option<TablePaginatedReportOptions>,
 
     ///
@@ -34987,7 +35375,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<TableSortConfiguration>,
 
     ///
@@ -35001,7 +35389,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableInlineVisualizations")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_inline_visualizations: Option<Vec<TableInlineVisualization>>,
 
     ///
@@ -35013,7 +35401,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_options: Option<TableOptions>,
 
     ///
@@ -35025,7 +35413,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_options: Option<TotalOptions>,
 }
 
@@ -35075,6 +35463,7 @@ impl cfn_resources::CfnResource for TableConfiguration {
 
 /// The custom icon content for the table link content configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldCustomIconContent {
     ///
     /// The icon set type (link) of the custom icon content for table URL link content.
@@ -35087,7 +35476,7 @@ pub struct TableFieldCustomIconContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon: Option<TableFieldCustomIconContentIconEnum>,
 }
 
@@ -35120,6 +35509,7 @@ impl cfn_resources::CfnResource for TableFieldCustomIconContent {
 
 /// The custom text content (value, font configuration) for the table link content configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldCustomTextContent {
     ///
     /// The font configuration of the custom text content for the table URL link content.
@@ -35141,7 +35531,7 @@ pub struct TableFieldCustomTextContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -35163,6 +35553,7 @@ impl cfn_resources::CfnResource for TableFieldCustomTextContent {
 
 /// The image configuration of a table field URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldImageConfiguration {
     ///
     /// The sizing options for the table image configuration.
@@ -35173,7 +35564,7 @@ pub struct TableFieldImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizingOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sizing_options: Option<TableCellImageSizingConfiguration>,
 }
 
@@ -35197,6 +35588,7 @@ impl cfn_resources::CfnResource for TableFieldImageConfiguration {
 
 /// The link configuration of a table field URL.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldLinkConfiguration {
     ///
     /// The URL content (text, icon) for the table link configuration.
@@ -35262,6 +35654,7 @@ impl cfn_resources::CfnResource for TableFieldLinkConfiguration {
 
 /// The URL content (text, icon) for the table link configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldLinkContentConfiguration {
     ///
     /// The custom icon content for the table link content configuration.
@@ -35272,7 +35665,7 @@ pub struct TableFieldLinkContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomIconContent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_icon_content: Option<TableFieldCustomIconContent>,
 
     ///
@@ -35284,7 +35677,7 @@ pub struct TableFieldLinkContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomTextContent")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_text_content: Option<TableFieldCustomTextContent>,
 }
 
@@ -35312,6 +35705,7 @@ impl cfn_resources::CfnResource for TableFieldLinkContentConfiguration {
 
 /// The options for a table field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldOption {
     ///
     /// The custom label for a table field.
@@ -35326,7 +35720,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -35353,7 +35747,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URLStyling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub urlstyling: Option<TableFieldURLConfiguration>,
 
     ///
@@ -35367,7 +35761,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<TableFieldOptionVisibilityEnum>,
 
     ///
@@ -35379,7 +35773,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub width: Option<cfn_resources::StrVal>,
 }
 
@@ -35464,6 +35858,7 @@ impl cfn_resources::CfnResource for TableFieldOption {
 
 /// The field options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldOptions {
     ///
     /// The order of field IDs of the field options for a table visual.
@@ -35476,7 +35871,7 @@ pub struct TableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub order: Option<Vec<String>>,
 
     ///
@@ -35490,7 +35885,7 @@ pub struct TableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_field_options: Option<Vec<TableFieldOption>>,
 }
 
@@ -35525,6 +35920,7 @@ impl cfn_resources::CfnResource for TableFieldOptions {
 
 /// The URL configuration for a table field.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldURLConfiguration {
     ///
     /// The image configuration of a table field URL.
@@ -35535,7 +35931,7 @@ pub struct TableFieldURLConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub image_configuration: Option<TableFieldImageConfiguration>,
 
     ///
@@ -35547,7 +35943,7 @@ pub struct TableFieldURLConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinkConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub link_configuration: Option<TableFieldLinkConfiguration>,
 }
 
@@ -35577,6 +35973,7 @@ impl cfn_resources::CfnResource for TableFieldURLConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableFieldWells {
     ///
     /// The aggregated field well for the table.
@@ -35587,7 +35984,7 @@ pub struct TableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_aggregated_field_wells: Option<TableAggregatedFieldWells>,
 
     ///
@@ -35599,7 +35996,7 @@ pub struct TableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableUnaggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_unaggregated_field_wells: Option<TableUnaggregatedFieldWells>,
 }
 
@@ -35627,6 +36024,7 @@ impl cfn_resources::CfnResource for TableFieldWells {
 
 /// The inline visualization of a specific type to display within a chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableInlineVisualization {
     ///
     /// The configuration of the inline visualization of the data bars within a chart.
@@ -35637,7 +36035,7 @@ pub struct TableInlineVisualization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataBars")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_bars: Option<DataBarsOptions>,
 }
 
@@ -35661,6 +36059,7 @@ impl cfn_resources::CfnResource for TableInlineVisualization {
 
 /// The table options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableOptions {
     ///
     /// The table cell style of table cells.
@@ -35671,7 +36070,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cell_style: Option<TableCellStyle>,
 
     ///
@@ -35683,7 +36082,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub header_style: Option<TableCellStyle>,
 
     ///
@@ -35697,7 +36096,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub orientation: Option<TableOptionsOrientationEnum>,
 
     ///
@@ -35709,7 +36108,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColorOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_alternate_color_options: Option<RowAlternateColorOptions>,
 }
 
@@ -35758,6 +36157,7 @@ impl cfn_resources::CfnResource for TableOptions {
 
 /// The paginated report options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TablePaginatedReportOptions {
     ///
     /// The visibility of repeating header rows on each page.
@@ -35770,7 +36170,7 @@ pub struct TablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverflowColumnHeaderVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub overflow_column_header_visibility:
         Option<TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum>,
 
@@ -35785,7 +36185,7 @@ pub struct TablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalOverflowVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vertical_overflow_visibility:
         Option<TablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
@@ -35840,6 +36240,7 @@ impl cfn_resources::CfnResource for TablePaginatedReportOptions {
 
 /// The conditional formatting of a table row.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableRowConditionalFormatting {
     ///
     /// The conditional formatting color (solid, gradient) of the background for a table row.
@@ -35850,7 +36251,7 @@ pub struct TableRowConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_color: Option<ConditionalFormattingColor>,
 
     ///
@@ -35862,7 +36263,7 @@ pub struct TableRowConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -35890,6 +36291,7 @@ impl cfn_resources::CfnResource for TableRowConditionalFormatting {
 
 /// The side border options for a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableSideBorderOptions {
     ///
     /// The table border options of the bottom border.
@@ -35900,7 +36302,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bottom")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bottom: Option<TableBorderOptions>,
 
     ///
@@ -35912,7 +36314,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InnerHorizontal")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inner_horizontal: Option<TableBorderOptions>,
 
     ///
@@ -35924,7 +36326,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InnerVertical")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub inner_vertical: Option<TableBorderOptions>,
 
     ///
@@ -35936,7 +36338,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Left")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub left: Option<TableBorderOptions>,
 
     ///
@@ -35948,7 +36350,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Right")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub right: Option<TableBorderOptions>,
 
     ///
@@ -35960,7 +36362,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Top")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub top: Option<TableBorderOptions>,
 }
 
@@ -35996,6 +36398,7 @@ impl cfn_resources::CfnResource for TableSideBorderOptions {
 
 /// The sort configuration for a TableVisual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableSortConfiguration {
     ///
     /// The pagination configuration (page size, page number) for the table.
@@ -36006,7 +36409,7 @@ pub struct TableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginationConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pagination_configuration: Option<PaginationConfiguration>,
 
     ///
@@ -36020,7 +36423,7 @@ pub struct TableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub row_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -36053,6 +36456,7 @@ impl cfn_resources::CfnResource for TableSortConfiguration {
 
 /// The unaggregated field well for the table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableUnaggregatedFieldWells {
     ///
     /// The values field well for a pivot table. Values are unaggregated for an unaggregated table.
@@ -36065,7 +36469,7 @@ pub struct TableUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<UnaggregatedField>>,
 }
 
@@ -36096,6 +36500,7 @@ impl cfn_resources::CfnResource for TableUnaggregatedFieldWells {
 ///
 /// For more information, see Using tables as visuals in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TableVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -36108,7 +36513,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -36120,7 +36525,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<TableConfiguration>,
 
     ///
@@ -36132,7 +36537,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub conditional_formatting: Option<TableConditionalFormatting>,
 
     ///
@@ -36144,7 +36549,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -36156,7 +36561,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -36244,6 +36649,7 @@ impl cfn_resources::CfnResource for TableVisual {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -36282,6 +36688,7 @@ impl cfn_resources::CfnResource for Tag {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TextAreaControlDisplayOptions {
     ///
     /// The configuration of the placeholder options in a text area control.
@@ -36292,7 +36699,7 @@ pub struct TextAreaControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaceholderOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placeholder_options: Option<TextControlPlaceholderOptions>,
 
     ///
@@ -36304,7 +36711,7 @@ pub struct TextAreaControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -36332,6 +36739,7 @@ impl cfn_resources::CfnResource for TextAreaControlDisplayOptions {
 
 /// The conditional formatting for the text.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TextConditionalFormat {
     ///
     /// The conditional formatting for the text background color.
@@ -36342,7 +36750,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub background_color: Option<ConditionalFormattingColor>,
 
     ///
@@ -36354,7 +36762,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -36366,7 +36774,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -36396,6 +36804,7 @@ impl cfn_resources::CfnResource for TextConditionalFormat {
 
 /// The configuration of the placeholder options in a text control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TextControlPlaceholderOptions {
     ///
     /// The visibility configuration of the placeholder options in a text control.
@@ -36408,7 +36817,7 @@ pub struct TextControlPlaceholderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<TextControlPlaceholderOptionsVisibilityEnum>,
 }
 
@@ -36445,6 +36854,7 @@ impl cfn_resources::CfnResource for TextControlPlaceholderOptions {
 
 /// The display options of a control.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TextFieldControlDisplayOptions {
     ///
     /// The configuration of the placeholder options in a text field control.
@@ -36455,7 +36865,7 @@ pub struct TextFieldControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaceholderOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placeholder_options: Option<TextControlPlaceholderOptions>,
 
     ///
@@ -36467,7 +36877,7 @@ pub struct TextFieldControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -36495,6 +36905,7 @@ impl cfn_resources::CfnResource for TextFieldControlDisplayOptions {
 
 /// The options that determine the thousands separator configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ThousandSeparatorOptions {
     ///
     /// Determines the thousands separator symbol.
@@ -36507,7 +36918,7 @@ pub struct ThousandSeparatorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Symbol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub symbol: Option<ThousandSeparatorOptionsSymbolEnum>,
 
     ///
@@ -36521,7 +36932,7 @@ pub struct ThousandSeparatorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<ThousandSeparatorOptionsVisibilityEnum>,
 }
 
@@ -36579,6 +36990,7 @@ impl cfn_resources::CfnResource for ThousandSeparatorOptions {
 
 /// The forecast properties setup of a forecast in the line chart.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeBasedForecastProperties {
     ///
     /// The lower boundary setup of a forecast computation.
@@ -36589,7 +37001,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lower_boundary: Option<f64>,
 
     ///
@@ -36605,7 +37017,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsBackward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub periods_backward: Option<f64>,
 
     ///
@@ -36621,7 +37033,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsForward")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub periods_forward: Option<f64>,
 
     ///
@@ -36637,7 +37049,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictionInterval")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub prediction_interval: Option<f64>,
 
     ///
@@ -36655,7 +37067,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Seasonality")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub seasonality: Option<f64>,
 
     ///
@@ -36667,7 +37079,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBoundary")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub upper_boundary: Option<f64>,
 }
 
@@ -36759,6 +37171,7 @@ impl cfn_resources::CfnResource for TimeBasedForecastProperties {
 
 /// A TimeEqualityFilter filters values that are equal to a given value.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeEqualityFilter {
     ///
     /// The column that the filter is applied to.
@@ -36805,7 +37218,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -36819,7 +37232,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TimeEqualityFilterTimeGranularityEnum>,
 
     ///
@@ -36833,7 +37246,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -36944,6 +37357,7 @@ impl cfn_resources::CfnResource for TimeEqualityFilter {
 
 /// The time range drill down filter.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeRangeDrillDownFilter {
     ///
     /// The column that the filter is applied to.
@@ -37055,6 +37469,7 @@ impl cfn_resources::CfnResource for TimeRangeDrillDownFilter {
 
 /// A TimeRangeFilter filters values that are between two specified values.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeRangeFilter {
     ///
     /// The column that the filter is applied to.
@@ -37076,7 +37491,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePeriodConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exclude_period_configuration: Option<ExcludePeriodConfiguration>,
 
     ///
@@ -37105,7 +37520,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMaximum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_maximum: Option<bool>,
 
     ///
@@ -37117,7 +37532,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMinimum")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub include_minimum: Option<bool>,
 
     ///
@@ -37144,7 +37559,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMaximumValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_maximum_value: Option<TimeRangeFilterValue>,
 
     ///
@@ -37156,7 +37571,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMinimumValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub range_minimum_value: Option<TimeRangeFilterValue>,
 
     ///
@@ -37170,7 +37585,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TimeRangeFilterTimeGranularityEnum>,
 }
 
@@ -37294,6 +37709,7 @@ impl cfn_resources::CfnResource for TimeRangeFilter {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TimeRangeFilterValue {
     ///
     /// The parameter type input value.
@@ -37310,7 +37726,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter: Option<cfn_resources::StrVal>,
 
     ///
@@ -37322,7 +37738,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RollingDate")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub rolling_date: Option<RollingDateConfiguration>,
 
     ///
@@ -37334,7 +37750,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub static_value: Option<cfn_resources::StrVal>,
 }
 
@@ -37382,6 +37798,7 @@ impl cfn_resources::CfnResource for TimeRangeFilterValue {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TooltipItem {
     ///
     /// The tooltip item for the columns that are not part of a field well.
@@ -37392,7 +37809,7 @@ pub struct TooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnTooltipItem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_tooltip_item: Option<ColumnTooltipItem>,
 
     ///
@@ -37404,7 +37821,7 @@ pub struct TooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldTooltipItem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_tooltip_item: Option<FieldTooltipItem>,
 }
 
@@ -37432,6 +37849,7 @@ impl cfn_resources::CfnResource for TooltipItem {
 
 /// The display options for the visual tooltip.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TooltipOptions {
     ///
     /// The setup for the detailed tooltip. The tooltip setup is always saved. The display type is decided based on the tooltip type.
@@ -37442,7 +37860,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldBasedTooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_based_tooltip: Option<FieldBasedTooltip>,
 
     ///
@@ -37458,7 +37876,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedTooltipType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub selected_tooltip_type: Option<TooltipOptionsSelectedTooltipTypeEnum>,
 
     ///
@@ -37472,7 +37890,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip_visibility: Option<TooltipOptionsTooltipVisibilityEnum>,
 }
 
@@ -37530,6 +37948,7 @@ impl cfn_resources::CfnResource for TooltipOptions {
 
 /// A TopBottomFilter filters values that are at the top or the bottom.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopBottomFilter {
     ///
     /// The aggregation and sort configuration of the top bottom filter.
@@ -37581,7 +38000,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub limit: Option<f64>,
 
     ///
@@ -37599,7 +38018,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37613,7 +38032,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub time_granularity: Option<TopBottomFilterTimeGranularityEnum>,
 }
 
@@ -37730,6 +38149,7 @@ impl cfn_resources::CfnResource for TopBottomFilter {
 
 /// The top movers and bottom movers computation setup.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopBottomMoversComputation {
     ///
     /// The category field that is used in a computation.
@@ -37772,7 +38192,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MoverSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub mover_size: Option<f64>,
 
     ///
@@ -37784,7 +38204,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37798,7 +38218,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortOrder")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_order: Option<TopBottomMoversComputationSortOrderEnum>,
 
     ///
@@ -37836,7 +38256,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -37936,6 +38356,7 @@ impl cfn_resources::CfnResource for TopBottomMoversComputation {
 
 /// The top ranked and bottom ranked computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TopBottomRankedComputation {
     ///
     /// The category field that is used in a computation.
@@ -37974,7 +38395,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37990,7 +38411,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResultSize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub result_size: Option<f64>,
 
     ///
@@ -38017,7 +38438,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<MeasureField>,
 }
 
@@ -38098,6 +38519,7 @@ impl cfn_resources::CfnResource for TopBottomRankedComputation {
 
 /// The total aggregation computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TotalAggregationComputation {
     ///
     /// The ID for a computation.
@@ -38125,7 +38547,7 @@ pub struct TotalAggregationComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -38180,6 +38602,7 @@ impl cfn_resources::CfnResource for TotalAggregationComputation {
 
 /// The total options for a table visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TotalOptions {
     ///
     /// The custom label string for the total cells.
@@ -38190,7 +38613,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -38204,7 +38627,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub placement: Option<TotalOptionsPlacementEnum>,
 
     ///
@@ -38218,7 +38641,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scroll_status: Option<TotalOptionsScrollStatusEnum>,
 
     ///
@@ -38230,7 +38653,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -38244,7 +38667,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub totals_visibility: Option<TotalOptionsTotalsVisibilityEnum>,
 }
 
@@ -38319,6 +38742,7 @@ impl cfn_resources::CfnResource for TotalOptions {
 
 /// Aggregated field wells of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreeMapAggregatedFieldWells {
     ///
     /// The color field well of a tree map. Values are grouped by aggregations based on group by fields.
@@ -38331,7 +38755,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub colors: Option<Vec<MeasureField>>,
 
     ///
@@ -38345,7 +38769,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub groups: Option<Vec<DimensionField>>,
 
     ///
@@ -38359,7 +38783,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sizes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sizes: Option<Vec<MeasureField>>,
 }
 
@@ -38406,6 +38830,7 @@ impl cfn_resources::CfnResource for TreeMapAggregatedFieldWells {
 
 /// The configuration of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreeMapConfiguration {
     ///
     /// The label options (label text, label visibility) for the colors displayed in a tree map.
@@ -38416,7 +38841,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -38428,7 +38853,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorScale")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_scale: Option<ColorScale>,
 
     ///
@@ -38440,7 +38865,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -38452,7 +38877,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<TreeMapFieldWells>,
 
     ///
@@ -38464,7 +38889,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -38476,7 +38901,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -38488,7 +38913,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -38500,7 +38925,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<TreeMapSortConfiguration>,
 
     ///
@@ -38512,7 +38937,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tooltip: Option<TooltipOptions>,
 }
 
@@ -38566,6 +38991,7 @@ impl cfn_resources::CfnResource for TreeMapConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreeMapFieldWells {
     ///
     /// The aggregated field wells of a tree map.
@@ -38576,7 +39002,7 @@ pub struct TreeMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tree_map_aggregated_field_wells: Option<TreeMapAggregatedFieldWells>,
 }
 
@@ -38600,6 +39026,7 @@ impl cfn_resources::CfnResource for TreeMapFieldWells {
 
 /// The sort configuration of a tree map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreeMapSortConfiguration {
     ///
     /// The limit on the number of groups that are displayed.
@@ -38610,7 +39037,7 @@ pub struct TreeMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapGroupItemsLimitConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tree_map_group_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -38624,7 +39051,7 @@ pub struct TreeMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapSort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tree_map_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -38659,6 +39086,7 @@ impl cfn_resources::CfnResource for TreeMapSortConfiguration {
 ///
 /// For more information, see Using tree maps in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TreeMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -38671,7 +39099,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -38683,7 +39111,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<TreeMapConfiguration>,
 
     ///
@@ -38697,7 +39125,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -38709,7 +39137,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -38721,7 +39149,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -38808,6 +39236,7 @@ impl cfn_resources::CfnResource for TreeMapVisual {
 
 /// The options that determine the presentation of trend arrows in a KPI visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrendArrowOptions {
     ///
     /// The visibility of the trend arrows.
@@ -38820,7 +39249,7 @@ pub struct TrendArrowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<TrendArrowOptionsVisibilityEnum>,
 }
 
@@ -38857,6 +39286,7 @@ impl cfn_resources::CfnResource for TrendArrowOptions {
 
 /// The unaggregated field for a table.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UnaggregatedField {
     ///
     /// The column that is used in the UnaggregatedField.
@@ -38893,7 +39323,7 @@ pub struct UnaggregatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_configuration: Option<FormatConfiguration>,
 }
 
@@ -38941,6 +39371,7 @@ impl cfn_resources::CfnResource for UnaggregatedField {
 
 /// The unique values computation configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UniqueValuesComputation {
     ///
     /// The category field that is used in a computation.
@@ -38979,7 +39410,7 @@ pub struct UniqueValuesComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -39023,6 +39454,7 @@ impl cfn_resources::CfnResource for UniqueValuesComputation {
 
 /// The range options for the data zoom scroll bar.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisibleRangeOptions {
     ///
     /// The percent range in the visible range.
@@ -39033,7 +39465,7 @@ pub struct VisibleRangeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub percent_range: Option<PercentVisibleRange>,
 }
 
@@ -39059,6 +39491,7 @@ impl cfn_resources::CfnResource for VisibleRangeOptions {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Visual {
     ///
     /// A bar chart.
@@ -39071,7 +39504,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub bar_chart_visual: Option<BarChartVisual>,
 
     ///
@@ -39085,7 +39518,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub box_plot_visual: Option<BoxPlotVisual>,
 
     ///
@@ -39099,7 +39532,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComboChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub combo_chart_visual: Option<ComboChartVisual>,
 
     ///
@@ -39113,7 +39546,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomContentVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub custom_content_visual: Option<CustomContentVisual>,
 
     ///
@@ -39125,7 +39558,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub empty_visual: Option<EmptyVisual>,
 
     ///
@@ -39139,7 +39572,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilledMapVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filled_map_visual: Option<FilledMapVisual>,
 
     ///
@@ -39153,7 +39586,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunnelChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub funnel_chart_visual: Option<FunnelChartVisual>,
 
     ///
@@ -39167,7 +39600,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GaugeChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gauge_chart_visual: Option<GaugeChartVisual>,
 
     ///
@@ -39181,7 +39614,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeospatialMapVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub geospatial_map_visual: Option<GeospatialMapVisual>,
 
     ///
@@ -39195,7 +39628,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub heat_map_visual: Option<HeatMapVisual>,
 
     ///
@@ -39209,7 +39642,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistogramVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub histogram_visual: Option<HistogramVisual>,
 
     ///
@@ -39223,7 +39656,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub insight_visual: Option<InsightVisual>,
 
     ///
@@ -39237,7 +39670,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KPIVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kpivisual: Option<KPIVisual>,
 
     ///
@@ -39251,7 +39684,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub line_chart_visual: Option<LineChartVisual>,
 
     ///
@@ -39265,7 +39698,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PieChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pie_chart_visual: Option<PieChartVisual>,
 
     ///
@@ -39279,7 +39712,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PivotTableVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pivot_table_visual: Option<PivotTableVisual>,
 
     ///
@@ -39293,7 +39726,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RadarChartVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub radar_chart_visual: Option<RadarChartVisual>,
 
     ///
@@ -39307,7 +39740,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SankeyDiagramVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sankey_diagram_visual: Option<SankeyDiagramVisual>,
 
     ///
@@ -39321,7 +39754,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub scatter_plot_visual: Option<ScatterPlotVisual>,
 
     ///
@@ -39335,7 +39768,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub table_visual: Option<TableVisual>,
 
     ///
@@ -39349,7 +39782,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tree_map_visual: Option<TreeMapVisual>,
 
     ///
@@ -39363,7 +39796,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub waterfall_visual: Option<WaterfallVisual>,
 
     ///
@@ -39377,7 +39810,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudVisual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_cloud_visual: Option<WordCloudVisual>,
 }
 
@@ -39489,6 +39922,7 @@ impl cfn_resources::CfnResource for Visual {
 
 /// A custom action defined on a visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualCustomAction {
     ///
     /// A list of VisualCustomActionOperations.
@@ -39548,7 +39982,7 @@ pub struct VisualCustomAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub status: Option<VisualCustomActionStatusEnum>,
 
     ///
@@ -39674,6 +40108,7 @@ impl cfn_resources::CfnResource for VisualCustomAction {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualCustomActionOperation {
     ///
     /// The filter operation that filters data included in a visual or in an entire sheet.
@@ -39684,7 +40119,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub filter_operation: Option<CustomActionFilterOperation>,
 
     ///
@@ -39696,7 +40131,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NavigationOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub navigation_operation: Option<CustomActionNavigationOperation>,
 
     ///
@@ -39708,7 +40143,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetParametersOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub set_parameters_operation: Option<CustomActionSetParametersOperation>,
 
     ///
@@ -39720,7 +40155,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URLOperation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub urloperation: Option<CustomActionURLOperation>,
 }
 
@@ -39756,6 +40191,7 @@ impl cfn_resources::CfnResource for VisualCustomActionOperation {
 
 /// The visual display options for the visual palette.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualPalette {
     ///
     /// The chart color options for the visual palette.
@@ -39768,7 +40204,7 @@ pub struct VisualPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartColor")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -39782,7 +40218,7 @@ pub struct VisualPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub color_map: Option<Vec<DataPathColor>>,
 }
 
@@ -39811,6 +40247,7 @@ impl cfn_resources::CfnResource for VisualPalette {
 
 /// The subtitle label options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualSubtitleLabelOptions {
     ///
     /// The long text format of the subtitle label, such as plain text or rich text.
@@ -39821,7 +40258,7 @@ pub struct VisualSubtitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_text: Option<LongFormatText>,
 
     ///
@@ -39835,7 +40272,7 @@ pub struct VisualSubtitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<VisualSubtitleLabelOptionsVisibilityEnum>,
 }
 
@@ -39876,6 +40313,7 @@ impl cfn_resources::CfnResource for VisualSubtitleLabelOptions {
 
 /// The title label options for a visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VisualTitleLabelOptions {
     ///
     /// The short text format of the title label, such as plain text or rich text.
@@ -39886,7 +40324,7 @@ pub struct VisualTitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatText")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub format_text: Option<ShortFormatText>,
 
     ///
@@ -39900,7 +40338,7 @@ pub struct VisualTitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visibility: Option<VisualTitleLabelOptionsVisibilityEnum>,
 }
 
@@ -39941,6 +40379,7 @@ impl cfn_resources::CfnResource for VisualTitleLabelOptions {
 
 /// The field well configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// The breakdown field wells of a waterfall visual.
@@ -39953,7 +40392,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Breakdowns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub breakdowns: Option<Vec<DimensionField>>,
 
     ///
@@ -39967,7 +40406,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Categories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub categories: Option<Vec<DimensionField>>,
 
     ///
@@ -39981,7 +40420,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -40028,6 +40467,7 @@ impl cfn_resources::CfnResource for WaterfallChartAggregatedFieldWells {
 
 /// The configuration for a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallChartConfiguration {
     ///
     /// The options that determine the presentation of the category axis.
@@ -40038,7 +40478,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -40050,7 +40490,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_axis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -40062,7 +40502,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -40074,7 +40514,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<WaterfallChartFieldWells>,
 
     ///
@@ -40086,7 +40526,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -40098,7 +40538,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -40110,7 +40550,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -40122,7 +40562,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<WaterfallChartSortConfiguration>,
 
     ///
@@ -40134,7 +40574,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -40146,7 +40586,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallChartOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub waterfall_chart_options: Option<WaterfallChartOptions>,
 }
 
@@ -40204,6 +40644,7 @@ impl cfn_resources::CfnResource for WaterfallChartConfiguration {
 
 /// The field well configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallChartFieldWells {
     ///
     /// The field well configuration of a waterfall visual.
@@ -40214,7 +40655,7 @@ pub struct WaterfallChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallChartAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub waterfall_chart_aggregated_field_wells: Option<WaterfallChartAggregatedFieldWells>,
 }
 
@@ -40238,6 +40679,7 @@ impl cfn_resources::CfnResource for WaterfallChartFieldWells {
 
 /// The options that determine the presentation of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallChartOptions {
     ///
     /// This option determines the total bar label of a waterfall visual.
@@ -40248,7 +40690,7 @@ pub struct WaterfallChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalBarLabel")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub total_bar_label: Option<cfn_resources::StrVal>,
 }
 
@@ -40268,6 +40710,7 @@ impl cfn_resources::CfnResource for WaterfallChartOptions {
 
 /// The sort configuration of a waterfall visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallChartSortConfiguration {
     ///
     /// The limit on the number of bar groups that are displayed.
@@ -40278,7 +40721,7 @@ pub struct WaterfallChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BreakdownItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub breakdown_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -40292,7 +40735,7 @@ pub struct WaterfallChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -40327,6 +40770,7 @@ impl cfn_resources::CfnResource for WaterfallChartSortConfiguration {
 ///
 /// For more information, see Using waterfall charts in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WaterfallVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -40339,7 +40783,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -40351,7 +40795,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<WaterfallChartConfiguration>,
 
     ///
@@ -40365,7 +40809,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -40377,7 +40821,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -40389,7 +40833,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -40476,6 +40920,7 @@ impl cfn_resources::CfnResource for WaterfallVisual {
 
 /// Provides the forecast to meet the target for a particular date.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WhatIfPointScenario {
     ///
     /// The date that you need the forecast results for.
@@ -40516,6 +40961,7 @@ impl cfn_resources::CfnResource for WhatIfPointScenario {
 
 /// Provides the forecast to meet the target for a particular date range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WhatIfRangeScenario {
     ///
     /// The end date in the date range that you need the forecast results for.
@@ -40567,6 +41013,7 @@ impl cfn_resources::CfnResource for WhatIfRangeScenario {
 
 /// The aggregated field wells of a word cloud.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudAggregatedFieldWells {
     ///
     /// The group by field well of a word cloud. Values are grouped by group by fields.
@@ -40579,7 +41026,7 @@ pub struct WordCloudAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -40593,7 +41040,7 @@ pub struct WordCloudAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub size: Option<Vec<MeasureField>>,
 }
 
@@ -40631,6 +41078,7 @@ impl cfn_resources::CfnResource for WordCloudAggregatedFieldWells {
 
 /// The configuration of a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudChartConfiguration {
     ///
     /// The label options (label text, label visibility, and sort icon visibility) for the word cloud category.
@@ -40641,7 +41089,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -40653,7 +41101,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub field_wells: Option<WordCloudFieldWells>,
 
     ///
@@ -40665,7 +41113,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub sort_configuration: Option<WordCloudSortConfiguration>,
 
     ///
@@ -40677,7 +41125,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_cloud_options: Option<WordCloudOptions>,
 }
 
@@ -40715,6 +41163,7 @@ impl cfn_resources::CfnResource for WordCloudChartConfiguration {
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudFieldWells {
     ///
     /// The aggregated field wells of a word cloud.
@@ -40725,7 +41174,7 @@ pub struct WordCloudFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudAggregatedFieldWells")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_cloud_aggregated_field_wells: Option<WordCloudAggregatedFieldWells>,
 }
 
@@ -40749,6 +41198,7 @@ impl cfn_resources::CfnResource for WordCloudFieldWells {
 
 /// The word cloud options for a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudOptions {
     ///
     /// The cloud layout options (fluid, normal) of a word cloud.
@@ -40761,7 +41211,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudLayout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cloud_layout: Option<WordCloudOptionsCloudLayoutEnum>,
 
     ///
@@ -40777,7 +41227,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumStringLength")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub maximum_string_length: Option<f64>,
 
     ///
@@ -40791,7 +41241,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCasing")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_casing: Option<WordCloudOptionsWordCasingEnum>,
 
     ///
@@ -40805,7 +41255,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordOrientation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_orientation: Option<WordCloudOptionsWordOrientationEnum>,
 
     ///
@@ -40819,7 +41269,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordPadding")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_padding: Option<WordCloudOptionsWordPaddingEnum>,
 
     ///
@@ -40833,7 +41283,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordScaling")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub word_scaling: Option<WordCloudOptionsWordScalingEnum>,
 }
 
@@ -40961,6 +41411,7 @@ impl cfn_resources::CfnResource for WordCloudOptions {
 
 /// The sort configuration of a word cloud visual.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudSortConfiguration {
     ///
     /// The limit on the number of groups that are displayed in a word cloud.
@@ -40971,7 +41422,7 @@ pub struct WordCloudSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -40985,7 +41436,7 @@ pub struct WordCloudSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -41020,6 +41471,7 @@ impl cfn_resources::CfnResource for WordCloudSortConfiguration {
 ///
 /// For more information, see Using word clouds in the Amazon QuickSight User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct WordCloudVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -41032,7 +41484,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -41044,7 +41496,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub chart_configuration: Option<WordCloudChartConfiguration>,
 
     ///
@@ -41058,7 +41510,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -41070,7 +41522,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -41082,7 +41534,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///

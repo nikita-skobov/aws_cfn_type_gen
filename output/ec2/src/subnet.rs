@@ -4,6 +4,7 @@
 ///
 /// For more information, see Subnets for your VPC in the Amazon VPC User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSubnet {
     ///
     /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
@@ -16,7 +17,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignIpv6AddressOnCreation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub assign_ipv6_address_on_creation: Option<bool>,
 
     ///
@@ -30,7 +31,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +43,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +57,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDns64")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_dns64: Option<bool>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Ipv6CidrBlock")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +95,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Native")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ipv6_native: Option<bool>,
 
     ///
@@ -106,7 +107,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapPublicIpOnLaunch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub map_public_ip_on_launch: Option<bool>,
 
     ///
@@ -118,7 +119,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -134,7 +135,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsNameOptionsOnLaunch")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub private_dns_name_options_on_launch: Option<PrivateDnsNameOptionsOnLaunch>,
 
     ///
@@ -146,7 +147,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -238,6 +239,7 @@ impl cfn_resources::CfnResource for CfnSubnet {
 
 /// Describes the options for instance hostnames.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
@@ -248,7 +250,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
     ///
@@ -260,7 +262,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsARecord")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
     ///
@@ -274,7 +276,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub hostname_type: Option<PrivateDnsNameOptionsOnLaunchHostnameTypeEnum>,
 }
 
@@ -317,6 +319,7 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptionsOnLaunch {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

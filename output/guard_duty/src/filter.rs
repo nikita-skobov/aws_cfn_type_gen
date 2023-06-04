@@ -1,5 +1,6 @@
 /// The AWS::GuardDuty::Filter resource specifies a new filter defined by          the provided findingCriteria.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFilter {
     ///
     /// Specifies the action that is to be applied to the findings that match the filter.
@@ -94,7 +95,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -199,6 +200,7 @@ impl cfn_resources::CfnResource for CfnFilter {
 
 /// Specifies the condition to apply to a single field when filtering through findings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Condition {
     ///
     /// Represents the equal condition to apply to a single field when querying for          findings.
@@ -209,7 +211,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub eq: Option<Vec<String>>,
 
     ///
@@ -221,7 +223,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Equals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub equals: Option<Vec<String>>,
 
     ///
@@ -233,7 +235,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreaterThan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub greater_than: Option<i64>,
 
     ///
@@ -245,7 +247,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreaterThanOrEqual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub greater_than_or_equal: Option<i64>,
 
     ///
@@ -257,7 +259,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gt: Option<i64>,
 
     ///
@@ -269,7 +271,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gte")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gte: Option<i64>,
 
     ///
@@ -281,7 +283,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LessThan")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub less_than: Option<i64>,
 
     ///
@@ -293,7 +295,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LessThanOrEqual")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub less_than_or_equal: Option<i64>,
 
     ///
@@ -305,7 +307,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lt")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lt: Option<i64>,
 
     ///
@@ -317,7 +319,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lte")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub lte: Option<i64>,
 
     ///
@@ -329,7 +331,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Neq")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub neq: Option<Vec<String>>,
 
     ///
@@ -341,7 +343,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEquals")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub not_equals: Option<Vec<String>>,
 }
 
@@ -361,6 +363,7 @@ impl cfn_resources::CfnResource for Condition {
 
 /// Represents a map of finding properties that match specified conditions and values          when querying findings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FindingCriteria {
     ///
     /// Represents a map of finding properties that match specified conditions and values          when querying findings.
@@ -375,7 +378,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criterion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub criterion: Option<serde_json::Value>,
 
     ///
@@ -387,7 +390,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ItemType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub item_type: Option<Condition>,
 }
 
@@ -417,6 +420,7 @@ impl cfn_resources::CfnResource for FindingCriteria {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,6 @@
 /// The AWS::Lightsail::Bucket resource specifies a bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnBucket {
     ///
     /// An object that describes the access rules for the bucket.
@@ -10,7 +11,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_rules: Option<AccessRules>,
 
     ///
@@ -54,7 +55,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersioning")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub object_versioning: Option<bool>,
 
     ///
@@ -68,7 +69,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnlyAccessAccounts")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only_access_accounts: Option<Vec<String>>,
 
     ///
@@ -80,7 +81,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesReceivingAccess")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resources_receiving_access: Option<Vec<String>>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -148,6 +149,7 @@ impl cfn_resources::CfnResource for CfnBucket {
 
 /// AccessRules is a property of the AWS::Lightsail::Bucket resource. It describes access rules for a bucket.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AccessRules {
     ///
     /// A Boolean value indicating whether the access control list (ACL) permissions that are     applied to individual objects override the GetObject option that is currently     specified.
@@ -160,7 +162,7 @@ pub struct AccessRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowPublicOverrides")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub allow_public_overrides: Option<bool>,
 
     ///
@@ -178,7 +180,7 @@ pub struct AccessRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GetObject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub get_object: Option<AccessRulesGetObjectEnum>,
 }
 
@@ -221,6 +223,7 @@ impl cfn_resources::CfnResource for AccessRules {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

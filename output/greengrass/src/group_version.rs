@@ -1,5 +1,6 @@
 /// The     AWS::Greengrass::GroupVersion resource represents a group version in AWS IoT Greengrass.     A group version references a core definition version,      device definition version, subscription definition version, and other version types     that contain the components you want to deploy to a Greengrass core device.      The group version must reference a core definition version that contains one core.     Other version types are optionally included, depending on your business need.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnGroupVersion {
     ///
     /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.
@@ -10,7 +11,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub connector_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub core_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub device_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub function_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +70,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggerDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub logger_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +82,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_definition_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +94,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionDefinitionVersionArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub subscription_definition_version_arn: Option<cfn_resources::StrVal>,
 }
 

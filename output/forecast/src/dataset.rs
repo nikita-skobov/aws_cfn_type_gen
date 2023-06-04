@@ -6,6 +6,7 @@
 ///
 /// For example Forecast datasets, see the Amazon Forecast Sample GitHub     repository.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataset {
     ///
     /// The frequency of data collection. This parameter is required for RELATED_TIME_SERIES    datasets.
@@ -28,7 +29,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFrequency")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_frequency: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +84,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encryption_config: Option<EncryptionConfig>,
 
     ///
@@ -108,7 +109,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagsItems>>,
 
     #[serde(skip_serializing)]
@@ -247,6 +248,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AttributesItems {
     /// Property description not available.
     ///
@@ -256,7 +258,7 @@ pub struct AttributesItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -267,7 +269,7 @@ pub struct AttributesItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attribute_type: Option<cfn_resources::StrVal>,
 }
 
@@ -287,6 +289,7 @@ impl cfn_resources::CfnResource for AttributesItems {
 
 /// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct EncryptionConfig {
     ///
     /// The Amazon Resource Name (ARN) of the KMS key.
@@ -301,7 +304,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -319,7 +322,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -361,6 +364,7 @@ impl cfn_resources::CfnResource for EncryptionConfig {
 
 /// Defines the fields of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Schema {
     ///
     /// An array of attributes specifying the name and type of each field in a dataset.
@@ -373,7 +377,7 @@ pub struct Schema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub attributes: Option<Vec<AttributesItems>>,
 }
 
@@ -402,6 +406,7 @@ impl cfn_resources::CfnResource for Schema {
 
 /// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagsItems {
     /// Property description not available.
     ///

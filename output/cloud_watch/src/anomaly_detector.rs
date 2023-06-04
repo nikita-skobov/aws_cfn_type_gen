@@ -1,5 +1,6 @@
 /// The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band for a certain metric and statistic. The band     represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values,     and for alarms.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnAnomalyDetector {
     ///
     /// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude     when training and updating the model. The configuration can also include the time zone to use for the metric.
@@ -10,7 +11,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub configuration: Option<Configuration>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricMathAnomalyDetector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_math_anomaly_detector: Option<MetricMathAnomalyDetector>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +59,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +71,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SingleMetricAnomalyDetector")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub single_metric_anomaly_detector: Option<SingleMetricAnomalyDetector>,
 
     ///
@@ -82,7 +83,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Stat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stat: Option<cfn_resources::StrVal>,
 }
 
@@ -114,6 +115,7 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
 
 /// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude         when training and updating the model. The configuration can also include the time zone to use for the metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Configuration {
     ///
     /// Specifies an array of time ranges to exclude from use when the anomaly detection model is trained and updated.       Use this to make sure that events that could cause unusual values for the metric, such as deployments, aren't used when       CloudWatch creates or updates the model.
@@ -124,7 +126,7 @@ pub struct Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedTimeRanges")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub excluded_time_ranges: Option<Vec<Range>>,
 
     ///
@@ -138,7 +140,7 @@ pub struct Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricTimeZone")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_time_zone: Option<cfn_resources::StrVal>,
 }
 
@@ -160,6 +162,7 @@ impl cfn_resources::CfnResource for Configuration {
 ///
 /// You 		can assign up to 30 dimensions to a metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Dimension {
     ///
     /// The name of the dimension.
@@ -252,6 +255,7 @@ impl cfn_resources::CfnResource for Dimension {
 
 /// Represents a specific metric.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Metric {
     ///
     /// The dimensions for the metric.
@@ -264,7 +268,7 @@ pub struct Metric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -369,6 +373,7 @@ impl cfn_resources::CfnResource for Metric {
 
 /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDataQueries {}
 
 impl cfn_resources::CfnResource for MetricDataQueries {
@@ -395,6 +400,7 @@ impl cfn_resources::CfnResource for MetricDataQueries {
 ///
 /// Some of the parameters of this structure also have different uses whether you are using this structure in a GetMetricData 			operation or a PutMetricAlarm operation. These differences are explained in the following parameter list.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricDataQuery {
     ///
     /// The ID of the account where the metrics are located.
@@ -413,7 +419,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccountId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -433,7 +439,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -462,7 +468,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -476,7 +482,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricStat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -490,7 +496,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub period: Option<i64>,
 
     ///
@@ -504,7 +510,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub return_data: Option<bool>,
 }
 
@@ -603,6 +609,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 
 /// Indicates the CloudWatch math expression that provides the time series the anomaly detector 			uses as input. 			The designated math expression must return a single time series.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricMathAnomalyDetector {
     ///
     /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
@@ -613,7 +620,7 @@ pub struct MetricMathAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricDataQueries")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_data_queries: Option<Vec<MetricDataQuery>>,
 }
 
@@ -633,6 +640,7 @@ impl cfn_resources::CfnResource for MetricMathAnomalyDetector {
 
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetricStat {
     ///
     /// The metric to return, including the metric name, namespace, and dimensions.
@@ -686,7 +694,7 @@ pub struct MetricStat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub unit: Option<MetricStatUnitEnum>,
 }
 
@@ -834,6 +842,7 @@ impl cfn_resources::CfnResource for MetricStat {
 
 /// Each Range specifies one range of days or times to exclude from use for training or updating an     anomaly detection model.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Range {
     ///
     /// The end time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
@@ -874,6 +883,7 @@ impl cfn_resources::CfnResource for Range {
 
 /// Designates the CloudWatch metric and statistic that provides the time series the anomaly detector 			uses as input.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SingleMetricAnomalyDetector {
     ///
     /// The metric dimensions to create the anomaly detection model for.
@@ -886,7 +896,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -902,7 +912,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -920,7 +930,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -936,7 +946,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Stat")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub stat: Option<cfn_resources::StrVal>,
 }
 

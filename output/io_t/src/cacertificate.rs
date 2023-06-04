@@ -1,5 +1,6 @@
 /// Specifies a CA certificate.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnCACertificate {
     ///
     /// Whether the CA certificate is configured for auto registration of device certificates.     Valid values are "ENABLE" and "DISABLE".
@@ -10,7 +11,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRegistrationStatus")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auto_registration_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +50,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistrationConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub registration_config: Option<RegistrationConfig>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAutoRegistration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub remove_auto_registration: Option<bool>,
 
     ///
@@ -88,7 +89,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -100,7 +101,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VerificationCertificatePem")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub verification_certificate_pem: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -146,6 +147,7 @@ impl cfn_resources::CfnResource for CfnCACertificate {
 
 /// The registration configuration.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RegistrationConfig {
     ///
     /// The ARN of the role.
@@ -156,7 +158,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +170,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -180,7 +182,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub template_name: Option<cfn_resources::StrVal>,
 }
 
@@ -206,6 +208,7 @@ impl cfn_resources::CfnResource for RegistrationConfig {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

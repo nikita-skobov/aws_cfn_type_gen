@@ -4,6 +4,7 @@
 ///
 /// For information about RDS Proxy for Amazon Aurora, see Managing Connections with         Amazon RDS Proxy in the Amazon Aurora User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDBProxy {
     ///
     /// The authorization mechanism that the proxy uses.
@@ -36,7 +37,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DebugLogging")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub debug_logging: Option<bool>,
 
     ///
@@ -61,7 +62,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleClientTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub idle_client_timeout: Option<i64>,
 
     ///
@@ -73,7 +74,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireTLS")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub require_tls: Option<bool>,
 
     ///
@@ -96,7 +97,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<TagFormat>>,
 
     ///
@@ -110,7 +111,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     ///
@@ -174,6 +175,7 @@ impl cfn_resources::CfnResource for CfnDBProxy {
 
 /// Specifies the details of authentication used by a proxy to log in as a specific       database user.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AuthFormat {
     ///
     /// The type of authentication that the proxy uses for connections from the proxy to the       underlying database.
@@ -186,7 +188,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthScheme")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub auth_scheme: Option<AuthFormatAuthSchemeEnum>,
 
     ///
@@ -198,7 +200,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPasswordAuthType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub client_password_auth_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +212,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -224,7 +226,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMAuth")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub iamauth: Option<AuthFormatIAMAuthEnum>,
 
     ///
@@ -236,7 +238,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -290,6 +292,7 @@ impl cfn_resources::CfnResource for AuthFormat {
 
 /// Metadata assigned to a DB proxy consisting of a key-value pair.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TagFormat {
     ///
     /// A key is the required name of the tag. The string value can be 1-128 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
@@ -300,7 +303,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -312,7 +315,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

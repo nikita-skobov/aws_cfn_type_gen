@@ -1,5 +1,6 @@
 /// Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnVolume {
     ///
     /// Specifies the ID of the volume backup to use to create a new volume.
@@ -10,7 +11,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +40,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OntapConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ontap_configuration: Option<OntapConfiguration>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenZFSConfiguration")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub open_zfsconfiguration: Option<OpenZFSConfiguration>,
 
     ///
@@ -65,7 +66,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -79,7 +80,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -179,6 +180,7 @@ impl cfn_resources::CfnResource for CfnVolume {
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ClientConfigurations {
     ///
     /// A value that specifies who can mount the file system. You can provide a wildcard       character (*), an IP address (0.0.0.0), or a CIDR address         (192.0.2.0/24). By default, Amazon FSx uses the wildcard       character when specifying the client.
@@ -260,6 +262,7 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 
 /// The configuration object for mounting a Network File System (NFS) file system.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct NfsExports {
     ///
     /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
@@ -300,6 +303,7 @@ impl cfn_resources::CfnResource for NfsExports {
 
 /// Specifies the configuration of the ONTAP volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OntapConfiguration {
     ///
     /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to       false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups       where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the       specified tags are copied to backups. If you specify one or more tags when creating a user-initiated       backup, no tags are copied from the volume, regardless of this value.
@@ -310,7 +314,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToBackups")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_backups: Option<cfn_resources::StrVal>,
 
     ///
@@ -328,7 +332,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JunctionPath")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub junction_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -346,7 +350,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OntapVolumeType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub ontap_volume_type: Option<OntapConfigurationOntapVolumeTypeEnum>,
 
     ///
@@ -362,7 +366,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityStyle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub security_style: Option<OntapConfigurationSecurityStyleEnum>,
 
     ///
@@ -399,7 +403,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub snapshot_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -411,7 +415,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageEfficiencyEnabled")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_efficiency_enabled: Option<cfn_resources::StrVal>,
 
     ///
@@ -450,7 +454,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TieringPolicy")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tiering_policy: Option<TieringPolicy>,
 }
 
@@ -591,6 +595,7 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 
 /// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OpenZFSConfiguration {
     ///
     /// A Boolean value indicating whether tags for the volume should be copied to snapshots.       This value defaults to false. If it's set to true, all tags       for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true, and you specify one or more tags, only the specified tags       are copied to snapshots. If you specify one or more tags when creating the snapshot, no       tags are copied from the volume, regardless of this value.
@@ -601,7 +606,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToSnapshots")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub copy_tags_to_snapshots: Option<bool>,
 
     ///
@@ -617,7 +622,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCompressionType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_compression_type: Option<OpenZFSConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -631,7 +636,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NfsExports")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub nfs_exports: Option<Vec<NfsExports>>,
 
     ///
@@ -645,7 +650,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub options: Option<Vec<String>>,
 
     ///
@@ -657,7 +662,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OriginSnapshot")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub origin_snapshot: Option<OriginSnapshot>,
 
     ///
@@ -686,7 +691,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub read_only: Option<bool>,
 
     ///
@@ -702,7 +707,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordSizeKiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub record_size_ki_b: Option<i64>,
 
     ///
@@ -720,7 +725,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacityQuotaGiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_capacity_quota_gi_b: Option<i64>,
 
     ///
@@ -736,7 +741,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacityReservationGiB")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub storage_capacity_reservation_gi_b: Option<i64>,
 
     ///
@@ -750,7 +755,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAndGroupQuotas")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
@@ -883,6 +888,7 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 
 /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OriginSnapshot {
     ///
     /// The strategy used when copying data from the snapshot to the new volume.
@@ -950,6 +956,7 @@ impl cfn_resources::CfnResource for OriginSnapshot {
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -990,6 +997,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// Valid tiering policies are the following:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TieringPolicy {
     ///
     /// Specifies the number of days that user data in a volume must remain inactive before it is considered "cold"       and moved to the capacity pool. Used with the AUTO and SNAPSHOT_ONLY tiering policies.       Enter a whole number between 2 and 183. Default values are 31 days for AUTO and 2 days for       SNAPSHOT_ONLY.
@@ -1004,7 +1012,7 @@ pub struct TieringPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoolingPeriod")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cooling_period: Option<i64>,
 
     ///
@@ -1020,7 +1028,7 @@ pub struct TieringPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<TieringPolicyNameEnum>,
 }
 
@@ -1083,6 +1091,7 @@ impl cfn_resources::CfnResource for TieringPolicy {
 
 /// An object specifying how much storage users or groups can use on the volume.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UserAndGroupQuotas {
     ///
     /// The ID of the user or group.

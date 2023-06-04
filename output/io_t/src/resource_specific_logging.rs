@@ -1,5 +1,6 @@
 /// Configure resource-specific logging.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnResourceSpecificLogging {
     ///
     /// The default log level.Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED

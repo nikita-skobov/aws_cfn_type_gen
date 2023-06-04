@@ -1,5 +1,6 @@
 /// The AWS::Lambda::LayerVersionPermission resource adds permissions to the resource-based policy of    a version of an Lambda     layer. Use this action to grant layer usage permission to other accounts. You can grant permission to a    single account, all AWS accounts, or all accounts in an organization.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnLayerVersionPermission {
     ///
     /// The API action that grants access to the layer. For example, lambda:GetLayerVersion.
@@ -46,7 +47,7 @@ pub struct CfnLayerVersionPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub organization_id: Option<cfn_resources::StrVal>,
 
     ///

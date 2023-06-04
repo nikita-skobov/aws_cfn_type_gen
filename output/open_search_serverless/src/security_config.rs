@@ -1,5 +1,6 @@
 /// Specifies a security configuration for OpenSearch Serverless. For more information, see       SAML         authentication for Amazon OpenSearch Serverless.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnSecurityConfig {
     ///
     /// The description of the security configuration.
@@ -10,7 +11,7 @@ pub struct CfnSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -22,7 +23,7 @@ pub struct CfnSecurityConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +35,7 @@ pub struct CfnSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamlOptions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub saml_options: Option<SamlConfigOptions>,
 
     ///
@@ -46,7 +47,7 @@ pub struct CfnSecurityConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -81,6 +82,7 @@ impl cfn_resources::CfnResource for CfnSecurityConfig {
 
 /// Describes SAML options for an OpenSearch Serverless security configuration in the form of a key-value       map.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SamlConfigOptions {
     ///
     /// The group attribute for this SAML integration.
@@ -91,7 +93,7 @@ pub struct SamlConfigOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub group_attribute: Option<cfn_resources::StrVal>,
 
     ///
@@ -114,7 +116,7 @@ pub struct SamlConfigOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub session_timeout: Option<i64>,
 
     ///
@@ -126,7 +128,7 @@ pub struct SamlConfigOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub user_attribute: Option<cfn_resources::StrVal>,
 }
 

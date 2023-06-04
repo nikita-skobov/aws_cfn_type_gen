@@ -8,6 +8,7 @@
 ///
 /// To get the status of the dataset, call DescribeDataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDataset {
     ///
     /// The Amazon Resource Name (ARN) of the dataset group.
@@ -33,7 +34,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetImportJob")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_import_job: Option<DatasetImportJob>,
 
     ///
@@ -170,6 +171,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 
 /// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DataSource {
     /// Property description not available.
     ///
@@ -179,7 +181,7 @@ pub struct DataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLocation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_location: Option<cfn_resources::StrVal>,
 }
 
@@ -201,6 +203,7 @@ impl cfn_resources::CfnResource for DataSource {
 ///
 /// A dataset import job can be in one of the following states:
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DatasetImportJob {
     ///
     /// The Amazon S3 bucket that contains the training data to import.
@@ -211,7 +214,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub data_source: Option<DataSource>,
 
     ///
@@ -227,7 +230,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -243,7 +246,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetImportJobArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dataset_import_job_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -261,7 +264,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub job_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -277,7 +280,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 

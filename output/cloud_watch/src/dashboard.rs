@@ -2,6 +2,7 @@
 ///
 /// All dashboards in your account are global, not region-specific.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnDashboard {
     ///
     /// The detailed information about the dashboard in JSON format, including the widgets to include and their location 			on the dashboard. This parameter is required.
@@ -25,7 +26,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DashboardName")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub dashboard_name: Option<cfn_resources::StrVal>,
 }
 

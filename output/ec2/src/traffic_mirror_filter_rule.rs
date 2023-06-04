@@ -4,6 +4,7 @@
 ///
 /// You need the Traffic Mirror filter ID when you create the rule.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnTrafficMirrorFilterRule {
     ///
     /// The description of the Traffic Mirror rule.
@@ -14,7 +15,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +38,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub destination_port_range: Option<TrafficMirrorPortRange>,
 
     ///
@@ -51,7 +52,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub protocol: Option<i64>,
 
     ///
@@ -98,7 +99,7 @@ pub struct CfnTrafficMirrorFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePortRange")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub source_port_range: Option<TrafficMirrorPortRange>,
 
     ///
@@ -184,6 +185,7 @@ impl cfn_resources::CfnResource for CfnTrafficMirrorFilterRule {
 
 /// Describes the Traffic Mirror port range.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TrafficMirrorPortRange {
     ///
     /// The start of the Traffic Mirror port range. This applies to the TCP and UDP protocols.

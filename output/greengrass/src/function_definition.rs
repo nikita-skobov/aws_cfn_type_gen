@@ -2,6 +2,7 @@
 ///
 /// Function definitions can reference multiple function definition versions. All function definition versions      must be associated with a function definition. Each function definition version can contain one or more functions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnFunctionDefinition {
     ///
     /// The function definition version to include when the function definition is created.          A function definition version contains a list of          function property types.
@@ -14,7 +15,7 @@ pub struct CfnFunctionDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub initial_version: Option<FunctionDefinitionVersion>,
 
     ///
@@ -41,7 +42,7 @@ pub struct CfnFunctionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -111,6 +112,7 @@ impl cfn_resources::CfnResource for CfnFunctionDefinition {
 ///
 /// In an AWS CloudFormation template,      DefaultConfig is a property of the FunctionDefinitionVersion 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DefaultConfig {
     ///
     /// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
@@ -144,6 +146,7 @@ impl cfn_resources::CfnResource for DefaultConfig {
 ///
 /// In an AWS CloudFormation template,      Environment is a property of the FunctionConfiguration 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Environment {
     ///
     /// Indicates whether the function is allowed to access the /sys directory on the core device, which allows the 				 read device information from /sys.
@@ -156,7 +159,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessSysfs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub access_sysfs: Option<bool>,
 
     ///
@@ -168,7 +171,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Execution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub execution: Option<Execution>,
 
     ///
@@ -182,7 +185,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceAccessPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub resource_access_policies: Option<Vec<ResourceAccessPolicy>>,
 
     ///
@@ -194,7 +197,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Variables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub variables: Option<serde_json::Value>,
 }
 
@@ -220,6 +223,7 @@ impl cfn_resources::CfnResource for Environment {
 ///
 /// In an AWS CloudFormation template,      Execution is a property of the DefaultConfig property type for a function definition version and      the 		 Environment property type for a function.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Execution {
     ///
     /// The containerization that the Lambda function runs in.           Valid values are GreengrassContainer or NoContainer. Typically, this is GreengrassContainer.           For more information,           see Containerization in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -234,7 +238,7 @@ pub struct Execution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub isolation_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -250,7 +254,7 @@ pub struct Execution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RunAs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub run_as: Option<RunAs>,
 }
 
@@ -274,6 +278,7 @@ impl cfn_resources::CfnResource for Execution {
 ///
 /// In an AWS CloudFormation template, the Functions 		 property of the FunctionDefinitionVersion 		 property type contains a list of Function property types.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Function {
     ///
     /// The Amazon Resource Name (ARN) of the alias (recommended) or version of the referenced Lambda function.
@@ -329,6 +334,7 @@ impl cfn_resources::CfnResource for Function {
 ///
 /// In an AWS CloudFormation template,      FunctionConfiguration is a property of the Function 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunctionConfiguration {
     ///
     /// The expected encoding type of the input payload for the function. Valid values are json (default) and binary.
@@ -339,7 +345,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncodingType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub encoding_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -351,7 +357,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub environment: Option<Environment>,
 
     ///
@@ -363,7 +369,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub exec_args: Option<cfn_resources::StrVal>,
 
     ///
@@ -375,7 +381,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Executable")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub executable: Option<cfn_resources::StrVal>,
 
     ///
@@ -389,7 +395,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemorySize")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub memory_size: Option<i64>,
 
     ///
@@ -401,7 +407,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pinned")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub pinned: Option<bool>,
 
     ///
@@ -413,7 +419,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub timeout: Option<i64>,
 }
 
@@ -439,6 +445,7 @@ impl cfn_resources::CfnResource for FunctionConfiguration {
 ///
 /// In an AWS CloudFormation template, FunctionDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::FunctionDefinition resource.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct FunctionDefinitionVersion {
     ///
     /// The default configuration that applies to all Lambda functions in the group. Individual Lambda functions can override these settings.
@@ -449,7 +456,7 @@ pub struct FunctionDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DefaultConfig")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub default_config: Option<DefaultConfig>,
 
     ///
@@ -486,6 +493,7 @@ impl cfn_resources::CfnResource for FunctionDefinitionVersion {
 ///
 /// In an AWS CloudFormation template,      ResourceAccessPolicy is a property of the Environment 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResourceAccessPolicy {
     ///
     /// The read-only or read-write access that the Lambda function has to the resource. 				 Valid values are ro or rw.
@@ -496,7 +504,7 @@ pub struct ResourceAccessPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub permission: Option<cfn_resources::StrVal>,
 
     ///
@@ -529,6 +537,7 @@ impl cfn_resources::CfnResource for ResourceAccessPolicy {
 ///
 /// In an AWS CloudFormation template,      RunAs is a property of the Execution 		 property type.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RunAs {
     ///
     /// The group ID whose permissions are used to run the Lambda function. You can use the getent group 				 command on your core device to look up the group ID.
@@ -539,7 +548,7 @@ pub struct RunAs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Gid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub gid: Option<i64>,
 
     ///
@@ -551,7 +560,7 @@ pub struct RunAs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Uid")]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
     pub uid: Option<i64>,
 }
 

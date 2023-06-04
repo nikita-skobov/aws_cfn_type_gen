@@ -1,5 +1,6 @@
 /// Describes Infrastructure Performance subscriptions.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// The Region or Availability Zone that's the target for the subscription. For example, eu-west-1.
