@@ -11,7 +11,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Blackhole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blackhole: Option<bool>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationCidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnTransitGatewayRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayAttachmentId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_attachment_id: Option<cfn_resources::StrVal>,
 
     ///

@@ -76,7 +76,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +88,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +100,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -114,7 +114,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatusCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -128,7 +128,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<LocationTypeEnum>,
 }
 

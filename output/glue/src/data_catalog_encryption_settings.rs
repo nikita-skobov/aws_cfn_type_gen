@@ -60,7 +60,7 @@ pub struct ConnectionPasswordEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +72,7 @@ pub struct ConnectionPasswordEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnConnectionPasswordEncrypted")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub return_connection_password_encrypted: Option<bool>,
 }
 
@@ -103,7 +103,7 @@ pub struct DataCatalogEncryptionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPasswordEncryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_password_encryption: Option<ConnectionPasswordEncryption>,
 
     ///
@@ -115,7 +115,7 @@ pub struct DataCatalogEncryptionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionAtRest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_at_rest: Option<EncryptionAtRest>,
 }
 
@@ -156,7 +156,7 @@ pub struct EncryptionAtRest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogEncryptionMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_encryption_mode: Option<EncryptionAtRestCatalogEncryptionModeEnum>,
 
     ///
@@ -174,7 +174,7 @@ pub struct EncryptionAtRest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SseAwsKmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sse_aws_kms_key_id: Option<cfn_resources::StrVal>,
 }
 

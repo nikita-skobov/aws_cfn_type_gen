@@ -28,7 +28,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCredentials")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_credentials: Option<ServerCredentials>,
 
     ///
@@ -98,7 +98,7 @@ pub struct CfnStorageSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -248,7 +248,7 @@ pub struct ServerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_port: Option<i64>,
 }
 

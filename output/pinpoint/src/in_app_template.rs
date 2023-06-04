@@ -11,7 +11,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content: Option<Vec<InAppMessageContent>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_config: Option<serde_json::Value>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub layout: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnInAppTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -116,7 +116,7 @@ pub struct BodyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alignment: Option<cfn_resources::StrVal>,
 
     ///
@@ -128,7 +128,7 @@ pub struct BodyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<cfn_resources::StrVal>,
 
     ///
@@ -140,7 +140,7 @@ pub struct BodyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<cfn_resources::StrVal>,
 }
 
@@ -171,7 +171,7 @@ pub struct ButtonConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Android")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub android: Option<OverrideButtonConfiguration>,
 
     ///
@@ -183,7 +183,7 @@ pub struct ButtonConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_config: Option<DefaultButtonConfiguration>,
 
     ///
@@ -195,7 +195,7 @@ pub struct ButtonConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IOS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ios: Option<OverrideButtonConfiguration>,
 
     ///
@@ -207,7 +207,7 @@ pub struct ButtonConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Web")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web: Option<OverrideButtonConfiguration>,
 }
 
@@ -248,7 +248,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -260,7 +260,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderRadius")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_radius: Option<i64>,
 
     ///
@@ -274,7 +274,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ButtonAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub button_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -286,7 +286,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Link")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link: Option<cfn_resources::StrVal>,
 
     ///
@@ -298,7 +298,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<cfn_resources::StrVal>,
 
     ///
@@ -310,7 +310,7 @@ pub struct DefaultButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<cfn_resources::StrVal>,
 }
 
@@ -341,7 +341,7 @@ pub struct HeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alignment: Option<cfn_resources::StrVal>,
 
     ///
@@ -353,7 +353,7 @@ pub struct HeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header: Option<cfn_resources::StrVal>,
 
     ///
@@ -365,7 +365,7 @@ pub struct HeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<cfn_resources::StrVal>,
 }
 
@@ -396,7 +396,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -408,7 +408,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BodyConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body_config: Option<BodyConfig>,
 
     ///
@@ -420,7 +420,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_config: Option<HeaderConfig>,
 
     ///
@@ -432,7 +432,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -444,7 +444,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryBtn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_btn: Option<ButtonConfig>,
 
     ///
@@ -456,7 +456,7 @@ pub struct InAppMessageContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryBtn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_btn: Option<ButtonConfig>,
 }
 
@@ -505,7 +505,7 @@ pub struct OverrideButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ButtonAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub button_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -517,7 +517,7 @@ pub struct OverrideButtonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Link")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link: Option<cfn_resources::StrVal>,
 }
 

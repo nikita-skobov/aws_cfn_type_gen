@@ -28,7 +28,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirstName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub first_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LastName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +60,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MessageAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_action: Option<UserMessageActionEnum>,
 
     ///

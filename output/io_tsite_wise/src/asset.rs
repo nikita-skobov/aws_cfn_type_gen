@@ -11,7 +11,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetHierarchies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_properties: Option<Vec<AssetProperty>>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -171,7 +171,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -200,7 +200,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationState")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_state: Option<cfn_resources::StrVal>,
 
     ///
@@ -212,7 +212,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 

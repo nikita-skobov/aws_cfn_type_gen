@@ -25,7 +25,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<ServerDomainEnum>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_details: Option<EndpointDetails>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_type: Option<ServerEndpointTypeEnum>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityProviderDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_provider_details: Option<IdentityProviderDetails>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityProviderType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_provider_type: Option<ServerIdentityProviderTypeEnum>,
 
     ///
@@ -115,7 +115,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostAuthenticationLoginBanner")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub post_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +151,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreAuthenticationLoginBanner")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_authentication_login_banner: Option<cfn_resources::StrVal>,
 
     ///
@@ -165,7 +165,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProtocolDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol_details: Option<ProtocolDetails>,
 
     ///
@@ -183,7 +183,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocols: Option<Vec<Protocol>>,
 
     ///
@@ -199,7 +199,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicyName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_policy_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -227,7 +227,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkflowDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workflow_details: Option<WorkflowDetails>,
 
     #[serde(skip_serializing)]
@@ -455,7 +455,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AddressAllocationIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address_allocation_ids: Option<Vec<String>>,
 
     ///
@@ -469,7 +469,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -483,7 +483,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -503,7 +503,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -517,7 +517,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
@@ -576,7 +576,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub directory_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -594,7 +594,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Function")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function: Option<cfn_resources::StrVal>,
 
     ///
@@ -612,7 +612,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -628,7 +628,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SftpAuthenticationMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sftp_authentication_methods: Option<IdentityProviderDetailsSftpAuthenticationMethodsEnum>,
 
     ///
@@ -642,7 +642,7 @@ pub struct IdentityProviderDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<cfn_resources::StrVal>,
 }
 
@@ -796,7 +796,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "As2Transports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub as2_transports: Option<Vec<As2Transport>>,
 
     ///
@@ -820,7 +820,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassiveIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passive_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -840,7 +840,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetStatOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_stat_option: Option<ProtocolDetailsSetStatOptionEnum>,
 
     ///
@@ -856,7 +856,7 @@ pub struct ProtocolDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsSessionResumptionMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_session_resumption_mode: Option<ProtocolDetailsTlsSessionResumptionModeEnum>,
 }
 
@@ -1093,7 +1093,7 @@ pub struct WorkflowDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPartialUpload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_partial_upload: Option<Vec<WorkflowDetail>>,
 
     ///
@@ -1111,7 +1111,7 @@ pub struct WorkflowDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUpload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_upload: Option<Vec<WorkflowDetail>>,
 }
 

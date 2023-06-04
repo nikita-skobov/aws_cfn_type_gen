@@ -17,7 +17,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLifecycleConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_lifecycle_config: Option<ApplicationResourceLifecycleConfig>,
 }
 
@@ -115,7 +115,7 @@ pub struct ApplicationResourceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -127,7 +127,7 @@ pub struct ApplicationResourceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionLifecycleConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_lifecycle_config: Option<ApplicationVersionLifecycleConfig>,
 }
 
@@ -166,7 +166,7 @@ pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAgeRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_age_rule: Option<MaxAgeRule>,
 
     ///
@@ -178,7 +178,7 @@ pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCountRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_count_rule: Option<MaxCountRule>,
 }
 
@@ -219,7 +219,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteSourceFromS3")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_source_from_s3: Option<bool>,
 
     ///
@@ -231,7 +231,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -243,7 +243,7 @@ pub struct MaxAgeRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAgeInDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_age_in_days: Option<i64>,
 }
 
@@ -276,7 +276,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteSourceFromS3")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_source_from_s3: Option<bool>,
 
     ///
@@ -288,7 +288,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -300,7 +300,7 @@ pub struct MaxCountRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_count: Option<i64>,
 }
 

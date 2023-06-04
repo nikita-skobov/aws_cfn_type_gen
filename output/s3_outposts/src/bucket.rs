@@ -28,7 +28,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_configuration: Option<LifecycleConfiguration>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -132,7 +132,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AndOperator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub and_operator: Option<FilterAndOperator>,
 
     /// Property description not available.
@@ -143,7 +143,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -154,7 +154,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<FilterTag>,
 }
 
@@ -190,7 +190,7 @@ pub struct FilterAndOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -300,7 +300,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AbortIncompleteMultipartUpload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
 
     ///
@@ -312,7 +312,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expiration_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +324,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationInDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expiration_in_days: Option<i64>,
 
     ///
@@ -336,7 +336,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Filter>,
 
     ///
@@ -348,7 +348,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///

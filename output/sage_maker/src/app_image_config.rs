@@ -26,7 +26,7 @@ pub struct CfnAppImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayImageConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_gateway_image_config: Option<KernelGatewayImageConfig>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnAppImageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -101,7 +101,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultGid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_gid: Option<i64>,
 
     ///
@@ -117,7 +117,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultUid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_uid: Option<i64>,
 
     ///
@@ -133,7 +133,7 @@ pub struct FileSystemConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_path: Option<cfn_resources::StrVal>,
 }
 
@@ -211,7 +211,7 @@ pub struct KernelGatewayImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_config: Option<FileSystemConfig>,
 
     ///
@@ -270,7 +270,7 @@ pub struct KernelSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///

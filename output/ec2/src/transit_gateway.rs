@@ -19,7 +19,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmazonSideAsn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_side_asn: Option<i64>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociationDefaultRouteTableId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub association_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoAcceptSharedAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_accept_shared_attachments: Option<TransitGatewayAutoAcceptSharedAttachmentsEnum>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteTableAssociation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_route_table_association: Option<TransitGatewayDefaultRouteTableAssociationEnum>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteTablePropagation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_route_table_propagation: Option<TransitGatewayDefaultRouteTablePropagationEnum>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_support: Option<TransitGatewayDnsSupportEnum>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MulticastSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multicast_support: Option<TransitGatewayMulticastSupportEnum>,
 
     ///
@@ -125,7 +125,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagationDefaultRouteTableId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub propagation_default_route_table_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +137,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -149,7 +149,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayCidrBlocks")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_cidr_blocks: Option<Vec<String>>,
 
     ///
@@ -163,7 +163,7 @@ pub struct CfnTransitGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnEcmpSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
 
     #[serde(skip_serializing)]

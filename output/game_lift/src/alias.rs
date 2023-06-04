@@ -15,7 +15,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +133,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FleetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fleet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -145,7 +145,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<cfn_resources::StrVal>,
 
     ///

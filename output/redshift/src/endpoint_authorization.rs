@@ -37,7 +37,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Force")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub force: Option<bool>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnEndpointAuthorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]

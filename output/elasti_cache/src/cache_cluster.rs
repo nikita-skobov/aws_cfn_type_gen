@@ -17,7 +17,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AZMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub azmode: Option<CacheClusterAZModeEnum>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheSecurityGroupNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_security_group_names: Option<Vec<String>>,
 
     ///
@@ -92,7 +92,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpDiscovery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_discovery: Option<CacheClusterIpDiscoveryEnum>,
 
     /// Specifies the destination, format and type of the logs.
@@ -158,7 +158,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
 
     ///
@@ -172,7 +172,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_type: Option<CacheClusterNetworkTypeEnum>,
 
     ///
@@ -186,7 +186,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -211,7 +211,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -227,7 +227,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredAvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -247,7 +247,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PreferredAvailabilityZones")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_availability_zones: Option<Vec<String>>,
 
     ///
@@ -267,7 +267,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -283,7 +283,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_arns: Option<Vec<String>>,
 
     ///
@@ -297,7 +297,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -313,7 +313,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotRetentionLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_retention_limit: Option<i64>,
 
     ///
@@ -331,7 +331,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -343,7 +343,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -355,7 +355,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption_enabled: Option<bool>,
 
     ///
@@ -369,7 +369,7 @@ pub struct CfnCacheCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -527,7 +527,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
 
     /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
@@ -538,7 +538,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
 }
 

@@ -36,7 +36,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProviderType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider_type: Option<ConnectionProviderTypeEnum>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

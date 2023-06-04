@@ -13,7 +13,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<ConfigurationId>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_options: Option<EncryptionOptions>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LdapServerMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ldap_server_metadata: Option<LdapServerMetadata>,
 
     ///
@@ -131,7 +131,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logs: Option<LogList>,
 
     ///
@@ -143,7 +143,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowStartTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_window_start_time: Option<MaintenanceWindow>,
 
     ///
@@ -166,7 +166,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -178,7 +178,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -192,7 +192,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -204,7 +204,7 @@ pub struct CfnBroker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///
@@ -327,7 +327,7 @@ pub struct EncryptionOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -390,7 +390,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -412,7 +412,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleSearchSubtree")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_search_subtree: Option<bool>,
 
     /// Service account password. A service account is an account in your LDAP server that has access to initiate a connection. For example,   cn=admin,dc=corp, dc=example, dc=com.
@@ -456,7 +456,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserRoleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -479,7 +479,7 @@ pub struct LdapServerMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSearchSubtree")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_search_subtree: Option<bool>,
 }
 
@@ -510,7 +510,7 @@ pub struct LogList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Audit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audit: Option<bool>,
 
     ///
@@ -522,7 +522,7 @@ pub struct LogList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "General")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub general: Option<bool>,
 }
 
@@ -646,7 +646,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsoleAccess")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub console_access: Option<bool>,
 
     ///
@@ -658,7 +658,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///

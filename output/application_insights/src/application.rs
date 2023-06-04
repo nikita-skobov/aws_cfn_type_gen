@@ -11,7 +11,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoConfigurationEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_configuration_enabled: Option<bool>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CWEMonitorEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cwemonitor_enabled: Option<bool>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentMonitoringSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_monitoring_settings: Option<Vec<ComponentMonitoringSetting>>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomComponents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_components: Option<Vec<CustomComponent>>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupingType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grouping_type: Option<ApplicationGroupingTypeEnum>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPatternSets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_pattern_sets: Option<Vec<LogPatternSet>>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpsCenterEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ops_center_enabled: Option<bool>,
 
     ///
@@ -103,7 +103,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpsItemSNSTopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ops_item_snstopic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -236,7 +236,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub severity: Option<cfn_resources::StrVal>,
 }
 
@@ -297,7 +297,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_details: Option<ConfigurationDetails>,
 
     ///
@@ -309,7 +309,7 @@ pub struct ComponentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubComponentTypeConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sub_component_type_configurations: Option<Vec<SubComponentTypeConfiguration>>,
 }
 
@@ -344,7 +344,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -369,7 +369,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -381,7 +381,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomComponentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_component_configuration: Option<ComponentConfiguration>,
 
     ///
@@ -393,7 +393,7 @@ pub struct ComponentMonitoringSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultOverwriteComponentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_overwrite_component_configuration: Option<ComponentConfiguration>,
 
     ///
@@ -443,7 +443,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
     ///
@@ -455,7 +455,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarms: Option<Vec<Alarm>>,
 
     ///
@@ -467,7 +467,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HAClusterPrometheusExporter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hacluster_prometheus_exporter: Option<HAClusterPrometheusExporter>,
 
     ///
@@ -479,7 +479,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HANAPrometheusExporter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hanaprometheus_exporter: Option<HANAPrometheusExporter>,
 
     ///
@@ -491,7 +491,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JMXPrometheusExporter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jmxprometheus_exporter: Option<JMXPrometheusExporter>,
 
     ///
@@ -503,7 +503,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logs: Option<Vec<Log>>,
 
     ///
@@ -515,7 +515,7 @@ pub struct ConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub windows_events: Option<Vec<WindowsEvent>>,
 }
 
@@ -627,7 +627,7 @@ pub struct HAClusterPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -702,7 +702,7 @@ pub struct HANAPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -733,7 +733,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_port: Option<cfn_resources::StrVal>,
 
     ///
@@ -745,7 +745,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JMXURL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jmxurl: Option<cfn_resources::StrVal>,
 
     ///
@@ -757,7 +757,7 @@ pub struct JMXPrometheusExporter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prometheus_port: Option<cfn_resources::StrVal>,
 }
 
@@ -790,7 +790,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encoding")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -802,7 +802,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -814,7 +814,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -837,7 +837,7 @@ pub struct Log {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern_set: Option<cfn_resources::StrVal>,
 }
 
@@ -1045,7 +1045,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
     ///
@@ -1057,7 +1057,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logs: Option<Vec<Log>>,
 
     ///
@@ -1069,7 +1069,7 @@ pub struct SubComponentConfigurationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub windows_events: Option<Vec<WindowsEvent>>,
 }
 
@@ -1221,7 +1221,7 @@ pub struct WindowsEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern_set: Option<cfn_resources::StrVal>,
 }
 

@@ -15,7 +15,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_policy: Option<serde_json::Value>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupVaultTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_vault_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -54,7 +54,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +66,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LockConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lock_configuration: Option<LockConfigurationType>,
 
     ///
@@ -78,7 +78,7 @@ pub struct CfnBackupVault {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Notifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notifications: Option<NotificationObjectType>,
 
     #[serde(skip_serializing)]
@@ -145,7 +145,7 @@ pub struct LockConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChangeableForDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub changeable_for_days: Option<i64>,
 
     ///
@@ -161,7 +161,7 @@ pub struct LockConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetentionDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_retention_days: Option<i64>,
 
     ///

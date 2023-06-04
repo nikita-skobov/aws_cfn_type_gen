@@ -24,7 +24,7 @@ pub struct CfnBudget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationsWithSubscribers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notifications_with_subscribers: Option<Vec<NotificationWithSubscribers>>,
 }
 
@@ -72,7 +72,7 @@ pub struct AutoAdjustData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistoricalOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub historical_options: Option<HistoricalOptions>,
 }
 
@@ -110,7 +110,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoAdjustData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_adjust_data: Option<AutoAdjustData>,
 
     ///
@@ -124,7 +124,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BudgetLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub budget_limit: Option<Spend>,
 
     ///
@@ -136,7 +136,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BudgetName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub budget_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -165,7 +165,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CostFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cost_filters: Option<serde_json::Value>,
 
     ///
@@ -179,7 +179,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CostTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cost_types: Option<CostTypes>,
 
     ///
@@ -205,7 +205,7 @@ pub struct BudgetData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlannedBudgetLimits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub planned_budget_limits: Option<serde_json::Value>,
 
     ///
@@ -223,7 +223,7 @@ pub struct BudgetData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimePeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_period: Option<TimePeriod>,
 
     ///
@@ -345,7 +345,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeCredit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_credit: Option<bool>,
 
     ///
@@ -359,7 +359,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDiscount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_discount: Option<bool>,
 
     ///
@@ -373,7 +373,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeOtherSubscription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_other_subscription: Option<bool>,
 
     ///
@@ -387,7 +387,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRecurring")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_recurring: Option<bool>,
 
     ///
@@ -401,7 +401,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRefund")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_refund: Option<bool>,
 
     ///
@@ -415,7 +415,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSubscription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_subscription: Option<bool>,
 
     ///
@@ -429,7 +429,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_support: Option<bool>,
 
     ///
@@ -443,7 +443,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTax")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_tax: Option<bool>,
 
     ///
@@ -457,7 +457,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeUpfront")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_upfront: Option<bool>,
 
     ///
@@ -471,7 +471,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAmortized")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_amortized: Option<bool>,
 
     ///
@@ -485,7 +485,7 @@ pub struct CostTypes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBlended")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_blended: Option<bool>,
 }
 
@@ -588,7 +588,7 @@ pub struct Notification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold_type: Option<NotificationThresholdTypeEnum>,
 }
 
@@ -837,7 +837,7 @@ pub struct TimePeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "End")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end: Option<cfn_resources::StrVal>,
 
     ///
@@ -855,7 +855,7 @@ pub struct TimePeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Start")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start: Option<cfn_resources::StrVal>,
 }
 

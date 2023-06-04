@@ -37,7 +37,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_configurations: Option<Vec<OptionConfiguration>>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OptionGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnOptionGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -113,7 +113,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBSecurityGroupMemberships")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbsecurity_group_memberships: Option<Vec<String>>,
 
     ///
@@ -136,7 +136,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_settings: Option<Vec<OptionSetting>>,
 
     ///
@@ -148,7 +148,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +160,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -172,7 +172,7 @@ pub struct OptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupMemberships")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_memberships: Option<Vec<String>>,
 }
 
@@ -203,7 +203,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -215,7 +215,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

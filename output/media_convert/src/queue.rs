@@ -11,7 +11,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]

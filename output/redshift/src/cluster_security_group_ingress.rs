@@ -19,7 +19,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CIDRIP")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidrip: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnClusterSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2SecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_owner_id: Option<cfn_resources::StrVal>,
 }
 

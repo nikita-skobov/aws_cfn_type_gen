@@ -17,7 +17,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeVersionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_version_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

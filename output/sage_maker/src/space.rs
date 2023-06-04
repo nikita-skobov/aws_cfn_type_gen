@@ -39,7 +39,7 @@ pub struct CfnSpace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpaceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub space_settings: Option<SpaceSettings>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnSpace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -166,7 +166,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_version_number: Option<i64>,
 }
 
@@ -239,7 +239,7 @@ pub struct JupyterServerAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -276,7 +276,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -290,7 +290,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -338,7 +338,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -354,7 +354,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -370,7 +370,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -666,7 +666,7 @@ pub struct SpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -678,7 +678,7 @@ pub struct SpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 }
 

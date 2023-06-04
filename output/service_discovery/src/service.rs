@@ -13,7 +13,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_config: Option<DnsConfig>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_config: Option<HealthCheckConfig>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthCheckCustomConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_custom_config: Option<HealthCheckCustomConfig>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnService {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ServiceTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -248,7 +248,7 @@ pub struct DnsConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -268,7 +268,7 @@ pub struct DnsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub routing_policy: Option<DnsConfigRoutingPolicyEnum>,
 }
 
@@ -415,7 +415,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_threshold: Option<f64>,
 
     ///
@@ -431,7 +431,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -545,7 +545,7 @@ pub struct HealthCheckCustomConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_threshold: Option<f64>,
 }
 

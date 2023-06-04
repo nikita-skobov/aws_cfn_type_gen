@@ -19,7 +19,7 @@ pub struct CfnCodeRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CodeRepositoryName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_repository_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnCodeRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -111,7 +111,7 @@ pub struct GitConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Branch")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub branch: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +144,7 @@ pub struct GitConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 

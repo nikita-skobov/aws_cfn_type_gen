@@ -11,7 +11,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Device")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<Box<Device>>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -112,7 +112,7 @@ pub struct Device {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -145,7 +145,7 @@ pub struct Device {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotThingName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_thing_name: Option<cfn_resources::StrVal>,
 }
 

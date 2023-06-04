@@ -17,7 +17,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IgnoreWords")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_words: Option<Vec<String>>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Keywords")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub keywords: Option<Vec<String>>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnCustomDataIdentifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumMatchDistance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_match_distance: Option<i64>,
 
     ///

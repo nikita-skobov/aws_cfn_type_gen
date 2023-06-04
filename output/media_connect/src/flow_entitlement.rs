@@ -11,7 +11,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataTransferSubscriberFeePercent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_transfer_subscriber_fee_percent: Option<i64>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<Encryption>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnFlowEntitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitlementStatus")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entitlement_status: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +136,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -148,7 +148,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +160,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -172,7 +172,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -184,7 +184,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -207,7 +207,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -219,7 +219,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<cfn_resources::StrVal>,
 }
 

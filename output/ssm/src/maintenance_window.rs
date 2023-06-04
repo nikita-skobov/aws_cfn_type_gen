@@ -43,7 +43,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -118,7 +118,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_offset: Option<i64>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleTimezone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +142,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +156,7 @@ pub struct CfnMaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

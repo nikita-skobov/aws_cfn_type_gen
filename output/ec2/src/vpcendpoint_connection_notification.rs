@@ -35,7 +35,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VPCEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcendpoint_id: Option<cfn_resources::StrVal>,
 }
 

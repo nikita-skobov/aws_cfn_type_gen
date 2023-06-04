@@ -41,7 +41,7 @@ pub struct CfnAccountAuditConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditNotificationTargetConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audit_notification_target_configurations: Option<AuditNotificationTargetConfigurations>,
 
     ///
@@ -89,7 +89,7 @@ pub struct AuditCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -120,7 +120,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticatedCognitoRoleOverlyPermissiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authenticated_cognito_role_overly_permissive_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -132,7 +132,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaCertificateExpiringCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ca_certificate_expiring_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -144,7 +144,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaCertificateKeyQualityCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ca_certificate_key_quality_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -156,7 +156,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConflictingClientIdsCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conflicting_client_ids_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -168,7 +168,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceCertificateExpiringCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_certificate_expiring_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -180,7 +180,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceCertificateKeyQualityCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_certificate_key_quality_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -192,7 +192,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceCertificateSharedCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_certificate_shared_check: Option<AuditCheckConfiguration>,
 
     /// Property description not available.
@@ -203,7 +203,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntermediateCaRevokedForActiveDeviceCertificatesCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub intermediate_ca_revoked_for_active_device_certificates_check:
         Option<AuditCheckConfiguration>,
 
@@ -215,7 +215,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IoTPolicyPotentialMisConfigurationCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub io_tpolicy_potential_mis_configuration_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -227,7 +227,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotPolicyOverlyPermissiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_policy_overly_permissive_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -239,7 +239,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotRoleAliasAllowsAccessToUnusedServicesCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_role_alias_allows_access_to_unused_services_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -251,7 +251,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotRoleAliasOverlyPermissiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_role_alias_overly_permissive_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -263,7 +263,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingDisabledCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_disabled_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -275,7 +275,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevokedCaCertificateStillActiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revoked_ca_certificate_still_active_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -287,7 +287,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevokedDeviceCertificateStillActiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revoked_device_certificate_still_active_check: Option<AuditCheckConfiguration>,
 
     ///
@@ -299,7 +299,7 @@ pub struct AuditCheckConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnauthenticatedCognitoRoleOverlyPermissiveCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unauthenticated_cognito_role_overly_permissive_check: Option<AuditCheckConfiguration>,
 }
 
@@ -394,7 +394,7 @@ pub struct AuditNotificationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -406,7 +406,7 @@ pub struct AuditNotificationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -418,7 +418,7 @@ pub struct AuditNotificationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -449,7 +449,7 @@ pub struct AuditNotificationTargetConfigurations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns: Option<AuditNotificationTarget>,
 }
 

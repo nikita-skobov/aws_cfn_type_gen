@@ -22,7 +22,7 @@ pub struct CfnStorageLens {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -67,7 +67,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivityMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub activity_metrics: Option<ActivityMetrics>,
 
     ///
@@ -79,7 +79,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
     ///
@@ -91,7 +91,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedDataProtectionMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
     ///
@@ -114,7 +114,7 @@ pub struct AccountLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedStatusCodesMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
 }
 
@@ -165,7 +165,7 @@ pub struct ActivityMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
 }
 
@@ -198,7 +198,7 @@ pub struct AdvancedCostOptimizationMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
 }
 
@@ -231,7 +231,7 @@ pub struct AdvancedDataProtectionMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
 }
 
@@ -292,7 +292,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActivityMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub activity_metrics: Option<ActivityMetrics>,
 
     ///
@@ -304,7 +304,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
     ///
@@ -316,7 +316,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedDataProtectionMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
     ///
@@ -328,7 +328,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedStatusCodesMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
 
     ///
@@ -340,7 +340,7 @@ pub struct BucketLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_level: Option<PrefixLevel>,
 }
 
@@ -391,7 +391,7 @@ pub struct BucketsAndRegions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Buckets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buckets: Option<Vec<String>>,
 
     ///
@@ -403,7 +403,7 @@ pub struct BucketsAndRegions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regions: Option<Vec<String>>,
 }
 
@@ -466,7 +466,7 @@ pub struct DataExport {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchMetrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_metrics: Option<CloudWatchMetrics>,
 
     ///
@@ -478,7 +478,7 @@ pub struct DataExport {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_destination: Option<S3BucketDestination>,
 }
 
@@ -519,7 +519,7 @@ pub struct DetailedStatusCodesMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
 }
 
@@ -550,7 +550,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEKMS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssekms: Option<SSEKMS>,
 
     ///
@@ -562,7 +562,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSES3")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sses3: Option<serde_json::Value>,
 }
 
@@ -627,7 +627,7 @@ pub struct PrefixLevelStorageMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
 
     ///
@@ -639,7 +639,7 @@ pub struct PrefixLevelStorageMetrics {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectionCriteria")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selection_criteria: Option<SelectionCriteria>,
 }
 
@@ -696,7 +696,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<Encryption>,
 
     ///
@@ -730,7 +730,7 @@ pub struct S3BucketDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -795,7 +795,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -807,7 +807,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxDepth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_depth: Option<i64>,
 
     ///
@@ -819,7 +819,7 @@ pub struct SelectionCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinStorageBytesPercentage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_storage_bytes_percentage: Option<f64>,
 }
 
@@ -861,7 +861,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsOrg")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_org: Option<AwsOrg>,
 
     ///
@@ -873,7 +873,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataExport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_export: Option<DataExport>,
 
     ///
@@ -885,7 +885,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclude")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude: Option<BucketsAndRegions>,
 
     ///
@@ -908,7 +908,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Include")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include: Option<BucketsAndRegions>,
 
     ///
@@ -931,7 +931,7 @@ pub struct StorageLensConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageLensArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_lens_arn: Option<cfn_resources::StrVal>,
 }
 

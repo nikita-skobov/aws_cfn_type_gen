@@ -34,7 +34,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -89,7 +89,7 @@ pub struct VpcConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 

@@ -17,7 +17,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedPattern")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policies: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tier: Option<ParameterTierEnum>,
 
     ///

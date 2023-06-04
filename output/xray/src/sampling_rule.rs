@@ -13,7 +13,7 @@ pub struct CfnSamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sampling_rule: Option<Box<SamplingRule>>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnSamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -77,7 +77,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -169,7 +169,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -185,7 +185,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -238,7 +238,7 @@ pub struct SamplingRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<i64>,
 }
 

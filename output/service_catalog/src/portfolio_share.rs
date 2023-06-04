@@ -15,7 +15,7 @@ pub struct CfnPortfolioShare {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceptLanguage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnPortfolioShare {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareTagOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_tag_options: Option<bool>,
 }
 

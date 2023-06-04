@@ -13,7 +13,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ContainerServiceDeployment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_service_deployment: Option<ContainerServiceDeployment>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsDisabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_disabled: Option<bool>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicDomainNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_domain_names: Option<Vec<PublicDomainName>>,
 
     ///
@@ -102,7 +102,7 @@ pub struct CfnContainer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -210,7 +210,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -222,7 +222,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +234,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -250,7 +250,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Image")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image: Option<cfn_resources::StrVal>,
 
     ///
@@ -262,7 +262,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<PortInfo>>,
 }
 
@@ -295,7 +295,7 @@ pub struct ContainerServiceDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Containers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub containers: Option<Vec<Container>>,
 
     ///
@@ -307,7 +307,7 @@ pub struct ContainerServiceDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicEndpoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_endpoint: Option<PublicEndpoint>,
 }
 
@@ -342,7 +342,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 
     ///
@@ -354,7 +354,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variable: Option<cfn_resources::StrVal>,
 }
 
@@ -385,7 +385,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub healthy_threshold: Option<i64>,
 
     ///
@@ -397,7 +397,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_seconds: Option<i64>,
 
     ///
@@ -409,7 +409,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -421,7 +421,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessCodes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_codes: Option<cfn_resources::StrVal>,
 
     ///
@@ -433,7 +433,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_seconds: Option<i64>,
 
     ///
@@ -445,7 +445,7 @@ pub struct HealthCheckConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unhealthy_threshold: Option<i64>,
 }
 
@@ -476,7 +476,7 @@ pub struct PortInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -490,7 +490,7 @@ pub struct PortInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<PortInfoProtocolEnum>,
 }
 
@@ -546,7 +546,7 @@ pub struct PublicDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -558,7 +558,7 @@ pub struct PublicDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_names: Option<Vec<String>>,
 }
 
@@ -589,7 +589,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -601,7 +601,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_port: Option<i64>,
 
     ///
@@ -613,7 +613,7 @@ pub struct PublicEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_config: Option<HealthCheckConfig>,
 }
 

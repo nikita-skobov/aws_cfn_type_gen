@@ -104,7 +104,7 @@ pub struct HadoopJarStepConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Args")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub args: Option<Vec<String>>,
 
     ///
@@ -139,7 +139,7 @@ pub struct HadoopJarStepConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MainClass")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub main_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +151,7 @@ pub struct HadoopJarStepConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StepProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_properties: Option<Vec<KeyValue>>,
 }
 
@@ -232,7 +232,7 @@ pub struct KeyValue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -250,7 +250,7 @@ pub struct KeyValue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

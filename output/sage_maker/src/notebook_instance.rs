@@ -13,7 +13,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalCodeRepositories")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_code_repositories: Option<Vec<String>>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultCodeRepository")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_code_repository: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DirectInternetAccess")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub direct_internet_access: Option<NotebookInstanceDirectInternetAccessEnum>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataServiceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_metadata_service_configuration: Option<InstanceMetadataServiceConfiguration>,
 
     ///
@@ -104,7 +104,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleConfigName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -136,7 +136,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotebookInstanceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notebook_instance_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +152,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -187,7 +187,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootAccess")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_access: Option<NotebookInstanceRootAccessEnum>,
 
     ///
@@ -201,7 +201,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -217,7 +217,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -235,7 +235,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -253,7 +253,7 @@ pub struct CfnNotebookInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSizeInGB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size_in_gb: Option<i64>,
 
     #[serde(skip_serializing)]

@@ -35,7 +35,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_options: Option<LoadBalancerOptions>,
 
     ///
@@ -94,7 +94,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_options: Option<NetworkInterfaceOptions>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_document: Option<cfn_resources::StrVal>,
 
     ///
@@ -118,7 +118,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_enabled: Option<bool>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -142,7 +142,7 @@ pub struct CfnVerifiedAccessEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -299,7 +299,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -315,7 +315,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -329,7 +329,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<LoadBalancerOptionsProtocolEnum>,
 
     ///
@@ -341,7 +341,7 @@ pub struct LoadBalancerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -407,7 +407,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -423,7 +423,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -437,7 +437,7 @@ pub struct NetworkInterfaceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
 }
 

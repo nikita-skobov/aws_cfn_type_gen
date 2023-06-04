@@ -15,7 +15,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_config: Option<DestinationConfig>,
 
     ///
@@ -48,7 +48,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumEventAgeInSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_event_age_in_seconds: Option<i64>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnEventInvokeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_retry_attempts: Option<i64>,
 
     ///
@@ -192,7 +192,7 @@ pub struct DestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnFailure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_failure: Option<OnFailure>,
 
     ///
@@ -204,7 +204,7 @@ pub struct DestinationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnSuccess")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_success: Option<OnSuccess>,
 }
 

@@ -15,7 +15,7 @@ pub struct CfnFirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnFirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -158,7 +158,7 @@ pub struct ActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishMetricAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publish_metric_action: Option<PublishMetricAction>,
 }
 
@@ -330,7 +330,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyVariables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_variables: Option<PolicyVariables>,
 
     ///
@@ -348,7 +348,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulDefaultActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateful_default_actions: Option<Vec<String>>,
 
     ///
@@ -360,7 +360,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulEngineOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateful_engine_options: Option<StatefulEngineOptions>,
 
     ///
@@ -372,7 +372,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRuleGroupReferences")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateful_rule_group_references: Option<Vec<StatefulRuleGroupReference>>,
 
     ///
@@ -384,7 +384,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessCustomActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateless_custom_actions: Option<Vec<CustomAction>>,
 
     ///
@@ -426,7 +426,7 @@ pub struct FirewallPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessRuleGroupReferences")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateless_rule_group_references: Option<Vec<StatelessRuleGroupReference>>,
 }
 
@@ -465,7 +465,7 @@ pub struct IPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -496,7 +496,7 @@ pub struct PolicyVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleVariables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_variables: Option<std::collections::HashMap<String, IPSet>>,
 }
 
@@ -570,7 +570,7 @@ pub struct StatefulEngineOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleOrder")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_order: Option<StatefulEngineOptionsRuleOrderEnum>,
 
     ///
@@ -586,7 +586,7 @@ pub struct StatefulEngineOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamExceptionPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_exception_policy: Option<StatefulEngineOptionsStreamExceptionPolicyEnum>,
 }
 
@@ -657,7 +657,7 @@ pub struct StatefulRuleGroupOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<StatefulRuleGroupOverrideActionEnum>,
 }
 
@@ -701,7 +701,7 @@ pub struct StatefulRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Override")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_override: Option<StatefulRuleGroupOverride>,
 
     ///
@@ -721,7 +721,7 @@ pub struct StatefulRuleGroupReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///

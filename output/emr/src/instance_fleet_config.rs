@@ -37,7 +37,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypeConfigs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type_configs: Option<Vec<InstanceTypeConfig>>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchSpecifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_specifications: Option<InstanceFleetProvisioningSpecifications>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetOnDemandCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_on_demand_capacity: Option<i64>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnInstanceFleetConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetSpotCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_spot_capacity: Option<i64>,
 }
 
@@ -187,7 +187,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Classification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classification: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +199,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -211,7 +211,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configurations: Option<Vec<Configuration>>,
 }
 
@@ -253,7 +253,7 @@ pub struct EbsBlockDeviceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumesPerInstance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes_per_instance: Option<i64>,
 }
 
@@ -286,7 +286,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsBlockDeviceConfigs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_block_device_configs: Option<Vec<EbsBlockDeviceConfig>>,
 
     ///
@@ -298,7 +298,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 }
 
@@ -331,7 +331,7 @@ pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_specification: Option<OnDemandProvisioningSpecification>,
 
     ///
@@ -343,7 +343,7 @@ pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_specification: Option<SpotProvisioningSpecification>,
 }
 
@@ -388,7 +388,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bid_price: Option<cfn_resources::StrVal>,
 
     ///
@@ -400,7 +400,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BidPriceAsPercentageOfOnDemandPrice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bid_price_as_percentage_of_on_demand_price: Option<f64>,
 
     ///
@@ -414,7 +414,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configurations: Option<Vec<Configuration>>,
 
     ///
@@ -432,7 +432,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_ami_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -444,7 +444,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_configuration: Option<EbsConfiguration>,
 
     ///
@@ -475,7 +475,7 @@ pub struct InstanceTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WeightedCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<i64>,
 }
 
@@ -632,7 +632,7 @@ pub struct SpotProvisioningSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_strategy: Option<SpotProvisioningSpecificationAllocationStrategyEnum>,
 
     ///
@@ -648,7 +648,7 @@ pub struct SpotProvisioningSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDurationMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_duration_minutes: Option<i64>,
 
     ///
@@ -753,7 +753,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///

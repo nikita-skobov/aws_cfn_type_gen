@@ -11,7 +11,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_policy: Option<serde_json::Value>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Endpoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_policy: Option<serde_json::Value>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterPolicyScope")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_policy_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +72,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RawMessageDelivery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub raw_message_delivery: Option<bool>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedrivePolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redrive_policy: Option<serde_json::Value>,
 
     ///
@@ -104,7 +104,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubscriptionRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_role_arn: Option<cfn_resources::StrVal>,
 
     ///

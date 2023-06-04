@@ -26,7 +26,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSubDomainCreationPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_sub_domain_creation_patterns: Option<Vec<String>>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSubDomainIAMRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_sub_domain_iamrole: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoSubDomain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_auto_sub_domain: Option<bool>,
 
     ///

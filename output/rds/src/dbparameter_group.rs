@@ -25,7 +25,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBParameterGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbparameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -89,7 +89,7 @@ pub struct CfnDBParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

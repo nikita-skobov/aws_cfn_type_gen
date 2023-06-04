@@ -11,7 +11,7 @@ pub struct CfnByteMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ByteMatchTuples")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub byte_match_tuples: Option<Vec<ByteMatchTuple>>,
 
     ///
@@ -135,7 +135,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +153,7 @@ pub struct ByteMatchTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetStringBase64")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_string_base64: Option<cfn_resources::StrVal>,
 
     ///
@@ -305,7 +305,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///

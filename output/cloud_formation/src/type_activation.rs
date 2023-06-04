@@ -15,7 +15,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoUpdate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_update: Option<bool>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggingConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_config: Option<LoggingConfig>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MajorVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub major_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicTypeArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_type_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublisherId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publisher_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<TypeActivationTypeEnum>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +153,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeNameAlias")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -169,7 +169,7 @@ pub struct CfnTypeActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionBump")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_bump: Option<TypeActivationVersionBumpEnum>,
 
     #[serde(skip_serializing)]
@@ -355,7 +355,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -373,7 +373,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 }
 

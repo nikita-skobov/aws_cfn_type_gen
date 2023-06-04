@@ -24,7 +24,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardrailPolicies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub guardrail_policies: Option<Vec<String>>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_arns: Option<Vec<String>>,
 
     ///
@@ -114,7 +114,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserRoleRequired")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_role_required: Option<bool>,
 
     #[serde(skip_serializing)]

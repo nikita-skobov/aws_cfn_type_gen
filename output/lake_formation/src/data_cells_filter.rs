@@ -11,7 +11,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnWildcard")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_wildcard: Option<ColumnWildcard>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnDataCellsFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RowFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_filter: Option<RowFilter>,
 
     ///
@@ -126,7 +126,7 @@ pub struct ColumnWildcard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludedColumnNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_column_names: Option<Vec<String>>,
 }
 
@@ -157,7 +157,7 @@ pub struct RowFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllRowsWildcard")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_rows_wildcard: Option<serde_json::Value>,
 
     ///
@@ -169,7 +169,7 @@ pub struct RowFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_expression: Option<cfn_resources::StrVal>,
 }
 

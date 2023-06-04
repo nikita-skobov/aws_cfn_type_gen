@@ -10,7 +10,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -21,7 +21,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<Vec<ThemeValues>>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -109,7 +109,7 @@ pub struct ThemeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<ThemeValues>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct ThemeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -152,7 +152,7 @@ pub struct ThemeValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +164,7 @@ pub struct ThemeValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<ThemeValue>,
 }
 

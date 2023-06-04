@@ -35,7 +35,7 @@ pub struct CfnApiCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AtRestEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub at_rest_encryption_enabled: Option<bool>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnApiCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption_enabled: Option<bool>,
 
     ///

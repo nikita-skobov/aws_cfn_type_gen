@@ -11,7 +11,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnRuleset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -93,7 +93,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -109,7 +109,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<cfn_resources::StrVal>,
 }
 
@@ -195,7 +195,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_selectors: Option<Vec<ColumnSelector>>,
 
     ///
@@ -207,7 +207,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disabled: Option<bool>,
 
     ///
@@ -230,7 +230,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubstitutionMap")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub substitution_map: Option<Vec<SubstitutionValue>>,
 
     ///
@@ -242,7 +242,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Threshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold: Option<Threshold>,
 }
 
@@ -363,7 +363,7 @@ pub struct Threshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -375,7 +375,7 @@ pub struct Threshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 
     ///

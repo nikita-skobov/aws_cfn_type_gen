@@ -11,7 +11,7 @@ pub struct CfnMitigationAction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnMitigationAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -100,7 +100,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddThingsToThingGroupParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_things_to_thing_group_params: Option<AddThingsToThingGroupParams>,
 
     ///
@@ -112,7 +112,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableIoTLoggingParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_io_tlogging_params: Option<EnableIoTLoggingParams>,
 
     ///
@@ -124,7 +124,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishFindingToSnsParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publish_finding_to_sns_params: Option<PublishFindingToSnsParams>,
 
     ///
@@ -136,7 +136,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceDefaultPolicyVersionParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_default_policy_version_params: Option<ReplaceDefaultPolicyVersionParams>,
 
     ///
@@ -148,7 +148,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateCACertificateParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub update_cacertificate_params: Option<UpdateCACertificateParams>,
 
     ///
@@ -160,7 +160,7 @@ pub struct ActionParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateDeviceCertificateParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub update_device_certificate_params: Option<UpdateDeviceCertificateParams>,
 }
 
@@ -215,7 +215,7 @@ pub struct AddThingsToThingGroupParams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverrideDynamicGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub override_dynamic_groups: Option<bool>,
 
     ///

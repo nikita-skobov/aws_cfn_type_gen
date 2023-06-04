@@ -17,7 +17,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GatewayLoadBalancerEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gateway_load_balancer_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkLoadBalancerArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_load_balancer_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -13,7 +13,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllocationStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceMatchCriteria")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_match_criteria: Option<CapacityReservationFleetInstanceMatchCriteriaEnum>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypeSpecifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type_specifications: Option<Vec<InstanceTypeSpecification>>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoRemoveEndDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_remove_end_date: Option<bool>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveEndDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_end_date: Option<bool>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<CapacityReservationFleetTenancyEnum>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnCapacityReservationFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalTargetCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_target_capacity: Option<i64>,
 
     #[serde(skip_serializing)]
@@ -189,7 +189,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -201,7 +201,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -227,7 +227,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstancePlatform")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_platform: Option<InstanceTypeSpecificationInstancePlatformEnum>,
 
     ///
@@ -241,7 +241,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<InstanceTypeSpecificationInstanceTypeEnum>,
 
     ///
@@ -255,7 +255,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -269,7 +269,7 @@ pub struct InstanceTypeSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<f64>,
 }
 
@@ -2982,7 +2982,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -2994,7 +2994,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -27,7 +27,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +89,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_destination: Option<S3Destination>,
 
     ///
@@ -103,7 +103,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_format: Option<ResourceDataSyncSyncFormatEnum>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_source: Option<SyncSource>,
 
     ///
@@ -146,7 +146,7 @@ pub struct CfnResourceDataSync {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -358,7 +358,7 @@ pub struct AwsOrganizationsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_units: Option<Vec<String>>,
 }
 
@@ -433,7 +433,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -466,7 +466,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmskey_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -611,7 +611,7 @@ pub struct SyncSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsOrganizationsSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_organizations_source: Option<AwsOrganizationsSource>,
 
     ///
@@ -623,7 +623,7 @@ pub struct SyncSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFutureRegions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_future_regions: Option<bool>,
 
     ///

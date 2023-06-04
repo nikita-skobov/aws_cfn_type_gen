@@ -11,7 +11,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveDirectoryConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_directory_configuration: Option<ActiveDirectoryConfiguration>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootVolumeSecurityStyle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_volume_security_style: Option<StorageVirtualMachineRootVolumeSecurityStyleEnum>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SvmAdminPassword")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub svm_admin_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnStorageVirtualMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -198,7 +198,7 @@ pub struct ActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetBiosName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub net_bios_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +210,7 @@ pub struct ActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub self_managed_active_directory_configuration:
         Option<SelfManagedActiveDirectoryConfiguration>,
 }
@@ -270,7 +270,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsIps")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_ips: Option<Vec<String>>,
 
     ///
@@ -288,7 +288,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -306,7 +306,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_administrators_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -326,7 +326,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_distinguished_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -344,7 +344,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -362,7 +362,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name: Option<cfn_resources::StrVal>,
 }
 

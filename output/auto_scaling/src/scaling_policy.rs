@@ -15,7 +15,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdjustmentType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub adjustment_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cooldown")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cooldown: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +60,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EstimatedInstanceWarmup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub estimated_instance_warmup: Option<i64>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricAggregationType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_aggregation_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -90,7 +90,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinAdjustmentMagnitude")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_adjustment_magnitude: Option<i64>,
 
     ///
@@ -104,7 +104,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictiveScalingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predictive_scaling_configuration: Option<PredictiveScalingConfiguration>,
 
     ///
@@ -134,7 +134,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingAdjustment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scaling_adjustment: Option<i64>,
 
     ///
@@ -148,7 +148,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepAdjustments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_adjustments: Option<Vec<StepAdjustment>>,
 
     ///
@@ -168,7 +168,7 @@ pub struct CfnScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetTrackingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_tracking_configuration: Option<TargetTrackingConfiguration>,
 
     #[serde(skip_serializing)]
@@ -237,7 +237,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -284,7 +284,7 @@ pub struct CustomizedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -348,7 +348,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -417,7 +417,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -450,7 +450,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -464,7 +464,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricStat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -480,7 +480,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub return_data: Option<bool>,
 }
 
@@ -645,7 +645,7 @@ pub struct MetricStat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -733,7 +733,7 @@ pub struct PredefinedMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -819,7 +819,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacityBreachBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity_breach_behavior:
         Option<PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum>,
 
@@ -840,7 +840,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacityBuffer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity_buffer: Option<i64>,
 
     ///
@@ -867,7 +867,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<PredictiveScalingConfigurationModeEnum>,
 
     ///
@@ -883,7 +883,7 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulingBufferTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduling_buffer_time: Option<i64>,
 }
 
@@ -1071,7 +1071,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedCapacityMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_capacity_metric_specification: Option<PredictiveScalingCustomizedCapacityMetric>,
 
     ///
@@ -1083,7 +1083,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_load_metric_specification: Option<PredictiveScalingCustomizedLoadMetric>,
 
     ///
@@ -1095,7 +1095,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_scaling_metric_specification: Option<PredictiveScalingCustomizedScalingMetric>,
 
     ///
@@ -1107,7 +1107,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_load_metric_specification: Option<PredictiveScalingPredefinedLoadMetric>,
 
     ///
@@ -1119,7 +1119,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedMetricPairSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_metric_pair_specification: Option<PredictiveScalingPredefinedMetricPair>,
 
     ///
@@ -1131,7 +1131,7 @@ pub struct PredictiveScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_scaling_metric_specification: Option<PredictiveScalingPredefinedScalingMetric>,
 
     ///
@@ -1222,7 +1222,7 @@ pub struct PredictiveScalingPredefinedLoadMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1309,7 +1309,7 @@ pub struct PredictiveScalingPredefinedMetricPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1410,7 +1410,7 @@ pub struct PredictiveScalingPredefinedScalingMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -1474,7 +1474,7 @@ pub struct StepAdjustment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricIntervalLowerBound")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_interval_lower_bound: Option<f64>,
 
     ///
@@ -1488,7 +1488,7 @@ pub struct StepAdjustment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricIntervalUpperBound")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_interval_upper_bound: Option<f64>,
 
     ///
@@ -1532,7 +1532,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_metric_specification: Option<CustomizedMetricSpecification>,
 
     ///
@@ -1544,7 +1544,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableScaleIn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_scale_in: Option<bool>,
 
     ///
@@ -1556,7 +1556,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_metric_specification: Option<PredefinedMetricSpecification>,
 
     ///

@@ -17,7 +17,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ArchiveName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_pattern: Option<serde_json::Value>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnArchive {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_days: Option<i64>,
 
     ///

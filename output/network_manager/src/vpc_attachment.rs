@@ -22,7 +22,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<VpcOptions>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnVpcAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -210,7 +210,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentPolicyRuleNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_policy_rule_number: Option<i64>,
 
     ///
@@ -228,7 +228,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -240,7 +240,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -338,7 +338,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplianceModeSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub appliance_mode_support: Option<bool>,
 
     ///
@@ -350,7 +350,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Support")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_support: Option<bool>,
 }
 

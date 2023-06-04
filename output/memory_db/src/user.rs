@@ -11,7 +11,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_mode: Option<AuthenticationMode>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -108,7 +108,7 @@ pub struct AuthenticationMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Passwords")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passwords: Option<Vec<String>>,
 
     /// Property description not available.
@@ -119,7 +119,7 @@ pub struct AuthenticationMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 

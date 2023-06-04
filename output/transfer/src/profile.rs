@@ -28,7 +28,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_ids: Option<Vec<String>>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

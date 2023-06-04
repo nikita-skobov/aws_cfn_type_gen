@@ -10,7 +10,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BgpOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bgp_options: Option<BgpOptions>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnConnectPeer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -271,7 +271,7 @@ pub struct BgpOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerAsn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_asn: Option<f64>,
 }
 
@@ -308,7 +308,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -320,7 +320,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAsn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_network_asn: Option<f64>,
 
     ///
@@ -338,7 +338,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -350,7 +350,7 @@ pub struct ConnectPeerBgpConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAsn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_asn: Option<f64>,
 }
 
@@ -422,7 +422,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BgpConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bgp_configurations: Option<Vec<ConnectPeerBgpConfiguration>>,
 
     ///
@@ -440,7 +440,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreNetworkAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_network_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -452,7 +452,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsideCidrBlocks")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inside_cidr_blocks: Option<Vec<String>>,
 
     ///
@@ -470,7 +470,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeerAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -484,7 +484,7 @@ pub struct ConnectPeerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
 }
 

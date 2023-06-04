@@ -13,7 +13,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destinations: Option<Vec<Destination>>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

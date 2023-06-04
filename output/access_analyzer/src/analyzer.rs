@@ -11,7 +11,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AnalyzerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub analyzer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_rules: Option<Vec<ArchiveRule>>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnAnalyzer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -147,7 +147,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Contains")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contains: Option<Vec<String>>,
 
     /// An "equals" condition to match for the rule.
@@ -158,7 +158,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eq: Option<Vec<String>>,
 
     /// An "exists" condition to match for the rule.
@@ -169,7 +169,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exists")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exists: Option<bool>,
 
     /// A "not equal" condition to match for the rule.
@@ -180,7 +180,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Neq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub neq: Option<Vec<String>>,
 
     /// The property used to define the criteria in the filter for the rule.

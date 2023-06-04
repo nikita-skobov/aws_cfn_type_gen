@@ -11,7 +11,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvClassifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_classifier: Option<CsvClassifier>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrokClassifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grok_classifier: Option<GrokClassifier>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonClassifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_classifier: Option<JsonClassifier>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XMLClassifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xmlclassifier: Option<XMLClassifier>,
 }
 
@@ -94,7 +94,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSingleColumn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_single_column: Option<bool>,
 
     ///
@@ -114,7 +114,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contains_header: Option<CsvClassifierContainsHeaderEnum>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +144,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableValueTrimming")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_value_trimming: Option<bool>,
 
     ///
@@ -156,7 +156,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Header")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header: Option<Vec<String>>,
 
     ///
@@ -174,7 +174,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -192,7 +192,7 @@ pub struct CsvClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
@@ -327,7 +327,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_patterns: Option<cfn_resources::StrVal>,
 
     ///
@@ -362,7 +362,7 @@ pub struct GrokClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -473,7 +473,7 @@ pub struct JsonClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -543,7 +543,7 @@ pub struct XMLClassifier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///

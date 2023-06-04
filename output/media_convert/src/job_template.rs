@@ -15,7 +15,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccelerationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceleration_settings: Option<AccelerationSettings>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HopDestinations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hop_destinations: Option<Vec<HopDestination>>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +144,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusUpdateInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_update_interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +158,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -254,7 +254,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -266,7 +266,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue: Option<cfn_resources::StrVal>,
 
     ///
@@ -278,7 +278,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_minutes: Option<i64>,
 }
 

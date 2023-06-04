@@ -11,7 +11,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminUserPassword")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub admin_user_password: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub admin_username: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub db_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultIamRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FinalSnapshotName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub final_snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FinalSnapshotRetentionPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub final_snapshot_retention_period: Option<i64>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoles")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_roles: Option<Vec<String>>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogExports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_exports: Option<Vec<String>>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnNamespace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -260,7 +260,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdminUsername")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub admin_username: Option<cfn_resources::StrVal>,
 
     ///
@@ -272,7 +272,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreationDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub creation_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -284,7 +284,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub db_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -296,7 +296,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultIamRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_iam_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -308,7 +308,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoles")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_roles: Option<Vec<String>>,
 
     ///
@@ -320,7 +320,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -332,7 +332,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogExports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_exports: Option<Vec<String>>,
 
     ///
@@ -344,7 +344,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +356,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -368,7 +368,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -380,7 +380,7 @@ pub struct Namespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
 }
 

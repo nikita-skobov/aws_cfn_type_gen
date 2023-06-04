@@ -11,7 +11,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerRecipeArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_recipe_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DistributionConfigurationArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distribution_configuration_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedImageMetadataEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_image_metadata_enabled: Option<bool>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageRecipeArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_recipe_arn: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -74,7 +74,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTestsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
     ///
@@ -122,7 +122,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -136,7 +136,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<ImagePipelineStatusEnum>,
 
     ///
@@ -148,7 +148,7 @@ pub struct CfnImagePipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -251,7 +251,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_tags: Option<Vec<String>>,
 
     /// Property description not available.
@@ -262,7 +262,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_name: Option<cfn_resources::StrVal>,
 }
 
@@ -292,7 +292,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_configuration: Option<EcrConfiguration>,
 
     /// Property description not available.
@@ -303,7 +303,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scanning_enabled: Option<bool>,
 }
 
@@ -338,7 +338,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTestsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_tests_enabled: Option<bool>,
 
     ///
@@ -356,7 +356,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_minutes: Option<i64>,
 }
 
@@ -407,7 +407,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineExecutionStartCondition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_execution_start_condition: Option<SchedulePipelineExecutionStartConditionEnum>,
 
     ///
@@ -425,7 +425,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 

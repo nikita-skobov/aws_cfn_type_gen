@@ -15,7 +15,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_label: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -134,7 +134,7 @@ pub struct ConnectorProvisioningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda: Option<LambdaConnectorProvisioningConfig>,
 }
 

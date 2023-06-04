@@ -27,7 +27,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteAllPolicyResources")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_all_policy_resources: Option<bool>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMap")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_map: Option<IEMap>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMap")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_map: Option<IEMap>,
 
     ///
@@ -90,7 +90,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceSetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_set_ids: Option<Vec<String>>,
 
     ///
@@ -144,7 +144,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_tags: Option<Vec<ResourceTag>>,
 
     ///
@@ -164,7 +164,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -176,7 +176,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypeList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type_list: Option<Vec<String>>,
 
     ///
@@ -192,7 +192,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesCleanUp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources_clean_up: Option<bool>,
 
     ///
@@ -219,7 +219,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<PolicyTag>>,
 
     #[serde(skip_serializing)]
@@ -347,7 +347,7 @@ pub struct IEMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACCOUNT")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account: Option<Vec<String>>,
 
     ///
@@ -359,7 +359,7 @@ pub struct IEMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ORGUNIT")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub orgunit: Option<Vec<String>>,
 }
 
@@ -439,7 +439,7 @@ pub struct PolicyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFirewallPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_firewall_policy: Option<NetworkFirewallPolicy>,
 
     ///
@@ -451,7 +451,7 @@ pub struct PolicyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThirdPartyFirewallPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub third_party_firewall_policy: Option<ThirdPartyFirewallPolicy>,
 }
 
@@ -608,7 +608,7 @@ pub struct ResourceTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -680,7 +680,7 @@ pub struct SecurityServicePolicyData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedServiceData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_service_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -692,7 +692,7 @@ pub struct SecurityServicePolicyData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_option: Option<PolicyOption>,
 
     ///

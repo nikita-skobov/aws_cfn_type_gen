@@ -11,7 +11,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyRequired")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_required: Option<bool>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -72,7 +72,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration: Option<Integration>,
 
     ///
@@ -84,7 +84,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MethodResponses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method_responses: Option<Vec<MethodResponse>>,
 
     ///
@@ -96,7 +96,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestModels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_models: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_parameters: Option<std::collections::HashMap<String, bool>>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestValidatorId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_validator_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -189,7 +189,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheKeyParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_key_parameters: Option<Vec<String>>,
 
     ///
@@ -201,7 +201,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNamespace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -227,7 +227,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_type: Option<IntegrationConnectionTypeEnum>,
 
     ///
@@ -243,7 +243,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_handling: Option<IntegrationContentHandlingEnum>,
 
     ///
@@ -255,7 +255,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<cfn_resources::StrVal>,
 
     ///
@@ -267,7 +267,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationHttpMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_http_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -279,7 +279,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationResponses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_responses: Option<Vec<IntegrationResponse>>,
 
     ///
@@ -291,7 +291,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passthrough_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -303,7 +303,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -315,7 +315,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestTemplates")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_templates: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -327,7 +327,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_millis: Option<i64>,
 
     ///
@@ -343,7 +343,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<IntegrationTypeEnum>,
 
     ///
@@ -357,7 +357,7 @@ pub struct Integration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Uri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri: Option<cfn_resources::StrVal>,
 }
 
@@ -455,7 +455,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_handling: Option<IntegrationResponseContentHandlingEnum>,
 
     ///
@@ -467,7 +467,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -479,7 +479,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseTemplates")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_templates: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -491,7 +491,7 @@ pub struct IntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectionPattern")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selection_pattern: Option<cfn_resources::StrVal>,
 
     ///
@@ -550,7 +550,7 @@ pub struct MethodResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseModels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_models: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -562,7 +562,7 @@ pub struct MethodResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<std::collections::HashMap<String, bool>>,
 
     ///

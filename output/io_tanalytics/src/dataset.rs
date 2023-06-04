@@ -26,7 +26,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentDeliveryRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_delivery_rules: Option<Vec<DatasetContentDeliveryRule>>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatasetName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LateDataRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub late_data_rules: Option<Vec<LateDataRule>>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_period: Option<RetentionPeriod>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -100,7 +100,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Triggers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub triggers: Option<Vec<Trigger>>,
 
     ///
@@ -112,7 +112,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersioningConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub versioning_configuration: Option<VersioningConfiguration>,
 
     #[serde(skip_serializing)]
@@ -243,7 +243,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_action: Option<ContainerAction>,
 
     ///
@@ -255,7 +255,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_action: Option<QueryAction>,
 }
 
@@ -357,7 +357,7 @@ pub struct ContainerAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variables: Option<Vec<Variable>>,
 }
 
@@ -443,7 +443,7 @@ pub struct DatasetContentDeliveryRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entry_name: Option<cfn_resources::StrVal>,
 }
 
@@ -476,7 +476,7 @@ pub struct DatasetContentDeliveryRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotEventsDestinationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_events_destination_configuration: Option<IotEventsDestinationConfiguration>,
 
     ///
@@ -488,7 +488,7 @@ pub struct DatasetContentDeliveryRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DestinationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_destination_configuration: Option<S3DestinationConfiguration>,
 }
 
@@ -682,7 +682,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delta_time: Option<DeltaTime>,
 }
 
@@ -926,7 +926,7 @@ pub struct LateDataRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_name: Option<cfn_resources::StrVal>,
 }
 
@@ -981,7 +981,7 @@ pub struct LateDataRuleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTimeSessionWindowConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delta_time_session_window_configuration: Option<DeltaTimeSessionWindowConfiguration>,
 }
 
@@ -1050,7 +1050,7 @@ pub struct QueryAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<Filter>>,
 
     ///
@@ -1185,7 +1185,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_days: Option<i64>,
 
     ///
@@ -1197,7 +1197,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unlimited: Option<bool>,
 }
 
@@ -1254,7 +1254,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_configuration: Option<GlueConfiguration>,
 
     ///
@@ -1470,7 +1470,7 @@ pub struct Trigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -1482,7 +1482,7 @@ pub struct Trigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggeringDataset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub triggering_dataset: Option<TriggeringDataset>,
 }
 
@@ -1579,7 +1579,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetContentVersionValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_content_version_value: Option<DatasetContentVersionValue>,
 
     ///
@@ -1591,7 +1591,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub double_value: Option<f64>,
 
     ///
@@ -1603,7 +1603,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFileUriValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_file_uri_value: Option<OutputFileUriValue>,
 
     ///
@@ -1619,7 +1619,7 @@ pub struct Variable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -1721,7 +1721,7 @@ pub struct VersioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVersions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_versions: Option<i64>,
 
     ///
@@ -1733,7 +1733,7 @@ pub struct VersioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unlimited: Option<bool>,
 }
 

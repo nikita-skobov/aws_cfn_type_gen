@@ -17,7 +17,7 @@ pub struct CfnEventBus {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSourceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_source_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnEventBus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagEntry>>,
 
     #[serde(skip_serializing)]

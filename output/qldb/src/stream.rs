@@ -15,7 +15,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExclusiveEndTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusive_end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -233,7 +233,7 @@ pub struct KinesisConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AggregationEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_enabled: Option<bool>,
 
     ///
@@ -249,7 +249,7 @@ pub struct KinesisConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StreamArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_arn: Option<cfn_resources::StrVal>,
 }
 

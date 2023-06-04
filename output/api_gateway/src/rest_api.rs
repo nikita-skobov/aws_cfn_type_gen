@@ -11,7 +11,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeySourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_source_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinaryMediaTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub binary_media_types: Option<Vec<String>>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<serde_json::Value>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BodyS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body_s3_location: Option<S3Location>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloneFrom")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clone_from: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableExecuteApiEndpoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_execute_api_endpoint: Option<bool>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_configuration: Option<EndpointConfiguration>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailOnWarnings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fail_on_warnings: Option<bool>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumCompressionSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_compression_size: Option<i64>,
 
     ///
@@ -141,7 +141,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +153,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -165,7 +165,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -189,7 +189,7 @@ pub struct CfnRestApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -252,7 +252,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Types")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub types: Option<Vec<String>>,
 
     ///
@@ -264,7 +264,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_ids: Option<Vec<String>>,
 }
 
@@ -295,7 +295,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -307,7 +307,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etag: Option<cfn_resources::StrVal>,
 
     ///
@@ -319,7 +319,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -331,7 +331,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
 }
 

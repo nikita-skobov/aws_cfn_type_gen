@@ -17,7 +17,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpressionTimezone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression_timezone: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_date: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<ScheduleStateEnum>,
 
     ///
@@ -209,7 +209,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assign_public_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -221,7 +221,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -263,7 +263,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<f64>,
 
     ///
@@ -286,7 +286,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<f64>,
 }
 
@@ -317,7 +317,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<cfn_resources::StrVal>,
 }
 
@@ -348,7 +348,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviderStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -360,7 +360,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableECSManagedTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ecsmanaged_tags: Option<bool>,
 
     ///
@@ -372,7 +372,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableExecuteCommand")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_execute_command: Option<bool>,
 
     ///
@@ -384,7 +384,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Group")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group: Option<cfn_resources::StrVal>,
 
     ///
@@ -396,7 +396,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -408,7 +408,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -420,7 +420,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementConstraints")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_constraints: Option<Vec<PlacementConstraint>>,
 
     ///
@@ -432,7 +432,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_strategy: Option<Vec<PlacementStrategy>>,
 
     ///
@@ -444,7 +444,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -456,7 +456,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub propagate_tags: Option<cfn_resources::StrVal>,
 
     ///
@@ -468,7 +468,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -480,7 +480,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -492,7 +492,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_count: Option<f64>,
 
     ///
@@ -583,7 +583,7 @@ pub struct FlexibleTimeWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumWindowInMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_window_in_minutes: Option<f64>,
 
     ///
@@ -689,7 +689,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsvpcConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub awsvpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -724,7 +724,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -736,7 +736,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -767,7 +767,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -779,7 +779,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 }
 
@@ -810,7 +810,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumEventAgeInSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_event_age_in_seconds: Option<f64>,
 
     ///
@@ -822,7 +822,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_retry_attempts: Option<f64>,
 }
 
@@ -894,7 +894,7 @@ pub struct SageMakerPipelineParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineParameterList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
 }
 
@@ -925,7 +925,7 @@ pub struct SqsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_group_id: Option<cfn_resources::StrVal>,
 }
 
@@ -967,7 +967,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     ///
@@ -979,7 +979,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcsParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecs_parameters: Option<EcsParameters>,
 
     ///
@@ -991,7 +991,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bridge_parameters: Option<EventBridgeParameters>,
 
     ///
@@ -1003,7 +1003,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input: Option<cfn_resources::StrVal>,
 
     ///
@@ -1015,7 +1015,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_parameters: Option<KinesisParameters>,
 
     ///
@@ -1027,7 +1027,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_policy: Option<RetryPolicy>,
 
     ///
@@ -1050,7 +1050,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerPipelineParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_pipeline_parameters: Option<SageMakerPipelineParameters>,
 
     ///
@@ -1062,7 +1062,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs_parameters: Option<SqsParameters>,
 }
 

@@ -28,7 +28,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationDefaultNetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_default_netmask_length: Option<i64>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationMaxNetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_max_netmask_length: Option<i64>,
 
     ///
@@ -60,7 +60,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationMinNetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_min_netmask_length: Option<i64>,
 
     ///
@@ -72,7 +72,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationResourceTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_resource_tags: Option<Vec<Tag>>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_import: Option<bool>,
 
     ///
@@ -100,7 +100,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsService")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_service: Option<IPAMPoolAwsServiceEnum>,
 
     ///
@@ -112,7 +112,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Locale")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub locale: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedCidrs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_cidrs: Option<Vec<ProvisionedCidr>>,
 
     ///
@@ -161,7 +161,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicIpSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_ip_source: Option<IPAMPoolPublicIpSourceEnum>,
 
     ///
@@ -173,7 +173,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PubliclyAdvertisable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_advertisable: Option<bool>,
 
     ///
@@ -185,7 +185,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIpamPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -197,7 +197,7 @@ pub struct CfnIPAMPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

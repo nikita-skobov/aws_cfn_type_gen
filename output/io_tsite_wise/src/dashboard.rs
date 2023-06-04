@@ -44,7 +44,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

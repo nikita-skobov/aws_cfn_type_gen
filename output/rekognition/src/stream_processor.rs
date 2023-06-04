@@ -19,7 +19,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BoundingBoxRegionsOfInterest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bounding_box_regions_of_interest: Option<Vec<BoundingBox>>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectedHomeSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connected_home_settings: Option<ConnectedHomeSettings>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSharingPreference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_sharing_preference: Option<DataSharingPreference>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FaceSearchSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub face_search_settings: Option<FaceSearchSettings>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KinesisDataStream")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_data_stream: Option<KinesisDataStream>,
 
     ///
@@ -90,7 +90,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationChannel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_channel: Option<NotificationChannel>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PolygonRegionsOfInterest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polygon_regions_of_interest: Option<serde_json::Value>,
 
     ///
@@ -155,7 +155,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_destination: Option<S3Destination>,
 
     ///
@@ -167,7 +167,7 @@ pub struct CfnStreamProcessor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -359,7 +359,7 @@ pub struct ConnectedHomeSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinConfidence")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_confidence: Option<f64>,
 }
 
@@ -437,7 +437,7 @@ pub struct FaceSearchSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FaceMatchThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub face_match_threshold: Option<f64>,
 }
 
@@ -595,7 +595,7 @@ pub struct S3Destination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 

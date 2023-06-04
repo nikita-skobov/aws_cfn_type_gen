@@ -15,7 +15,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -278,7 +278,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_product_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -294,7 +294,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductStatusMessage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_product_status_message: Option<cfn_resources::StrVal>,
 }
 
@@ -347,7 +347,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PathId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -382,7 +382,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningArtifactId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_artifact_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -394,7 +394,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 }
 

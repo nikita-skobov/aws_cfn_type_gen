@@ -15,7 +15,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLoggingPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_logging_policy: Option<AccessLoggingPolicy>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppCookieStickinessPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_cookie_stickiness_policy: Option<Vec<AppCookieStickinessPolicy>>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionDrainingPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_draining_policy: Option<ConnectionDrainingPolicy>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_settings: Option<ConnectionSettings>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrossZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cross_zone: Option<bool>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Instances")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instances: Option<Vec<String>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LBCookieStickinessPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lbcookie_stickiness_policy: Option<Vec<LBCookieStickinessPolicy>>,
 
     ///
@@ -148,7 +148,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -160,7 +160,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<Policies>>,
 
     ///
@@ -176,7 +176,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scheme")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheme: Option<cfn_resources::StrVal>,
 
     ///
@@ -188,7 +188,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -202,7 +202,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Subnets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -214,7 +214,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -318,7 +318,7 @@ pub struct AccessLoggingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmitInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub emit_interval: Option<i64>,
 
     ///
@@ -352,7 +352,7 @@ pub struct AccessLoggingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -437,7 +437,7 @@ pub struct ConnectionDrainingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 }
 
@@ -710,7 +710,7 @@ pub struct LBCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CookieExpirationPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cookie_expiration_period: Option<cfn_resources::StrVal>,
 
     ///
@@ -722,7 +722,7 @@ pub struct LBCookieStickinessPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_name: Option<cfn_resources::StrVal>,
 }
 
@@ -776,7 +776,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceProtocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -799,7 +799,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PolicyNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_names: Option<Vec<String>>,
 
     ///
@@ -822,7 +822,7 @@ pub struct Listeners {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SSLCertificateId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sslcertificate_id: Option<cfn_resources::StrVal>,
 }
 
@@ -888,7 +888,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancePorts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_ports: Option<Vec<String>>,
 
     ///
@@ -900,7 +900,7 @@ pub struct Policies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerPorts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_ports: Option<Vec<String>>,
 
     ///

@@ -20,7 +20,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailSuppression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub avail_suppression: Option<AvailSuppression>,
 
     /// Property description not available.
@@ -31,7 +31,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bumper")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bumper: Option<Bumper>,
 
     /// Property description not available.
@@ -42,7 +42,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdnConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdn_configuration: Option<CdnConfiguration>,
 
     ///
@@ -54,7 +54,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationAliases")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_aliases: Option<std::collections::HashMap<String, serde_json::Value>>,
 
     /// Property description not available.
@@ -65,7 +65,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dash_configuration: Option<DashConfiguration>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_configuration: Option<HlsConfiguration>,
 
     /// Property description not available.
@@ -88,7 +88,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LivePreRollConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub live_pre_roll_configuration: Option<LivePreRollConfiguration>,
 
     /// Property description not available.
@@ -99,7 +99,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestProcessingRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_processing_rules: Option<ManifestProcessingRules>,
 
     /// Property description not available.
@@ -120,7 +120,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PersonalizationThresholdSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub personalization_threshold_seconds: Option<i64>,
 
     /// Property description not available.
@@ -131,7 +131,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SlateAdUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slate_ad_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -142,7 +142,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -153,7 +153,7 @@ pub struct CfnPlaybackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TranscodeProfileName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transcode_profile_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -277,7 +277,7 @@ pub struct AdMarkerPassthrough {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -307,7 +307,7 @@ pub struct AvailSuppression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -318,7 +318,7 @@ pub struct AvailSuppression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -348,7 +348,7 @@ pub struct Bumper {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -359,7 +359,7 @@ pub struct Bumper {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_url: Option<cfn_resources::StrVal>,
 }
 
@@ -389,7 +389,7 @@ pub struct CdnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdSegmentUrlPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_segment_url_prefix: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -400,7 +400,7 @@ pub struct CdnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentSegmentUrlPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_segment_url_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -431,7 +431,7 @@ pub struct DashConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestEndpointPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_endpoint_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -443,7 +443,7 @@ pub struct DashConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MpdLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mpd_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -455,7 +455,7 @@ pub struct DashConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginManifestType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_manifest_type: Option<cfn_resources::StrVal>,
 }
 
@@ -486,7 +486,7 @@ pub struct HlsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestEndpointPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_endpoint_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -516,7 +516,7 @@ pub struct LivePreRollConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdDecisionServerUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_decision_server_url: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -527,7 +527,7 @@ pub struct LivePreRollConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_duration_seconds: Option<i64>,
 }
 
@@ -557,7 +557,7 @@ pub struct ManifestProcessingRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkerPassthrough")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_marker_passthrough: Option<AdMarkerPassthrough>,
 }
 

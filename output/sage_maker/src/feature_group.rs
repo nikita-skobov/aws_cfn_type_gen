@@ -15,7 +15,7 @@ pub struct CfnFeatureGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnFeatureGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OfflineStoreConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offline_store_config: Option<OfflineStoreConfig>,
 
     ///
@@ -94,7 +94,7 @@ pub struct CfnFeatureGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnlineStoreConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub online_store_config: Option<OnlineStoreConfig>,
 
     ///
@@ -129,7 +129,7 @@ pub struct CfnFeatureGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +143,7 @@ pub struct CfnFeatureGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -522,7 +522,7 @@ pub struct OfflineStoreConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCatalogConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_catalog_config: Option<DataCatalogConfig>,
 
     ///
@@ -536,7 +536,7 @@ pub struct OfflineStoreConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DisableGlueTableCreation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_glue_table_creation: Option<bool>,
 
     ///
@@ -558,7 +558,7 @@ pub struct OfflineStoreConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_format: Option<cfn_resources::StrVal>,
 }
 
@@ -599,7 +599,7 @@ pub struct OnlineStoreConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableOnlineStore")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_online_store: Option<bool>,
 
     ///
@@ -611,7 +611,7 @@ pub struct OnlineStoreConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_config: Option<OnlineStoreSecurityConfig>,
 }
 
@@ -658,7 +658,7 @@ pub struct OnlineStoreSecurityConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -708,7 +708,7 @@ pub struct S3StorageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///

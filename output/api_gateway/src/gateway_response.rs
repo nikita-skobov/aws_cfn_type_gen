@@ -11,7 +11,7 @@ pub struct CfnGatewayResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnGatewayResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseTemplates")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_templates: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnGatewayResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_code: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

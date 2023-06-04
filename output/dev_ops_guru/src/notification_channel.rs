@@ -58,7 +58,7 @@ pub struct NotificationChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Filters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<NotificationFilterConfig>,
 
     ///
@@ -74,7 +74,7 @@ pub struct NotificationChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Sns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns: Option<SnsChannelConfig>,
 }
 
@@ -111,7 +111,7 @@ pub struct NotificationFilterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MessageTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_types: Option<Vec<String>>,
 
     ///
@@ -125,7 +125,7 @@ pub struct NotificationFilterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Severities")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub severities: Option<Vec<String>>,
 }
 
@@ -184,7 +184,7 @@ pub struct SnsChannelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topic_arn: Option<cfn_resources::StrVal>,
 }
 

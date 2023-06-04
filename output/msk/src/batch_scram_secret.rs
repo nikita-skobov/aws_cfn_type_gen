@@ -20,7 +20,7 @@ pub struct CfnBatchScramSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArnList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn_list: Option<Vec<String>>,
 }
 

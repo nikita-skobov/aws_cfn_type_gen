@@ -17,7 +17,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deletion_protection: Option<bool>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalClusterIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_cluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceDBClusterIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_dbcluster_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnGlobalCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageEncrypted")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_encrypted: Option<bool>,
 }
 

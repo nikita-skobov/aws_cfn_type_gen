@@ -19,7 +19,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -103,7 +103,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnHypervisor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

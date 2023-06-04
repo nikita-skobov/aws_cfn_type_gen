@@ -19,7 +19,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPoolConfigurationInfo")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_pool_configuration_info: Option<ConnectionPoolConfigurationInfoFormat>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBClusterIdentifiers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbcluster_identifiers: Option<Vec<String>>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnDBProxyTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DBInstanceIdentifiers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbinstance_identifiers: Option<Vec<String>>,
 
     ///
@@ -117,7 +117,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionBorrowTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_borrow_timeout: Option<i64>,
 
     ///
@@ -131,7 +131,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitQuery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub init_query: Option<cfn_resources::StrVal>,
 
     ///
@@ -149,7 +149,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConnectionsPercent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_connections_percent: Option<i64>,
 
     ///
@@ -167,7 +167,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxIdleConnectionsPercent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_idle_connections_percent: Option<i64>,
 
     ///
@@ -181,7 +181,7 @@ pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionPinningFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_pinning_filters: Option<Vec<String>>,
 }
 

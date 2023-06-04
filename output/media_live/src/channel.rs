@@ -13,7 +13,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdiInputSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdi_input_specification: Option<CdiInputSpecification>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelClass")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destinations: Option<Vec<OutputDestination>>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncoderSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encoder_settings: Option<EncoderSettings>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_attachments: Option<Vec<InputAttachment>>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_specification: Option<InputSpecification>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_level: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -96,7 +96,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maintenance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance: Option<MaintenanceCreateSettings>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -144,7 +144,7 @@ pub struct CfnChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Vpc")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc: Option<VpcOutputSettings>,
 
     #[serde(skip_serializing)]
@@ -206,7 +206,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<f64>,
 
     ///
@@ -218,7 +218,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -230,7 +230,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -242,7 +242,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -254,7 +254,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -266,7 +266,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RawFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub raw_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -278,7 +278,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_rate: Option<f64>,
 
     ///
@@ -290,7 +290,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Spec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spec: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +302,7 @@ pub struct AacSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VbrQuality")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vbr_quality: Option<cfn_resources::StrVal>,
 }
 
@@ -335,7 +335,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<f64>,
 
     ///
@@ -347,7 +347,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BitstreamMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitstream_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -359,7 +359,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -371,7 +371,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dialnorm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dialnorm: Option<i64>,
 
     ///
@@ -383,7 +383,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrcProfile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drc_profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -395,7 +395,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LfeFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lfe_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -407,7 +407,7 @@ pub struct Ac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata_control: Option<cfn_resources::StrVal>,
 }
 
@@ -440,7 +440,7 @@ pub struct AncillarySourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceAncillaryChannelNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ancillary_channel_number: Option<i64>,
 }
 
@@ -473,7 +473,7 @@ pub struct ArchiveCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveS3Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_s3_settings: Option<ArchiveS3Settings>,
 }
 
@@ -510,7 +510,7 @@ pub struct ArchiveContainerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "M2tsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub m2ts_settings: Option<M2tsSettings>,
 
     ///
@@ -522,7 +522,7 @@ pub struct ArchiveContainerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RawSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub raw_settings: Option<RawSettings>,
 }
 
@@ -563,7 +563,7 @@ pub struct ArchiveGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveCdnSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_cdn_settings: Option<ArchiveCdnSettings>,
 
     ///
@@ -575,7 +575,7 @@ pub struct ArchiveGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -587,7 +587,7 @@ pub struct ArchiveGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RolloverInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rollover_interval: Option<i64>,
 }
 
@@ -628,7 +628,7 @@ pub struct ArchiveOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_settings: Option<ArchiveContainerSettings>,
 
     ///
@@ -640,7 +640,7 @@ pub struct ArchiveOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Extension")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extension: Option<cfn_resources::StrVal>,
 
     ///
@@ -652,7 +652,7 @@ pub struct ArchiveOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
@@ -689,7 +689,7 @@ pub struct ArchiveS3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
@@ -764,7 +764,7 @@ pub struct AudioChannelMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputChannelLevels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_channel_levels: Option<Vec<InputChannelLevel>>,
 
     ///
@@ -776,7 +776,7 @@ pub struct AudioChannelMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputChannel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_channel: Option<i64>,
 }
 
@@ -809,7 +809,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AacSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aac_settings: Option<AacSettings>,
 
     ///
@@ -821,7 +821,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ac3Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ac3_settings: Option<Ac3Settings>,
 
     /// Property description not available.
@@ -832,7 +832,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eac3AtmosSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eac3_atmos_settings: Option<Eac3AtmosSettings>,
 
     ///
@@ -844,7 +844,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eac3Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eac3_settings: Option<Eac3Settings>,
 
     ///
@@ -856,7 +856,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mp2Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mp2_settings: Option<Mp2Settings>,
 
     ///
@@ -868,7 +868,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassThroughSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pass_through_settings: Option<PassThroughSettings>,
 
     ///
@@ -880,7 +880,7 @@ pub struct AudioCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WavSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wav_settings: Option<WavSettings>,
 }
 
@@ -941,7 +941,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioNormalizationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_normalization_settings: Option<AudioNormalizationSettings>,
 
     ///
@@ -953,7 +953,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioSelectorName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_selector_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -965,7 +965,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -977,7 +977,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioTypeControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_type_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -989,7 +989,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioWatermarkingSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_watermarking_settings: Option<AudioWatermarkSettings>,
 
     ///
@@ -1001,7 +1001,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodecSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub codec_settings: Option<AudioCodecSettings>,
 
     ///
@@ -1013,7 +1013,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -1025,7 +1025,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCodeControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -1037,7 +1037,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1049,7 +1049,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemixSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remix_settings: Option<RemixSettings>,
 
     ///
@@ -1061,7 +1061,7 @@ pub struct AudioDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_name: Option<cfn_resources::StrVal>,
 }
 
@@ -1107,7 +1107,7 @@ pub struct AudioDolbyEDecode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_selection: Option<cfn_resources::StrVal>,
 }
 
@@ -1140,7 +1140,7 @@ pub struct AudioHlsRenditionSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1152,7 +1152,7 @@ pub struct AudioHlsRenditionSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1185,7 +1185,7 @@ pub struct AudioLanguageSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -1197,7 +1197,7 @@ pub struct AudioLanguageSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageSelectionPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_selection_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -1230,7 +1230,7 @@ pub struct AudioNormalizationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
@@ -1242,7 +1242,7 @@ pub struct AudioNormalizationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlgorithmControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -1254,7 +1254,7 @@ pub struct AudioNormalizationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetLkfs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_lkfs: Option<f64>,
 }
 
@@ -1287,7 +1287,7 @@ pub struct AudioOnlyHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1299,7 +1299,7 @@ pub struct AudioOnlyHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioOnlyImage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_only_image: Option<InputLocation>,
 
     ///
@@ -1311,7 +1311,7 @@ pub struct AudioOnlyHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioTrackType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_track_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1323,7 +1323,7 @@ pub struct AudioOnlyHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_type: Option<cfn_resources::StrVal>,
 }
 
@@ -1360,7 +1360,7 @@ pub struct AudioPidSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pid: Option<i64>,
 }
 
@@ -1393,7 +1393,7 @@ pub struct AudioSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1405,7 +1405,7 @@ pub struct AudioSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectorSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selector_settings: Option<AudioSelectorSettings>,
 }
 
@@ -1441,7 +1441,7 @@ pub struct AudioSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioHlsRenditionSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_hls_rendition_selection: Option<AudioHlsRenditionSelection>,
 
     ///
@@ -1453,7 +1453,7 @@ pub struct AudioSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioLanguageSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_language_selection: Option<AudioLanguageSelection>,
 
     ///
@@ -1465,7 +1465,7 @@ pub struct AudioSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioPidSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_pid_selection: Option<AudioPidSelection>,
 
     /// Information about the audio track to extract.
@@ -1476,7 +1476,7 @@ pub struct AudioSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioTrackSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_track_selection: Option<AudioTrackSelection>,
 }
 
@@ -1525,7 +1525,7 @@ pub struct AudioSilenceFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioSelectorName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_selector_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1537,7 +1537,7 @@ pub struct AudioSilenceFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioSilenceThresholdMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_silence_threshold_msec: Option<i64>,
 }
 
@@ -1570,7 +1570,7 @@ pub struct AudioTrack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Track")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub track: Option<i64>,
 }
 
@@ -1602,7 +1602,7 @@ pub struct AudioTrackSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DolbyEDecode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dolby_edecode: Option<AudioDolbyEDecode>,
 
     ///
@@ -1614,7 +1614,7 @@ pub struct AudioTrackSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tracks")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracks: Option<Vec<AudioTrack>>,
 }
 
@@ -1651,7 +1651,7 @@ pub struct AudioWatermarkSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenWatermarksSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_watermarks_settings: Option<NielsenWatermarksSettings>,
 }
 
@@ -1688,7 +1688,7 @@ pub struct AutomaticInputFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorClearTimeMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_clear_time_msec: Option<i64>,
 
     ///
@@ -1700,7 +1700,7 @@ pub struct AutomaticInputFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailoverConditions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failover_conditions: Option<Vec<FailoverCondition>>,
 
     ///
@@ -1712,7 +1712,7 @@ pub struct AutomaticInputFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputPreference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_preference: Option<cfn_resources::StrVal>,
 
     ///
@@ -1724,7 +1724,7 @@ pub struct AutomaticInputFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryInputId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_input_id: Option<cfn_resources::StrVal>,
 }
 
@@ -1757,7 +1757,7 @@ pub struct AvailBlanking {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailBlankingImage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub avail_blanking_image: Option<InputLocation>,
 
     ///
@@ -1769,7 +1769,7 @@ pub struct AvailBlanking {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<cfn_resources::StrVal>,
 }
 
@@ -1806,7 +1806,7 @@ pub struct AvailConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub avail_settings: Option<AvailSettings>,
 }
 
@@ -1842,7 +1842,7 @@ pub struct AvailSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Esam")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub esam: Option<Esam>,
 
     ///
@@ -1854,7 +1854,7 @@ pub struct AvailSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35SpliceInsert")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_splice_insert: Option<Scte35SpliceInsert>,
 
     ///
@@ -1866,7 +1866,7 @@ pub struct AvailSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35TimeSignalApos")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_time_signal_apos: Option<Scte35TimeSignalApos>,
 }
 
@@ -1909,7 +1909,7 @@ pub struct BlackoutSlate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlackoutSlateImage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blackout_slate_image: Option<InputLocation>,
 
     ///
@@ -1921,7 +1921,7 @@ pub struct BlackoutSlate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkEndBlackout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_end_blackout: Option<cfn_resources::StrVal>,
 
     ///
@@ -1933,7 +1933,7 @@ pub struct BlackoutSlate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkEndBlackoutImage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_end_blackout_image: Option<InputLocation>,
 
     ///
@@ -1945,7 +1945,7 @@ pub struct BlackoutSlate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1957,7 +1957,7 @@ pub struct BlackoutSlate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<cfn_resources::StrVal>,
 }
 
@@ -1998,7 +1998,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alignment: Option<cfn_resources::StrVal>,
 
     ///
@@ -2010,7 +2010,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -2022,7 +2022,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_opacity: Option<i64>,
 
     ///
@@ -2034,7 +2034,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Font")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font: Option<InputLocation>,
 
     ///
@@ -2046,7 +2046,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -2058,7 +2058,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_opacity: Option<i64>,
 
     ///
@@ -2070,7 +2070,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontResolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_resolution: Option<i64>,
 
     ///
@@ -2082,7 +2082,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_size: Option<cfn_resources::StrVal>,
 
     ///
@@ -2094,7 +2094,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlineColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outline_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -2106,7 +2106,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlineSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outline_size: Option<i64>,
 
     ///
@@ -2118,7 +2118,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -2130,7 +2130,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_opacity: Option<i64>,
 
     ///
@@ -2142,7 +2142,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowXOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_xoffset: Option<i64>,
 
     ///
@@ -2154,7 +2154,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowYOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_yoffset: Option<i64>,
 
     ///
@@ -2166,7 +2166,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeletextGridControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub teletext_grid_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -2178,7 +2178,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XPosition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xposition: Option<i64>,
 
     ///
@@ -2190,7 +2190,7 @@ pub struct BurnInDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YPosition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yposition: Option<i64>,
 }
 
@@ -2224,7 +2224,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accessibility")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accessibility: Option<cfn_resources::StrVal>,
 
     ///
@@ -2236,7 +2236,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionSelectorName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_selector_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2248,7 +2248,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_settings: Option<CaptionDestinationSettings>,
 
     ///
@@ -2260,7 +2260,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -2272,7 +2272,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -2284,7 +2284,7 @@ pub struct CaptionDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -2321,7 +2321,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AribDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arib_destination_settings: Option<AribDestinationSettings>,
 
     ///
@@ -2333,7 +2333,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurnInDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burn_in_destination_settings: Option<BurnInDestinationSettings>,
 
     ///
@@ -2345,7 +2345,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbSubDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_sub_destination_settings: Option<DvbSubDestinationSettings>,
 
     /// Settings for EBU-TT captions in the output.
@@ -2356,7 +2356,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbuTtDDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebu_tt_ddestination_settings: Option<EbuTtDDestinationSettings>,
 
     ///
@@ -2368,7 +2368,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmbeddedDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub embedded_destination_settings: Option<EmbeddedDestinationSettings>,
 
     ///
@@ -2380,7 +2380,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmbeddedPlusScte20DestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub embedded_plus_scte20_destination_settings: Option<EmbeddedPlusScte20DestinationSettings>,
 
     ///
@@ -2392,7 +2392,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RtmpCaptionInfoDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rtmp_caption_info_destination_settings: Option<RtmpCaptionInfoDestinationSettings>,
 
     ///
@@ -2404,7 +2404,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte20PlusEmbeddedDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte20_plus_embedded_destination_settings: Option<Scte20PlusEmbeddedDestinationSettings>,
 
     ///
@@ -2416,7 +2416,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte27DestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte27_destination_settings: Option<Scte27DestinationSettings>,
 
     ///
@@ -2428,7 +2428,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmpteTtDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smpte_tt_destination_settings: Option<SmpteTtDestinationSettings>,
 
     ///
@@ -2440,7 +2440,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeletextDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub teletext_destination_settings: Option<TeletextDestinationSettings>,
 
     ///
@@ -2452,7 +2452,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TtmlDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ttml_destination_settings: Option<TtmlDestinationSettings>,
 
     ///
@@ -2464,7 +2464,7 @@ pub struct CaptionDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebvttDestinationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub webvtt_destination_settings: Option<WebvttDestinationSettings>,
 }
 
@@ -2549,7 +2549,7 @@ pub struct CaptionLanguageMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionChannel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_channel: Option<i64>,
 
     ///
@@ -2561,7 +2561,7 @@ pub struct CaptionLanguageMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -2573,7 +2573,7 @@ pub struct CaptionLanguageMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_description: Option<cfn_resources::StrVal>,
 }
 
@@ -2608,7 +2608,7 @@ pub struct CaptionRectangle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height: Option<f64>,
 
     ///
@@ -2622,7 +2622,7 @@ pub struct CaptionRectangle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub left_offset: Option<f64>,
 
     ///
@@ -2636,7 +2636,7 @@ pub struct CaptionRectangle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top_offset: Option<f64>,
 
     ///
@@ -2650,7 +2650,7 @@ pub struct CaptionRectangle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<f64>,
 }
 
@@ -2683,7 +2683,7 @@ pub struct CaptionSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LanguageCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -2695,7 +2695,7 @@ pub struct CaptionSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2707,7 +2707,7 @@ pub struct CaptionSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectorSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selector_settings: Option<CaptionSelectorSettings>,
 }
 
@@ -2744,7 +2744,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AncillarySourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ancillary_source_settings: Option<AncillarySourceSettings>,
 
     ///
@@ -2756,7 +2756,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AribSourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arib_source_settings: Option<AribSourceSettings>,
 
     ///
@@ -2768,7 +2768,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbSubSourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_sub_source_settings: Option<DvbSubSourceSettings>,
 
     ///
@@ -2780,7 +2780,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmbeddedSourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub embedded_source_settings: Option<EmbeddedSourceSettings>,
 
     ///
@@ -2792,7 +2792,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte20SourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte20_source_settings: Option<Scte20SourceSettings>,
 
     ///
@@ -2804,7 +2804,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte27SourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte27_source_settings: Option<Scte27SourceSettings>,
 
     ///
@@ -2816,7 +2816,7 @@ pub struct CaptionSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeletextSourceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub teletext_source_settings: Option<TeletextSourceSettings>,
 }
 
@@ -2877,7 +2877,7 @@ pub struct CdiInputSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolution: Option<cfn_resources::StrVal>,
 }
 
@@ -2950,7 +2950,7 @@ pub struct DvbNitSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_id: Option<i64>,
 
     ///
@@ -2962,7 +2962,7 @@ pub struct DvbNitSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -2974,7 +2974,7 @@ pub struct DvbNitSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rep_interval: Option<i64>,
 }
 
@@ -3007,7 +3007,7 @@ pub struct DvbSdtSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputSdt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_sdt: Option<cfn_resources::StrVal>,
 
     ///
@@ -3019,7 +3019,7 @@ pub struct DvbSdtSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rep_interval: Option<i64>,
 
     ///
@@ -3031,7 +3031,7 @@ pub struct DvbSdtSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3043,7 +3043,7 @@ pub struct DvbSdtSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceProviderName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_provider_name: Option<cfn_resources::StrVal>,
 }
 
@@ -3076,7 +3076,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alignment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alignment: Option<cfn_resources::StrVal>,
 
     ///
@@ -3088,7 +3088,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -3100,7 +3100,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_opacity: Option<i64>,
 
     ///
@@ -3112,7 +3112,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Font")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font: Option<InputLocation>,
 
     ///
@@ -3124,7 +3124,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -3136,7 +3136,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_opacity: Option<i64>,
 
     ///
@@ -3148,7 +3148,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontResolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_resolution: Option<i64>,
 
     ///
@@ -3160,7 +3160,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_size: Option<cfn_resources::StrVal>,
 
     ///
@@ -3172,7 +3172,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlineColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outline_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -3184,7 +3184,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlineSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outline_size: Option<i64>,
 
     ///
@@ -3196,7 +3196,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -3208,7 +3208,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowOpacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_opacity: Option<i64>,
 
     ///
@@ -3220,7 +3220,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowXOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_xoffset: Option<i64>,
 
     ///
@@ -3232,7 +3232,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowYOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_yoffset: Option<i64>,
 
     ///
@@ -3244,7 +3244,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeletextGridControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub teletext_grid_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3256,7 +3256,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XPosition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xposition: Option<i64>,
 
     ///
@@ -3268,7 +3268,7 @@ pub struct DvbSubDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YPosition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yposition: Option<i64>,
 }
 
@@ -3303,7 +3303,7 @@ pub struct DvbSubSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcrLanguage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ocr_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -3315,7 +3315,7 @@ pub struct DvbSubSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pid: Option<i64>,
 }
 
@@ -3348,7 +3348,7 @@ pub struct DvbTdtSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rep_interval: Option<i64>,
 }
 
@@ -3378,7 +3378,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<f64>,
 
     /// Property description not available.
@@ -3389,7 +3389,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -3400,7 +3400,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dialnorm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dialnorm: Option<i64>,
 
     /// Property description not available.
@@ -3411,7 +3411,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrcLine")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drc_line: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -3422,7 +3422,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrcRf")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drc_rf: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -3433,7 +3433,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeightTrim")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height_trim: Option<f64>,
 
     /// Property description not available.
@@ -3444,7 +3444,7 @@ pub struct Eac3AtmosSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SurroundTrim")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub surround_trim: Option<f64>,
 }
 
@@ -3477,7 +3477,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttenuationControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attenuation_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3489,7 +3489,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<f64>,
 
     ///
@@ -3501,7 +3501,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BitstreamMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitstream_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -3513,7 +3513,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -3525,7 +3525,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DcFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dc_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -3537,7 +3537,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dialnorm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dialnorm: Option<i64>,
 
     ///
@@ -3549,7 +3549,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrcLine")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drc_line: Option<cfn_resources::StrVal>,
 
     ///
@@ -3561,7 +3561,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrcRf")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drc_rf: Option<cfn_resources::StrVal>,
 
     ///
@@ -3573,7 +3573,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LfeControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lfe_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3585,7 +3585,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LfeFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lfe_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -3597,7 +3597,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoRoCenterMixLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lo_ro_center_mix_level: Option<f64>,
 
     ///
@@ -3609,7 +3609,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoRoSurroundMixLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lo_ro_surround_mix_level: Option<f64>,
 
     ///
@@ -3621,7 +3621,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LtRtCenterMixLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lt_rt_center_mix_level: Option<f64>,
 
     ///
@@ -3633,7 +3633,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LtRtSurroundMixLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lt_rt_surround_mix_level: Option<f64>,
 
     ///
@@ -3645,7 +3645,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3657,7 +3657,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassthroughControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passthrough_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3669,7 +3669,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhaseControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub phase_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -3681,7 +3681,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StereoDownmix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stereo_downmix: Option<cfn_resources::StrVal>,
 
     ///
@@ -3693,7 +3693,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SurroundExMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub surround_ex_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -3705,7 +3705,7 @@ pub struct Eac3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SurroundMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub surround_mode: Option<cfn_resources::StrVal>,
 }
 
@@ -3738,7 +3738,7 @@ pub struct EbuTtDDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyrightHolder")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copyright_holder: Option<cfn_resources::StrVal>,
 
     ///
@@ -3750,7 +3750,7 @@ pub struct EbuTtDDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FillLineGap")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fill_line_gap: Option<cfn_resources::StrVal>,
 
     ///
@@ -3762,7 +3762,7 @@ pub struct EbuTtDDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontFamily")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_family: Option<cfn_resources::StrVal>,
 
     ///
@@ -3774,7 +3774,7 @@ pub struct EbuTtDDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_control: Option<cfn_resources::StrVal>,
 }
 
@@ -3849,7 +3849,7 @@ pub struct EmbeddedSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Convert608To708")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub convert608_to708: Option<cfn_resources::StrVal>,
 
     ///
@@ -3861,7 +3861,7 @@ pub struct EmbeddedSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte20Detection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte20_detection: Option<cfn_resources::StrVal>,
 
     ///
@@ -3873,7 +3873,7 @@ pub struct EmbeddedSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source608ChannelNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source608_channel_number: Option<i64>,
 
     ///
@@ -3885,7 +3885,7 @@ pub struct EmbeddedSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source608TrackNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source608_track_number: Option<i64>,
 }
 
@@ -3918,7 +3918,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioDescriptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_descriptions: Option<Vec<AudioDescription>>,
 
     ///
@@ -3930,7 +3930,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailBlanking")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub avail_blanking: Option<AvailBlanking>,
 
     ///
@@ -3942,7 +3942,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub avail_configuration: Option<AvailConfiguration>,
 
     ///
@@ -3954,7 +3954,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlackoutSlate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blackout_slate: Option<BlackoutSlate>,
 
     ///
@@ -3966,7 +3966,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionDescriptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_descriptions: Option<Vec<CaptionDescription>>,
 
     ///
@@ -3978,7 +3978,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeatureActivations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feature_activations: Option<FeatureActivations>,
 
     ///
@@ -3990,7 +3990,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_configuration: Option<GlobalConfiguration>,
 
     ///
@@ -4002,7 +4002,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MotionGraphicsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub motion_graphics_configuration: Option<MotionGraphicsConfiguration>,
 
     ///
@@ -4014,7 +4014,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_configuration: Option<NielsenConfiguration>,
 
     ///
@@ -4026,7 +4026,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_groups: Option<Vec<OutputGroup>>,
 
     ///
@@ -4038,7 +4038,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_config: Option<TimecodeConfig>,
 
     ///
@@ -4050,7 +4050,7 @@ pub struct EncoderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoDescriptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_descriptions: Option<Vec<VideoDescription>>,
 }
 
@@ -4112,7 +4112,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcquisitionPointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acquisition_point_id: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -4123,7 +4123,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdAvailOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_avail_offset: Option<i64>,
 
     /// Property description not available.
@@ -4134,7 +4134,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password_param: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -4145,7 +4145,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PoisEndpoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pois_endpoint: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -4156,7 +4156,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -4167,7 +4167,7 @@ pub struct Esam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZoneIdentity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zone_identity: Option<cfn_resources::StrVal>,
 }
 
@@ -4200,7 +4200,7 @@ pub struct FailoverCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailoverConditionSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failover_condition_settings: Option<FailoverConditionSettings>,
 }
 
@@ -4237,7 +4237,7 @@ pub struct FailoverConditionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioSilenceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_silence_settings: Option<AudioSilenceFailoverSettings>,
 
     ///
@@ -4249,7 +4249,7 @@ pub struct FailoverConditionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_settings: Option<InputLossFailoverSettings>,
 
     ///
@@ -4261,7 +4261,7 @@ pub struct FailoverConditionSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoBlackSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_black_settings: Option<VideoBlackFailoverSettings>,
 }
 
@@ -4306,7 +4306,7 @@ pub struct FeatureActivations {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputPrepareScheduleActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_prepare_schedule_actions: Option<cfn_resources::StrVal>,
 }
 
@@ -4339,7 +4339,7 @@ pub struct FecOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDepth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_depth: Option<i64>,
 
     ///
@@ -4351,7 +4351,7 @@ pub struct FecOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_fec: Option<cfn_resources::StrVal>,
 
     ///
@@ -4363,7 +4363,7 @@ pub struct FecOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_length: Option<i64>,
 }
 
@@ -4396,7 +4396,7 @@ pub struct Fmp4HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioRenditionSets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_rendition_sets: Option<cfn_resources::StrVal>,
 
     ///
@@ -4408,7 +4408,7 @@ pub struct Fmp4HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -4420,7 +4420,7 @@ pub struct Fmp4HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 }
 
@@ -4453,7 +4453,7 @@ pub struct FrameCaptureCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureS3Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_s3_settings: Option<FrameCaptureS3Settings>,
 }
 
@@ -4490,7 +4490,7 @@ pub struct FrameCaptureGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -4502,7 +4502,7 @@ pub struct FrameCaptureGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureCdnSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_cdn_settings: Option<FrameCaptureCdnSettings>,
 }
 
@@ -4564,7 +4564,7 @@ pub struct FrameCaptureOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
@@ -4597,7 +4597,7 @@ pub struct FrameCaptureS3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
@@ -4630,7 +4630,7 @@ pub struct FrameCaptureSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptureInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_interval: Option<i64>,
 
     ///
@@ -4642,7 +4642,7 @@ pub struct FrameCaptureSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptureIntervalUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_interval_units: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -4653,7 +4653,7 @@ pub struct FrameCaptureSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeBurninSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_burnin_settings: Option<TimecodeBurninSettings>,
 }
 
@@ -4690,7 +4690,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitialAudioGain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_audio_gain: Option<i64>,
 
     ///
@@ -4702,7 +4702,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputEndAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_end_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -4714,7 +4714,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_behavior: Option<InputLossBehavior>,
 
     ///
@@ -4726,7 +4726,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLockingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_locking_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -4738,7 +4738,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputTimingSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_timing_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -4750,7 +4750,7 @@ pub struct GlobalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportLowFramerateInputs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub support_low_framerate_inputs: Option<cfn_resources::StrVal>,
 }
 
@@ -4786,7 +4786,7 @@ pub struct H264ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpacePassthroughSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_passthrough_settings: Option<ColorSpacePassthroughSettings>,
 
     ///
@@ -4798,7 +4798,7 @@ pub struct H264ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rec601Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rec601_settings: Option<Rec601Settings>,
 
     ///
@@ -4810,7 +4810,7 @@ pub struct H264ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rec709Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rec709_settings: Option<Rec709Settings>,
 }
 
@@ -4855,7 +4855,7 @@ pub struct H264FilterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemporalFilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temporal_filter_settings: Option<TemporalFilterSettings>,
 }
 
@@ -4892,7 +4892,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
@@ -4904,7 +4904,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
@@ -4916,7 +4916,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<i64>,
 
     ///
@@ -4928,7 +4928,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufFillPct")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buf_fill_pct: Option<i64>,
 
     ///
@@ -4940,7 +4940,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buf_size: Option<i64>,
 
     ///
@@ -4952,7 +4952,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -4964,7 +4964,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpaceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_settings: Option<H264ColorSpaceSettings>,
 
     ///
@@ -4976,7 +4976,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntropyEncoding")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entropy_encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -4988,7 +4988,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_settings: Option<H264FilterSettings>,
 
     ///
@@ -5000,7 +5000,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
@@ -5012,7 +5012,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlickerAq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flicker_aq: Option<cfn_resources::StrVal>,
 
     ///
@@ -5024,7 +5024,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForceFieldPictures")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub force_field_pictures: Option<cfn_resources::StrVal>,
 
     ///
@@ -5036,7 +5036,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -5048,7 +5048,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateDenominator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_denominator: Option<i64>,
 
     ///
@@ -5060,7 +5060,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateNumerator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_numerator: Option<i64>,
 
     ///
@@ -5072,7 +5072,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopBReference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_breference: Option<cfn_resources::StrVal>,
 
     ///
@@ -5084,7 +5084,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopClosedCadence")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_closed_cadence: Option<i64>,
 
     ///
@@ -5096,7 +5096,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopNumBFrames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_num_bframes: Option<i64>,
 
     ///
@@ -5108,7 +5108,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size: Option<f64>,
 
     ///
@@ -5120,7 +5120,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
@@ -5132,7 +5132,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Level")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub level: Option<cfn_resources::StrVal>,
 
     ///
@@ -5144,7 +5144,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LookAheadRateControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub look_ahead_rate_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -5156,7 +5156,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_bitrate: Option<i64>,
 
     ///
@@ -5168,7 +5168,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinIInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_iinterval: Option<i64>,
 
     ///
@@ -5180,7 +5180,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRefFrames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_ref_frames: Option<i64>,
 
     ///
@@ -5192,7 +5192,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub par_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -5204,7 +5204,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParDenominator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub par_denominator: Option<i64>,
 
     ///
@@ -5216,7 +5216,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParNumerator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub par_numerator: Option<i64>,
 
     ///
@@ -5228,7 +5228,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -5240,7 +5240,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QualityLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quality_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -5252,7 +5252,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QvbrQualityLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qvbr_quality_level: Option<i64>,
 
     ///
@@ -5264,7 +5264,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -5276,7 +5276,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -5288,7 +5288,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SceneChangeDetect")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scene_change_detect: Option<cfn_resources::StrVal>,
 
     ///
@@ -5300,7 +5300,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slices")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slices: Option<i64>,
 
     ///
@@ -5312,7 +5312,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Softness")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub softness: Option<i64>,
 
     ///
@@ -5324,7 +5324,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpatialAq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spatial_aq: Option<cfn_resources::StrVal>,
 
     ///
@@ -5336,7 +5336,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubgopLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subgop_length: Option<cfn_resources::StrVal>,
 
     ///
@@ -5348,7 +5348,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Syntax")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub syntax: Option<cfn_resources::StrVal>,
 
     ///
@@ -5360,7 +5360,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemporalAq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temporal_aq: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -5371,7 +5371,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeBurninSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_burnin_settings: Option<TimecodeBurninSettings>,
 
     ///
@@ -5383,7 +5383,7 @@ pub struct H264Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
@@ -5428,7 +5428,7 @@ pub struct H265ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpacePassthroughSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_passthrough_settings: Option<ColorSpacePassthroughSettings>,
 
     /// Property description not available.
@@ -5439,7 +5439,7 @@ pub struct H265ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DolbyVision81Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dolby_vision81_settings: Option<DolbyVision81Settings>,
 
     ///
@@ -5451,7 +5451,7 @@ pub struct H265ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hdr10Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hdr10_settings: Option<Hdr10Settings>,
 
     ///
@@ -5463,7 +5463,7 @@ pub struct H265ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rec601Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rec601_settings: Option<Rec601Settings>,
 
     ///
@@ -5475,7 +5475,7 @@ pub struct H265ColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rec709Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rec709_settings: Option<Rec709Settings>,
 }
 
@@ -5527,7 +5527,7 @@ pub struct H265FilterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemporalFilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temporal_filter_settings: Option<TemporalFilterSettings>,
 }
 
@@ -5564,7 +5564,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
@@ -5576,7 +5576,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
@@ -5588,7 +5588,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternativeTransferFunction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternative_transfer_function: Option<cfn_resources::StrVal>,
 
     ///
@@ -5600,7 +5600,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<i64>,
 
     ///
@@ -5612,7 +5612,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buf_size: Option<i64>,
 
     ///
@@ -5624,7 +5624,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -5636,7 +5636,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpaceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_settings: Option<H265ColorSpaceSettings>,
 
     ///
@@ -5648,7 +5648,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_settings: Option<H265FilterSettings>,
 
     ///
@@ -5660,7 +5660,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
@@ -5672,7 +5672,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlickerAq")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flicker_aq: Option<cfn_resources::StrVal>,
 
     ///
@@ -5684,7 +5684,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateDenominator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_denominator: Option<i64>,
 
     ///
@@ -5696,7 +5696,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateNumerator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_numerator: Option<i64>,
 
     ///
@@ -5708,7 +5708,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopClosedCadence")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_closed_cadence: Option<i64>,
 
     ///
@@ -5720,7 +5720,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size: Option<f64>,
 
     ///
@@ -5732,7 +5732,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
@@ -5744,7 +5744,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Level")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub level: Option<cfn_resources::StrVal>,
 
     ///
@@ -5756,7 +5756,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LookAheadRateControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub look_ahead_rate_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -5768,7 +5768,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_bitrate: Option<i64>,
 
     ///
@@ -5780,7 +5780,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinIInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_iinterval: Option<i64>,
 
     ///
@@ -5792,7 +5792,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParDenominator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub par_denominator: Option<i64>,
 
     ///
@@ -5804,7 +5804,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParNumerator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub par_numerator: Option<i64>,
 
     ///
@@ -5816,7 +5816,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -5828,7 +5828,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QvbrQualityLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qvbr_quality_level: Option<i64>,
 
     ///
@@ -5840,7 +5840,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateControlMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_control_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -5852,7 +5852,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -5864,7 +5864,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SceneChangeDetect")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scene_change_detect: Option<cfn_resources::StrVal>,
 
     ///
@@ -5876,7 +5876,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slices")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slices: Option<i64>,
 
     ///
@@ -5888,7 +5888,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tier: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -5899,7 +5899,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeBurninSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_burnin_settings: Option<TimecodeBurninSettings>,
 
     ///
@@ -5911,7 +5911,7 @@ pub struct H265Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
@@ -5956,7 +5956,7 @@ pub struct Hdr10Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCll")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_cll: Option<i64>,
 
     ///
@@ -5968,7 +5968,7 @@ pub struct Hdr10Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFall")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_fall: Option<i64>,
 }
 
@@ -6001,7 +6001,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -6013,7 +6013,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilecacheDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filecache_duration: Option<i64>,
 
     ///
@@ -6025,7 +6025,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTransferMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_transfer_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -6037,7 +6037,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 
     ///
@@ -6049,7 +6049,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 
     ///
@@ -6061,7 +6061,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salt: Option<cfn_resources::StrVal>,
 
     ///
@@ -6073,7 +6073,7 @@ pub struct HlsAkamaiSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Token")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token: Option<cfn_resources::StrVal>,
 }
 
@@ -6106,7 +6106,7 @@ pub struct HlsBasicPutSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -6118,7 +6118,7 @@ pub struct HlsBasicPutSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilecacheDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filecache_duration: Option<i64>,
 
     ///
@@ -6130,7 +6130,7 @@ pub struct HlsBasicPutSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 
     ///
@@ -6142,7 +6142,7 @@ pub struct HlsBasicPutSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 }
 
@@ -6175,7 +6175,7 @@ pub struct HlsCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsAkamaiSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_akamai_settings: Option<HlsAkamaiSettings>,
 
     ///
@@ -6187,7 +6187,7 @@ pub struct HlsCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsBasicPutSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_basic_put_settings: Option<HlsBasicPutSettings>,
 
     ///
@@ -6199,7 +6199,7 @@ pub struct HlsCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsMediaStoreSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_media_store_settings: Option<HlsMediaStoreSettings>,
 
     ///
@@ -6211,7 +6211,7 @@ pub struct HlsCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsS3Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_s3_settings: Option<HlsS3Settings>,
 
     ///
@@ -6225,7 +6225,7 @@ pub struct HlsCdnSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsWebdavSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_webdav_settings: Option<HlsWebdavSettings>,
 }
 
@@ -6278,7 +6278,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_markers: Option<Vec<String>>,
 
     ///
@@ -6290,7 +6290,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlContent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_url_content: Option<cfn_resources::StrVal>,
 
     ///
@@ -6302,7 +6302,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlContent1")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_url_content1: Option<cfn_resources::StrVal>,
 
     ///
@@ -6314,7 +6314,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlManifest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_url_manifest: Option<cfn_resources::StrVal>,
 
     ///
@@ -6326,7 +6326,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseUrlManifest1")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_url_manifest1: Option<cfn_resources::StrVal>,
 
     ///
@@ -6338,7 +6338,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionLanguageMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_language_mappings: Option<Vec<CaptionLanguageMapping>>,
 
     ///
@@ -6350,7 +6350,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionLanguageSetting")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_language_setting: Option<cfn_resources::StrVal>,
 
     ///
@@ -6362,7 +6362,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCache")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_cache: Option<cfn_resources::StrVal>,
 
     ///
@@ -6374,7 +6374,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodecSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub codec_specification: Option<cfn_resources::StrVal>,
 
     ///
@@ -6386,7 +6386,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantIv")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_iv: Option<cfn_resources::StrVal>,
 
     ///
@@ -6398,7 +6398,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -6410,7 +6410,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryStructure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub directory_structure: Option<cfn_resources::StrVal>,
 
     ///
@@ -6422,7 +6422,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DiscontinuityTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub discontinuity_tags: Option<cfn_resources::StrVal>,
 
     ///
@@ -6434,7 +6434,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -6446,7 +6446,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsCdnSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_cdn_settings: Option<HlsCdnSettings>,
 
     ///
@@ -6458,7 +6458,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsId3SegmentTagging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_id3_segment_tagging: Option<cfn_resources::StrVal>,
 
     ///
@@ -6470,7 +6470,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IFrameOnlyPlaylists")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iframe_only_playlists: Option<cfn_resources::StrVal>,
 
     ///
@@ -6482,7 +6482,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncompleteSegmentBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub incomplete_segment_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -6494,7 +6494,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexNSegments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub index_nsegments: Option<i64>,
 
     ///
@@ -6506,7 +6506,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -6518,7 +6518,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IvInManifest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iv_in_manifest: Option<cfn_resources::StrVal>,
 
     ///
@@ -6530,7 +6530,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IvSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iv_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -6542,7 +6542,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeepSegments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub keep_segments: Option<i64>,
 
     ///
@@ -6554,7 +6554,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -6566,7 +6566,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyFormatVersions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_format_versions: Option<cfn_resources::StrVal>,
 
     ///
@@ -6578,7 +6578,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyProviderSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_provider_settings: Option<KeyProviderSettings>,
 
     ///
@@ -6590,7 +6590,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestCompression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_compression: Option<cfn_resources::StrVal>,
 
     ///
@@ -6602,7 +6602,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestDurationFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_duration_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -6614,7 +6614,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSegmentLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_segment_length: Option<i64>,
 
     ///
@@ -6626,7 +6626,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -6638,7 +6638,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_selection: Option<cfn_resources::StrVal>,
 
     ///
@@ -6650,7 +6650,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_date_time: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -6661,7 +6661,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimeClock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_date_time_clock: Option<cfn_resources::StrVal>,
 
     ///
@@ -6673,7 +6673,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimePeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_date_time_period: Option<i64>,
 
     ///
@@ -6685,7 +6685,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedundantManifest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redundant_manifest: Option<cfn_resources::StrVal>,
 
     ///
@@ -6697,7 +6697,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_length: Option<i64>,
 
     ///
@@ -6709,7 +6709,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segmentation_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -6721,7 +6721,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentsPerSubdirectory")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segments_per_subdirectory: Option<i64>,
 
     ///
@@ -6733,7 +6733,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamInfResolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_inf_resolution: Option<cfn_resources::StrVal>,
 
     ///
@@ -6745,7 +6745,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Frame")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_id3_frame: Option<cfn_resources::StrVal>,
 
     ///
@@ -6757,7 +6757,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Period")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_id3_period: Option<i64>,
 
     ///
@@ -6769,7 +6769,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampDeltaMilliseconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_delta_milliseconds: Option<i64>,
 
     ///
@@ -6781,7 +6781,7 @@ pub struct HlsGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TsFileMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ts_file_mode: Option<cfn_resources::StrVal>,
 }
 
@@ -6826,7 +6826,7 @@ pub struct HlsInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bandwidth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth: Option<i64>,
 
     ///
@@ -6838,7 +6838,7 @@ pub struct HlsInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferSegments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffer_segments: Option<i64>,
 
     ///
@@ -6850,7 +6850,7 @@ pub struct HlsInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Retries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retries: Option<i64>,
 
     ///
@@ -6862,7 +6862,7 @@ pub struct HlsInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_interval: Option<i64>,
 
     ///
@@ -6874,7 +6874,7 @@ pub struct HlsInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Source")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_source: Option<cfn_resources::StrVal>,
 }
 
@@ -6907,7 +6907,7 @@ pub struct HlsMediaStoreSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -6919,7 +6919,7 @@ pub struct HlsMediaStoreSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilecacheDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filecache_duration: Option<i64>,
 
     ///
@@ -6931,7 +6931,7 @@ pub struct HlsMediaStoreSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediaStoreStorageClass")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub media_store_storage_class: Option<cfn_resources::StrVal>,
 
     ///
@@ -6943,7 +6943,7 @@ pub struct HlsMediaStoreSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 
     ///
@@ -6955,7 +6955,7 @@ pub struct HlsMediaStoreSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 }
 
@@ -6988,7 +6988,7 @@ pub struct HlsOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "H265PackagingType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub h265_packaging_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -7000,7 +7000,7 @@ pub struct HlsOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_settings: Option<HlsSettings>,
 
     ///
@@ -7012,7 +7012,7 @@ pub struct HlsOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name_modifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -7024,7 +7024,7 @@ pub struct HlsOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentModifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_modifier: Option<cfn_resources::StrVal>,
 }
 
@@ -7061,7 +7061,7 @@ pub struct HlsS3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canned_acl: Option<cfn_resources::StrVal>,
 }
 
@@ -7094,7 +7094,7 @@ pub struct HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioOnlyHlsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_only_hls_settings: Option<AudioOnlyHlsSettings>,
 
     ///
@@ -7106,7 +7106,7 @@ pub struct HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Fmp4HlsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fmp4_hls_settings: Option<Fmp4HlsSettings>,
 
     ///
@@ -7118,7 +7118,7 @@ pub struct HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureHlsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_hls_settings: Option<FrameCaptureHlsSettings>,
 
     ///
@@ -7130,7 +7130,7 @@ pub struct HlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardHlsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub standard_hls_settings: Option<StandardHlsSettings>,
 }
 
@@ -7179,7 +7179,7 @@ pub struct HlsWebdavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -7191,7 +7191,7 @@ pub struct HlsWebdavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilecacheDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filecache_duration: Option<i64>,
 
     ///
@@ -7203,7 +7203,7 @@ pub struct HlsWebdavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTransferMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_transfer_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -7215,7 +7215,7 @@ pub struct HlsWebdavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 
     ///
@@ -7227,7 +7227,7 @@ pub struct HlsWebdavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 }
 
@@ -7281,7 +7281,7 @@ pub struct InputAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticInputFailoverSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_input_failover_settings: Option<AutomaticInputFailoverSettings>,
 
     ///
@@ -7293,7 +7293,7 @@ pub struct InputAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputAttachmentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_attachment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -7305,7 +7305,7 @@ pub struct InputAttachment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -7317,7 +7317,7 @@ pub struct InputAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_settings: Option<InputSettings>,
 }
 
@@ -7358,7 +7358,7 @@ pub struct InputChannelLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gain: Option<i64>,
 
     ///
@@ -7370,7 +7370,7 @@ pub struct InputChannelLevel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputChannel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_channel: Option<i64>,
 }
 
@@ -7403,7 +7403,7 @@ pub struct InputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password_param: Option<cfn_resources::StrVal>,
 
     ///
@@ -7415,7 +7415,7 @@ pub struct InputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Uri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -7427,7 +7427,7 @@ pub struct InputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -7460,7 +7460,7 @@ pub struct InputLossBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlackFrameMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub black_frame_msec: Option<i64>,
 
     ///
@@ -7472,7 +7472,7 @@ pub struct InputLossBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossImageColor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_image_color: Option<cfn_resources::StrVal>,
 
     ///
@@ -7484,7 +7484,7 @@ pub struct InputLossBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossImageSlate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_image_slate: Option<InputLocation>,
 
     ///
@@ -7496,7 +7496,7 @@ pub struct InputLossBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossImageType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_image_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -7508,7 +7508,7 @@ pub struct InputLossBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepeatFrameMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repeat_frame_msec: Option<i64>,
 }
 
@@ -7545,7 +7545,7 @@ pub struct InputLossFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossThresholdMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_threshold_msec: Option<i64>,
 }
 
@@ -7580,7 +7580,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_selectors: Option<Vec<AudioSelector>>,
 
     ///
@@ -7592,7 +7592,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_selectors: Option<Vec<CaptionSelector>>,
 
     ///
@@ -7604,7 +7604,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeblockFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deblock_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -7616,7 +7616,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DenoiseFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub denoise_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -7628,7 +7628,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterStrength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_strength: Option<i64>,
 
     ///
@@ -7640,7 +7640,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_filter: Option<cfn_resources::StrVal>,
 
     ///
@@ -7652,7 +7652,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_input_settings: Option<NetworkInputSettings>,
 
     /// Property description not available.
@@ -7663,7 +7663,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_pid: Option<i64>,
 
     ///
@@ -7675,7 +7675,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Smpte2038DataPreference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smpte2038_data_preference: Option<cfn_resources::StrVal>,
 
     ///
@@ -7687,7 +7687,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceEndBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_end_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -7699,7 +7699,7 @@ pub struct InputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoSelector")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_selector: Option<VideoSelector>,
 }
 
@@ -7740,7 +7740,7 @@ pub struct InputSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Codec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub codec: Option<cfn_resources::StrVal>,
 
     ///
@@ -7752,7 +7752,7 @@ pub struct InputSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_bitrate: Option<cfn_resources::StrVal>,
 
     ///
@@ -7764,7 +7764,7 @@ pub struct InputSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolution: Option<cfn_resources::StrVal>,
 }
 
@@ -7797,7 +7797,7 @@ pub struct KeyProviderSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticKeySettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_key_settings: Option<StaticKeySettings>,
 }
 
@@ -7834,7 +7834,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AbsentInputAudioBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub absent_input_audio_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -7846,7 +7846,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arib")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arib: Option<cfn_resources::StrVal>,
 
     ///
@@ -7858,7 +7858,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AribCaptionsPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arib_captions_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -7870,7 +7870,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AribCaptionsPidControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arib_captions_pid_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -7882,7 +7882,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioBufferModel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_buffer_model: Option<cfn_resources::StrVal>,
 
     ///
@@ -7894,7 +7894,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioFramesPerPes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_frames_per_pes: Option<i64>,
 
     ///
@@ -7906,7 +7906,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioPids")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_pids: Option<cfn_resources::StrVal>,
 
     ///
@@ -7918,7 +7918,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioStreamType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_stream_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -7930,7 +7930,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<i64>,
 
     ///
@@ -7942,7 +7942,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferModel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffer_model: Option<cfn_resources::StrVal>,
 
     ///
@@ -7954,7 +7954,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CcDescriptor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cc_descriptor: Option<cfn_resources::StrVal>,
 
     ///
@@ -7966,7 +7966,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbNitSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_nit_settings: Option<DvbNitSettings>,
 
     ///
@@ -7978,7 +7978,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbSdtSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_sdt_settings: Option<DvbSdtSettings>,
 
     ///
@@ -7990,7 +7990,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbSubPids")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_sub_pids: Option<cfn_resources::StrVal>,
 
     ///
@@ -8002,7 +8002,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbTdtSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_tdt_settings: Option<DvbTdtSettings>,
 
     ///
@@ -8014,7 +8014,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DvbTeletextPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dvb_teletext_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8026,7 +8026,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ebif")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebif: Option<cfn_resources::StrVal>,
 
     ///
@@ -8038,7 +8038,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbpAudioInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebp_audio_interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -8050,7 +8050,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbpLookaheadMs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebp_lookahead_ms: Option<i64>,
 
     ///
@@ -8062,7 +8062,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbpPlacement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebp_placement: Option<cfn_resources::StrVal>,
 
     ///
@@ -8074,7 +8074,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcmPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecm_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8086,7 +8086,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EsRateInPes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub es_rate_in_pes: Option<cfn_resources::StrVal>,
 
     ///
@@ -8098,7 +8098,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EtvPlatformPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etv_platform_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8110,7 +8110,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EtvSignalPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etv_signal_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8122,7 +8122,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FragmentTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fragment_time: Option<f64>,
 
     ///
@@ -8134,7 +8134,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Klv")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub klv: Option<cfn_resources::StrVal>,
 
     ///
@@ -8146,7 +8146,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KlvDataPids")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub klv_data_pids: Option<cfn_resources::StrVal>,
 
     ///
@@ -8158,7 +8158,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -8170,7 +8170,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullPacketBitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_packet_bitrate: Option<f64>,
 
     ///
@@ -8182,7 +8182,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pat_interval: Option<i64>,
 
     ///
@@ -8194,7 +8194,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -8206,7 +8206,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_period: Option<i64>,
 
     ///
@@ -8218,7 +8218,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8230,7 +8230,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PmtInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pmt_interval: Option<i64>,
 
     ///
@@ -8242,7 +8242,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PmtPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pmt_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8254,7 +8254,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramNum")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_num: Option<i64>,
 
     ///
@@ -8266,7 +8266,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -8278,7 +8278,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte27Pids")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte27_pids: Option<cfn_resources::StrVal>,
 
     ///
@@ -8290,7 +8290,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Control")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -8302,7 +8302,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_pid: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -8313,7 +8313,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35PrerollPullupMilliseconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_preroll_pullup_milliseconds: Option<f64>,
 
     ///
@@ -8325,7 +8325,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMarkers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segmentation_markers: Option<cfn_resources::StrVal>,
 
     ///
@@ -8337,7 +8337,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentationStyle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segmentation_style: Option<cfn_resources::StrVal>,
 
     ///
@@ -8349,7 +8349,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentationTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segmentation_time: Option<f64>,
 
     ///
@@ -8361,7 +8361,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -8373,7 +8373,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8385,7 +8385,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransportStreamId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transport_stream_id: Option<i64>,
 
     ///
@@ -8397,7 +8397,7 @@ pub struct M2tsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_pid: Option<cfn_resources::StrVal>,
 }
 
@@ -8442,7 +8442,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioFramesPerPes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_frames_per_pes: Option<i64>,
 
     ///
@@ -8454,7 +8454,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioPids")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_pids: Option<cfn_resources::StrVal>,
 
     ///
@@ -8466,7 +8466,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcmPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecm_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8478,7 +8478,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenId3Behavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_id3_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -8490,7 +8490,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pat_interval: Option<i64>,
 
     ///
@@ -8502,7 +8502,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -8514,7 +8514,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_period: Option<i64>,
 
     ///
@@ -8526,7 +8526,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PcrPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pcr_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8538,7 +8538,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PmtInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pmt_interval: Option<i64>,
 
     ///
@@ -8550,7 +8550,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PmtPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pmt_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8562,7 +8562,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramNum")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_num: Option<i64>,
 
     ///
@@ -8574,7 +8574,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Behavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -8586,7 +8586,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scte35Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scte35_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8598,7 +8598,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -8610,7 +8610,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_pid: Option<cfn_resources::StrVal>,
 
     ///
@@ -8622,7 +8622,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransportStreamId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transport_stream_id: Option<i64>,
 
     ///
@@ -8634,7 +8634,7 @@ pub struct M3u8Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_pid: Option<cfn_resources::StrVal>,
 }
 
@@ -8664,7 +8664,7 @@ pub struct MaintenanceCreateSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceDay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_day: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -8675,7 +8675,7 @@ pub struct MaintenanceCreateSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceStartTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -8705,7 +8705,7 @@ pub struct MaintenanceUpdateSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceDay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_day: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -8716,7 +8716,7 @@ pub struct MaintenanceUpdateSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceScheduledDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_scheduled_date: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -8727,7 +8727,7 @@ pub struct MaintenanceUpdateSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceStartTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -8760,7 +8760,7 @@ pub struct MediaPackageGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 }
 
@@ -8797,7 +8797,7 @@ pub struct MediaPackageOutputDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_id: Option<cfn_resources::StrVal>,
 }
 
@@ -8851,7 +8851,7 @@ pub struct MotionGraphicsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MotionGraphicsInsertion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub motion_graphics_insertion: Option<cfn_resources::StrVal>,
 
     ///
@@ -8863,7 +8863,7 @@ pub struct MotionGraphicsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MotionGraphicsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub motion_graphics_settings: Option<MotionGraphicsSettings>,
 }
 
@@ -8900,7 +8900,7 @@ pub struct MotionGraphicsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HtmlMotionGraphicsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub html_motion_graphics_settings: Option<HtmlMotionGraphicsSettings>,
 }
 
@@ -8937,7 +8937,7 @@ pub struct Mp2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bitrate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bitrate: Option<f64>,
 
     ///
@@ -8949,7 +8949,7 @@ pub struct Mp2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -8961,7 +8961,7 @@ pub struct Mp2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_rate: Option<f64>,
 }
 
@@ -8993,7 +8993,7 @@ pub struct Mpeg2FilterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemporalFilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temporal_filter_settings: Option<TemporalFilterSettings>,
 }
 
@@ -9030,7 +9030,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdaptiveQuantization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub adaptive_quantization: Option<cfn_resources::StrVal>,
 
     ///
@@ -9042,7 +9042,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfdSignaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub afd_signaling: Option<cfn_resources::StrVal>,
 
     ///
@@ -9054,7 +9054,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -9066,7 +9066,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space: Option<cfn_resources::StrVal>,
 
     ///
@@ -9078,7 +9078,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayAspectRatio")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_aspect_ratio: Option<cfn_resources::StrVal>,
 
     ///
@@ -9090,7 +9090,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_settings: Option<Mpeg2FilterSettings>,
 
     ///
@@ -9102,7 +9102,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedAfd")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_afd: Option<cfn_resources::StrVal>,
 
     ///
@@ -9114,7 +9114,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateDenominator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_denominator: Option<i64>,
 
     ///
@@ -9126,7 +9126,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FramerateNumerator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framerate_numerator: Option<i64>,
 
     ///
@@ -9138,7 +9138,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopClosedCadence")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_closed_cadence: Option<i64>,
 
     ///
@@ -9150,7 +9150,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopNumBFrames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_num_bframes: Option<i64>,
 
     ///
@@ -9162,7 +9162,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size: Option<f64>,
 
     ///
@@ -9174,7 +9174,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GopSizeUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gop_size_units: Option<cfn_resources::StrVal>,
 
     ///
@@ -9186,7 +9186,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scan_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -9198,7 +9198,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubgopLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subgop_length: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -9209,7 +9209,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeBurninSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_burnin_settings: Option<TimecodeBurninSettings>,
 
     ///
@@ -9221,7 +9221,7 @@ pub struct Mpeg2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimecodeInsertion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timecode_insertion: Option<cfn_resources::StrVal>,
 }
 
@@ -9262,7 +9262,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcquisitionPointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acquisition_point_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -9274,7 +9274,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioOnlyTimecodeControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_only_timecode_control: Option<cfn_resources::StrVal>,
 
     ///
@@ -9286,7 +9286,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -9298,7 +9298,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -9310,7 +9310,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -9322,7 +9322,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -9334,7 +9334,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventIdMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_id_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -9346,7 +9346,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventStopBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_stop_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -9358,7 +9358,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilecacheDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filecache_duration: Option<i64>,
 
     ///
@@ -9370,7 +9370,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FragmentLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fragment_length: Option<i64>,
 
     ///
@@ -9382,7 +9382,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -9394,7 +9394,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 
     ///
@@ -9406,7 +9406,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 
     ///
@@ -9418,7 +9418,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentationMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segmentation_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -9430,7 +9430,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendDelayMs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub send_delay_ms: Option<i64>,
 
     ///
@@ -9442,7 +9442,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SparseTrackType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sparse_track_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -9454,7 +9454,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamManifestBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_manifest_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -9466,7 +9466,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_offset: Option<cfn_resources::StrVal>,
 
     ///
@@ -9478,7 +9478,7 @@ pub struct MsSmoothGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampOffsetMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_offset_mode: Option<cfn_resources::StrVal>,
 }
 
@@ -9515,7 +9515,7 @@ pub struct MsSmoothOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "H265PackagingType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub h265_packaging_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -9527,7 +9527,7 @@ pub struct MsSmoothOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NameModifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name_modifier: Option<cfn_resources::StrVal>,
 }
 
@@ -9581,7 +9581,7 @@ pub struct MultiplexOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 }
 
@@ -9618,7 +9618,7 @@ pub struct MultiplexProgramChannelDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiplexId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multiplex_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -9630,7 +9630,7 @@ pub struct MultiplexProgramChannelDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_name: Option<cfn_resources::StrVal>,
 }
 
@@ -9663,7 +9663,7 @@ pub struct NetworkInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsInputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_input_settings: Option<HlsInputSettings>,
 
     ///
@@ -9675,7 +9675,7 @@ pub struct NetworkInputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerValidation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_validation: Option<cfn_resources::StrVal>,
 }
 
@@ -9712,7 +9712,7 @@ pub struct NielsenCBET {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CbetCheckDigitString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cbet_check_digit_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -9724,7 +9724,7 @@ pub struct NielsenCBET {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CbetStepaside")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cbet_stepaside: Option<cfn_resources::StrVal>,
 
     ///
@@ -9736,7 +9736,7 @@ pub struct NielsenCBET {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csid: Option<cfn_resources::StrVal>,
 }
 
@@ -9769,7 +9769,7 @@ pub struct NielsenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DistributorId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distributor_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -9781,7 +9781,7 @@ pub struct NielsenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenPcmToId3Tagging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_pcm_to_id3_tagging: Option<cfn_resources::StrVal>,
 }
 
@@ -9814,7 +9814,7 @@ pub struct NielsenNaesIiNw {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckDigitString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub check_digit_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -9826,7 +9826,7 @@ pub struct NielsenNaesIiNw {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sid: Option<f64>,
 
     /// Property description not available.
@@ -9837,7 +9837,7 @@ pub struct NielsenNaesIiNw {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timezone: Option<cfn_resources::StrVal>,
 }
 
@@ -9870,7 +9870,7 @@ pub struct NielsenWatermarksSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenCbetSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_cbet_settings: Option<NielsenCBET>,
 
     ///
@@ -9882,7 +9882,7 @@ pub struct NielsenWatermarksSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenDistributionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_distribution_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -9894,7 +9894,7 @@ pub struct NielsenWatermarksSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NielsenNaesIiNwSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nielsen_naes_ii_nw_settings: Option<NielsenNaesIiNw>,
 }
 
@@ -9935,7 +9935,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioDescriptionNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_description_names: Option<Vec<String>>,
 
     ///
@@ -9947,7 +9947,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionDescriptionNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_description_names: Option<Vec<String>>,
 
     ///
@@ -9959,7 +9959,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -9971,7 +9971,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_settings: Option<OutputSettings>,
 
     ///
@@ -9983,7 +9983,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoDescriptionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_description_name: Option<cfn_resources::StrVal>,
 }
 
@@ -10020,7 +10020,7 @@ pub struct OutputDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<cfn_resources::StrVal>,
 
     ///
@@ -10032,7 +10032,7 @@ pub struct OutputDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediaPackageSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub media_package_settings: Option<Vec<MediaPackageOutputDestinationSettings>>,
 
     ///
@@ -10044,7 +10044,7 @@ pub struct OutputDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiplexSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multiplex_settings: Option<MultiplexProgramChannelDestinationSettings>,
 
     ///
@@ -10056,7 +10056,7 @@ pub struct OutputDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<Vec<OutputDestinationSettings>>,
 }
 
@@ -10093,7 +10093,7 @@ pub struct OutputDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordParam")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password_param: Option<cfn_resources::StrVal>,
 
     ///
@@ -10105,7 +10105,7 @@ pub struct OutputDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -10117,7 +10117,7 @@ pub struct OutputDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<cfn_resources::StrVal>,
 
     ///
@@ -10129,7 +10129,7 @@ pub struct OutputDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
 }
 
@@ -10162,7 +10162,7 @@ pub struct OutputGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -10174,7 +10174,7 @@ pub struct OutputGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_group_settings: Option<OutputGroupSettings>,
 
     ///
@@ -10186,7 +10186,7 @@ pub struct OutputGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Outputs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outputs: Option<Vec<Output>>,
 }
 
@@ -10225,7 +10225,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_group_settings: Option<ArchiveGroupSettings>,
 
     ///
@@ -10237,7 +10237,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_group_settings: Option<FrameCaptureGroupSettings>,
 
     ///
@@ -10249,7 +10249,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_group_settings: Option<HlsGroupSettings>,
 
     ///
@@ -10261,7 +10261,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediaPackageGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub media_package_group_settings: Option<MediaPackageGroupSettings>,
 
     ///
@@ -10273,7 +10273,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MsSmoothGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ms_smooth_group_settings: Option<MsSmoothGroupSettings>,
 
     /// The settings for a Multiplex output group.
@@ -10284,7 +10284,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiplexGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multiplex_group_settings: Option<MultiplexGroupSettings>,
 
     ///
@@ -10296,7 +10296,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RtmpGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rtmp_group_settings: Option<RtmpGroupSettings>,
 
     ///
@@ -10308,7 +10308,7 @@ pub struct OutputGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UdpGroupSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub udp_group_settings: Option<UdpGroupSettings>,
 }
 
@@ -10373,7 +10373,7 @@ pub struct OutputLocationRef {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationRefId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_ref_id: Option<cfn_resources::StrVal>,
 }
 
@@ -10406,7 +10406,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_output_settings: Option<ArchiveOutputSettings>,
 
     ///
@@ -10420,7 +10420,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_output_settings: Option<FrameCaptureOutputSettings>,
 
     ///
@@ -10434,7 +10434,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_output_settings: Option<HlsOutputSettings>,
 
     ///
@@ -10448,7 +10448,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediaPackageOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub media_package_output_settings: Option<MediaPackageOutputSettings>,
 
     ///
@@ -10460,7 +10460,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MsSmoothOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ms_smooth_output_settings: Option<MsSmoothOutputSettings>,
 
     /// Configuration of a Multiplex output.
@@ -10471,7 +10471,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiplexOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multiplex_output_settings: Option<MultiplexOutputSettings>,
 
     ///
@@ -10485,7 +10485,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RtmpOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rtmp_output_settings: Option<RtmpOutputSettings>,
 
     ///
@@ -10499,7 +10499,7 @@ pub struct OutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UdpOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub udp_output_settings: Option<UdpOutputSettings>,
 }
 
@@ -10648,7 +10648,7 @@ pub struct RemixSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_mappings: Option<Vec<AudioChannelMapping>>,
 
     ///
@@ -10660,7 +10660,7 @@ pub struct RemixSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelsIn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channels_in: Option<i64>,
 
     ///
@@ -10672,7 +10672,7 @@ pub struct RemixSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelsOut")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channels_out: Option<i64>,
 }
 
@@ -10726,7 +10726,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_markers: Option<Vec<String>>,
 
     ///
@@ -10738,7 +10738,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationScheme")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_scheme: Option<cfn_resources::StrVal>,
 
     ///
@@ -10750,7 +10750,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheFullBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_full_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -10762,7 +10762,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_length: Option<i64>,
 
     ///
@@ -10774,7 +10774,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptionData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caption_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -10786,7 +10786,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -10798,7 +10798,7 @@ pub struct RtmpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartDelay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_delay: Option<i64>,
 }
 
@@ -10831,7 +10831,7 @@ pub struct RtmpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -10843,7 +10843,7 @@ pub struct RtmpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionRetryInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_retry_interval: Option<i64>,
 
     ///
@@ -10855,7 +10855,7 @@ pub struct RtmpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -10867,7 +10867,7 @@ pub struct RtmpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_retries: Option<i64>,
 }
 
@@ -10925,7 +10925,7 @@ pub struct Scte20SourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Convert608To708")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub convert608_to708: Option<cfn_resources::StrVal>,
 
     ///
@@ -10937,7 +10937,7 @@ pub struct Scte20SourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source608ChannelNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source608_channel_number: Option<i64>,
 }
 
@@ -10991,7 +10991,7 @@ pub struct Scte27SourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcrLanguage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ocr_language: Option<cfn_resources::StrVal>,
 
     ///
@@ -11003,7 +11003,7 @@ pub struct Scte27SourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pid: Option<i64>,
 }
 
@@ -11036,7 +11036,7 @@ pub struct Scte35SpliceInsert {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdAvailOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_avail_offset: Option<i64>,
 
     ///
@@ -11048,7 +11048,7 @@ pub struct Scte35SpliceInsert {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoRegionalBlackoutFlag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_regional_blackout_flag: Option<cfn_resources::StrVal>,
 
     ///
@@ -11060,7 +11060,7 @@ pub struct Scte35SpliceInsert {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebDeliveryAllowedFlag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web_delivery_allowed_flag: Option<cfn_resources::StrVal>,
 }
 
@@ -11093,7 +11093,7 @@ pub struct Scte35TimeSignalApos {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdAvailOffset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_avail_offset: Option<i64>,
 
     ///
@@ -11105,7 +11105,7 @@ pub struct Scte35TimeSignalApos {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoRegionalBlackoutFlag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_regional_blackout_flag: Option<cfn_resources::StrVal>,
 
     ///
@@ -11117,7 +11117,7 @@ pub struct Scte35TimeSignalApos {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebDeliveryAllowedFlag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web_delivery_allowed_flag: Option<cfn_resources::StrVal>,
 }
 
@@ -11171,7 +11171,7 @@ pub struct StandardHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AudioRenditionSets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_rendition_sets: Option<cfn_resources::StrVal>,
 
     ///
@@ -11183,7 +11183,7 @@ pub struct StandardHlsSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "M3u8Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub m3u8_settings: Option<M3u8Settings>,
 }
 
@@ -11220,7 +11220,7 @@ pub struct StaticKeySettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyProviderServer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_provider_server: Option<InputLocation>,
 
     ///
@@ -11232,7 +11232,7 @@ pub struct StaticKeySettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticKeyValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_key_value: Option<cfn_resources::StrVal>,
 }
 
@@ -11290,7 +11290,7 @@ pub struct TeletextSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputRectangle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_rectangle: Option<CaptionRectangle>,
 
     ///
@@ -11302,7 +11302,7 @@ pub struct TeletextSourceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page_number: Option<cfn_resources::StrVal>,
 }
 
@@ -11339,7 +11339,7 @@ pub struct TemporalFilterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostFilterSharpening")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub post_filter_sharpening: Option<cfn_resources::StrVal>,
 
     ///
@@ -11351,7 +11351,7 @@ pub struct TemporalFilterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Strength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strength: Option<cfn_resources::StrVal>,
 }
 
@@ -11381,7 +11381,7 @@ pub struct TimecodeBurninSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_size: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -11392,7 +11392,7 @@ pub struct TimecodeBurninSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -11403,7 +11403,7 @@ pub struct TimecodeBurninSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -11436,7 +11436,7 @@ pub struct TimecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<cfn_resources::StrVal>,
 
     ///
@@ -11448,7 +11448,7 @@ pub struct TimecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_threshold: Option<i64>,
 }
 
@@ -11481,7 +11481,7 @@ pub struct TtmlDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_control: Option<cfn_resources::StrVal>,
 }
 
@@ -11514,7 +11514,7 @@ pub struct UdpContainerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "M2tsSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub m2ts_settings: Option<M2tsSettings>,
 }
 
@@ -11551,7 +11551,7 @@ pub struct UdpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLossAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_loss_action: Option<cfn_resources::StrVal>,
 
     ///
@@ -11563,7 +11563,7 @@ pub struct UdpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Frame")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_id3_frame: Option<cfn_resources::StrVal>,
 
     ///
@@ -11575,7 +11575,7 @@ pub struct UdpGroupSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimedMetadataId3Period")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timed_metadata_id3_period: Option<i64>,
 }
 
@@ -11608,7 +11608,7 @@ pub struct UdpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffer_msec: Option<i64>,
 
     ///
@@ -11620,7 +11620,7 @@ pub struct UdpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_settings: Option<UdpContainerSettings>,
 
     ///
@@ -11632,7 +11632,7 @@ pub struct UdpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<OutputLocationRef>,
 
     ///
@@ -11644,7 +11644,7 @@ pub struct UdpOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FecOutputSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fec_output_settings: Option<FecOutputSettings>,
 }
 
@@ -11689,7 +11689,7 @@ pub struct VideoBlackFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlackDetectThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub black_detect_threshold: Option<f64>,
 
     ///
@@ -11701,7 +11701,7 @@ pub struct VideoBlackFailoverSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoBlackThresholdMsec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_black_threshold_msec: Option<i64>,
 }
 
@@ -11734,7 +11734,7 @@ pub struct VideoCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameCaptureSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_capture_settings: Option<FrameCaptureSettings>,
 
     ///
@@ -11746,7 +11746,7 @@ pub struct VideoCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "H264Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub h264_settings: Option<H264Settings>,
 
     ///
@@ -11758,7 +11758,7 @@ pub struct VideoCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "H265Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub h265_settings: Option<H265Settings>,
 
     ///
@@ -11770,7 +11770,7 @@ pub struct VideoCodecSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mpeg2Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mpeg2_settings: Option<Mpeg2Settings>,
 }
 
@@ -11819,7 +11819,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodecSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub codec_settings: Option<VideoCodecSettings>,
 
     ///
@@ -11831,7 +11831,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height: Option<i64>,
 
     ///
@@ -11843,7 +11843,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -11855,7 +11855,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RespondToAfd")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub respond_to_afd: Option<cfn_resources::StrVal>,
 
     ///
@@ -11867,7 +11867,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scaling_behavior: Option<cfn_resources::StrVal>,
 
     ///
@@ -11879,7 +11879,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sharpness")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sharpness: Option<i64>,
 
     ///
@@ -11891,7 +11891,7 @@ pub struct VideoDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<i64>,
 }
 
@@ -11928,7 +11928,7 @@ pub struct VideoSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space: Option<cfn_resources::StrVal>,
 
     ///
@@ -11940,7 +11940,7 @@ pub struct VideoSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpaceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_settings: Option<VideoSelectorColorSpaceSettings>,
 
     ///
@@ -11952,7 +11952,7 @@ pub struct VideoSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSpaceUsage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_space_usage: Option<cfn_resources::StrVal>,
 
     ///
@@ -11964,7 +11964,7 @@ pub struct VideoSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectorSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selector_settings: Option<VideoSelectorSettings>,
 }
 
@@ -12005,7 +12005,7 @@ pub struct VideoSelectorColorSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Hdr10Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hdr10_settings: Option<Hdr10Settings>,
 }
 
@@ -12042,7 +12042,7 @@ pub struct VideoSelectorPid {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pid: Option<i64>,
 }
 
@@ -12075,7 +12075,7 @@ pub struct VideoSelectorProgramId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_id: Option<i64>,
 }
 
@@ -12108,7 +12108,7 @@ pub struct VideoSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoSelectorPid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_selector_pid: Option<VideoSelectorPid>,
 
     ///
@@ -12120,7 +12120,7 @@ pub struct VideoSelectorSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VideoSelectorProgramId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub video_selector_program_id: Option<VideoSelectorProgramId>,
 }
 
@@ -12161,7 +12161,7 @@ pub struct VpcOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAddressAllocationIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_address_allocation_ids: Option<Vec<String>>,
 
     ///
@@ -12173,7 +12173,7 @@ pub struct VpcOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -12185,7 +12185,7 @@ pub struct VpcOutputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -12218,7 +12218,7 @@ pub struct WavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BitDepth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bit_depth: Option<f64>,
 
     ///
@@ -12230,7 +12230,7 @@ pub struct WavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub coding_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -12242,7 +12242,7 @@ pub struct WavSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_rate: Option<f64>,
 }
 
@@ -12275,7 +12275,7 @@ pub struct WebvttDestinationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleControl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_control: Option<cfn_resources::StrVal>,
 }
 

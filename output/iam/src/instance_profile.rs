@@ -21,7 +21,7 @@ pub struct CfnInstanceProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceProfileName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnInstanceProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///

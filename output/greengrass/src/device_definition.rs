@@ -15,7 +15,7 @@ pub struct CfnDeviceDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_version: Option<DeviceDefinitionVersion>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnDeviceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -145,7 +145,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_shadow: Option<bool>,
 
     ///

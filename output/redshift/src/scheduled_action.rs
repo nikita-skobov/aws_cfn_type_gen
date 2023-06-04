@@ -11,7 +11,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable: Option<bool>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActionDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_action_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -94,7 +94,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_action: Option<ScheduledActionType>,
 
     #[serde(skip_serializing)]
@@ -232,7 +232,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classic")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classic: Option<bool>,
 
     ///
@@ -259,7 +259,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -273,7 +273,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -285,7 +285,7 @@ pub struct ResizeClusterMessage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfNodes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_nodes: Option<i64>,
 }
 
@@ -383,7 +383,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PauseCluster")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pause_cluster: Option<PauseClusterMessage>,
 
     ///
@@ -395,7 +395,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResizeCluster")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resize_cluster: Option<ResizeClusterMessage>,
 
     ///
@@ -407,7 +407,7 @@ pub struct ScheduledActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResumeCluster")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resume_cluster: Option<ResumeClusterMessage>,
 }
 

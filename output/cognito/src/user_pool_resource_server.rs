@@ -47,7 +47,7 @@ pub struct CfnUserPoolResourceServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scopes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scopes: Option<Vec<ResourceServerScopeType>>,
 
     ///

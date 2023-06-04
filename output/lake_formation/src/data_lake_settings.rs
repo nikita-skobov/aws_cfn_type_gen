@@ -11,7 +11,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Admins")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub admins: Option<Admins>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowExternalDataFiltering")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_external_data_filtering: Option<bool>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizedSessionTagValueList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorized_session_tag_value_list: Option<Vec<String>>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateDatabaseDefaultPermissions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_database_default_permissions: Option<CreateDatabaseDefaultPermissions>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateTableDefaultPermissions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_table_default_permissions: Option<CreateTableDefaultPermissions>,
 
     ///
@@ -89,7 +89,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalDataFilteringAllowList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub external_data_filtering_allow_list: Option<ExternalDataFilteringAllowList>,
 
     ///
@@ -101,7 +101,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -115,7 +115,7 @@ pub struct CfnDataLakeSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedResourceOwners")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_resource_owners: Option<Vec<String>>,
 }
 
@@ -229,7 +229,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_lake_principal_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -298,7 +298,7 @@ pub struct PrincipalPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Permissions>,
 
     ///
@@ -310,7 +310,7 @@ pub struct PrincipalPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principal: Option<DataLakePrincipal>,
 }
 

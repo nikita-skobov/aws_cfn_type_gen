@@ -13,7 +13,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountAggregationSources")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_aggregation_sources: Option<Vec<AccountAggregationSource>>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAggregatorName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_aggregator_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationAggregationSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_aggregation_source: Option<OrganizationAggregationSource>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnConfigurationAggregator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -145,7 +145,7 @@ pub struct AccountAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllAwsRegions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_aws_regions: Option<bool>,
 
     ///
@@ -157,7 +157,7 @@ pub struct AccountAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_regions: Option<Vec<String>>,
 }
 
@@ -188,7 +188,7 @@ pub struct OrganizationAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllAwsRegions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_aws_regions: Option<bool>,
 
     ///
@@ -200,7 +200,7 @@ pub struct OrganizationAggregationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_regions: Option<Vec<String>>,
 
     ///

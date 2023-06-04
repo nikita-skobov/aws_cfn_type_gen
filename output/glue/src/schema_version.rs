@@ -65,7 +65,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -77,7 +77,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -89,7 +89,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_name: Option<cfn_resources::StrVal>,
 }
 

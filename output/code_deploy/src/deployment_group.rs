@@ -11,7 +11,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_configuration: Option<AlarmConfiguration>,
 
     ///
@@ -38,7 +38,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRollbackConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_rollback_configuration: Option<AutoRollbackConfiguration>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_groups: Option<Vec<String>>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlueGreenDeploymentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blue_green_deployment_configuration: Option<BlueGreenDeploymentConfiguration>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deployment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment: Option<Deployment>,
 
     ///
@@ -90,7 +90,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfigName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -124,7 +124,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentStyle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_style: Option<DeploymentStyle>,
 
     ///
@@ -136,7 +136,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ECSServices")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecsservices: Option<Vec<ECSService>>,
 
     ///
@@ -150,7 +150,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_tag_filters: Option<Vec<EC2TagFilter>>,
 
     ///
@@ -162,7 +162,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_tag_set: Option<EC2TagSet>,
 
     ///
@@ -174,7 +174,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerInfo")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_info: Option<LoadBalancerInfo>,
 
     ///
@@ -188,7 +188,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesInstanceTagFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_premises_instance_tag_filters: Option<Vec<TagFilter>>,
 
     ///
@@ -202,7 +202,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_premises_tag_set: Option<OnPremisesTagSet>,
 
     /// Property description not available.
@@ -213,7 +213,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutdatedInstancesStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outdated_instances_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -237,7 +237,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -249,7 +249,7 @@ pub struct CfnDeploymentGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_configurations: Option<Vec<TriggerConfig>>,
 }
 
@@ -369,7 +369,7 @@ pub struct Alarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -400,7 +400,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarms: Option<Vec<Alarm>>,
 
     ///
@@ -412,7 +412,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -426,7 +426,7 @@ pub struct AlarmConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePollAlarmFailure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_poll_alarm_failure: Option<bool>,
 }
 
@@ -459,7 +459,7 @@ pub struct AutoRollbackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -471,7 +471,7 @@ pub struct AutoRollbackConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<String>>,
 }
 
@@ -502,7 +502,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentReadyOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_ready_option: Option<DeploymentReadyOption>,
 
     ///
@@ -514,7 +514,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreenFleetProvisioningOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub green_fleet_provisioning_option: Option<GreenFleetProvisioningOption>,
 
     ///
@@ -526,7 +526,7 @@ pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminateBlueInstancesOnDeploymentSuccess")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub terminate_blue_instances_on_deployment_success: Option<BlueInstanceTerminationOption>,
 }
 
@@ -573,7 +573,7 @@ pub struct BlueInstanceTerminationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<BlueInstanceTerminationOptionActionEnum>,
 
     ///
@@ -589,7 +589,7 @@ pub struct BlueInstanceTerminationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationWaitTimeInMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_wait_time_in_minutes: Option<i64>,
 }
 
@@ -637,7 +637,7 @@ pub struct Deployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -655,7 +655,7 @@ pub struct Deployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreApplicationStopFailures")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_application_stop_failures: Option<bool>,
 
     ///
@@ -703,7 +703,7 @@ pub struct DeploymentReadyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionOnTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action_on_timeout: Option<DeploymentReadyOptionActionOnTimeoutEnum>,
 
     ///
@@ -715,7 +715,7 @@ pub struct DeploymentReadyOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitTimeInMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_time_in_minutes: Option<i64>,
 }
 
@@ -767,7 +767,7 @@ pub struct DeploymentStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_option: Option<DeploymentStyleDeploymentOptionEnum>,
 
     ///
@@ -781,7 +781,7 @@ pub struct DeploymentStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_type: Option<DeploymentStyleDeploymentTypeEnum>,
 }
 
@@ -848,7 +848,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -864,7 +864,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<EC2TagFilterTypeEnum>,
 
     ///
@@ -876,7 +876,7 @@ pub struct EC2TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -932,7 +932,7 @@ pub struct EC2TagSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagSetList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_tag_set_list: Option<Vec<EC2TagSetListObject>>,
 }
 
@@ -967,7 +967,7 @@ pub struct EC2TagSetListObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2TagGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_tag_group: Option<Vec<EC2TagFilter>>,
 }
 
@@ -1045,7 +1045,7 @@ pub struct ELBInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1123,7 +1123,7 @@ pub struct GreenFleetProvisioningOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<GreenFleetProvisioningOptionActionEnum>,
 }
 
@@ -1177,7 +1177,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElbInfoList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elb_info_list: Option<Vec<ELBInfo>>,
 
     ///
@@ -1191,7 +1191,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupInfoList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_info_list: Option<Vec<TargetGroupInfo>>,
 
     /// Property description not available.
@@ -1202,7 +1202,7 @@ pub struct LoadBalancerInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupPairInfoList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_pair_info_list: Option<Vec<TargetGroupPairInfo>>,
 }
 
@@ -1239,7 +1239,7 @@ pub struct OnPremisesTagSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagSetList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_premises_tag_set_list: Option<Vec<OnPremisesTagSetListObject>>,
 }
 
@@ -1272,7 +1272,7 @@ pub struct OnPremisesTagSetListObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPremisesTagGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_premises_tag_group: Option<Vec<TagFilter>>,
 }
 
@@ -1303,7 +1303,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GitHubLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub git_hub_location: Option<GitHubLocation>,
 
     ///
@@ -1319,7 +1319,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevisionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revision_type: Option<RevisionLocationRevisionTypeEnum>,
 
     ///
@@ -1331,7 +1331,7 @@ pub struct RevisionLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_location: Option<S3Location>,
 }
 
@@ -1410,7 +1410,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BundleType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bundle_type: Option<S3LocationBundleTypeEnum>,
 
     ///
@@ -1424,7 +1424,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etag: Option<cfn_resources::StrVal>,
 
     ///
@@ -1449,7 +1449,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -1556,7 +1556,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -1572,7 +1572,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<TagFilterTypeEnum>,
 
     ///
@@ -1584,7 +1584,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1644,7 +1644,7 @@ pub struct TargetGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -1674,7 +1674,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProdTrafficRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prod_traffic_route: Option<TrafficRoute>,
 
     /// Property description not available.
@@ -1685,7 +1685,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_groups: Option<Vec<TargetGroupInfo>>,
 
     /// Property description not available.
@@ -1696,7 +1696,7 @@ pub struct TargetGroupPairInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TestTrafficRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub test_traffic_route: Option<TrafficRoute>,
 }
 
@@ -1734,7 +1734,7 @@ pub struct TrafficRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ListenerArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub listener_arns: Option<Vec<String>>,
 }
 
@@ -1765,7 +1765,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_events: Option<Vec<String>>,
 
     ///
@@ -1777,7 +1777,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1789,7 +1789,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerTargetArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_target_arn: Option<cfn_resources::StrVal>,
 }
 

@@ -15,7 +15,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_metadata_options: Option<InstanceMetadataOptions>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_types: Option<Vec<String>>,
 
     ///
@@ -72,7 +72,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPair")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_pair: Option<cfn_resources::StrVal>,
 
     ///
@@ -84,7 +84,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<Logging>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -137,7 +137,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -153,7 +153,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -165,7 +165,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnInfrastructureConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminateInstanceOnFailure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub terminate_instance_on_failure: Option<bool>,
 
     #[serde(skip_serializing)]
@@ -347,7 +347,7 @@ pub struct InstanceMetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpPutResponseHopLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_put_response_hop_limit: Option<i64>,
 
     ///
@@ -365,7 +365,7 @@ pub struct InstanceMetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTokens")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_tokens: Option<cfn_resources::StrVal>,
 }
 
@@ -408,7 +408,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Logs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_logs: Option<S3Logs>,
 }
 
@@ -445,7 +445,7 @@ pub struct S3Logs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -461,7 +461,7 @@ pub struct S3Logs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 }
 

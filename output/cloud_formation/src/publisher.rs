@@ -34,7 +34,7 @@ pub struct CfnPublisher {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

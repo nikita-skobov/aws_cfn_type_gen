@@ -334,7 +334,7 @@ pub struct CorsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlExposeHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_control_expose_headers: Option<AccessControlExposeHeaders>,
 
     ///
@@ -348,7 +348,7 @@ pub struct CorsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlMaxAgeSec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_control_max_age_sec: Option<i64>,
 
     ///
@@ -700,7 +700,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -712,7 +712,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorsConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cors_config: Option<CorsConfig>,
 
     ///
@@ -724,7 +724,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomHeadersConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_headers_config: Option<CustomHeadersConfig>,
 
     ///
@@ -749,7 +749,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveHeadersConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_headers_config: Option<RemoveHeadersConfig>,
 
     ///
@@ -761,7 +761,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityHeadersConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_headers_config: Option<SecurityHeadersConfig>,
 
     ///
@@ -773,7 +773,7 @@ pub struct ResponseHeadersPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimingHeadersConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_timing_headers_config: Option<ServerTimingHeadersConfig>,
 }
 
@@ -826,7 +826,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentSecurityPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_security_policy: Option<ContentSecurityPolicy>,
 
     ///
@@ -840,7 +840,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentTypeOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type_options: Option<ContentTypeOptions>,
 
     ///
@@ -854,7 +854,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub frame_options: Option<FrameOptions>,
 
     ///
@@ -868,7 +868,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferrerPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub referrer_policy: Option<ReferrerPolicy>,
 
     ///
@@ -882,7 +882,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StrictTransportSecurity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strict_transport_security: Option<StrictTransportSecurity>,
 
     ///
@@ -896,7 +896,7 @@ pub struct SecurityHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XSSProtection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xssprotection: Option<XSSProtection>,
 }
 
@@ -962,7 +962,7 @@ pub struct ServerTimingHeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sampling_rate: Option<f64>,
 }
 
@@ -1006,7 +1006,7 @@ pub struct StrictTransportSecurity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSubdomains")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_subdomains: Option<bool>,
 
     ///
@@ -1029,7 +1029,7 @@ pub struct StrictTransportSecurity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Preload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preload: Option<bool>,
 }
 
@@ -1064,7 +1064,7 @@ pub struct XSSProtection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModeBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_block: Option<bool>,
 
     ///
@@ -1104,7 +1104,7 @@ pub struct XSSProtection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportUri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report_uri: Option<cfn_resources::StrVal>,
 }
 

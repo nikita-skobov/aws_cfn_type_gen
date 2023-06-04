@@ -19,7 +19,7 @@ pub struct CfnStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriodHours")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_period_hours: Option<i64>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShardCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shard_count: Option<i64>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamEncryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_encryption: Option<StreamEncryption>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamModeDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_mode_details: Option<StreamModeDetails>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

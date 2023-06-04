@@ -23,7 +23,7 @@ pub struct CfnVirtualMFADevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnVirtualMFADevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -68,7 +68,7 @@ pub struct CfnVirtualMFADevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualMfaDeviceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_mfa_device_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

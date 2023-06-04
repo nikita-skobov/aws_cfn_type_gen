@@ -73,7 +73,7 @@ pub struct CfnAccount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParentIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parent_ids: Option<Vec<String>>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnAccount {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RoleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -111,7 +111,7 @@ pub struct CfnAccount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

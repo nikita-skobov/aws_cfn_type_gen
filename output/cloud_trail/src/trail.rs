@@ -13,7 +13,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableLogFileValidation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_log_file_validation: Option<bool>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_selectors: Option<Vec<EventSelector>>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeGlobalServiceEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_global_service_events: Option<bool>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insight_selectors: Option<Vec<InsightSelector>>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsMultiRegionTrail")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_multi_region_trail: Option<bool>,
 
     ///
@@ -118,7 +118,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsOrganizationTrail")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_organization_trail: Option<bool>,
 
     ///
@@ -136,7 +136,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmskey_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +159,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,7 +171,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +183,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -197,7 +197,7 @@ pub struct CfnTrail {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrailName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trail_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -269,7 +269,7 @@ pub struct DataResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -306,7 +306,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataResources")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_resources: Option<Vec<DataResource>>,
 
     ///
@@ -318,7 +318,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeManagementEventSources")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_management_event_sources: Option<Vec<String>>,
 
     ///
@@ -336,7 +336,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeManagementEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_management_events: Option<bool>,
 
     ///
@@ -352,7 +352,7 @@ pub struct EventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadWriteType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_write_type: Option<EventSelectorReadWriteTypeEnum>,
 }
 
@@ -410,7 +410,7 @@ pub struct InsightSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insight_type: Option<InsightSelectorInsightTypeEnum>,
 }
 

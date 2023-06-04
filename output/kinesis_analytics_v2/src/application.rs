@@ -11,7 +11,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_configuration: Option<ApplicationConfiguration>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_description: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -38,7 +38,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationMaintenanceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_maintenance_configuration: Option<ApplicationMaintenanceConfiguration>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_mode: Option<ApplicationApplicationModeEnum>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -81,7 +81,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_configuration: Option<RunConfiguration>,
 
     ///
@@ -123,7 +123,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -343,7 +343,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationCodeConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_code_configuration: Option<ApplicationCodeConfiguration>,
 
     ///
@@ -355,7 +355,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationSnapshotConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_snapshot_configuration: Option<ApplicationSnapshotConfiguration>,
 
     ///
@@ -367,7 +367,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_properties: Option<EnvironmentProperties>,
 
     ///
@@ -379,7 +379,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlinkApplicationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flink_application_configuration: Option<FlinkApplicationConfiguration>,
 
     ///
@@ -391,7 +391,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlApplicationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sql_application_configuration: Option<SqlApplicationConfiguration>,
 
     ///
@@ -403,7 +403,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configurations: Option<Vec<VpcConfiguration>>,
 
     ///
@@ -415,7 +415,7 @@ pub struct ApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZeppelinApplicationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zeppelin_application_configuration: Option<ZeppelinApplicationConfiguration>,
 }
 
@@ -518,7 +518,7 @@ pub struct ApplicationRestoreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_name: Option<cfn_resources::StrVal>,
 }
 
@@ -713,7 +713,7 @@ pub struct CatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueDataCatalogConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_data_catalog_configuration: Option<GlueDataCatalogConfiguration>,
 }
 
@@ -750,7 +750,7 @@ pub struct CheckpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckpointInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub checkpoint_interval: Option<i64>,
 
     ///
@@ -764,7 +764,7 @@ pub struct CheckpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckpointingEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub checkpointing_enabled: Option<bool>,
 
     ///
@@ -793,7 +793,7 @@ pub struct CheckpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinPauseBetweenCheckpoints")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_pause_between_checkpoints: Option<i64>,
 }
 
@@ -841,7 +841,7 @@ pub struct CodeContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ContentLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_content_location: Option<S3ContentLocation>,
 
     ///
@@ -857,7 +857,7 @@ pub struct CodeContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextContent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_content: Option<cfn_resources::StrVal>,
 
     ///
@@ -869,7 +869,7 @@ pub struct CodeContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZipFileContent")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zip_file_content: Option<cfn_resources::StrVal>,
 }
 
@@ -939,7 +939,7 @@ pub struct CustomArtifactConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MavenReference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maven_reference: Option<MavenReference>,
 
     /// The location of the custom artifacts.
@@ -950,7 +950,7 @@ pub struct CustomArtifactConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ContentLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_content_location: Option<S3ContentLocation>,
 }
 
@@ -1040,7 +1040,7 @@ pub struct EnvironmentProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_groups: Option<Vec<PropertyGroup>>,
 }
 
@@ -1080,7 +1080,7 @@ pub struct FlinkApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CheckpointConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub checkpoint_configuration: Option<CheckpointConfiguration>,
 
     ///
@@ -1092,7 +1092,7 @@ pub struct FlinkApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitoring_configuration: Option<MonitoringConfiguration>,
 
     ///
@@ -1104,7 +1104,7 @@ pub struct FlinkApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelismConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelism_configuration: Option<ParallelismConfiguration>,
 }
 
@@ -1149,7 +1149,7 @@ pub struct FlinkRunConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowNonRestoredState")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_non_restored_state: Option<bool>,
 }
 
@@ -1186,7 +1186,7 @@ pub struct GlueDataCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1239,7 +1239,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParallelism")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_parallelism: Option<InputParallelism>,
 
     ///
@@ -1251,7 +1251,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputProcessingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_processing_configuration: Option<InputProcessingConfiguration>,
 
     ///
@@ -1276,7 +1276,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseInput")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_input: Option<KinesisFirehoseInput>,
 
     ///
@@ -1288,7 +1288,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamsInput")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_streams_input: Option<KinesisStreamsInput>,
 
     ///
@@ -1440,7 +1440,7 @@ pub struct InputParallelism {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 }
 
@@ -1489,7 +1489,7 @@ pub struct InputProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLambdaProcessor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_lambda_processor: Option<InputLambdaProcessor>,
 }
 
@@ -1543,7 +1543,7 @@ pub struct InputSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordEncoding")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -1792,7 +1792,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSVMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
     ///
@@ -1804,7 +1804,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
 }
 
@@ -1994,7 +1994,7 @@ pub struct MonitoringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_level: Option<MonitoringConfigurationLogLevelEnum>,
 
     ///
@@ -2008,7 +2008,7 @@ pub struct MonitoringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics_level: Option<MonitoringConfigurationMetricsLevelEnum>,
 }
 
@@ -2106,7 +2106,7 @@ pub struct ParallelismConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_enabled: Option<bool>,
 
     ///
@@ -2133,7 +2133,7 @@ pub struct ParallelismConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parallelism")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelism: Option<i64>,
 
     ///
@@ -2147,7 +2147,7 @@ pub struct ParallelismConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelismPerKPU")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelism_per_kpu: Option<i64>,
 }
 
@@ -2219,7 +2219,7 @@ pub struct PropertyGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2231,7 +2231,7 @@ pub struct PropertyGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyMap")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_map: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -2290,7 +2290,7 @@ pub struct RecordColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mapping")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping: Option<cfn_resources::StrVal>,
 
     ///
@@ -2419,7 +2419,7 @@ pub struct RecordFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping_parameters: Option<MappingParameters>,
 
     ///
@@ -2484,7 +2484,7 @@ pub struct RunConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationRestoreConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_restore_configuration: Option<ApplicationRestoreConfiguration>,
 
     ///
@@ -2496,7 +2496,7 @@ pub struct RunConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlinkRunConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flink_run_configuration: Option<FlinkRunConfiguration>,
 }
 
@@ -2541,7 +2541,7 @@ pub struct S3ContentBaseLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasePath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -2669,7 +2669,7 @@ pub struct S3ContentLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_version: Option<cfn_resources::StrVal>,
 }
 
@@ -2766,7 +2766,7 @@ pub struct SqlApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inputs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inputs: Option<Vec<Input>>,
 }
 
@@ -2905,7 +2905,7 @@ pub struct ZeppelinApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_configuration: Option<CatalogConfiguration>,
 
     ///
@@ -2919,7 +2919,7 @@ pub struct ZeppelinApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomArtifactsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_artifacts_configuration: Option<Vec<CustomArtifactConfiguration>>,
 
     ///
@@ -2931,7 +2931,7 @@ pub struct ZeppelinApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeployAsApplicationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deploy_as_application_configuration: Option<DeployAsApplicationConfiguration>,
 
     ///
@@ -2943,7 +2943,7 @@ pub struct ZeppelinApplicationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonitoringConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitoring_configuration: Option<ZeppelinMonitoringConfiguration>,
 }
 
@@ -2994,7 +2994,7 @@ pub struct ZeppelinMonitoringConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_level: Option<ZeppelinMonitoringConfigurationLogLevelEnum>,
 }
 

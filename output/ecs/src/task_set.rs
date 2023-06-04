@@ -22,7 +22,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExternalId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub external_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -38,7 +38,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_type: Option<TaskSetLaunchTypeEnum>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancers: Option<Vec<LoadBalancer>>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scale")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale: Option<Scale>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnTaskSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceRegistries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_registries: Option<Vec<ServiceRegistry>>,
 
     ///
@@ -191,7 +191,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssignPublicIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
 
     ///
@@ -205,7 +205,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -272,7 +272,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -284,7 +284,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_port: Option<i64>,
 
     ///
@@ -298,7 +298,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -318,7 +318,7 @@ pub struct LoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -351,7 +351,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsVpcConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -388,7 +388,7 @@ pub struct Scale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<ScaleUnitEnum>,
 
     ///
@@ -400,7 +400,7 @@ pub struct Scale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -448,7 +448,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -460,7 +460,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_port: Option<i64>,
 
     ///
@@ -472,7 +472,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -484,7 +484,7 @@ pub struct ServiceRegistry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_arn: Option<cfn_resources::StrVal>,
 }
 

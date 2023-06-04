@@ -26,7 +26,7 @@ pub struct CfnTransitGatewayConnect {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -161,7 +161,7 @@ pub struct TransitGatewayConnectOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<TransitGatewayConnectOptionsProtocolEnum>,
 }
 

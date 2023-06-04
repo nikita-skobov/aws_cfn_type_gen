@@ -11,7 +11,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreProvisioningHook")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_provisioning_hook: Option<ProvisioningHook>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +93,7 @@ pub struct CfnProvisioningTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -139,7 +139,7 @@ pub struct ProvisioningHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -151,7 +151,7 @@ pub struct ProvisioningHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_arn: Option<cfn_resources::StrVal>,
 }
 

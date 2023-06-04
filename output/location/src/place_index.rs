@@ -30,7 +30,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSourceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source_configuration: Option<DataSourceConfiguration>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnPlaceIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
 
     #[serde(skip_serializing)]
@@ -225,7 +225,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntendedUse")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub intended_use: Option<DataSourceConfigurationIntendedUseEnum>,
 }
 

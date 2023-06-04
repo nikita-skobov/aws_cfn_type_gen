@@ -31,7 +31,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_route: Option<DefaultRouteInput>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -88,7 +88,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPathRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri_path_route: Option<UriPathRouteInput>,
 
     #[serde(skip_serializing)]
@@ -246,7 +246,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IncludeChildPaths")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_child_paths: Option<bool>,
 
     ///
@@ -258,7 +258,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Methods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub methods: Option<Vec<String>>,
 
     ///
@@ -270,7 +270,7 @@ pub struct UriPathRouteInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_path: Option<cfn_resources::StrVal>,
 }
 

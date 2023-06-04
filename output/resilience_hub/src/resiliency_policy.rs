@@ -11,7 +11,7 @@ pub struct CfnResiliencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLocationConstraint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_location_constraint: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnResiliencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnResiliencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///

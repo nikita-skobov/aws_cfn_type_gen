@@ -233,7 +233,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSVMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
     ///
@@ -245,7 +245,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
 }
 
@@ -290,7 +290,7 @@ pub struct RecordColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mapping")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping: Option<cfn_resources::StrVal>,
 
     ///
@@ -419,7 +419,7 @@ pub struct RecordFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping_parameters: Option<MappingParameters>,
 
     ///
@@ -495,7 +495,7 @@ pub struct ReferenceDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ReferenceDataSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_reference_data_source: Option<S3ReferenceDataSource>,
 
     ///
@@ -511,7 +511,7 @@ pub struct ReferenceDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<cfn_resources::StrVal>,
 }
 
@@ -589,7 +589,7 @@ pub struct ReferenceSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordEncoding")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_encoding: Option<cfn_resources::StrVal>,
 
     ///

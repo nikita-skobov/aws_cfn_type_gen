@@ -15,7 +15,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystem")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operating_system: Option<BuildOperatingSystemEnum>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerSdkVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_sdk_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_location: Option<StorageLocation>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnBuild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -230,7 +230,7 @@ pub struct StorageLocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_version: Option<cfn_resources::StrVal>,
 
     ///

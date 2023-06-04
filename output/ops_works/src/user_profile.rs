@@ -11,7 +11,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSelfManagement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_self_management: Option<bool>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_public_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshUsername")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_username: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

@@ -15,7 +15,7 @@ pub struct CfnEventType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnEventType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -167,7 +167,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -183,7 +183,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +199,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inline")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline: Option<bool>,
 
     ///
@@ -229,7 +229,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -243,7 +243,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -257,7 +257,7 @@ pub struct EntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -376,7 +376,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -388,7 +388,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -404,7 +404,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -416,7 +416,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -428,7 +428,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -440,7 +440,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +454,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inline")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline: Option<bool>,
 
     ///
@@ -466,7 +466,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -478,7 +478,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -492,7 +492,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -504,7 +504,7 @@ pub struct EventVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variable_type: Option<cfn_resources::StrVal>,
 }
 
@@ -541,7 +541,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -557,7 +557,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -573,7 +573,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -587,7 +587,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inline")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline: Option<bool>,
 
     ///
@@ -603,7 +603,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastUpdatedTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_updated_time: Option<cfn_resources::StrVal>,
 
     ///
@@ -615,7 +615,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -629,7 +629,7 @@ pub struct Label {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

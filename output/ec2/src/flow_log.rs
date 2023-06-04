@@ -13,7 +13,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliverLogsPermissionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deliver_logs_permission_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_options: Option<DestinationOptions>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDestinationType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_destination_type: Option<FlowLogLogDestinationTypeEnum>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -101,7 +101,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxAggregationInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_aggregation_interval: Option<i64>,
 
     ///
@@ -137,7 +137,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -151,7 +151,7 @@ pub struct CfnFlowLog {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrafficType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_type: Option<FlowLogTrafficTypeEnum>,
 
     #[serde(skip_serializing)]

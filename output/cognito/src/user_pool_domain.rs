@@ -11,7 +11,7 @@ pub struct CfnUserPoolDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomDomainConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_domain_config: Option<CustomDomainConfigType>,
 
     ///
@@ -143,7 +143,7 @@ pub struct CustomDomainConfigType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 }
 

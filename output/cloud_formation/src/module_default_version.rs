@@ -21,7 +21,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModuleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub module_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnModuleDefaultVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<cfn_resources::StrVal>,
 }
 

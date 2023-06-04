@@ -40,7 +40,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreWriteProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub magnetic_store_write_properties: Option<MagneticStoreWriteProperties>,
 
     ///
@@ -66,7 +66,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_properties: Option<RetentionProperties>,
 
     ///
@@ -80,7 +80,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +92,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -153,7 +153,7 @@ pub struct MagneticStoreRejectedDataLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_configuration: Option<S3Configuration>,
 }
 
@@ -199,7 +199,7 @@ pub struct MagneticStoreWriteProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreRejectedDataLocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub magnetic_store_rejected_data_location: Option<MagneticStoreRejectedDataLocation>,
 }
 
@@ -234,7 +234,7 @@ pub struct RetentionProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MagneticStoreRetentionPeriodInDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub magnetic_store_retention_period_in_days: Option<cfn_resources::StrVal>,
 
     ///
@@ -246,7 +246,7 @@ pub struct RetentionProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryStoreRetentionPeriodInHours")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_store_retention_period_in_hours: Option<cfn_resources::StrVal>,
 }
 
@@ -311,7 +311,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +329,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectKeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 

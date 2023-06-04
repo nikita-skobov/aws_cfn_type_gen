@@ -15,7 +15,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessTokenValidity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token_validity: Option<i64>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthFlows")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_oauth_flows: Option<Vec<String>>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthFlowsUserPoolClient")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_oauth_flows_user_pool_client: Option<bool>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOAuthScopes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_oauth_scopes: Option<Vec<String>>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalyticsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub analytics_configuration: Option<AnalyticsConfiguration>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthSessionValidity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_session_validity: Option<i64>,
 
     ///
@@ -111,7 +111,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallbackURLs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub callback_urls: Option<Vec<String>>,
 
     ///
@@ -129,7 +129,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -157,7 +157,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRedirectURI")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_redirect_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -169,7 +169,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePropagateAdditionalUserContextData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_propagate_additional_user_context_data: Option<bool>,
 
     ///
@@ -183,7 +183,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableTokenRevocation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_token_revocation: Option<bool>,
 
     ///
@@ -203,7 +203,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitAuthFlows")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explicit_auth_flows: Option<Vec<String>>,
 
     ///
@@ -215,7 +215,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GenerateSecret")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub generate_secret: Option<bool>,
 
     ///
@@ -231,7 +231,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdTokenValidity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_token_validity: Option<i64>,
 
     ///
@@ -245,7 +245,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogoutURLs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logout_urls: Option<Vec<String>>,
 
     ///
@@ -259,7 +259,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreventUserExistenceErrors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prevent_user_existence_errors: Option<UserPoolClientPreventUserExistenceErrorsEnum>,
 
     ///
@@ -271,7 +271,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_attributes: Option<Vec<String>>,
 
     ///
@@ -287,7 +287,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshTokenValidity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token_validity: Option<i64>,
 
     ///
@@ -299,7 +299,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedIdentityProviders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_identity_providers: Option<Vec<String>>,
 
     ///
@@ -311,7 +311,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenValidityUnits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_validity_units: Option<TokenValidityUnits>,
 
     ///
@@ -342,7 +342,7 @@ pub struct CfnUserPoolClient {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_attributes: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -537,7 +537,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -551,7 +551,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -563,7 +563,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub external_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -581,7 +581,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -593,7 +593,7 @@ pub struct AnalyticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserDataShared")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data_shared: Option<bool>,
 }
 
@@ -648,7 +648,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<TokenValidityUnitsAccessTokenEnum>,
 
     ///
@@ -662,7 +662,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdToken")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_token: Option<TokenValidityUnitsIdTokenEnum>,
 
     ///
@@ -676,7 +676,7 @@ pub struct TokenValidityUnits {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<TokenValidityUnitsRefreshTokenEnum>,
 }
 

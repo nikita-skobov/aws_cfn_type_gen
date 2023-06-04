@@ -22,7 +22,7 @@ pub struct CfnAlert {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlertDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alert_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnAlert {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlertName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alert_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +100,7 @@ pub struct Action {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_configuration: Option<LambdaConfiguration>,
 
     ///
@@ -112,7 +112,7 @@ pub struct Action {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SNSConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snsconfiguration: Option<SNSConfiguration>,
 }
 

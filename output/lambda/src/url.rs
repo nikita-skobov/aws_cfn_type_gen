@@ -24,7 +24,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cors: Option<Cors>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvokeMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invoke_mode: Option<UrlInvokeModeEnum>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnUrl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Qualifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qualifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +156,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCredentials")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_credentials: Option<bool>,
 
     ///
@@ -170,7 +170,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_headers: Option<Vec<String>>,
 
     ///
@@ -184,7 +184,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_methods: Option<Vec<String>>,
 
     ///
@@ -200,7 +200,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowOrigins")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_origins: Option<Vec<String>>,
 
     ///
@@ -214,7 +214,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExposeHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expose_headers: Option<Vec<String>>,
 
     ///
@@ -230,7 +230,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAge")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_age: Option<i64>,
 }
 

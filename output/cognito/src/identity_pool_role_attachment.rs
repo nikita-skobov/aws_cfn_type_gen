@@ -26,7 +26,7 @@ pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_mappings: Option<serde_json::Value>,
 
     ///
@@ -38,7 +38,7 @@ pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub roles: Option<serde_json::Value>,
 }
 
@@ -136,7 +136,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmbiguousRoleResolution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ambiguous_role_resolution: Option<cfn_resources::StrVal>,
 
     ///
@@ -150,7 +150,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityProvider")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -162,7 +162,7 @@ pub struct RoleMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rules_configuration: Option<RulesConfigurationType>,
 
     ///

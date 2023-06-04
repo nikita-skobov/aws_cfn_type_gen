@@ -24,7 +24,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainNameConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name_configurations: Option<Vec<DomainNameConfiguration>>,
 
     ///
@@ -36,7 +36,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
 
     ///
@@ -48,7 +48,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     #[serde(skip_serializing)]
@@ -107,7 +107,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +119,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -131,7 +131,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -143,7 +143,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ownership_verification_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -155,7 +155,7 @@ pub struct DomainNameConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -186,7 +186,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truststore_uri: Option<cfn_resources::StrVal>,
 
     ///
@@ -198,7 +198,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truststore_version: Option<cfn_resources::StrVal>,
 }
 

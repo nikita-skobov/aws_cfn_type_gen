@@ -30,7 +30,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_options: Option<MountOptions>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<cfn_resources::StrVal>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_hostname: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +96,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +110,7 @@ pub struct CfnLocationSMB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -263,7 +263,7 @@ pub struct MountOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<MountOptionsVersionEnum>,
 }
 

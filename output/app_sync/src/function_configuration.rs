@@ -22,7 +22,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBatchSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_batch_size: Option<i64>,
 
     ///
@@ -104,7 +104,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -118,7 +118,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplateS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_mapping_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -142,7 +142,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplateS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_mapping_template_s3_location: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +154,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime: Option<AppSyncRuntime>,
 
     ///
@@ -168,7 +168,7 @@ pub struct CfnFunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_config: Option<SyncConfig>,
 
     #[serde(skip_serializing)]
@@ -290,7 +290,7 @@ pub struct LambdaConflictHandlerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_conflict_handler_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -338,7 +338,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConflictHandler")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conflict_handler: Option<cfn_resources::StrVal>,
 
     ///
@@ -350,7 +350,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_conflict_handler_config: Option<LambdaConflictHandlerConfig>,
 }
 

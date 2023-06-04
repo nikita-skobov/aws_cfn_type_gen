@@ -11,7 +11,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnRefreshSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<RefreshScheduleMap>,
 
     #[serde(skip_serializing)]
@@ -81,7 +81,7 @@ pub struct RefreshOnDay {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfMonth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub day_of_month: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +93,7 @@ pub struct RefreshOnDay {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub day_of_week: Option<cfn_resources::StrVal>,
 }
 
@@ -128,7 +128,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -140,7 +140,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_frequency: Option<ScheduleFrequency>,
 
     ///
@@ -152,7 +152,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduleId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +164,7 @@ pub struct RefreshScheduleMap {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAfterDateTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_after_date_time: Option<cfn_resources::StrVal>,
 }
 
@@ -201,7 +201,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshOnDay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_on_day: Option<RefreshOnDay>,
 
     ///
@@ -225,7 +225,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeOfTheDay")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_of_the_day: Option<cfn_resources::StrVal>,
 
     ///
@@ -237,7 +237,7 @@ pub struct ScheduleFrequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<cfn_resources::StrVal>,
 }
 

@@ -70,7 +70,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinkId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link_id: Option<cfn_resources::StrVal>,
 }
 

@@ -21,7 +21,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_config: Option<HostedZoneConfig>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_tags: Option<Vec<HostedZoneTag>>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryLoggingConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_logging_config: Option<QueryLoggingConfig>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnHostedZone {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcs: Option<Vec<VPC>>,
 
     #[serde(skip_serializing)]
@@ -146,7 +146,7 @@ pub struct HostedZoneConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<cfn_resources::StrVal>,
 }
 

@@ -13,7 +13,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumDuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_duration: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_s3_location: Option<S3Location>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnSimulation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_s3_location: Option<S3Location>,
 
     #[serde(skip_serializing)]

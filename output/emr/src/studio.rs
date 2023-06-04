@@ -47,7 +47,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdpAuthUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idp_auth_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -100,7 +100,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdpRelayStateParameterName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idp_relay_state_parameter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -159,7 +159,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnStudio {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_role: Option<cfn_resources::StrVal>,
 
     ///

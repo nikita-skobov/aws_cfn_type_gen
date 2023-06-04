@@ -13,7 +13,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppAssessmentSchedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_assessment_schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResiliencyPolicyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resiliency_policy_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     #[serde(skip_serializing)]
@@ -128,7 +128,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -140,7 +140,7 @@ pub struct PhysicalResourceId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -195,7 +195,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalStackName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logical_stack_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +233,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -245,7 +245,7 @@ pub struct ResourceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerraformSourceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub terraform_source_name: Option<cfn_resources::StrVal>,
 }
 

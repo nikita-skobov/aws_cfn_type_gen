@@ -115,7 +115,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateCognitoConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
     ///
@@ -127,7 +127,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateOidcConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
 
     ///
@@ -139,7 +139,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponseConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_response_config: Option<FixedResponseConfig>,
 
     ///
@@ -151,7 +151,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forward_config: Option<ForwardConfig>,
 
     ///
@@ -167,7 +167,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order: Option<i64>,
 
     ///
@@ -179,7 +179,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redirect_config: Option<RedirectConfig>,
 
     ///
@@ -191,7 +191,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -302,7 +302,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -318,7 +318,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -332,7 +332,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -344,7 +344,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +356,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_timeout: Option<i64>,
 
     ///
@@ -441,7 +441,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -475,7 +475,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_secret: Option<cfn_resources::StrVal>,
 
     ///
@@ -502,7 +502,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -516,7 +516,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -528,7 +528,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_cookie_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -540,7 +540,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_timeout: Option<i64>,
 
     ///
@@ -563,7 +563,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseExistingClientSecret")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_existing_client_secret: Option<bool>,
 
     ///
@@ -632,7 +632,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<FixedResponseConfigContentTypeEnum>,
 
     ///
@@ -648,7 +648,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -743,7 +743,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupStickinessConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
 
     ///
@@ -755,7 +755,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_groups: Option<Vec<TargetGroupTuple>>,
 }
 
@@ -792,7 +792,7 @@ pub struct HostHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -825,7 +825,7 @@ pub struct HttpHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpHeaderName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_header_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -841,7 +841,7 @@ pub struct HttpHeaderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -876,7 +876,7 @@ pub struct HttpRequestMethodConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -909,7 +909,7 @@ pub struct PathPatternConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -944,7 +944,7 @@ pub struct QueryStringConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<QueryStringKeyValue>>,
 }
 
@@ -975,7 +975,7 @@ pub struct QueryStringKeyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -987,7 +987,7 @@ pub struct QueryStringKeyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -1028,7 +1028,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host: Option<cfn_resources::StrVal>,
 
     ///
@@ -1044,7 +1044,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -1056,7 +1056,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<cfn_resources::StrVal>,
 
     ///
@@ -1070,7 +1070,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<cfn_resources::StrVal>,
 
     ///
@@ -1086,7 +1086,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Query")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query: Option<cfn_resources::StrVal>,
 
     ///
@@ -1217,7 +1217,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<cfn_resources::StrVal>,
 
     ///
@@ -1229,7 +1229,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostHeaderConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_header_config: Option<HostHeaderConfig>,
 
     ///
@@ -1241,7 +1241,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpHeaderConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_header_config: Option<HttpHeaderConfig>,
 
     ///
@@ -1253,7 +1253,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRequestMethodConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_request_method_config: Option<HttpRequestMethodConfig>,
 
     ///
@@ -1265,7 +1265,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathPatternConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_pattern_config: Option<PathPatternConfig>,
 
     ///
@@ -1277,7 +1277,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_config: Option<QueryStringConfig>,
 
     ///
@@ -1289,7 +1289,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIpConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ip_config: Option<SourceIpConfig>,
 
     ///
@@ -1309,7 +1309,7 @@ pub struct RuleCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -1379,7 +1379,7 @@ pub struct SourceIpConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -1410,7 +1410,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -1422,7 +1422,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -1453,7 +1453,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1465,7 +1465,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 

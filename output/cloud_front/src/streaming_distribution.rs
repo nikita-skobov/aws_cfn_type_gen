@@ -166,7 +166,7 @@ pub struct StreamingDistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aliases")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aliases: Option<Vec<String>>,
 
     ///
@@ -200,7 +200,7 @@ pub struct StreamingDistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<Logging>,
 
     ///
@@ -214,7 +214,7 @@ pub struct StreamingDistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriceClass")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub price_class: Option<StreamingDistributionConfigPriceClassEnum>,
 
     ///
@@ -339,7 +339,7 @@ pub struct TrustedSigners {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountNumbers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_numbers: Option<Vec<String>>,
 
     ///

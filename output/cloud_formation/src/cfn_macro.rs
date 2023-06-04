@@ -11,7 +11,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogRoleARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_role_arn: Option<cfn_resources::StrVal>,
 
     ///

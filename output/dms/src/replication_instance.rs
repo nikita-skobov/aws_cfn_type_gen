@@ -11,7 +11,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocatedStorage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocated_storage: Option<i64>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMajorVersionUpgrade")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_major_version_upgrade: Option<bool>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiAZ")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_az: Option<bool>,
 
     ///
@@ -115,7 +115,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -127,7 +127,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PubliclyAccessible")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -156,7 +156,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationInstanceIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_instance_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -168,7 +168,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicationSubnetGroupIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_subnet_group_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -180,7 +180,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -192,7 +192,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -204,7 +204,7 @@ pub struct CfnReplicationInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]

@@ -11,7 +11,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +88,7 @@ pub struct DateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_inclusive: Option<i64>,
 
     ///
@@ -100,7 +100,7 @@ pub struct DateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_inclusive: Option<i64>,
 }
 
@@ -131,7 +131,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsAccountId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<Vec<StringFilter>>,
 
     ///
@@ -143,7 +143,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_id: Option<Vec<StringFilter>>,
 
     ///
@@ -155,7 +155,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_type: Option<Vec<StringFilter>>,
 
     ///
@@ -167,7 +167,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2InstanceImageId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_instance_image_id: Option<Vec<StringFilter>>,
 
     ///
@@ -179,7 +179,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2InstanceSubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_instance_subnet_id: Option<Vec<StringFilter>>,
 
     ///
@@ -191,7 +191,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ec2InstanceVpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_instance_vpc_id: Option<Vec<StringFilter>>,
 
     ///
@@ -203,7 +203,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImageArchitecture")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_architecture: Option<Vec<StringFilter>>,
 
     ///
@@ -215,7 +215,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImageHash")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_hash: Option<Vec<StringFilter>>,
 
     ///
@@ -227,7 +227,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImagePushedAt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_pushed_at: Option<Vec<DateFilter>>,
 
     ///
@@ -239,7 +239,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImageRegistry")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_registry: Option<Vec<StringFilter>>,
 
     ///
@@ -251,7 +251,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImageRepositoryName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_repository_name: Option<Vec<StringFilter>>,
 
     ///
@@ -263,7 +263,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcrImageTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_image_tags: Option<Vec<StringFilter>>,
 
     ///
@@ -275,7 +275,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub finding_arn: Option<Vec<StringFilter>>,
 
     ///
@@ -287,7 +287,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingStatus")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub finding_status: Option<Vec<StringFilter>>,
 
     ///
@@ -299,7 +299,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub finding_type: Option<Vec<StringFilter>>,
 
     ///
@@ -311,7 +311,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirstObservedAt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub first_observed_at: Option<Vec<DateFilter>>,
 
     ///
@@ -323,7 +323,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InspectorScore")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inspector_score: Option<Vec<NumberFilter>>,
 
     ///
@@ -335,7 +335,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastObservedAt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_observed_at: Option<Vec<DateFilter>>,
 
     ///
@@ -347,7 +347,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkProtocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_protocol: Option<Vec<StringFilter>>,
 
     ///
@@ -359,7 +359,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<Vec<PortRangeFilter>>,
 
     ///
@@ -371,7 +371,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelatedVulnerabilities")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub related_vulnerabilities: Option<Vec<StringFilter>>,
 
     ///
@@ -383,7 +383,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<Vec<StringFilter>>,
 
     ///
@@ -395,7 +395,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_tags: Option<Vec<MapFilter>>,
 
     ///
@@ -407,7 +407,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<Vec<StringFilter>>,
 
     ///
@@ -419,7 +419,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub severity: Option<Vec<StringFilter>>,
 
     ///
@@ -431,7 +431,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<Vec<StringFilter>>,
 
     ///
@@ -443,7 +443,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdatedAt")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<Vec<DateFilter>>,
 
     ///
@@ -455,7 +455,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VendorSeverity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vendor_severity: Option<Vec<StringFilter>>,
 
     ///
@@ -467,7 +467,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VulnerabilityId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vulnerability_id: Option<Vec<StringFilter>>,
 
     /// Details on the vulnerability score to filter findings by.
@@ -478,7 +478,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VulnerabilitySource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vulnerability_source: Option<Vec<StringFilter>>,
 
     ///
@@ -490,7 +490,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VulnerablePackages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vulnerable_packages: Option<Vec<PackageFilter>>,
 }
 
@@ -532,7 +532,7 @@ pub struct MapFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -544,7 +544,7 @@ pub struct MapFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 
@@ -575,7 +575,7 @@ pub struct NumberFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lower_inclusive: Option<f64>,
 
     ///
@@ -587,7 +587,7 @@ pub struct NumberFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upper_inclusive: Option<f64>,
 }
 
@@ -618,7 +618,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architecture")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub architecture: Option<StringFilter>,
 
     ///
@@ -630,7 +630,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Epoch")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub epoch: Option<NumberFilter>,
 
     ///
@@ -642,7 +642,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<StringFilter>,
 
     ///
@@ -654,7 +654,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Release")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub release: Option<StringFilter>,
 
     ///
@@ -666,7 +666,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceLayerHash")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_layer_hash: Option<StringFilter>,
 
     ///
@@ -678,7 +678,7 @@ pub struct PackageFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<StringFilter>,
 }
 
@@ -724,7 +724,7 @@ pub struct PortRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BeginInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub begin_inclusive: Option<i64>,
 
     ///
@@ -736,7 +736,7 @@ pub struct PortRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndInclusive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_inclusive: Option<i64>,
 }
 

@@ -23,7 +23,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveModelArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_model_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSecurityConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_security_config: Option<DataSecurityConfig>,
 
     ///
@@ -96,7 +96,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_type: Option<FlywheelModelTypeEnum>,
 
     ///
@@ -108,7 +108,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,7 +120,7 @@ pub struct CfnFlywheel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TaskConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_config: Option<TaskConfig>,
 
     #[serde(skip_serializing)]
@@ -243,7 +243,7 @@ pub struct DataSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakeKmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_lake_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -261,7 +261,7 @@ pub struct DataSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelKmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -277,7 +277,7 @@ pub struct DataSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeKmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -289,7 +289,7 @@ pub struct DataSecurityConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -350,7 +350,7 @@ pub struct DocumentClassificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Labels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub labels: Option<Vec<String>>,
 
     ///
@@ -420,7 +420,7 @@ pub struct EntityRecognitionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntityTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_types: Option<Vec<EntityTypesListItem>>,
 }
 
@@ -543,7 +543,7 @@ pub struct TaskConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentClassificationConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_classification_config: Option<DocumentClassificationConfig>,
 
     ///
@@ -555,7 +555,7 @@ pub struct TaskConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntityRecognitionConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_recognition_config: Option<EntityRecognitionConfig>,
 
     ///

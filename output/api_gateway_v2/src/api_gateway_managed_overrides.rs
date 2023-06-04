@@ -22,7 +22,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration: Option<IntegrationOverrides>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Route")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route: Option<RouteOverrides>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnApiGatewayManagedOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage: Option<StageOverrides>,
 }
 
@@ -85,7 +85,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -97,7 +97,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<cfn_resources::StrVal>,
 }
 
@@ -128,7 +128,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -140,7 +140,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +152,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_format_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +164,7 @@ pub struct IntegrationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_millis: Option<i64>,
 }
 
@@ -195,7 +195,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -207,7 +207,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -219,7 +219,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -231,7 +231,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -243,7 +243,7 @@ pub struct RouteOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<cfn_resources::StrVal>,
 }
 
@@ -274,7 +274,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -286,7 +286,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedMetricsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detailed_metrics_enabled: Option<bool>,
 
     ///
@@ -298,7 +298,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_level: Option<cfn_resources::StrVal>,
 
     ///
@@ -310,7 +310,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -322,7 +322,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_rate_limit: Option<f64>,
 }
 
@@ -353,7 +353,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_log_settings: Option<AccessLogSettings>,
 
     ///
@@ -365,7 +365,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_deploy: Option<bool>,
 
     ///
@@ -377,7 +377,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_route_settings: Option<RouteSettings>,
 
     ///
@@ -389,7 +389,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -401,7 +401,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_settings: Option<serde_json::Value>,
 
     ///
@@ -413,7 +413,7 @@ pub struct StageOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_variables: Option<serde_json::Value>,
 }
 

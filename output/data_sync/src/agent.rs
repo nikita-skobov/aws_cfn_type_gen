@@ -17,7 +17,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActivationKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub activation_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub agent_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_arns: Option<Vec<String>>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_arns: Option<Vec<String>>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnAgent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

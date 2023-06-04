@@ -13,7 +13,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_enabled: Option<bool>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_interval_seconds: Option<i64>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_port: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckProtocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_protocol: Option<TargetGroupHealthCheckProtocolEnum>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckTimeoutSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_timeout_seconds: Option<i64>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThresholdCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub healthy_threshold_count: Option<i64>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddressType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address_type: Option<TargetGroupIpAddressTypeEnum>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Matcher")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub matcher: Option<Matcher>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -163,7 +163,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<TargetGroupProtocolEnum>,
 
     ///
@@ -189,7 +189,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProtocolVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -201,7 +201,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -213,7 +213,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_attributes: Option<Vec<TargetGroupAttribute>>,
 
     ///
@@ -229,7 +229,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_type: Option<TargetGroupTargetTypeEnum>,
 
     ///
@@ -241,7 +241,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<TargetDescription>>,
 
     ///
@@ -257,7 +257,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThresholdCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unhealthy_threshold_count: Option<i64>,
 
     ///
@@ -269,7 +269,7 @@ pub struct CfnTargetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -542,7 +542,7 @@ pub struct Matcher {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrpcCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -560,7 +560,7 @@ pub struct Matcher {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_code: Option<cfn_resources::StrVal>,
 }
 
@@ -646,7 +646,7 @@ pub struct TargetDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -673,7 +673,7 @@ pub struct TargetDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 }
 
@@ -750,7 +750,7 @@ pub struct TargetGroupAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -762,7 +762,7 @@ pub struct TargetGroupAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
 }
 

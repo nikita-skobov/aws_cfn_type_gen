@@ -30,7 +30,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolver_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetIps")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_ips: Option<Vec<TargetAddress>>,
 
     #[serde(skip_serializing)]
@@ -308,7 +308,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -324,7 +324,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -340,7 +340,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<cfn_resources::StrVal>,
 }
 

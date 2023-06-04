@@ -24,7 +24,7 @@ pub struct CfnDetectorModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetectorModelDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detector_model_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -42,7 +42,7 @@ pub struct CfnDetectorModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DetectorModelName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detector_model_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnDetectorModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_method: Option<DetectorModelEvaluationMethodEnum>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnDetectorModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +105,7 @@ pub struct CfnDetectorModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -226,7 +226,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClearTimer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clear_timer: Option<ClearTimer>,
 
     ///
@@ -238,7 +238,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_db: Option<DynamoDB>,
 
     ///
@@ -250,7 +250,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBv2")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_dbv2: Option<DynamoDBv2>,
 
     ///
@@ -262,7 +262,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Firehose")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firehose: Option<Firehose>,
 
     ///
@@ -274,7 +274,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_events: Option<IotEvents>,
 
     ///
@@ -286,7 +286,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotSiteWise")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_site_wise: Option<IotSiteWise>,
 
     ///
@@ -298,7 +298,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotTopicPublish")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_topic_publish: Option<IotTopicPublish>,
 
     ///
@@ -310,7 +310,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda: Option<Lambda>,
 
     ///
@@ -322,7 +322,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResetTimer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reset_timer: Option<ResetTimer>,
 
     ///
@@ -334,7 +334,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetTimer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_timer: Option<SetTimer>,
 
     ///
@@ -346,7 +346,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetVariable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_variable: Option<SetVariable>,
 
     ///
@@ -358,7 +358,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns: Option<Sns>,
 
     ///
@@ -370,7 +370,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sqs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs: Option<Sqs>,
 }
 
@@ -451,7 +451,7 @@ pub struct AssetPropertyTimestamp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OffsetInNanos")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset_in_nanos: Option<cfn_resources::StrVal>,
 
     ///
@@ -497,7 +497,7 @@ pub struct AssetPropertyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Quality")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quality: Option<cfn_resources::StrVal>,
 
     ///
@@ -509,7 +509,7 @@ pub struct AssetPropertyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<AssetPropertyTimestamp>,
 
     ///
@@ -563,7 +563,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BooleanValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub boolean_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -575,7 +575,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub double_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -587,7 +587,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -599,7 +599,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_value: Option<cfn_resources::StrVal>,
 }
 
@@ -774,7 +774,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HashKeyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hash_key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -801,7 +801,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation: Option<cfn_resources::StrVal>,
 
     ///
@@ -815,7 +815,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 
     ///
@@ -829,7 +829,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadField")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -841,7 +841,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyField")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_field: Option<cfn_resources::StrVal>,
 
     ///
@@ -857,7 +857,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -869,7 +869,7 @@ pub struct DynamoDB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -921,7 +921,7 @@ pub struct DynamoDBv2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 
     ///
@@ -965,7 +965,7 @@ pub struct Event {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<Action>>,
 
     ///
@@ -979,7 +979,7 @@ pub struct Event {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<cfn_resources::StrVal>,
 
     ///
@@ -1056,7 +1056,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 
     ///
@@ -1070,7 +1070,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Separator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub separator: Option<cfn_resources::StrVal>,
 }
 
@@ -1120,7 +1120,7 @@ pub struct IotEvents {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 }
 
@@ -1181,7 +1181,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1193,7 +1193,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entry_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1205,7 +1205,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyAlias")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -1217,7 +1217,7 @@ pub struct IotSiteWise {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1276,7 +1276,7 @@ pub struct IotTopicPublish {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 }
 
@@ -1346,7 +1346,7 @@ pub struct Lambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 }
 
@@ -1401,7 +1401,7 @@ pub struct OnEnter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<Event>>,
 }
 
@@ -1432,7 +1432,7 @@ pub struct OnExit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<Event>>,
 }
 
@@ -1463,7 +1463,7 @@ pub struct OnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<Event>>,
 
     ///
@@ -1475,7 +1475,7 @@ pub struct OnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transition_events: Option<Vec<TransitionEvent>>,
 }
 
@@ -1641,7 +1641,7 @@ pub struct SetTimer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -1657,7 +1657,7 @@ pub struct SetTimer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Seconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seconds: Option<i64>,
 
     ///
@@ -1857,7 +1857,7 @@ pub struct Sns {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 
     ///
@@ -1927,7 +1927,7 @@ pub struct Sqs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<Payload>,
 
     ///
@@ -1950,7 +1950,7 @@ pub struct Sqs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBase64")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_base64: Option<bool>,
 }
 
@@ -1983,7 +1983,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnEnter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_enter: Option<OnEnter>,
 
     ///
@@ -1995,7 +1995,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnExit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_exit: Option<OnExit>,
 
     ///
@@ -2007,7 +2007,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnInput")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_input: Option<OnInput>,
 
     ///
@@ -2130,7 +2130,7 @@ pub struct TransitionEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<Action>>,
 
     ///

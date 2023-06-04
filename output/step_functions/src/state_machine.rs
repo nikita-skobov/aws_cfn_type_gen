@@ -11,7 +11,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<serde_json::Value>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionS3Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition_s3_location: Option<S3Location>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionSubstitutions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition_substitutions: Option<std::collections::HashMap<String, serde_json::Value>>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -90,7 +90,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StateMachineName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state_machine_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -102,7 +102,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StateMachineType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state_machine_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -116,7 +116,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///
@@ -128,7 +128,7 @@ pub struct CfnStateMachine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_configuration: Option<TracingConfiguration>,
 
     #[serde(skip_serializing)]
@@ -204,7 +204,7 @@ pub struct CloudWatchLogsLogGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -235,7 +235,7 @@ pub struct LogDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_log_group: Option<CloudWatchLogsLogGroup>,
 }
 
@@ -270,7 +270,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destinations: Option<Vec<LogDestination>>,
 
     ///
@@ -282,7 +282,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeExecutionData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_execution_data: Option<bool>,
 
     ///
@@ -294,7 +294,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Level")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub level: Option<cfn_resources::StrVal>,
 }
 
@@ -347,7 +347,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
 }
 
@@ -419,7 +419,7 @@ pub struct TracingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 

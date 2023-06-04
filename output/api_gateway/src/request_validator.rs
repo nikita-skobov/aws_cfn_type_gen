@@ -11,7 +11,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidateRequestBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validate_request_body: Option<bool>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnRequestValidator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidateRequestParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validate_request_parameters: Option<bool>,
 
     #[serde(skip_serializing)]

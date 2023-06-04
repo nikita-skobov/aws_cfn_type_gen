@@ -11,7 +11,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventCategories")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_categories: Option<Vec<String>>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub severity: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ids: Option<Vec<String>>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -116,7 +116,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

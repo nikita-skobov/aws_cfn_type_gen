@@ -22,7 +22,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListenerIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub listener_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -139,7 +139,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponse")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_response: Option<FixedResponse>,
 
     ///
@@ -151,7 +151,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forward")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forward: Option<Forward>,
 }
 
@@ -250,7 +250,7 @@ pub struct HeaderMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub case_sensitive: Option<bool>,
 
     ///
@@ -305,7 +305,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Contains")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contains: Option<cfn_resources::StrVal>,
 
     ///
@@ -317,7 +317,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +329,7 @@ pub struct HeaderMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -360,7 +360,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderMatches")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_matches: Option<Vec<HeaderMatch>>,
 
     ///
@@ -372,7 +372,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<cfn_resources::StrVal>,
 
     ///
@@ -384,7 +384,7 @@ pub struct HttpMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathMatch")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_match: Option<PathMatch>,
 }
 
@@ -451,7 +451,7 @@ pub struct PathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitive")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub case_sensitive: Option<bool>,
 
     ///
@@ -495,7 +495,7 @@ pub struct PathMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -507,7 +507,7 @@ pub struct PathMatchType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -594,7 +594,7 @@ pub struct WeightedTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 

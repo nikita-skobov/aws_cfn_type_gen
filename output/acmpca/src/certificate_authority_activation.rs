@@ -33,7 +33,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

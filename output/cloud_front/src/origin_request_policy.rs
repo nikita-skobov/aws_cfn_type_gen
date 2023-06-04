@@ -84,7 +84,7 @@ pub struct CookiesConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cookies: Option<Vec<String>>,
 }
 
@@ -155,7 +155,7 @@ pub struct HeadersConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Vec<String>>,
 }
 
@@ -219,7 +219,7 @@ pub struct OriginRequestPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -315,7 +315,7 @@ pub struct QueryStringsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStrings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_strings: Option<Vec<String>>,
 }
 

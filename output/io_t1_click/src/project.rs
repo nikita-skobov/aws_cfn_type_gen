@@ -11,7 +11,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -91,7 +91,7 @@ pub struct DeviceTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallbackOverrides")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub callback_overrides: Option<serde_json::Value>,
 
     ///
@@ -103,7 +103,7 @@ pub struct DeviceTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_type: Option<cfn_resources::StrVal>,
 }
 
@@ -136,7 +136,7 @@ pub struct PlacementTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_attributes: Option<serde_json::Value>,
 
     ///
@@ -148,7 +148,7 @@ pub struct PlacementTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceTemplates")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_templates: Option<serde_json::Value>,
 }
 

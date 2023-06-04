@@ -19,7 +19,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigSnapshotDeliveryProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -88,7 +88,7 @@ pub struct CfnDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -155,7 +155,7 @@ pub struct ConfigSnapshotDeliveryProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_frequency: Option<ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum>,
 }
 

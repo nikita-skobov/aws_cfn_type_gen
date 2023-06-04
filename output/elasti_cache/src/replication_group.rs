@@ -23,7 +23,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AtRestEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub at_rest_encryption_enabled: Option<bool>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AuthToken")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_token: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoMinorVersionUpgrade")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_minor_version_upgrade: Option<bool>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticFailoverEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_failover_enabled: Option<bool>,
 
     ///
@@ -93,7 +93,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_node_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_parameter_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheSecurityGroupNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_security_group_names: Option<Vec<String>>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_subnet_group_name: Option<cfn_resources::StrVal>,
 
     /// Enabled or Disabled. To modify cluster mode from Disabled to Enabled,    you must first set the cluster mode to Compatible. Compatible mode allows your Redis clients to connect using both cluster mode enabled and cluster mode disabled.    After you migrate all Redis clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.    For more information, see Modify cluster mode.
@@ -146,7 +146,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_mode: Option<cfn_resources::StrVal>,
 
     ///
@@ -158,7 +158,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataTieringEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_tiering_enabled: Option<bool>,
 
     ///
@@ -170,7 +170,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine: Option<cfn_resources::StrVal>,
 
     ///
@@ -184,7 +184,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -196,7 +196,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GlobalReplicationGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -210,7 +210,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpDiscovery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_discovery: Option<ReplicationGroupIpDiscoveryEnum>,
 
     ///
@@ -222,7 +222,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     /// Specifies the destination, format and type of the logs.
@@ -233,7 +233,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_delivery_configurations: Option<Vec<LogDeliveryConfigurationRequest>>,
 
     ///
@@ -245,7 +245,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiAZEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_azenabled: Option<bool>,
 
     ///
@@ -259,7 +259,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_type: Option<ReplicationGroupNetworkTypeEnum>,
 
     ///
@@ -273,7 +273,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NodeGroupConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_group_configuration: Option<Vec<NodeGroupConfiguration>>,
 
     ///
@@ -287,7 +287,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTopicArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_topic_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -305,7 +305,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumCacheClusters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_cache_clusters: Option<i64>,
 
     ///
@@ -321,7 +321,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NumNodeGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_node_groups: Option<i64>,
 
     ///
@@ -333,7 +333,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -351,7 +351,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredCacheClusterAZs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_cache_cluster_azs: Option<Vec<String>>,
 
     ///
@@ -369,7 +369,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -383,7 +383,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryClusterId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_cluster_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -395,7 +395,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicasPerNodeGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replicas_per_node_group: Option<i64>,
 
     ///
@@ -422,7 +422,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicationGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -436,7 +436,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -450,7 +450,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_arns: Option<Vec<String>>,
 
     ///
@@ -462,7 +462,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -476,7 +476,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotRetentionLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_retention_limit: Option<i64>,
 
     ///
@@ -492,7 +492,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotWindow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_window: Option<cfn_resources::StrVal>,
 
     ///
@@ -504,7 +504,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshottingClusterId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshotting_cluster_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -516,7 +516,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -540,7 +540,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption_enabled: Option<bool>,
 
     ///
@@ -560,7 +560,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitEncryptionMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption_mode: Option<ReplicationGroupTransitEncryptionModeEnum>,
 
     ///
@@ -572,7 +572,7 @@ pub struct CfnReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_group_ids: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -774,7 +774,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_details: Option<CloudWatchLogsDestinationDetails>,
 
     /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
@@ -785,7 +785,7 @@ pub struct DestinationDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_details: Option<KinesisFirehoseDestinationDetails>,
 }
 
@@ -920,7 +920,7 @@ pub struct NodeGroupConfiguration {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NodeGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -932,7 +932,7 @@ pub struct NodeGroupConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrimaryAvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -944,7 +944,7 @@ pub struct NodeGroupConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicaAvailabilityZones")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replica_availability_zones: Option<Vec<String>>,
 
     ///
@@ -956,7 +956,7 @@ pub struct NodeGroupConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicaCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replica_count: Option<i64>,
 
     ///
@@ -972,7 +972,7 @@ pub struct NodeGroupConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Slots")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slots: Option<cfn_resources::StrVal>,
 }
 

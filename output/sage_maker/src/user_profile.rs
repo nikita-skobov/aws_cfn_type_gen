@@ -24,7 +24,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SingleSignOnUserIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_sign_on_user_identifier: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +36,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SingleSignOnUserValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_sign_on_user_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_settings: Option<UserSettings>,
 
     #[serde(skip_serializing)]
@@ -181,7 +181,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_version_number: Option<i64>,
 }
 
@@ -254,7 +254,7 @@ pub struct JupyterServerAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -291,7 +291,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -305,7 +305,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -351,7 +351,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessStatus")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
 
     ///
@@ -365,7 +365,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
 }
 
@@ -434,7 +434,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -450,7 +450,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -466,7 +466,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -764,7 +764,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotebookOutputOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
 
     ///
@@ -780,7 +780,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -796,7 +796,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OutputPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
@@ -919,7 +919,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role: Option<cfn_resources::StrVal>,
 
     ///
@@ -931,7 +931,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -943,7 +943,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
     ///
@@ -955,7 +955,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioServerProAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
 
     ///
@@ -975,7 +975,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -987,7 +987,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharingSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sharing_settings: Option<SharingSettings>,
 }
 

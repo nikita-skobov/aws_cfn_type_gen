@@ -13,7 +13,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessEndpoints")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_endpoints: Option<Vec<AccessEndpoint>>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_settings: Option<ApplicationSettings>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributesToDelete")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes_to_delete: Option<Vec<String>>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteStorageConnectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_storage_connectors: Option<bool>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +93,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmbedHostDomains")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub embed_host_domains: Option<Vec<String>>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeedbackURL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feedback_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnStack {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectURL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redirect_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageConnectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_connectors: Option<Vec<StorageConnector>>,
 
     /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
@@ -158,7 +158,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamingExperienceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub streaming_experience_settings: Option<StreamingExperienceSettings>,
 
     ///
@@ -170,7 +170,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -182,7 +182,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_settings: Option<Vec<UserSetting>>,
 }
 
@@ -365,7 +365,7 @@ pub struct ApplicationSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SettingsGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings_group: Option<cfn_resources::StrVal>,
 }
 
@@ -422,7 +422,7 @@ pub struct StorageConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domains: Option<Vec<String>>,
 
     ///
@@ -434,7 +434,7 @@ pub struct StorageConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -496,7 +496,7 @@ pub struct StreamingExperienceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredProtocol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_protocol: Option<StreamingExperienceSettingsPreferredProtocolEnum>,
 }
 

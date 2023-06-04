@@ -13,7 +13,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmazonProvidedIpv6CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_provided_ipv6_cidr_block: Option<bool>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv4IpamPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv4NetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_netmask_length: Option<i64>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6IpamPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6NetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_netmask_length: Option<i64>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnVPCCidrBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Pool")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_pool: Option<cfn_resources::StrVal>,
 
     ///

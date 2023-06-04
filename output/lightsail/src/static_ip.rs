@@ -11,7 +11,7 @@ pub struct CfnStaticIp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachedTo")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attached_to: Option<cfn_resources::StrVal>,
 
     ///

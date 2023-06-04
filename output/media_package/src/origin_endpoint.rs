@@ -15,7 +15,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Authorization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization: Option<Authorization>,
 
     ///
@@ -38,7 +38,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmafPackage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cmaf_package: Option<CmafPackage>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashPackage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dash_package: Option<DashPackage>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsPackage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_package: Option<HlsPackage>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MssPackage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mss_package: Option<MssPackage>,
 
     ///
@@ -125,7 +125,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Origination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origination: Option<cfn_resources::StrVal>,
 
     ///
@@ -137,7 +137,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartoverWindowSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub startover_window_seconds: Option<i64>,
 
     ///
@@ -149,7 +149,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -161,7 +161,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeDelaySeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_delay_seconds: Option<i64>,
 
     ///
@@ -173,7 +173,7 @@ pub struct CfnOriginEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Whitelist")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelist: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -287,7 +287,7 @@ pub struct CmafEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -299,7 +299,7 @@ pub struct CmafEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -311,7 +311,7 @@ pub struct CmafEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyRotationIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_rotation_interval_seconds: Option<i64>,
 
     ///
@@ -355,7 +355,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<CmafEncryption>,
 
     ///
@@ -367,7 +367,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HlsManifests")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hls_manifests: Option<Vec<HlsManifest>>,
 
     ///
@@ -379,7 +379,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -391,7 +391,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -403,7 +403,7 @@ pub struct CmafPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_selection: Option<StreamSelection>,
 }
 
@@ -442,7 +442,7 @@ pub struct DashEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyRotationIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_rotation_interval_seconds: Option<i64>,
 
     ///
@@ -490,7 +490,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdTriggers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_triggers: Option<Vec<String>>,
 
     ///
@@ -502,7 +502,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
@@ -514,7 +514,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<DashEncryption>,
 
     ///
@@ -526,7 +526,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeIframeOnlyStream")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_iframe_only_stream: Option<bool>,
 
     ///
@@ -542,7 +542,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestLayout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_layout: Option<cfn_resources::StrVal>,
 
     ///
@@ -554,7 +554,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestWindowSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_window_seconds: Option<i64>,
 
     ///
@@ -566,7 +566,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinBufferTimeSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_buffer_time_seconds: Option<i64>,
 
     ///
@@ -578,7 +578,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinUpdatePeriodSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_update_period_seconds: Option<i64>,
 
     ///
@@ -594,7 +594,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodTriggers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_triggers: Option<Vec<String>>,
 
     ///
@@ -610,7 +610,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Profile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -622,7 +622,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -638,7 +638,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentTemplateFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_template_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -650,7 +650,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_selection: Option<StreamSelection>,
 
     ///
@@ -662,7 +662,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuggestedPresentationDelaySeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suggested_presentation_delay_seconds: Option<i64>,
 
     ///
@@ -674,7 +674,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UtcTiming")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub utc_timing: Option<cfn_resources::StrVal>,
 
     ///
@@ -686,7 +686,7 @@ pub struct DashPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UtcTimingUri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub utc_timing_uri: Option<cfn_resources::StrVal>,
 }
 
@@ -746,7 +746,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_initialization_vector: Option<cfn_resources::StrVal>,
 
     ///
@@ -758,7 +758,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_method: Option<cfn_resources::StrVal>,
 
     ///
@@ -770,7 +770,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyRotationIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_rotation_interval_seconds: Option<i64>,
 
     ///
@@ -782,7 +782,7 @@ pub struct HlsEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepeatExtXKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repeat_ext_xkey: Option<bool>,
 
     ///
@@ -830,7 +830,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
@@ -846,7 +846,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdTriggers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_triggers: Option<Vec<String>>,
 
     ///
@@ -858,7 +858,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
@@ -881,7 +881,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeIframeOnlyStream")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_iframe_only_stream: Option<bool>,
 
     ///
@@ -893,7 +893,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -905,7 +905,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaylistType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub playlist_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -917,7 +917,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaylistWindowSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub playlist_window_seconds: Option<i64>,
 
     ///
@@ -933,7 +933,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimeIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_date_time_interval_seconds: Option<i64>,
 
     ///
@@ -945,7 +945,7 @@ pub struct HlsManifest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<cfn_resources::StrVal>,
 }
 
@@ -980,7 +980,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdMarkers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_markers: Option<cfn_resources::StrVal>,
 
     ///
@@ -996,7 +996,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdTriggers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_triggers: Option<Vec<String>>,
 
     ///
@@ -1008,7 +1008,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdsOnDeliveryRestrictions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ads_on_delivery_restrictions: Option<cfn_resources::StrVal>,
 
     ///
@@ -1020,7 +1020,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<HlsEncryption>,
 
     ///
@@ -1032,7 +1032,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDvbSubtitles")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_dvb_subtitles: Option<bool>,
 
     ///
@@ -1044,7 +1044,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeIframeOnlyStream")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_iframe_only_stream: Option<bool>,
 
     ///
@@ -1056,7 +1056,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaylistType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub playlist_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1068,7 +1068,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaylistWindowSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub playlist_window_seconds: Option<i64>,
 
     ///
@@ -1084,7 +1084,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgramDateTimeIntervalSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub program_date_time_interval_seconds: Option<i64>,
 
     ///
@@ -1096,7 +1096,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -1108,7 +1108,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_selection: Option<StreamSelection>,
 
     ///
@@ -1120,7 +1120,7 @@ pub struct HlsPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAudioRenditionGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_audio_rendition_group: Option<bool>,
 }
 
@@ -1191,7 +1191,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<MssEncryption>,
 
     ///
@@ -1203,7 +1203,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManifestWindowSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest_window_seconds: Option<i64>,
 
     ///
@@ -1215,7 +1215,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_duration_seconds: Option<i64>,
 
     ///
@@ -1227,7 +1227,7 @@ pub struct MssPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSelection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_selection: Option<StreamSelection>,
 }
 
@@ -1266,7 +1266,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1278,7 +1278,7 @@ pub struct SpekeKeyProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionContractConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_contract_configuration: Option<EncryptionContractConfiguration>,
 
     ///
@@ -1357,7 +1357,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVideoBitsPerSecond")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_video_bits_per_second: Option<i64>,
 
     ///
@@ -1369,7 +1369,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinVideoBitsPerSecond")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_video_bits_per_second: Option<i64>,
 
     ///
@@ -1383,7 +1383,7 @@ pub struct StreamSelection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamOrder")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_order: Option<cfn_resources::StrVal>,
 }
 

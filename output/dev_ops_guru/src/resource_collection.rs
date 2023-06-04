@@ -54,7 +54,7 @@ pub struct CloudFormationCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_names: Option<Vec<String>>,
 }
 
@@ -85,7 +85,7 @@ pub struct ResourceCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudFormation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_formation: Option<CloudFormationCollectionFilter>,
 
     ///
@@ -107,7 +107,7 @@ pub struct ResourceCollectionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagCollection>>,
 }
 
@@ -156,7 +156,7 @@ pub struct TagCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppBoundaryKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_boundary_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -170,7 +170,7 @@ pub struct TagCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValues")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_values: Option<Vec<String>>,
 }
 

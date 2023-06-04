@@ -15,7 +15,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ChangeDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub change_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Data")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +105,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedOsVersions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_os_versions: Option<Vec<String>>,
 
     ///
@@ -117,7 +117,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -131,7 +131,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Uri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri: Option<cfn_resources::StrVal>,
 
     ///

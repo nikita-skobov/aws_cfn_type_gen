@@ -23,7 +23,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ManagedPolicyName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policy_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -130,7 +130,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub roles: Option<Vec<String>>,
 
     ///
@@ -150,7 +150,7 @@ pub struct CfnManagedPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub users: Option<Vec<String>>,
 }
 

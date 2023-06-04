@@ -19,7 +19,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Spec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spec: Option<MeshSpec>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -217,7 +217,7 @@ pub struct MeshServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_preference: Option<MeshServiceDiscoveryIpPreferenceEnum>,
 }
 
@@ -273,7 +273,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_filter: Option<EgressFilter>,
 
     /// Property description not available.
@@ -284,7 +284,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceDiscovery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_discovery: Option<MeshServiceDiscovery>,
 }
 

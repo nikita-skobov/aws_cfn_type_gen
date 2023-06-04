@@ -11,7 +11,7 @@ pub struct CfnScheduledAudit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfMonth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub day_of_month: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnScheduledAudit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub day_of_week: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnScheduledAudit {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduledAuditName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_audit_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnScheduledAudit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

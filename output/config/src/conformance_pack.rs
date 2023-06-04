@@ -11,7 +11,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConformancePackInputParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conformance_pack_input_parameters: Option<Vec<ConformancePackInputParameter>>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3Bucket")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_s3_bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryS3KeyPrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_s3_key_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -60,7 +60,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateS3Uri")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_s3_uri: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -85,7 +85,7 @@ pub struct CfnConformancePack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateSSMDocumentDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_ssmdocument_details: Option<TemplateSSMDocumentDetails>,
 }
 
@@ -217,7 +217,7 @@ pub struct TemplateSSMDocumentDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +233,7 @@ pub struct TemplateSSMDocumentDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_version: Option<cfn_resources::StrVal>,
 }
 

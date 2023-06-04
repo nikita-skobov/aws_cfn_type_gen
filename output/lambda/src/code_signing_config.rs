@@ -22,7 +22,7 @@ pub struct CfnCodeSigningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningPolicies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_signing_policies: Option<CodeSigningPolicies>,
 
     ///
@@ -38,7 +38,7 @@ pub struct CfnCodeSigningConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

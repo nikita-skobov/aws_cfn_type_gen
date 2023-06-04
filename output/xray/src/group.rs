@@ -11,7 +11,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -36,7 +36,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insights_configuration: Option<InsightsConfiguration>,
 
     ///
@@ -48,7 +48,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -94,7 +94,7 @@ pub struct InsightsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insights_enabled: Option<bool>,
 
     ///
@@ -106,7 +106,7 @@ pub struct InsightsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notifications_enabled: Option<bool>,
 }
 

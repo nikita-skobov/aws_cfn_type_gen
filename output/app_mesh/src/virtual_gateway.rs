@@ -34,7 +34,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnVirtualGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualGatewayName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_gateway_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -339,7 +339,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<Vec<JsonFormatRef>>,
 
     ///
@@ -355,7 +355,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<cfn_resources::StrVal>,
 }
 
@@ -408,7 +408,7 @@ pub struct SubjectAlternativeNameMatchers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<Vec<String>>,
 }
 
@@ -516,7 +516,7 @@ pub struct VirtualGatewayAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<VirtualGatewayFileAccessLog>,
 }
 
@@ -549,7 +549,7 @@ pub struct VirtualGatewayBackendDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_policy: Option<VirtualGatewayClientPolicy>,
 }
 
@@ -584,7 +584,7 @@ pub struct VirtualGatewayClientPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<VirtualGatewayClientPolicyTls>,
 }
 
@@ -617,7 +617,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate: Option<VirtualGatewayClientTlsCertificate>,
 
     ///
@@ -629,7 +629,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enforce")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enforce: Option<bool>,
 
     ///
@@ -641,7 +641,7 @@ pub struct VirtualGatewayClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -689,7 +689,7 @@ pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<VirtualGatewayListenerTlsFileCertificate>,
 
     ///
@@ -701,7 +701,7 @@ pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<VirtualGatewayListenerTlsSdsCertificate>,
 }
 
@@ -740,7 +740,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc: Option<VirtualGatewayGrpcConnectionPool>,
 
     ///
@@ -752,7 +752,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http: Option<VirtualGatewayHttpConnectionPool>,
 
     ///
@@ -764,7 +764,7 @@ pub struct VirtualGatewayConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http2: Option<VirtualGatewayHttp2ConnectionPool>,
 }
 
@@ -801,7 +801,7 @@ pub struct VirtualGatewayFileAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<LoggingFormat>,
 
     ///
@@ -938,7 +938,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -954,7 +954,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -1155,7 +1155,7 @@ pub struct VirtualGatewayHttpConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPendingRequests")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_pending_requests: Option<i64>,
 }
 
@@ -1204,7 +1204,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPool")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_pool: Option<VirtualGatewayConnectionPool>,
 
     ///
@@ -1216,7 +1216,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check: Option<VirtualGatewayHealthCheckPolicy>,
 
     ///
@@ -1239,7 +1239,7 @@ pub struct VirtualGatewayListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<VirtualGatewayListenerTls>,
 }
 
@@ -1308,7 +1308,7 @@ pub struct VirtualGatewayListenerTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation: Option<VirtualGatewayListenerTlsValidationContext>,
 }
 
@@ -1396,7 +1396,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm: Option<VirtualGatewayListenerTlsAcmCertificate>,
 
     ///
@@ -1408,7 +1408,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<VirtualGatewayListenerTlsFileCertificate>,
 
     ///
@@ -1420,7 +1420,7 @@ pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<VirtualGatewayListenerTlsSdsCertificate>,
 }
 
@@ -1580,7 +1580,7 @@ pub struct VirtualGatewayListenerTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -1628,7 +1628,7 @@ pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<VirtualGatewayTlsValidationContextFileTrust>,
 
     ///
@@ -1640,7 +1640,7 @@ pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<VirtualGatewayTlsValidationContextSdsTrust>,
 }
 
@@ -1675,7 +1675,7 @@ pub struct VirtualGatewayLogging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLog")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_log: Option<VirtualGatewayAccessLog>,
 }
 
@@ -1796,7 +1796,7 @@ pub struct VirtualGatewaySpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackendDefaults")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backend_defaults: Option<VirtualGatewayBackendDefaults>,
 
     ///
@@ -1819,7 +1819,7 @@ pub struct VirtualGatewaySpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<VirtualGatewayLogging>,
 }
 
@@ -1856,7 +1856,7 @@ pub struct VirtualGatewayTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -2031,7 +2031,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm: Option<VirtualGatewayTlsValidationContextAcmTrust>,
 
     ///
@@ -2043,7 +2043,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<VirtualGatewayTlsValidationContextFileTrust>,
 
     ///
@@ -2055,7 +2055,7 @@ pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<VirtualGatewayTlsValidationContextSdsTrust>,
 }
 

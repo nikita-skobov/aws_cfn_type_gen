@@ -19,7 +19,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<EIPDomainEnum>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkBorderGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_border_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicIpv4Pool")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_ipv4_pool: Option<cfn_resources::StrVal>,
 
     ///
@@ -77,7 +77,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -89,7 +89,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransferAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transfer_address: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

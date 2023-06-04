@@ -24,7 +24,7 @@ pub struct CfnStackUserAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SendEmailNotification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub send_email_notification: Option<bool>,
 
     ///

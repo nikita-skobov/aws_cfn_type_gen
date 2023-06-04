@@ -13,7 +13,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approval_rules: Option<RuleGroup>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatches")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approved_patches: Option<Vec<String>>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatchesComplianceLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approved_patches_compliance_level: Option<PatchBaselineApprovedPatchesComplianceLevelEnum>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovedPatchesEnableNonSecurity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approved_patches_enable_non_security: Option<bool>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_filters: Option<PatchFilterGroup>,
 
     ///
@@ -114,7 +114,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystem")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operating_system: Option<PatchBaselineOperatingSystemEnum>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub patch_groups: Option<Vec<String>>,
 
     ///
@@ -148,7 +148,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RejectedPatches")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rejected_patches: Option<Vec<String>>,
 
     ///
@@ -164,7 +164,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RejectedPatchesAction")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rejected_patches_action: Option<PatchBaselineRejectedPatchesActionEnum>,
 
     ///
@@ -178,7 +178,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sources: Option<Vec<PatchSource>>,
 
     ///
@@ -192,7 +192,7 @@ pub struct CfnPatchBaseline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -452,7 +452,7 @@ pub struct PatchFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<PatchFilterKeyEnum>,
 
     ///
@@ -468,7 +468,7 @@ pub struct PatchFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -597,7 +597,7 @@ pub struct PatchFilterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub patch_filters: Option<Vec<PatchFilter>>,
 }
 
@@ -653,7 +653,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -667,7 +667,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -681,7 +681,7 @@ pub struct PatchSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Products")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub products: Option<Vec<String>>,
 }
 
@@ -772,7 +772,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApproveAfterDays")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approve_after_days: Option<i64>,
 
     ///
@@ -790,7 +790,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApproveUntilDate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approve_until_date: Option<PatchStringDate>,
 
     ///
@@ -804,7 +804,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_level: Option<RuleComplianceLevelEnum>,
 
     ///
@@ -816,7 +816,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableNonSecurity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_non_security: Option<bool>,
 
     ///
@@ -828,7 +828,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchFilterGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub patch_filter_group: Option<PatchFilterGroup>,
 }
 
@@ -922,7 +922,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatchRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub patch_rules: Option<Vec<Rule>>,
 }
 

@@ -34,7 +34,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_owner: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RouteName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -359,7 +359,7 @@ pub struct GrpcRetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrpcRetryEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc_retry_events: Option<Vec<String>>,
 
     ///
@@ -375,7 +375,7 @@ pub struct GrpcRetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRetryEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_retry_events: Option<Vec<String>>,
 
     ///
@@ -411,7 +411,7 @@ pub struct GrpcRetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TcpRetryEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_retry_events: Option<Vec<String>>,
 }
 
@@ -493,7 +493,7 @@ pub struct GrpcRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_policy: Option<GrpcRetryPolicy>,
 
     ///
@@ -505,7 +505,7 @@ pub struct GrpcRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<GrpcTimeout>,
 }
 
@@ -589,7 +589,7 @@ pub struct GrpcRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<Vec<GrpcRouteMetadata>>,
 
     ///
@@ -605,7 +605,7 @@ pub struct GrpcRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MethodName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -621,7 +621,7 @@ pub struct GrpcRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -633,7 +633,7 @@ pub struct GrpcRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<cfn_resources::StrVal>,
 }
 
@@ -713,7 +713,7 @@ pub struct GrpcRouteMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Invert")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invert: Option<bool>,
 
     ///
@@ -725,7 +725,7 @@ pub struct GrpcRouteMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_match: Option<GrpcRouteMetadataMatchMethod>,
 
     ///
@@ -801,7 +801,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -817,7 +817,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -829,7 +829,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<MatchRange>,
 
     ///
@@ -845,7 +845,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -861,7 +861,7 @@ pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -982,7 +982,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 
     ///
@@ -994,7 +994,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub per_request: Option<Duration>,
 }
 
@@ -1035,7 +1035,7 @@ pub struct HeaderMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -1051,7 +1051,7 @@ pub struct HeaderMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1063,7 +1063,7 @@ pub struct HeaderMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<MatchRange>,
 
     ///
@@ -1079,7 +1079,7 @@ pub struct HeaderMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -1095,7 +1095,7 @@ pub struct HeaderMatchMethod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
@@ -1220,7 +1220,7 @@ pub struct HttpPathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 
     ///
@@ -1236,7 +1236,7 @@ pub struct HttpPathMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<cfn_resources::StrVal>,
 }
 
@@ -1311,7 +1311,7 @@ pub struct HttpQueryParameterMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<cfn_resources::StrVal>,
 }
 
@@ -1346,7 +1346,7 @@ pub struct HttpRetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRetryEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_retry_events: Option<Vec<String>>,
 
     ///
@@ -1382,7 +1382,7 @@ pub struct HttpRetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TcpRetryEvents")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_retry_events: Option<Vec<String>>,
 }
 
@@ -1455,7 +1455,7 @@ pub struct HttpRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_policy: Option<HttpRetryPolicy>,
 
     ///
@@ -1467,7 +1467,7 @@ pub struct HttpRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<HttpTimeout>,
 }
 
@@ -1549,7 +1549,7 @@ pub struct HttpRouteHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Invert")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invert: Option<bool>,
 
     ///
@@ -1561,7 +1561,7 @@ pub struct HttpRouteHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_match: Option<HeaderMatchMethod>,
 
     ///
@@ -1635,7 +1635,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Vec<HttpRouteHeader>>,
 
     ///
@@ -1649,7 +1649,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<HttpRouteMatchMethodEnum>,
 
     ///
@@ -1661,7 +1661,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<HttpPathMatch>,
 
     ///
@@ -1677,7 +1677,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -1689,7 +1689,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -1703,7 +1703,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_parameters: Option<Vec<QueryParameter>>,
 
     ///
@@ -1717,7 +1717,7 @@ pub struct HttpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scheme")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheme: Option<HttpRouteMatchSchemeEnum>,
 }
 
@@ -1848,7 +1848,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 
     ///
@@ -1860,7 +1860,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub per_request: Option<Duration>,
 }
 
@@ -1938,7 +1938,7 @@ pub struct QueryParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_match: Option<HttpQueryParameterMatch>,
 
     ///
@@ -1984,7 +1984,7 @@ pub struct RouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrpcRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc_route: Option<GrpcRoute>,
 
     ///
@@ -1996,7 +1996,7 @@ pub struct RouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Http2Route")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http2_route: Option<HttpRoute>,
 
     ///
@@ -2008,7 +2008,7 @@ pub struct RouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_route: Option<HttpRoute>,
 
     ///
@@ -2024,7 +2024,7 @@ pub struct RouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -2036,7 +2036,7 @@ pub struct RouteSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TcpRoute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_route: Option<TcpRoute>,
 }
 
@@ -2157,7 +2157,7 @@ pub struct TcpRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Match")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_match: Option<TcpRouteMatch>,
 
     ///
@@ -2169,7 +2169,7 @@ pub struct TcpRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<TcpTimeout>,
 }
 
@@ -2253,7 +2253,7 @@ pub struct TcpRouteMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 }
 
@@ -2302,7 +2302,7 @@ pub struct TcpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 }
 
@@ -2339,7 +2339,7 @@ pub struct WeightedTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///

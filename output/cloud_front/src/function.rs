@@ -19,7 +19,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoPublish")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_publish: Option<bool>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_metadata: Option<FunctionMetadata>,
 
     ///
@@ -218,7 +218,7 @@ pub struct FunctionMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_arn: Option<cfn_resources::StrVal>,
 }
 

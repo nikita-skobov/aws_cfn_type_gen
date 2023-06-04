@@ -11,7 +11,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableEmailNotification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_email_notification: Option<bool>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnMemberInvitation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<cfn_resources::StrVal>,
 }
 

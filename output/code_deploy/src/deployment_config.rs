@@ -13,7 +13,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_platform: Option<DeploymentConfigComputePlatformEnum>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentConfigName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinimumHealthyHosts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_healthy_hosts: Option<MinimumHealthyHosts>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnDeploymentConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TrafficRoutingConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_routing_config: Option<TrafficRoutingConfig>,
 }
 
@@ -291,7 +291,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedCanary")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_based_canary: Option<TimeBasedCanary>,
 
     ///
@@ -303,7 +303,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeBasedLinear")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_based_linear: Option<TimeBasedLinear>,
 
     ///

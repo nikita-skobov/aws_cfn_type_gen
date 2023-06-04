@@ -18,7 +18,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_type: Option<EndpointAccessTypeEnum>,
 
     ///
@@ -32,7 +32,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomerOwnedIpv4Pool")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_owned_ipv4_pool: Option<cfn_resources::StrVal>,
 
     ///

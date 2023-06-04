@@ -34,7 +34,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PipelineName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -132,7 +132,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_attributes: Option<AddAttributes>,
 
     ///
@@ -144,7 +144,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Channel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel: Option<Channel>,
 
     ///
@@ -156,7 +156,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datastore")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datastore: Option<Datastore>,
 
     ///
@@ -168,7 +168,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceRegistryEnrich")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_registry_enrich: Option<DeviceRegistryEnrich>,
 
     ///
@@ -180,7 +180,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceShadowEnrich")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_shadow_enrich: Option<DeviceShadowEnrich>,
 
     ///
@@ -192,7 +192,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Filter>,
 
     ///
@@ -204,7 +204,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda: Option<Lambda>,
 
     ///
@@ -216,7 +216,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Math")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub math: Option<Math>,
 
     ///
@@ -228,7 +228,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_attributes: Option<RemoveAttributes>,
 
     ///
@@ -240,7 +240,7 @@ pub struct Activity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_attributes: Option<SelectAttributes>,
 }
 
@@ -335,7 +335,7 @@ pub struct AddAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -446,7 +446,7 @@ pub struct Channel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -672,7 +672,7 @@ pub struct DeviceRegistryEnrich {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 
     ///
@@ -877,7 +877,7 @@ pub struct DeviceShadowEnrich {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 
     ///
@@ -1082,7 +1082,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1232,7 +1232,7 @@ pub struct Lambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1396,7 +1396,7 @@ pub struct Math {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1547,7 +1547,7 @@ pub struct RemoveAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 
@@ -1663,7 +1663,7 @@ pub struct SelectAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Next")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next: Option<cfn_resources::StrVal>,
 }
 

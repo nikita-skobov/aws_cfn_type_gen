@@ -30,7 +30,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +96,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -116,7 +116,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -281,7 +281,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DownloadSpeed")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub download_speed: Option<i64>,
 
     ///
@@ -293,7 +293,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UploadSpeed")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upload_speed: Option<i64>,
 }
 

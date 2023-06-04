@@ -32,7 +32,7 @@ pub struct CfnMountTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<cfn_resources::StrVal>,
 
     ///

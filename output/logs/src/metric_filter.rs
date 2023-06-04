@@ -19,7 +19,7 @@ pub struct CfnMetricFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +191,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<f64>,
 
     ///
@@ -205,7 +205,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -256,7 +256,7 @@ pub struct MetricTransformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<MetricTransformationUnitEnum>,
 }
 

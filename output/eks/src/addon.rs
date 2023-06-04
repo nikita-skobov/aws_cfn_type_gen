@@ -24,7 +24,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddonVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub addon_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationValues")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_values: Option<cfn_resources::StrVal>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveOnDelete")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preserve_on_delete: Option<bool>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolveConflicts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolve_conflicts: Option<AddonResolveConflictsEnum>,
 
     ///
@@ -101,7 +101,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccountRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_account_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnAddon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

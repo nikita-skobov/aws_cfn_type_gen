@@ -10,7 +10,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRunProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_run_properties: Option<serde_json::Value>,
 
     /// A description of the workflow
@@ -21,7 +21,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentRuns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_runs: Option<i64>,
 
     /// The name of the workflow representing the flow
@@ -44,7 +44,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     /// The tags to use with this workflow.
@@ -55,7 +55,7 @@ pub struct CfnWorkflow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 }
 

@@ -11,7 +11,7 @@ pub struct CfnMultiRegionAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnMultiRegionAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 
     ///
@@ -95,7 +95,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockPublicAcls")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -109,7 +109,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockPublicPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -123,7 +123,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IgnorePublicAcls")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -137,7 +137,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RestrictPublicBuckets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -178,7 +178,7 @@ pub struct Region {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_account_id: Option<cfn_resources::StrVal>,
 }
 

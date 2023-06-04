@@ -69,7 +69,7 @@ pub struct KeyGroupConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///

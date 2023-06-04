@@ -22,7 +22,7 @@ pub struct CfnDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -93,7 +93,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_methods: Option<Vec<String>>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachePolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -123,7 +123,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachedMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cached_methods: Option<Vec<String>>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compress: Option<bool>,
 
     ///
@@ -149,7 +149,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_ttl: Option<f64>,
 
     ///
@@ -161,7 +161,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelEncryptionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_level_encryption_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -181,7 +181,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedValues")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forwarded_values: Option<ForwardedValues>,
 
     ///
@@ -193,7 +193,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionAssociations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_associations: Option<Vec<FunctionAssociation>>,
 
     ///
@@ -205,7 +205,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionAssociations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function_associations: Option<Vec<LambdaFunctionAssociation>>,
 
     ///
@@ -219,7 +219,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_ttl: Option<f64>,
 
     ///
@@ -235,7 +235,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_ttl: Option<f64>,
 
     ///
@@ -247,7 +247,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginRequestPolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_request_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -276,7 +276,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RealtimeLogConfigArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub realtime_log_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -288,7 +288,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeadersPolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_headers_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -300,7 +300,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmoothStreaming")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smooth_streaming: Option<bool>,
 
     ///
@@ -325,7 +325,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedKeyGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_key_groups: Option<Vec<String>>,
 
     ///
@@ -341,7 +341,7 @@ pub struct CacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedSigners")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_signers: Option<Vec<String>>,
 
     ///
@@ -453,7 +453,7 @@ pub struct Cookies {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhitelistedNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelisted_names: Option<Vec<String>>,
 }
 
@@ -509,7 +509,7 @@ pub struct CustomErrorResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorCachingMinTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_caching_min_ttl: Option<f64>,
 
     ///
@@ -536,7 +536,7 @@ pub struct CustomErrorResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_code: Option<i64>,
 
     ///
@@ -554,7 +554,7 @@ pub struct CustomErrorResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponsePagePath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_page_path: Option<cfn_resources::StrVal>,
 }
 
@@ -585,7 +585,7 @@ pub struct CustomOriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTPPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub httpport: Option<i64>,
 
     ///
@@ -597,7 +597,7 @@ pub struct CustomOriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTPSPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub httpsport: Option<i64>,
 
     ///
@@ -611,7 +611,7 @@ pub struct CustomOriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginKeepaliveTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_keepalive_timeout: Option<i64>,
 
     ///
@@ -640,7 +640,7 @@ pub struct CustomOriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginReadTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_read_timeout: Option<i64>,
 
     ///
@@ -654,7 +654,7 @@ pub struct CustomOriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginSSLProtocols")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_sslprotocols: Option<Vec<String>>,
 }
 
@@ -710,7 +710,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_methods: Option<Vec<String>>,
 
     ///
@@ -724,7 +724,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachePolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -740,7 +740,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachedMethods")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cached_methods: Option<Vec<String>>,
 
     ///
@@ -752,7 +752,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compress: Option<bool>,
 
     ///
@@ -766,7 +766,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_ttl: Option<f64>,
 
     ///
@@ -778,7 +778,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelEncryptionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_level_encryption_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -798,7 +798,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedValues")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forwarded_values: Option<ForwardedValues>,
 
     ///
@@ -810,7 +810,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionAssociations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_associations: Option<Vec<FunctionAssociation>>,
 
     ///
@@ -822,7 +822,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionAssociations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function_associations: Option<Vec<LambdaFunctionAssociation>>,
 
     ///
@@ -836,7 +836,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_ttl: Option<f64>,
 
     ///
@@ -852,7 +852,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinTTL")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_ttl: Option<f64>,
 
     ///
@@ -864,7 +864,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginRequestPolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_request_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -876,7 +876,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RealtimeLogConfigArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub realtime_log_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -888,7 +888,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeadersPolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_headers_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -900,7 +900,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmoothStreaming")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smooth_streaming: Option<bool>,
 
     ///
@@ -925,7 +925,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedKeyGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_key_groups: Option<Vec<String>>,
 
     ///
@@ -941,7 +941,7 @@ pub struct DefaultCacheBehavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustedSigners")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_signers: Option<Vec<String>>,
 
     ///
@@ -1016,7 +1016,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aliases")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aliases: Option<Vec<String>>,
 
     /// Property description not available.
@@ -1027,7 +1027,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CNAMEs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cnames: Option<Vec<String>>,
 
     ///
@@ -1039,7 +1039,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheBehaviors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_behaviors: Option<Vec<CacheBehavior>>,
 
     ///
@@ -1051,7 +1051,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<cfn_resources::StrVal>,
 
     ///
@@ -1063,7 +1063,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContinuousDeploymentPolicyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub continuous_deployment_policy_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1079,7 +1079,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomErrorResponses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_error_responses: Option<Vec<CustomErrorResponse>>,
 
     /// Property description not available.
@@ -1090,7 +1090,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomOrigin")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_origin: Option<LegacyCustomOrigin>,
 
     ///
@@ -1123,7 +1123,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRootObject")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_root_object: Option<cfn_resources::StrVal>,
 
     ///
@@ -1152,7 +1152,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_version: Option<DistributionConfigHttpVersionEnum>,
 
     ///
@@ -1174,7 +1174,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPV6Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_enabled: Option<bool>,
 
     ///
@@ -1188,7 +1188,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<Logging>,
 
     ///
@@ -1200,7 +1200,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_groups: Option<OriginGroups>,
 
     ///
@@ -1212,7 +1212,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Origins")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origins: Option<Vec<Origin>>,
 
     ///
@@ -1230,7 +1230,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriceClass")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub price_class: Option<DistributionConfigPriceClassEnum>,
 
     ///
@@ -1242,7 +1242,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Restrictions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restrictions: Option<Restrictions>,
 
     /// Property description not available.
@@ -1253,7 +1253,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Origin")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_origin: Option<LegacyS3Origin>,
 
     ///
@@ -1265,7 +1265,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Staging")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub staging: Option<bool>,
 
     ///
@@ -1277,7 +1277,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewerCertificate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub viewer_certificate: Option<ViewerCertificate>,
 
     ///
@@ -1291,7 +1291,7 @@ pub struct DistributionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebACLId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web_aclid: Option<cfn_resources::StrVal>,
 }
 
@@ -1404,7 +1404,7 @@ pub struct ForwardedValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cookies: Option<Cookies>,
 
     ///
@@ -1424,7 +1424,7 @@ pub struct ForwardedValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Vec<String>>,
 
     ///
@@ -1467,7 +1467,7 @@ pub struct ForwardedValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringCacheKeys")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_cache_keys: Option<Vec<String>>,
 }
 
@@ -1502,7 +1502,7 @@ pub struct FunctionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_type: Option<FunctionAssociationEventTypeEnum>,
 
     ///
@@ -1518,7 +1518,7 @@ pub struct FunctionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1589,7 +1589,7 @@ pub struct GeoRestriction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Locations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub locations: Option<Vec<String>>,
 
     ///
@@ -1660,7 +1660,7 @@ pub struct LambdaFunctionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_type: Option<LambdaFunctionAssociationEventTypeEnum>,
 
     ///
@@ -1672,7 +1672,7 @@ pub struct LambdaFunctionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_body: Option<bool>,
 
     ///
@@ -1684,7 +1684,7 @@ pub struct LambdaFunctionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1749,7 +1749,7 @@ pub struct LegacyCustomOrigin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTPPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub httpport: Option<i64>,
 
     /// Property description not available.
@@ -1760,7 +1760,7 @@ pub struct LegacyCustomOrigin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTPSPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub httpsport: Option<i64>,
 
     /// Property description not available.
@@ -1820,7 +1820,7 @@ pub struct LegacyS3Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessIdentity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_access_identity: Option<cfn_resources::StrVal>,
 }
 
@@ -1862,7 +1862,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeCookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_cookies: Option<bool>,
 
     ///
@@ -1874,7 +1874,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -1913,7 +1913,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionAttempts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_attempts: Option<i64>,
 
     ///
@@ -1927,7 +1927,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_timeout: Option<i64>,
 
     ///
@@ -1939,7 +1939,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomOriginConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_origin_config: Option<CustomOriginConfig>,
 
     ///
@@ -1979,7 +1979,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessControlId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_access_control_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1993,7 +1993,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginCustomHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_custom_headers: Option<Vec<OriginCustomHeader>>,
 
     ///
@@ -2007,7 +2007,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -2021,7 +2021,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginShield")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_shield: Option<OriginShield>,
 
     ///
@@ -2033,7 +2033,7 @@ pub struct Origin {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OriginConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_origin_config: Option<S3OriginConfig>,
 }
 
@@ -2287,7 +2287,7 @@ pub struct OriginGroups {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Items")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Vec<OriginGroup>>,
 
     ///
@@ -2333,7 +2333,7 @@ pub struct OriginShield {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -2355,7 +2355,7 @@ pub struct OriginShield {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginShieldRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_shield_region: Option<cfn_resources::StrVal>,
 }
 
@@ -2449,7 +2449,7 @@ pub struct S3OriginConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessIdentity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_access_identity: Option<cfn_resources::StrVal>,
 }
 
@@ -2578,7 +2578,7 @@ pub struct ViewerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcmCertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm_certificate_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -2594,7 +2594,7 @@ pub struct ViewerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudFrontDefaultCertificate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_front_default_certificate: Option<bool>,
 
     ///
@@ -2610,7 +2610,7 @@ pub struct ViewerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamCertificateId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_certificate_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -2634,7 +2634,7 @@ pub struct ViewerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumProtocolVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_protocol_version: Option<ViewerCertificateMinimumProtocolVersionEnum>,
 
     ///
@@ -2654,7 +2654,7 @@ pub struct ViewerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslSupportMethod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_support_method: Option<ViewerCertificateSslSupportMethodEnum>,
 }
 

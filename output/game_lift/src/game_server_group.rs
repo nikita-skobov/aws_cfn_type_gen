@@ -23,7 +23,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_policy: Option<AutoScalingPolicy>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BalancingStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub balancing_strategy: Option<GameServerGroupBalancingStrategyEnum>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_option: Option<GameServerGroupDeleteOptionEnum>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameServerProtectionPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub game_server_protection_policy: Option<GameServerGroupGameServerProtectionPolicyEnum>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template: Option<LaunchTemplate>,
 
     ///
@@ -127,7 +127,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_size: Option<f64>,
 
     ///
@@ -141,7 +141,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_size: Option<f64>,
 
     ///
@@ -172,7 +172,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -186,7 +186,7 @@ pub struct CfnGameServerGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSubnets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_subnets: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -396,7 +396,7 @@ pub struct AutoScalingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EstimatedInstanceWarmup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub estimated_instance_warmup: Option<f64>,
 
     ///
@@ -470,7 +470,7 @@ pub struct InstanceDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
@@ -892,7 +892,7 @@ pub struct LaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -910,7 +910,7 @@ pub struct LaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -928,7 +928,7 @@ pub struct LaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
 }
 

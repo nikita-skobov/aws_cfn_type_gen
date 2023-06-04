@@ -11,7 +11,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OntapConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ontap_configuration: Option<OntapConfiguration>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenZFSConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_zfsconfiguration: Option<OpenZFSConfiguration>,
 
     ///
@@ -66,7 +66,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -80,7 +80,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
 
     #[serde(skip_serializing)]
@@ -314,7 +314,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToBackups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_backups: Option<cfn_resources::StrVal>,
 
     ///
@@ -332,7 +332,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JunctionPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub junction_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -350,7 +350,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OntapVolumeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ontap_volume_type: Option<OntapConfigurationOntapVolumeTypeEnum>,
 
     ///
@@ -366,7 +366,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityStyle")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_style: Option<OntapConfigurationSecurityStyleEnum>,
 
     ///
@@ -403,7 +403,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_policy: Option<cfn_resources::StrVal>,
 
     ///
@@ -415,7 +415,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageEfficiencyEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_efficiency_enabled: Option<cfn_resources::StrVal>,
 
     ///
@@ -454,7 +454,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TieringPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tiering_policy: Option<TieringPolicy>,
 }
 
@@ -606,7 +606,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToSnapshots")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_snapshots: Option<bool>,
 
     ///
@@ -622,7 +622,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCompressionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_compression_type: Option<OpenZFSConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -636,7 +636,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NfsExports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nfs_exports: Option<Vec<NfsExports>>,
 
     ///
@@ -650,7 +650,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
 
     ///
@@ -662,7 +662,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OriginSnapshot")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin_snapshot: Option<OriginSnapshot>,
 
     ///
@@ -691,7 +691,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnly")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only: Option<bool>,
 
     ///
@@ -707,7 +707,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordSizeKiB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_size_ki_b: Option<i64>,
 
     ///
@@ -725,7 +725,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacityQuotaGiB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_capacity_quota_gi_b: Option<i64>,
 
     ///
@@ -741,7 +741,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacityReservationGiB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_capacity_reservation_gi_b: Option<i64>,
 
     ///
@@ -755,7 +755,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAndGroupQuotas")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
@@ -1012,7 +1012,7 @@ pub struct TieringPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoolingPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cooling_period: Option<i64>,
 
     ///
@@ -1028,7 +1028,7 @@ pub struct TieringPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<TieringPolicyNameEnum>,
 }
 

@@ -23,7 +23,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_body: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateChain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_chain: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -105,7 +105,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

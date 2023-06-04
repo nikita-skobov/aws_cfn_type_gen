@@ -22,7 +22,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectorDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anomaly_detector_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anomaly_detector_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -202,7 +202,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub charset: Option<cfn_resources::StrVal>,
 
     ///
@@ -214,7 +214,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contains_header: Option<bool>,
 
     ///
@@ -226,7 +226,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<cfn_resources::StrVal>,
 
     ///
@@ -238,7 +238,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_compression: Option<cfn_resources::StrVal>,
 
     ///
@@ -250,7 +250,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_list: Option<Vec<String>>,
 
     ///
@@ -262,7 +262,7 @@ pub struct CsvFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuoteSymbol")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
@@ -293,7 +293,7 @@ pub struct FileFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvFormatDescriptor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_format_descriptor: Option<CsvFormatDescriptor>,
 
     ///
@@ -305,7 +305,7 @@ pub struct FileFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonFormatDescriptor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_format_descriptor: Option<JsonFormatDescriptor>,
 }
 
@@ -344,7 +344,7 @@ pub struct JsonFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Charset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub charset: Option<cfn_resources::StrVal>,
 
     ///
@@ -356,7 +356,7 @@ pub struct JsonFormatDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileCompression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_compression: Option<cfn_resources::StrVal>,
 }
 
@@ -409,7 +409,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<cfn_resources::StrVal>,
 }
 
@@ -440,7 +440,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimension_list: Option<Vec<String>>,
 
     ///
@@ -463,7 +463,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricSetDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_set_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -475,7 +475,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricSetFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_set_frequency: Option<cfn_resources::StrVal>,
 
     ///
@@ -509,7 +509,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset: Option<i64>,
 
     ///
@@ -521,7 +521,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampColumn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_column: Option<TimestampColumn>,
 
     ///
@@ -533,7 +533,7 @@ pub struct MetricSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timezone: Option<cfn_resources::StrVal>,
 }
 
@@ -570,7 +570,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppFlowConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_flow_config: Option<AppFlowConfig>,
 
     ///
@@ -582,7 +582,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_config: Option<CloudwatchConfig>,
 
     ///
@@ -594,7 +594,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RDSSourceConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rdssource_config: Option<RDSSourceConfig>,
 
     ///
@@ -606,7 +606,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftSourceConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_source_config: Option<RedshiftSourceConfig>,
 
     ///
@@ -618,7 +618,7 @@ pub struct MetricSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3SourceConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_source_config: Option<S3SourceConfig>,
 }
 
@@ -898,7 +898,7 @@ pub struct S3SourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistoricalDataPathList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub historical_data_path_list: Option<Vec<String>>,
 
     ///
@@ -921,7 +921,7 @@ pub struct S3SourceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplatedPathList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub templated_path_list: Option<Vec<String>>,
 }
 
@@ -954,7 +954,7 @@ pub struct TimestampColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -966,7 +966,7 @@ pub struct TimestampColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_name: Option<cfn_resources::StrVal>,
 }
 

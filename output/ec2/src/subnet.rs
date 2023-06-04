@@ -17,7 +17,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignIpv6AddressOnCreation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assign_ipv6_address_on_creation: Option<bool>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDns64")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_dns64: Option<bool>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Ipv6CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Native")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_native: Option<bool>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapPublicIpOnLaunch")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_public_ip_on_launch: Option<bool>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsNameOptionsOnLaunch")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_dns_name_options_on_launch: Option<PrivateDnsNameOptionsOnLaunch>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnSubnet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -250,7 +250,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
     ///
@@ -262,7 +262,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsARecord")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
     ///
@@ -276,7 +276,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname_type: Option<PrivateDnsNameOptionsOnLaunchHostnameTypeEnum>,
 }
 

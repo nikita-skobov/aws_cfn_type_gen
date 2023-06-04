@@ -28,7 +28,7 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProposedSegmentChange")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub proposed_segment_change: Option<ProposedSegmentChange>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -251,7 +251,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentPolicyRuleNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_policy_rule_number: Option<i64>,
 
     ///
@@ -269,7 +269,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -281,7 +281,7 @@ pub struct ProposedSegmentChange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

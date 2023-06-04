@@ -32,7 +32,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDelivery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_delivery: Option<LogDelivery>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkerConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_configuration: Option<WorkerConfiguration>,
 
     #[serde(skip_serializing)]
@@ -312,7 +312,7 @@ pub struct Capacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling: Option<AutoScaling>,
 
     ///
@@ -324,7 +324,7 @@ pub struct Capacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_capacity: Option<ProvisionedCapacity>,
 }
 
@@ -374,7 +374,7 @@ pub struct CloudWatchLogsLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group: Option<cfn_resources::StrVal>,
 }
 
@@ -446,7 +446,7 @@ pub struct FirehoseLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStream")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_stream: Option<cfn_resources::StrVal>,
 
     ///
@@ -644,7 +644,7 @@ pub struct ProvisionedCapacity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "McuCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mcu_count: Option<i64>,
 
     ///
@@ -686,7 +686,7 @@ pub struct S3LogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bucket")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket: Option<cfn_resources::StrVal>,
 
     ///
@@ -709,7 +709,7 @@ pub struct S3LogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -882,7 +882,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CloudWatchLogs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs: Option<CloudWatchLogsLogDelivery>,
 
     ///
@@ -894,7 +894,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Firehose")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firehose: Option<FirehoseLogDelivery>,
 
     ///
@@ -906,7 +906,7 @@ pub struct WorkerLogDelivery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3LogDelivery>,
 }
 

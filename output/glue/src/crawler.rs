@@ -11,7 +11,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classifiers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classifiers: Option<Vec<String>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlerSecurityConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawler_security_configuration: Option<cfn_resources::StrVal>,
 
     ///
@@ -51,7 +51,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecrawlPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recrawl_policy: Option<RecrawlPolicy>,
 
     ///
@@ -122,7 +122,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<Schedule>,
 
     ///
@@ -136,7 +136,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaChangePolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_change_policy: Option<SchemaChangePolicy>,
 
     ///
@@ -152,7 +152,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TablePrefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -164,7 +164,7 @@ pub struct CfnCrawler {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -308,7 +308,7 @@ pub struct CatalogTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -320,7 +320,7 @@ pub struct CatalogTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tables: Option<Vec<String>>,
 }
 
@@ -372,7 +372,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     /// Property description not available.
@@ -383,7 +383,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateNativeDeltaTable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_native_delta_table: Option<bool>,
 
     /// Property description not available.
@@ -394,7 +394,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTables")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delta_tables: Option<Vec<String>>,
 
     /// Property description not available.
@@ -405,7 +405,7 @@ pub struct DeltaTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteManifest")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_manifest: Option<bool>,
 }
 
@@ -436,7 +436,7 @@ pub struct DynamoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -467,7 +467,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -479,7 +479,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclusions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusions: Option<Vec<String>>,
 
     ///
@@ -491,7 +491,7 @@ pub struct JdbcTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -522,7 +522,7 @@ pub struct MongoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -534,7 +534,7 @@ pub struct MongoDBTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 }
 
@@ -573,7 +573,7 @@ pub struct RecrawlPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecrawlBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recrawl_behavior: Option<RecrawlPolicyRecrawlBehaviorEnum>,
 }
 
@@ -625,7 +625,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -637,7 +637,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DlqEventQueueArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dlq_event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -649,7 +649,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventQueueArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_queue_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -661,7 +661,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exclusions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusions: Option<Vec<String>>,
 
     ///
@@ -673,7 +673,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<cfn_resources::StrVal>,
 
     ///
@@ -685,7 +685,7 @@ pub struct S3Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_size: Option<i64>,
 }
 
@@ -716,7 +716,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
@@ -757,7 +757,7 @@ pub struct SchemaChangePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_behavior: Option<SchemaChangePolicyDeleteBehaviorEnum>,
 
     ///
@@ -775,7 +775,7 @@ pub struct SchemaChangePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub update_behavior: Option<SchemaChangePolicyUpdateBehaviorEnum>,
 }
 
@@ -844,7 +844,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_targets: Option<Vec<CatalogTarget>>,
 
     /// Property description not available.
@@ -855,7 +855,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delta_targets: Option<Vec<DeltaTarget>>,
 
     ///
@@ -867,7 +867,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_dbtargets: Option<Vec<DynamoDBTarget>>,
 
     ///
@@ -879,7 +879,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JdbcTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jdbc_targets: Option<Vec<JdbcTarget>>,
 
     ///
@@ -891,7 +891,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MongoDBTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mongo_dbtargets: Option<Vec<MongoDBTarget>>,
 
     ///
@@ -903,7 +903,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Targets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_targets: Option<Vec<S3Target>>,
 }
 

@@ -24,7 +24,7 @@ pub struct CfnSlackWorkspaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<cfn_resources::StrVal>,
 }
 

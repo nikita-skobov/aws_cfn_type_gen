@@ -11,7 +11,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firewall_rules: Option<Vec<FirewallRule>>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnFirewallRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -208,7 +208,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideDnsType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_override_dns_type: Option<FirewallRuleBlockOverrideDnsTypeEnum>,
 
     ///
@@ -224,7 +224,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideDomain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_override_domain: Option<cfn_resources::StrVal>,
 
     ///
@@ -236,7 +236,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockOverrideTtl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_override_ttl: Option<i64>,
 
     ///
@@ -252,7 +252,7 @@ pub struct FirewallRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockResponse")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_response: Option<FirewallRuleBlockResponseEnum>,
 
     ///

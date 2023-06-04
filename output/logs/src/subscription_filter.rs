@@ -26,7 +26,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Distribution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distribution: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnSubscriptionFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 

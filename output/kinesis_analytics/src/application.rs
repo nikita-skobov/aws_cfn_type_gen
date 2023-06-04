@@ -19,7 +19,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationCode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_code: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -233,7 +233,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParallelism")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_parallelism: Option<InputParallelism>,
 
     ///
@@ -245,7 +245,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputProcessingConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_processing_configuration: Option<InputProcessingConfiguration>,
 
     ///
@@ -272,7 +272,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseInput")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_input: Option<KinesisFirehoseInput>,
 
     ///
@@ -286,7 +286,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamsInput")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_streams_input: Option<KinesisStreamsInput>,
 
     ///
@@ -475,7 +475,7 @@ pub struct InputParallelism {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 }
 
@@ -524,7 +524,7 @@ pub struct InputProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputLambdaProcessor")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_lambda_processor: Option<InputLambdaProcessor>,
 }
 
@@ -576,7 +576,7 @@ pub struct InputSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordEncoding")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_encoding: Option<cfn_resources::StrVal>,
 
     ///
@@ -866,7 +866,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSVMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
     ///
@@ -878,7 +878,7 @@ pub struct MappingParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
 }
 
@@ -919,7 +919,7 @@ pub struct RecordColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mapping")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping: Option<cfn_resources::StrVal>,
 
     ///
@@ -985,7 +985,7 @@ pub struct RecordFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappingParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapping_parameters: Option<MappingParameters>,
 
     ///

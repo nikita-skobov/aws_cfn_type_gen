@@ -17,7 +17,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrBlock")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_block: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDnsHostnames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_dns_hostnames: Option<bool>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDnsSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_dns_support: Option<bool>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceTenancy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_tenancy: Option<VPCInstanceTenancyEnum>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv4IpamPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_ipam_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv4NetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_netmask_length: Option<i64>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnVPC {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

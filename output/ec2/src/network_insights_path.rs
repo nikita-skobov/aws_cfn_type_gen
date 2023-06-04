@@ -13,7 +13,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -31,7 +31,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_port: Option<i64>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterAtDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_at_destination: Option<PathFilter>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterAtSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_at_source: Option<PathFilter>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -125,7 +125,7 @@ pub struct CfnNetworkInsightsPath {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -302,7 +302,7 @@ pub struct FilterPortRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -318,7 +318,7 @@ pub struct FilterPortRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 
@@ -391,7 +391,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -403,7 +403,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPortRange")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_port_range: Option<FilterPortRange>,
 
     ///
@@ -421,7 +421,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -433,7 +433,7 @@ pub struct PathFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePortRange")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_range: Option<FilterPortRange>,
 }
 

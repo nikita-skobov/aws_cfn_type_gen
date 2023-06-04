@@ -34,7 +34,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupEgress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_egress: Option<Vec<Egress>>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupIngress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ingress: Option<Vec<Ingress>>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnSecurityGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]
@@ -155,7 +155,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -171,7 +171,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -185,7 +185,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -199,7 +199,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPrefixListId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -213,7 +213,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationSecurityGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -225,7 +225,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -250,7 +250,7 @@ pub struct Egress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 
@@ -301,7 +301,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -317,7 +317,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -331,7 +331,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -343,7 +343,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -368,22 +368,22 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePrefixListId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_prefix_list_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupid
     #[serde(rename = "SourceSecurityGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_id: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupname
     #[serde(rename = "SourceSecurityGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_name: Option<cfn_resources::StrVal>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupownerid
     #[serde(rename = "SourceSecurityGroupOwnerId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_owner_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -395,7 +395,7 @@ pub struct Ingress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 

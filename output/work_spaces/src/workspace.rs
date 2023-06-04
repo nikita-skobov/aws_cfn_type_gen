@@ -43,7 +43,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RootVolumeEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_volume_encryption_enabled: Option<bool>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "UserVolumeEncryptionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_volume_encryption_enabled: Option<bool>,
 
     ///
@@ -94,7 +94,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "VolumeEncryptionKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_encryption_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkspaceProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workspace_properties: Option<WorkspaceProperties>,
 }
 
@@ -232,7 +232,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeTypeName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_type_name: Option<WorkspacePropertiesComputeTypeNameEnum>,
 
     ///
@@ -244,7 +244,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootVolumeSizeGib")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_volume_size_gib: Option<i64>,
 
     ///
@@ -260,7 +260,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub running_mode: Option<WorkspacePropertiesRunningModeEnum>,
 
     ///
@@ -272,7 +272,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningModeAutoStopTimeoutInMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub running_mode_auto_stop_timeout_in_minutes: Option<i64>,
 
     ///
@@ -284,7 +284,7 @@ pub struct WorkspaceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserVolumeSizeGib")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_volume_size_gib: Option<i64>,
 }
 

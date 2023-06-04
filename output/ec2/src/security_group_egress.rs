@@ -29,7 +29,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ip: Option<cfn_resources::StrVal>,
 
     ///
@@ -45,7 +45,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIpv6")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ipv6: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPrefixListId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_prefix_list_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationSecurityGroupId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_security_group_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FromPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnSecurityGroupEgress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ToPort")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 

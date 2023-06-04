@@ -15,7 +15,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotebookInstanceLifecycleConfigName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notebook_instance_lifecycle_config_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnCreate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_create: Option<Vec<NotebookInstanceLifecycleHook>>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnStart")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_start: Option<Vec<NotebookInstanceLifecycleHook>>,
 
     #[serde(skip_serializing)]
@@ -118,7 +118,7 @@ pub struct NotebookInstanceLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content: Option<cfn_resources::StrVal>,
 }
 

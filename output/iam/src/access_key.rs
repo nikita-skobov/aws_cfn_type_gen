@@ -13,7 +13,7 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Serial")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serial: Option<i64>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnAccessKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<AccessKeyStatusEnum>,
 
     ///

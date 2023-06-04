@@ -11,7 +11,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_ids: Option<Vec<String>>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

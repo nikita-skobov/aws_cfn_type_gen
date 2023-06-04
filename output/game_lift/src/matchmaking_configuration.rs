@@ -26,7 +26,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptanceTimeoutSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceptance_timeout_seconds: Option<i64>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalPlayerCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_player_count: Option<i64>,
 
     ///
@@ -54,7 +54,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackfillMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backfill_mode: Option<MatchmakingConfigurationBackfillModeEnum>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_event_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -102,7 +102,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlexMatchMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flex_match_mode: Option<MatchmakingConfigurationFlexMatchModeEnum>,
 
     ///
@@ -116,7 +116,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub game_properties: Option<Vec<GameProperty>>,
 
     ///
@@ -132,7 +132,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub game_session_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -144,7 +144,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionQueueArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub game_session_queue_arns: Option<Vec<String>>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_target: Option<cfn_resources::StrVal>,
 
     ///
@@ -223,7 +223,7 @@ pub struct CfnMatchmakingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

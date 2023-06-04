@@ -33,7 +33,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SubjectAlternativeNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<Vec<String>>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

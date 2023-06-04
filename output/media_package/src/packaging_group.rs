@@ -13,7 +13,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Authorization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization: Option<Authorization>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressAccessLogs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_access_logs: Option<LogConfiguration>,
 
     ///
@@ -48,7 +48,7 @@ pub struct CfnPackagingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -150,7 +150,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<cfn_resources::StrVal>,
 }
 

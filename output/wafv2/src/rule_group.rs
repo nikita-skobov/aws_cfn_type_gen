@@ -13,7 +13,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailableLabels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub available_labels: Option<Vec<LabelSummary>>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsumedLabels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub consumed_labels: Option<Vec<LabelSummary>>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponseBodies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_response_bodies: Option<std::collections::HashMap<String, CustomResponseBody>>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +92,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -104,7 +104,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rules: Option<Vec<Rule>>,
 
     ///
@@ -131,7 +131,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -256,7 +256,7 @@ pub struct AllowAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -325,7 +325,7 @@ pub struct BlockAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponse")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_response: Option<CustomResponse>,
 }
 
@@ -374,7 +374,7 @@ pub struct Body {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OversizeHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oversize_handling: Option<BodyOversizeHandlingEnum>,
 }
 
@@ -478,7 +478,7 @@ pub struct ByteMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub search_string: Option<cfn_resources::StrVal>,
 
     ///
@@ -492,7 +492,7 @@ pub struct ByteMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchStringBase64")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub search_string_base64: Option<cfn_resources::StrVal>,
 
     ///
@@ -571,7 +571,7 @@ pub struct CaptchaAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -606,7 +606,7 @@ pub struct CaptchaConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImmunityTimeProperty")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub immunity_time_property: Option<ImmunityTimeProperty>,
 }
 
@@ -647,7 +647,7 @@ pub struct ChallengeAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -682,7 +682,7 @@ pub struct ChallengeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImmunityTimeProperty")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub immunity_time_property: Option<ImmunityTimeProperty>,
 }
 
@@ -721,7 +721,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -735,7 +735,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedCookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_cookies: Option<Vec<String>>,
 
     ///
@@ -749,7 +749,7 @@ pub struct CookieMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedCookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_cookies: Option<Vec<String>>,
 }
 
@@ -914,7 +914,7 @@ pub struct CountAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRequestHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_request_handling: Option<CustomRequestHandling>,
 }
 
@@ -1090,7 +1090,7 @@ pub struct CustomResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomResponseBodyKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_response_body_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -1121,7 +1121,7 @@ pub struct CustomResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_headers: Option<Vec<CustomHTTPHeader>>,
 }
 
@@ -1290,7 +1290,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllQueryArguments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_query_arguments: Option<serde_json::Value>,
 
     ///
@@ -1306,7 +1306,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<Body>,
 
     ///
@@ -1320,7 +1320,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cookies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cookies: Option<Cookies>,
 
     ///
@@ -1334,7 +1334,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Headers>,
 
     ///
@@ -1350,7 +1350,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_body: Option<JsonBody>,
 
     ///
@@ -1362,7 +1362,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<serde_json::Value>,
 
     ///
@@ -1374,7 +1374,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string: Option<serde_json::Value>,
 
     ///
@@ -1390,7 +1390,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeader")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_header: Option<SingleHeader>,
 
     ///
@@ -1404,7 +1404,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleQueryArgument")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_query_argument: Option<SingleQueryArgument>,
 
     ///
@@ -1416,7 +1416,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri_path: Option<serde_json::Value>,
 }
 
@@ -1575,7 +1575,7 @@ pub struct GeoMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCodes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country_codes: Option<Vec<String>>,
 
     ///
@@ -1589,7 +1589,7 @@ pub struct GeoMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedIPConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
 }
 
@@ -1628,7 +1628,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -1642,7 +1642,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_headers: Option<Vec<String>>,
 
     ///
@@ -1656,7 +1656,7 @@ pub struct HeaderMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedHeaders")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_headers: Option<Vec<String>>,
 }
 
@@ -1976,7 +1976,7 @@ pub struct IPSetReferenceStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetForwardedIPConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipset_forwarded_ipconfig: Option<IPSetForwardedIPConfiguration>,
 }
 
@@ -2083,7 +2083,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvalidFallbackBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
 
     ///
@@ -2131,7 +2131,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OversizeHandling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oversize_handling: Option<JsonBodyOversizeHandlingEnum>,
 }
 
@@ -2229,7 +2229,7 @@ pub struct JsonMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -2247,7 +2247,7 @@ pub struct JsonMatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPaths")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_paths: Option<Vec<String>>,
 }
 
@@ -2436,7 +2436,7 @@ pub struct LabelSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -2592,7 +2592,7 @@ pub struct RateBasedStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardedIPConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forwarded_ipconfig: Option<ForwardedIPConfiguration>,
 
     ///
@@ -2619,7 +2619,7 @@ pub struct RateBasedStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScopeDownStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope_down_statement: Option<Statement>,
 }
 
@@ -2849,7 +2849,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<RuleAction>,
 
     ///
@@ -2861,7 +2861,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptchaConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub captcha_config: Option<CaptchaConfig>,
 
     ///
@@ -2873,7 +2873,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChallengeConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub challenge_config: Option<ChallengeConfig>,
 
     ///
@@ -2923,7 +2923,7 @@ pub struct Rule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleLabels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_labels: Option<Vec<Label>>,
 
     ///
@@ -3021,7 +3021,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Allow")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow: Option<AllowAction>,
 
     ///
@@ -3033,7 +3033,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Block")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block: Option<BlockAction>,
 
     ///
@@ -3051,7 +3051,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Captcha")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub captcha: Option<CaptchaAction>,
 
     ///
@@ -3063,7 +3063,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Challenge")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub challenge: Option<ChallengeAction>,
 
     ///
@@ -3075,7 +3075,7 @@ pub struct RuleAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<CountAction>,
 }
 
@@ -3367,7 +3367,7 @@ pub struct SqliMatchStatement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SensitivityLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sensitivity_level: Option<SqliMatchStatementSensitivityLevelEnum>,
 
     ///
@@ -3428,7 +3428,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AndStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub and_statement: Option<AndStatement>,
 
     ///
@@ -3440,7 +3440,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ByteMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub byte_match_statement: Option<ByteMatchStatement>,
 
     ///
@@ -3462,7 +3462,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geo_match_statement: Option<GeoMatchStatement>,
 
     ///
@@ -3476,7 +3476,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetReferenceStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipset_reference_statement: Option<IPSetReferenceStatement>,
 
     ///
@@ -3490,7 +3490,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_match_statement: Option<LabelMatchStatement>,
 
     ///
@@ -3502,7 +3502,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_statement: Option<Box<NotStatement>>,
 
     ///
@@ -3514,7 +3514,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub or_statement: Option<OrStatement>,
 
     ///
@@ -3550,7 +3550,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateBasedStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_based_statement: Option<Box<RateBasedStatement>>,
 
     ///
@@ -3562,7 +3562,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegexMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex_match_statement: Option<RegexMatchStatement>,
 
     ///
@@ -3576,7 +3576,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegexPatternSetReferenceStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex_pattern_set_reference_statement: Option<RegexPatternSetReferenceStatement>,
 
     ///
@@ -3592,7 +3592,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeConstraintStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_constraint_statement: Option<SizeConstraintStatement>,
 
     ///
@@ -3604,7 +3604,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqliMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqli_match_statement: Option<SqliMatchStatement>,
 
     ///
@@ -3616,7 +3616,7 @@ pub struct Statement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XssMatchStatement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xss_match_statement: Option<XssMatchStatement>,
 }
 

@@ -11,7 +11,7 @@ pub struct CfnReplicationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtected")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deletion_protected: Option<bool>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnReplicationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -106,7 +106,7 @@ pub struct ReplicationRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_configuration: Option<RegionConfiguration>,
 
     ///
@@ -118,7 +118,7 @@ pub struct ReplicationRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_name: Option<cfn_resources::StrVal>,
 }
 

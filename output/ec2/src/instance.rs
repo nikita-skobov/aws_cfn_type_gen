@@ -13,7 +13,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AdditionalInfo")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_info: Option<cfn_resources::StrVal>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Affinity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub affinity: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<cfn_resources::StrVal>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "BlockDeviceMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CpuOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_options: Option<CpuOptions>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreditSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_specification: Option<CreditSpecification>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableApiTermination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_api_termination: Option<bool>,
 
     ///
@@ -113,7 +113,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "EbsOptimized")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -125,7 +125,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ElasticGpuSpecifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_gpu_specifications: Option<Vec<ElasticGpuSpecification>>,
 
     ///
@@ -141,7 +141,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ElasticInferenceAccelerators")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_inference_accelerators: Option<Vec<ElasticInferenceAccelerator>>,
 
     ///
@@ -153,7 +153,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnclaveOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enclave_options: Option<EnclaveOptions>,
 
     ///
@@ -167,7 +167,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HibernationOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hibernation_options: Option<HibernationOptions>,
 
     ///
@@ -179,7 +179,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "HostId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +191,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostResourceGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_resource_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -203,7 +203,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamInstanceProfile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_instance_profile: Option<cfn_resources::StrVal>,
 
     ///
@@ -215,7 +215,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -231,7 +231,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceInitiatedShutdownBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_initiated_shutdown_behavior: Option<InstanceInstanceInitiatedShutdownBehaviorEnum>,
 
     ///
@@ -247,7 +247,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<InstanceInstanceTypeEnum>,
 
     ///
@@ -261,7 +261,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6AddressCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -275,7 +275,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Addresses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
     ///
@@ -289,7 +289,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "KernelId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -303,7 +303,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -315,7 +315,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -327,7 +327,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LicenseSpecifications")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_specifications: Option<Vec<LicenseSpecification>>,
 
     ///
@@ -339,7 +339,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Monitoring")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitoring: Option<bool>,
 
     ///
@@ -353,7 +353,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaces")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -365,7 +365,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -377,7 +377,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PrivateDnsNameOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_dns_name_options: Option<PrivateDnsNameOptions>,
 
     ///
@@ -395,7 +395,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -407,7 +407,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTagsToVolumeOnCreation")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub propagate_tags_to_volume_on_creation: Option<bool>,
 
     ///
@@ -421,7 +421,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "RamdiskId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ramdisk_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -435,7 +435,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -451,7 +451,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -463,7 +463,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceDestCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_dest_check: Option<bool>,
 
     ///
@@ -477,7 +477,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmAssociations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssm_associations: Option<Vec<SsmAssociation>>,
 
     ///
@@ -491,7 +491,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -503,7 +503,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -517,7 +517,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Tenancy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<InstanceTenancyEnum>,
 
     ///
@@ -531,7 +531,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "UserData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -543,7 +543,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Volumes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes: Option<Vec<Volume>>,
 
     #[serde(skip_serializing)]
@@ -3300,7 +3300,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ebs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs: Option<Ebs>,
 
     ///
@@ -3314,7 +3314,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_device: Option<NoDevice>,
 
     ///
@@ -3332,7 +3332,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_name: Option<cfn_resources::StrVal>,
 }
 
@@ -3371,7 +3371,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_count: Option<i64>,
 
     ///
@@ -3383,7 +3383,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThreadsPerCore")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threads_per_core: Option<i64>,
 }
 
@@ -3422,7 +3422,7 @@ pub struct CreditSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CPUCredits")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpucredits: Option<cfn_resources::StrVal>,
 }
 
@@ -3455,7 +3455,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -3471,7 +3471,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -3493,7 +3493,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -3511,7 +3511,7 @@ pub struct Ebs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3527,7 +3527,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3545,7 +3545,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size: Option<i64>,
 
     ///
@@ -3561,7 +3561,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<EbsVolumeTypeEnum>,
 }
 
@@ -3663,7 +3663,7 @@ pub struct ElasticInferenceAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     ///
@@ -3705,7 +3705,7 @@ pub struct EnclaveOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -3740,7 +3740,7 @@ pub struct HibernationOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configured: Option<bool>,
 }
 
@@ -3813,7 +3813,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -3827,7 +3827,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3909,7 +3909,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociateCarrierIpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_carrier_ip_address: Option<bool>,
 
     ///
@@ -3921,7 +3921,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociatePublicIpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -3933,7 +3933,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -3945,7 +3945,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -3970,7 +3970,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_set: Option<Vec<String>>,
 
     ///
@@ -3982,7 +3982,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6AddressCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -3994,7 +3994,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
     ///
@@ -4006,7 +4006,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -4018,7 +4018,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -4030,7 +4030,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddresses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
     ///
@@ -4042,7 +4042,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -4054,7 +4054,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
@@ -4106,7 +4106,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
     ///
@@ -4118,7 +4118,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsARecord")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
     ///
@@ -4132,7 +4132,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname_type: Option<PrivateDnsNameOptionsHostnameTypeEnum>,
 }
 
@@ -4223,7 +4223,7 @@ pub struct SsmAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociationParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub association_parameters: Option<Vec<AssociationParameter>>,
 
     ///

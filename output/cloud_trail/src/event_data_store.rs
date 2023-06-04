@@ -17,7 +17,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedEventSelectors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_event_selectors: Option<Vec<AdvancedEventSelector>>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -55,7 +55,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiRegionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_region_enabled: Option<bool>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_enabled: Option<bool>,
 
     ///
@@ -101,7 +101,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_period: Option<i64>,
 
     ///
@@ -115,7 +115,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -127,7 +127,7 @@ pub struct CfnEventDataStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationProtectionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_protection_enabled: Option<bool>,
 
     #[serde(skip_serializing)]
@@ -292,7 +292,7 @@ pub struct AdvancedEventSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 }
 
@@ -345,7 +345,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndsWith")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ends_with: Option<Vec<String>>,
 
     ///
@@ -357,7 +357,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Equals")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub equals: Option<Vec<String>>,
 
     ///
@@ -392,7 +392,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEndsWith")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_ends_with: Option<Vec<String>>,
 
     ///
@@ -404,7 +404,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEquals")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_equals: Option<Vec<String>>,
 
     ///
@@ -416,7 +416,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotStartsWith")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_starts_with: Option<Vec<String>>,
 
     ///
@@ -428,7 +428,7 @@ pub struct AdvancedFieldSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartsWith")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub starts_with: Option<Vec<String>>,
 }
 

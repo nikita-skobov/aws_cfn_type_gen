@@ -15,7 +15,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentBasedDeduplication")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_based_deduplication: Option<bool>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeduplicationScope")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deduplication_scope: Option<cfn_resources::StrVal>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DelaySeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delay_seconds: Option<i64>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FifoQueue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fifo_queue: Option<bool>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FifoThroughputLimit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fifo_throughput_limit: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsDataKeyReusePeriodSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_data_key_reuse_period_seconds: Option<i64>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_master_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumMessageSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_message_size: Option<i64>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageRetentionPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_retention_period: Option<i64>,
 
     ///
@@ -135,7 +135,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "QueueName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -147,7 +147,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReceiveMessageWaitTimeSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub receive_message_wait_time_seconds: Option<i64>,
 
     ///
@@ -161,7 +161,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedriveAllowPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redrive_allow_policy: Option<serde_json::Value>,
 
     ///
@@ -187,7 +187,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedrivePolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redrive_policy: Option<serde_json::Value>,
 
     ///
@@ -199,7 +199,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsManagedSseEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs_managed_sse_enabled: Option<bool>,
 
     ///
@@ -211,7 +211,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -227,7 +227,7 @@ pub struct CfnQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisibilityTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility_timeout: Option<i64>,
 
     #[serde(skip_serializing)]

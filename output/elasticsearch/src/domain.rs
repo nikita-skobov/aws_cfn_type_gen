@@ -11,7 +11,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_policies: Option<serde_json::Value>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_options: Option<std::collections::HashMap<String, String>>,
 
     /// Specifies options for fine-grained access control.
@@ -34,7 +34,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AdvancedSecurityOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_security_options: Option<AdvancedSecurityOptionsInput>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cognito_options: Option<CognitoOptions>,
 
     /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
@@ -57,7 +57,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainEndpointOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_endpoint_options: Option<DomainEndpointOptions>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebsoptions: Option<EBSOptions>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchClusterConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch_cluster_config: Option<ElasticsearchClusterConfig>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ElasticsearchVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch_version: Option<cfn_resources::StrVal>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "EncryptionAtRestOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_at_rest_options: Option<EncryptionAtRestOptions>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPublishingOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_publishing_options: Option<std::collections::HashMap<String, LogPublishingOption>>,
 
     ///
@@ -145,7 +145,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NodeToNodeEncryptionOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_to_node_encryption_options: Option<NodeToNodeEncryptionOptions>,
 
     ///
@@ -157,7 +157,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_options: Option<SnapshotOptions>,
 
     ///
@@ -169,7 +169,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -181,7 +181,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcoptions: Option<VPCOptions>,
 
     #[serde(skip_serializing)]
@@ -280,7 +280,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnonymousAuthEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anonymous_auth_enabled: Option<bool>,
 
     /// True to enable fine-grained access control. You must also enable encryption of data at rest    and node-to-node encryption.
@@ -291,7 +291,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     /// True to enable the internal user database.
@@ -302,7 +302,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternalUserDatabaseEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internal_user_database_enabled: Option<bool>,
 
     /// Specifies information about the master user.
@@ -313,7 +313,7 @@ pub struct AdvancedSecurityOptionsInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_user_options: Option<MasterUserOptions>,
 }
 
@@ -348,7 +348,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -360,7 +360,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_pool_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -372,7 +372,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -384,7 +384,7 @@ pub struct CognitoOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserPoolId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_pool_id: Option<cfn_resources::StrVal>,
 }
 
@@ -415,7 +415,7 @@ pub struct ColdStorageOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -445,7 +445,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_endpoint: Option<cfn_resources::StrVal>,
 
     /// The AWS Certificate Manager ARN for your domain's SSL/TLS certificate. Required if you    enabled a custom endpoint for the domain.
@@ -456,7 +456,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointCertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_endpoint_certificate_arn: Option<cfn_resources::StrVal>,
 
     /// True to enable a custom endpoint for the domain. If enabled, you must also provide values for CustomEndpoint and CustomEndpointCertificateArn.
@@ -467,7 +467,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEndpointEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_endpoint_enabled: Option<bool>,
 
     /// True to require that all traffic to the domain arrive over HTTPS.
@@ -478,7 +478,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceHTTPS")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enforce_https: Option<bool>,
 
     /// The minimum TLS version required for traffic to the domain. Valid values are TLS 1.0 (default) or 1.2:
@@ -491,7 +491,7 @@ pub struct DomainEndpointOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLSSecurityPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tlssecurity_policy: Option<cfn_resources::StrVal>,
 }
 
@@ -522,7 +522,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebsenabled: Option<bool>,
 
     ///
@@ -534,7 +534,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -546,7 +546,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size: Option<i64>,
 
     ///
@@ -558,7 +558,7 @@ pub struct EBSOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 
@@ -589,7 +589,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColdStorageOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cold_storage_options: Option<ColdStorageOptions>,
 
     ///
@@ -601,7 +601,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedicated_master_count: Option<i64>,
 
     ///
@@ -613,7 +613,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedicated_master_enabled: Option<bool>,
 
     ///
@@ -625,7 +625,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedicatedMasterType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedicated_master_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -637,7 +637,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_count: Option<i64>,
 
     ///
@@ -649,7 +649,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -661,7 +661,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub warm_count: Option<i64>,
 
     ///
@@ -673,7 +673,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub warm_enabled: Option<bool>,
 
     ///
@@ -685,7 +685,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarmType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub warm_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -697,7 +697,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZoneAwarenessConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zone_awareness_config: Option<ZoneAwarenessConfig>,
 
     ///
@@ -709,7 +709,7 @@ pub struct ElasticsearchClusterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZoneAwarenessEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zone_awareness_enabled: Option<bool>,
 }
 
@@ -748,7 +748,7 @@ pub struct EncryptionAtRestOptions {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -760,7 +760,7 @@ pub struct EncryptionAtRestOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 }
 
@@ -793,7 +793,7 @@ pub struct LogPublishingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsLogGroupArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_log_group_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -807,7 +807,7 @@ pub struct LogPublishingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -837,7 +837,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_user_arn: Option<cfn_resources::StrVal>,
 
     /// Username for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
@@ -848,7 +848,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_user_name: Option<cfn_resources::StrVal>,
 
     /// Password for the master user. Only specify if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
@@ -859,7 +859,7 @@ pub struct MasterUserOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_user_password: Option<cfn_resources::StrVal>,
 }
 
@@ -890,7 +890,7 @@ pub struct NodeToNodeEncryptionOptions {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -923,7 +923,7 @@ pub struct SnapshotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomatedSnapshotStartHour")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automated_snapshot_start_hour: Option<i64>,
 }
 
@@ -999,7 +999,7 @@ pub struct VPCOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -1013,7 +1013,7 @@ pub struct VPCOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -1046,7 +1046,7 @@ pub struct ZoneAwarenessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZoneCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_count: Option<i64>,
 }
 

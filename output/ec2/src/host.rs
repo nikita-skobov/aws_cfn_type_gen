@@ -15,7 +15,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoPlacement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_placement: Option<HostAutoPlacementEnum>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostMaintenance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_maintenance: Option<HostHostMaintenanceEnum>,
 
     ///
@@ -56,7 +56,7 @@ pub struct CfnHost {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostRecovery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_recovery: Option<HostHostRecoveryEnum>,
 
     ///
@@ -68,7 +68,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceFamily")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_family: Option<cfn_resources::StrVal>,
 
     ///
@@ -80,7 +80,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -92,7 +92,7 @@ pub struct CfnHost {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

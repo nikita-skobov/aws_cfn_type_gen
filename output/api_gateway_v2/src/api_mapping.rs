@@ -22,7 +22,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiMappingKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_mapping_key: Option<cfn_resources::StrVal>,
 
     ///

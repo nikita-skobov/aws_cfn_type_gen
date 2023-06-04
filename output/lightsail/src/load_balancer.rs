@@ -11,7 +11,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachedInstances")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attached_instances: Option<Vec<String>>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_path: Option<cfn_resources::StrVal>,
 
     ///
@@ -52,7 +52,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IpAddressType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_stickiness_enabled: Option<bool>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessLBCookieDurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_stickiness_lbcookie_duration_seconds: Option<cfn_resources::StrVal>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsPolicyName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_policy_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

@@ -26,7 +26,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAlias")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_alias: Option<cfn_resources::StrVal>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

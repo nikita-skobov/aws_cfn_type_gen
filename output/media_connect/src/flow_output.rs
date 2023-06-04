@@ -11,7 +11,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrAllowList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_allow_list: Option<Vec<String>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encryption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption: Option<Encryption>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLatency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_latency: Option<i64>,
 
     ///
@@ -82,7 +82,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinLatency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_latency: Option<i64>,
 
     ///
@@ -94,7 +94,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -129,7 +129,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoteId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remote_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -141,7 +141,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmoothingLatency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smoothing_latency: Option<i64>,
 
     ///
@@ -153,7 +153,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -165,7 +165,7 @@ pub struct CfnFlowOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceAttachment")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_interface_attachment: Option<VpcInterfaceAttachment>,
 
     #[serde(skip_serializing)]
@@ -215,7 +215,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm: Option<cfn_resources::StrVal>,
 
     ///
@@ -227,7 +227,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -280,7 +280,7 @@ pub struct VpcInterfaceAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_interface_name: Option<cfn_resources::StrVal>,
 }
 

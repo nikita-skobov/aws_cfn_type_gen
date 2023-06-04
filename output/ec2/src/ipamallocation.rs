@@ -15,7 +15,7 @@ pub struct CfnIPAMAllocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cidr")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnIPAMAllocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -54,7 +54,7 @@ pub struct CfnIPAMAllocation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetmaskLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub netmask_length: Option<i64>,
 
     #[serde(skip_serializing)]

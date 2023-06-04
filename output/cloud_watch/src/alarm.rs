@@ -16,7 +16,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions_enabled: Option<bool>,
 
     ///
@@ -30,7 +30,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_actions: Option<Vec<String>>,
 
     ///
@@ -46,7 +46,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatapointsToAlarm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datapoints_to_alarm: Option<i64>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -125,7 +125,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluateLowSampleCountPercentile")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluate_low_sample_count_percentile: Option<cfn_resources::StrVal>,
 
     ///
@@ -156,7 +156,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtendedStatistic")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extended_statistic: Option<cfn_resources::StrVal>,
 
     ///
@@ -170,7 +170,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsufficientDataActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insufficient_data_actions: Option<Vec<String>>,
 
     ///
@@ -186,7 +186,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -200,7 +200,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics: Option<Vec<MetricDataQuery>>,
 
     ///
@@ -220,7 +220,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -234,7 +234,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OKActions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub okactions: Option<Vec<String>>,
 
     ///
@@ -250,7 +250,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<i64>,
 
     ///
@@ -268,7 +268,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistic: Option<AlarmStatisticEnum>,
 
     ///
@@ -280,7 +280,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Threshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold: Option<f64>,
 
     ///
@@ -296,7 +296,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdMetricId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold_metric_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -314,7 +314,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatMissingData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub treat_missing_data: Option<cfn_resources::StrVal>,
 
     ///
@@ -330,7 +330,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<AlarmUnitEnum>,
 
     #[serde(skip_serializing)]
@@ -849,7 +849,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -865,7 +865,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -883,7 +883,7 @@ pub struct Metric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<cfn_resources::StrVal>,
 }
 
@@ -969,7 +969,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -987,7 +987,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -1014,7 +1014,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<cfn_resources::StrVal>,
 
     ///
@@ -1028,7 +1028,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricStat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -1042,7 +1042,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<i64>,
 
     ///
@@ -1058,7 +1058,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub return_data: Option<bool>,
 }
 
@@ -1191,7 +1191,7 @@ pub struct MetricStat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<MetricStatUnitEnum>,
 }
 

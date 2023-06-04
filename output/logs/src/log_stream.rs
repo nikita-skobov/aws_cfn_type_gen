@@ -38,7 +38,7 @@ pub struct CfnLogStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogStreamName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_stream_name: Option<cfn_resources::StrVal>,
 }
 

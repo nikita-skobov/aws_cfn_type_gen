@@ -67,7 +67,7 @@ pub struct CloudWatchDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimension_configurations: Option<Vec<DimensionConfiguration>>,
 }
 
@@ -181,7 +181,7 @@ pub struct EventDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_destination: Option<CloudWatchDestination>,
 
     ///
@@ -193,7 +193,7 @@ pub struct EventDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -205,7 +205,7 @@ pub struct EventDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_destination: Option<KinesisFirehoseDestination>,
 
     ///
@@ -232,7 +232,7 @@ pub struct EventDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -244,7 +244,7 @@ pub struct EventDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_destination: Option<SnsDestination>,
 }
 

@@ -58,7 +58,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnWebhook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegisterWithThirdParty")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub register_with_third_party: Option<bool>,
 
     ///
@@ -265,7 +265,7 @@ pub struct WebhookAuthConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedIPRange")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_iprange: Option<cfn_resources::StrVal>,
 
     ///
@@ -281,7 +281,7 @@ pub struct WebhookAuthConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretToken")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_token: Option<cfn_resources::StrVal>,
 }
 
@@ -375,7 +375,7 @@ pub struct WebhookFilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchEquals")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub match_equals: Option<cfn_resources::StrVal>,
 }
 

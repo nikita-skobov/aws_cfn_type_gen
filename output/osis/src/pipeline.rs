@@ -11,7 +11,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogPublishingOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_publishing_options: Option<LogPublishingOptions>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_options: Option<VpcOptions>,
 
     #[serde(skip_serializing)]
@@ -128,7 +128,7 @@ pub struct CloudWatchLogDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group: Option<cfn_resources::StrVal>,
 }
 
@@ -159,7 +159,7 @@ pub struct LogPublishingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogDestination")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_destination: Option<CloudWatchLogDestination>,
 
     ///
@@ -171,7 +171,7 @@ pub struct LogPublishingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsLoggingEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_logging_enabled: Option<bool>,
 }
 
@@ -251,7 +251,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -263,7 +263,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -275,7 +275,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_options: Option<VpcOptions>,
 }
 
@@ -312,7 +312,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -326,7 +326,7 @@ pub struct VpcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

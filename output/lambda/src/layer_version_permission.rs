@@ -47,7 +47,7 @@ pub struct CfnLayerVersionPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_id: Option<cfn_resources::StrVal>,
 
     ///

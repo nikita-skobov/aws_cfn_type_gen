@@ -13,7 +13,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BatchImportMetaDataOnCreate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_import_meta_data_on_create: Option<bool>,
 
     ///
@@ -80,7 +80,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportedFileChunkSize")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imported_file_chunk_size: Option<i64>,
 
     ///
@@ -92,7 +92,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3>,
 
     ///
@@ -106,7 +106,7 @@ pub struct CfnDataRepositoryAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -313,7 +313,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoExportPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_export_policy: Option<AutoExportPolicy>,
 
     ///
@@ -327,7 +327,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImportPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_import_policy: Option<AutoImportPolicy>,
 }
 

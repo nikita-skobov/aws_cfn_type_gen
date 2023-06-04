@@ -13,7 +13,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "CertificateAlternativeNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_alternative_names: Option<Vec<String>>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpsRedirectionEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub https_redirection_enabled: Option<bool>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsAttached")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_attached: Option<bool>,
 
     ///

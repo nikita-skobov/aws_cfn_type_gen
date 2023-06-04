@@ -52,7 +52,7 @@ pub struct Certificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<cfn_resources::StrVal>,
 }
 

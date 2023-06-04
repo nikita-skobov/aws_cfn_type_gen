@@ -31,7 +31,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigRuleName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_rule_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_parameters: Option<serde_json::Value>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_execution_frequency: Option<ConfigRuleMaximumExecutionFrequencyEnum>,
 
     ///
@@ -95,7 +95,7 @@ pub struct CfnConfigRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<Scope>,
 
     ///
@@ -247,7 +247,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDebugLogDelivery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_debug_log_delivery: Option<bool>,
 
     ///
@@ -265,7 +265,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyRuntime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_runtime: Option<cfn_resources::StrVal>,
 
     ///
@@ -281,7 +281,7 @@ pub struct CustomPolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyText")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_text: Option<cfn_resources::StrVal>,
 }
 
@@ -360,7 +360,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_resource_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -374,7 +374,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_resource_types: Option<Vec<String>>,
 
     ///
@@ -390,7 +390,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -406,7 +406,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_value: Option<cfn_resources::StrVal>,
 }
 
@@ -503,7 +503,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomPolicyDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_policy_details: Option<CustomPolicyDetails>,
 
     ///
@@ -536,7 +536,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_details: Option<Vec<SourceDetail>>,
 
     ///
@@ -556,7 +556,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_identifier: Option<cfn_resources::StrVal>,
 }
 
@@ -657,7 +657,7 @@ pub struct SourceDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_execution_frequency: Option<SourceDetailMaximumExecutionFrequencyEnum>,
 
     ///

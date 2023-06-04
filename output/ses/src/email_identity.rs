@@ -17,7 +17,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSetAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_set_attributes: Option<ConfigurationSetAttributes>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DkimAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dkim_attributes: Option<DkimAttributes>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DkimSigningAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dkim_signing_attributes: Option<DkimSigningAttributes>,
 
     ///
@@ -64,7 +64,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FeedbackAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feedback_attributes: Option<FeedbackAttributes>,
 
     ///
@@ -76,7 +76,7 @@ pub struct CfnEmailIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MailFromAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mail_from_attributes: Option<MailFromAttributes>,
 
     #[serde(skip_serializing)]
@@ -193,7 +193,7 @@ pub struct ConfigurationSetAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSetName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_set_name: Option<cfn_resources::StrVal>,
 }
 
@@ -226,7 +226,7 @@ pub struct DkimAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_enabled: Option<bool>,
 }
 
@@ -261,7 +261,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningPrivateKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_signing_private_key: Option<cfn_resources::StrVal>,
 
     ///
@@ -273,7 +273,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSigningSelector")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_signing_selector: Option<cfn_resources::StrVal>,
 
     ///
@@ -287,7 +287,7 @@ pub struct DkimSigningAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NextSigningKeyLength")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_signing_key_length: Option<DkimSigningAttributesNextSigningKeyLengthEnum>,
 }
 
@@ -339,7 +339,7 @@ pub struct FeedbackAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmailForwardingEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub email_forwarding_enabled: Option<bool>,
 }
 
@@ -374,7 +374,7 @@ pub struct MailFromAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BehaviorOnMxFailure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub behavior_on_mx_failure: Option<MailFromAttributesBehaviorOnMxFailureEnum>,
 
     ///
@@ -388,7 +388,7 @@ pub struct MailFromAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MailFromDomain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mail_from_domain: Option<cfn_resources::StrVal>,
 }
 

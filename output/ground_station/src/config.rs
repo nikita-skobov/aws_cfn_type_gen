@@ -35,7 +35,7 @@ pub struct CfnConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -101,7 +101,7 @@ pub struct AntennaDownlinkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpectrumConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spectrum_config: Option<SpectrumConfig>,
 }
 
@@ -136,7 +136,7 @@ pub struct AntennaDownlinkDemodDecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecodeConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decode_config: Option<DecodeConfig>,
 
     ///
@@ -148,7 +148,7 @@ pub struct AntennaDownlinkDemodDecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DemodulationConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub demodulation_config: Option<DemodulationConfig>,
 
     ///
@@ -160,7 +160,7 @@ pub struct AntennaDownlinkDemodDecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpectrumConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spectrum_config: Option<SpectrumConfig>,
 }
 
@@ -203,7 +203,7 @@ pub struct AntennaUplinkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpectrumConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spectrum_config: Option<UplinkSpectrumConfig>,
 
     ///
@@ -215,7 +215,7 @@ pub struct AntennaUplinkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetEirp")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_eirp: Option<Eirp>,
 
     ///
@@ -227,7 +227,7 @@ pub struct AntennaUplinkConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransmitDisabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transmit_disabled: Option<bool>,
 }
 
@@ -266,7 +266,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AntennaDownlinkConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub antenna_downlink_config: Option<AntennaDownlinkConfig>,
 
     ///
@@ -278,7 +278,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AntennaDownlinkDemodDecodeConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub antenna_downlink_demod_decode_config: Option<AntennaDownlinkDemodDecodeConfig>,
 
     ///
@@ -290,7 +290,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AntennaUplinkConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub antenna_uplink_config: Option<AntennaUplinkConfig>,
 
     ///
@@ -302,7 +302,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataflowEndpointConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataflow_endpoint_config: Option<DataflowEndpointConfig>,
 
     ///
@@ -314,7 +314,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3RecordingConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_recording_config: Option<S3RecordingConfig>,
 
     ///
@@ -326,7 +326,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrackingConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracking_config: Option<TrackingConfig>,
 
     ///
@@ -338,7 +338,7 @@ pub struct ConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UplinkEchoConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uplink_echo_config: Option<UplinkEchoConfig>,
 }
 
@@ -397,7 +397,7 @@ pub struct DataflowEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataflowEndpointName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataflow_endpoint_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -409,7 +409,7 @@ pub struct DataflowEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataflowEndpointRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataflow_endpoint_region: Option<cfn_resources::StrVal>,
 }
 
@@ -440,7 +440,7 @@ pub struct DecodeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnvalidatedJSON")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unvalidated_json: Option<cfn_resources::StrVal>,
 }
 
@@ -471,7 +471,7 @@ pub struct DemodulationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnvalidatedJSON")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unvalidated_json: Option<cfn_resources::StrVal>,
 }
 
@@ -502,7 +502,7 @@ pub struct Eirp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Units")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<cfn_resources::StrVal>,
 
     ///
@@ -514,7 +514,7 @@ pub struct Eirp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -545,7 +545,7 @@ pub struct Frequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Units")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<cfn_resources::StrVal>,
 
     ///
@@ -557,7 +557,7 @@ pub struct Frequency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -588,7 +588,7 @@ pub struct FrequencyBandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Units")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<cfn_resources::StrVal>,
 
     ///
@@ -602,7 +602,7 @@ pub struct FrequencyBandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -633,7 +633,7 @@ pub struct S3RecordingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -647,7 +647,7 @@ pub struct S3RecordingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<cfn_resources::StrVal>,
 
     ///
@@ -659,7 +659,7 @@ pub struct S3RecordingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -692,7 +692,7 @@ pub struct SpectrumConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bandwidth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth: Option<FrequencyBandwidth>,
 
     ///
@@ -704,7 +704,7 @@ pub struct SpectrumConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CenterFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub center_frequency: Option<Frequency>,
 
     ///
@@ -716,7 +716,7 @@ pub struct SpectrumConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Polarization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polarization: Option<cfn_resources::StrVal>,
 }
 
@@ -800,7 +800,7 @@ pub struct TrackingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Autotrack")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub autotrack: Option<cfn_resources::StrVal>,
 }
 
@@ -831,7 +831,7 @@ pub struct UplinkEchoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AntennaUplinkConfigArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub antenna_uplink_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -843,7 +843,7 @@ pub struct UplinkEchoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -874,7 +874,7 @@ pub struct UplinkSpectrumConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CenterFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub center_frequency: Option<Frequency>,
 
     ///
@@ -886,7 +886,7 @@ pub struct UplinkSpectrumConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Polarization")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polarization: Option<cfn_resources::StrVal>,
 }
 

@@ -15,7 +15,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub finding_publishing_frequency: Option<cfn_resources::StrVal>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
 
     #[serde(skip_serializing)]

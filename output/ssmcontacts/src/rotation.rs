@@ -65,7 +65,7 @@ pub struct CfnRotation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -283,7 +283,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailySettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub daily_settings: Option<Vec<String>>,
 
     ///
@@ -295,7 +295,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MonthlySettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monthly_settings: Option<Vec<MonthlySetting>>,
 
     ///
@@ -335,7 +335,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShiftCoverages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shift_coverages: Option<Vec<ShiftCoverage>>,
 
     ///
@@ -347,7 +347,7 @@ pub struct RecurrenceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklySettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_settings: Option<Vec<WeeklySetting>>,
 }
 

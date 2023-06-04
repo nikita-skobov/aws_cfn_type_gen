@@ -17,7 +17,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoScalingGroupName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_group_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityRebalance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_rebalance: Option<bool>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Context")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub context: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cooldown")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cooldown: Option<cfn_resources::StrVal>,
 
     ///
@@ -87,7 +87,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultInstanceWarmup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_instance_warmup: Option<i64>,
 
     ///
@@ -103,7 +103,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_capacity: Option<cfn_resources::StrVal>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacityType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_capacity_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckGracePeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_grace_period: Option<i64>,
 
     ///
@@ -149,7 +149,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -163,7 +163,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -177,7 +177,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchConfigurationName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_configuration_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -191,7 +191,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -203,7 +203,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleHookSpecificationList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_hook_specification_list: Option<Vec<LifecycleHookSpecification>>,
 
     ///
@@ -215,7 +215,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_names: Option<Vec<String>>,
 
     ///
@@ -227,7 +227,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxInstanceLifetime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_instance_lifetime: Option<i64>,
 
     ///
@@ -252,7 +252,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsCollection")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics_collection: Option<Vec<MetricsCollection>>,
 
     ///
@@ -279,7 +279,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MixedInstancesPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mixed_instances_policy: Option<MixedInstancesPolicy>,
 
     ///
@@ -291,7 +291,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewInstancesProtectedFromScaleIn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub new_instances_protected_from_scale_in: Option<bool>,
 
     ///
@@ -303,7 +303,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_configurations: Option<Vec<NotificationConfiguration>>,
 
     ///
@@ -317,7 +317,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_group: Option<cfn_resources::StrVal>,
 
     ///
@@ -329,7 +329,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceLinkedRoleARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_linked_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -341,7 +341,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagProperty>>,
 
     ///
@@ -353,7 +353,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupARNs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arns: Option<Vec<String>>,
 
     ///
@@ -367,7 +367,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationPolicies")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_policies: Option<Vec<String>>,
 
     ///
@@ -385,7 +385,7 @@ pub struct CfnAutoScalingGroup {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "VPCZoneIdentifier")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpczone_identifier: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -481,7 +481,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -495,7 +495,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -546,7 +546,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -560,7 +560,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -611,7 +611,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -625,7 +625,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -688,7 +688,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_count: Option<AcceleratorCountRequest>,
 
     ///
@@ -704,7 +704,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorManufacturers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
     ///
@@ -720,7 +720,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorNames")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_names: Option<Vec<String>>,
 
     ///
@@ -734,7 +734,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiBRequest>,
 
     ///
@@ -750,7 +750,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -772,7 +772,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedInstanceTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_instance_types: Option<Vec<String>>,
 
     ///
@@ -788,7 +788,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BareMetal")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bare_metal: Option<InstanceRequirementsBareMetalEnum>,
 
     ///
@@ -802,7 +802,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaselineEbsBandwidthMbps")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbpsRequest>,
 
     ///
@@ -818,7 +818,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstablePerformance")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burstable_performance: Option<InstanceRequirementsBurstablePerformanceEnum>,
 
     ///
@@ -836,7 +836,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuManufacturers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
     ///
@@ -856,7 +856,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedInstanceTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_instance_types: Option<Vec<String>>,
 
     ///
@@ -872,7 +872,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceGenerations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_generations: Option<Vec<String>>,
 
     ///
@@ -888,7 +888,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage: Option<InstanceRequirementsLocalStorageEnum>,
 
     ///
@@ -904,7 +904,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorageTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage_types: Option<Vec<String>>,
 
     ///
@@ -918,7 +918,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryGiBPerVCpu")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpuRequest>,
 
     ///
@@ -930,7 +930,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryMiB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_mi_b: Option<MemoryMiBRequest>,
 
     ///
@@ -944,7 +944,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkBandwidthGbps")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbpsRequest>,
 
     ///
@@ -958,7 +958,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_count: Option<NetworkInterfaceCountRequest>,
 
     ///
@@ -976,7 +976,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -990,7 +990,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireHibernateSupport")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_hibernate_support: Option<bool>,
 
     ///
@@ -1008,7 +1008,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1022,7 +1022,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalLocalStorageGB")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_local_storage_gb: Option<TotalLocalStorageGBRequest>,
 
     ///
@@ -1034,7 +1034,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VCpuCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vcpu_count: Option<VCpuCountRequest>,
 }
 
@@ -1196,7 +1196,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandAllocationStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1214,7 +1214,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "OnDemandBaseCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_base_capacity: Option<i64>,
 
     ///
@@ -1230,7 +1230,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "OnDemandPercentageAboveBaseCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_percentage_above_base_capacity: Option<i64>,
 
     ///
@@ -1246,7 +1246,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotAllocationStrategy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_allocation_strategy: Option<cfn_resources::StrVal>,
 
     ///
@@ -1260,7 +1260,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotInstancePools")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_instance_pools: Option<i64>,
 
     ///
@@ -1276,7 +1276,7 @@ pub struct InstancesDistribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPrice")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_max_price: Option<cfn_resources::StrVal>,
 }
 
@@ -1306,7 +1306,7 @@ pub struct LaunchTemplate {
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplate.html#cfn-as-mixedinstancespolicy-overrides
     #[serde(rename = "Overrides")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<Vec<LaunchTemplateOverrides>>,
 }
 
@@ -1349,7 +1349,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRequirements")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_requirements: Option<InstanceRequirements>,
 
     ///
@@ -1363,7 +1363,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -1377,7 +1377,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_specification: Option<LaunchTemplateSpecification>,
 
     ///
@@ -1393,7 +1393,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
@@ -1442,7 +1442,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1456,7 +1456,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1506,7 +1506,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_result: Option<cfn_resources::StrVal>,
 
     ///
@@ -1518,7 +1518,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heartbeat_timeout: Option<i64>,
 
     ///
@@ -1566,7 +1566,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_metadata: Option<cfn_resources::StrVal>,
 
     ///
@@ -1578,7 +1578,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_target_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1592,7 +1592,7 @@ pub struct LifecycleHookSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1664,7 +1664,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -1676,7 +1676,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -1709,7 +1709,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -1723,7 +1723,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -1793,7 +1793,7 @@ pub struct MetricsCollection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metrics")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics: Option<Vec<String>>,
 }
 
@@ -1834,7 +1834,7 @@ pub struct MixedInstancesPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancesDistribution")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instances_distribution: Option<InstancesDistribution>,
 
     ///
@@ -1882,7 +1882,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -1894,7 +1894,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -1927,7 +1927,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -1941,7 +1941,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -1998,7 +1998,7 @@ pub struct NotificationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_types: Option<Vec<String>>,
 
     ///
@@ -2152,7 +2152,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -2164,7 +2164,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -2197,7 +2197,7 @@ pub struct VCpuCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -2211,7 +2211,7 @@ pub struct VCpuCountRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 

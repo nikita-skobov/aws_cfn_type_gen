@@ -11,7 +11,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalMetricsToRetainV2")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_metrics_to_retain_v2: Option<Vec<MetricToRetain>>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlertTargets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alert_targets: Option<std::collections::HashMap<String, AlertTarget>>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Behaviors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub behaviors: Option<Vec<Behavior>>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityProfileDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_profile_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -59,7 +59,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityProfileName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -71,7 +71,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -83,7 +83,7 @@ pub struct CfnSecurityProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_arns: Option<Vec<String>>,
 
     #[serde(skip_serializing)]
@@ -166,7 +166,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criteria")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub criteria: Option<BehaviorCriteria>,
 
     ///
@@ -178,7 +178,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +190,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDimension")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_dimension: Option<MetricDimension>,
 
     ///
@@ -213,7 +213,7 @@ pub struct Behavior {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressAlerts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suppress_alerts: Option<bool>,
 }
 
@@ -254,7 +254,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonOperator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparison_operator: Option<cfn_resources::StrVal>,
 
     ///
@@ -266,7 +266,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsecutiveDatapointsToAlarm")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub consecutive_datapoints_to_alarm: Option<i64>,
 
     ///
@@ -278,7 +278,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsecutiveDatapointsToClear")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub consecutive_datapoints_to_clear: Option<i64>,
 
     ///
@@ -290,7 +290,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -302,7 +302,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MlDetectionConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ml_detection_config: Option<MachineLearningDetectionConfig>,
 
     ///
@@ -314,7 +314,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatisticalThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistical_threshold: Option<StatisticalThreshold>,
 
     ///
@@ -326,7 +326,7 @@ pub struct BehaviorCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MetricValue>,
 }
 
@@ -371,7 +371,7 @@ pub struct MachineLearningDetectionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfidenceLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub confidence_level: Option<cfn_resources::StrVal>,
 }
 
@@ -413,7 +413,7 @@ pub struct MetricDimension {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operator: Option<cfn_resources::StrVal>,
 }
 
@@ -455,7 +455,7 @@ pub struct MetricToRetain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDimension")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_dimension: Option<MetricDimension>,
 }
 
@@ -490,7 +490,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -502,7 +502,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<cfn_resources::StrVal>,
 
     ///
@@ -514,7 +514,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Number")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number: Option<f64>,
 
     ///
@@ -526,7 +526,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Numbers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numbers: Option<Vec<f64>>,
 
     ///
@@ -538,7 +538,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -550,7 +550,7 @@ pub struct MetricValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Strings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strings: Option<Vec<String>>,
 }
 
@@ -581,7 +581,7 @@ pub struct StatisticalThreshold {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistic: Option<cfn_resources::StrVal>,
 }
 

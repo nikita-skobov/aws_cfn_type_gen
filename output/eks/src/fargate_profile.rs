@@ -32,7 +32,7 @@ pub struct CfnFargateProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FargateProfileName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fargate_profile_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -66,7 +66,7 @@ pub struct CfnFargateProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subnets")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -78,7 +78,7 @@ pub struct CfnFargateProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -161,7 +161,7 @@ pub struct Selector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Labels")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub labels: Option<Vec<Label>>,
 
     ///

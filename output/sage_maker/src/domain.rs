@@ -27,7 +27,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppNetworkAccessType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_network_access_type: Option<DomainAppNetworkAccessTypeEnum>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppSecurityGroupManagement")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_security_group_management: Option<DomainAppSecurityGroupManagementEnum>,
 
     ///
@@ -65,7 +65,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSpaceSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_space_settings: Option<DefaultSpaceSettings>,
 
     ///
@@ -103,7 +103,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_settings: Option<DomainSettings>,
 
     ///
@@ -119,7 +119,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -152,7 +152,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -371,7 +371,7 @@ pub struct CustomImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_version_number: Option<i64>,
 }
 
@@ -461,7 +461,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -473,7 +473,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
     ///
@@ -487,7 +487,7 @@ pub struct DefaultSpaceSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 }
 
@@ -557,7 +557,7 @@ pub struct DomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioServerProDomainSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rstudio_server_pro_domain_settings: Option<RStudioServerProDomainSettings>,
 
     ///
@@ -571,7 +571,7 @@ pub struct DomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 }
 
@@ -615,7 +615,7 @@ pub struct JupyterServerAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -652,7 +652,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -666,7 +666,7 @@ pub struct KernelGatewayAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -712,7 +712,7 @@ pub struct RSessionAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomImages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_images: Option<Vec<CustomImage>>,
 
     ///
@@ -724,7 +724,7 @@ pub struct RSessionAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 }
 
@@ -770,7 +770,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessStatus")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
 
     ///
@@ -784,7 +784,7 @@ pub struct RStudioServerProAppSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserGroup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
 }
 
@@ -849,7 +849,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DefaultResourceSpec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_resource_spec: Option<ResourceSpec>,
 
     ///
@@ -878,7 +878,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioConnectUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rstudio_connect_url: Option<cfn_resources::StrVal>,
 
     ///
@@ -890,7 +890,7 @@ pub struct RStudioServerProDomainSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioPackageManagerUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rstudio_package_manager_url: Option<cfn_resources::StrVal>,
 }
 
@@ -945,7 +945,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -961,7 +961,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "LifecycleConfigArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_config_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -977,7 +977,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SageMakerImageArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -993,7 +993,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SageMakerImageVersionArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -1299,7 +1299,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotebookOutputOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
 
     ///
@@ -1315,7 +1315,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KmsKeyId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_kms_key_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -1331,7 +1331,7 @@ pub struct SharingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OutputPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
@@ -1465,7 +1465,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JupyterServerAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
     ///
@@ -1477,7 +1477,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
     ///
@@ -1489,7 +1489,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RSessionAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rsession_app_settings: Option<RSessionAppSettings>,
 
     ///
@@ -1501,7 +1501,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RStudioServerProAppSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
 
     ///
@@ -1521,7 +1521,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -1533,7 +1533,7 @@ pub struct UserSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharingSettings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sharing_settings: Option<SharingSettings>,
 }
 

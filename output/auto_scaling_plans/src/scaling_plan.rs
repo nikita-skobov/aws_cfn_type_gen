@@ -82,7 +82,7 @@ pub struct ApplicationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudFormationStackARN")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_formation_stack_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +98,7 @@ pub struct ApplicationSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagFilters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_filters: Option<Vec<TagFilter>>,
 }
 
@@ -141,7 +141,7 @@ pub struct CustomizedLoadMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -188,7 +188,7 @@ pub struct CustomizedLoadMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -238,7 +238,7 @@ pub struct CustomizedScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -285,7 +285,7 @@ pub struct CustomizedScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
 }
 
@@ -414,7 +414,7 @@ pub struct PredefinedLoadMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -519,7 +519,7 @@ pub struct PredefinedScalingMetricSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
@@ -637,7 +637,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_load_metric_specification: Option<CustomizedLoadMetricSpecification>,
 
     ///
@@ -651,7 +651,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableDynamicScaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_dynamic_scaling: Option<bool>,
 
     ///
@@ -685,7 +685,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedLoadMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_load_metric_specification: Option<PredefinedLoadMetricSpecification>,
 
     ///
@@ -705,7 +705,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictiveScalingMaxCapacityBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predictive_scaling_max_capacity_behavior:
         Option<ScalingInstructionPredictiveScalingMaxCapacityBehaviorEnum>,
 
@@ -722,7 +722,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictiveScalingMaxCapacityBuffer")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predictive_scaling_max_capacity_buffer: Option<i64>,
 
     ///
@@ -736,7 +736,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictiveScalingMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predictive_scaling_mode: Option<ScalingInstructionPredictiveScalingModeEnum>,
 
     ///
@@ -786,7 +786,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingPolicyUpdateBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scaling_policy_update_behavior: Option<ScalingInstructionScalingPolicyUpdateBehaviorEnum>,
 
     ///
@@ -804,7 +804,7 @@ pub struct ScalingInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActionBufferTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_action_buffer_time: Option<i64>,
 
     ///
@@ -1037,7 +1037,7 @@ pub struct TagFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -1090,7 +1090,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomizedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customized_scaling_metric_specification: Option<CustomizedScalingMetricSpecification>,
 
     ///
@@ -1104,7 +1104,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableScaleIn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_scale_in: Option<bool>,
 
     ///
@@ -1116,7 +1116,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EstimatedInstanceWarmup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub estimated_instance_warmup: Option<i64>,
 
     ///
@@ -1128,7 +1128,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedScalingMetricSpecification")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_scaling_metric_specification: Option<PredefinedScalingMetricSpecification>,
 
     ///
@@ -1140,7 +1140,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleInCooldown")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale_in_cooldown: Option<i64>,
 
     ///
@@ -1152,7 +1152,7 @@ pub struct TargetTrackingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleOutCooldown")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale_out_cooldown: Option<i64>,
 
     ///

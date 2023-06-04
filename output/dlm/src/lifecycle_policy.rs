@@ -19,7 +19,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDetails")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_details: Option<PolicyDetails>,
 
     ///
@@ -63,7 +63,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<LifecyclePolicyStateEnum>,
 
     ///
@@ -75,7 +75,7 @@ pub struct CfnLifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -331,7 +331,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CronExpression")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cron_expression: Option<cfn_resources::StrVal>,
 
     ///
@@ -345,7 +345,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     ///
@@ -359,7 +359,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_unit: Option<CreateRuleIntervalUnitEnum>,
 
     ///
@@ -375,7 +375,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<CreateRuleLocationEnum>,
 
     ///
@@ -391,7 +391,7 @@ pub struct CreateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Times")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub times: Option<Vec<String>>,
 }
 
@@ -503,7 +503,7 @@ pub struct CrossRegionCopyAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_rule: Option<CrossRegionCopyRetainRule>,
 
     ///
@@ -703,7 +703,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -715,7 +715,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags: Option<bool>,
 
     /// Property description not available.
@@ -726,7 +726,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecate_rule: Option<CrossRegionCopyDeprecateRule>,
 
     ///
@@ -749,7 +749,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_rule: Option<CrossRegionCopyRetainRule>,
 
     ///
@@ -769,7 +769,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<cfn_resources::StrVal>,
 
     ///
@@ -787,7 +787,7 @@ pub struct CrossRegionCopyRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_region: Option<cfn_resources::StrVal>,
 }
 
@@ -891,7 +891,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     /// Property description not available.
@@ -902,7 +902,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     /// Property description not available.
@@ -913,7 +913,7 @@ pub struct DeprecateRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
@@ -950,7 +950,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CmkArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cmk_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -1022,7 +1022,7 @@ pub struct EventParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DescriptionRegex")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description_regex: Option<cfn_resources::StrVal>,
 
     ///
@@ -1120,7 +1120,7 @@ pub struct EventSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<EventParameters>,
 
     ///
@@ -1183,7 +1183,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -1199,7 +1199,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     ///
@@ -1213,7 +1213,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     ///
@@ -1227,7 +1227,7 @@ pub struct FastRestoreRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_unit: Option<FastRestoreRuleIntervalUnitEnum>,
 }
 
@@ -1321,7 +1321,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeBootVolume")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_boot_volume: Option<bool>,
 
     /// Property description not available.
@@ -1332,7 +1332,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeDataVolumeTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_data_volume_tags: Option<Vec<Tag>>,
 
     ///
@@ -1344,7 +1344,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoReboot")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_reboot: Option<bool>,
 }
 
@@ -1377,7 +1377,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<Action>>,
 
     ///
@@ -1389,7 +1389,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_source: Option<EventSource>,
 
     ///
@@ -1403,7 +1403,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Parameters>,
 
     ///
@@ -1419,7 +1419,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_type: Option<PolicyDetailsPolicyTypeEnum>,
 
     ///
@@ -1435,7 +1435,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceLocations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_locations: Option<Vec<String>>,
 
     ///
@@ -1449,7 +1449,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_types: Option<Vec<String>>,
 
     ///
@@ -1463,7 +1463,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedules: Option<Vec<Schedule>>,
 
     ///
@@ -1477,7 +1477,7 @@ pub struct PolicyDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_tags: Option<Vec<Tag>>,
 }
 
@@ -1588,7 +1588,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     ///
@@ -1602,7 +1602,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     ///
@@ -1616,7 +1616,7 @@ pub struct RetainRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_unit: Option<RetainRuleIntervalUnitEnum>,
 }
 
@@ -1698,7 +1698,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     /// Property description not available.
@@ -1709,7 +1709,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     /// Property description not available.
@@ -1720,7 +1720,7 @@ pub struct RetentionArchiveTier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_unit: Option<cfn_resources::StrVal>,
 }
 
@@ -1750,7 +1750,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchiveRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archive_rule: Option<ArchiveRule>,
 
     ///
@@ -1762,7 +1762,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags: Option<bool>,
 
     ///
@@ -1774,7 +1774,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_rule: Option<CreateRule>,
 
     ///
@@ -1790,7 +1790,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrossRegionCopyRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cross_region_copy_rules: Option<Vec<CrossRegionCopyRule>>,
 
     /// Property description not available.
@@ -1801,7 +1801,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecate_rule: Option<DeprecateRule>,
 
     ///
@@ -1813,7 +1813,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FastRestoreRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fast_restore_rule: Option<FastRestoreRule>,
 
     ///
@@ -1831,7 +1831,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -1843,7 +1843,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainRule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_rule: Option<RetainRule>,
 
     ///
@@ -1857,7 +1857,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareRules")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_rules: Option<Vec<ShareRule>>,
 
     ///
@@ -1871,7 +1871,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagsToAdd")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags_to_add: Option<Vec<Tag>>,
 
     ///
@@ -1885,7 +1885,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableTags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variable_tags: Option<Vec<Tag>>,
 }
 
@@ -1991,7 +1991,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccounts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_accounts: Option<Vec<String>>,
 
     ///
@@ -2005,7 +2005,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnshareInterval")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unshare_interval: Option<i64>,
 
     ///
@@ -2019,7 +2019,7 @@ pub struct ShareRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnshareIntervalUnit")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unshare_interval_unit: Option<ShareRuleUnshareIntervalUnitEnum>,
 }
 

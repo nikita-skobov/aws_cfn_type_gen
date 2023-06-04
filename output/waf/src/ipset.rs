@@ -13,7 +13,7 @@ pub struct CfnIPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetDescriptors")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipset_descriptors: Option<Vec<IPSetDescriptor>>,
 
     ///

@@ -13,7 +13,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomDocumentEnrichmentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_document_enrichment_configuration: Option<CustomDocumentEnrichmentConfiguration>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source_configuration: Option<DataSourceConfiguration>,
 
     ///
@@ -41,7 +41,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -97,7 +97,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<cfn_resources::StrVal>,
 
     ///
@@ -111,7 +111,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -296,7 +296,7 @@ pub struct AccessControlListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_path: Option<cfn_resources::StrVal>,
 }
 
@@ -454,7 +454,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleColumnName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_column_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -468,7 +468,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -575,7 +575,7 @@ pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentFieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_field_mappings: Option<Vec<ConfluenceAttachmentToIndexFieldMapping>>,
 
     ///
@@ -587,7 +587,7 @@ pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_attachments: Option<bool>,
 }
 
@@ -645,7 +645,7 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -794,7 +794,7 @@ pub struct ConfluenceBlogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlogFieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blog_field_mappings: Option<Vec<ConfluenceBlogToIndexFieldMapping>>,
 }
 
@@ -853,7 +853,7 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -990,7 +990,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_configuration: Option<ConfluenceAttachmentConfiguration>,
 
     ///
@@ -1002,7 +1002,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlogConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blog_configuration: Option<ConfluenceBlogConfiguration>,
 
     ///
@@ -1016,7 +1016,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -1030,7 +1030,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -1042,7 +1042,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page_configuration: Option<ConfluencePageConfiguration>,
 
     ///
@@ -1090,7 +1090,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpaceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub space_configuration: Option<ConfluenceSpaceConfiguration>,
 
     ///
@@ -1115,7 +1115,7 @@ pub struct ConfluenceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -1249,7 +1249,7 @@ pub struct ConfluencePageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageFieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page_field_mappings: Option<Vec<ConfluencePageToIndexFieldMapping>>,
 }
 
@@ -1308,7 +1308,7 @@ pub struct ConfluencePageToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -1457,7 +1457,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlArchivedSpaces")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_archived_spaces: Option<bool>,
 
     ///
@@ -1469,7 +1469,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlPersonalSpaces")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_personal_spaces: Option<bool>,
 
     ///
@@ -1481,7 +1481,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeSpaces")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_spaces: Option<Vec<String>>,
 
     ///
@@ -1493,7 +1493,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSpaces")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_spaces: Option<Vec<String>>,
 
     ///
@@ -1509,7 +1509,7 @@ pub struct ConfluenceSpaceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpaceFieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub space_field_mappings: Option<Vec<ConfluenceSpaceToIndexFieldMapping>>,
 }
 
@@ -1568,7 +1568,7 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -1895,7 +1895,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InlineConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline_configurations: Option<Vec<InlineCustomDocumentEnrichmentConfiguration>>,
 
     ///
@@ -1907,7 +1907,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostExtractionHookConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub post_extraction_hook_configuration: Option<HookConfiguration>,
 
     ///
@@ -1919,7 +1919,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreExtractionHookConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_extraction_hook_configuration: Option<HookConfiguration>,
 
     ///
@@ -1937,7 +1937,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 }
 
@@ -2004,7 +2004,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfluenceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub confluence_configuration: Option<ConfluenceConfiguration>,
 
     ///
@@ -2016,7 +2016,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_configuration: Option<DatabaseConfiguration>,
 
     ///
@@ -2028,7 +2028,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleDriveConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub google_drive_configuration: Option<GoogleDriveConfiguration>,
 
     ///
@@ -2040,7 +2040,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub one_drive_configuration: Option<OneDriveConfiguration>,
 
     ///
@@ -2052,7 +2052,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_configuration: Option<S3DataSourceConfiguration>,
 
     ///
@@ -2064,7 +2064,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SalesforceConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce_configuration: Option<SalesforceConfiguration>,
 
     ///
@@ -2076,7 +2076,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNowConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_now_configuration: Option<ServiceNowConfiguration>,
 
     ///
@@ -2088,7 +2088,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharePointConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_point_configuration: Option<SharePointConfiguration>,
 
     ///
@@ -2100,7 +2100,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebCrawlerConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web_crawler_configuration: Option<WebCrawlerConfiguration>,
 
     ///
@@ -2112,7 +2112,7 @@ pub struct DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkDocsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub work_docs_configuration: Option<WorkDocsConfiguration>,
 }
 
@@ -2206,7 +2206,7 @@ pub struct DataSourceToIndexFieldMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFieldFormat")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_field_format: Option<cfn_resources::StrVal>,
 
     ///
@@ -2380,7 +2380,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acl_configuration: Option<AclConfiguration>,
 
     ///
@@ -2427,7 +2427,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sql_configuration: Option<SqlConfiguration>,
 
     ///
@@ -2439,7 +2439,7 @@ pub struct DatabaseConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -2538,7 +2538,7 @@ pub struct DocumentAttributeCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionOnValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition_on_value: Option<DocumentAttributeValue>,
 
     ///
@@ -2684,7 +2684,7 @@ pub struct DocumentAttributeTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDocumentAttributeValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_document_attribute_value: Option<DocumentAttributeValue>,
 
     ///
@@ -2696,7 +2696,7 @@ pub struct DocumentAttributeTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDocumentAttributeValueDeletion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_document_attribute_value_deletion: Option<bool>,
 }
 
@@ -2749,7 +2749,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_value: Option<cfn_resources::StrVal>,
 
     ///
@@ -2761,7 +2761,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LongValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub long_value: Option<i64>,
 
     ///
@@ -2773,7 +2773,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringListValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_list_value: Option<Vec<String>>,
 
     ///
@@ -2789,7 +2789,7 @@ pub struct DocumentAttributeValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_value: Option<cfn_resources::StrVal>,
 }
 
@@ -2846,7 +2846,7 @@ pub struct DocumentsMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Prefix")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_prefix: Option<cfn_resources::StrVal>,
 }
 
@@ -2903,7 +2903,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMimeTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_mime_types: Option<Vec<String>>,
 
     ///
@@ -2917,7 +2917,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeSharedDrives")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_shared_drives: Option<Vec<String>>,
 
     ///
@@ -2931,7 +2931,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeUserAccounts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_user_accounts: Option<Vec<String>>,
 
     ///
@@ -2945,7 +2945,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -2959,7 +2959,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -2973,7 +2973,7 @@ pub struct GoogleDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3095,7 +3095,7 @@ pub struct HookConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationCondition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_condition: Option<DocumentAttributeCondition>,
 
     ///
@@ -3210,7 +3210,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<DocumentAttributeCondition>,
 
     ///
@@ -3222,7 +3222,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentContentDeletion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_content_deletion: Option<bool>,
 
     ///
@@ -3234,7 +3234,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<DocumentAttributeTarget>,
 }
 
@@ -3271,7 +3271,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableLocalGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_local_groups: Option<bool>,
 
     ///
@@ -3287,7 +3287,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3301,7 +3301,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -3317,7 +3317,7 @@ pub struct OneDriveConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3468,7 +3468,7 @@ pub struct OneDriveUsers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveUserList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub one_drive_user_list: Option<Vec<String>>,
 
     ///
@@ -3480,7 +3480,7 @@ pub struct OneDriveUsers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OneDriveUserS3Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub one_drive_user_s3_path: Option<S3Path>,
 }
 
@@ -3532,7 +3532,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<cfn_resources::StrVal>,
 
     ///
@@ -3661,7 +3661,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlListConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_control_list_configuration: Option<AccessControlListConfiguration>,
 
     ///
@@ -3690,7 +3690,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentsMetadataConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub documents_metadata_configuration: Option<DocumentsMetadataConfiguration>,
 
     ///
@@ -3708,7 +3708,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3726,7 +3726,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -3740,7 +3740,7 @@ pub struct S3DataSourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPrefixes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_prefixes: Option<Vec<String>>,
 }
 
@@ -3946,7 +3946,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -3960,7 +3960,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -3974,7 +3974,7 @@ pub struct SalesforceChatterFeedConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFilterTypes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_filter_types: Option<Vec<String>>,
 }
 
@@ -4058,7 +4058,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatterFeedConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chatter_feed_configuration: Option<SalesforceChatterFeedConfiguration>,
 
     ///
@@ -4070,7 +4070,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -4086,7 +4086,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -4102,7 +4102,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -4114,7 +4114,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KnowledgeArticleConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub knowledge_article_configuration: Option<SalesforceKnowledgeArticleConfiguration>,
 
     ///
@@ -4162,7 +4162,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectAttachmentConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub standard_object_attachment_configuration:
         Option<SalesforceStandardObjectAttachmentConfiguration>,
 
@@ -4177,7 +4177,7 @@ pub struct SalesforceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub standard_object_configurations: Option<Vec<SalesforceStandardObjectConfiguration>>,
 }
 
@@ -4305,7 +4305,7 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4319,7 +4319,7 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -4435,7 +4435,7 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomKnowledgeArticleTypeConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_knowledge_article_type_configurations:
         Option<Vec<SalesforceCustomKnowledgeArticleTypeConfiguration>>,
 
@@ -4461,7 +4461,7 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardKnowledgeArticleTypeConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub standard_knowledge_article_type_configuration:
         Option<SalesforceStandardKnowledgeArticleTypeConfiguration>,
 }
@@ -4535,7 +4535,7 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4549,7 +4549,7 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -4630,7 +4630,7 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4644,7 +4644,7 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 }
 
@@ -4723,7 +4723,7 @@ pub struct SalesforceStandardObjectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -4737,7 +4737,7 @@ pub struct SalesforceStandardObjectConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -4906,7 +4906,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_type: Option<ServiceNowConfigurationAuthenticationTypeEnum>,
 
     ///
@@ -4935,7 +4935,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KnowledgeArticleConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub knowledge_article_configuration: Option<ServiceNowKnowledgeArticleConfiguration>,
 
     ///
@@ -4964,7 +4964,7 @@ pub struct ServiceNowConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceCatalogConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_catalog_configuration: Option<ServiceNowServiceCatalogConfiguration>,
 
     ///
@@ -5094,7 +5094,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5129,7 +5129,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5145,7 +5145,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -5159,7 +5159,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5179,7 +5179,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterQuery")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_query: Option<cfn_resources::StrVal>,
 
     ///
@@ -5195,7 +5195,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 }
 
@@ -5304,7 +5304,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5339,7 +5339,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5355,7 +5355,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
     ///
@@ -5369,7 +5369,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5385,7 +5385,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 }
 
@@ -5472,7 +5472,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_attachments: Option<bool>,
 
     ///
@@ -5484,7 +5484,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableLocalGroups")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_local_groups: Option<bool>,
 
     ///
@@ -5502,7 +5502,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentTitleFieldName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_title_field_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -5518,7 +5518,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -5532,7 +5532,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -5548,7 +5548,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -5590,7 +5590,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCertificateS3Path")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_certificate_s3_path: Option<S3Path>,
 
     ///
@@ -5615,7 +5615,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_change_log: Option<bool>,
 
     /// Provides information for connecting to an Amazon VPC.
@@ -5626,7 +5626,7 @@ pub struct SharePointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
@@ -5770,7 +5770,7 @@ pub struct SqlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryIdentifiersEnclosingOption")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_identifiers_enclosing_option: Option<cfn_resources::StrVal>,
 }
 
@@ -5850,7 +5850,7 @@ pub struct WebCrawlerAuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthentication")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_authentication: Option<Vec<WebCrawlerBasicAuthentication>>,
 }
 
@@ -6030,7 +6030,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_configuration: Option<WebCrawlerAuthenticationConfiguration>,
 
     ///
@@ -6050,7 +6050,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlDepth")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_depth: Option<i64>,
 
     ///
@@ -6066,7 +6066,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxContentSizePerPageInMegaBytes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_content_size_per_page_in_mega_bytes: Option<f64>,
 
     ///
@@ -6086,7 +6086,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLinksPerPage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_links_per_page: Option<i64>,
 
     ///
@@ -6106,7 +6106,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUrlsPerMinuteCrawlRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_urls_per_minute_crawl_rate: Option<i64>,
 
     ///
@@ -6122,7 +6122,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProxyConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub proxy_configuration: Option<ProxyConfiguration>,
 
     ///
@@ -6136,7 +6136,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UrlExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url_exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6150,7 +6150,7 @@ pub struct WebCrawlerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UrlInclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url_inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6291,7 +6291,7 @@ pub struct WebCrawlerSeedUrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebCrawlerMode")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub web_crawler_mode: Option<WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum>,
 }
 
@@ -6407,7 +6407,7 @@ pub struct WebCrawlerUrls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeedUrlConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seed_url_configuration: Option<WebCrawlerSeedUrlConfiguration>,
 
     ///
@@ -6421,7 +6421,7 @@ pub struct WebCrawlerUrls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SiteMapsConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub site_maps_configuration: Option<WebCrawlerSiteMapsConfiguration>,
 }
 
@@ -6464,7 +6464,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlComments")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_comments: Option<bool>,
 
     ///
@@ -6478,7 +6478,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6492,7 +6492,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
     ///
@@ -6506,7 +6506,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InclusionPatterns")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusion_patterns: Option<Vec<String>>,
 
     ///
@@ -6537,7 +6537,7 @@ pub struct WorkDocsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_change_log: Option<bool>,
 }
 

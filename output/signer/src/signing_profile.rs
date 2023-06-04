@@ -22,7 +22,7 @@ pub struct CfnSigningProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SignatureValidityPeriod")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signature_validity_period: Option<SignatureValidityPeriod>,
 
     ///
@@ -34,7 +34,7 @@ pub struct CfnSigningProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -113,7 +113,7 @@ pub struct SignatureValidityPeriod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -125,7 +125,7 @@ pub struct SignatureValidityPeriod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<i64>,
 }
 

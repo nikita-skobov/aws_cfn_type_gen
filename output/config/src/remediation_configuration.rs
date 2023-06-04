@@ -11,7 +11,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Automatic")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic: Option<bool>,
 
     ///
@@ -40,7 +40,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionControls")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_controls: Option<ExecutionControls>,
 
     ///
@@ -58,7 +58,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumAutomaticAttempts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_automatic_attempts: Option<i64>,
 
     ///
@@ -72,7 +72,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -84,7 +84,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -98,7 +98,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryAttemptSeconds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_attempt_seconds: Option<i64>,
 
     ///
@@ -140,7 +140,7 @@ pub struct CfnRemediationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVersion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_version: Option<cfn_resources::StrVal>,
 }
 
@@ -244,7 +244,7 @@ pub struct ExecutionControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmControls")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssm_controls: Option<SsmControls>,
 }
 
@@ -279,7 +279,7 @@ pub struct RemediationParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_value: Option<ResourceValue>,
 
     ///
@@ -291,7 +291,7 @@ pub struct RemediationParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_value: Option<StaticValue>,
 }
 
@@ -332,7 +332,7 @@ pub struct ResourceValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<ResourceValueValueEnum>,
 }
 
@@ -380,7 +380,7 @@ pub struct SsmControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConcurrentExecutionRatePercentage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub concurrent_execution_rate_percentage: Option<i64>,
 
     ///
@@ -396,7 +396,7 @@ pub struct SsmControls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorPercentage")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_percentage: Option<i64>,
 }
 
@@ -459,7 +459,7 @@ pub struct StaticValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 

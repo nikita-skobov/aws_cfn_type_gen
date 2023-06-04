@@ -39,7 +39,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Credentials")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<Vec<Credential>>,
 
     ///
@@ -53,7 +53,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Instances")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instances: Option<Vec<String>>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SapInstanceNumber")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sap_instance_number: Option<cfn_resources::StrVal>,
 
     ///
@@ -81,7 +81,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Sid")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sid: Option<cfn_resources::StrVal>,
 
     ///
@@ -93,7 +93,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -166,7 +166,7 @@ pub struct Credential {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CredentialType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credential_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -178,7 +178,7 @@ pub struct Credential {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatabaseName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -190,7 +190,7 @@ pub struct Credential {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_id: Option<cfn_resources::StrVal>,
 }
 

@@ -15,7 +15,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomInstanceProfileArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_instance_profile_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomJson")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_json: Option<serde_json::Value>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRecipes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_recipes: Option<Recipes>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_security_group_ids: Option<Vec<String>>,
 
     ///
@@ -110,7 +110,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstallUpdatesOnBoot")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub install_updates_on_boot: Option<bool>,
 
     ///
@@ -122,7 +122,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecycleEventConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_event_configuration: Option<LifecycleEventConfiguration>,
 
     ///
@@ -134,7 +134,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBasedAutoScaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_based_auto_scaling: Option<LoadBasedAutoScaling>,
 
     ///
@@ -157,7 +157,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Packages")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packages: Option<Vec<String>>,
 
     ///
@@ -193,7 +193,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -218,7 +218,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseEbsOptimizedInstances")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_ebs_optimized_instances: Option<bool>,
 
     ///
@@ -230,7 +230,7 @@ pub struct CfnLayer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeConfigurations")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_configurations: Option<Vec<VolumeConfiguration>>,
 }
 
@@ -330,7 +330,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_threshold: Option<f64>,
 
     ///
@@ -346,7 +346,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreMetricsTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_metrics_time: Option<i64>,
 
     ///
@@ -358,7 +358,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_count: Option<i64>,
 
     ///
@@ -370,7 +370,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_threshold: Option<f64>,
 
     ///
@@ -382,7 +382,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryThreshold")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_threshold: Option<f64>,
 
     ///
@@ -398,7 +398,7 @@ pub struct AutoScalingThresholds {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdsWaitTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thresholds_wait_time: Option<i64>,
 }
 
@@ -465,7 +465,7 @@ pub struct LifecycleEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShutdownEventConfiguration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shutdown_event_configuration: Option<ShutdownEventConfiguration>,
 }
 
@@ -500,7 +500,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DownScaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub down_scaling: Option<AutoScalingThresholds>,
 
     ///
@@ -512,7 +512,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable: Option<bool>,
 
     ///
@@ -524,7 +524,7 @@ pub struct LoadBasedAutoScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpScaling")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub up_scaling: Option<AutoScalingThresholds>,
 }
 
@@ -565,7 +565,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configure")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configure: Option<Vec<String>>,
 
     ///
@@ -577,7 +577,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deploy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deploy: Option<Vec<String>>,
 
     ///
@@ -589,7 +589,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Setup")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub setup: Option<Vec<String>>,
 
     ///
@@ -601,7 +601,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Shutdown")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shutdown: Option<Vec<String>>,
 
     ///
@@ -613,7 +613,7 @@ pub struct Recipes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Undeploy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub undeploy: Option<Vec<String>>,
 }
 
@@ -644,7 +644,7 @@ pub struct ShutdownEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DelayUntilElbConnectionsDrained")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delay_until_elb_connections_drained: Option<bool>,
 
     ///
@@ -656,7 +656,7 @@ pub struct ShutdownEventConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionTimeout")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_timeout: Option<i64>,
 }
 
@@ -732,7 +732,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -746,7 +746,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -758,7 +758,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_point: Option<cfn_resources::StrVal>,
 
     ///
@@ -770,7 +770,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDisks")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_disks: Option<i64>,
 
     ///
@@ -782,7 +782,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RaidLevel")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub raid_level: Option<i64>,
 
     ///
@@ -794,7 +794,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 
     ///
@@ -808,7 +808,7 @@ pub struct VolumeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<cfn_resources::StrVal>,
 }
 

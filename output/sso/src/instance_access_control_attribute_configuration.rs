@@ -13,7 +13,7 @@ pub struct CfnInstanceAccessControlAttributeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessControlAttributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_control_attributes: Option<Vec<AccessControlAttribute>>,
 
     ///

@@ -28,7 +28,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationProperties")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_properties: Option<Vec<ConfigurationProperties>>,
 
     ///
@@ -79,7 +79,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Settings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<Settings>,
 
     ///
@@ -91,7 +91,7 @@ pub struct CfnCustomActionType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -330,7 +330,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -370,7 +370,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Queryable")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queryable: Option<bool>,
 
     ///
@@ -408,7 +408,7 @@ pub struct ConfigurationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ConfigurationPropertiesTypeEnum>,
 }
 
@@ -508,7 +508,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntityUrlTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -524,7 +524,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionUrlTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -540,7 +540,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RevisionUrlTemplate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revision_url_template: Option<cfn_resources::StrVal>,
 
     ///
@@ -556,7 +556,7 @@ pub struct Settings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThirdPartyConfigurationUrl")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub third_party_configuration_url: Option<cfn_resources::StrVal>,
 }
 

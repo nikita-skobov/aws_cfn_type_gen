@@ -32,7 +32,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingFilter")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_filter: Option<LoggingFilter>,
 
     ///
@@ -48,7 +48,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedactedFields")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redacted_fields: Option<Vec<FieldToMatch>>,
 
     ///
@@ -207,7 +207,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionCondition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action_condition: Option<ActionCondition>,
 
     ///
@@ -219,7 +219,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelNameCondition")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_name_condition: Option<LabelNameCondition>,
 }
 
@@ -266,7 +266,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonBody")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_body: Option<JsonBody>,
 
     ///
@@ -278,7 +278,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Method")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<serde_json::Value>,
 
     ///
@@ -290,7 +290,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string: Option<serde_json::Value>,
 
     ///
@@ -304,7 +304,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeader")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_header: Option<SingleHeader>,
 
     ///
@@ -316,7 +316,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UriPath")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uri_path: Option<serde_json::Value>,
 }
 
@@ -463,7 +463,7 @@ pub struct JsonBody {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvalidFallbackBehavior")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invalid_fallback_behavior: Option<JsonBodyInvalidFallbackBehaviorEnum>,
 
     ///
@@ -684,7 +684,7 @@ pub struct MatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "All")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all: Option<serde_json::Value>,
 
     ///
@@ -702,7 +702,7 @@ pub struct MatchPattern {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPaths")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_paths: Option<Vec<String>>,
 }
 

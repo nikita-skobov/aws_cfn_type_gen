@@ -15,7 +15,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutomaticStopTimeMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_stop_time_minutes: Option<i64>,
 
     ///
@@ -29,7 +29,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_type: Option<EnvironmentEC2ConnectionTypeEnum>,
 
     ///
@@ -43,7 +43,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -67,7 +67,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -96,7 +96,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -110,7 +110,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub owner_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -122,7 +122,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Repositories")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repositories: Option<Vec<Repository>>,
 
     ///
@@ -140,7 +140,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -154,7 +154,7 @@ pub struct CfnEnvironmentEC2 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

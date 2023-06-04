@@ -11,7 +11,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatedDevices")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associated_devices: Option<serde_json::Value>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<serde_json::Value>,
 
     ///
@@ -35,7 +35,7 @@ pub struct CfnPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_name: Option<cfn_resources::StrVal>,
 
     ///

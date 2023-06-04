@@ -19,7 +19,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerOwnerId")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_owner_id: Option<cfn_resources::StrVal>,
 
     ///
@@ -33,7 +33,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerRegion")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_region: Option<cfn_resources::StrVal>,
 
     ///
@@ -47,7 +47,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerRoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -70,7 +70,7 @@ pub struct CfnVPCPeeringConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

@@ -19,7 +19,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_document: Option<serde_json::Value>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_dns_enabled: Option<bool>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_table_ids: Option<Vec<String>>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -84,7 +84,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -100,7 +100,7 @@ pub struct CfnVPCEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_type: Option<VPCEndpointVpcEndpointTypeEnum>,
 
     ///

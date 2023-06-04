@@ -12,7 +12,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     /// The display name of the app block.
@@ -25,7 +25,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DisplayName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<cfn_resources::StrVal>,
 
     /// The name of the app block.
@@ -70,7 +70,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -201,7 +201,7 @@ pub struct ScriptDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutableParameters")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub executable_parameters: Option<cfn_resources::StrVal>,
 
     ///

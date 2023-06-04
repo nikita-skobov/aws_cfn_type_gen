@@ -52,7 +52,7 @@ pub struct CfnSourceCredential {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
 }
 

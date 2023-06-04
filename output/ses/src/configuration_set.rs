@@ -11,7 +11,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_options: Option<DeliveryOptions>,
 
     ///
@@ -25,7 +25,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReputationOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reputation_options: Option<ReputationOptions>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sending_options: Option<SendingOptions>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressionOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suppression_options: Option<SuppressionOptions>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrackingOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracking_options: Option<TrackingOptions>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnConfigurationSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VdmOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vdm_options: Option<VdmOptions>,
 }
 
@@ -172,7 +172,7 @@ pub struct DeliveryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingPoolName")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sending_pool_name: Option<cfn_resources::StrVal>,
 
     ///
@@ -186,7 +186,7 @@ pub struct DeliveryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_policy: Option<DeliveryOptionsTlsPolicyEnum>,
 }
 
@@ -268,7 +268,7 @@ pub struct ReputationOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReputationMetricsEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reputation_metrics_enabled: Option<bool>,
 }
 
@@ -299,7 +299,7 @@ pub struct SendingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SendingEnabled")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sending_enabled: Option<bool>,
 }
 
@@ -332,7 +332,7 @@ pub struct SuppressionOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuppressedReasons")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suppressed_reasons: Option<Vec<String>>,
 }
 
@@ -365,7 +365,7 @@ pub struct TrackingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRedirectDomain")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_redirect_domain: Option<cfn_resources::StrVal>,
 }
 
@@ -396,7 +396,7 @@ pub struct VdmOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dashboard_options: Option<DashboardOptions>,
 
     ///
@@ -408,7 +408,7 @@ pub struct VdmOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardianOptions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub guardian_options: Option<GuardianOptions>,
 }
 

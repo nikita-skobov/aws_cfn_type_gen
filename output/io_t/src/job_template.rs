@@ -11,7 +11,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AbortConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub abort_config: Option<AbortConfig>,
 
     ///
@@ -36,7 +36,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Document")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<cfn_resources::StrVal>,
 
     ///
@@ -50,7 +50,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentSource")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_source: Option<cfn_resources::StrVal>,
 
     ///
@@ -62,7 +62,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -74,7 +74,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobExecutionsRetryConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_executions_retry_config: Option<JobExecutionsRetryConfig>,
 
     ///
@@ -86,7 +86,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobExecutionsRolloutConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_executions_rollout_config: Option<JobExecutionsRolloutConfig>,
 
     ///
@@ -109,7 +109,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindows")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_windows: Option<Vec<MaintenanceWindow>>,
 
     ///
@@ -121,7 +121,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PresignedUrlConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub presigned_url_config: Option<PresignedUrlConfig>,
 
     ///
@@ -133,7 +133,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -145,7 +145,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutConfig")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_config: Option<TimeoutConfig>,
 
     #[serde(skip_serializing)]
@@ -357,7 +357,7 @@ pub struct JobExecutionsRetryConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryCriteriaList")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_criteria_list: Option<Vec<RetryCriteria>>,
 }
 
@@ -387,7 +387,7 @@ pub struct JobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExponentialRolloutRate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exponential_rollout_rate: Option<ExponentialRolloutRate>,
 
     ///
@@ -399,7 +399,7 @@ pub struct JobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumPerMinute")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_per_minute: Option<i64>,
 }
 
@@ -434,7 +434,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInMinutes")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_minutes: Option<i64>,
 
     ///
@@ -446,7 +446,7 @@ pub struct MaintenanceWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<cfn_resources::StrVal>,
 }
 
@@ -477,7 +477,7 @@ pub struct PresignedUrlConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExpiresInSec")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_in_sec: Option<i64>,
 
     ///
@@ -521,7 +521,7 @@ pub struct RateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfNotifiedThings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_notified_things: Option<i64>,
 
     ///
@@ -533,7 +533,7 @@ pub struct RateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSucceededThings")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_succeeded_things: Option<i64>,
 }
 
@@ -564,7 +564,7 @@ pub struct RetryCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_type: Option<cfn_resources::StrVal>,
 
     ///
@@ -576,7 +576,7 @@ pub struct RetryCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfRetries")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_retries: Option<i64>,
 }
 

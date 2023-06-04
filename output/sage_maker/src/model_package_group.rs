@@ -15,7 +15,7 @@ pub struct CfnModelPackageGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupDescription")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_group_description: Option<cfn_resources::StrVal>,
 
     ///
@@ -44,7 +44,7 @@ pub struct CfnModelPackageGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageGroupPolicy")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_group_policy: Option<serde_json::Value>,
 
     ///
@@ -60,7 +60,7 @@ pub struct CfnModelPackageGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]

@@ -13,7 +13,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactStore")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub artifact_store: Option<ArtifactStore>,
 
     ///
@@ -27,7 +27,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactStores")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub artifact_stores: Option<Vec<ArtifactStoreMap>>,
 
     ///
@@ -39,7 +39,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableInboundStageTransitions")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_inbound_stage_transitions: Option<Vec<StageTransition>>,
 
     ///
@@ -57,7 +57,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
 
     ///
@@ -69,7 +69,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestartExecutionOnUpdate")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restart_execution_on_update: Option<bool>,
 
     ///
@@ -107,7 +107,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
@@ -203,7 +203,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<serde_json::Value>,
 
     ///
@@ -217,7 +217,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputArtifacts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_artifacts: Option<Vec<InputArtifact>>,
 
     ///
@@ -252,7 +252,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<cfn_resources::StrVal>,
 
     ///
@@ -264,7 +264,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputArtifacts")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_artifacts: Option<Vec<OutputArtifact>>,
 
     ///
@@ -280,7 +280,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<cfn_resources::StrVal>,
 
     ///
@@ -296,7 +296,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
 
     ///
@@ -312,7 +312,7 @@ pub struct ActionDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunOrder")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_order: Option<i64>,
 }
 
@@ -505,7 +505,7 @@ pub struct ArtifactStore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key: Option<EncryptionKey>,
 
     ///
@@ -938,7 +938,7 @@ pub struct StageDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Blockers")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blockers: Option<Vec<BlockerDeclaration>>,
 
     ///

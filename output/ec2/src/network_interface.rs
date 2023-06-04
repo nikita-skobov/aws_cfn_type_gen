@@ -11,7 +11,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
 
     ///
@@ -23,7 +23,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupSet")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_set: Option<Vec<String>>,
 
     ///
@@ -37,7 +37,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InterfaceType")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interface_type: Option<NetworkInterfaceInterfaceTypeEnum>,
 
     ///
@@ -49,7 +49,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6AddressCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -61,7 +61,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
     ///
@@ -73,7 +73,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<cfn_resources::StrVal>,
 
     ///
@@ -85,7 +85,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "PrivateIpAddresses")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
     ///
@@ -99,7 +99,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -111,7 +111,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceDestCheck")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_dest_check: Option<bool>,
 
     ///
@@ -134,7 +134,7 @@ pub struct CfnNetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
-    #[serde(skip_serializing_if = "cfn_resources::wants_serialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     #[serde(skip_serializing)]
