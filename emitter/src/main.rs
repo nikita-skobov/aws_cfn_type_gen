@@ -479,7 +479,7 @@ pub fn emit_field(
     // if its not required that means we wrap it with an Option, and in
     // that case we dont want to serialize if its none
     if !f.required {
-        skip_if_none = "    #[serde(skip_serializing_if = \"cfn_resources::wants_serialization\")]";
+        skip_if_none = "    #[serde(skip_serializing_if = \"Option::is_none\")]";
     }
 format!("
 {docs}
