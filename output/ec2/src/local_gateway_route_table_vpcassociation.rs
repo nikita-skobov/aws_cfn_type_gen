@@ -1,5 +1,5 @@
 /// Associates the specified VPC with the specified local gateway route table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRouteTableVPCAssociation {
     ///
     /// The ID of the local gateway route table.
@@ -46,7 +46,7 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
     pub att_state: CfnLocalGatewayRouteTableVPCAssociationstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid;
 impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -54,7 +54,7 @@ impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociationid;
 impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -62,7 +62,7 @@ impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociation
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRouteTableVPCAssociationstate;
 impl CfnLocalGatewayRouteTableVPCAssociationstate {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl cfn_resources::CfnResource for CfnLocalGatewayRouteTableVPCAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

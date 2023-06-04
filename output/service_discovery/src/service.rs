@@ -1,5 +1,5 @@
 /// A complex type that contains information about a service, which defines the configuration of the following  entities:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnService {
     ///
     /// The description of the service.
@@ -125,7 +125,7 @@ pub struct CfnService {
     pub att_name: CfnServicename,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceTypeEnum {
     /// HTTP
     #[serde(rename = "HTTP")]
@@ -138,7 +138,7 @@ impl Default for ServiceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServicearn;
 impl CfnServicearn {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnServicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceid;
 impl CfnServiceid {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnServiceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServicename;
 impl CfnServicename {
     pub fn att_name(&self) -> &'static str {
@@ -220,7 +220,7 @@ impl cfn_resources::CfnResource for CfnService {
 }
 
 /// A complex type that contains information about the Amazon Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DnsConfig {
     ///
     /// An array that contains one DnsRecord object for each Route 53 DNS record that you  want AWS Cloud Map to create when you register an instance.
@@ -270,7 +270,7 @@ pub struct DnsConfig {
     pub routing_policy: Option<DnsConfigRoutingPolicyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DnsConfigRoutingPolicyEnum {
     /// MULTIVALUE
     #[serde(rename = "MULTIVALUE")]
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for DnsConfig {
 }
 
 /// A complex type that contains information about the Route 53 DNS records that you want  AWS Cloud Map to create when you register an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DnsRecord {
     ///
     /// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this  record.
@@ -352,7 +352,7 @@ pub struct DnsRecord {
     pub cfn_type: DnsRecordTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DnsRecordTypeEnum {
     /// A
     #[serde(rename = "A")]
@@ -396,7 +396,7 @@ impl cfn_resources::CfnResource for DnsRecord {
 /// Health checks are basic Route 53 health checks that monitor an AWS endpoint. For  information about pricing for health checks, see Amazon Route 53 Pricing.
 ///
 /// Note the following about configuring health checks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckConfig {
     ///
     /// The number of consecutive health checks that an endpoint must pass or fail for Route 53 to  change the current status of the endpoint from unhealthy to healthy or the other way around. For  more information, see How Route 53   Determines Whether an Endpoint Is Healthy in the  Route 53 Developer Guide.
@@ -452,7 +452,7 @@ pub struct HealthCheckConfig {
     pub cfn_type: HealthCheckConfigTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HealthCheckConfigTypeEnum {
     /// HTTP
     #[serde(rename = "HTTP")]
@@ -521,7 +521,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 /// To change the status of a custom health check, submit an   UpdateInstanceCustomHealthStatus request. AWS Cloud Map doesn't monitor the status of the  resource, it just keeps a record of the status specified in the most recent   UpdateInstanceCustomHealthStatus request.
 ///
 /// Here's how custom health checks work:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckCustomConfig {
     ///
     /// ImportantThis parameter is no longer supported and is always set to 1. AWS Cloud Map waits for   approximately 30 seconds after receiving an UpdateInstanceCustomHealthStatus   request before changing the status of the service instance.
@@ -583,7 +583,7 @@ impl cfn_resources::CfnResource for HealthCheckCustomConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

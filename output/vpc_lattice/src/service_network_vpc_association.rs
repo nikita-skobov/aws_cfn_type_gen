@@ -5,7 +5,7 @@
 /// As a result of this operation, the association gets created in the service network account  and the VPC owner account.
 ///
 /// If you add a security group to the service network and VPC association, the association must  continue to always have at least one security group. You can add or edit security groups at any  time. However, to remove all security groups, you must first delete the association and recreate  it without security groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// The IDs of the security groups. Security groups aren't added by default. You can add a  security group to apply network level controls to control which resources in a VPC are allowed to  access the service network and its services. For more information, see Control traffic to   resources using security groups in the Amazon VPC User  Guide.
@@ -80,7 +80,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     pub att_vpc_id: CfnServiceNetworkVpcAssociationvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationarn;
 impl CfnServiceNetworkVpcAssociationarn {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl CfnServiceNetworkVpcAssociationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationcreatedat;
 impl CfnServiceNetworkVpcAssociationcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnServiceNetworkVpcAssociationcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationid;
 impl CfnServiceNetworkVpcAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnServiceNetworkVpcAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationservicenetworkarn;
 impl CfnServiceNetworkVpcAssociationservicenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnServiceNetworkVpcAssociationservicenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationservicenetworkid;
 impl CfnServiceNetworkVpcAssociationservicenetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnServiceNetworkVpcAssociationservicenetworkid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationservicenetworkname;
 impl CfnServiceNetworkVpcAssociationservicenetworkname {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnServiceNetworkVpcAssociationservicenetworkname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationstatus;
 impl CfnServiceNetworkVpcAssociationstatus {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnServiceNetworkVpcAssociationstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkVpcAssociationvpcid;
 impl CfnServiceNetworkVpcAssociationvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -165,7 +165,7 @@ impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

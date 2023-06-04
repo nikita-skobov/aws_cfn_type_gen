@@ -1,5 +1,5 @@
 /// The AWS::AppSync::DomainName resource creates a DomainNameConfig object to     configure a custom domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainName {
     ///
     /// The Amazon Resource Name (ARN) of the certificate. This will be an AWS Certificate Manager     certificate.
@@ -45,7 +45,7 @@ pub struct CfnDomainName {
     pub att_hosted_zone_id: CfnDomainNamehostedzoneid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNameappsyncdomainname;
 impl CfnDomainNameappsyncdomainname {
     pub fn att_name(&self) -> &'static str {
@@ -53,7 +53,7 @@ impl CfnDomainNameappsyncdomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNamedomainname;
 impl CfnDomainNamedomainname {
     pub fn att_name(&self) -> &'static str {
@@ -61,7 +61,7 @@ impl CfnDomainNamedomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNamehostedzoneid;
 impl CfnDomainNamehostedzoneid {
     pub fn att_name(&self) -> &'static str {

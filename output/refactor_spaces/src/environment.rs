@@ -1,7 +1,7 @@
 /// Creates an AWS Migration Hub Refactor Spaces environment. The caller owns the environment resource, and all    Refactor Spaces applications, services, and routes created within the environment. They are referred    to as the environment owner. The environment owner has cross-account    visibility and control of Refactor Spaces resources that are added to the environment by other    accounts that the environment is shared with.
 ///
 /// When creating an environment with a CreateEnvironment:NetworkFabricType of TRANSIT_GATEWAY, Refactor Spaces    provisions a transit gateway to enable services in VPCs to communicate directly across    accounts. If CreateEnvironment:NetworkFabricType is NONE, Refactor Spaces does not create    a transit gateway and you must use your network infrastructure to route traffic to services    with private URL endpoints.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// A description of the environment.
@@ -59,7 +59,7 @@ pub struct CfnEnvironment {
     pub att_transit_gateway_id: CfnEnvironmenttransitgatewayid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentarn;
 impl CfnEnvironmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -67,7 +67,7 @@ impl CfnEnvironmentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmentidentifier;
 impl CfnEnvironmentenvironmentidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl CfnEnvironmentenvironmentidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmenttransitgatewayid;
 impl CfnEnvironmenttransitgatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Specifies a configuration set event destination. An event destination is an AWS service that Amazon SES publishes email sending events to. When you       specify an event destination, you provide one, and only one, destination. You can send       event data to Amazon CloudWatch, Amazon Kinesis Data Firehose, or Amazon Simple       Notification Service (Amazon SNS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationSetEventDestination {
     ///
     /// The name of the configuration set that contains the event destination.
@@ -27,7 +27,7 @@ pub struct CfnConfigurationSetEventDestination {
     pub att_id: CfnConfigurationSetEventDestinationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationSetEventDestinationid;
 impl CfnConfigurationSetEventDestinationid {
     pub fn att_name(&self) -> &'static str {
@@ -54,7 +54,7 @@ impl cfn_resources::CfnResource for CfnConfigurationSetEventDestination {
 /// Contains information associated with an Amazon CloudWatch event destination to which email       sending events are published.
 ///
 /// Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchDestination {
     ///
     /// A list of dimensions upon which to categorize your emails when you publish email       sending events to Amazon CloudWatch.
@@ -86,7 +86,7 @@ impl cfn_resources::CfnResource for CloudWatchDestination {
 /// Contains the dimension configuration to use when you publish email sending events to       Amazon CloudWatch.
 ///
 /// For information about publishing email sending events to Amazon CloudWatch, see the Amazon SES         Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DimensionConfiguration {
     ///
     /// The default value of the dimension that is published to Amazon CloudWatch if you do not provide       the value of the dimension when you send an email. The default value must meet the       following requirements:
@@ -128,7 +128,7 @@ pub struct DimensionConfiguration {
     pub dimension_value_source: DimensionConfigurationDimensionValueSourceEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DimensionConfigurationDimensionValueSourceEnum {
     /// emailHeader
     #[serde(rename = "emailHeader")]
@@ -166,7 +166,7 @@ impl cfn_resources::CfnResource for DimensionConfiguration {
 /// Contains information about an event destination.
 ///
 /// Event destinations are associated with configuration sets, which enable you to publish       email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about       using configuration sets, see the Amazon SES Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventDestination {
     ///
     /// An object that contains the names, default values, and sources of the dimensions       associated with an Amazon CloudWatch event destination.
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for EventDestination {
 /// Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event       destination.
 ///
 /// Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable       you to publish email sending events. For information about using configuration sets, see       the Amazon SES         Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisFirehoseDestination {
     ///
     /// The ARN of the Amazon Kinesis Firehose stream that email sending events should be published to.
@@ -315,7 +315,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseDestination {
 /// Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.
 ///
 /// Event destinations, such as Amazon SNS, are associated with configuration sets, which       enable you to publish email sending events. For information about using configuration       sets, see the Amazon SES Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnsDestination {
     ///
     /// The ARN of the Amazon SNS topic for email sending events. You can find the ARN of a topic       by using the ListTopics Amazon SNS operation.

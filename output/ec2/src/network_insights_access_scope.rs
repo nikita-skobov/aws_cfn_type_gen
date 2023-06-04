@@ -1,7 +1,7 @@
 /// Describes a Network Access Scope. A Network Access Scope defines outbound (egress) and inbound (ingress)      traffic patterns, including sources, destinations, paths, and traffic types.
 ///
 /// Network Access Analyzer identifies unintended network access to your resources on       AWS. When you start an analysis on a Network Access Scope, Network     Access Analyzer produces findings. For more information, see the Network Access Analyzer       User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAccessScope {
     ///
     /// The paths to exclude.
@@ -54,7 +54,7 @@ pub struct CfnNetworkInsightsAccessScope {
     pub att_updated_date: CfnNetworkInsightsAccessScopeupdateddate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAccessScopecreateddate;
 impl CfnNetworkInsightsAccessScopecreateddate {
     pub fn att_name(&self) -> &'static str {
@@ -62,7 +62,7 @@ impl CfnNetworkInsightsAccessScopecreateddate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn;
 impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn {
     pub fn att_name(&self) -> &'static str {
@@ -70,7 +70,7 @@ impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid;
 impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAccessScopeupdateddate;
 impl CfnNetworkInsightsAccessScopeupdateddate {
     pub fn att_name(&self) -> &'static str {
@@ -101,7 +101,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
 }
 
 /// Describes a path.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessScopePathRequest {
     ///
     /// The destination.
@@ -161,7 +161,7 @@ impl cfn_resources::CfnResource for AccessScopePathRequest {
 }
 
 /// Describes a packet header statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PacketHeaderStatementRequest {
     ///
     /// The destination addresses.
@@ -263,7 +263,7 @@ impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
 }
 
 /// Describes a path statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathStatementRequest {
     ///
     /// The packet header statement.
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for PathStatementRequest {
 }
 
 /// Describes a resource statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceStatementRequest {
     ///
     /// The resource types.
@@ -361,7 +361,7 @@ impl cfn_resources::CfnResource for ResourceStatementRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -399,7 +399,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes a through resource statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThroughResourcesStatementRequest {
     ///
     /// The resource statement.

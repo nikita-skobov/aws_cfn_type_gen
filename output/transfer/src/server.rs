@@ -1,5 +1,5 @@
 /// Instantiates an auto-scaling virtual server based on the selected file transfer protocol    in AWS. When you make updates to your file transfer protocol-enabled server or when you work    with users, use the service-generated ServerId property that is assigned to the    newly created server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServer {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. Required    when Protocols is set to FTPS.
@@ -236,7 +236,7 @@ pub struct CfnServer {
     pub att_server_id: CfnServerserverid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServerDomainEnum {
     /// EFS
     #[serde(rename = "EFS")]
@@ -253,7 +253,7 @@ impl Default for ServerDomainEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServerEndpointTypeEnum {
     /// PUBLIC
     #[serde(rename = "PUBLIC")]
@@ -274,7 +274,7 @@ impl Default for ServerEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServerIdentityProviderTypeEnum {
     /// API_GATEWAY
     #[serde(rename = "API_GATEWAY")]
@@ -299,7 +299,7 @@ impl Default for ServerIdentityProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServerarn;
 impl CfnServerarn {
     pub fn att_name(&self) -> &'static str {
@@ -307,7 +307,7 @@ impl CfnServerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServerserverid;
 impl CfnServerserverid {
     pub fn att_name(&self) -> &'static str {
@@ -421,7 +421,7 @@ impl cfn_resources::CfnResource for CfnServer {
 }
 
 /// Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct As2Transport {}
 
 impl cfn_resources::CfnResource for As2Transport {
@@ -439,7 +439,7 @@ impl cfn_resources::CfnResource for As2Transport {
 }
 
 /// The virtual private cloud (VPC) endpoint settings that are configured for your server.    When you host your endpoint within your VPC, you can make your endpoint accessible only to resources    within your VPC, or you can attach Elastic IP addresses and make your endpoint accessible to clients over    the internet. Your VPC's default security groups are automatically assigned to your    endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointDetails {
     ///
     /// A list of address allocation IDs that are required to attach an Elastic IP address to your    server's endpoint.
@@ -555,7 +555,7 @@ impl cfn_resources::CfnResource for EndpointDetails {
 }
 
 /// Required when IdentityProviderType is set to     AWS_DIRECTORY_SERVICE,         AWS_LAMBDA or API_GATEWAY. Accepts an array containing    all of the information required to use a directory in AWS_DIRECTORY_SERVICE or    invoke a customer-supplied authentication API, including the API Gateway URL. Not required    when IdentityProviderType is set to SERVICE_MANAGED.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IdentityProviderDetails {
     ///
     /// The identifier of the AWS Directory Service directory that you want to stop sharing.
@@ -642,7 +642,7 @@ pub struct IdentityProviderDetails {
     pub url: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IdentityProviderDetailsSftpAuthenticationMethodsEnum {
     /// PASSWORD
     #[serde(rename = "PASSWORD")]
@@ -759,7 +759,7 @@ impl cfn_resources::CfnResource for IdentityProviderDetails {
 }
 
 /// Specifies the file transfer protocol or protocols over which your file transfer protocol    client can connect to your server's endpoint. The available protocols are:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Protocol {}
 
 impl cfn_resources::CfnResource for Protocol {
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for Protocol {
 }
 
 /// The protocol settings that are configured for your server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProtocolDetails {
     ///
     /// List of As2Transport objects.
@@ -854,7 +854,7 @@ pub struct ProtocolDetails {
     pub tls_session_resumption_mode: Option<ProtocolDetailsTlsSessionResumptionModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProtocolDetailsSetStatOptionEnum {
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
@@ -871,7 +871,7 @@ impl Default for ProtocolDetailsSetStatOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProtocolDetailsTlsSessionResumptionModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -933,7 +933,7 @@ impl cfn_resources::CfnResource for ProtocolDetails {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -973,7 +973,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
 ///
 /// In addition to a workflow to execute when a file is uploaded completely, WorkflowDetails can also contain a   workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when   the session disconnects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkflowDetail {
     ///
     /// Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can    assume, so that all workflow steps can operate on the required resources
@@ -1069,7 +1069,7 @@ impl cfn_resources::CfnResource for WorkflowDetail {
 }
 
 /// Container for the WorkflowDetail data type.    It is used by actions that trigger a workflow to begin execution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkflowDetails {
     ///
     /// A trigger that starts a workflow if a file is only partially uploaded. You can attach a workflow to a server  that executes whenever there is a partial upload.

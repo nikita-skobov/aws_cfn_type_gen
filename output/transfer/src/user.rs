@@ -1,5 +1,5 @@
 /// The AWS::Transfer::User resource creates a user and associates them with an     existing server. You can only create and associate users with servers that have the       IdentityProviderType set to SERVICE_MANAGED. Using parameters     for CreateUser, you can specify the user name, set the home directory, store     the user's public key, and assign the user's AWS Identity and Access Management (IAM) role.     You can also optionally add a session policy, and assign metadata with tags that can be     used to group and search for users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUser {
     ///
     /// The landing directory (folder) for a user when they log in to the server using the client.
@@ -170,7 +170,7 @@ pub struct CfnUser {
     pub att_user_name: CfnUserusername,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserHomeDirectoryTypeEnum {
     /// LOGICAL
     #[serde(rename = "LOGICAL")]
@@ -187,7 +187,7 @@ impl Default for UserHomeDirectoryTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserarn;
 impl CfnUserarn {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl CfnUserarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserserverid;
 impl CfnUserserverid {
     pub fn att_name(&self) -> &'static str {
@@ -203,7 +203,7 @@ impl CfnUserserverid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserusername;
 impl CfnUserusername {
     pub fn att_name(&self) -> &'static str {
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for CfnUser {
 }
 
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HomeDirectoryMapEntry {
     ///
     /// Represents an entry for HomeDirectoryMappings.
@@ -412,7 +412,7 @@ impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
 }
 
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PosixProfile {
     ///
     /// The POSIX group ID used for all EFS operations by this user.
@@ -487,7 +487,7 @@ impl cfn_resources::CfnResource for PosixProfile {
 /// Length Constraints: Maximum length of 2048.
 ///
 /// Required: Yes
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SshPublicKey {}
 
 impl cfn_resources::CfnResource for SshPublicKey {
@@ -511,7 +511,7 @@ impl cfn_resources::CfnResource for SshPublicKey {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPool {
     ///
     /// The address family of the pool.
@@ -221,7 +221,7 @@ pub struct CfnIPAMPool {
     pub att_state_message: CfnIPAMPoolstatemessage,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IPAMPoolAddressFamilyEnum {
     /// ipv4
     #[serde(rename = "ipv4")]
@@ -238,7 +238,7 @@ impl Default for IPAMPoolAddressFamilyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IPAMPoolAwsServiceEnum {
     /// ec2
     #[serde(rename = "ec2")]
@@ -251,7 +251,7 @@ impl Default for IPAMPoolAwsServiceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IPAMPoolPublicIpSourceEnum {
     /// amazon
     #[serde(rename = "amazon")]
@@ -268,7 +268,7 @@ impl Default for IPAMPoolPublicIpSourceEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolarn;
 impl CfnIPAMPoolarn {
     pub fn att_name(&self) -> &'static str {
@@ -276,7 +276,7 @@ impl CfnIPAMPoolarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolipamarn;
 impl CfnIPAMPoolipamarn {
     pub fn att_name(&self) -> &'static str {
@@ -284,7 +284,7 @@ impl CfnIPAMPoolipamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolipampoolid;
 impl CfnIPAMPoolipampoolid {
     pub fn att_name(&self) -> &'static str {
@@ -292,7 +292,7 @@ impl CfnIPAMPoolipampoolid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolipamscopearn;
 impl CfnIPAMPoolipamscopearn {
     pub fn att_name(&self) -> &'static str {
@@ -300,7 +300,7 @@ impl CfnIPAMPoolipamscopearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolipamscopetype;
 impl CfnIPAMPoolipamscopetype {
     pub fn att_name(&self) -> &'static str {
@@ -308,7 +308,7 @@ impl CfnIPAMPoolipamscopetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolstate;
 impl CfnIPAMPoolstate {
     pub fn att_name(&self) -> &'static str {
@@ -316,7 +316,7 @@ impl CfnIPAMPoolstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolstatemessage;
 impl CfnIPAMPoolstatemessage {
     pub fn att_name(&self) -> &'static str {
@@ -375,7 +375,7 @@ impl cfn_resources::CfnResource for CfnIPAMPool {
 }
 
 /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedCidr {
     ///
     /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
@@ -410,7 +410,7 @@ impl cfn_resources::CfnResource for ProvisionedCidr {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

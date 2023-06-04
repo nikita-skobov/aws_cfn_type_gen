@@ -1,5 +1,5 @@
 /// Create a service template. The administrator creates a service template to define    standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn,    select the service template from AWS Proton. If the selected service template includes a    service pipeline definition, they provide a link to their source code repository. AWS Proton    then deploys and manages the infrastructure defined by the selected service template. For more    information, see AWS Proton templates in the AWS Proton User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceTemplate {
     ///
     /// A description of the service template.
@@ -99,7 +99,7 @@ pub struct CfnServiceTemplate {
     pub att_arn: CfnServiceTemplatearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceTemplatePipelineProvisioningEnum {
     /// CUSTOMER_MANAGED
     #[serde(rename = "CUSTOMER_MANAGED")]
@@ -112,7 +112,7 @@ impl Default for ServiceTemplatePipelineProvisioningEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceTemplatearn;
 impl CfnServiceTemplatearn {
     pub fn att_name(&self) -> &'static str {
@@ -229,7 +229,7 @@ impl cfn_resources::CfnResource for CfnServiceTemplate {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

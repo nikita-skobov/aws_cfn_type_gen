@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::SubscriptionDefinition resource represents a subscription definition for AWS IoT Greengrass.   Subscription definitions are used to organize your subscription definition versions.
 ///
 /// Subscription definitions can reference multiple subscription definition versions. All subscription definition versions      must be associated with a subscription definition. Each subscription definition version can contain one or more subscriptions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinition {
     ///
     /// The subscription definition version to include when the subscription definition is created.          A subscription definition version contains a list of          subscription property types.
@@ -57,7 +57,7 @@ pub struct CfnSubscriptionDefinition {
     pub att_name: CfnSubscriptionDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinitionarn;
 impl CfnSubscriptionDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnSubscriptionDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinitionid;
 impl CfnSubscriptionDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnSubscriptionDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinitionlatestversionarn;
 impl CfnSubscriptionDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnSubscriptionDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinitionname;
 impl CfnSubscriptionDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinition {
 /// Subscriptions define how MQTT messages can be exchanged between devices, functions, and connectors in the group, and with AWS IoT   or the local shadow service. A subscription defines a message source, message target, and a topic (or subject) that's used to route messages from the source to the target. A subscription defines the message flow in   one direction, from the source to the target. For two-way communication, you must set up two subscriptions, one for each direction.
 ///
 /// In an AWS CloudFormation template, the Subscriptions 		 property of the SubscriptionDefinitionVersion property type contains a list       of Subscription property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subscription {
     ///
     /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for Subscription {
 /// A subscription definition version contains a list of subscriptions.
 ///
 /// In an AWS CloudFormation template, SubscriptionDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::SubscriptionDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubscriptionDefinitionVersion {
     ///
     /// The subscriptions in this version.

@@ -1,5 +1,5 @@
 /// The AWS::Lambda::Version resource creates a version from the current code and configuration of a    function. Use versions to create a snapshot of your function code and configuration that doesn't change.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVersion {
     ///
     /// Only publish a version if the hash value matches the value that's specified. Use this option to avoid    publishing a version if the function code has changed since you last updated it. Updates are not supported for    this property.
@@ -66,7 +66,7 @@ pub struct CfnVersion {
     pub att_version: CfnVersionversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVersionversion;
 impl CfnVersionversion {
     pub fn att_name(&self) -> &'static str {
@@ -137,7 +137,7 @@ impl cfn_resources::CfnResource for CfnVersion {
 }
 
 /// A provisioned concurrency configuration for a function's version.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedConcurrencyConfiguration {
     ///
     /// The amount of provisioned concurrency to allocate for the version.

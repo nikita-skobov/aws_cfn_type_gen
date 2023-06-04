@@ -5,7 +5,7 @@
 /// Create multiple revisions of a configuration by specifying this resource multiple times using the same ObservabilityConfigurationName.     App Runner creates multiple resources with incremental ObservabilityConfigurationRevision values. When you specify a service and    configure an observability configuration resource, the service uses the latest active revision of the observability configuration by default. You can    optionally configure the service to use a specific revision.
 ///
 /// The observability configuration resource is designed to configure multiple features (currently one feature, tracing). This resource takes optional    parameters that describe the configuration of these features (currently one parameter, TraceConfiguration). If you don't specify a feature      parameter, App Runner doesn't enable the feature.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnObservabilityConfiguration {
     ///
     /// A name for the observability configuration. When you use it for the first time in an AWS Region, App Runner creates revision number     1 of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.
@@ -58,7 +58,7 @@ pub struct CfnObservabilityConfiguration {
         CfnObservabilityConfigurationobservabilityconfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnObservabilityConfigurationobservabilityconfigurationarn;
 impl CfnObservabilityConfigurationobservabilityconfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -145,7 +145,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the configuration of the tracing feature within an AWS App Runner observability configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TraceConfiguration {
     ///
     /// The implementation provider chosen for tracing App Runner services.
@@ -161,7 +161,7 @@ pub struct TraceConfiguration {
     pub vendor: TraceConfigurationVendorEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TraceConfigurationVendorEnum {
     /// AWSXRAY
     #[serde(rename = "AWSXRAY")]

@@ -1,5 +1,5 @@
 /// The AWS::GameLift::Script resource creates a new script record for your    Realtime Servers script. Realtime scripts are JavaScript that provide configuration settings    and optional custom game logic for your game. The script is deployed when you create a    Realtime Servers fleet to host your game sessions. Script logic is executed during an active    game session.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScript {
     ///
     /// A descriptive label that is associated with a script. Script names do not need to be    unique.
@@ -65,7 +65,7 @@ pub struct CfnScript {
     pub att_id: CfnScriptid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScriptarn;
 impl CfnScriptarn {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnScriptarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScriptid;
 impl CfnScriptid {
     pub fn att_name(&self) -> &'static str {
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for CfnScript {
 }
 
 /// The location in Amazon S3 where build or script files can be stored for access by    Amazon GameLift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// An Amazon S3 bucket identifier. Thename of the S3 bucket.
@@ -274,7 +274,7 @@ impl cfn_resources::CfnResource for S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

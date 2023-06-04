@@ -1,5 +1,5 @@
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProtectionGroup {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protectiongroup.html#cfn-shield-protectiongroup-aggregation
     #[serde(rename = "Aggregation")]
@@ -32,7 +32,7 @@ pub struct CfnProtectionGroup {
     pub att_protection_group_arn: CfnProtectionGroupprotectiongrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProtectionGroupprotectiongrouparn;
 impl CfnProtectionGroupprotectiongrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -55,7 +55,7 @@ impl cfn_resources::CfnResource for CfnProtectionGroup {
 }
 
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html#cfn-resource-tags-key
     #[serde(rename = "Key")]

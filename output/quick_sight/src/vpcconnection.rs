@@ -1,5 +1,5 @@
 /// Creates a new VPC connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnection {
     ///
     /// The availability status of the VPC connection.
@@ -147,7 +147,7 @@ pub struct CfnVPCConnection {
     pub att_vpcid: CfnVPCConnectionvpcid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VPCConnectionAvailabilityStatusEnum {
     /// AVAILABLE
     #[serde(rename = "AVAILABLE")]
@@ -168,7 +168,7 @@ impl Default for VPCConnectionAvailabilityStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnectionarn;
 impl CfnVPCConnectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl CfnVPCConnectionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnectioncreatedtime;
 impl CfnVPCConnectioncreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -184,7 +184,7 @@ impl CfnVPCConnectioncreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnectionlastupdatedtime;
 impl CfnVPCConnectionlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -192,7 +192,7 @@ impl CfnVPCConnectionlastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnectionstatus;
 impl CfnVPCConnectionstatus {
     pub fn att_name(&self) -> &'static str {
@@ -200,7 +200,7 @@ impl CfnVPCConnectionstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCConnectionvpcid;
 impl CfnVPCConnectionvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for CfnVPCConnection {
 }
 
 /// The structure that contains information about a network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterface {
     ///
     /// The availability zone that the network interface resides in.
@@ -388,7 +388,7 @@ pub struct NetworkInterface {
     pub subnet_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkInterfaceStatusEnum {
     /// ATTACHMENT_FAILED_ROLLBACK_FAILED
     #[serde(rename = "ATTACHMENT_FAILED_ROLLBACK_FAILED")]
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

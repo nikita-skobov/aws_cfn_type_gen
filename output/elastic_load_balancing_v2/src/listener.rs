@@ -1,5 +1,5 @@
 /// Specifies a listener for an Application Load Balancer, Network Load Balancer, or     Gateway Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListener {
     ///
     /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)    policy.
@@ -99,7 +99,7 @@ pub struct CfnListener {
     pub att_listener_arn: CfnListenerlistenerarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListenerProtocolEnum {
     /// GENEVE
     #[serde(rename = "GENEVE")]
@@ -136,7 +136,7 @@ impl Default for ListenerProtocolEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerlistenerarn;
 impl CfnListenerlistenerarn {
     pub fn att_name(&self) -> &'static str {
@@ -177,7 +177,7 @@ impl cfn_resources::CfnResource for CfnListener {
 }
 
 /// Specifies an action for a listener rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
@@ -281,7 +281,7 @@ pub struct Action {
     pub cfn_type: ActionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ActionTypeEnum {
     /// authenticate-cognito
     #[serde(rename = "authenticate-cognito")]
@@ -363,7 +363,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// Specifies information required when integrating with Amazon Cognito to authenticate     users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticateCognitoConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -465,7 +465,7 @@ pub struct AuthenticateCognitoConfig {
     pub user_pool_domain: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
     /// allow
     #[serde(rename = "allow")]
@@ -501,7 +501,7 @@ impl cfn_resources::CfnResource for AuthenticateCognitoConfig {
 }
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticateOidcConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -649,7 +649,7 @@ pub struct AuthenticateOidcConfig {
     pub user_info_endpoint: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
     /// allow
     #[serde(rename = "allow")]
@@ -685,7 +685,7 @@ impl cfn_resources::CfnResource for AuthenticateOidcConfig {
 }
 
 /// Specifies an SSL server certificate to use as the default certificate for a secure     listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Certificate {
     ///
     /// The Amazon Resource Name (ARN) of the certificate.
@@ -715,7 +715,7 @@ impl cfn_resources::CfnResource for Certificate {
 }
 
 /// Specifies information required when returning a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FixedResponseConfig {
     ///
     /// The content type.
@@ -765,7 +765,7 @@ pub struct FixedResponseConfig {
     pub status_code: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FixedResponseConfigContentTypeEnum {
     /// text/plain
     #[serde(rename = "text/plain")]
@@ -831,7 +831,7 @@ impl cfn_resources::CfnResource for FixedResponseConfig {
 }
 
 /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForwardConfig {
     ///
     /// Information about the target group stickiness for a rule.
@@ -883,7 +883,7 @@ impl cfn_resources::CfnResource for ForwardConfig {
 /// You can reuse URI components using the following reserved keywords:
 ///
 /// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedirectConfig {
     ///
     /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
@@ -973,7 +973,7 @@ pub struct RedirectConfig {
     pub status_code: RedirectConfigStatusCodeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedirectConfigStatusCodeEnum {
     /// HTTP_301
     #[serde(rename = "HTTP_301")]
@@ -1071,7 +1071,7 @@ impl cfn_resources::CfnResource for RedirectConfig {
 }
 
 /// Information about the target group stickiness for a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupStickinessConfig {
     ///
     /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
@@ -1113,7 +1113,7 @@ impl cfn_resources::CfnResource for TargetGroupStickinessConfig {
 }
 
 /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupTuple {
     ///
     /// The Amazon Resource Name (ARN) of the target group.

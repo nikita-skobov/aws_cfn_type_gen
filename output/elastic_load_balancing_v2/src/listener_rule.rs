@@ -1,7 +1,7 @@
 /// Specifies a listener rule. The listener must be associated with an Application Load     Balancer. Each rule consists of a priority, one or more actions, and one or more     conditions.
 ///
 /// For more information, see Quotas for your Application Load Balancers in the      User Guide for Application Load Balancers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerRule {
     ///
     /// The actions.
@@ -61,7 +61,7 @@ pub struct CfnListenerRule {
     pub att_rule_arn: CfnListenerRulerulearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerRulerulearn;
 impl CfnListenerRulerulearn {
     pub fn att_name(&self) -> &'static str {
@@ -102,7 +102,7 @@ impl cfn_resources::CfnResource for CfnListenerRule {
 }
 
 /// Specifies an action for a listener rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// [HTTPS listeners] Information for using Amazon Cognito to authenticate users. Specify only    when Type is authenticate-cognito.
@@ -206,7 +206,7 @@ pub struct Action {
     pub cfn_type: ActionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ActionTypeEnum {
     /// authenticate-cognito
     #[serde(rename = "authenticate-cognito")]
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// Specifies information required when integrating with Amazon Cognito to authenticate     users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticateCognitoConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -390,7 +390,7 @@ pub struct AuthenticateCognitoConfig {
     pub user_pool_domain: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthenticateCognitoConfigOnUnauthenticatedRequestEnum {
     /// allow
     #[serde(rename = "allow")]
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for AuthenticateCognitoConfig {
 }
 
 /// Specifies information required using an identity provide (IdP) that is compliant with     OpenID Connect (OIDC) to authenticate users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticateOidcConfig {
     ///
     /// The query parameters (up to 10) to include in the redirect request to the authorization    endpoint.
@@ -574,7 +574,7 @@ pub struct AuthenticateOidcConfig {
     pub user_info_endpoint: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthenticateOidcConfigOnUnauthenticatedRequestEnum {
     /// allow
     #[serde(rename = "allow")]
@@ -610,7 +610,7 @@ impl cfn_resources::CfnResource for AuthenticateOidcConfig {
 }
 
 /// Specifies information required when returning a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FixedResponseConfig {
     ///
     /// The content type.
@@ -660,7 +660,7 @@ pub struct FixedResponseConfig {
     pub status_code: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FixedResponseConfigContentTypeEnum {
     /// text/plain
     #[serde(rename = "text/plain")]
@@ -726,7 +726,7 @@ impl cfn_resources::CfnResource for FixedResponseConfig {
 }
 
 /// Information for creating an action that distributes requests among one or more target    groups. For Network Load Balancers, you can specify a single target group. Specify only when     Type is forward. If you specify both ForwardConfig    and TargetGroupArn, you can specify only one target group using     ForwardConfig and it must be the same target group specified in     TargetGroupArn.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForwardConfig {
     ///
     /// Information about the target group stickiness for a rule.
@@ -772,7 +772,7 @@ impl cfn_resources::CfnResource for ForwardConfig {
 }
 
 /// Information about a host header condition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostHeaderConfig {
     ///
     /// The host names. The maximum size of each name is 128 characters. The comparison is    case insensitive. The following wildcard characters are supported: * (matches 0 or more    characters) and ? (matches exactly 1 character).
@@ -806,7 +806,7 @@ impl cfn_resources::CfnResource for HostHeaderConfig {
 /// Information about an HTTP header condition.
 ///
 /// There is a set of standard HTTP header fields. You can also define custom HTTP header    fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpHeaderConfig {
     ///
     /// The name of the HTTP header field. The maximum size is 40 characters. The header name is     case insensitive. The allowed characters are specified by RFC 7230. Wildcards are not     supported.
@@ -854,7 +854,7 @@ impl cfn_resources::CfnResource for HttpHeaderConfig {
 /// Information about an HTTP method condition.
 ///
 /// HTTP defines a set of request methods, also referred to as HTTP verbs. For more    information, see the HTTP Method     Registry. You can also define custom HTTP methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRequestMethodConfig {
     ///
     /// The name of the request method. The maximum size is 40 characters. The allowed characters    are A-Z, hyphen (-), and underscore (_). The comparison is case sensitive. Wildcards are not    supported; therefore, the method name must be an exact match.
@@ -886,7 +886,7 @@ impl cfn_resources::CfnResource for HttpRequestMethodConfig {
 }
 
 /// Information about a path pattern condition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathPatternConfig {
     ///
     /// The path patterns to compare against the request URL. The maximum size of each     string is 128 characters. The comparison is case sensitive. The following wildcard     characters are supported: * (matches 0 or more characters) and ? (matches exactly 1     character).
@@ -920,7 +920,7 @@ impl cfn_resources::CfnResource for PathPatternConfig {
 /// Information about a query string condition.
 ///
 /// The query string component of a URI starts after the first '?' character and is terminated    by either a '#' character or the end of the URI. A typical query string contains key/value    pairs separated by '&' characters. The allowed characters are specified by RFC 3986. Any    character can be percentage encoded.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueryStringConfig {
     ///
     /// The key/value pairs or values to find in the query string. The maximum size of    each string is 128 characters. The comparison is case insensitive. The following wildcard    characters are supported: * (matches 0 or more characters) and ? (matches exactly 1    character). To search for a literal '*' or '?' character in a query string, you must escape    these characters in Values using a '\' character.
@@ -952,7 +952,7 @@ impl cfn_resources::CfnResource for QueryStringConfig {
 }
 
 /// Information about a key/value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueryStringKeyValue {
     ///
     /// The key. You can omit the key.
@@ -1000,7 +1000,7 @@ impl cfn_resources::CfnResource for QueryStringKeyValue {
 /// You can reuse URI components using the following reserved keywords:
 ///
 /// For example, you can change the path to "/new/#{path}", the hostname to "example.#{host}",    or the query to "#{query}&value=xyz".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedirectConfig {
     ///
     /// The hostname. This component is not percent-encoded. The hostname can contain    #{host}.
@@ -1090,7 +1090,7 @@ pub struct RedirectConfig {
     pub status_code: RedirectConfigStatusCodeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedirectConfigStatusCodeEnum {
     /// HTTP_301
     #[serde(rename = "HTTP_301")]
@@ -1188,7 +1188,7 @@ impl cfn_resources::CfnResource for RedirectConfig {
 }
 
 /// Specifies a condition for a listener rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuleCondition {
     ///
     /// The field in the HTTP request. The following are the possible values:
@@ -1351,7 +1351,7 @@ impl cfn_resources::CfnResource for RuleCondition {
 /// Information about a source IP condition.
 ///
 /// You can use this condition to route based on the IP address of the source that connects to    the load balancer. If a client is behind a proxy, this is the IP address of the proxy not the    IP address of the client.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceIpConfig {
     ///
     /// The source IP addresses, in CIDR format. You can use both IPv4 and IPv6     addresses. Wildcards are not supported.
@@ -1383,7 +1383,7 @@ impl cfn_resources::CfnResource for SourceIpConfig {
 }
 
 /// Information about the target group stickiness for a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupStickinessConfig {
     ///
     /// The time period, in seconds, during which requests from a client should be routed to the    same target group. The range is 1-604800 seconds (7 days).
@@ -1425,7 +1425,7 @@ impl cfn_resources::CfnResource for TargetGroupStickinessConfig {
 }
 
 /// Information about how traffic will be distributed between multiple target groups in a    forward rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupTuple {
     ///
     /// The Amazon Resource Name (ARN) of the target group.

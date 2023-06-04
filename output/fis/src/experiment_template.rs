@@ -3,7 +3,7 @@
 /// An experiment template includes the following components:
 ///
 /// For more information, see Experiment templates     in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExperimentTemplate {
     ///
     /// The actions for the experiment.
@@ -98,7 +98,7 @@ pub struct CfnExperimentTemplate {
     pub att_id: CfnExperimentTemplateid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExperimentTemplateid;
 impl CfnExperimentTemplateid {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl cfn_resources::CfnResource for CfnExperimentTemplate {
 }
 
 /// The CloudWatchLogsConfiguration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogsConfiguration {
     /// Property description not available.
     ///
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsConfiguration {
 /// Specifies an action for an experiment template.
 ///
 /// For more information, see Actions     in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExperimentTemplateAction {
     ///
     /// The ID of the action. The format of the action ID is: aws:service-name:action-type.
@@ -297,7 +297,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateAction {
 /// Specifies the configuration for experiment logging.
 ///
 /// For more information, see Experiment logging    in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExperimentTemplateLogConfiguration {
     ///
     /// The configuration for experiment logging to Amazon CloudWatch Logs. The supported field     is LogGroupArn. For example:
@@ -368,7 +368,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateLogConfiguration {
 /// Specifies a stop condition for an experiment template.
 ///
 /// For more information, see Stop conditions    in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExperimentTemplateStopCondition {
     ///
     /// The source for the stop condition. Specify aws:cloudwatch:alarm if the stop     condition is defined by a CloudWatch alarm. Specify none if there is no stop     condition.
@@ -454,7 +454,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
 /// Specifies a target for an experiment. You must specify at least one Amazon Resource Name (ARN) or      at least one resource tag. You cannot specify both ARNs and tags.
 ///
 /// For more information, see Targets     in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExperimentTemplateTarget {
     ///
     /// The filters to apply to identify target resources using specific attributes.
@@ -587,7 +587,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateTarget {
 /// Specifies a filter used for the target resource input in an experiment template.
 ///
 /// For more information, see Resource filters     in the AWS Fault Injection Simulator User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExperimentTemplateTargetFilter {
     ///
     /// The attribute path for the filter.
@@ -642,7 +642,7 @@ impl cfn_resources::CfnResource for ExperimentTemplateTargetFilter {
 }
 
 /// The S3Configuration property type specifies Property description not available. for an AWS::FIS::ExperimentTemplate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Configuration {
     /// Property description not available.
     ///

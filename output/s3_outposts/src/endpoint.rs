@@ -2,7 +2,7 @@
 ///
 /// Amazon S3 on Outposts access points simplify managing data access at scale for shared    datasets in S3 on Outposts. S3 on Outposts uses endpoints to connect to S3 on Outposts buckets    so that you can perform actions within your virtual private cloud (VPC). For more information,    see     Accessing S3 on Outposts using VPC-only access points.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpoint {
     ///
     /// The container for the type of connectivity used to access the Amazon S3 on Outposts    endpoint. To use the Amazon VPC, choose Private. To use the endpoint    with an on-premises network, choose CustomerOwnedIp. If you choose     CustomerOwnedIp, you must also provide the customer-owned IP address pool (CoIP    pool).
@@ -83,7 +83,7 @@ pub struct CfnEndpoint {
     pub att_status: CfnEndpointstatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointAccessTypeEnum {
     /// CustomerOwnedIp
     #[serde(rename = "CustomerOwnedIp")]
@@ -100,7 +100,7 @@ impl Default for EndpointAccessTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointarn;
 impl CfnEndpointarn {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl CfnEndpointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointcidrblock;
 impl CfnEndpointcidrblock {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnEndpointcidrblock {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointcreationtime;
 impl CfnEndpointcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl CfnEndpointcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointid;
 impl CfnEndpointid {
     pub fn att_name(&self) -> &'static str {
@@ -132,7 +132,7 @@ impl CfnEndpointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointstatus;
 impl CfnEndpointstatus {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 }
 
 /// The container for the network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterface {
     ///
     /// The ID for the network interface.

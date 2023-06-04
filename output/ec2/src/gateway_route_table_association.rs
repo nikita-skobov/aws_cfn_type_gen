@@ -1,5 +1,5 @@
 /// Associates a virtual private gateway or internet gateway with a route table. The gateway     and route table must be in the same VPC. This association causes the incoming traffic to     the gateway to be routed according to the routes in the route table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRouteTableAssociation {
     ///
     /// The ID of the gateway.
@@ -27,7 +27,7 @@ pub struct CfnGatewayRouteTableAssociation {
     pub att_association_id: CfnGatewayRouteTableAssociationassociationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRouteTableAssociationassociationid;
 impl CfnGatewayRouteTableAssociationassociationid {
     pub fn att_name(&self) -> &'static str {

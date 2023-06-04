@@ -1,5 +1,5 @@
 /// AWS::IoTAnalytics::Datastore resource is a repository for messages. For more information, see          How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatastore {
     ///
     /// The name of the data store.
@@ -91,7 +91,7 @@ pub struct CfnDatastore {
     pub att_id: CfnDatastoreid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatastoreid;
 impl CfnDatastoreid {
     pub fn att_name(&self) -> &'static str {
@@ -161,7 +161,7 @@ impl cfn_resources::CfnResource for CfnDatastore {
 }
 
 /// Contains information about a column that stores your data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Column {
     ///
     /// The name of the column.
@@ -201,7 +201,7 @@ impl cfn_resources::CfnResource for Column {
 }
 
 /// S3-customer-managed; When you choose customer-managed storage, the retentionPeriod parameter is ignored. You can't change the choice of Amazon S3 storage after your data store is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomerManagedS3 {
     ///
     /// The name of the Amazon S3 bucket where your data is stored.
@@ -335,7 +335,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3 {
 }
 
 /// Amazon S3-customer-managed; When you choose customer-managed storage, the retentionPeriod parameter is ignored.      You can't change the choice of Amazon S3 storage after your data store is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomerManagedS3Storage {
     ///
     /// The name of the Amazon S3 bucket where your data is stored.
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3Storage {
 }
 
 /// A single dimension to partition a data store. The dimension must be an AttributePartition or a TimestampPartition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatastorePartition {
     ///
     /// A partition dimension defined by an attribute.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for DatastorePartition {
 }
 
 /// Information about the partition dimensions in a data store.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatastorePartitions {
     ///
     /// A list of partition dimensions in a data store.
@@ -456,7 +456,7 @@ impl cfn_resources::CfnResource for DatastorePartitions {
 }
 
 /// Where data store data is stored.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatastoreStorage {
     ///
     /// Use this to store data store data in an S3 bucket that you manage. The choice of     service-managed or customer-managed S3 storage cannot be changed after creation     of the data store.
@@ -522,7 +522,7 @@ impl cfn_resources::CfnResource for DatastoreStorage {
 /// The default file format is JSON. You can specify only one format.
 ///
 /// You can't change the file format after you create the data store.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileFormatConfiguration {
     ///
     /// Contains the configuration information of the JSON format.
@@ -568,7 +568,7 @@ impl cfn_resources::CfnResource for FileFormatConfiguration {
 }
 
 /// Stores data used by AWS IoT SiteWise in an Amazon S3 bucket that you manage.      You can't change the choice of Amazon S3 storage after your data store is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotSiteWiseMultiLayerStorage {
     ///
     /// Stores data used by AWS IoT SiteWise in an Amazon S3 bucket that you manage.
@@ -602,7 +602,7 @@ impl cfn_resources::CfnResource for IotSiteWiseMultiLayerStorage {
 }
 
 /// Contains the configuration information of the Parquet format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParquetConfiguration {
     ///
     /// Information needed to define a schema.
@@ -636,7 +636,7 @@ impl cfn_resources::CfnResource for ParquetConfiguration {
 }
 
 /// A single dimension to partition a data store. The dimension must be an AttributePartition or a TimestampPartition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Partition {
     ///
     /// The name of the attribute that defines a partition dimension.
@@ -665,7 +665,7 @@ impl cfn_resources::CfnResource for Partition {
 }
 
 /// How long, in days, message data is kept.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetentionPeriod {
     ///
     /// The number of days that message data is kept. The unlimited parameter must be    false.
@@ -718,7 +718,7 @@ impl cfn_resources::CfnResource for RetentionPeriod {
 }
 
 /// Information needed to define a schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaDefinition {
     ///
     /// Specifies one or more columns that store your data.
@@ -756,7 +756,7 @@ impl cfn_resources::CfnResource for SchemaDefinition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -794,7 +794,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// A partition dimension defined by a timestamp attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestampPartition {
     ///
     /// The attribute name of the partition defined by a timestamp.

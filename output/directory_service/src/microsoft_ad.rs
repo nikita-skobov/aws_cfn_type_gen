@@ -1,5 +1,5 @@
 /// The AWS::DirectoryService::MicrosoftAD resource specifies a Microsoft Active    Directory in AWS so that your directory users and groups can access the AWS Management Console    and AWS applications using their existing credentials. For more information, see AWS Managed Microsoft AD in the AWS Directory Service Admin     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMicrosoftAD {
     ///
     /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
@@ -98,7 +98,7 @@ pub struct CfnMicrosoftAD {
     pub att_alias: CfnMicrosoftADalias,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MicrosoftADEditionEnum {
     /// Enterprise
     #[serde(rename = "Enterprise")]
@@ -115,7 +115,7 @@ impl Default for MicrosoftADEditionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMicrosoftADalias;
 impl CfnMicrosoftADalias {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnMicrosoftAD {
 }
 
 /// Contains VPC information for the CreateDirectory or     CreateMicrosoftAD    operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcSettings {
     ///
     /// The identifiers of the subnets for the directory servers. The two subnets must be in    different Availability Zones. AWS Directory Service specifies a directory server and a DNS    server in each of these subnets.

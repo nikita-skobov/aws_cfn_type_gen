@@ -1,7 +1,7 @@
 /// Creates a framework with one or more controls. A framework is a collection of controls     that you can use to evaluate your backup practices. By using pre-built customizable     controls to define your policies, you can evaluate whether your backup practices comply     with your policies and which resources are not yet in compliance.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFramework {
     ///
     /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
@@ -75,7 +75,7 @@ pub struct CfnFramework {
     pub att_framework_status: CfnFrameworkframeworkstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFrameworkcreationtime;
 impl CfnFrameworkcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnFrameworkcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFrameworkdeploymentstatus;
 impl CfnFrameworkdeploymentstatus {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl CfnFrameworkdeploymentstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFrameworkframeworkarn;
 impl CfnFrameworkframeworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnFrameworkframeworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFrameworkframeworkstatus;
 impl CfnFrameworkframeworkstatus {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl cfn_resources::CfnResource for CfnFramework {
 }
 
 /// A list of parameters for a control. A control can have zero, one, or more than one     parameter. An example of a control with two parameters is: "backup plan frequency is at     least daily and the retention period is at least 1 year". The     first parameter is daily. The second parameter is 1 year.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ControlInputParameter {
     ///
     /// The name of a parameter, for example, BackupPlanFrequency.
@@ -203,7 +203,7 @@ impl cfn_resources::CfnResource for ControlInputParameter {
 }
 
 /// A framework consists of one or more controls. Each control has its own control scope.     The control scope can include one or more resource types, a combination of a tag key and     value, or a combination of one resource type and one resource ID. If no scope is specified,     evaluations for the rule are triggered when any resource in your recording group changes in     configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ControlScope {
     ///
     /// The ID of the only AWS resource that you want your control scope to     contain.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for ControlScope {
 }
 
 /// Contains detailed information about all of the controls of a framework. Each framework     must contain at least one control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameworkControl {
     ///
     /// A list of ParameterName and ParameterValue pairs.
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for FrameworkControl {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

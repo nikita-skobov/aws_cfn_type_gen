@@ -1,5 +1,5 @@
 /// This resource is deprecated.     Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020.     For more information, read the announcement on the Amazon CloudFront discussion forum.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamingDistribution {
     ///
     /// The current configuration information for the RTMP distribution.
@@ -27,7 +27,7 @@ pub struct CfnStreamingDistribution {
     pub att_domain_name: CfnStreamingDistributiondomainname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamingDistributiondomainname;
 impl CfnStreamingDistributiondomainname {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl cfn_resources::CfnResource for CfnStreamingDistribution {
 }
 
 /// A complex type that controls whether access logs are written for the streaming 			distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logging {
     ///
     /// The Amazon S3 bucket to store the access logs in, for example, 				myawslogbucket.s3.amazonaws.com.
@@ -103,7 +103,7 @@ impl cfn_resources::CfnResource for Logging {
 }
 
 /// A complex type that contains information about the Amazon S3 bucket from which you want 			CloudFront to get your media files for distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Origin {
     ///
     /// The DNS name of the Amazon S3 origin.
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for S3Origin {
 }
 
 /// The RTMP distribution's configuration information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamingDistributionConfig {
     ///
     /// A complex type that contains information about CNAMEs (alternate domain names), if 			any, for this streaming distribution.
@@ -236,7 +236,7 @@ pub struct StreamingDistributionConfig {
     pub trusted_signers: TrustedSigners,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StreamingDistributionConfigPriceClassEnum {
     /// PriceClass_100
     #[serde(rename = "PriceClass_100")]
@@ -284,7 +284,7 @@ impl cfn_resources::CfnResource for StreamingDistributionConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -322,7 +322,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// A list of AWS accounts whose public keys CloudFront can use to verify the signatures of 			signed URLs and signed cookies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrustedSigners {
     ///
     /// An AWS account number that contains active CloudFront key pairs that CloudFront can use to 			verify the signatures of signed URLs and signed cookies. If the AWS account that owns 			the key pairs is the same account that owns the CloudFront distribution, the value of this 			field is self.

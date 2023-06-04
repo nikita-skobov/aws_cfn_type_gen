@@ -3,7 +3,7 @@
 /// Network policies specify access to a collection and its OpenSearch Dashboards endpoint       from public networks or specific VPC endpoints. For more information, see Network         access for Amazon OpenSearch Serverless.
 ///
 /// Encryption policies specify a KMS encryption key to assign to particular collections.       For more information, see Encryption         at rest for Amazon OpenSearch Serverless.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityPolicy {
     ///
     /// The description of the security policy.

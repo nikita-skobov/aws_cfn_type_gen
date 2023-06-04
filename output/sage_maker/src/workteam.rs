@@ -1,7 +1,7 @@
 /// Creates a new work team for labeling your data. A work team is defined by one or more       Amazon Cognito user pools. You must first create the user pools before you can create a work       team.
 ///
 /// You cannot create more than 25 work teams in an account and region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkteam {
     ///
     /// A description of the work team.
@@ -94,7 +94,7 @@ pub struct CfnWorkteam {
     pub att_workteam_name: CfnWorkteamworkteamname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkteamworkteamname;
 impl CfnWorkteamworkteamname {
     pub fn att_name(&self) -> &'static str {
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for CfnWorkteam {
 }
 
 /// Identifies a Amazon Cognito user group. A user group can be used in on or more work       teams.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoMemberDefinition {
     ///
     /// An identifier for an application client. You must create the app client ID using       Amazon Cognito.
@@ -225,7 +225,7 @@ impl cfn_resources::CfnResource for CognitoMemberDefinition {
 }
 
 /// Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemberDefinition {
     ///
     /// The Amazon Cognito user group that is part of the work team.
@@ -275,7 +275,7 @@ impl cfn_resources::CfnResource for MemberDefinition {
 }
 
 /// Configures Amazon SNS notifications of available or expiring work items for work       teams.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationConfiguration {
     ///
     /// The ARN for the Amazon SNS topic to which notifications should be published.
@@ -306,7 +306,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 }
 
 /// A list of user groups that exist in your OIDC Identity Provider (IdP).       One to ten groups can be used to create a single private work team.       When you add a user group to the list of Groups, you can add that user group to one or more       private work teams. If you add a user group to a private work team, all workers in that user group       are added to the work team.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OidcMemberDefinition {
     /// Property description not available.
     ///
@@ -340,7 +340,7 @@ impl cfn_resources::CfnResource for OidcMemberDefinition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

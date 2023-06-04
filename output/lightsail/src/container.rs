@@ -1,7 +1,7 @@
 /// The AWS::Lightsail::Container resource specifies a container     service.
 ///
 /// A Lightsail container service is a compute resource to which you can     deploy containers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainer {
     ///
     /// An object that describes the current container deployment of the container     service.
@@ -111,7 +111,7 @@ pub struct CfnContainer {
     pub att_url: CfnContainerurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ContainerPowerEnum {
     /// large
     #[serde(rename = "large")]
@@ -144,7 +144,7 @@ impl Default for ContainerPowerEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainercontainerarn;
 impl CfnContainercontainerarn {
     pub fn att_name(&self) -> &'static str {
@@ -152,7 +152,7 @@ impl CfnContainercontainerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainerurl;
 impl CfnContainerurl {
     pub fn att_name(&self) -> &'static str {
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for CfnContainer {
 }
 
 /// Container is a property of the ContainerServiceDeployment property. It describes the settings of a container     that will be launched, or that is launched, to an Amazon Lightsail container     service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Container {
     ///
     /// The launch command for the container.
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for Container {
 /// ContainerServiceDeployment is a property of the AWS::Lightsail::Container resource. It describes a container deployment     configuration of a container service.
 ///
 /// A deployment specifies the settings, such as the ports and launch command, of containers     that are deployed to your container service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerServiceDeployment {
     ///
     /// An object that describes the configuration for the containers of the deployment.
@@ -327,7 +327,7 @@ impl cfn_resources::CfnResource for ContainerServiceDeployment {
 }
 
 /// EnvironmentVariable is a property of the Container property. It describes the environment variables of a container on a container service which are key-value parameters that     provide dynamic configuration of the application or script run by the container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable value.
@@ -369,7 +369,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 }
 
 /// HealthCheckConfig is a property of the PublicEndpoint property. It describes the healthcheck configuration of a     container deployment on a container service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckConfig {
     ///
     /// The number of consecutive health check successes required before moving the container     to the Healthy state. The default value is 2.
@@ -459,7 +459,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 }
 
 /// PortInfo is a property of the Container property. It describes the ports to open and the protocols to use for     a container on a Amazon Lightsail container service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortInfo {
     ///
     /// The open firewall ports of the container.
@@ -488,7 +488,7 @@ pub struct PortInfo {
     pub protocol: Option<PortInfoProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortInfoProtocolEnum {
     /// HTTP
     #[serde(rename = "HTTP")]
@@ -528,7 +528,7 @@ impl cfn_resources::CfnResource for PortInfo {
 }
 
 /// PublicDomainName is a property of the AWS::Lightsail::Container resource. It describes the public domain names to use     with a container service, such as example.com and     www.example.com. It also describes the certificates to use with a container     service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicDomainName {
     ///
     /// The name of the certificate for the public domains.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for PublicDomainName {
 }
 
 /// PublicEndpoint is a property of the ContainerServiceDeployment property. It describes describes the settings of the     public endpoint of a container on a container service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicEndpoint {
     ///
     /// The name of the container entry of the deployment that the endpoint configuration     applies to.
@@ -634,7 +634,7 @@ impl cfn_resources::CfnResource for PublicEndpoint {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Sets the specified view as the default for the AWS Region in which       you call this operation. If a user makes a search query that doesn't explicitly specify       the view to use, Resource Explorer chooses this default view automatically for searches       performed in this AWS Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDefaultViewAssociation {
     ///
     /// The ARN of the view to set as the default for the AWS Region and         AWS account in which you call this operation. The specified view       must already exist in the specified Region.
@@ -20,7 +20,7 @@ pub struct CfnDefaultViewAssociation {
     pub att_associated_aws_principal: CfnDefaultViewAssociationassociatedawsprincipal,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDefaultViewAssociationassociatedawsprincipal;
 impl CfnDefaultViewAssociationassociatedawsprincipal {
     pub fn att_name(&self) -> &'static str {

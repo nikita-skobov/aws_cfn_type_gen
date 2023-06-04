@@ -1,7 +1,7 @@
 /// Creates a target group. A target group is a collection of targets, or compute resources,  that run your application or service. A target group can only be used by a single service.
 ///
 /// For more information, see Target groups in the   Amazon VPC Lattice User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGroup {
     ///
     /// The target group configuration. If type is set to LAMBDA, this  parameter doesn't apply.
@@ -80,7 +80,7 @@ pub struct CfnTargetGroup {
     pub att_status: CfnTargetGroupstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGrouparn;
 impl CfnTargetGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl CfnTargetGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGroupcreatedat;
 impl CfnTargetGroupcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnTargetGroupcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGroupid;
 impl CfnTargetGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnTargetGroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGrouplastupdatedat;
 impl CfnTargetGrouplastupdatedat {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnTargetGrouplastupdatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTargetGroupstatus;
 impl CfnTargetGroupstatus {
     pub fn att_name(&self) -> &'static str {
@@ -137,7 +137,7 @@ impl cfn_resources::CfnResource for CfnTargetGroup {
 }
 
 /// The health check configuration of a target group. Health check configurations aren't used  for LAMBDA and ALB target groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckConfig {
     ///
     /// Indicates whether health checking is enabled.
@@ -277,7 +277,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 }
 
 /// The codes to use when checking for a successful response from a target for health  checks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Matcher {
     ///
     /// The HTTP code to use when checking for a successful response from a target.
@@ -312,7 +312,7 @@ impl cfn_resources::CfnResource for Matcher {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -350,7 +350,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Target {
     ///
     /// The ID of the target. If the target type of the target group is INSTANCE, this  is an instance ID. If the target type is IP , this is an IP address. If the target  type is LAMBDA, this is the ARN of the Lambda function. If the target type is   ALB, this is the ARN of the Application Load Balancer.
@@ -391,7 +391,7 @@ impl cfn_resources::CfnResource for Target {
 }
 
 /// Describes the configuration of a target group. Lambda functions don't support target group  configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupConfig {
     ///
     /// The health check configuration.

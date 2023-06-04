@@ -1,5 +1,5 @@
 /// The AWS::AppSync::ApiKey resource creates a unique key that you can distribute to clients who     are executing GraphQL operations with AWS AppSync that require an API key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiKey {
     ///
     /// Unique AWS AppSync GraphQL API ID for this API key.
@@ -55,7 +55,7 @@ pub struct CfnApiKey {
     pub att_arn: CfnApiKeyarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiKeyapikey;
 impl CfnApiKeyapikey {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnApiKeyapikey {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiKeyarn;
 impl CfnApiKeyarn {
     pub fn att_name(&self) -> &'static str {

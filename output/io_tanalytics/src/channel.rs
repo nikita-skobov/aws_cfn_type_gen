@@ -1,5 +1,5 @@
 /// The AWS::IoTAnalytics::Channel resource collects data from an MQTT topic and archives the      raw, unprocessed messages before publishing the data to a pipeline. For more information, see             How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnChannel {
     ///
     /// The name of the channel.
@@ -63,7 +63,7 @@ pub struct CfnChannel {
     pub att_id: CfnChannelid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnChannelid;
 impl CfnChannelid {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl cfn_resources::CfnResource for CfnChannel {
 }
 
 /// Where channel data is stored. You may choose one of serviceManagedS3,     customerManagedS3 storage. If not specified, the default is     serviceManagedS3. This can't be changed after creation of the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChannelStorage {
     ///
     /// Used to store channel data in an S3 bucket that you manage. If customer managed storage is    selected, the retentionPeriod parameter is ignored. You can't change the choice    of S3 storage after the data store is created.
@@ -171,7 +171,7 @@ impl cfn_resources::CfnResource for ChannelStorage {
 }
 
 /// Used to store channel data in an S3 bucket that you manage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomerManagedS3 {
     ///
     /// The name of the S3 bucket in which channel data is stored.
@@ -305,7 +305,7 @@ impl cfn_resources::CfnResource for CustomerManagedS3 {
 }
 
 /// How long, in days, message data is kept.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetentionPeriod {
     ///
     /// The number of days that message data is kept. The unlimited parameter must be    false.
@@ -364,7 +364,7 @@ impl cfn_resources::CfnResource for RetentionPeriod {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

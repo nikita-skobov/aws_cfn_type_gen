@@ -3,7 +3,7 @@
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// A description of the application.
@@ -108,7 +108,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// Metadata to assign to the application. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tags {
     ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.

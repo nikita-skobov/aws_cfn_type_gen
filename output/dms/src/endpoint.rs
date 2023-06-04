@@ -1,7 +1,7 @@
 /// The AWS::DMS::Endpoint resource specifies an AWS DMS endpoint.
 ///
 /// Currently, AWS CloudFormation supports all AWS DMS endpoint types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpoint {
     ///
     /// The Amazon Resource Name (ARN) for the certificate.
@@ -395,7 +395,7 @@ pub struct CfnEndpoint {
     pub att_external_id: CfnEndpointexternalid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointEndpointTypeEnum {
     /// source
     #[serde(rename = "source")]
@@ -412,7 +412,7 @@ impl Default for EndpointEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointSslModeEnum {
     /// none
     #[serde(rename = "none")]
@@ -437,7 +437,7 @@ impl Default for EndpointSslModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointexternalid;
 impl CfnEndpointexternalid {
     pub fn att_name(&self) -> &'static str {
@@ -528,7 +528,7 @@ impl cfn_resources::CfnResource for CfnEndpoint {
 }
 
 /// Provides information that defines a DocumentDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using extra connections attributes with Amazon DocumentDB as a source and               Using Amazon DocumentDB as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocDbSettings {
     ///
     /// Indicates the number of documents to preview to determine the document organization.     Use this setting when NestingLevel is set to "one".
@@ -601,7 +601,7 @@ pub struct DocDbSettings {
     pub secrets_manager_secret_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocDbSettingsNestingLevelEnum {
     /// none
     #[serde(rename = "none")]
@@ -633,7 +633,7 @@ impl cfn_resources::CfnResource for DocDbSettings {
 }
 
 /// Provides information, including the Amazon Resource Name (ARN) of the IAM        role used to define an Amazon DynamoDB target endpoint. This       information also includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Using object mapping to migrate data to DynamoDB       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDbSettings {
     ///
     /// The Amazon Resource Name (ARN) used by the service to access the IAM role. The role must allow the iam:PassRole action.
@@ -663,7 +663,7 @@ impl cfn_resources::CfnResource for DynamoDbSettings {
 }
 
 /// Provides information that defines an OpenSearch endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using OpenSearch as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchSettings {
     ///
     /// The endpoint for the OpenSearch cluster. AWS DMS uses HTTPS if a transport      protocol (either HTTP or HTTPS) isn't specified.
@@ -731,7 +731,7 @@ impl cfn_resources::CfnResource for ElasticsearchSettings {
 }
 
 /// Provides information that defines a GCP MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. These settings are much the same as       the settings for any MySQL-compatible endpoint. For more information, see               Extra connection attributes when using MySQL as a source for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GcpMySQLSettings {
     ///
     /// Specifies a script to run immediately after AWS DMS connects to the endpoint.      The migration task continues running regardless if the SQL statement succeeds or fails.
@@ -919,7 +919,7 @@ impl cfn_resources::CfnResource for GcpMySQLSettings {
 }
 
 /// Provides information that defines an IBMDB2 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Db2 LUW as a source for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IbmDb2Settings {
     ///
     /// For ongoing replication (CDC), use CurrentLSN to specify a     log sequence number (LSN) where you want the replication     to start.
@@ -999,7 +999,7 @@ impl cfn_resources::CfnResource for IbmDb2Settings {
 }
 
 /// Provides information that describes an Apache Kafka endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Using object mapping to migrate data to a Kafka topic       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KafkaSettings {
     ///
     /// A comma-separated list of one or more broker locations in your Kafka cluster that host your Kafka instance. Specify each broker location       in the form broker-hostname-or-ip:port.       For example, "ec2-12-345-678-901.compute-1.amazonaws.com:2345".       For more information and examples of specifying a list of broker locations, see                Using Apache Kafka as a target for AWS Database Migration Service       in the AWS Database Migration Service User Guide.
@@ -1222,7 +1222,7 @@ pub struct KafkaSettings {
     pub topic: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KafkaSettingsMessageFormatEnum {
     /// json
     #[serde(rename = "json")]
@@ -1239,7 +1239,7 @@ impl Default for KafkaSettingsMessageFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KafkaSettingsSecurityProtocolEnum {
     /// plaintext
     #[serde(rename = "plaintext")]
@@ -1279,7 +1279,7 @@ impl cfn_resources::CfnResource for KafkaSettings {
 }
 
 /// Provides information that describes an Amazon Kinesis Data Stream endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Using object mapping to migrate data to a Kinesis data stream       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisSettings {
     ///
     /// Shows detailed control information for table definition, column definition, and table       and column changes in the Kinesis message output. The default is false.
@@ -1404,7 +1404,7 @@ pub struct KinesisSettings {
     pub stream_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KinesisSettingsMessageFormatEnum {
     /// json
     #[serde(rename = "json")]
@@ -1436,7 +1436,7 @@ impl cfn_resources::CfnResource for KinesisSettings {
 }
 
 /// Provides information that defines a Microsoft SQL Server endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SQL Server as a source for AWS DMS and                Extra connection attributes when using SQL Server as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MicrosoftSqlServerSettings {
     ///
     /// The maximum size of the packets (in bytes) used to transfer     data using BCP.
@@ -1568,7 +1568,7 @@ impl cfn_resources::CfnResource for MicrosoftSqlServerSettings {
 }
 
 /// Provides information that defines a MongoDB endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see                Endpoint configuration settings when using MongoDB as a source for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MongoDbSettings {
     ///
     /// The authentication mechanism you use to access the MongoDB source endpoint.
@@ -1747,7 +1747,7 @@ pub struct MongoDbSettings {
     pub username: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MongoDbSettingsAuthMechanismEnum {
     /// default
     #[serde(rename = "default")]
@@ -1768,7 +1768,7 @@ impl Default for MongoDbSettingsAuthMechanismEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MongoDbSettingsAuthTypeEnum {
     /// no
     #[serde(rename = "no")]
@@ -1785,7 +1785,7 @@ impl Default for MongoDbSettingsAuthTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MongoDbSettingsNestingLevelEnum {
     /// none
     #[serde(rename = "none")]
@@ -1817,7 +1817,7 @@ impl cfn_resources::CfnResource for MongoDbSettings {
 }
 
 /// Provides information that defines a MySQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using MySQL as a source for AWS DMS and               Extra connection attributes when using a MySQL-compatible database as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MySqlSettings {
     ///
     /// Specifies a script to run immediately after AWS DMS     connects to the endpoint. The migration task continues     running regardless if the SQL statement succeeds or fails.
@@ -1961,7 +1961,7 @@ impl cfn_resources::CfnResource for MySqlSettings {
 }
 
 /// Provides information that defines an Amazon Neptune endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Specifying endpoint settings for Amazon Neptune as a target       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NeptuneSettings {
     ///
     /// The number of milliseconds for AWS DMS to wait to retry a bulk-load of migrated graph     data to the Neptune target database before raising an error. The default is 250.
@@ -2065,7 +2065,7 @@ impl cfn_resources::CfnResource for NeptuneSettings {
 }
 
 /// Provides information that defines an Oracle endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using Oracle as a source for AWS DMS and                Extra connection attributes when using Oracle as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OracleSettings {
     ///
     /// Set this attribute to false in order to use the Binary Reader     to capture change data for an Amazon RDS for Oracle as the     source. This tells the DMS instance to not access redo logs     through any specified path prefix replacement using direct     file access.
@@ -2518,7 +2518,7 @@ pub struct OracleSettings {
     pub use_path_prefix: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OracleSettingsCharLengthSemanticsEnum {
     /// byte
     #[serde(rename = "byte")]
@@ -2554,7 +2554,7 @@ impl cfn_resources::CfnResource for OracleSettings {
 }
 
 /// Provides information that defines a PostgreSQL endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see                Extra connection attributes when using PostgreSQL as a source for AWS DMS and               Extra connection attributes when using PostgreSQL as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PostgreSqlSettings {
     ///
     /// For use with change data capture (CDC) only, this attribute     has AWS DMS bypass foreign keys and user triggers to     reduce the time it takes to bulk load data.
@@ -2757,7 +2757,7 @@ impl cfn_resources::CfnResource for PostgreSqlSettings {
 }
 
 /// Provides information that defines a Redis target endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Specifying endpoint settings for Redis as a target       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedisSettings {
     ///
     /// The password provided with the auth-role and      auth-token options of the AuthType setting for a Redis      target endpoint.
@@ -2850,7 +2850,7 @@ pub struct RedisSettings {
     pub ssl_security_protocol: Option<RedisSettingsSslSecurityProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedisSettingsAuthTypeEnum {
     /// auth-role
     #[serde(rename = "auth-role")]
@@ -2871,7 +2871,7 @@ impl Default for RedisSettingsAuthTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedisSettingsSslSecurityProtocolEnum {
     /// plaintext
     #[serde(rename = "plaintext")]
@@ -2903,7 +2903,7 @@ impl cfn_resources::CfnResource for RedisSettings {
 }
 
 /// Provides information that defines an Amazon Redshift endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about other available settings, see               Extra connection attributes when using Amazon Redshift as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftSettings {
     ///
     /// A value that indicates to allow any date format, including invalid formats such as     00/00/00 00:00:00, to be loaded without generating an error. You can choose       true or false (the default).
@@ -3239,7 +3239,7 @@ pub struct RedshiftSettings {
     pub write_buffer_size: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedshiftSettingsEncryptionModeEnum {
     /// sse-kms
     #[serde(rename = "sse-kms")]
@@ -3271,7 +3271,7 @@ impl cfn_resources::CfnResource for RedshiftSettings {
 }
 
 /// Provides information that defines an Amazon S3 endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For more information about the available settings, see               Extra connection attributes when using Amazon S3 as a source for AWS DMS and               Extra connection attributes when using Amazon S3 as a target for AWS DMS       in theAWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Settings {
     ///
     /// An optional parameter that, when set to true or y, you can use     to add column name information to the .csv output file.
@@ -3838,7 +3838,7 @@ pub struct S3Settings {
     pub use_task_start_time_for_full_load_timestamp: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsCannedAclForObjectsEnum {
     /// authenticated-read
     #[serde(rename = "authenticated-read")]
@@ -3879,7 +3879,7 @@ impl Default for S3SettingsCannedAclForObjectsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsCompressionTypeEnum {
     /// gzip
     #[serde(rename = "gzip")]
@@ -3896,7 +3896,7 @@ impl Default for S3SettingsCompressionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsDataFormatEnum {
     /// csv
     #[serde(rename = "csv")]
@@ -3913,7 +3913,7 @@ impl Default for S3SettingsDataFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsDatePartitionDelimiterEnum {
     /// DASH
     #[serde(rename = "DASH")]
@@ -3938,7 +3938,7 @@ impl Default for S3SettingsDatePartitionDelimiterEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsDatePartitionSequenceEnum {
     /// DDMMYYYY
     #[serde(rename = "DDMMYYYY")]
@@ -3967,7 +3967,7 @@ impl Default for S3SettingsDatePartitionSequenceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsEncodingTypeEnum {
     /// plain
     #[serde(rename = "plain")]
@@ -3988,7 +3988,7 @@ impl Default for S3SettingsEncodingTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsEncryptionModeEnum {
     /// sse-kms
     #[serde(rename = "sse-kms")]
@@ -4005,7 +4005,7 @@ impl Default for S3SettingsEncryptionModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3SettingsParquetVersionEnum {
     /// parquet-1-0
     #[serde(rename = "parquet-1-0")]
@@ -4037,7 +4037,7 @@ impl cfn_resources::CfnResource for S3Settings {
 }
 
 /// Provides information that defines a SAP ASE endpoint. This       information includes the output format of records applied to the endpoint and details of       transaction and control table data information. For information about other available settings, see               Extra connection attributes when using SAP ASE as a source for AWS DMS and               Extra connection attributes when using SAP ASE as a target for AWS DMS       in the AWS Database Migration Service User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SybaseSettings {
     ///
     /// The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the       trusted entity and grants the required permissions to access the value in       SecretsManagerSecret. The role must allow the iam:PassRole action.       SecretsManagerSecret has the value of the AWS Secrets Manager       secret that allows access to the SAP ASE endpoint.
@@ -4087,7 +4087,7 @@ impl cfn_resources::CfnResource for SybaseSettings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

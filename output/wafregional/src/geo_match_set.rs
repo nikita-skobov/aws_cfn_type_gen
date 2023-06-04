@@ -1,5 +1,5 @@
 /// Contains one or more countries that AWS WAF will search for.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeoMatchSet {
     ///
     /// An array of GeoMatchConstraint objects, which contain the country that you want AWS WAF to search for.
@@ -68,7 +68,7 @@ impl cfn_resources::CfnResource for CfnGeoMatchSet {
 }
 
 /// The country from which web requests originate that you want AWS WAF to search for.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeoMatchConstraint {
     ///
     /// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
@@ -97,7 +97,7 @@ pub struct GeoMatchConstraint {
     pub value: GeoMatchConstraintValueEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeoMatchConstraintTypeEnum {
     /// Country
     #[serde(rename = "Country")]
@@ -110,7 +110,7 @@ impl Default for GeoMatchConstraintTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeoMatchConstraintValueEnum {
     /// AD
     #[serde(rename = "AD")]

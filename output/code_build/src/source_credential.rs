@@ -1,5 +1,5 @@
 /// Information about the credentials for a GitHub, GitHub Enterprise, or Bitbucket repository. We strongly recommend that you      use AWS Secrets Manager to store your credentials. If you use      Secrets Manager, you must have secrets in your secrets manager. For more       information, see         Using Dynamic References to Specify Template Values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSourceCredential {
     ///
     /// The type of authentication used by the credentials. Valid options are OAUTH,       BASIC_AUTH, or PERSONAL_ACCESS_TOKEN.
@@ -55,7 +55,7 @@ pub struct CfnSourceCredential {
     pub username: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceCredentialAuthTypeEnum {
     /// BASIC_AUTH
     #[serde(rename = "BASIC_AUTH")]
@@ -76,7 +76,7 @@ impl Default for SourceCredentialAuthTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceCredentialServerTypeEnum {
     /// BITBUCKET
     #[serde(rename = "BITBUCKET")]

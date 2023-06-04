@@ -1,5 +1,5 @@
 /// Mission profiles specify parameters and provide references to config objects to define how Ground Station lists and executes contacts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMissionProfile {
     ///
     /// Amount of time in seconds after a contact ends that you’d like to receive a CloudWatch Event indicating the pass has finished.       For more information on CloudWatch Events, see the What Is CloudWatch Events?
@@ -113,7 +113,7 @@ pub struct CfnMissionProfile {
     pub att_region: CfnMissionProfileregion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMissionProfilearn;
 impl CfnMissionProfilearn {
     pub fn att_name(&self) -> &'static str {
@@ -121,7 +121,7 @@ impl CfnMissionProfilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMissionProfileid;
 impl CfnMissionProfileid {
     pub fn att_name(&self) -> &'static str {
@@ -129,7 +129,7 @@ impl CfnMissionProfileid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMissionProfileregion;
 impl CfnMissionProfileregion {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl cfn_resources::CfnResource for CfnMissionProfile {
 }
 
 /// A dataflow edge defines from where and to where data will flow during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataflowEdge {
     ///
     /// The ARN of the destination for this dataflow edge.       For example, specify the ARN of a dataflow endpoint config for a downlink edge or an antenna uplink config for an uplink edge.
@@ -198,7 +198,7 @@ impl cfn_resources::CfnResource for DataflowEdge {
 }
 
 /// The StreamsKmsKey property type specifies Property description not available. for an AWS::GroundStation::MissionProfile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamsKmsKey {
     /// Property description not available.
     ///
@@ -244,7 +244,7 @@ impl cfn_resources::CfnResource for StreamsKmsKey {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

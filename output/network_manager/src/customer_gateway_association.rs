@@ -1,7 +1,7 @@
 /// Specifies an association between a customer gateway, a device, and optionally, a link.       If you specify a link, it must be associated with the specified device. The customer       gateway must be connected to a VPN attachment on a transit gateway that's registered in       your global network.
 ///
 /// You cannot associate a customer gateway with more than one device and link.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomerGatewayAssociation {
     ///
     /// The Amazon Resource Name (ARN) of the customer gateway.

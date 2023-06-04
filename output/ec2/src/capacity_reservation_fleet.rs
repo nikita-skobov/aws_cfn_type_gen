@@ -1,5 +1,5 @@
 /// Creates a new Capacity Reservation Fleet with the specified attributes. For more     information, see Capacity Reservation Fleets in the Amazon EC2 User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationFleet {
     ///
     /// The strategy used by the Capacity Reservation Fleet to determine which of the 			specified instance types to use. Currently, only the prioritized 			allocation strategy is supported. For more information, see 				Allocation strategy in the Amazon EC2 User Guide.
@@ -125,7 +125,7 @@ pub struct CfnCapacityReservationFleet {
     pub att_capacity_reservation_fleet_id: CfnCapacityReservationFleetcapacityreservationfleetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationFleetInstanceMatchCriteriaEnum {
     /// open
     #[serde(rename = "open")]
@@ -138,7 +138,7 @@ impl Default for CapacityReservationFleetInstanceMatchCriteriaEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationFleetTenancyEnum {
     /// default
     #[serde(rename = "default")]
@@ -151,7 +151,7 @@ impl Default for CapacityReservationFleetTenancyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationFleetcapacityreservationfleetid;
 impl CfnCapacityReservationFleetcapacityreservationfleetid {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for CfnCapacityReservationFleet {
 /// Specifies information about an instance type to use in a Capacity Reservation     Fleet.
 ///
 /// InstanceTypeSpecification is a property of the       AWS::EC2::CapacityReservationFleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceTypeSpecification {
     ///
     /// The Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A Capacity 			Reservation Fleet can't span Availability Zones. All instance type specifications that you specify 			for the Fleet must use the same Availability Zone.
@@ -271,7 +271,7 @@ pub struct InstanceTypeSpecification {
     pub weight: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceTypeSpecificationInstancePlatformEnum {
     /// Linux with SQL Server Enterprise
     #[serde(rename = "Linux with SQL Server Enterprise")]
@@ -348,7 +348,7 @@ impl Default for InstanceTypeSpecificationInstancePlatformEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceTypeSpecificationInstanceTypeEnum {
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
@@ -2927,7 +2927,7 @@ impl cfn_resources::CfnResource for InstanceTypeSpecification {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2965,7 +2965,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag on creation. Specify     capacity-reservation-fleet.

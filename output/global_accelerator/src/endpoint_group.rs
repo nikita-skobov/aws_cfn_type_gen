@@ -1,5 +1,5 @@
 /// The AWS::GlobalAccelerator::EndpointGroup resource is a Global Accelerator resource type that contains information about 		how you create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one AWS Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointGroup {
     ///
     /// The list of endpoint objects.
@@ -155,7 +155,7 @@ pub struct CfnEndpointGroup {
     pub att_endpoint_group_arn: CfnEndpointGroupendpointgrouparn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointGroupHealthCheckProtocolEnum {
     /// HTTP
     #[serde(rename = "HTTP")]
@@ -176,7 +176,7 @@ impl Default for EndpointGroupHealthCheckProtocolEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointGroupendpointgrouparn;
 impl CfnEndpointGroupendpointgrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -289,7 +289,7 @@ impl cfn_resources::CfnResource for CfnEndpointGroup {
 }
 
 /// A complex type for endpoints. A resource must be valid and active when you add it as an endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointConfiguration {
     ///
     /// Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint. 			The value is true or false. The default value is true for new accelerators.
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 /// Override specific listener ports used to route traffic to endpoints that are part of an endpoint group. 			For example, you can create a port override in which the listener 			receives user traffic on ports 80 and 443, but your accelerator routes that traffic to ports 1080 			and 1443, respectively, on the endpoints.
 ///
 /// For more information, see 			Port overrides in the AWS Global Accelerator Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortOverride {
     ///
     /// The endpoint port that you want a listener port to be mapped to. This is the port on the endpoint, 		  such as the Application Load Balancer or Amazon EC2 instance.

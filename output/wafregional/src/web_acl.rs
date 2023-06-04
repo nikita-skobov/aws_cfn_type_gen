@@ -1,7 +1,7 @@
 /// Contains the Rules that identify the requests that you want to allow, block, or count. In a WebACL, you also specify a      default action (ALLOW or BLOCK), and the action for each Rule that you add to a      WebACL, for example, block requests from specified IP addresses or block requests from specified referrers.      If you add more than one Rule to a WebACL, a request needs to match only one of the specifications      to be allowed, blocked, or counted.
 ///
 /// To identify the requests that you want AWS WAF to filter, you associate the WebACL with an API Gateway API or an Application Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebACL {
     ///
     /// The action to perform if none of the Rules contained in the WebACL match. The action is specified by the      WafAction object.
@@ -122,7 +122,7 @@ impl cfn_resources::CfnResource for CfnWebACL {
 }
 
 /// Specifies the action AWS WAF takes when a web request matches or doesn't match all rule conditions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// For actions that are associated with a rule, the action that AWS WAF takes when a web request matches all conditions in a rule.
@@ -159,7 +159,7 @@ impl cfn_resources::CfnResource for Action {
 /// A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet objects that identify the web requests that you      want to allow, block, or count. For example, you might create a Rule that includes the following predicates:
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent     header for which the value is BadBot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// The action that AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request.

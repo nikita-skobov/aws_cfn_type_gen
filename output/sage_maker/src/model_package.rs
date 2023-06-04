@@ -1,5 +1,5 @@
 /// A versioned model that can be deployed for SageMaker inference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelPackage {
     ///
     /// A structure of additional Inference Specification. Additional Inference Specification       specifies details about inference jobs that can be run with models based on       this model package
@@ -380,7 +380,7 @@ pub struct CfnModelPackage {
     pub att_model_package_status: CfnModelPackagemodelpackagestatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ModelPackageModelApprovalStatusEnum {
     /// Approved
     #[serde(rename = "Approved")]
@@ -401,7 +401,7 @@ impl Default for ModelPackageModelApprovalStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelPackagecreationtime;
 impl CfnModelPackagecreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -409,7 +409,7 @@ impl CfnModelPackagecreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelPackagemodelpackagearn;
 impl CfnModelPackagemodelpackagearn {
     pub fn att_name(&self) -> &'static str {
@@ -417,7 +417,7 @@ impl CfnModelPackagemodelpackagearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelPackagemodelpackagestatus;
 impl CfnModelPackagemodelpackagestatus {
     pub fn att_name(&self) -> &'static str {
@@ -559,7 +559,7 @@ impl cfn_resources::CfnResource for CfnModelPackage {
 }
 
 /// A structure of additional Inference Specification. Additional Inference Specification       specifies details about inference jobs that can be run with models based on       this model package
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// The Amazon ECR registry path of the Docker image that contains the inference code.
@@ -713,7 +713,7 @@ impl cfn_resources::CfnResource for AdditionalInferenceSpecificationDefinition {
 }
 
 /// Contains bias metrics for a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Bias {
     ///
     /// The post-training bias report for a model.
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for Bias {
 }
 
 /// Describes the location of the channel data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSource {
     ///
     /// The S3 location of the data source that is associated with a channel.
@@ -808,7 +808,7 @@ impl cfn_resources::CfnResource for DataSource {
 }
 
 /// Represents the drift check baselines that can be used when the model monitor is set using the model       package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DriftCheckBaselines {
     ///
     /// Represents the drift check bias baselines that can be used when the model monitor is set using the model       package.
@@ -888,7 +888,7 @@ impl cfn_resources::CfnResource for DriftCheckBaselines {
 }
 
 /// Represents the drift check bias baselines that can be used when the model monitor is set using the       model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DriftCheckBias {
     ///
     /// The bias config file for a model.
@@ -954,7 +954,7 @@ impl cfn_resources::CfnResource for DriftCheckBias {
 }
 
 /// Represents the drift check explainability baselines that can be used when the model monitor is set       using the model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DriftCheckExplainability {
     ///
     /// The explainability config file for the model.
@@ -1004,7 +1004,7 @@ impl cfn_resources::CfnResource for DriftCheckExplainability {
 }
 
 /// Represents the drift check data quality baselines that can be used when the model monitor is set using       the model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DriftCheckModelDataQuality {
     ///
     /// The drift check model data quality constraints.
@@ -1054,7 +1054,7 @@ impl cfn_resources::CfnResource for DriftCheckModelDataQuality {
 }
 
 /// Represents the drift check model quality baselines that can be used when the model monitor is set using       the model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DriftCheckModelQuality {
     ///
     /// The drift check model quality constraints.
@@ -1104,7 +1104,7 @@ impl cfn_resources::CfnResource for DriftCheckModelQuality {
 }
 
 /// Contains explainability metrics for a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Explainability {
     ///
     /// The explainability report for a model.
@@ -1136,7 +1136,7 @@ impl cfn_resources::CfnResource for Explainability {
 }
 
 /// Contains details regarding the file source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileSource {
     ///
     /// The digest of the file source.
@@ -1234,7 +1234,7 @@ impl cfn_resources::CfnResource for FileSource {
 }
 
 /// Defines how to perform inference generation after a training job is run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceSpecification {
     ///
     /// The Amazon ECR registry path of the Docker image that contains the inference code.
@@ -1324,7 +1324,7 @@ impl cfn_resources::CfnResource for InferenceSpecification {
 }
 
 /// Metadata properties of the tracking entity, trial, or trial component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetadataProperties {
     ///
     /// The commit ID.
@@ -1450,7 +1450,7 @@ impl cfn_resources::CfnResource for MetadataProperties {
 }
 
 /// Details about the metrics source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricsSource {
     ///
     /// The hash key used for the metrics source.
@@ -1547,7 +1547,7 @@ impl cfn_resources::CfnResource for MetricsSource {
 }
 
 /// Data quality constraints and statistics for a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelDataQuality {
     ///
     /// Data quality constraints for a model.
@@ -1597,7 +1597,7 @@ impl cfn_resources::CfnResource for ModelDataQuality {
 }
 
 /// Input object for the model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelInput {
     ///
     /// The input configuration object for the model.
@@ -1654,7 +1654,7 @@ impl cfn_resources::CfnResource for ModelInput {
 }
 
 /// Contains metrics captured from a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelMetrics {
     ///
     /// Metrics that measure bais in a model.
@@ -1734,7 +1734,7 @@ impl cfn_resources::CfnResource for ModelMetrics {
 }
 
 /// Describes the Docker container for the model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelPackageContainerDefinition {
     ///
     /// The DNS host name for the Docker container.
@@ -1979,7 +1979,7 @@ impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
 }
 
 /// Specifies the validation and image scan statuses of the model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelPackageStatusDetails {
     ///
     /// The status of the scan of the Docker image container for the model package.
@@ -2020,7 +2020,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusDetails {
 }
 
 /// Represents the overall status of a model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelPackageStatusItem {
     ///
     /// if the overall status is Failed, the reason for the failure.
@@ -2065,7 +2065,7 @@ pub struct ModelPackageStatusItem {
     pub status: ModelPackageStatusItemStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ModelPackageStatusItemStatusEnum {
     /// Completed
     #[serde(rename = "Completed")]
@@ -2127,7 +2127,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusItem {
 }
 
 /// Model quality statistics and constraints.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelQuality {
     ///
     /// Model quality constraints.
@@ -2179,7 +2179,7 @@ impl cfn_resources::CfnResource for ModelQuality {
 /// Describes the S3 data source.
 ///
 /// Your input bucket must be in the same AWS region as your training job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3DataSource {
     ///
     /// If you choose S3Prefix, S3Uri identifies a key name prefix.       SageMaker uses all objects that match the specified key name prefix for model training.
@@ -2218,7 +2218,7 @@ pub struct S3DataSource {
     pub s3_uri: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3DataSourceS3DataTypeEnum {
     /// AugmentedManifestFile
     #[serde(rename = "AugmentedManifestFile")]
@@ -2265,7 +2265,7 @@ impl cfn_resources::CfnResource for S3DataSource {
 }
 
 /// Specifies an algorithm that was used to create the model package. The algorithm must       be either an algorithm resource in your SageMaker account or an algorithm in AWS Marketplace that you are subscribed to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceAlgorithm {
     ///
     /// The name of an algorithm that was used to create the model package. The algorithm must       be either an algorithm resource in your SageMaker account or an algorithm in AWS Marketplace that you are subscribed to.
@@ -2351,7 +2351,7 @@ impl cfn_resources::CfnResource for SourceAlgorithm {
 }
 
 /// A list of algorithms that were used to create a model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceAlgorithmSpecification {
     ///
     /// A list of the algorithms that were used to create a model package.
@@ -2397,7 +2397,7 @@ impl cfn_resources::CfnResource for SourceAlgorithmSpecification {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2435,7 +2435,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the input source of a transform job and the way the transform job consumes       it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformInput {
     ///
     /// If your transform data       is       compressed, specify the compression type. Amazon SageMaker automatically       decompresses the data for the transform job accordingly. The default value is         None.
@@ -2499,7 +2499,7 @@ pub struct TransformInput {
     pub split_type: Option<TransformInputSplitTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformInputCompressionTypeEnum {
     /// Gzip
     #[serde(rename = "Gzip")]
@@ -2516,7 +2516,7 @@ impl Default for TransformInputCompressionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformInputSplitTypeEnum {
     /// Line
     #[serde(rename = "Line")]
@@ -2569,7 +2569,7 @@ impl cfn_resources::CfnResource for TransformInput {
 }
 
 /// Defines the input needed to run a transform job using the inference specification       specified in the algorithm.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformJobDefinition {
     ///
     /// A string that determines the number of records included in a single mini-batch.
@@ -2661,7 +2661,7 @@ pub struct TransformJobDefinition {
     pub transform_resources: TransformResources,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformJobDefinitionBatchStrategyEnum {
     /// MultiRecord
     #[serde(rename = "MultiRecord")]
@@ -2717,7 +2717,7 @@ impl cfn_resources::CfnResource for TransformJobDefinition {
 }
 
 /// Describes the results of a transform job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformOutput {
     ///
     /// The MIME type used to specify the output data. Amazon SageMaker uses the MIME type with each http       call to transfer data from the transform job.
@@ -2789,7 +2789,7 @@ pub struct TransformOutput {
     pub s3_output_path: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformOutputAssembleWithEnum {
     /// Line
     #[serde(rename = "Line")]
@@ -2854,7 +2854,7 @@ impl cfn_resources::CfnResource for TransformOutput {
 }
 
 /// Describes the resources, including ML instance types and ML instance count, to use for       transform job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformResources {
     ///
     /// The number of       ML       compute instances to use in the transform job. The default value is         1, and the maximum is 100. For distributed transform jobs,       specify a value greater than 1.
@@ -2905,7 +2905,7 @@ pub struct TransformResources {
     pub volume_kms_key_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformResourcesInstanceTypeEnum {
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
@@ -3074,7 +3074,7 @@ impl cfn_resources::CfnResource for TransformResources {
 }
 
 /// Information about the user who created or modified an experiment, trial, trial    component, lineage group, project, or model card.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserContext {
     ///
     /// The domain associated with the user.
@@ -3130,7 +3130,7 @@ impl cfn_resources::CfnResource for UserContext {
 /// Contains data, such as the inputs and targeted instance types that are used in the       process of validating the model package.
 ///
 /// The data provided in the validation profile is made available to your buyers on AWS       Marketplace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValidationProfile {
     ///
     /// The name of the profile for the model package.
@@ -3200,7 +3200,7 @@ impl cfn_resources::CfnResource for ValidationProfile {
 }
 
 /// Specifies batch transform jobs that SageMaker runs to validate your model package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValidationSpecification {
     ///
     /// An array of ModelPackageValidationProfile objects, each of which       specifies a batch transform job that SageMaker runs to validate your model package.

@@ -3,7 +3,7 @@
 /// This makes it possible to block public access to the origin, allowing viewers (users) to 			access the origin's content only through CloudFront.
 ///
 /// For more information about using a CloudFront origin access control, see Restricting access to an AWS origin in the 				Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOriginAccessControl {
     ///
     /// The origin access control.
@@ -20,7 +20,7 @@ pub struct CfnOriginAccessControl {
     pub att_id: CfnOriginAccessControlid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOriginAccessControlid;
 impl CfnOriginAccessControlid {
     pub fn att_name(&self) -> &'static str {
@@ -49,7 +49,7 @@ impl cfn_resources::CfnResource for CfnOriginAccessControl {
 /// This makes it possible to block public access to the origin, allowing viewers (users) to 			access the origin's content only through CloudFront.
 ///
 /// For more information about using a CloudFront origin access control, see Restricting access to an AWS origin in the 				Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginAccessControlConfig {
     ///
     /// A description of the origin access control.
@@ -119,7 +119,7 @@ pub struct OriginAccessControlConfig {
     pub signing_protocol: OriginAccessControlConfigSigningProtocolEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
     /// mediastore
     #[serde(rename = "mediastore")]
@@ -136,7 +136,7 @@ impl Default for OriginAccessControlConfigOriginAccessControlOriginTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OriginAccessControlConfigSigningBehaviorEnum {
     /// always
     #[serde(rename = "always")]
@@ -157,7 +157,7 @@ impl Default for OriginAccessControlConfigSigningBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OriginAccessControlConfigSigningProtocolEnum {
     /// sigv4
     #[serde(rename = "sigv4")]

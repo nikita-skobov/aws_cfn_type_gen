@@ -1,5 +1,5 @@
 /// The AWS::IoT1Click::Device resource controls the enabled state of an AWS IoT 1-Click compatible device. For more information,      see Device in the AWS IoT 1-Click Devices API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDevice {
     ///
     /// The ID of the device, such as G030PX0312744DWM.
@@ -30,7 +30,7 @@ pub struct CfnDevice {
     pub att_device_id: CfnDevicedeviceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDevicearn;
 impl CfnDevicearn {
     pub fn att_name(&self) -> &'static str {
@@ -38,7 +38,7 @@ impl CfnDevicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDevicedeviceid;
 impl CfnDevicedeviceid {
     pub fn att_name(&self) -> &'static str {

@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::SimulationApplicationVersion resource creates a version     of an AWS RoboMaker simulation application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplicationVersion {
     ///
     /// The application information for the simulation application.
@@ -43,7 +43,7 @@ pub struct CfnSimulationApplicationVersion {
     pub att_arn: CfnSimulationApplicationVersionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplicationVersionapplicationversion;
 impl CfnSimulationApplicationVersionapplicationversion {
     pub fn att_name(&self) -> &'static str {
@@ -51,7 +51,7 @@ impl CfnSimulationApplicationVersionapplicationversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplicationVersionarn;
 impl CfnSimulationApplicationVersionarn {
     pub fn att_name(&self) -> &'static str {

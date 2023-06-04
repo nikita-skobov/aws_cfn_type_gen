@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::EndpointConfig resource creates a configuration       for an Amazon SageMaker endpoint. For more information, see CreateEndpointConfig       in the SageMaker Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointConfig {
     ///
     /// Specifies configuration for how an endpoint performs asynchronous inference.
@@ -121,7 +121,7 @@ pub struct CfnEndpointConfig {
     pub att_endpoint_config_name: CfnEndpointConfigendpointconfigname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointConfigendpointconfigname;
 impl CfnEndpointConfigendpointconfigname {
     pub fn att_name(&self) -> &'static str {
@@ -199,7 +199,7 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
 }
 
 /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AsyncInferenceClientConfig {
     ///
     /// The maximum number of concurrent requests sent by the SageMaker client to the model       container. If no value is provided, SageMaker will choose an optimal value for       you.
@@ -229,7 +229,7 @@ impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
 }
 
 /// Specifies configuration for how an endpoint performs asynchronous inference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AsyncInferenceConfig {
     ///
     /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
@@ -276,7 +276,7 @@ impl cfn_resources::CfnResource for AsyncInferenceConfig {
 }
 
 /// Specifies the configuration for notifications of inference results for asynchronous       inference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AsyncInferenceNotificationConfig {
     ///
     /// Amazon SNS topic to post a notification to when an inference fails. If no topic is       provided, no notification is sent on failure.
@@ -329,7 +329,7 @@ impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
 }
 
 /// Specifies the configuration for asynchronous inference invocation outputs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AsyncInferenceOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon       SageMaker uses to encrypt the asynchronous inference output in Amazon S3.
@@ -398,7 +398,7 @@ impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
 }
 
 /// Specifies the JSON and CSV content types of the data that the endpoint       captures.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptureContentTypeHeader {
     ///
     /// A list of the CSV content types of the data that the endpoint captures. For the       endpoint to capture the data, you must also specify the content type when you invoke the       endpoint.
@@ -462,7 +462,7 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 }
 
 /// Specifies whether the endpoint captures input data or output data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptureOption {
     ///
     /// Specifies whether the endpoint captures input data or output data.
@@ -478,7 +478,7 @@ pub struct CaptureOption {
     pub capture_mode: CaptureOptionCaptureModeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CaptureOptionCaptureModeEnum {
     /// Input
     #[serde(rename = "Input")]
@@ -510,7 +510,7 @@ impl cfn_resources::CfnResource for CaptureOption {
 }
 
 /// The ClarifyExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyExplainerConfig {
     /// Property description not available.
     ///
@@ -566,7 +566,7 @@ impl cfn_resources::CfnResource for ClarifyExplainerConfig {
 }
 
 /// The ClarifyFeatureType property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyFeatureType {}
 
 impl cfn_resources::CfnResource for ClarifyFeatureType {
@@ -584,7 +584,7 @@ impl cfn_resources::CfnResource for ClarifyFeatureType {
 }
 
 /// The ClarifyHeader property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyHeader {}
 
 impl cfn_resources::CfnResource for ClarifyHeader {
@@ -602,7 +602,7 @@ impl cfn_resources::CfnResource for ClarifyHeader {
 }
 
 /// The ClarifyInferenceConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyInferenceConfig {
     /// Property description not available.
     ///
@@ -741,7 +741,7 @@ impl cfn_resources::CfnResource for ClarifyInferenceConfig {
 }
 
 /// The ClarifyShapBaselineConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyShapBaselineConfig {
     /// Property description not available.
     ///
@@ -792,7 +792,7 @@ impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
 }
 
 /// The ClarifyShapConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyShapConfig {
     /// Property description not available.
     ///
@@ -870,7 +870,7 @@ impl cfn_resources::CfnResource for ClarifyShapConfig {
 }
 
 /// The ClarifyTextConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClarifyTextConfig {
     /// Property description not available.
     ///
@@ -908,7 +908,7 @@ impl cfn_resources::CfnResource for ClarifyTextConfig {
 }
 
 /// Specifies the configuration of your endpoint for model monitor data capture.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataCaptureConfig {
     ///
     /// A list of the JSON and CSV content type that the endpoint captures.
@@ -1059,7 +1059,7 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
 }
 
 /// The ExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExplainerConfig {
     /// Property description not available.
     ///
@@ -1092,7 +1092,7 @@ impl cfn_resources::CfnResource for ExplainerConfig {
 }
 
 /// Specifies a model that you want to host and the resources to deploy for hosting it.       If you are deploying multiple models, tell Amazon SageMaker how to distribute traffic       among the models by specifying the InitialVariantWeight objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProductionVariant {
     ///
     /// The size of the Elastic Inference (EI) instance to use for the production variant. EI       instances provide on-demand GPU computing for inference. For more information, see         Using Elastic         Inference in Amazon SageMaker. For more information, see Using Elastic Inference in         Amazon SageMaker.
@@ -1234,7 +1234,7 @@ pub struct ProductionVariant {
     pub volume_size_in_gb: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProductionVariantAcceleratorTypeEnum {
     /// ml.eia1.large
     #[serde(rename = "ml.eia1.large")]
@@ -1267,7 +1267,7 @@ impl Default for ProductionVariantAcceleratorTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProductionVariantInstanceTypeEnum {
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
@@ -1914,7 +1914,7 @@ impl cfn_resources::CfnResource for ProductionVariant {
 }
 
 /// Specifies the serverless configuration for an endpoint variant.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerlessConfig {
     ///
     /// The maximum number of concurrent invocations your serverless endpoint can process.
@@ -2015,7 +2015,7 @@ impl cfn_resources::CfnResource for ServerlessConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

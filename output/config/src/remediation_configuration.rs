@@ -1,5 +1,5 @@
 /// An object that represents the details about the remediation configuration that includes the remediation action, parameters, and data to execute the action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRemediationConfiguration {
     ///
     /// The remediation is triggered automatically.
@@ -143,7 +143,7 @@ pub struct CfnRemediationConfiguration {
     pub target_version: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RemediationConfigurationTargetTypeEnum {
     /// SSM_DOCUMENT
     #[serde(rename = "SSM_DOCUMENT")]
@@ -231,7 +231,7 @@ impl cfn_resources::CfnResource for CfnRemediationConfiguration {
 }
 
 /// An ExecutionControls object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExecutionControls {
     ///
     /// A SsmControls object.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for ExecutionControls {
 }
 
 /// The value is either a dynamic (resource) value or a static value. You must select either a dynamic value or a static value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemediationParameterValue {
     ///
     /// The value is dynamic and changes at run-time.
@@ -315,7 +315,7 @@ impl cfn_resources::CfnResource for RemediationParameterValue {
 }
 
 /// The dynamic value of the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceValue {
     ///
     /// The value is a resource ID.
@@ -332,7 +332,7 @@ pub struct ResourceValue {
     pub value: Option<ResourceValueValueEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceValueValueEnum {
     /// RESOURCE_ID
     #[serde(rename = "RESOURCE_ID")]
@@ -360,7 +360,7 @@ impl cfn_resources::CfnResource for ResourceValue {
 }
 
 /// AWS Systems Manager (SSM) specific remediation controls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SsmControls {
     ///
     /// The maximum percentage of remediation actions allowed to run in parallel on the non-compliant resources for that specific rule. You can specify a percentage, such as 10%. The default value is 10.
@@ -440,7 +440,7 @@ impl cfn_resources::CfnResource for SsmControls {
 }
 
 /// The static value of the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StaticValue {
     ///
     /// A list of values. For example, the ARN of the assumed role.

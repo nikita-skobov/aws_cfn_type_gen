@@ -1,5 +1,5 @@
 /// Specifies a product.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCloudFormationProduct {
     ///
     /// The language code.
@@ -191,7 +191,7 @@ pub struct CfnCloudFormationProduct {
     pub att_provisioning_artifact_names: CfnCloudFormationProductprovisioningartifactnames,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CloudFormationProductProductTypeEnum {
     /// CLOUD_FORMATION_TEMPLATE
     #[serde(rename = "CLOUD_FORMATION_TEMPLATE")]
@@ -212,7 +212,7 @@ impl Default for CloudFormationProductProductTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCloudFormationProductproductname;
 impl CfnCloudFormationProductproductname {
     pub fn att_name(&self) -> &'static str {
@@ -220,7 +220,7 @@ impl CfnCloudFormationProductproductname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCloudFormationProductprovisioningartifactids;
 impl CfnCloudFormationProductprovisioningartifactids {
     pub fn att_name(&self) -> &'static str {
@@ -228,7 +228,7 @@ impl CfnCloudFormationProductprovisioningartifactids {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCloudFormationProductprovisioningartifactnames;
 impl CfnCloudFormationProductprovisioningartifactnames {
     pub fn att_name(&self) -> &'static str {
@@ -349,7 +349,7 @@ impl cfn_resources::CfnResource for CfnCloudFormationProduct {
 }
 
 /// The subtype containing details about the Codestar connection Type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeStarParameters {
     ///
     /// The absolute path wehre the artifact resides within the repo and branch, formatted as      "folder/file.json."
@@ -517,7 +517,7 @@ impl cfn_resources::CfnResource for CodeStarParameters {
 }
 
 /// Provides connection details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionParameters {
     ///
     /// Provides ConnectionType details.
@@ -551,7 +551,7 @@ impl cfn_resources::CfnResource for ConnectionParameters {
 }
 
 /// Information about a provisioning artifact (also known as a version) for a product.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisioningArtifactProperties {
     ///
     /// The description of the provisioning artifact, including how it differs from the previous provisioning artifact.
@@ -627,7 +627,7 @@ pub struct ProvisioningArtifactProperties {
     pub cfn_type: Option<ProvisioningArtifactPropertiesTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProvisioningArtifactPropertiesTypeEnum {
     /// CLOUD_FORMATION_TEMPLATE
     #[serde(rename = "CLOUD_FORMATION_TEMPLATE")]
@@ -689,7 +689,7 @@ impl cfn_resources::CfnResource for ProvisioningArtifactProperties {
 }
 
 /// A top level ProductViewDetail response containing details about the product’s connection.     AWS Service Catalog returns this field for the CreateProduct, UpdateProduct,      DescribeProductAsAdmin, and SearchProductAsAdmin APIs.      This response contains the same fields as the ConnectionParameters request, with the      addition of the LastSync response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConnection {
     ///
     /// The connection details based on the connection Type.
@@ -737,7 +737,7 @@ impl cfn_resources::CfnResource for SourceConnection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

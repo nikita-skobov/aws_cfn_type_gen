@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Resource resource creates a resource in an API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResource {
     ///
     /// The parent resource's identifier.
@@ -38,7 +38,7 @@ pub struct CfnResource {
     pub att_resource_id: CfnResourceresourceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceresourceid;
 impl CfnResourceresourceid {
     pub fn att_name(&self) -> &'static str {

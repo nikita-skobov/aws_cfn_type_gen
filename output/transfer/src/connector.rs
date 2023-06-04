@@ -1,5 +1,5 @@
 /// Creates the connector, which captures the parameters for an outbound connection for the    AS2 protocol. The connector is required for sending files to an externally hosted AS2 server.    For more details about connectors, see Create AS2 connectors.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnector {
     ///
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
@@ -81,7 +81,7 @@ pub struct CfnConnector {
     pub att_connector_id: CfnConnectorconnectorid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorarn;
 impl CfnConnectorarn {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnConnectorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorconnectorid;
 impl CfnConnectorconnectorid {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnConnector {
 }
 
 /// A structure that contains the parameters for a connector object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct As2Config {
     ///
     /// Specifies whether the AS2 file is compressed.
@@ -311,7 +311,7 @@ pub struct As2Config {
     pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum As2ConfigCompressionEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -328,7 +328,7 @@ impl Default for As2ConfigCompressionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum As2ConfigEncryptionAlgorithmEnum {
     /// AES128_CBC
     #[serde(rename = "AES128_CBC")]
@@ -353,7 +353,7 @@ impl Default for As2ConfigEncryptionAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum As2ConfigMdnResponseEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -370,7 +370,7 @@ impl Default for As2ConfigMdnResponseEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum As2ConfigMdnSigningAlgorithmEnum {
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
@@ -403,7 +403,7 @@ impl Default for As2ConfigMdnSigningAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum As2ConfigSigningAlgorithmEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -516,7 +516,7 @@ impl cfn_resources::CfnResource for As2Config {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

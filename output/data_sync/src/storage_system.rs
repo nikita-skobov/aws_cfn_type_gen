@@ -1,5 +1,5 @@
 /// The AWS::DataSync::StorageSystem resource creates an AWS resource for an on-premises storage system that you want DataSync Discovery to collect     information about. For more information, see discovering your storage with DataSync Discovery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageSystem {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
@@ -110,7 +110,7 @@ pub struct CfnStorageSystem {
     pub att_storage_system_arn: CfnStorageSystemstoragesystemarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StorageSystemSystemTypeEnum {
     /// NetAppONTAP
     #[serde(rename = "NetAppONTAP")]
@@ -123,7 +123,7 @@ impl Default for StorageSystemSystemTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageSystemconnectivitystatus;
 impl CfnStorageSystemconnectivitystatus {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl CfnStorageSystemconnectivitystatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageSystemsecretsmanagerarn;
 impl CfnStorageSystemsecretsmanagerarn {
     pub fn att_name(&self) -> &'static str {
@@ -139,7 +139,7 @@ impl CfnStorageSystemsecretsmanagerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageSystemstoragesystemarn;
 impl CfnStorageSystemstoragesystemarn {
     pub fn att_name(&self) -> &'static str {
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
 }
 
 /// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerConfiguration {
     ///
     /// The domain name or IP address of your storage system's management interface.
@@ -296,7 +296,7 @@ impl cfn_resources::CfnResource for ServerConfiguration {
 /// The credentials that provide DataSync Discovery read access to your on-premises storage system's    management interface.
 ///
 /// DataSync Discovery stores these credentials in AWS Secrets Manager. For more    information, see Accessing your on-premises     storage system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerCredentials {
     ///
     /// Specifies the password for your storage system's management interface.
@@ -372,7 +372,7 @@ impl cfn_resources::CfnResource for ServerCredentials {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

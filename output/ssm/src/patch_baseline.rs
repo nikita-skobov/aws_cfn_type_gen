@@ -1,7 +1,7 @@
 /// The AWS::SSM::PatchBaseline resource defines the basic information for an     AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for     installation on your instances.
 ///
 /// For more information, see CreatePatchBaseline in the AWS Systems Manager API       Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPatchBaseline {
     ///
     /// A set of rules used to include patches in the baseline.
@@ -195,7 +195,7 @@ pub struct CfnPatchBaseline {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PatchBaselineApprovedPatchesComplianceLevelEnum {
     /// CRITICAL
     #[serde(rename = "CRITICAL")]
@@ -228,7 +228,7 @@ impl Default for PatchBaselineApprovedPatchesComplianceLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PatchBaselineOperatingSystemEnum {
     /// AMAZON_LINUX
     #[serde(rename = "AMAZON_LINUX")]
@@ -293,7 +293,7 @@ impl Default for PatchBaselineOperatingSystemEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PatchBaselineRejectedPatchesActionEnum {
     /// ALLOW_AS_DEPENDENCY
     #[serde(rename = "ALLOW_AS_DEPENDENCY")]
@@ -435,7 +435,7 @@ impl cfn_resources::CfnResource for CfnPatchBaseline {
 /// The PatchFilters property of the PatchFilterGroup property type contains a list of PatchFilter property    types.
 ///
 /// You can view lists of valid values for the patch properties by running the   DescribePatchProperties command. For more information, see DescribePatchProperties in the AWS Systems Manager API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PatchFilter {
     ///
     /// The key for the filter.
@@ -470,7 +470,7 @@ pub struct PatchFilter {
     pub values: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PatchFilterKeyEnum {
     /// ADVISORY_ID
     #[serde(rename = "ADVISORY_ID")]
@@ -581,7 +581,7 @@ impl cfn_resources::CfnResource for PatchFilter {
 /// The PatchFilterGroup property type specifies a set of patch filters for an    AWS Systems Manager patch baseline, typically used for approval rules for a Systems Manager    patch baseline.
 ///
 /// PatchFilterGroup is the property type for the GlobalFilters property    of the AWS::SSM::PatchBaseline resource and the PatchFilterGroup property of    the Rule property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PatchFilterGroup {
     ///
     /// The set of patch filters that make up the group.
@@ -624,7 +624,7 @@ impl cfn_resources::CfnResource for PatchFilterGroup {
 /// PatchSource is the property type for the Sources resource of the     AWS::SSM::PatchBaseline resource.
 ///
 /// The AWS CloudFormation AWS::SSM::PatchSource resource is used to provide    information about the patches to use to update target instances, including target operating    systems and source repository. Applies to Linux instances only.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PatchSource {
     ///
     /// The value of the yum repo configuration. For example:
@@ -727,7 +727,7 @@ impl cfn_resources::CfnResource for PatchSource {
 }
 
 /// The date for ApproveUntilDate, as a String in the format     YYYY-MM-DD. For example, 2020-12-31.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PatchStringDate {}
 
 impl cfn_resources::CfnResource for PatchStringDate {
@@ -747,7 +747,7 @@ impl cfn_resources::CfnResource for PatchStringDate {
 /// The Rule property type specifies an approval rule for a Systems Manager patch    baseline.
 ///
 /// The PatchRules property of the RuleGroup property type contains a list of Rule property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// The number of days after the release date of each patch matched by the rule that the patch    is marked as approved in the patch baseline. For example, a value of 7 means that    patches are approved seven days after they are released.
@@ -826,7 +826,7 @@ pub struct Rule {
     pub patch_filter_group: Option<PatchFilterGroup>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuleComplianceLevelEnum {
     /// CRITICAL
     #[serde(rename = "CRITICAL")]
@@ -902,7 +902,7 @@ impl cfn_resources::CfnResource for Rule {
 /// The RuleGroup property type specifies a set of rules that define the approval    rules for an AWS Systems Manager patch baseline.
 ///
 /// RuleGroup is the property type for the ApprovalRules property of the     AWS::SSM::PatchBaseline resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuleGroup {
     ///
     /// The rules that make up the rule group.
@@ -949,7 +949,7 @@ impl cfn_resources::CfnResource for RuleGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Specifies a workspace. In a workspace, you can create Grafana       dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to       build, package, or deploy any hardware to run the Grafana server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspace {
     ///
     /// Specifies whether the workspace can access AWS resources in this AWS account only, or whether it can also access AWS resources in       other accounts in the same organization. If this is ORGANIZATION, the       OrganizationalUnits parameter specifies which organizational units       the workspace can access.
@@ -231,7 +231,7 @@ pub struct CfnWorkspace {
     pub att_status: CfnWorkspacestatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WorkspaceAccountAccessTypeEnum {
     /// CURRENT_ACCOUNT
     #[serde(rename = "CURRENT_ACCOUNT")]
@@ -248,7 +248,7 @@ impl Default for WorkspaceAccountAccessTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WorkspacePermissionTypeEnum {
     /// CUSTOMER_MANAGED
     #[serde(rename = "CUSTOMER_MANAGED")]
@@ -265,7 +265,7 @@ impl Default for WorkspacePermissionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacecreationtimestamp;
 impl CfnWorkspacecreationtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -273,7 +273,7 @@ impl CfnWorkspacecreationtimestamp {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspaceendpoint;
 impl CfnWorkspaceendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -281,7 +281,7 @@ impl CfnWorkspaceendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacegrafanaversion;
 impl CfnWorkspacegrafanaversion {
     pub fn att_name(&self) -> &'static str {
@@ -289,7 +289,7 @@ impl CfnWorkspacegrafanaversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspaceid;
 impl CfnWorkspaceid {
     pub fn att_name(&self) -> &'static str {
@@ -297,7 +297,7 @@ impl CfnWorkspaceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacemodificationtimestamp;
 impl CfnWorkspacemodificationtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -305,7 +305,7 @@ impl CfnWorkspacemodificationtimestamp {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacesamlconfigurationstatus;
 impl CfnWorkspacesamlconfigurationstatus {
     pub fn att_name(&self) -> &'static str {
@@ -313,7 +313,7 @@ impl CfnWorkspacesamlconfigurationstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacessoclientid;
 impl CfnWorkspacessoclientid {
     pub fn att_name(&self) -> &'static str {
@@ -321,7 +321,7 @@ impl CfnWorkspacessoclientid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspacestatus;
 impl CfnWorkspacestatus {
     pub fn att_name(&self) -> &'static str {
@@ -416,7 +416,7 @@ impl cfn_resources::CfnResource for CfnWorkspace {
 }
 
 /// A structure that defines which attributes in the IdP assertion are to be used to       define information about the users authenticated by the IdP to use the workspace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssertionAttributes {
     ///
     /// The name of the attribute within the SAML assertion to use as the email names for SAML       users.
@@ -662,7 +662,7 @@ impl cfn_resources::CfnResource for AssertionAttributes {
 }
 
 /// A structure containing the identity provider (IdP) metadata used to integrate the       identity provider with this workspace. You can specify the metadata either by providing       a URL to its location in the url parameter, or by specifying the full       metadata in XML format in the xml parameter. Specifying both will cause an       error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IdpMetadata {
     ///
     /// The URL of the location containing the IdP metadata.
@@ -736,7 +736,7 @@ impl cfn_resources::CfnResource for IdpMetadata {
 /// Access is granted to a caller that is in either the IP address list or the VPC       endpoint list - they do not need to be in both.
 ///
 /// If this is not configured, or is removed, then all IP addresses and VPC endpoints are       allowed. Standard Grafana authentication and authorization are still       required.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkAccessControl {
     ///
     /// An array of prefix list IDs. A prefix list is a list of CIDR ranges of IP addresses.       The IP addresses specified are allowed to access your workspace. If the list is not       included in the configuration (passed an empty array) then no IP addresses are       allowed to access the workspace. You create a prefix list using the Amazon VPC       console.
@@ -788,7 +788,7 @@ impl cfn_resources::CfnResource for NetworkAccessControl {
 }
 
 /// This structure defines which groups defined in the SAML assertion attribute are to be       mapped to the Grafana Admin and Editor roles in the workspace.       SAML authenticated users not part of Admin or Editor role       groups have Viewer permission over the workspace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RoleValues {
     ///
     /// A list of groups from the SAML assertion attribute to grant the Grafana         Admin role to.
@@ -830,7 +830,7 @@ impl cfn_resources::CfnResource for RoleValues {
 }
 
 /// A structure containing information about how this workspace works with SAML.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SamlConfiguration {
     ///
     /// Lists which organizations defined in the SAML assertion are allowed to use the Amazon Managed Grafana workspace. If this is empty, all organizations in the assertion attribute       have access.
@@ -917,7 +917,7 @@ impl cfn_resources::CfnResource for SamlConfiguration {
 }
 
 /// The configuration settings for an Amazon VPC that contains data sources for       your Grafana workspace to connect to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// The list of Amazon EC2 security group IDs attached to the Amazon VPC       for your Grafana workspace to connect. Duplicates not allowed.

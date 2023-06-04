@@ -5,7 +5,7 @@
 /// After you create a response headers policy, you can use its ID to attach it to one or more 			cache behaviors in a CloudFront distribution. When it's attached to a cache behavior, the 			response headers policy affects the HTTP headers that CloudFront includes in HTTP responses to 			requests that match the cache behavior. CloudFront adds or removes response headers according 			to the configuration of the response headers policy.
 ///
 /// For more information, see Adding or removing HTTP headers in CloudFront responses in the 			Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResponseHeadersPolicy {
     ///
     /// A response headers policy configuration.
@@ -25,7 +25,7 @@ pub struct CfnResponseHeadersPolicy {
     pub att_last_modified_time: CfnResponseHeadersPolicylastmodifiedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResponseHeadersPolicyid;
 impl CfnResponseHeadersPolicyid {
     pub fn att_name(&self) -> &'static str {
@@ -33,7 +33,7 @@ impl CfnResponseHeadersPolicyid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResponseHeadersPolicylastmodifiedtime;
 impl CfnResponseHeadersPolicylastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -60,7 +60,7 @@ impl cfn_resources::CfnResource for CfnResponseHeadersPolicy {
 /// A list of HTTP header names that CloudFront includes as values for the 				Access-Control-Allow-Headers HTTP response header.
 ///
 /// For more information about the Access-Control-Allow-Headers HTTP response 			header, see Access-Control-Allow-Headers in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlAllowHeaders {
     ///
     /// The list of HTTP header names. You can specify * to allow all 			headers.
@@ -91,7 +91,7 @@ impl cfn_resources::CfnResource for AccessControlAllowHeaders {
 /// A list of HTTP methods that CloudFront includes as values for the 				Access-Control-Allow-Methods HTTP response header.
 ///
 /// For more information about the Access-Control-Allow-Methods HTTP response 			header, see Access-Control-Allow-Methods in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlAllowMethods {
     ///
     /// The list of HTTP methods. Valid values are:
@@ -126,7 +126,7 @@ impl cfn_resources::CfnResource for AccessControlAllowMethods {
 /// A list of origins (domain names) that CloudFront can use as the value for the 				Access-Control-Allow-Origin HTTP response header.
 ///
 /// For more information about the Access-Control-Allow-Origin HTTP response 			header, see Access-Control-Allow-Origin in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlAllowOrigins {
     ///
     /// The list of origins (domain names). You can specify * to allow all 			origins.
@@ -157,7 +157,7 @@ impl cfn_resources::CfnResource for AccessControlAllowOrigins {
 /// A list of HTTP headers that CloudFront includes as values for the 				Access-Control-Expose-Headers HTTP response header.
 ///
 /// For more information about the Access-Control-Expose-Headers HTTP 			response header, see Access-Control-Expose-Headers in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlExposeHeaders {
     ///
     /// The list of HTTP headers. You can specify * to expose all headers.
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for AccessControlExposeHeaders {
 /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
 ///
 /// For more information about the Content-Security-Policy HTTP response 			header, see Content-Security-Policy in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContentSecurityPolicy {
     ///
     /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
@@ -230,7 +230,7 @@ impl cfn_resources::CfnResource for ContentSecurityPolicy {
 /// Determines whether CloudFront includes the X-Content-Type-Options HTTP response 			header with its value set to nosniff.
 ///
 /// For more information about the X-Content-Type-Options HTTP response 			header, see X-Content-Type-Options in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContentTypeOptions {
     ///
     /// A Boolean that determines whether CloudFront overrides the 				X-Content-Type-Options HTTP response header received from the origin 			with the one specified in this response headers policy.
@@ -261,7 +261,7 @@ impl cfn_resources::CfnResource for ContentTypeOptions {
 /// A configuration for a set of HTTP response headers that are used for cross-origin 			resource sharing (CORS). CloudFront adds these headers to HTTP responses that it sends for 			CORS requests that match a cache behavior associated with this response headers 			policy.
 ///
 /// For more information about CORS, see Cross-Origin Resource 				Sharing (CORS) in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CorsConfig {
     ///
     /// A Boolean that CloudFront uses as the value for the 				Access-Control-Allow-Credentials HTTP response header.
@@ -380,7 +380,7 @@ impl cfn_resources::CfnResource for CorsConfig {
 }
 
 /// An HTTP response header name and its value. CloudFront includes this header in HTTP 			responses that it sends for requests that match a cache behavior that's associated with 			this response headers policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomHeader {
     ///
     /// The HTTP response header name.
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for CustomHeader {
 }
 
 /// A list of HTTP response header names and their values. CloudFront includes these headers in 			HTTP responses that it sends for requests that match a cache behavior that's associated 			with this response headers policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomHeadersConfig {
     ///
     /// The list of HTTP response headers and their values.
@@ -462,7 +462,7 @@ impl cfn_resources::CfnResource for CustomHeadersConfig {
 /// Determines whether CloudFront includes the X-Frame-Options HTTP response header 			and the header's value.
 ///
 /// For more information about the X-Frame-Options HTTP response header, see 				X-Frame-Options in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameOptions {
     ///
     /// The value of the X-Frame-Options HTTP response header. Valid values are 				DENY and SAMEORIGIN.
@@ -491,7 +491,7 @@ pub struct FrameOptions {
     pub cfn_override: bool,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FrameOptionsFrameOptionEnum {
     /// DENY
     #[serde(rename = "DENY")]
@@ -525,7 +525,7 @@ impl cfn_resources::CfnResource for FrameOptions {
 /// Determines whether CloudFront includes the Referrer-Policy HTTP response header 			and the header's value.
 ///
 /// For more information about the Referrer-Policy HTTP response header, see 				Referrer-Policy in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferrerPolicy {
     ///
     /// A Boolean that determines whether CloudFront overrides the Referrer-Policy HTTP 			response header received from the origin with the one specified in this response headers 			policy.
@@ -556,7 +556,7 @@ pub struct ReferrerPolicy {
     pub referrer_policy: ReferrerPolicyReferrerPolicyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferrerPolicyReferrerPolicyEnum {
     /// no-referrer
     #[serde(rename = "no-referrer")]
@@ -612,7 +612,7 @@ impl cfn_resources::CfnResource for ReferrerPolicy {
 }
 
 /// The name of an HTTP header that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemoveHeader {
     ///
     /// The HTTP header name.
@@ -641,7 +641,7 @@ impl cfn_resources::CfnResource for RemoveHeader {
 }
 
 /// A list of HTTP header names that CloudFront removes from HTTP responses to requests that match the 			cache behavior that this response headers policy is attached to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemoveHeadersConfig {
     ///
     /// The list of HTTP header names.
@@ -672,7 +672,7 @@ impl cfn_resources::CfnResource for RemoveHeadersConfig {
 /// A response headers policy configuration.
 ///
 /// A response headers policy configuration contains metadata about the response headers policy, 			and configurations for sets of HTTP response headers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseHeadersPolicyConfig {
     ///
     /// A comment to describe the response headers policy.
@@ -797,7 +797,7 @@ impl cfn_resources::CfnResource for ResponseHeadersPolicyConfig {
 }
 
 /// A configuration for a set of security-related HTTP response headers. CloudFront adds these 			headers to HTTP responses that it sends for requests that match a cache behavior 			associated with this response headers policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecurityHeadersConfig {
     ///
     /// The policy directives and their values that CloudFront includes as values for the 				Content-Security-Policy HTTP response header.
@@ -923,7 +923,7 @@ impl cfn_resources::CfnResource for SecurityHeadersConfig {
 }
 
 /// A configuration for enabling the Server-Timing header in HTTP responses 			sent from CloudFront.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerTimingHeadersConfig {
     ///
     /// A Boolean that determines whether CloudFront adds the Server-Timing header to 			HTTP responses that it sends in response to requests that match a cache behavior that's 			associated with this response headers policy.
@@ -966,7 +966,7 @@ impl cfn_resources::CfnResource for ServerTimingHeadersConfig {
 /// Determines whether CloudFront includes the Strict-Transport-Security HTTP 			response header and the header's value.
 ///
 /// For more information about the Strict-Transport-Security HTTP response 			header, see Strict-Transport-Security in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StrictTransportSecurity {
     ///
     /// A number that CloudFront uses as the value for the max-age directive in the 				Strict-Transport-Security HTTP response header.
@@ -1032,7 +1032,7 @@ impl cfn_resources::CfnResource for StrictTransportSecurity {
 /// Determines whether CloudFront includes the X-XSS-Protection HTTP response 			header and the header's value.
 ///
 /// For more information about the X-XSS-Protection HTTP response header, see 				X-XSS-Protection in the MDN Web Docs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct XSSProtection {
     ///
     /// A Boolean that determines whether CloudFront includes the mode=block directive 			in the X-XSS-Protection header.

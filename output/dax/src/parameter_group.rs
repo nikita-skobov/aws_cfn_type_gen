@@ -1,5 +1,5 @@
 /// A named set of parameters that are applied to all of the nodes in a DAX cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnParameterGroup {
     ///
     /// A description of the parameter group.

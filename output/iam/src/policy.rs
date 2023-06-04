@@ -5,7 +5,7 @@
 /// The Groups, Roles, and Users properties are optional. However, you must specify at least     one of these properties.
 ///
 /// For information about limits on the number of inline policies that you can embed in an     identity, see Limitations on IAM Entities in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicy {
     ///
     /// The name of the group to associate the policy with.

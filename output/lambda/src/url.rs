@@ -1,5 +1,5 @@
 /// The AWS::Lambda::Url resource creates a function URL with the specified configuration parameters. A function URL is a dedicated HTTP(S) endpoint that   you can use to invoke your function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUrl {
     ///
     /// The type of authentication that your function URL uses. Set to AWS_IAM if you want to restrict access to authenticated  users only. Set to NONE if you want to bypass IAM authentication to create a public endpoint. For more information,  see Security and auth model for Lambda function URLs.
@@ -76,7 +76,7 @@ pub struct CfnUrl {
     pub att_function_url: CfnUrlfunctionurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UrlAuthTypeEnum {
     /// AWS_IAM
     #[serde(rename = "AWS_IAM")]
@@ -93,7 +93,7 @@ impl Default for UrlAuthTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UrlInvokeModeEnum {
     /// BUFFERED
     #[serde(rename = "BUFFERED")]
@@ -110,7 +110,7 @@ impl Default for UrlInvokeModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUrlfunctionarn;
 impl CfnUrlfunctionarn {
     pub fn att_name(&self) -> &'static str {
@@ -118,7 +118,7 @@ impl CfnUrlfunctionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUrlfunctionurl;
 impl CfnUrlfunctionurl {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnUrl {
 }
 
 /// The Cross-Origin Resource Sharing (CORS)    settings for your function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS    to control access for specific HTTP headers and methods in requests to your function URL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Cors {
     ///
     /// Whether you want to allow cookies or other credentials in requests to your function URL. The default is false.

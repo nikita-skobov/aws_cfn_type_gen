@@ -1,5 +1,5 @@
 /// The AWS::S3::MultiRegionAccessPoint resource creates an Amazon S3    Multi-Region Access Point. To learn more about Multi-Region Access Points, see     Multi-Region Access Points in Amazon S3 in the in the Amazon S3 User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMultiRegionAccessPoint {
     ///
     /// The name of the Multi-Region Access Point.
@@ -43,7 +43,7 @@ pub struct CfnMultiRegionAccessPoint {
     pub att_created_at: CfnMultiRegionAccessPointcreatedat,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMultiRegionAccessPointalias;
 impl CfnMultiRegionAccessPointalias {
     pub fn att_name(&self) -> &'static str {
@@ -51,7 +51,7 @@ impl CfnMultiRegionAccessPointalias {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMultiRegionAccessPointcreatedat;
 impl CfnMultiRegionAccessPointcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {
 }
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 Multi-Region    Access Point. You can enable the configuration options in any combination. For more    information about when Amazon S3 considers an object public, see The Meaning of "Public" in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -154,7 +154,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 }
 
 /// A bucket associated with a specific Region when creating Multi-Region Access    Points.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Region {
     ///
     /// The name of the associated bucket for the Region.

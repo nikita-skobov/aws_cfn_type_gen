@@ -1,5 +1,5 @@
 /// Use the AWS::EventSchemas::RegistryPolicy resource to specify       resource-based policies for an EventBridge Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryPolicy {
     ///
     /// A resource-based policy.
@@ -39,7 +39,7 @@ pub struct CfnRegistryPolicy {
     pub att_id: CfnRegistryPolicyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryPolicyid;
 impl CfnRegistryPolicyid {
     pub fn att_name(&self) -> &'static str {

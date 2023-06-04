@@ -1,5 +1,5 @@
 /// The     AWS::Greengrass::CoreDefinitionVersion resource represents a core definition version for AWS IoT Greengrass.     A core definition version contains a Greengrass core.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinitionVersion {
     ///
     /// The ID of the core definition associated with this version. This value is a GUID.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
 /// A core is an AWS IoT device that runs the AWS IoT Greengrass core 		software and manages local processes for a Greengrass group. For more information,   see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the AWS::Greengrass::CoreDefinitionVersion resource contains a      list of Core property types. Currently, the list can contain only one core.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Core {
     ///
     /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.

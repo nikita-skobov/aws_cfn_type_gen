@@ -1,5 +1,5 @@
 /// Configure resource-specific logging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceSpecificLogging {
     ///
     /// The default log level.Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
@@ -38,7 +38,7 @@ pub struct CfnResourceSpecificLogging {
     pub att_target_id: CfnResourceSpecificLoggingtargetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceSpecificLoggingLogLevelEnum {
     /// DEBUG
     #[serde(rename = "DEBUG")]
@@ -67,7 +67,7 @@ impl Default for ResourceSpecificLoggingLogLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceSpecificLoggingTargetTypeEnum {
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
@@ -84,7 +84,7 @@ impl Default for ResourceSpecificLoggingTargetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceSpecificLoggingtargetid;
 impl CfnResourceSpecificLoggingtargetid {
     pub fn att_name(&self) -> &'static str {

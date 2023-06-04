@@ -1,5 +1,5 @@
 /// Creates a signing profile. A signing profile is a code signing template that can be used to 			carry out a pre-defined signing job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSigningProfile {
     ///
     /// The ID of a platform that is available for use by a signing profile.
@@ -49,7 +49,7 @@ pub struct CfnSigningProfile {
     pub att_profile_version_arn: CfnSigningProfileprofileversionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSigningProfilearn;
 impl CfnSigningProfilearn {
     pub fn att_name(&self) -> &'static str {
@@ -57,7 +57,7 @@ impl CfnSigningProfilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSigningProfileprofilename;
 impl CfnSigningProfileprofilename {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnSigningProfileprofilename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSigningProfileprofileversion;
 impl CfnSigningProfileprofileversion {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnSigningProfileprofileversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSigningProfileprofileversionarn;
 impl CfnSigningProfileprofileversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl cfn_resources::CfnResource for CfnSigningProfile {
 }
 
 /// The validity period for the signing job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SignatureValidityPeriod {
     ///
     /// The time unit for signature validity: DAYS | MONTHS | YEARS.
@@ -148,7 +148,7 @@ impl cfn_resources::CfnResource for SignatureValidityPeriod {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// A collection of database objects and users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespace {
     ///
     /// The password of the administrator for the primary database created in the namespace.
@@ -160,7 +160,7 @@ pub struct CfnNamespace {
     pub att_namespace_status: CfnNamespacenamespacestatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespaceadminusername;
 impl CfnNamespacenamespaceadminusername {
     pub fn att_name(&self) -> &'static str {
@@ -168,7 +168,7 @@ impl CfnNamespacenamespaceadminusername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacecreationdate;
 impl CfnNamespacenamespacecreationdate {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl CfnNamespacenamespacecreationdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacedbname;
 impl CfnNamespacenamespacedbname {
     pub fn att_name(&self) -> &'static str {
@@ -184,7 +184,7 @@ impl CfnNamespacenamespacedbname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacedefaultiamrolearn;
 impl CfnNamespacenamespacedefaultiamrolearn {
     pub fn att_name(&self) -> &'static str {
@@ -192,7 +192,7 @@ impl CfnNamespacenamespacedefaultiamrolearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacekmskeyid;
 impl CfnNamespacenamespacekmskeyid {
     pub fn att_name(&self) -> &'static str {
@@ -200,7 +200,7 @@ impl CfnNamespacenamespacekmskeyid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacenamespacearn;
 impl CfnNamespacenamespacenamespacearn {
     pub fn att_name(&self) -> &'static str {
@@ -208,7 +208,7 @@ impl CfnNamespacenamespacenamespacearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacenamespaceid;
 impl CfnNamespacenamespacenamespaceid {
     pub fn att_name(&self) -> &'static str {
@@ -216,7 +216,7 @@ impl CfnNamespacenamespacenamespaceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacenamespacename;
 impl CfnNamespacenamespacenamespacename {
     pub fn att_name(&self) -> &'static str {
@@ -224,7 +224,7 @@ impl CfnNamespacenamespacenamespacename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamespacenamespacestatus;
 impl CfnNamespacenamespacestatus {
     pub fn att_name(&self) -> &'static str {
@@ -247,7 +247,7 @@ impl cfn_resources::CfnResource for CfnNamespace {
 }
 
 /// A collection of database objects and users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Namespace {
     ///
     /// The username of the administrator for the first database created in the namespace.
@@ -403,7 +403,7 @@ impl cfn_resources::CfnResource for Namespace {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

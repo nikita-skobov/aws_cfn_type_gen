@@ -9,7 +9,7 @@
 /// If any Fargate profiles in a cluster are in the DELETING       status, you must wait for that Fargate profile to finish deleting before       you can create any other profiles in that cluster.
 ///
 /// For more information, see AWS Fargate Profile in the       Amazon EKS User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFargateProfile {
     ///
     /// The name of the Amazon EKS cluster to apply the Fargate profile       to.
@@ -84,7 +84,7 @@ pub struct CfnFargateProfile {
     pub att_arn: CfnFargateProfilearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFargateProfilearn;
 impl CfnFargateProfilearn {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl cfn_resources::CfnResource for CfnFargateProfile {
 }
 
 /// A key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Label {
     ///
     /// Enter a key.
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for Label {
 }
 
 /// An object representing an AWS Fargate profile selector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Selector {
     ///
     /// The Kubernetes labels that the selector should match. A pod must contain all of the       labels that are specified in the selector for it to be considered a match.
@@ -194,7 +194,7 @@ impl cfn_resources::CfnResource for Selector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

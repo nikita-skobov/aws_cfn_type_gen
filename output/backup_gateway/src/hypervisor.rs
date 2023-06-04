@@ -1,7 +1,7 @@
 /// Represents the hypervisor's permissions to which the gateway will connect.
 ///
 /// A hypervisor is hardware, software, or firmware that creates and manages virtual machines,    and allocates resources to them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHypervisor {
     ///
     /// The server host of the hypervisor. This can be either an IP address or a fully-qualified    domain name (FQDN).
@@ -127,7 +127,7 @@ pub struct CfnHypervisor {
     pub att_hypervisor_arn: CfnHypervisorhypervisorarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHypervisorhypervisorarn;
 impl CfnHypervisorhypervisorarn {
     pub fn att_name(&self) -> &'static str {
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for CfnHypervisor {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

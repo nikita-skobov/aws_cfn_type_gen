@@ -1,5 +1,5 @@
 /// Describes Infrastructure Performance subscriptions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkPerformanceMetricSubscription {
     ///
     /// The Region or Availability Zone that's the target for the subscription. For example, eu-west-1.
@@ -50,7 +50,7 @@ pub struct CfnNetworkPerformanceMetricSubscription {
     pub statistic: NetworkPerformanceMetricSubscriptionStatisticEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkPerformanceMetricSubscriptionMetricEnum {
     /// aggregate-latency
     #[serde(rename = "aggregate-latency")]
@@ -63,7 +63,7 @@ impl Default for NetworkPerformanceMetricSubscriptionMetricEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkPerformanceMetricSubscriptionStatisticEnum {
     /// p50
     #[serde(rename = "p50")]

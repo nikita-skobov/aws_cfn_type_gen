@@ -3,7 +3,7 @@
 /// Keep the following caveats in mind:
 ///
 /// For more information about creating FIFO (first-in-first-out) queues, see Creating an Amazon SQS queue (AWS CloudFormation) in the Amazon SQS Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueue {
     ///
     /// For first-in-first-out (FIFO) queues, specifies whether to enable content-based    deduplication. During the deduplication interval, Amazon SQS treats messages that are    sent with identical content as duplicates and delivers only one copy of the message. For more    information, see the ContentBasedDeduplication attribute for the     CreateQueue    action in the Amazon SQS API Reference.
@@ -239,7 +239,7 @@ pub struct CfnQueue {
     pub att_queue_url: CfnQueuequeueurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuearn;
 impl CfnQueuearn {
     pub fn att_name(&self) -> &'static str {
@@ -247,7 +247,7 @@ impl CfnQueuearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuequeuename;
 impl CfnQueuequeuename {
     pub fn att_name(&self) -> &'static str {
@@ -255,7 +255,7 @@ impl CfnQueuequeuename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuequeueurl;
 impl CfnQueuequeueurl {
     pub fn att_name(&self) -> &'static str {
@@ -284,7 +284,7 @@ impl cfn_resources::CfnResource for CfnQueue {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

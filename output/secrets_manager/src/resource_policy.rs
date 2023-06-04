@@ -3,7 +3,7 @@
 /// For information about attaching a policy in the console, see Attach a     permissions policy to a secret.
 ///
 /// Required permissions:    secretsmanager:PutResourcePolicy. For more information, see IAM policy actions for Secrets Manager and Authentication and access control     in Secrets Manager.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourcePolicy {
     ///
     /// Specifies whether to block resource-based policies that allow broad access to the secret.    By default, Secrets Manager blocks policies that allow broad access, for example those that    use a wildcard for the principal.

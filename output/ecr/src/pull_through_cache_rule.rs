@@ -1,5 +1,5 @@
 /// Creates a pull through cache rule. A pull through cache rule provides a way to cache       images from an external public registry in your Amazon ECR private registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPullThroughCacheRule {
     ///
     /// The Amazon ECR repository prefix associated with the pull through cache rule.

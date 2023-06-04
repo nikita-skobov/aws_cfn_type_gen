@@ -1,5 +1,5 @@
 /// The AWS::APS::RuleGroupsNamespace resource creates or updates a rule       groups namespace within a Amazon Managed Service for Prometheus workspace. For more information, see                 Recording rules and alerting rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRuleGroupsNamespace {
     ///
     /// The rules definition file for this namespace.
@@ -50,7 +50,7 @@ pub struct CfnRuleGroupsNamespace {
     pub att_arn: CfnRuleGroupsNamespacearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRuleGroupsNamespacearn;
 impl CfnRuleGroupsNamespacearn {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

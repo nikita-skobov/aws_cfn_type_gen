@@ -5,7 +5,7 @@
 /// Each policy is specific to one of the types. If you want to enforce more than one    policy type across accounts, create multiple policies. You can create multiple    policies for each type.
 ///
 /// These policies require some setup to use. For more information, see the sections on prerequisites and getting started       under AWS Firewall Manager.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicy {
     ///
     /// Used when deleting a policy. If true, Firewall Manager performs cleanup according to the policy type.
@@ -228,7 +228,7 @@ pub struct CfnPolicy {
     pub att_id: CfnPolicyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicyarn;
 impl CfnPolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -236,7 +236,7 @@ impl CfnPolicyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicyid;
 impl CfnPolicyid {
     pub fn att_name(&self) -> &'static str {
@@ -334,7 +334,7 @@ impl cfn_resources::CfnResource for CfnPolicy {
 /// This is used for the policy's IncludeMap and ExcludeMap.
 ///
 /// You can specify account IDs, OUs, or a combination:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IEMap {
     ///
     /// The account list for the map.
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for IEMap {
 }
 
 /// Configures the firewall policy deployment model of AWS Network Firewall. For information about     Network Firewall deployment models, see AWS Network Firewall example       architectures with routing in the Network Firewall Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkFirewallPolicy {
     ///
     /// Defines the deployment model to use for the firewall policy. To use a distributed model,      set FirewallDeploymentModel to       DISTRIBUTED.
@@ -392,7 +392,7 @@ pub struct NetworkFirewallPolicy {
     pub firewall_deployment_model: NetworkFirewallPolicyFirewallDeploymentModelEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkFirewallPolicyFirewallDeploymentModelEnum {
     /// CENTRALIZED
     #[serde(rename = "CENTRALIZED")]
@@ -424,7 +424,7 @@ impl cfn_resources::CfnResource for NetworkFirewallPolicy {
 }
 
 /// Contains the AWS Network Firewall firewall policy options to configure the policy's deployment model and third-party firewall policy settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyOption {
     ///
     /// Defines the deployment model to use for the firewall policy.
@@ -474,7 +474,7 @@ impl cfn_resources::CfnResource for PolicyOption {
 }
 
 /// A collection of key:value pairs associated with an AWS resource. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyTag {
     ///
     /// Part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for PolicyTag {
 }
 
 /// The resource tags that AWS Firewall Manager uses to determine if a particular resource    should be included or excluded from the AWS Firewall Manager policy. Tags enable you to    categorize your AWS resources in different ways, for example, by purpose, owner, or    environment. Each tag consists of a key and an optional value. Firewall Manager combines the    tags with "AND" so that, if you add more than one tag to a policy scope, a resource must have     all the specified tags to be included or excluded. For more information, see   Working with Tag Editor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceTag {
     ///
     /// The resource tag key.
@@ -654,7 +654,7 @@ impl cfn_resources::CfnResource for ResourceTag {
 }
 
 /// Details about the security service that is being used to protect the resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecurityServicePolicyData {
     ///
     /// Details about the service that are specific to the service type, in JSON format.
@@ -702,7 +702,7 @@ pub struct SecurityServicePolicyData {
     pub cfn_type: SecurityServicePolicyDataTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SecurityServicePolicyDataTypeEnum {
     /// DNS_FIREWALL
     #[serde(rename = "DNS_FIREWALL")]
@@ -789,7 +789,7 @@ impl cfn_resources::CfnResource for SecurityServicePolicyData {
 }
 
 /// Configures the deployment model for the third-party firewall.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThirdPartyFirewallPolicy {
     ///
     /// Defines the deployment model to use for the third-party firewall policy.
@@ -805,7 +805,7 @@ pub struct ThirdPartyFirewallPolicy {
     pub firewall_deployment_model: ThirdPartyFirewallPolicyFirewallDeploymentModelEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ThirdPartyFirewallPolicyFirewallDeploymentModelEnum {
     /// CENTRALIZED
     #[serde(rename = "CENTRALIZED")]

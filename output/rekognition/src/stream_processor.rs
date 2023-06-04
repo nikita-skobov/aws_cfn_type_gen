@@ -7,7 +7,7 @@
 /// You can also specify where in the frame you want Amazon Rekognition to monitor with     BoundingBoxRegionsOfInterest and PolygonRegionsOfInterest. The Name is used to manage the     stream processor and it is the identifier for the stream processor. The       AWS::Rekognition::StreamProcessor resource creates a stream processor in     the same Region where you create the Amazon CloudFormation stack.
 ///
 /// For more information, see CreateStreamProcessor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamProcessor {
     ///
     /// List of BoundingBox objects, each of which denotes a region of interest on screen.     For more information, see the BoundingBox field of RegionOfInterest.
@@ -179,7 +179,7 @@ pub struct CfnStreamProcessor {
     pub att_status_message: CfnStreamProcessorstatusmessage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamProcessorarn;
 impl CfnStreamProcessorarn {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl CfnStreamProcessorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamProcessorstatus;
 impl CfnStreamProcessorstatus {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl CfnStreamProcessorstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamProcessorstatusmessage;
 impl CfnStreamProcessorstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for CfnStreamProcessor {
 /// The top and left values returned are ratios of the overall    image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of    the bounding box is 350x50 pixels, the API returns a left value of 0.5 (350/700)    and a top value of 0.25 (50/200).
 ///
 /// The width and height values represent the dimensions of the    bounding box as a ratio of the overall image dimension. For example, if the input image is    700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. For more information, see       BoundingBox.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoundingBox {
     ///
     /// Height of the bounding box as a ratio of the overall image height.
@@ -334,7 +334,7 @@ impl cfn_resources::CfnResource for BoundingBox {
 /// Connected home settings to use on a streaming video. Defining the settings is required in the request parameter for CreateStreamProcessor.      Including this setting in the CreateStreamProcessor request lets you use the stream processor for connected home features. You can then select      what you want the stream processor to detect, such as people or pets.
 ///
 /// When the stream processor has started, one notification is sent      for each object class specified. For example, if packages and pets are selected, one SNS notification is published the first time a package is      detected and one SNS notification is published the first time a pet is detected. An end-of-session summary is also published.      For more information, see the ConnectedHome section of StreamProcessorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectedHomeSettings {
     ///
     /// Specifies what you want to detect in the video, such as people, packages, or pets.      The current valid labels you can include in this list are: "PERSON", "PET", "PACKAGE", and "ALL".
@@ -375,7 +375,7 @@ impl cfn_resources::CfnResource for ConnectedHomeSettings {
 }
 
 /// Allows you to opt in or opt out to share data with Rekognition to improve model performance.      You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level, this setting is ignored on individual streams.     For more information, see StreamProcessorDataSharingPreference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSharingPreference {
     ///
     /// Describes the opt-in status applied to a stream processor's data sharing policy.
@@ -404,7 +404,7 @@ impl cfn_resources::CfnResource for DataSharingPreference {
 }
 
 /// The input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor. FaceSearchSettings is a request      parameter for CreateStreamProcessor.       For more information, see FaceSearchSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FaceSearchSettings {
     ///
     /// The ID of a collection that contains faces that you want to search for.
@@ -473,7 +473,7 @@ impl cfn_resources::CfnResource for FaceSearchSettings {
 }
 
 /// Amazon Rekognition Video Stream Processor take as input a Kinesis video stream (Input) and a Kinesis data stream (Output).      This is the Amazon Kinesis Data Streams instance to which the Amazon Rekognition stream processor streams the analysis results.      This must be created within the constraints specified at      KinesisDataStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisDataStream {
     ///
     /// ARN of the output Amazon Kinesis Data Streams stream.
@@ -504,7 +504,7 @@ impl cfn_resources::CfnResource for KinesisDataStream {
 }
 
 /// The Kinesis video stream that provides the source of the streaming video for an Amazon Rekognition Video stream processor. For more information, see     KinesisVideoStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisVideoStream {
     ///
     /// ARN of the Kinesis video stream stream that streams the source video.
@@ -535,7 +535,7 @@ impl cfn_resources::CfnResource for KinesisVideoStream {
 }
 
 /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the object detection results and completion status of a video analysis operation.      Amazon Rekognition publishes a notification the first time an object of interest or a person is detected in the video stream.       Amazon Rekognition also publishes an an end-of-session notification with a summary when the stream processing session is complete.      For more information, see StreamProcessorNotificationChannel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationChannel {
     ///
     /// The ARN of the SNS topic that receives notifications.
@@ -564,7 +564,7 @@ impl cfn_resources::CfnResource for NotificationChannel {
 }
 
 /// The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation.      These results include the name of the stream processor resource, the session ID of the stream processing session,      and labeled timestamps and bounding boxes for detected labels. For more information, see      S3Destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Destination {
     ///
     /// Describes the destination Amazon Simple Storage Service (Amazon S3) bucket name of a stream processor's exports.
@@ -611,7 +611,7 @@ impl cfn_resources::CfnResource for S3Destination {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

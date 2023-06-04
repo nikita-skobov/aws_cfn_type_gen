@@ -1,5 +1,5 @@
 /// Describes a network interface in an Amazon EC2 instance for AWS CloudFormation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInterface {
     ///
     /// A description for the network interface.
@@ -143,7 +143,7 @@ pub struct CfnNetworkInterface {
     pub att_primary_private_ip_address: CfnNetworkInterfaceprimaryprivateipaddress,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkInterfaceInterfaceTypeEnum {
     /// branch
     #[serde(rename = "branch")]
@@ -164,7 +164,7 @@ impl Default for NetworkInterfaceInterfaceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInterfaceid;
 impl CfnNetworkInterfaceid {
     pub fn att_name(&self) -> &'static str {
@@ -172,7 +172,7 @@ impl CfnNetworkInterfaceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInterfaceprimaryprivateipaddress;
 impl CfnNetworkInterfaceprimaryprivateipaddress {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for CfnNetworkInterface {
 }
 
 /// Describes the IPv6 addresses to associate with the network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceIpv6Address {
     ///
     /// An IPv6 address to associate with the network interface.
@@ -224,7 +224,7 @@ impl cfn_resources::CfnResource for InstanceIpv6Address {
 }
 
 /// Describes a secondary private IPv4 address for a network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrivateIpAddressSpecification {
     ///
     /// Sets the private IP address as the primary private address. You can set only one primary       private IP address. If you don't specify a primary private IP address, Amazon EC2       automatically assigns a primary private IP address.
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

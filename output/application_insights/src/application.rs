@@ -1,5 +1,5 @@
 /// The AWS::ApplicationInsights::Application resource adds an application that is created from a resource group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// If set to true, the application components will be configured with the monitoring configuration recommended by Application Insights.
@@ -138,7 +138,7 @@ pub struct CfnApplication {
     pub att_application_arn: CfnApplicationapplicationarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationGroupingTypeEnum {
     /// ACCOUNT_BASED
     #[serde(rename = "ACCOUNT_BASED")]
@@ -151,7 +151,7 @@ impl Default for ApplicationGroupingTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapplicationarn;
 impl CfnApplicationapplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// The AWS::ApplicationInsights::Application Alarm property type defines a CloudWatch alarm to be monitored for the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Alarm {
     ///
     /// The name of the CloudWatch alarm to be monitored for the component.
@@ -253,7 +253,7 @@ impl cfn_resources::CfnResource for Alarm {
 }
 
 /// The AWS::ApplicationInsights::Application AlarmMetric property type defines a metric to monitor for the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlarmMetric {
     ///
     /// The name of the metric to be monitored for the component. For metrics supported by Application Insights, see Logs and metrics supported by Amazon CloudWatch Application Insights.
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for AlarmMetric {
 }
 
 /// The AWS::ApplicationInsights::Application ComponentConfiguration property type defines the configuration settings of the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentConfiguration {
     ///
     /// The configuration settings.
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 }
 
 /// The AWS::ApplicationInsights::Application ComponentMonitoringSetting property type defines the monitoring setting of the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentMonitoringSetting {
     ///
     /// The ARN of the component.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for ComponentMonitoringSetting {
 }
 
 /// The AWS::ApplicationInsights::Application ConfigurationDetails property type specifies the configuration settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationDetails {
     ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
@@ -540,7 +540,7 @@ impl cfn_resources::CfnResource for ConfigurationDetails {
 }
 
 /// The AWS::ApplicationInsights::Application CustomComponent property type describes a custom component by grouping similar standalone instances to monitor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomComponent {
     ///
     /// The name of the component.
@@ -608,7 +608,7 @@ impl cfn_resources::CfnResource for CustomComponent {
 }
 
 /// The AWS::ApplicationInsights::Application HAClusterPrometheusExporter       property type defines the HA cluster Prometheus Exporter settings. For more information,       see the component configuration in the CloudWatch Application Insights       documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HAClusterPrometheusExporter {
     ///
     /// The target port to which Prometheus sends metrics. If not specified, the default port 9668 is used.
@@ -638,7 +638,7 @@ impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
 }
 
 /// The AWS::ApplicationInsights::Application HANAPrometheusExporter property       type defines the HANA DB Prometheus Exporter settings. For more information, see the         component configuration in the CloudWatch Application Insights       documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HANAPrometheusExporter {
     ///
     /// Designates whether you agree to install the HANA DB client.
@@ -712,7 +712,7 @@ impl cfn_resources::CfnResource for HANAPrometheusExporter {
 }
 
 /// The AWS::ApplicationInsights::Application JMXPrometheusExporter property type       defines the JMXPrometheus Exporter configuration. For more information, see the      component configuration in the CloudWatch Application Insights    documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JMXPrometheusExporter {
     ///
     /// The host and port to connect to through remote JMX. Only one of jmxURL and hostPort can be     specified.
@@ -766,7 +766,7 @@ impl cfn_resources::CfnResource for JMXPrometheusExporter {
 }
 
 /// The AWS::ApplicationInsights::Application Log property type specifies a log to monitor for the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Log {
     ///
     /// The type of encoding of the logs to be monitored. The specified encoding should be included in the list of CloudWatch agent supported encodings. If not provided, CloudWatch Application Insights uses the default encoding type for the log type:
@@ -845,7 +845,7 @@ impl cfn_resources::CfnResource for Log {
 }
 
 /// The AWS::ApplicationInsights::Application LogPattern property type       specifies an object that defines the log patterns that belong to a         LogPatternSet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogPattern {
     ///
     /// A regular expression that defines the log pattern. A log pattern can contain up to 50       characters, and it cannot be empty.
@@ -952,7 +952,7 @@ impl cfn_resources::CfnResource for LogPattern {
 }
 
 /// The AWS::ApplicationInsights::Application LogPatternSet property type specifies the log pattern set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogPatternSet {
     ///
     /// A list of objects that define the log patterns that belong to LogPatternSet.
@@ -1020,7 +1020,7 @@ impl cfn_resources::CfnResource for LogPatternSet {
 }
 
 /// The AWS::ApplicationInsights::Application SubComponentConfigurationDetails property type specifies the configuration settings of the sub-components.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubComponentConfigurationDetails {
     ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
@@ -1074,7 +1074,7 @@ impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
 }
 
 /// The AWS::ApplicationInsights::Application SubComponentTypeConfiguration property type specifies the sub-component configurations for a component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubComponentTypeConfiguration {
     ///
     /// The configuration settings of the sub-components.
@@ -1122,7 +1122,7 @@ impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1160,7 +1160,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The AWS::ApplicationInsights::Application WindowsEvent property type specifies a Windows Event to monitor for the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WindowsEvent {
     ///
     /// The levels of event to log. You must specify each level to log. Possible values include INFORMATION, WARNING, ERROR, CRITICAL, and VERBOSE. This field is required for each type of Windows Event to log.

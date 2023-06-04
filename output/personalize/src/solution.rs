@@ -1,5 +1,5 @@
 /// An object that provides information about a solution. A solution is a trained model    that can be deployed as a campaign.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSolution {
     ///
     /// The Amazon Resource Name (ARN) of the dataset group that provides the training data.
@@ -105,7 +105,7 @@ pub struct CfnSolution {
     pub att_solution_arn: CfnSolutionsolutionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSolutionsolutionarn;
 impl CfnSolutionsolutionarn {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl cfn_resources::CfnResource for CfnSolution {
 }
 
 /// The AlgorithmHyperParameterRanges property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlgorithmHyperParameterRanges {
     /// Property description not available.
     ///
@@ -238,7 +238,7 @@ impl cfn_resources::CfnResource for AlgorithmHyperParameterRanges {
 }
 
 /// The AutoMLConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoMLConfig {
     /// Property description not available.
     ///
@@ -278,7 +278,7 @@ impl cfn_resources::CfnResource for AutoMLConfig {
 }
 
 /// The CategoricalHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoricalHyperParameterRange {
     /// Property description not available.
     ///
@@ -318,7 +318,7 @@ impl cfn_resources::CfnResource for CategoricalHyperParameterRange {
 }
 
 /// The ContinuousHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContinuousHyperParameterRange {
     /// Property description not available.
     ///
@@ -369,7 +369,7 @@ impl cfn_resources::CfnResource for ContinuousHyperParameterRange {
 }
 
 /// The HpoConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HpoConfig {
     /// Property description not available.
     ///
@@ -432,7 +432,7 @@ impl cfn_resources::CfnResource for HpoConfig {
 }
 
 /// The HpoObjective property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HpoObjective {
     /// Property description not available.
     ///
@@ -483,7 +483,7 @@ impl cfn_resources::CfnResource for HpoObjective {
 }
 
 /// The HpoResourceConfig property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HpoResourceConfig {
     /// Property description not available.
     ///
@@ -523,7 +523,7 @@ impl cfn_resources::CfnResource for HpoResourceConfig {
 }
 
 /// The IntegerHyperParameterRange property type specifies Property description not available. for an AWS::Personalize::Solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerHyperParameterRange {
     /// Property description not available.
     ///
@@ -574,7 +574,7 @@ impl cfn_resources::CfnResource for IntegerHyperParameterRange {
 }
 
 /// Describes the configuration properties for the solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SolutionConfig {
     ///
     /// Lists the hyperparameter names and ranges.

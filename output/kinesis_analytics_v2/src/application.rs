@@ -1,5 +1,5 @@
 /// Creates an Amazon Kinesis Data Analytics application. For information about creating a       Kinesis Data Analytics application, see Creating an         Application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// Use this parameter to configure the application.
@@ -126,7 +126,7 @@ pub struct CfnApplication {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationApplicationModeEnum {
     /// INTERACTIVE
     #[serde(rename = "INTERACTIVE")]
@@ -143,7 +143,7 @@ impl Default for ApplicationApplicationModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationRuntimeEnvironmentEnum {
     /// FLINK-1_11
     #[serde(rename = "FLINK-1_11")]
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// Describes code configuration for an application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationCodeConfiguration {
     ///
     /// The location and type of the application code.
@@ -295,7 +295,7 @@ pub struct ApplicationCodeConfiguration {
     pub code_content_type: ApplicationCodeConfigurationCodeContentTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationCodeConfigurationCodeContentTypeEnum {
     /// PLAINTEXT
     #[serde(rename = "PLAINTEXT")]
@@ -329,7 +329,7 @@ impl cfn_resources::CfnResource for ApplicationCodeConfiguration {
 }
 
 /// Specifies the creation parameters for a Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationConfiguration {
     ///
     /// The code location and type parameters for a Flink-based Kinesis Data Analytics application.
@@ -455,7 +455,7 @@ impl cfn_resources::CfnResource for ApplicationConfiguration {
 }
 
 /// Specifies the maintence window parameters for a Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationMaintenanceConfiguration {
     /// Specifies the start time of the maintence window.
     ///
@@ -483,7 +483,7 @@ impl cfn_resources::CfnResource for ApplicationMaintenanceConfiguration {
 }
 
 /// Specifies the method and snapshot to use when restarting an application using previously saved application state.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationRestoreConfiguration {
     ///
     /// Specifies how the application should be restored.
@@ -517,7 +517,7 @@ pub struct ApplicationRestoreConfiguration {
     pub snapshot_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationRestoreConfigurationApplicationRestoreTypeEnum {
     /// RESTORE_FROM_CUSTOM_SNAPSHOT
     #[serde(rename = "RESTORE_FROM_CUSTOM_SNAPSHOT")]
@@ -575,7 +575,7 @@ impl cfn_resources::CfnResource for ApplicationRestoreConfiguration {
 }
 
 /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationSnapshotConfiguration {
     ///
     /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
@@ -608,7 +608,7 @@ impl cfn_resources::CfnResource for ApplicationSnapshotConfiguration {
 /// "name1", "address1"
 ///
 /// "name2", "address2"
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CSVMappingParameters {
     ///
     /// The column delimiter. For example, in a CSV format, a comma (",") is the typical column    delimiter.
@@ -694,7 +694,7 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
 }
 
 /// The configuration parameters for the default Amazon Glue database. You use this database       for SQL queries that you write in a Kinesis Data Analytics Studio notebook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CatalogConfiguration {
     ///
     /// The configuration parameters for the default Amazon Glue database. You use this database       for Apache Flink SQL queries and table API transforms that you write in a Kinesis Data       Analytics Studio notebook.
@@ -728,7 +728,7 @@ impl cfn_resources::CfnResource for CatalogConfiguration {
 }
 
 /// Describes an application's checkpointing configuration. Checkpointing is the process of persisting application state for fault    tolerance.    For more information, see         Checkpoints for Fault Tolerance in the    Apache Flink Documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CheckpointConfiguration {
     ///
     /// Describes the interval in milliseconds between checkpoint operations.
@@ -788,7 +788,7 @@ pub struct CheckpointConfiguration {
     pub min_pause_between_checkpoints: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CheckpointConfigurationConfigurationTypeEnum {
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
@@ -820,7 +820,7 @@ impl cfn_resources::CfnResource for CheckpointConfiguration {
 }
 
 /// Specifies either the application code, or the location of the application code, for a    Flink-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeContent {
     ///
     /// Information about the Amazon S3 bucket that contains the application code.
@@ -904,7 +904,7 @@ impl cfn_resources::CfnResource for CodeContent {
 }
 
 /// The configuration of connectors and user-defined functions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomArtifactConfiguration {
     ///
     /// Set this to either UDF or DEPENDENCY_JAR. UDF stands for user-defined functions. This type of artifact must be in an       S3 bucket. A DEPENDENCY_JAR can be in either Maven or an S3 bucket.
@@ -943,7 +943,7 @@ pub struct CustomArtifactConfiguration {
     pub s3_content_location: Option<S3ContentLocation>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomArtifactConfigurationArtifactTypeEnum {
     /// DEPENDENCY_JAR
     #[serde(rename = "DEPENDENCY_JAR")]
@@ -983,7 +983,7 @@ impl cfn_resources::CfnResource for CustomArtifactConfiguration {
 }
 
 /// The information required to deploy a Kinesis Data Analytics Studio notebook as an       application with durable state.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeployAsApplicationConfiguration {
     ///
     /// The description of an Amazon S3 object that contains the Amazon Data Analytics       application, including the Amazon Resource Name (ARN) of the S3 bucket, the name of the       Amazon S3 object that contains the data, and the version number of the Amazon S3 object       that contains the data.
@@ -1014,7 +1014,7 @@ impl cfn_resources::CfnResource for DeployAsApplicationConfiguration {
 }
 
 /// Describes execution properties for a Flink-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentProperties {
     ///
     /// Describes the execution property groups.
@@ -1055,7 +1055,7 @@ impl cfn_resources::CfnResource for EnvironmentProperties {
 }
 
 /// Describes configuration parameters for a Flink-based Kinesis Data Analytics application or a Studio notebook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FlinkApplicationConfiguration {
     ///
     /// Describes an application's checkpointing configuration. Checkpointing is the    process of persisting application state for fault tolerance.    For more information, see         Checkpoints for Fault Tolerance in the    Apache Flink Documentation.
@@ -1121,7 +1121,7 @@ impl cfn_resources::CfnResource for FlinkApplicationConfiguration {
 }
 
 /// Describes the starting parameters for a Flink-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FlinkRunConfiguration {
     ///
     /// When restoring from a snapshot, specifies whether the runtime is allowed to skip a state that cannot     be mapped to the new program.   This will happen if the program is updated between snapshots to remove stateful parameters, and    state data in the snapshot no longer    corresponds to valid application data. For more information, see        Allowing Non-Restored State in the Apache Flink      documentation.
@@ -1153,7 +1153,7 @@ impl cfn_resources::CfnResource for FlinkRunConfiguration {
 }
 
 /// The configuration of the Glue Data Catalog that you use for Apache Flink SQL queries       and table API transforms that you write in an application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlueDataCatalogConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the database.
@@ -1211,7 +1211,7 @@ impl cfn_resources::CfnResource for GlueDataCatalogConfiguration {
 }
 
 /// When you configure the application input for a SQL-based Kinesis Data Analytics application, you specify the streaming source, the in-application stream    name that is created,    and the mapping between the two.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Input {
     ///
     /// Describes the number of in-application streams to create.
@@ -1347,7 +1347,7 @@ impl cfn_resources::CfnResource for Input {
 }
 
 /// An object that contains the Amazon Resource Name (ARN) of the Amazon Lambda function that is    used to preprocess records in the stream in a SQL-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputLambdaProcessor {
     ///
     /// The ARN of the Amazon Lambda function that operates on records in the stream.
@@ -1406,7 +1406,7 @@ impl cfn_resources::CfnResource for InputLambdaProcessor {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the number of    in-application streams to create for a given streaming source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputParallelism {
     ///
     /// The number of in-application streams to create.
@@ -1458,7 +1458,7 @@ impl cfn_resources::CfnResource for InputParallelism {
 }
 
 /// For an SQL-based Amazon Kinesis Data Analytics application, describes a processor that       is used to preprocess the records in the stream before being processed by your       application code. Currently, the only input processor available is Amazon Lambda.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputProcessingConfiguration {
     ///
     /// The InputLambdaProcessor that is used to preprocess the records in the stream       before being processed by your application code.
@@ -1492,7 +1492,7 @@ impl cfn_resources::CfnResource for InputProcessingConfiguration {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the format of the    data in the streaming source, and how each data element maps to corresponding columns created    in the in-application stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputSchema {
     ///
     /// A list of RecordColumn objects.
@@ -1585,7 +1585,7 @@ impl cfn_resources::CfnResource for InputSchema {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping    information when JSON is the record format on the streaming source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JSONMappingParameters {
     ///
     /// The path to the top-level parent that contains the records.
@@ -1642,7 +1642,7 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, identifies a Kinesis Data    Firehose delivery stream as the streaming source. You provide the delivery stream's Amazon    Resource Name (ARN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisFirehoseInput {
     ///
     /// The Amazon Resource Name (ARN) of the delivery stream.
@@ -1699,7 +1699,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseInput {
 }
 
 /// Identifies a Kinesis data stream as the streaming source. You provide the    stream's Amazon Resource Name (ARN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamsInput {
     ///
     /// The ARN of the input Kinesis data stream to read.
@@ -1756,7 +1756,7 @@ impl cfn_resources::CfnResource for KinesisStreamsInput {
 }
 
 /// When you configure a SQL-based Kinesis Data Analytics application's input at the    time of creating or updating an application, provides additional mapping information specific    to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the    streaming source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MappingParameters {
     ///
     /// Provides additional mapping information when the record format uses delimiters    (for example, CSV).
@@ -1806,7 +1806,7 @@ impl cfn_resources::CfnResource for MappingParameters {
 }
 
 /// The information required to specify a Maven reference. You can use Maven references to       specify dependency JAR files.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MavenReference {
     ///
     /// The artifact ID of the Maven reference.
@@ -1941,7 +1941,7 @@ impl cfn_resources::CfnResource for MavenReference {
 }
 
 /// Describes configuration parameters for Amazon CloudWatch logging for a Java-based       Kinesis Data Analytics application. For more information about CloudWatch logging, see         Monitoring.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringConfiguration {
     ///
     /// Describes whether to use the default CloudWatch logging configuration for an application.   You must set this property to CUSTOM in order to set the LogLevel or   MetricsLevel parameters.
@@ -1985,7 +1985,7 @@ pub struct MonitoringConfiguration {
     pub metrics_level: Option<MonitoringConfigurationMetricsLevelEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringConfigurationConfigurationTypeEnum {
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
@@ -2002,7 +2002,7 @@ impl Default for MonitoringConfigurationConfigurationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringConfigurationLogLevelEnum {
     /// DEBUG
     #[serde(rename = "DEBUG")]
@@ -2027,7 +2027,7 @@ impl Default for MonitoringConfigurationLogLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringConfigurationMetricsLevelEnum {
     /// APPLICATION
     #[serde(rename = "APPLICATION")]
@@ -2067,7 +2067,7 @@ impl cfn_resources::CfnResource for MonitoringConfiguration {
 }
 
 /// Describes parameters for how a Flink-based Kinesis Data Analytics application    executes multiple tasks simultaneously. For more information about parallelism,    see Parallel Execution in the Apache Flink     Documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParallelismConfiguration {
     ///
     /// Describes whether the Kinesis Data Analytics service can increase the parallelism of the application in response to increased throughput.
@@ -2123,7 +2123,7 @@ pub struct ParallelismConfiguration {
     pub parallelism_per_kpu: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParallelismConfigurationConfigurationTypeEnum {
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
@@ -2173,7 +2173,7 @@ impl cfn_resources::CfnResource for ParallelismConfiguration {
 }
 
 /// Property key-value pairs passed into an application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PropertyGroup {
     ///
     /// Describes the key of an application execution property key-value pair.
@@ -2245,7 +2245,7 @@ impl cfn_resources::CfnResource for PropertyGroup {
 /// For a SQL-based Kinesis Data Analytics application, describes the mapping of each    data element in the streaming source to the corresponding column in the in-application    stream.
 ///
 /// Also used to describe the format of the reference data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordColumn {
     ///
     /// A reference to the data element in the streaming input or the reference data    source.
@@ -2377,7 +2377,7 @@ impl cfn_resources::CfnResource for RecordColumn {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the record format    and relevant mapping information that should be applied to schematize the records on the    stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordFormat {
     ///
     /// When you configure application input at the time of creating or updating an application,    provides additional mapping information specific to the record format (such as JSON, CSV, or    record fields delimited by some delimiter) on the streaming source.
@@ -2405,7 +2405,7 @@ pub struct RecordFormat {
     pub record_format_type: RecordFormatRecordFormatTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecordFormatRecordFormatTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -2441,7 +2441,7 @@ impl cfn_resources::CfnResource for RecordFormat {
 }
 
 /// Describes the starting parameters for an Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunConfiguration {
     ///
     /// Describes the restore behavior of a restarting application.
@@ -2491,7 +2491,7 @@ impl cfn_resources::CfnResource for RunConfiguration {
 }
 
 /// The base location of the Amazon Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3ContentBaseLocation {
     ///
     /// The base path for the S3 bucket.
@@ -2588,7 +2588,7 @@ impl cfn_resources::CfnResource for S3ContentBaseLocation {
 }
 
 /// The location of an application or a custom artifact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3ContentLocation {
     ///
     /// The Amazon Resource Name (ARN) for the S3 bucket containing the application code.
@@ -2720,7 +2720,7 @@ impl cfn_resources::CfnResource for S3ContentLocation {
 }
 
 /// Describes the inputs, outputs, and reference data sources for a SQL-based Kinesis Data Analytics application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqlApplicationConfiguration {
     ///
     /// The array of Input objects describing       the input streams used by the application.
@@ -2756,7 +2756,7 @@ impl cfn_resources::CfnResource for SqlApplicationConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2794,7 +2794,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the parameters of a VPC used by the application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// The array of SecurityGroup     IDs used by the VPC configuration.
@@ -2856,7 +2856,7 @@ impl cfn_resources::CfnResource for VpcConfiguration {
 }
 
 /// The configuration of a Kinesis Data Analytics Studio notebook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZeppelinApplicationConfiguration {
     ///
     /// The Amazon Glue Data Catalog that you use in queries in a Kinesis Data Analytics Studio       notebook.
@@ -2942,7 +2942,7 @@ impl cfn_resources::CfnResource for ZeppelinApplicationConfiguration {
 }
 
 /// Describes configuration parameters for Amazon CloudWatch logging for a Kinesis Data       Analytics Studio notebook. For more information about CloudWatch logging, see Monitoring.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZeppelinMonitoringConfiguration {
     ///
     /// The verbosity of the CloudWatch Logs for an application. You can set it to INFO, WARN, ERROR, or DEBUG.
@@ -2959,7 +2959,7 @@ pub struct ZeppelinMonitoringConfiguration {
     pub log_level: Option<ZeppelinMonitoringConfigurationLogLevelEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ZeppelinMonitoringConfigurationLogLevelEnum {
     /// DEBUG
     #[serde(rename = "DEBUG")]

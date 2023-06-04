@@ -1,7 +1,7 @@
 /// Creates a node on the specified blockchain network.
 ///
 /// Applies to Hyperledger Fabric and Ethereum.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNode {
     ///
     /// The unique identifier of the member to which the node belongs. Applies only to Hyperledger Fabric.
@@ -57,7 +57,7 @@ pub struct CfnNode {
     pub att_node_id: CfnNodenodeid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodearn;
 impl CfnNodearn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnNodearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodememberid;
 impl CfnNodememberid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnNodememberid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodenetworkid;
 impl CfnNodenetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnNodenetworkid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodenodeid;
 impl CfnNodenodeid {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for CfnNode {
 }
 
 /// Configuration properties of a peer node within a membership.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeConfiguration {
     ///
     /// The Availability Zone in which the node exists. Required for Ethereum nodes.

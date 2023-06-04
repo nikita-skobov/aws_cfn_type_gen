@@ -1,5 +1,5 @@
 /// The AWS::CodePipeline::CustomActionType resource creates a custom action    for activities that aren't included in the CodePipeline default actions, such as running an    internally developed build process or a test suite. You can use these custom actions in the    stage of a pipeline. For more information, see Create and Add a Custom     Action in AWS CodePipeline in the AWS CodePipeline User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomActionType {
     ///
     /// The category of the custom action, such as a build action or a test       action.
@@ -114,7 +114,7 @@ pub struct CfnCustomActionType {
     pub att_id: CfnCustomActionTypeid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomActionTypeCategoryEnum {
     /// Approval
     #[serde(rename = "Approval")]
@@ -147,7 +147,7 @@ impl Default for CustomActionTypeCategoryEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomActionTypeid;
 impl CfnCustomActionTypeid {
     pub fn att_name(&self) -> &'static str {
@@ -228,7 +228,7 @@ impl cfn_resources::CfnResource for CfnCustomActionType {
 }
 
 /// Returns information about the details of an artifact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArtifactDetails {
     ///
     /// The maximum number of artifacts allowed for the action type.
@@ -312,7 +312,7 @@ impl cfn_resources::CfnResource for ArtifactDetails {
 }
 
 /// The configuration properties for the custom action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationProperties {
     ///
     /// The description of the action configuration property that is displayed to       users.
@@ -409,7 +409,7 @@ pub struct ConfigurationProperties {
     pub cfn_type: Option<ConfigurationPropertiesTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfigurationPropertiesTypeEnum {
     /// Boolean
     #[serde(rename = "Boolean")]
@@ -489,7 +489,7 @@ impl cfn_resources::CfnResource for ConfigurationProperties {
 }
 
 /// Settings is a property of the AWS::CodePipeline::CustomActionType    resource that provides URLs that users can access to view information about the CodePipeline    custom action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Settings {
     ///
     /// The URL returned to the CodePipeline console that provides a deep link to the       resources of the external system, such as the configuration page for a CodeDeploy       deployment group. This link is provided as part of the action display in the       pipeline.
@@ -647,7 +647,7 @@ impl cfn_resources::CfnResource for Settings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

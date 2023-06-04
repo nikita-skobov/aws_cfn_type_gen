@@ -1,5 +1,5 @@
 /// The     AWS::Greengrass::GroupVersion resource represents a group version in AWS IoT Greengrass.     A group version references a core definition version,      device definition version, subscription definition version, and other version types     that contain the components you want to deploy to a Greengrass core device.      The group version must reference a core definition version that contains one core.     Other version types are optionally included, depending on your business need.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroupVersion {
     ///
     /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.

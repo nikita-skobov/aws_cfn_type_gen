@@ -5,7 +5,7 @@
 /// A gateway endpoint serves as a target for a route in your route table for traffic destined      for Amazon S3 or Amazon DynamoDB. You can specify an endpoint policy for the endpoint,      which controls access to the service from your VPC. You can also specify the VPC route tables      that use the endpoint. For information about connectivity to Amazon S3, see Why can’t I connect to an S3 bucket using a gateway VPC endpoint?
 ///
 /// A Gateway Load Balancer endpoint provides private connectivity between your VPC and      virtual appliances from a service provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpoint {
     ///
     /// A policy that controls access to the service from the VPC.      If this parameter is not specified, the default policy allows full access to the service.     Endpoint policies are supported only for gateway and interface endpoints.
@@ -120,7 +120,7 @@ pub struct CfnVPCEndpoint {
     pub att_id: CfnVPCEndpointid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VPCEndpointVpcEndpointTypeEnum {
     /// Gateway
     #[serde(rename = "Gateway")]
@@ -141,7 +141,7 @@ impl Default for VPCEndpointVpcEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpointcreationtimestamp;
 impl CfnVPCEndpointcreationtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -149,7 +149,7 @@ impl CfnVPCEndpointcreationtimestamp {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpointid;
 impl CfnVPCEndpointid {
     pub fn att_name(&self) -> &'static str {

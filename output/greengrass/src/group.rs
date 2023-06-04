@@ -9,7 +9,7 @@
 /// Deploying a Group Version
 ///
 /// After you create the group version in your AWS CloudFormation template, you can deploy it using the  		 aws greengrass create-deployment command in the AWS CLI or 		 from the Greengrass node in the AWS IoT console. To deploy a group version, you must have a Greengrass service role associated with 		    your AWS account. For more information, see AWS CloudFormation Support for AWS IoT Greengrass 		 in the AWS IoT Greengrass Version 1 Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroup {
     ///
     /// The group version to include when the group is created.          A group version references the Amazon Resource Name (ARN) of a core definition version,           device definition version, subscription definition version, and other version types.  				 The group version must reference a core definition version that contains one core. 				 Other version types are optionally included, depending on your business need.
@@ -83,7 +83,7 @@ pub struct CfnGroup {
     pub att_role_attached_at: CfnGrouproleattachedat,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouparn;
 impl CfnGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl CfnGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroupid;
 impl CfnGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnGroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouplatestversionarn;
 impl CfnGrouplatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnGrouplatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroupname;
 impl CfnGroupname {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnGroupname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouprolearn;
 impl CfnGrouprolearn {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnGrouprolearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouproleattachedat;
 impl CfnGrouproleattachedat {
     pub fn att_name(&self) -> &'static str {
@@ -152,7 +152,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 /// A group version in AWS IoT Greengrass, 		   which references of a core definition version,      device definition version, subscription definition version, and other version types 				 that contain the components you want to deploy to a Greengrass core device. 		The group version must reference a core definition version that contains one core. 		Other version types are optionally included, depending on your business need.
 ///
 /// In an AWS CloudFormation template, GroupVersion is the property type of the InitialVersion property      in the AWS::Greengrass::Group resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GroupVersion {
     ///
     /// The Amazon Resource Name (ARN) of the connector definition version that contains the connectors you want to deploy with the group version.

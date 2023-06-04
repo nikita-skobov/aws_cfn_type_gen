@@ -1,5 +1,5 @@
 /// Creates a running app for the specified UserProfile. This operation is automatically    invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel    configurations are selected by the user. A user may have multiple Apps active simultaneously.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApp {
     ///
     /// The name of the app.
@@ -87,7 +87,7 @@ pub struct CfnApp {
     pub att_app_arn: CfnAppapparn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AppAppTypeEnum {
     /// JupyterServer
     #[serde(rename = "JupyterServer")]
@@ -120,7 +120,7 @@ impl Default for AppAppTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppapparn;
 impl CfnAppapparn {
     pub fn att_name(&self) -> &'static str {
@@ -180,7 +180,7 @@ impl cfn_resources::CfnResource for CfnApp {
 }
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceSpec {
     ///
     /// The instance type that the image version runs on.
@@ -231,7 +231,7 @@ pub struct ResourceSpec {
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceSpecInstanceTypeEnum {
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
@@ -517,7 +517,7 @@ impl cfn_resources::CfnResource for ResourceSpec {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

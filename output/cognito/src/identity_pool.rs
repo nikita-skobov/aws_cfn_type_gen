@@ -1,7 +1,7 @@
 /// The AWS::Cognito::IdentityPool resource creates an Amazon Cognito identity    pool.
 ///
 /// To avoid deleting the resource accidentally from AWS CloudFormation, use DeletionPolicy     Attribute and the UpdateReplacePolicy Attribute to retain the resource on deletion or    replacement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIdentityPool {
     ///
     /// Enables the Basic (Classic) authentication flow.
@@ -148,7 +148,7 @@ pub struct CfnIdentityPool {
     pub att_name: CfnIdentityPoolname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIdentityPoolname;
 impl CfnIdentityPoolname {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnIdentityPool {
 }
 
 /// CognitoIdentityProvider is a property of the AWS::Cognito::IdentityPool resource that represents an Amazon Cognito user pool and    its client ID.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoIdentityProvider {
     ///
     /// The client ID for the Amazon Cognito user pool.
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for CognitoIdentityProvider {
 }
 
 /// CognitoStreams is a property of the AWS::Cognito::IdentityPool resource that defines configuration options for Amazon    Cognito streams.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoStreams {
     ///
     /// The Amazon Resource Name (ARN) of the role Amazon Cognito can assume to publish to the    stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke     PutRecord on your Amazon Cognito stream.
@@ -291,7 +291,7 @@ impl cfn_resources::CfnResource for CognitoStreams {
 }
 
 /// PushSync is a property of the AWS::Cognito::IdentityPool resource that defines the configuration options to be    applied to an Amazon Cognito identity pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PushSync {
     ///
     /// The ARNs of the Amazon SNS platform applications that could be used by clients.

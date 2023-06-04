@@ -3,7 +3,7 @@
 /// You can route several different protocols and define a retry policy for a route.     Traffic can be routed to one or more virtual nodes.
 ///
 /// For more information about routes, see Routes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoute {
     ///
     /// The name of the service mesh to create the route in.
@@ -114,7 +114,7 @@ pub struct CfnRoute {
     pub att_virtual_router_name: CfnRoutevirtualroutername,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutearn;
 impl CfnRoutearn {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl CfnRoutearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutemeshname;
 impl CfnRoutemeshname {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl CfnRoutemeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutemeshowner;
 impl CfnRoutemeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnRoutemeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteresourceowner;
 impl CfnRouteresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnRouteresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteroutename;
 impl CfnRouteroutename {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnRouteroutename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteuid;
 impl CfnRouteuid {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl CfnRouteuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutevirtualroutername;
 impl CfnRoutevirtualroutername {
     pub fn att_name(&self) -> &'static str {
@@ -284,7 +284,7 @@ impl cfn_resources::CfnResource for CfnRoute {
 }
 
 /// An object that represents a duration of time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Duration {
     ///
     /// A unit of time.
@@ -311,7 +311,7 @@ pub struct Duration {
     pub value: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DurationUnitEnum {
     /// ms
     #[serde(rename = "ms")]
@@ -343,7 +343,7 @@ impl cfn_resources::CfnResource for Duration {
 }
 
 /// An object that represents a retry policy. Specify at least one value for at least one of the types of RetryEvents, a value for maxRetries, and a value for perRetryTimeout.         Both server-error and gateway-error under httpRetryEvents include the Envoy reset policy. For more information on the         reset policy, see the Envoy documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRetryPolicy {
     ///
     /// Specify at least one of the valid values.
@@ -456,7 +456,7 @@ impl cfn_resources::CfnResource for GrpcRetryPolicy {
 }
 
 /// An object that represents a gRPC route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -530,7 +530,7 @@ impl cfn_resources::CfnResource for GrpcRoute {
 }
 
 /// An object that represents the action to take if a match is determined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRouteAction {
     ///
     /// An object that represents the targets that traffic is routed to when a request matches the route.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for GrpcRouteAction {
 }
 
 /// An object that represents the criteria for determining a request match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRouteMatch {
     ///
     /// An object that represents the data to match from the request.
@@ -695,7 +695,7 @@ impl cfn_resources::CfnResource for GrpcRouteMatch {
 }
 
 /// An object that represents the match metadata for the route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRouteMetadata {
     ///
     /// Specify True to match anything except the match criteria. The default value is False.
@@ -778,7 +778,7 @@ impl cfn_resources::CfnResource for GrpcRouteMetadata {
 }
 
 /// An object that represents the match method. Specify one of the match values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcRouteMetadataMatchMethod {
     ///
     /// The value sent by the client must match the specified value exactly.
@@ -962,7 +962,7 @@ impl cfn_resources::CfnResource for GrpcRouteMetadataMatchMethod {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -1010,7 +1010,7 @@ impl cfn_resources::CfnResource for GrpcTimeout {
 }
 
 /// An object that represents the method and value to match with the header value sent in a     request. Specify one match method.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderMatchMethod {
     ///
     /// The value sent by the client must match the specified value exactly.
@@ -1194,7 +1194,7 @@ impl cfn_resources::CfnResource for HeaderMatchMethod {
 }
 
 /// An object representing the path to match in the request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpPathMatch {
     ///
     /// The exact path to match on.
@@ -1288,7 +1288,7 @@ impl cfn_resources::CfnResource for HttpPathMatch {
 }
 
 /// An object representing the query parameter to match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpQueryParameterMatch {
     ///
     /// The exact query parameter to match on.
@@ -1318,7 +1318,7 @@ impl cfn_resources::CfnResource for HttpQueryParameterMatch {
 }
 
 /// An object that represents a retry policy. Specify at least one value for at least one of the types of RetryEvents, a value for maxRetries, and a value for perRetryTimeout.         Both server-error and gateway-error under httpRetryEvents include the Envoy reset policy. For more information on the         reset policy, see the Envoy documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRetryPolicy {
     ///
     /// Specify at least one of the following values.
@@ -1408,7 +1408,7 @@ impl cfn_resources::CfnResource for HttpRetryPolicy {
 }
 
 /// An object that represents an HTTP or HTTP/2 route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -1482,7 +1482,7 @@ impl cfn_resources::CfnResource for HttpRoute {
 }
 
 /// An object that represents the action to take if a match is determined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRouteAction {
     ///
     /// An object that represents the targets that traffic is routed to when a request matches the route.
@@ -1522,7 +1522,7 @@ impl cfn_resources::CfnResource for HttpRouteAction {
 }
 
 /// An object that represents the HTTP header in the request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRouteHeader {
     ///
     /// Specify True to match anything except the match criteria. The default value is False.
@@ -1605,7 +1605,7 @@ impl cfn_resources::CfnResource for HttpRouteHeader {
 }
 
 /// An object that represents the requirements for a route to match HTTP requests for a     virtual router.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpRouteMatch {
     ///
     /// The client request headers to match on.
@@ -1704,7 +1704,7 @@ pub struct HttpRouteMatch {
     pub scheme: Option<HttpRouteMatchSchemeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpRouteMatchMethodEnum {
     /// CONNECT
     #[serde(rename = "CONNECT")]
@@ -1749,7 +1749,7 @@ impl Default for HttpRouteMatchMethodEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpRouteMatchSchemeEnum {
     /// http
     #[serde(rename = "http")]
@@ -1819,7 +1819,7 @@ impl cfn_resources::CfnResource for HttpRouteMatch {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -1867,7 +1867,7 @@ impl cfn_resources::CfnResource for HttpTimeout {
 }
 
 /// An object that represents the range of values to match on. The first character of the range is included in the range, though the last character is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MatchRange {
     ///
     /// The end of the range.
@@ -1907,7 +1907,7 @@ impl cfn_resources::CfnResource for MatchRange {
 }
 
 /// An object that represents the query parameter in the request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueryParameter {
     ///
     /// The query parameter to match on.
@@ -1952,7 +1952,7 @@ impl cfn_resources::CfnResource for QueryParameter {
 }
 
 /// An object that represents a route specification. Specify one route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RouteSpec {
     ///
     /// An object that represents the specification of a gRPC route.
@@ -2074,7 +2074,7 @@ impl cfn_resources::CfnResource for RouteSpec {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2112,7 +2112,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// An object that represents a TCP route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TcpRoute {
     ///
     /// The action to take if a match is determined.
@@ -2173,7 +2173,7 @@ impl cfn_resources::CfnResource for TcpRoute {
 }
 
 /// An object that represents the action to take if a match is determined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TcpRouteAction {
     ///
     /// An object that represents the targets that traffic is routed to when a request matches the route.
@@ -2213,7 +2213,7 @@ impl cfn_resources::CfnResource for TcpRouteAction {
 }
 
 /// An object representing the TCP route to match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TcpRouteMatch {
     ///
     /// The port number to match on.
@@ -2265,7 +2265,7 @@ impl cfn_resources::CfnResource for TcpRouteMatch {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TcpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -2297,7 +2297,7 @@ impl cfn_resources::CfnResource for TcpTimeout {
 }
 
 /// An object that represents a target and its relative weight. Traffic is distributed     across targets according to their relative weight. For example, a weighted target with a     relative weight of 50 receives five times as much traffic as one with a relative weight of     10. The total weight for all targets combined must be less than or equal to 100.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WeightedTarget {
     ///
     /// The targeted port of the weighted object.

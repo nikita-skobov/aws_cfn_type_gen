@@ -1,5 +1,5 @@
 /// Create a scheduled query that will be run on your behalf at the configured schedule.    Timestream assumes the execution role provided as part of the     ScheduledQueryExecutionRoleArn parameter to run the query. You can use the     NotificationConfiguration parameter to configure notification for your    scheduled query operations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuery {
     ///
     /// Using a ClientToken makes the call to CreateScheduledQuery idempotent, in other words,    making the same request repeatedly will produce the same result. Making multiple identical    CreateScheduledQuery requests has the same effect as making a single request.
@@ -150,7 +150,7 @@ pub struct CfnScheduledQuery {
     pub att_sqtarget_configuration: CfnScheduledQuerysqtargetconfiguration,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQueryarn;
 impl CfnScheduledQueryarn {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnScheduledQueryarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqerrorreportconfiguration;
 impl CfnScheduledQuerysqerrorreportconfiguration {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnScheduledQuerysqerrorreportconfiguration {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqkmskeyid;
 impl CfnScheduledQuerysqkmskeyid {
     pub fn att_name(&self) -> &'static str {
@@ -174,7 +174,7 @@ impl CfnScheduledQuerysqkmskeyid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqname;
 impl CfnScheduledQuerysqname {
     pub fn att_name(&self) -> &'static str {
@@ -182,7 +182,7 @@ impl CfnScheduledQuerysqname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqnotificationconfiguration;
 impl CfnScheduledQuerysqnotificationconfiguration {
     pub fn att_name(&self) -> &'static str {
@@ -190,7 +190,7 @@ impl CfnScheduledQuerysqnotificationconfiguration {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqquerystring;
 impl CfnScheduledQuerysqquerystring {
     pub fn att_name(&self) -> &'static str {
@@ -198,7 +198,7 @@ impl CfnScheduledQuerysqquerystring {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqscheduleconfiguration;
 impl CfnScheduledQuerysqscheduleconfiguration {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl CfnScheduledQuerysqscheduleconfiguration {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqscheduledqueryexecutionrolearn;
 impl CfnScheduledQuerysqscheduledqueryexecutionrolearn {
     pub fn att_name(&self) -> &'static str {
@@ -214,7 +214,7 @@ impl CfnScheduledQuerysqscheduledqueryexecutionrolearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledQuerysqtargetconfiguration;
 impl CfnScheduledQuerysqtargetconfiguration {
     pub fn att_name(&self) -> &'static str {
@@ -247,7 +247,7 @@ impl cfn_resources::CfnResource for CfnScheduledQuery {
 }
 
 /// This type is used to map column(s) from the query result to a dimension in the destination    table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DimensionMapping {
     ///
     /// Type for the dimension: VARCHAR
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for DimensionMapping {
 }
 
 /// Configuration required for error reporting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ErrorReportConfiguration {
     ///
     /// The S3 configuration for the error reports.
@@ -318,7 +318,7 @@ impl cfn_resources::CfnResource for ErrorReportConfiguration {
 }
 
 /// MixedMeasureMappings are mappings that can be used to ingest data into a mixture of narrow    and multi measures in the derived table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MixedMeasureMapping {
     ///
     /// Refers to the value of measure_name in a result row. This field is required if    MeasureNameColumn is provided.
@@ -395,7 +395,7 @@ impl cfn_resources::CfnResource for MixedMeasureMapping {
 }
 
 /// Attribute mapping for MULTI value measures.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiMeasureAttributeMapping {
     ///
     /// Type of the attribute to be read from the source column.
@@ -447,7 +447,7 @@ impl cfn_resources::CfnResource for MultiMeasureAttributeMapping {
 }
 
 /// Only one of MixedMeasureMappings or MultiMeasureMappings is to be provided.    MultiMeasureMappings can be used to ingest data as multi measures in the derived table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiMeasureMappings {
     ///
     /// Required. Attribute mappings to be used for mapping query results to ingest data for    multi-measure attributes.
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for MultiMeasureMappings {
 }
 
 /// Notification configuration for a scheduled query. A notification is sent by Timestream    when a scheduled query is created, its state is updated or when it is deleted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationConfiguration {
     ///
     /// Details on SNS configuration.
@@ -519,7 +519,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 }
 
 /// Details on S3 location for error reports that result from running a query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Configuration {
     ///
     /// Name of the S3 bucket under which error reports will be created.
@@ -571,7 +571,7 @@ pub struct S3Configuration {
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3ConfigurationEncryptionOptionEnum {
     /// SSE_KMS
     #[serde(rename = "SSE_KMS")]
@@ -644,7 +644,7 @@ impl cfn_resources::CfnResource for S3Configuration {
 }
 
 /// Configuration of the schedule of the query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduleConfiguration {
     ///
     /// An expression that denotes when to trigger the scheduled query run. This can be a cron    expression or a rate expression.
@@ -673,7 +673,7 @@ impl cfn_resources::CfnResource for ScheduleConfiguration {
 }
 
 /// Details on SNS that are required to send the notification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnsConfiguration {
     ///
     /// SNS topic ARN that the scheduled query status notifications will be sent to.
@@ -708,7 +708,7 @@ impl cfn_resources::CfnResource for SnsConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -746,7 +746,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Configuration used for writing the output of a query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetConfiguration {
     ///
     /// Configuration needed to write data into the Timestream database and table.
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for TargetConfiguration {
 }
 
 /// Configuration to write data into Timestream database and table. This configuration allows    the user to map the query result select columns into the destination table columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestreamConfiguration {
     ///
     /// Name of Timestream database to which the query result will be written.

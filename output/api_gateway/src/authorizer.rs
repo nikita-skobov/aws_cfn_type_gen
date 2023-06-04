@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Authorizer resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAuthorizer {
     ///
     /// Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
@@ -122,7 +122,7 @@ pub struct CfnAuthorizer {
     pub att_authorizer_id: CfnAuthorizerauthorizerid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAuthorizerauthorizerid;
 impl CfnAuthorizerauthorizerid {
     pub fn att_name(&self) -> &'static str {

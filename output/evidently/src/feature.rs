@@ -1,5 +1,5 @@
 /// Creates or updates an Evidently feature that you want to launch or test. You can define up to       five variations of a feature, and use these variations in your launches and experiments. A feature must be created in       a project. For information about creating a project, see       CreateProject.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFeature {
     ///
     /// The name of the variation to use as the default variation. The default       variation is served to users who are not allocated to any ongoing launches       or experiments of this feature.
@@ -112,7 +112,7 @@ pub struct CfnFeature {
     pub att_arn: CfnFeaturearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFeaturearn;
 impl CfnFeaturearn {
     pub fn att_name(&self) -> &'static str {
@@ -135,7 +135,7 @@ impl cfn_resources::CfnResource for CfnFeature {
 }
 
 /// A set of key-value pairs that specify users who should always be served a specific       variation of a feature. Each key specifies a user using their user ID, account ID, or some       other identifier. The value specifies the name of the variation that the user is to be       served.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EntityOverride {
     ///
     /// The entity ID to be served the variation specified in Variation.
@@ -183,7 +183,7 @@ impl cfn_resources::CfnResource for EntityOverride {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -221,7 +221,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// This structure contains the name and variation value of one variation of a feature. It       can contain only one of the following parameters: BooleanValue, DoubleValue, LongValue       or StringValue.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VariationObject {
     ///
     /// The value assigned to this variation, if the variation type is boolean.

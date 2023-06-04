@@ -1,5 +1,5 @@
 /// Creates a transit gateway peering connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeering {
     ///
     /// The ID of the core network.
@@ -70,7 +70,7 @@ pub struct CfnTransitGatewayPeering {
         CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringcorenetworkarn;
 impl CfnTransitGatewayPeeringcorenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl CfnTransitGatewayPeeringcorenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringcreatedat;
 impl CfnTransitGatewayPeeringcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -86,7 +86,7 @@ impl CfnTransitGatewayPeeringcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringedgelocation;
 impl CfnTransitGatewayPeeringedgelocation {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl CfnTransitGatewayPeeringedgelocation {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringowneraccountid;
 impl CfnTransitGatewayPeeringowneraccountid {
     pub fn att_name(&self) -> &'static str {
@@ -102,7 +102,7 @@ impl CfnTransitGatewayPeeringowneraccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringpeeringid;
 impl CfnTransitGatewayPeeringpeeringid {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl CfnTransitGatewayPeeringpeeringid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringpeeringtype;
 impl CfnTransitGatewayPeeringpeeringtype {
     pub fn att_name(&self) -> &'static str {
@@ -118,7 +118,7 @@ impl CfnTransitGatewayPeeringpeeringtype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringresourcearn;
 impl CfnTransitGatewayPeeringresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -126,7 +126,7 @@ impl CfnTransitGatewayPeeringresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringstate;
 impl CfnTransitGatewayPeeringstate {
     pub fn att_name(&self) -> &'static str {
@@ -134,7 +134,7 @@ impl CfnTransitGatewayPeeringstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid;
 impl CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -185,7 +185,7 @@ impl cfn_resources::CfnResource for CfnTransitGatewayPeering {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

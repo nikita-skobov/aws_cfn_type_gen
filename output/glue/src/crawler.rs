@@ -1,5 +1,5 @@
 /// The AWS::Glue::Crawler resource specifies an AWS Glue crawler. For more       information, see Cataloging Tables with a Crawler and Crawler Structure in the AWS Glue Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCrawler {
     ///
     /// A list of UTF-8 strings that specify the names of custom classifiers that are associated    with the crawler.
@@ -289,7 +289,7 @@ impl cfn_resources::CfnResource for CfnCrawler {
 }
 
 /// Specifies an AWS Glue Data Catalog target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CatalogTarget {
     ///
     /// The name of the database to be synchronized.
@@ -359,7 +359,7 @@ impl cfn_resources::CfnResource for CatalogTarget {
 }
 
 /// The DeltaTarget property type specifies Property description not available. for an AWS::Glue::Crawler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeltaTarget {
     /// Property description not available.
     ///
@@ -421,7 +421,7 @@ impl cfn_resources::CfnResource for DeltaTarget {
 }
 
 /// Specifies an Amazon DynamoDB table to crawl.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDBTarget {
     ///
     /// The name of the DynamoDB table to crawl.
@@ -451,7 +451,7 @@ impl cfn_resources::CfnResource for DynamoDBTarget {
 }
 
 /// Specifies a JDBC data store to crawl.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JdbcTarget {
     ///
     /// The name of the connection to use to connect to the JDBC target.
@@ -505,7 +505,7 @@ impl cfn_resources::CfnResource for JdbcTarget {
 }
 
 /// Specifies an Amazon DocumentDB or MongoDB data store to crawl.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MongoDBTarget {
     ///
     /// The name of the connection to use to connect to the Amazon DocumentDB or MongoDB target.
@@ -547,7 +547,7 @@ impl cfn_resources::CfnResource for MongoDBTarget {
 }
 
 /// When crawling an Amazon S3 data source after the first crawl is complete, specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run. For more information, see Incremental Crawls in AWS Glue in the developer guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecrawlPolicy {
     ///
     /// Specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run.
@@ -570,7 +570,7 @@ pub struct RecrawlPolicy {
     pub recrawl_behavior: Option<RecrawlPolicyRecrawlBehaviorEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecrawlPolicyRecrawlBehaviorEnum {
     /// CRAWL_EVENT_MODE
     #[serde(rename = "CRAWL_EVENT_MODE")]
@@ -606,7 +606,7 @@ impl cfn_resources::CfnResource for RecrawlPolicy {
 }
 
 /// Specifies a data store in Amazon Simple Storage Service (Amazon S3).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Target {
     ///
     /// The name of a connection which allows a job or crawler to access data in Amazon S3 within an Amazon Virtual Private Cloud environment (Amazon VPC).
@@ -696,7 +696,7 @@ impl cfn_resources::CfnResource for S3Target {
 }
 
 /// A scheduling object using a cron statement to schedule an event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schedule {
     ///
     /// A cron expression used to specify the schedule. For more information, see         Time-Based Schedules for         Jobs and Crawlers. For example, to run something every day at 12:15 UTC,       specify cron(15 12 * * ? *).
@@ -728,7 +728,7 @@ impl cfn_resources::CfnResource for Schedule {
 /// The policy that specifies update and delete behaviors for the crawler. The policy tells the crawler what to do in the event that it detects a change in a table that already exists in the customer's database at the time of the crawl. The SchemaChangePolicy does not affect whether or how new tables and partitions are added. New tables and partitions are always created regardless of the SchemaChangePolicy on a crawler.
 ///
 /// The SchemaChangePolicy consists of two components, UpdateBehavior and DeleteBehavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaChangePolicy {
     ///
     /// The deletion behavior when the crawler finds a deleted object.
@@ -769,7 +769,7 @@ pub struct SchemaChangePolicy {
     pub update_behavior: Option<SchemaChangePolicyUpdateBehaviorEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SchemaChangePolicyDeleteBehaviorEnum {
     /// DELETE_FROM_DATABASE
     #[serde(rename = "DELETE_FROM_DATABASE")]
@@ -790,7 +790,7 @@ impl Default for SchemaChangePolicyDeleteBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SchemaChangePolicyUpdateBehaviorEnum {
     /// LOG
     #[serde(rename = "LOG")]
@@ -822,7 +822,7 @@ impl cfn_resources::CfnResource for SchemaChangePolicy {
 }
 
 /// Specifies data stores to crawl.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Targets {
     ///
     /// Specifies AWS Glue Data Catalog targets.

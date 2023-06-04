@@ -1,5 +1,5 @@
 /// The AWS::OpenSearchService::Domain resource creates an Amazon OpenSearch Service    domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// An AWS Identity and Access Management (IAM) policy document that specifies who can    access the OpenSearch Service domain and their permissions. For more information, see Configuring access policies in the Amazon OpenSearch Service Developer     Guide.
@@ -252,7 +252,7 @@ pub struct CfnDomain {
     pub att_service_software_options_update_status: CfnDomainservicesoftwareoptionsupdatestatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainadvancedsecurityoptionsanonymousauthdisabledate;
 impl CfnDomainadvancedsecurityoptionsanonymousauthdisabledate {
     pub fn att_name(&self) -> &'static str {
@@ -260,7 +260,7 @@ impl CfnDomainadvancedsecurityoptionsanonymousauthdisabledate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainarn;
 impl CfnDomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -268,7 +268,7 @@ impl CfnDomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainarn;
 impl CfnDomaindomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -276,7 +276,7 @@ impl CfnDomaindomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainendpoint;
 impl CfnDomaindomainendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -284,7 +284,7 @@ impl CfnDomaindomainendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainid;
 impl CfnDomainid {
     pub fn att_name(&self) -> &'static str {
@@ -292,7 +292,7 @@ impl CfnDomainid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainservicesoftwareoptionsautomatedupdatedate;
 impl CfnDomainservicesoftwareoptionsautomatedupdatedate {
     pub fn att_name(&self) -> &'static str {
@@ -300,7 +300,7 @@ impl CfnDomainservicesoftwareoptionsautomatedupdatedate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainservicesoftwareoptionscurrentversion;
 impl CfnDomainservicesoftwareoptionscurrentversion {
     pub fn att_name(&self) -> &'static str {
@@ -308,7 +308,7 @@ impl CfnDomainservicesoftwareoptionscurrentversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainservicesoftwareoptionsdescription;
 impl CfnDomainservicesoftwareoptionsdescription {
     pub fn att_name(&self) -> &'static str {
@@ -316,7 +316,7 @@ impl CfnDomainservicesoftwareoptionsdescription {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainservicesoftwareoptionsnewversion;
 impl CfnDomainservicesoftwareoptionsnewversion {
     pub fn att_name(&self) -> &'static str {
@@ -324,7 +324,7 @@ impl CfnDomainservicesoftwareoptionsnewversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainservicesoftwareoptionsupdatestatus;
 impl CfnDomainservicesoftwareoptionsupdatestatus {
     pub fn att_name(&self) -> &'static str {
@@ -415,7 +415,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 /// Specifies options for fine-grained access control.
 ///
 /// If you specify advanced security options,    you must also enable node-to-node encryption (NodeToNodeEncryptionOptions) and encryption at rest (EncryptionAtRestOptions). You must also enable EnforceHTTPS within     DomainEndpointOptions, which requires HTTPS for all traffic to the domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedSecurityOptionsInput {
     ///
     /// Date and time when the migration period will be disabled. Only necessary when enabling    fine-grained access control on an existing domain.
@@ -510,7 +510,7 @@ impl cfn_resources::CfnResource for AdvancedSecurityOptionsInput {
 }
 
 /// The cluster configuration for the OpenSearch Service domain. You can specify options such    as the instance type and the number of instances. For more information, see Creating and managing Amazon OpenSearch Service domains in the Amazon OpenSearch Service     Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterConfig {
     ///
     /// The number of instances to use for the master node. If you specify this property, you must    specify true for the DedicatedMasterEnabled property.
@@ -639,7 +639,7 @@ pub struct ClusterConfig {
     pub zone_awareness_enabled: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterConfigDedicatedMasterTypeEnum {
     /// c4.2xlarge.search
     #[serde(rename = "c4.2xlarge.search")]
@@ -1028,7 +1028,7 @@ impl Default for ClusterConfigDedicatedMasterTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterConfigInstanceTypeEnum {
     /// c4.2xlarge.search
     #[serde(rename = "c4.2xlarge.search")]
@@ -1417,7 +1417,7 @@ impl Default for ClusterConfigInstanceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterConfigWarmTypeEnum {
     /// ultrawarm1.large.search
     #[serde(rename = "ultrawarm1.large.search")]
@@ -1457,7 +1457,7 @@ impl cfn_resources::CfnResource for ClusterConfig {
 }
 
 /// Configures OpenSearch Service to use Amazon Cognito authentication for OpenSearch    Dashboards.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoOptions {
     ///
     /// Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards. See     Amazon Cognito     authentication for OpenSearch Dashboards.
@@ -1613,7 +1613,7 @@ impl cfn_resources::CfnResource for CognitoOptions {
 }
 
 /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainEndpointOptions {
     /// The fully qualified URL for your custom endpoint. Required if you enabled a custom endpoint    for the domain.
     ///
@@ -1681,7 +1681,7 @@ pub struct DomainEndpointOptions {
     pub tlssecurity_policy: Option<DomainEndpointOptionsTLSSecurityPolicyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DomainEndpointOptionsTLSSecurityPolicyEnum {
     /// Policy-Min-TLS-1-0-2019-07
     #[serde(rename = "Policy-Min-TLS-1-0-2019-07")]
@@ -1735,7 +1735,7 @@ impl cfn_resources::CfnResource for DomainEndpointOptions {
 }
 
 /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EBSOptions {
     ///
     /// Specifies whether Amazon EBS volumes are attached to data nodes in the OpenSearch Service    domain.
@@ -1800,7 +1800,7 @@ pub struct EBSOptions {
     pub volume_type: Option<EBSOptionsVolumeTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EBSOptionsVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -1840,7 +1840,7 @@ impl cfn_resources::CfnResource for EBSOptions {
 }
 
 /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service key to use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionAtRestOptions {
     ///
     /// Specify true to enable encryption at rest. Required if you enable    fine-grained access control in AdvancedSecurityOptionsInput.
@@ -1912,7 +1912,7 @@ impl cfn_resources::CfnResource for EncryptionAtRestOptions {
 }
 
 /// The SAML Identity Provider's information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Idp {
     ///
     /// The unique entity ID of the application in the SAML identity provider.
@@ -2006,7 +2006,7 @@ impl cfn_resources::CfnResource for Idp {
 /// Specifies whether the OpenSearch Service domain publishes application, search slow logs,    or index slow logs to Amazon CloudWatch. Each option must be an object of name     SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS,     INDEX_SLOW_LOGS, or AUDIT_LOGS depending on the type of logs you    want to publish. For the full syntax, see the examples.
 ///
 /// Before you enable log publishing, you need to create a CloudWatch log group and provide    OpenSearch Service the correct permissions to write to it. To learn more, see Enabling log publishing (AWS CloudFormation).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogPublishingOption {
     ///
     /// Specifies the CloudWatch log group to publish to. Required if you enable log    publishing.
@@ -2052,7 +2052,7 @@ impl cfn_resources::CfnResource for LogPublishingOption {
 /// Specifies information about the master user.
 ///
 /// Required if if InternalUserDatabaseEnabled is true in AdvancedSecurityOptions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MasterUserOptions {
     /// Amazon Resource Name (ARN) for the master user. The ARN can point to an IAM user or role. This    property is required for Amazon Cognito to work, and it must match the role configured for    Cognito. Only specify if InternalUserDatabaseEnabled is false in AdvancedSecurityOptionsInput.
     ///
@@ -2160,7 +2160,7 @@ impl cfn_resources::CfnResource for MasterUserOptions {
 }
 
 /// Specifies options for node-to-node encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeToNodeEncryptionOptions {
     ///
     /// Specifies to enable or disable node-to-node encryption on the domain. Required if you    enable fine-grained access control in AdvancedSecurityOptionsInput.
@@ -2190,7 +2190,7 @@ impl cfn_resources::CfnResource for NodeToNodeEncryptionOptions {
 }
 
 /// A custom 10-hour, low-traffic window during which OpenSearch Service can perform mandatory configuration changes on the domain.    These actions can include scheduled service software updates and blue/green Auto-Tune enhancements. OpenSearch Service will    schedule these actions during the window that you specify. If you don't specify a window start time, it defaults to 10:00 P.M. local time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OffPeakWindow {
     ///
     /// The desired start time for an off-peak maintenance window.
@@ -2224,7 +2224,7 @@ impl cfn_resources::CfnResource for OffPeakWindow {
 }
 
 /// Off-peak window settings for the domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OffPeakWindowOptions {
     ///
     /// Specifies whether off-peak window settings are enabled for the domain.
@@ -2270,7 +2270,7 @@ impl cfn_resources::CfnResource for OffPeakWindowOptions {
 }
 
 /// Container for information about the SAML configuration for OpenSearch Dashboards.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SAMLOptions {
     ///
     /// True to enable SAML authentication for a domain.
@@ -2425,7 +2425,7 @@ impl cfn_resources::CfnResource for SAMLOptions {
 }
 
 /// The current status of the service software for an Amazon OpenSearch Service domain. For more  information, see Service software updates in   Amazon OpenSearch Service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceSoftwareOptions {
     ///
     /// The timestamp, in Epoch time, until which you can manually request a service software update. After this date,  we automatically update your service software.
@@ -2526,7 +2526,7 @@ pub struct ServiceSoftwareOptions {
     pub update_status: Option<ServiceSoftwareOptionsUpdateStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceSoftwareOptionsUpdateStatusEnum {
     /// COMPLETED
     #[serde(rename = "COMPLETED")]
@@ -2572,7 +2572,7 @@ impl cfn_resources::CfnResource for ServiceSoftwareOptions {
 /// DEPRECATED. This setting is only relevant to domains    running legacy Elasticsearch OSS versions earlier than 5.3. It does not apply to OpenSearch    domains.
 ///
 /// The automated snapshot configuration for the OpenSearch Service domain indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnapshotOptions {
     ///
     /// The hour in UTC during which the service takes an automated daily snapshot of the indexes    in the OpenSearch Service domain. For example, if you specify 0, OpenSearch Service takes an    automated snapshot everyday between midnight and 1 am. You can specify a value between 0 and    23.
@@ -2602,7 +2602,7 @@ impl cfn_resources::CfnResource for SnapshotOptions {
 }
 
 /// Options for configuring service software updates for a domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SoftwareUpdateOptions {
     ///
     /// Specifies whether automatic service software updates are enabled for the domain.
@@ -2638,7 +2638,7 @@ impl cfn_resources::CfnResource for SoftwareUpdateOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2676,7 +2676,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The virtual private cloud (VPC) configuration for the OpenSearch Service domain. For more    information, see Launching your Amazon OpenSearch     Service domains using a VPC in the Amazon OpenSearch Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VPCOptions {
     ///
     /// The list of security group IDs that are associated with the VPC endpoints for the domain.    If you don't provide a security group ID, OpenSearch Service uses the default security group    for the VPC. To learn more, see Security groups for your VPC in    the Amazon VPC User Guide.
@@ -2720,7 +2720,7 @@ impl cfn_resources::CfnResource for VPCOptions {
 }
 
 /// A custom start time for the off-peak window, in Coordinated Universal Time (UTC). The window length will always be 10 hours, so you can't    specify an end time. For example, if you specify 11:00 P.M. UTC as a start time, the end time will automatically be set to 9:00 A.M.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WindowStartTime {
     ///
     /// The start hour of the window in Coordinated Universal Time (UTC), using 24-hour time. For example, 17 refers to 5:00 P.M. UTC.    The minimum value is 0 and the maximum value is 23.
@@ -2760,7 +2760,7 @@ impl cfn_resources::CfnResource for WindowStartTime {
 }
 
 /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZoneAwarenessConfig {
     ///
     /// If you enabled multiple Availability Zones (AZs), the number of AZs that you want the    domain to use.

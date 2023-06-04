@@ -1,5 +1,5 @@
 /// Creates an AWS Migration Hub Refactor Spaces service. The account owner of the service is always the    environment owner, regardless of which account in the environment creates the service.    Services have either a URL endpoint in a virtual private cloud (VPC), or a Lambda    function endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnService {
     ///
     /// The unique identifier of the application.
@@ -112,7 +112,7 @@ pub struct CfnService {
     pub att_service_identifier: CfnServiceserviceidentifier,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServicearn;
 impl CfnServicearn {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnServicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceserviceidentifier;
 impl CfnServiceserviceidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for CfnService {
 }
 
 /// The input for the AWS Lambda endpoint type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaEndpointInput {
     ///
     /// The Amazon Resource Name (ARN) of the Lambda function or alias.
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for LambdaEndpointInput {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -224,7 +224,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The configuration for the URL endpoint type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UrlEndpointInput {
     ///
     /// The health check URL of the URL endpoint type. If the URL is a public endpoint, the     HealthUrl must also be a public endpoint. If the URL is a private endpoint    inside a virtual private cloud (VPC), the health URL must also be a private endpoint, and the    host must be the same as the URL.

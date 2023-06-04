@@ -1,5 +1,5 @@
 /// The AWS::Budgets::Budget resource allows customers to take pre-defined actions that will trigger once a budget threshold has been exceeded. creates, replaces, or deletes budgets for Billing and Cost Management. 			For more information, see 			Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBudget {
     ///
     /// The budget object that you want to create.
@@ -50,7 +50,7 @@ impl cfn_resources::CfnResource for CfnBudget {
 }
 
 /// The AutoAdjustData property type specifies Property description not available. for an AWS::Budgets::Budget.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoAdjustData {
     /// Property description not available.
     ///
@@ -97,7 +97,7 @@ impl cfn_resources::CfnResource for AutoAdjustData {
 /// This is the Amazon Resource Name (ARN) pattern for a budget:
 ///
 /// arn:aws:budgets::AccountId:budget/budgetName
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BudgetData {
     /// Property description not available.
     ///
@@ -237,7 +237,7 @@ pub struct BudgetData {
     pub time_unit: BudgetDataTimeUnitEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BudgetDataBudgetTypeEnum {
     /// COST
     #[serde(rename = "COST")]
@@ -270,7 +270,7 @@ impl Default for BudgetDataBudgetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BudgetDataTimeUnitEnum {
     /// ANNUALLY
     #[serde(rename = "ANNUALLY")]
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for BudgetData {
 /// The types of cost that are included in a COST budget, such as tax and subscriptions.
 ///
 /// USAGE, RI_UTILIZATION, RI_COVERAGE, 				SAVINGS_PLANS_UTILIZATION, and SAVINGS_PLANS_COVERAGE 			budgets don't have CostTypes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CostTypes {
     ///
     /// Specifies whether a budget includes credits.
@@ -500,7 +500,7 @@ impl cfn_resources::CfnResource for CostTypes {
 }
 
 /// The HistoricalOptions property type specifies Property description not available. for an AWS::Budgets::Budget.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistoricalOptions {
     /// Property description not available.
     ///
@@ -532,7 +532,7 @@ impl cfn_resources::CfnResource for HistoricalOptions {
 /// Each notification must have at least one subscriber. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
 ///
 /// For example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Notification {
     ///
     /// The comparison that's used for this notification.
@@ -586,7 +586,7 @@ pub struct Notification {
     pub threshold_type: Option<NotificationThresholdTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationComparisonOperatorEnum {
     /// EQUAL_TO
     #[serde(rename = "EQUAL_TO")]
@@ -607,7 +607,7 @@ impl Default for NotificationComparisonOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationNotificationTypeEnum {
     /// ACTUAL
     #[serde(rename = "ACTUAL")]
@@ -624,7 +624,7 @@ impl Default for NotificationNotificationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationThresholdTypeEnum {
     /// ABSOLUTE_VALUE
     #[serde(rename = "ABSOLUTE_VALUE")]
@@ -656,7 +656,7 @@ impl cfn_resources::CfnResource for Notification {
 }
 
 /// A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationWithSubscribers {
     ///
     /// The notification that's associated with a budget.
@@ -711,7 +711,7 @@ impl cfn_resources::CfnResource for NotificationWithSubscribers {
 /// The amount of cost or usage that's measured for a budget.
 ///
 /// For example, a Spend for 3 GB of S3 usage has the following 			parameters:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Spend {
     ///
     /// The cost or usage amount that's associated with a budget forecast, actual spend, or budget 			threshold.
@@ -753,7 +753,7 @@ impl cfn_resources::CfnResource for Spend {
 /// The Subscriber property type specifies who to notify for a Billing and Cost Management budget notification. 			The subscriber consists of a subscription type, and either an Amazon SNS topic or an email address.
 ///
 /// For example, an email subscriber would have the following parameters:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subscriber {
     ///
     /// The address that AWS sends budget notifications to, either an SNS topic or an email.
@@ -782,7 +782,7 @@ pub struct Subscriber {
     pub subscription_type: SubscriberSubscriptionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SubscriberSubscriptionTypeEnum {
     /// EMAIL
     #[serde(rename = "EMAIL")]
@@ -814,7 +814,7 @@ impl cfn_resources::CfnResource for Subscriber {
 }
 
 /// The period of time that is covered by a budget. The period has a start date and an end 			date. The start date must come before the end date. There are no restrictions on the end date.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimePeriod {
     ///
     /// The end date for a budget. If you didn't specify an end date, AWS set your end date to 06/15/87 00:00 UTC. The defaults are the same for the AWS Billing and Cost Management console and the API.

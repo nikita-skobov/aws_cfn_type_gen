@@ -1,5 +1,5 @@
 /// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceFleetConfig {
     ///
     /// The unique identifier of the EMR cluster.
@@ -102,7 +102,7 @@ pub struct CfnInstanceFleetConfig {
     pub target_spot_capacity: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceFleetConfigInstanceFleetTypeEnum {
     /// TASK
     #[serde(rename = "TASK")]
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for CfnInstanceFleetConfig {
 }
 
 /// Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Configuration {
     ///
     /// The classification within a configuration.
@@ -228,7 +228,7 @@ impl cfn_resources::CfnResource for Configuration {
 }
 
 /// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsBlockDeviceConfig {
     ///
     /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
@@ -271,7 +271,7 @@ impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
 }
 
 /// EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsConfiguration {
     ///
     /// An array of Amazon EBS volume specifications attached to a cluster     instance.
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for EbsConfiguration {
 }
 
 /// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
@@ -365,7 +365,7 @@ impl cfn_resources::CfnResource for InstanceFleetProvisioningSpecifications {
 }
 
 /// InstanceType config is a subproperty of InstanceFleetConfig. An instance type configuration specifies each instance type in an instance fleet. The configuration determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceTypeConfig {
     ///
     /// The bid price for each EC2 Spot Instance type as defined by InstanceType.     Expressed in USD. If neither BidPrice nor       BidPriceAsPercentageOfOnDemandPrice is provided,       BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
@@ -567,7 +567,7 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 }
 
 /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnDemandProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the     only option is lowest-price (the default), which launches the lowest price     first.
@@ -583,7 +583,7 @@ pub struct OnDemandProvisioningSpecification {
     pub allocation_strategy: OnDemandProvisioningSpecificationAllocationStrategyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OnDemandProvisioningSpecificationAllocationStrategyEnum {
     /// lowest-price
     #[serde(rename = "lowest-price")]
@@ -611,7 +611,7 @@ impl cfn_resources::CfnResource for OnDemandProvisioningSpecification {
 }
 
 /// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching Spot Instance fleets. Currently, the only     option is capacity-optimized (the default), which launches instances from Spot Instance     pools with optimal capacity for the number of instances that are launching.
@@ -670,7 +670,7 @@ pub struct SpotProvisioningSpecification {
     pub timeout_duration_minutes: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotProvisioningSpecificationAllocationStrategyEnum {
     /// capacity-optimized
     #[serde(rename = "capacity-optimized")]
@@ -683,7 +683,7 @@ impl Default for SpotProvisioningSpecificationAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotProvisioningSpecificationTimeoutActionEnum {
     /// SWITCH_TO_ON_DEMAND
     #[serde(rename = "SWITCH_TO_ON_DEMAND")]
@@ -733,7 +733,7 @@ impl cfn_resources::CfnResource for SpotProvisioningSpecification {
 }
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VolumeSpecification {
     ///
     /// The number of I/O operations per second (IOPS) that the volume supports.

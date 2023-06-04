@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::VpcLink resource creates a VPC link. Supported only for HTTP APIs. The VPC link status must transition          from PENDING to AVAILABLE to successfully create a VPC link, which can take up to 10 minutes. To learn more, see             Working with VPC Links for HTTP APIs          in the API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcLink {
     ///
     /// The name of the VPC link.
@@ -51,7 +51,7 @@ pub struct CfnVpcLink {
     pub att_vpc_link_id: CfnVpcLinkvpclinkid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcLinkvpclinkid;
 impl CfnVpcLinkvpclinkid {
     pub fn att_name(&self) -> &'static str {

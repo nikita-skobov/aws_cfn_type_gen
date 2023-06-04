@@ -3,7 +3,7 @@
 /// For an IPv4 only subnet, specify an IPv4 CIDR block. If the VPC has an IPv6 CIDR block,      you can create an IPv6 only subnet or a dual stack subnet instead. For an IPv6 only subnet,      specify an IPv6 CIDR block. For a dual stack subnet, specify both an IPv4 CIDR block and      an IPv6 CIDR block.
 ///
 /// For more information, see Subnets for your VPC in the Amazon VPC User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnet {
     ///
     /// Indicates whether a network interface created in this subnet receives an IPv6 address.     The default value is false.
@@ -178,7 +178,7 @@ pub struct CfnSubnet {
     pub att_vpc_id: CfnSubnetvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetavailabilityzone;
 impl CfnSubnetavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -186,7 +186,7 @@ impl CfnSubnetavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetnetworkaclassociationid;
 impl CfnSubnetnetworkaclassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -194,7 +194,7 @@ impl CfnSubnetnetworkaclassociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetoutpostarn;
 impl CfnSubnetoutpostarn {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl CfnSubnetoutpostarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetsubnetid;
 impl CfnSubnetsubnetid {
     pub fn att_name(&self) -> &'static str {
@@ -210,7 +210,7 @@ impl CfnSubnetsubnetid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetvpcid;
 impl CfnSubnetvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for CfnSubnet {
 }
 
 /// Describes the options for instance hostnames.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrivateDnsNameOptionsOnLaunch {
     ///
     /// Indicates whether to respond to DNS queries for instance hostname with DNS AAAA       records.
@@ -278,7 +278,7 @@ pub struct PrivateDnsNameOptionsOnLaunch {
     pub hostname_type: Option<PrivateDnsNameOptionsOnLaunchHostnameTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PrivateDnsNameOptionsOnLaunchHostnameTypeEnum {
     /// ip-name
     #[serde(rename = "ip-name")]
@@ -316,7 +316,7 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptionsOnLaunch {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

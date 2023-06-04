@@ -3,7 +3,7 @@
 /// A cluster placement group is a logical grouping of instances within a     single Availability Zone that benefit from low network latency, high network throughput. A     spread placement group places instances on distinct hardware. A     partition placement group places groups of instances in different     partitions, where instances in one partition do not share the same hardware with instances     in another partition.
 ///
 /// For more information, see Placement Groups in the     Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlacementGroup {
     ///
     /// The number of partitions. Valid only when Strategy is       set to partition.
@@ -63,7 +63,7 @@ pub struct CfnPlacementGroup {
     pub att_group_name: CfnPlacementGroupgroupname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementGroupSpreadLevelEnum {
     /// host
     #[serde(rename = "host")]
@@ -80,7 +80,7 @@ impl Default for PlacementGroupSpreadLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementGroupStrategyEnum {
     /// cluster
     #[serde(rename = "cluster")]
@@ -101,7 +101,7 @@ impl Default for PlacementGroupStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlacementGroupgroupname;
 impl CfnPlacementGroupgroupname {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl cfn_resources::CfnResource for CfnPlacementGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

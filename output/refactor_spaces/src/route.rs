@@ -8,7 +8,7 @@
 ///
 /// When you create environments without a network bridge (CreateEnvironment:NetworkFabricType is NONE) and you use your own    networking infrastructure, you need to configure VPC to VPC connectivity between your network and the application proxy VPC. Route    creation from the application proxy to service endpoints will fail if your network is not    configured to connect to the application proxy VPC. For more information, see Create     a route in the Refactor Spaces User Guide.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoute {
     ///
     /// The unique identifier of the application.
@@ -100,7 +100,7 @@ pub struct CfnRoute {
     pub att_route_identifier: CfnRouterouteidentifier,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutearn;
 impl CfnRoutearn {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl CfnRoutearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoutepathresourcetoid;
 impl CfnRoutepathresourcetoid {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnRoutepathresourcetoid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouterouteidentifier;
 impl CfnRouterouteidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for CfnRoute {
 }
 
 /// The configuration for the default route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultRouteInput {
     ///
     /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.
@@ -182,7 +182,7 @@ impl cfn_resources::CfnResource for DefaultRouteInput {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -220,7 +220,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The configuration for the URI path route type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UriPathRouteInput {
     ///
     /// If set to ACTIVE, traffic is forwarded to this route’s service after the    route is created.

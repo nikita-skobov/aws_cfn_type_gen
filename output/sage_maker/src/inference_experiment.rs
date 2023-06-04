@@ -5,7 +5,7 @@
 /// Amazon SageMaker begins your experiment at the scheduled time and routes traffic to your endpoint's model variants based      on your specified configuration.
 ///
 /// While the experiment is in progress or after it has concluded, you can view metrics that compare your model      variants. For more information, see View, monitor, and edit shadow tests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperiment {
     ///
     /// The Amazon S3 location and configuration for storing inference request and response data.
@@ -219,7 +219,7 @@ pub struct CfnInferenceExperiment {
     pub att_status: CfnInferenceExperimentstatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InferenceExperimentDesiredStateEnum {
     /// Cancelled
     #[serde(rename = "Cancelled")]
@@ -236,7 +236,7 @@ impl Default for InferenceExperimentDesiredStateEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InferenceExperimentTypeEnum {
     /// ShadowMode
     #[serde(rename = "ShadowMode")]
@@ -249,7 +249,7 @@ impl Default for InferenceExperimentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentarn;
 impl CfnInferenceExperimentarn {
     pub fn att_name(&self) -> &'static str {
@@ -257,7 +257,7 @@ impl CfnInferenceExperimentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentcreationtime;
 impl CfnInferenceExperimentcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -265,7 +265,7 @@ impl CfnInferenceExperimentcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentendpointmetadataendpointconfigname;
 impl CfnInferenceExperimentendpointmetadataendpointconfigname {
     pub fn att_name(&self) -> &'static str {
@@ -273,7 +273,7 @@ impl CfnInferenceExperimentendpointmetadataendpointconfigname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentendpointmetadataendpointname;
 impl CfnInferenceExperimentendpointmetadataendpointname {
     pub fn att_name(&self) -> &'static str {
@@ -281,7 +281,7 @@ impl CfnInferenceExperimentendpointmetadataendpointname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentendpointmetadataendpointstatus;
 impl CfnInferenceExperimentendpointmetadataendpointstatus {
     pub fn att_name(&self) -> &'static str {
@@ -289,7 +289,7 @@ impl CfnInferenceExperimentendpointmetadataendpointstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentlastmodifiedtime;
 impl CfnInferenceExperimentlastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -297,7 +297,7 @@ impl CfnInferenceExperimentlastmodifiedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInferenceExperimentstatus;
 impl CfnInferenceExperimentstatus {
     pub fn att_name(&self) -> &'static str {
@@ -420,7 +420,7 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
 }
 
 /// Configuration specifying how to treat different headers. If no headers are specified SageMaker      will by default base64 encode when capturing the data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptureContentTypeHeader {
     ///
     /// The list of all content type headers that SageMaker will treat as CSV and capture accordingly.
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 /// The Amazon S3 location and configuration for storing inference request and response data.
 ///
 /// This is an optional parameter that you can use for data capture. For more information, see Capture data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataStorageConfig {
     ///
     /// Configuration specifying how to treat different headers. If no headers are specified SageMaker will by default base64 encode when capturing the data.
@@ -573,7 +573,7 @@ impl cfn_resources::CfnResource for DataStorageConfig {
 }
 
 /// The metadata of the endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointMetadata {
     ///
     /// The name of the endpoint configuration.
@@ -621,7 +621,7 @@ pub struct EndpointMetadata {
     pub endpoint_status: Option<EndpointMetadataEndpointStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointMetadataEndpointStatusEnum {
     /// Creating
     #[serde(rename = "Creating")]
@@ -698,7 +698,7 @@ impl cfn_resources::CfnResource for EndpointMetadata {
 /// The start and end times of an inference experiment.
 ///
 /// The maximum duration that you can set for an inference experiment is 30 days.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceExperimentSchedule {
     ///
     /// The timestamp at which the inference experiment ended or will end.
@@ -740,7 +740,7 @@ impl cfn_resources::CfnResource for InferenceExperimentSchedule {
 }
 
 /// The configuration for the infrastructure that the model will be deployed to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelInfrastructureConfig {
     ///
     /// The inference option to which to deploy your model. Possible values are the following:
@@ -769,7 +769,7 @@ pub struct ModelInfrastructureConfig {
     pub real_time_inference_config: RealTimeInferenceConfig,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ModelInfrastructureConfigInfrastructureTypeEnum {
     /// RealTimeInference
     #[serde(rename = "RealTimeInference")]
@@ -799,7 +799,7 @@ impl cfn_resources::CfnResource for ModelInfrastructureConfig {
 }
 
 /// Contains information about the deployment options of a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelVariantConfig {
     ///
     /// The configuration for the infrastructure that the model will be deployed to.
@@ -882,7 +882,7 @@ impl cfn_resources::CfnResource for ModelVariantConfig {
 }
 
 /// The infrastructure configuration for deploying the model to a real-time inference endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RealTimeInferenceConfig {
     ///
     /// The number of instances of the type specified by InstanceType.
@@ -911,7 +911,7 @@ pub struct RealTimeInferenceConfig {
     pub instance_type: RealTimeInferenceConfigInstanceTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RealTimeInferenceConfigInstanceTypeEnum {
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
@@ -1220,7 +1220,7 @@ impl cfn_resources::CfnResource for RealTimeInferenceConfig {
 }
 
 /// The configuration of ShadowMode inference experiment type, which specifies a production variant      to take all the inference requests, and a shadow variant to which Amazon SageMaker replicates a percentage of the      inference requests. For the shadow variant it also specifies the percentage of requests that Amazon SageMaker replicates.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShadowModeConfig {
     ///
     /// List of shadow variant configurations.
@@ -1283,7 +1283,7 @@ impl cfn_resources::CfnResource for ShadowModeConfig {
 }
 
 /// The name and sampling percentage of a shadow variant.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShadowModelVariantConfig {
     ///
     /// The percentage of inference requests that Amazon SageMaker replicates from the production variant to the shadow variant.
@@ -1352,7 +1352,7 @@ impl cfn_resources::CfnResource for ShadowModelVariantConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

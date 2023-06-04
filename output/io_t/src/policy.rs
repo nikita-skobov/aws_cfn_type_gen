@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::Policy resource to declare an AWS IoT policy. For more     information about working with AWS IoT policies, see Authorization in the       AWS IoT Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicy {
     ///
     /// The JSON document that describes the policy.
@@ -31,7 +31,7 @@ pub struct CfnPolicy {
     pub att_id: CfnPolicyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicyarn;
 impl CfnPolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -39,7 +39,7 @@ impl CfnPolicyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicyid;
 impl CfnPolicyid {
     pub fn att_name(&self) -> &'static str {

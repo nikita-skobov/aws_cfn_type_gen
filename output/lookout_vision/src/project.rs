@@ -1,5 +1,5 @@
 /// The AWS::LookoutVision::Project type creates an Amazon Lookout for Vision     project. A project is a grouping of the resources needed to create and manage an Amazon     Lookout for Vision model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProject {
     ///
     /// The name of the project.
@@ -22,7 +22,7 @@ pub struct CfnProject {
     pub att_arn: CfnProjectarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectarn;
 impl CfnProjectarn {
     pub fn att_name(&self) -> &'static str {

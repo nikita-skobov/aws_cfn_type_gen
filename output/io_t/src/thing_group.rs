@@ -1,7 +1,7 @@
 /// Creates a new thing group. A dynamic thing group is created if the resource template     contains the QueryString attribute. A dynamic thing group will not contain the       ParentGroupName attribute. A static thing group and dynamic thing group     can't be converted to each other via the addition or removal of the       QueryString attribute.
 ///
 /// Requires permission to access the CreateThingGroup action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThingGroup {
     ///
     /// The parent thing group name.
@@ -74,7 +74,7 @@ pub struct CfnThingGroup {
     pub att_id: CfnThingGroupid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThingGrouparn;
 impl CfnThingGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -82,7 +82,7 @@ impl CfnThingGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThingGroupid;
 impl CfnThingGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for CfnThingGroup {
 }
 
 /// The attribute payload.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributePayload {
     ///
     /// A JSON string containing up to three key-value pair in JSON format. For example:
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for AttributePayload {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -185,7 +185,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Thing group properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThingGroupProperties {
     ///
     /// The thing group attributes in JSON format.

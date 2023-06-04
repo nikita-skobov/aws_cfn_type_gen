@@ -1,5 +1,5 @@
 /// The AWS::LakeFormation::Permissions resource represents the permissions that a principal has on an AWS Glue Data Catalog resource (such as AWS Glue database or AWS Glue tables). When you upload a permissions stack, the permissions are granted to the principal and when you remove the stack, the permissions are revoked from the principal. If you remove a stack, and the principal does not have the permissions referenced in the stack then AWS Lake Formation will throw an error because you can’t call revoke on non-existing permissions. To successfully remove the stack, you’ll need to regrant those permissions and then remove the stack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPermissions {
     ///
     /// The AWS Lake Formation principal.
@@ -67,7 +67,7 @@ impl cfn_resources::CfnResource for CfnPermissions {
 }
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnWildcard {
     ///
     /// Excludes column names. Any column with this name will be excluded.
@@ -97,7 +97,7 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 }
 
 /// The Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the Lake Formation principal.
@@ -127,7 +127,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 }
 
 /// A structure for a data location object where permissions are granted or revoked.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLocationResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -169,7 +169,7 @@ impl cfn_resources::CfnResource for DataLocationResource {
 }
 
 /// A structure for the database object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -211,7 +211,7 @@ impl cfn_resources::CfnResource for DatabaseResource {
 }
 
 /// A structure for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Resource {
     ///
     /// A structure for a data location object where permissions are granted or revoked.
@@ -293,7 +293,7 @@ impl cfn_resources::CfnResource for Resource {
 }
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -363,7 +363,7 @@ impl cfn_resources::CfnResource for TableResource {
 }
 
 /// A wildcard object representing every table under a database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableWildcard {}
 
 impl cfn_resources::CfnResource for TableWildcard {
@@ -383,7 +383,7 @@ impl cfn_resources::CfnResource for TableWildcard {
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableWithColumnsResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.

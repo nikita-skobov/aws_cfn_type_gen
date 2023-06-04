@@ -1,5 +1,5 @@
 /// Use the AWS CloudFormation AWS::AmazonMQ::ConfigurationAssociation resource    to associate a configuration with a broker, or return information about the specified    ConfigurationAssociation. Only use one per broker, and don't use a configuration on the broker    resource if you have associated a configuration with that broker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationAssociation {
     ///
     /// The broker to associate with a configuration.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnConfigurationAssociation {
 }
 
 /// The ConfigurationId property type specifies a configuration Id and the    revision of a configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationId {
     ///
     /// The unique ID that Amazon MQ generates for the configuration.

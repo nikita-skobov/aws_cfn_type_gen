@@ -1,5 +1,5 @@
 /// The details about the configuration aggregator, including 			information about source accounts, regions, and metadata of the 			aggregator.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationAggregator {
     ///
     /// Provides a list of source accounts and regions to be 			aggregated.
@@ -63,7 +63,7 @@ pub struct CfnConfigurationAggregator {
     pub att_configuration_aggregator_arn: CfnConfigurationAggregatorconfigurationaggregatorarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationAggregatorconfigurationaggregatorarn;
 impl CfnConfigurationAggregatorconfigurationaggregatorarn {
     pub fn att_name(&self) -> &'static str {
@@ -121,7 +121,7 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
 }
 
 /// A collection of accounts and regions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountAggregationSource {
     ///
     /// The 12-digit account ID of the account being aggregated.
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for AccountAggregationSource {
 }
 
 /// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrganizationAggregationSource {
     ///
     /// If true, aggregate existing AWS Config regions and future 			regions.
@@ -233,7 +233,7 @@ impl cfn_resources::CfnResource for OrganizationAggregationSource {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

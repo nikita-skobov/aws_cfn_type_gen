@@ -3,7 +3,7 @@
 /// Specify a listener for any inbound traffic that your virtual router     receives. Create a virtual router for each protocol and port that you need to route.     Virtual routers handle traffic for one or more virtual services within your mesh. After you     create your virtual router, create and associate routes for your virtual router that direct     incoming requests to different virtual nodes.
 ///
 /// For more information about virtual routers, see Virtual routers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRouter {
     ///
     /// The name of the service mesh to create the virtual router in.
@@ -96,7 +96,7 @@ pub struct CfnVirtualRouter {
     pub att_virtual_router_name: CfnVirtualRoutervirtualroutername,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRouterarn;
 impl CfnVirtualRouterarn {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnVirtualRouterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRoutermeshname;
 impl CfnVirtualRoutermeshname {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnVirtualRoutermeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRoutermeshowner;
 impl CfnVirtualRoutermeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnVirtualRoutermeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRouterresourceowner;
 impl CfnVirtualRouterresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnVirtualRouterresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRouteruid;
 impl CfnVirtualRouteruid {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnVirtualRouteruid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualRoutervirtualroutername;
 impl CfnVirtualRoutervirtualroutername {
     pub fn att_name(&self) -> &'static str {
@@ -233,7 +233,7 @@ impl cfn_resources::CfnResource for CfnVirtualRouter {
 }
 
 /// An object representing a virtual router listener port mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortMapping {
     ///
     /// The port used for the port mapping.
@@ -264,7 +264,7 @@ pub struct PortMapping {
     pub protocol: PortMappingProtocolEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortMappingProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for PortMapping {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -366,7 +366,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// An object that represents a virtual router listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualRouterListener {
     ///
     /// The port mapping information for the listener.
@@ -397,7 +397,7 @@ impl cfn_resources::CfnResource for VirtualRouterListener {
 }
 
 /// An object that represents the specification of a virtual router.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualRouterSpec {
     ///
     /// The listeners that the virtual router is expected to receive inbound traffic     from.

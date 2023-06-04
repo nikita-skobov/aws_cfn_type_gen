@@ -1,5 +1,5 @@
 /// The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job  definition. For more information, see Job Definitions in the AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobDefinition {
     ///
     /// An object with various properties specific to Amazon ECS based jobs. Valid values are   containerProperties, eksProperties, and nodeProperties.  Only one can be specified.
@@ -151,7 +151,7 @@ pub struct CfnJobDefinition {
     pub cfn_type: JobDefinitionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JobDefinitionTypeEnum {
     /// container
     #[serde(rename = "container")]
@@ -201,7 +201,7 @@ impl cfn_resources::CfnResource for CfnJobDefinition {
 }
 
 /// The authorization configuration details for the Amazon EFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthorizationConfig {
     ///
     /// The Amazon EFS access point ID to use. If an access point is specified, the root directory value  specified in the EFSVolumeConfiguration must either be omitted or set to   / which enforces the path set on the EFS access point. If an access point is used,  transit encryption must be enabled in the EFSVolumeConfiguration. For more  information, see Working   with Amazon EFS access points in the Amazon Elastic File System User Guide.
@@ -230,7 +230,7 @@ pub struct AuthorizationConfig {
     pub iam: Option<AuthorizationConfigIamEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthorizationConfigIamEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -262,7 +262,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 }
 
 /// Container properties are used  for  Amazon ECS based job definitions. These properties to describe the container that's  launched as part of a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerProperties {
     ///
     /// The command that's passed to the container. This parameter maps to Cmd in the  Create a container section of the Docker Remote API and the COMMAND  parameter to docker run. For more information, see   https://docs.docker.com/engine/reference/builder/#cmd.
@@ -574,7 +574,7 @@ impl cfn_resources::CfnResource for ContainerProperties {
 }
 
 /// An object that represents a container instance host device.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Device {
     ///
     /// The path inside the container that's used to expose the host device. By default, the   hostPath value is used.
@@ -628,7 +628,7 @@ impl cfn_resources::CfnResource for Device {
 }
 
 /// This is used when you're using an Amazon Elastic File System file system for job storage. For more  information, see Amazon EFS   Volumes in the         AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EfsVolumeConfiguration {
     ///
     /// The authorization configuration details for the Amazon EFS file system.
@@ -711,7 +711,7 @@ impl cfn_resources::CfnResource for EfsVolumeConfiguration {
 }
 
 /// EKS container properties are used in job definitions for Amazon EKS based job definitions to  describe the properties for a container node in the pod that's launched as part of a job. This  can't be specified for Amazon ECS based job definitions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksContainer {
     ///
     /// An array of arguments to the entrypoint. If this isn't specified, the CMD of  the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod  in Kubernetes. Environment variable references are expanded using the container's environment.
@@ -850,7 +850,7 @@ impl cfn_resources::CfnResource for EksContainer {
 }
 
 /// An environment variable.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksContainerEnvironmentVariable {
     ///
     /// The name of the environment variable.
@@ -891,7 +891,7 @@ impl cfn_resources::CfnResource for EksContainerEnvironmentVariable {
 }
 
 /// The EksContainerResourceRequirements property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksContainerResourceRequirements {
     /// Property description not available.
     ///
@@ -931,7 +931,7 @@ impl cfn_resources::CfnResource for EksContainerResourceRequirements {
 }
 
 /// The EksContainerSecurityContext property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksContainerSecurityContext {
     /// Property description not available.
     ///
@@ -1004,7 +1004,7 @@ impl cfn_resources::CfnResource for EksContainerSecurityContext {
 }
 
 /// The volume mounts for a container for an Amazon EKS job. For more information about volumes and  volume mounts in Kubernetes, see Volumes in the Kubernetes documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksContainerVolumeMount {
     ///
     /// The path on the container where the volume is mounted.
@@ -1058,7 +1058,7 @@ impl cfn_resources::CfnResource for EksContainerVolumeMount {
 }
 
 /// The EksEmptyDir property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksEmptyDir {
     /// Property description not available.
     ///
@@ -1098,7 +1098,7 @@ impl cfn_resources::CfnResource for EksEmptyDir {
 }
 
 /// The EksHostPath property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksHostPath {
     /// Property description not available.
     ///
@@ -1127,7 +1127,7 @@ impl cfn_resources::CfnResource for EksHostPath {
 }
 
 /// An object that contains the properties for the Kubernetes resources of a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksProperties {
     ///
     /// The properties for the Kubernetes pod resources of a job.
@@ -1161,7 +1161,7 @@ impl cfn_resources::CfnResource for EksProperties {
 }
 
 /// The EksSecret property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksSecret {
     /// Property description not available.
     ///
@@ -1200,7 +1200,7 @@ impl cfn_resources::CfnResource for EksSecret {
 }
 
 /// Specifies an Amazon EKS volume for a job definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksVolume {
     ///
     /// Specifies the configuration of a Kubernetes emptyDir volume. For more information,  see emptyDir  in the Kubernetes documentation.
@@ -1275,7 +1275,7 @@ impl cfn_resources::CfnResource for EksVolume {
 }
 
 /// The Environment property type specifies environment variables to use in a job definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Environment {
     ///
     /// The name of the environment variable.
@@ -1317,7 +1317,7 @@ impl cfn_resources::CfnResource for Environment {
 }
 
 /// The EphemeralStorage property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EphemeralStorage {
     /// Property description not available.
     ///
@@ -1345,7 +1345,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 }
 
 /// Specifies an array of up to 5 conditions to be met, and an action to take   (RETRY or EXIT) if all conditions are met. If none of the   EvaluateOnExit conditions in a RetryStrategy match, then the job is  retried.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EvaluateOnExit {
     ///
     /// Specifies the action to take if all of the specified conditions  (onStatusReason, onReason, and onExitCode) are met. The  values aren't case sensitive.
@@ -1399,7 +1399,7 @@ pub struct EvaluateOnExit {
     pub on_status_reason: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EvaluateOnExitActionEnum {
     /// EXIT
     #[serde(rename = "EXIT")]
@@ -1431,7 +1431,7 @@ impl cfn_resources::CfnResource for EvaluateOnExit {
 }
 
 /// The platform configuration for jobs that are running on Fargate resources. Jobs that run  on EC2 resources must not specify this parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FargatePlatformConfiguration {
     ///
     /// The AWS Fargate platform version where the jobs are running. A platform version is  specified only for jobs that are running on Fargate resources. If one isn't specified, the   LATEST platform version is used by default. This uses a recent, approved version of  the AWS Fargate platform for compute resources. For more information, see AWS Fargate   platform versions in the Amazon Elastic Container Service Developer Guide.
@@ -1461,7 +1461,7 @@ impl cfn_resources::CfnResource for FargatePlatformConfiguration {
 }
 
 /// Linux-specific modifications that are applied to the container, such as details for device  mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LinuxParameters {
     ///
     /// Any of the host devices to expose to the container. This parameter maps to   Devices in the Create a container section of the Docker Remote API  and the --device option to docker  run.
@@ -1567,7 +1567,7 @@ impl cfn_resources::CfnResource for LinuxParameters {
 }
 
 /// Log configuration options to send to a custom log driver for the container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container. The valid values that are listed for this parameter  are log drivers that the Amazon ECS container agent can communicate with by default.
@@ -1617,7 +1617,7 @@ pub struct LogConfiguration {
     pub secret_options: Option<Vec<Secret>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LogConfigurationLogDriverEnum {
     /// awslogs
     #[serde(rename = "awslogs")]
@@ -1669,7 +1669,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 }
 
 /// The Metadata property type specifies Property description not available. for an AWS::Batch::JobDefinition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metadata {
     /// Property description not available.
     ///
@@ -1698,7 +1698,7 @@ impl cfn_resources::CfnResource for Metadata {
 }
 
 /// Details for a Docker volume mount point that's used in a job's container properties. This  parameter maps to Volumes in the Create a container section of the Docker Remote API and the   --volume option to docker run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MountPoints {
     ///
     /// The path on the container where the host volume is mounted.
@@ -1752,7 +1752,7 @@ impl cfn_resources::CfnResource for MountPoints {
 }
 
 /// The network configuration for jobs that are running on Fargate resources. Jobs that are  running on EC2 resources must not specify this parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// Indicates whether the job has a public IP address. For a job that's running on Fargate  resources in a private subnet to send outbound traffic to the internet (for example, to pull  container images), the private subnet requires a NAT gateway be attached to route requests to the  internet. For more information, see Amazon ECS task networking in the   Amazon Elastic Container Service Developer Guide. The default value is "DISABLED".
@@ -1769,7 +1769,7 @@ pub struct NetworkConfiguration {
     pub assign_public_ip: Option<NetworkConfigurationAssignPublicIpEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkConfigurationAssignPublicIpEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1801,7 +1801,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// An object that represents the node properties of a multi-node parallel job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeProperties {
     ///
     /// Specifies the node index for the main node of a multi-node parallel job. This node index  value must be fewer than the number of nodes.
@@ -1852,7 +1852,7 @@ impl cfn_resources::CfnResource for NodeProperties {
 }
 
 /// An object that represents the properties of the node range for a multi-node parallel  job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeRangeProperty {
     ///
     /// The container details for the node range.
@@ -1897,7 +1897,7 @@ impl cfn_resources::CfnResource for NodeRangeProperty {
 }
 
 /// The properties for the pod.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PodProperties {
     ///
     /// The properties of the container that's used on the Amazon EKS pod.
@@ -1992,7 +1992,7 @@ impl cfn_resources::CfnResource for PodProperties {
 }
 
 /// The type and amount of a resource to assign to a container. The supported resources include   GPU, MEMORY, and VCPU.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported resources include   GPU, MEMORY, and VCPU.
@@ -2023,7 +2023,7 @@ pub struct ResourceRequirement {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceRequirementTypeEnum {
     /// GPU
     #[serde(rename = "GPU")]
@@ -2059,7 +2059,7 @@ impl cfn_resources::CfnResource for ResourceRequirement {
 }
 
 /// The retry strategy that's associated with a job. For more information, see Automated job retries in the           AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetryStrategy {
     ///
     /// The number of times to move a job to the RUNNABLE status. You can specify  between 1 and 10 attempts. If the value of attempts is greater than one, the job is  retried on failure the same number of attempts as the value.
@@ -2103,7 +2103,7 @@ impl cfn_resources::CfnResource for RetryStrategy {
 /// An object that represents the secret to expose to your container. Secrets can be exposed to  a container in the following ways:
 ///
 /// For more information, see Specifying sensitive data in the           AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -2145,7 +2145,7 @@ impl cfn_resources::CfnResource for Secret {
 }
 
 /// An object that represents a job timeout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Timeout {
     ///
     /// The job timeout time (in seconds) that's measured from the job attempt's   startedAt timestamp. After this time passes, AWS Batch terminates your jobs if they  aren't finished. The minimum value for the timeout is 60 seconds.
@@ -2179,7 +2179,7 @@ impl cfn_resources::CfnResource for Timeout {
 }
 
 /// The container path, mount options, and size of the tmpfs mount.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tmpfs {
     ///
     /// The absolute file path in the container where the tmpfs volume is  mounted.
@@ -2233,7 +2233,7 @@ impl cfn_resources::CfnResource for Tmpfs {
 }
 
 /// The ulimit settings to pass to the container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ulimit {
     ///
     /// The hard limit for the ulimit type.
@@ -2284,7 +2284,7 @@ impl cfn_resources::CfnResource for Ulimit {
 }
 
 /// A list of volumes that are associated with the job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Volumes {
     ///
     /// This is used when you're using an Amazon Elastic File System file system for job storage. For more  information, see Amazon EFS   Volumes in the         AWS Batch User Guide.
@@ -2346,7 +2346,7 @@ impl cfn_resources::CfnResource for Volumes {
 }
 
 /// Determine whether your data volume persists on the host container instance and where it's  stored. If this parameter is empty, then the Docker daemon assigns a host path for your data  volume. However, the data isn't guaranteed to persist after the containers that are associated  with it stop running.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VolumesHost {
     ///
     /// The path on the host container instance that's presented to the container. If this parameter  is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a  file location, then the data volume persists at the specified location on the host container  instance until you delete it manually. If the source path location doesn't exist on the host  container instance, the Docker daemon creates it. If the location does exist, the contents of the  source path folder are exported.

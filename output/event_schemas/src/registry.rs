@@ -1,5 +1,5 @@
 /// Use the AWS::EventSchemas::Registry to specify a schema registry. Schema       registries are containers for Schemas. Registries collect and organize schemas so that       your schemas are in logical groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistry {
     ///
     /// A description of the registry to be created.
@@ -44,7 +44,7 @@ pub struct CfnRegistry {
     pub att_registry_name: CfnRegistryregistryname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryregistryarn;
 impl CfnRegistryregistryarn {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl CfnRegistryregistryarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryregistryname;
 impl CfnRegistryregistryname {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl cfn_resources::CfnResource for CfnRegistry {
 }
 
 /// Tags to associate with the schema registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

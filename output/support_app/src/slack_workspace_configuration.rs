@@ -1,7 +1,7 @@
 /// You can use the AWS::SupportApp::SlackWorkspaceConfiguration resource to       specify your Slack workspace configuration. This resource configures your AWS account so that you can use the specified Slack workspace in the         AWS Support App. This resource includes the following information:
 ///
 /// For more information, see the following topics in the AWS Support User Guide:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSlackWorkspaceConfiguration {
     ///
     /// The team ID in Slack. This ID uniquely identifies a Slack workspace, such as         T012ABCDEFG.

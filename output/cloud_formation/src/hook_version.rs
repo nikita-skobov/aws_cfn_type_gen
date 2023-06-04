@@ -1,5 +1,5 @@
 /// The HookVersion resource publishes new or first hook version to the AWS CloudFormation  registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookVersion {
     ///
     /// The Amazon Resource Name (ARN) of the task execution role that grants the hook permission.
@@ -70,7 +70,7 @@ pub struct CfnHookVersion {
     pub att_visibility: CfnHookVersionvisibility,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookVersionarn;
 impl CfnHookVersionarn {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl CfnHookVersionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookVersiontypearn;
 impl CfnHookVersiontypearn {
     pub fn att_name(&self) -> &'static str {
@@ -86,7 +86,7 @@ impl CfnHookVersiontypearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookVersionversionid;
 impl CfnHookVersionversionid {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl CfnHookVersionversionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookVersionvisibility;
 impl CfnHookVersionvisibility {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnHookVersion {
 }
 
 /// The LoggingConfig property type specifies logging configuration information for an  extension.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.

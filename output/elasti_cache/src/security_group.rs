@@ -1,7 +1,7 @@
 /// The AWS::ElastiCache::SecurityGroup resource creates a cache security group. For more information about cache security groups,     go to CacheSecurityGroups in the Amazon ElastiCache User Guide     or go to CreateCacheSecurityGroup in the      Amazon ElastiCache API Reference Guide.
 ///
 /// For more information,       see CreateCacheSubnetGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroup {
     ///
     /// A description for the cache security group.
@@ -47,7 +47,7 @@ impl cfn_resources::CfnResource for CfnSecurityGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

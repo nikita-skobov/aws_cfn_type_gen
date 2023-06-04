@@ -1,5 +1,5 @@
 /// A collection of AWS resources supported by DevOps Guru. The one type of AWS resource 			collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze 			only the AWS resources that are defined in the stacks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceCollection {
     ///
     /// Information about a filter used to specify which AWS resources are analyzed for anomalous behavior by DevOps Guru.
@@ -16,7 +16,7 @@ pub struct CfnResourceCollection {
     pub att_resource_collection_type: CfnResourceCollectionresourcecollectiontype,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceCollectionresourcecollectiontype;
 impl CfnResourceCollectionresourcecollectiontype {
     pub fn att_name(&self) -> &'static str {
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnResourceCollection {
 }
 
 /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudFormationCollectionFilter {
     ///
     /// An array of CloudFormation stack names.
@@ -71,7 +71,7 @@ impl cfn_resources::CfnResource for CloudFormationCollectionFilter {
 }
 
 /// Information about a filter used to specify which AWS resources are analyzed for 			anomalous behavior by DevOps Guru.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceCollectionFilter {
     ///
     /// Information about AWS CloudFormation stacks. You can use up to 500 			stacks to specify which AWS resources in your account to analyze. For more 			information, see Stacks in the 				        AWS CloudFormation User Guide.
@@ -133,7 +133,7 @@ impl cfn_resources::CfnResource for ResourceCollectionFilter {
 /// Each AWS tag has two parts.
 ///
 /// Together these are known as key-value pairs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagCollection {
     ///
     /// An AWS tag key that is used to identify the AWS resources that    	DevOps Guru analyzes. All AWS resources in your account and Region tagged with this key make    up your DevOps Guru application and analysis boundary.

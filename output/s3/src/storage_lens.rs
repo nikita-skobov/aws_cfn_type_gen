@@ -1,5 +1,5 @@
 /// The AWS::S3::StorageLens resource creates an Amazon S3 Storage Lens    configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageLens {
     ///
     /// This resource contains the details Amazon S3 Storage Lens configuration.
@@ -29,7 +29,7 @@ pub struct CfnStorageLens {
         CfnStorageLensstoragelensconfigurationstoragelensarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageLensstoragelensconfigurationstoragelensarn;
 impl CfnStorageLensstoragelensconfigurationstoragelensarn {
     pub fn att_name(&self) -> &'static str {
@@ -54,7 +54,7 @@ impl cfn_resources::CfnResource for CfnStorageLens {
 }
 
 /// This resource contains the details of the account-level metrics for Amazon S3 Storage    Lens.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountLevel {
     ///
     /// This property contains the details of account-level activity metrics for S3    Storage Lens.
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for AccountLevel {
 /// This resource enables Amazon S3 Storage Lens activity metrics. Activity metrics show details about    how your storage is requested, such as requests (for example, All requests, Get requests,    Put requests), bytes uploaded or downloaded, and errors.
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActivityMetrics {
     ///
     /// A property that indicates whether the activity metrics is enabled.
@@ -183,7 +183,7 @@ impl cfn_resources::CfnResource for ActivityMetrics {
 /// This resource enables Amazon S3 Storage Lens advanced cost optimization metrics. Advanced    cost optimization metrics provide insights that you can use to manage and optimize your    storage costs, for example, lifecycle rule counts for transitions, expirations, and    incomplete multipart uploads.
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedCostOptimizationMetrics {
     ///
     /// Indicates whether advanced cost optimization metrics are    enabled.
@@ -215,7 +215,7 @@ impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
 /// This resource enables Amazon S3 Storage Lens advanced data protection metrics. Advanced data    protection metrics provide insights that you can use to perform audits and protect your data,    for example replication rule counts within and across Regions.
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedDataProtectionMetrics {
     ///
     /// Indicates whether advanced data protection metrics are enabled.
@@ -245,7 +245,7 @@ impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
 }
 
 /// This resource contains the details of the AWS Organization for Amazon S3    Storage Lens.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsOrg {
     ///
     /// This resource contains the ARN of the AWS Organization.
@@ -274,7 +274,7 @@ impl cfn_resources::CfnResource for AwsOrg {
 }
 
 /// A property for the bucket-level storage metrics for Amazon S3 Storage Lens.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BucketLevel {
     ///
     /// A property for bucket-level activity metrics for S3 Storage Lens.
@@ -372,7 +372,7 @@ impl cfn_resources::CfnResource for BucketLevel {
 }
 
 /// This resource contains the details of the buckets and Regions for the Amazon S3 Storage    Lens configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BucketsAndRegions {
     ///
     /// This property contains the details of the buckets for the Amazon S3 Storage Lens    configuration. This should be the bucket Amazon Resource Name(ARN). For valid values, see     Buckets ARN     format here in the Amazon S3 API Reference.
@@ -416,7 +416,7 @@ impl cfn_resources::CfnResource for BucketsAndRegions {
 /// This resource enables the Amazon CloudWatch publishing option for Amazon S3 Storage Lens    metrics.
 ///
 /// For more information, see Monitor S3     Storage Lens metrics in CloudWatch in the Amazon S3 User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchMetrics {
     ///
     /// This property identifies whether the CloudWatch publishing option for S3 Storage    Lens is enabled.
@@ -445,7 +445,7 @@ impl cfn_resources::CfnResource for CloudWatchMetrics {
 }
 
 /// This resource contains the details of the Amazon S3 Storage Lens metrics export.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataExport {
     ///
     /// This property enables the Amazon CloudWatch publishing option for S3 Storage Lens    metrics.
@@ -497,7 +497,7 @@ impl cfn_resources::CfnResource for DataExport {
 /// This resource enables Amazon S3 Storage Lens detailed status code metrics. Detailed status    code metrics generate metrics for HTTP status codes, such as 200 OK, 403     Forbidden, 503 Service Unavailable and others.
 ///
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DetailedStatusCodesMetrics {
     ///
     /// Indicates whether detailed status code metrics are enabled.
@@ -527,7 +527,7 @@ impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
 }
 
 /// This resource contains the type of server-side encryption used to encrypt an Amazon S3    Storage Lens metrics export. For valid values, see the     StorageLensDataExportEncryption in the Amazon S3 API    Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Encryption {
     ///
     /// Specifies the use of AWS Key Management Service keys (SSE-KMS) to encrypt the S3 Storage Lens metrics export file.
@@ -571,7 +571,7 @@ impl cfn_resources::CfnResource for Encryption {
 }
 
 /// This resource contains the details of the prefix-level of the Amazon S3 Storage    Lens.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrefixLevel {
     ///
     /// A property for the prefix-level storage metrics for Amazon S3 Storage Lens.
@@ -602,7 +602,7 @@ impl cfn_resources::CfnResource for PrefixLevel {
 }
 
 /// This resource contains the details of the prefix-level storage metrics for Amazon S3    Storage Lens.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrefixLevelStorageMetrics {
     ///
     /// This property identifies whether the details of the prefix-level storage metrics for S3    Storage Lens are enabled.
@@ -648,7 +648,7 @@ impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
 }
 
 /// This resource contains the details of the bucket where the Amazon S3 Storage Lens metrics    export will be placed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3BucketDestination {
     ///
     /// This property contains the details of the AWS account ID of the S3    Storage Lens export bucket destination.
@@ -738,7 +738,7 @@ impl cfn_resources::CfnResource for S3BucketDestination {
 }
 
 /// Specifies the use of server-side encryption using an AWS Key Management Service key (SSE-KMS) to    encrypt the delivered S3 Storage Lens metrics export file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SSEKMS {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the customer managed AWS KMS key to    use for encrypting the S3 Storage Lens metrics export file. Amazon S3 only supports symmetric    encryption keys. For more information, see Special-purpose keys in the      AWS Key Management Service Developer Guide.
@@ -767,7 +767,7 @@ impl cfn_resources::CfnResource for SSEKMS {
 }
 
 /// This resource contains the details of the Amazon S3 Storage Lens selection    criteria.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelectionCriteria {
     ///
     /// This property contains the details of the S3 Storage Lens delimiter being used.
@@ -821,7 +821,7 @@ impl cfn_resources::CfnResource for SelectionCriteria {
 }
 
 /// This is the property of the Amazon S3 Storage Lens configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageLensConfiguration {
     ///
     /// This property contains the details of the account-level metrics for Amazon S3 Storage Lens    configuration.
@@ -950,7 +950,7 @@ impl cfn_resources::CfnResource for StorageLensConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Adds cross-account permissions to a signing profile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfilePermission {
     ///
     /// The AWS Signer action permitted as part of cross-account             permissions.

@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Api resource creates an API. WebSocket APIs          and HTTP APIs are supported. For more information about          WebSocket APIs, see About WebSocket APIs in API Gateway in the API Gateway             Developer Guide. For more information about HTTP APIs, see HTTP APIs in the API Gateway Developer          Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApi {
     ///
     /// An API key selection expression. Supported only for WebSocket APIs. See API Key Selection Expressions.
@@ -212,7 +212,7 @@ pub struct CfnApi {
     pub att_api_id: CfnApiapiid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiapiendpoint;
 impl CfnApiapiendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -220,7 +220,7 @@ impl CfnApiapiendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiapiid;
 impl CfnApiapiid {
     pub fn att_name(&self) -> &'static str {
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for CfnApi {
 }
 
 /// The BodyS3Location property specifies an S3 location from which to          import an OpenAPI definition. Supported only for HTTP APIs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BodyS3Location {
     ///
     /// The S3 bucket that contains the OpenAPI definition to import. Required if you specify a BodyS3Location for an API.
@@ -317,7 +317,7 @@ impl cfn_resources::CfnResource for BodyS3Location {
 }
 
 /// The Cors property specifies a CORS configuration for an API.          Supported only for HTTP APIs. See Configuring CORS for more information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Cors {
     ///
     /// Specifies whether credentials are included in the CORS request. Supported only for HTTP APIs.

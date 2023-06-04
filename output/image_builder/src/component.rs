@@ -1,5 +1,5 @@
 /// Creates a new component that can be used to build, validate, test, and assess your 			image. The component is based on a YAML document that you specify using exactly one of 			the following methods:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponent {
     ///
     /// The change description of the component. Describes what change has been made in this 			version, or what makes this version different from other versions of this 			component.
@@ -154,7 +154,7 @@ pub struct CfnComponent {
     pub att_cfn_type: CfnComponentcfntype,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComponentPlatformEnum {
     /// Linux
     #[serde(rename = "Linux")]
@@ -171,7 +171,7 @@ impl Default for ComponentPlatformEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentarn;
 impl CfnComponentarn {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl CfnComponentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentname;
 impl CfnComponentname {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl CfnComponentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentcfntype;
 impl CfnComponentcfntype {
     pub fn att_name(&self) -> &'static str {

@@ -1,7 +1,7 @@
 /// Creates an Amazon Kendra index
 ///
 /// Once the index is active you can add documents to your index using       the BatchPutDocument operation or using one of the       supported data sources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIndex {
     /// Property description not available.
     ///
@@ -144,7 +144,7 @@ pub struct CfnIndex {
     pub att_id: CfnIndexid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IndexEditionEnum {
     /// DEVELOPER_EDITION
     #[serde(rename = "DEVELOPER_EDITION")]
@@ -161,7 +161,7 @@ impl Default for IndexEditionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIndexarn;
 impl CfnIndexarn {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl CfnIndexarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIndexid;
 impl CfnIndexid {
     pub fn att_name(&self) -> &'static str {
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for CfnIndex {
 }
 
 /// Specifies additional capacity units configured for your Enterprise Edition index. You can    add and remove capacity units to fit your usage requirements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityUnitsConfiguration {
     ///
     /// The amount of extra query capacity for an index and GetQuerySuggestions    capacity.
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
 }
 
 /// Specifies the properties, such as relevance tuning and searchability, of an index       field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentMetadataConfiguration {
     ///
     /// The name of the index field.
@@ -343,7 +343,7 @@ pub struct DocumentMetadataConfiguration {
     pub cfn_type: DocumentMetadataConfigurationTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentMetadataConfigurationTypeEnum {
     /// DATE_VALUE
     #[serde(rename = "DATE_VALUE")]
@@ -411,7 +411,7 @@ impl cfn_resources::CfnResource for DocumentMetadataConfiguration {
 }
 
 /// Provides the configuration information for the JSON token type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonTokenTypeConfiguration {
     ///
     /// The group attribute field.
@@ -497,7 +497,7 @@ impl cfn_resources::CfnResource for JsonTokenTypeConfiguration {
 }
 
 /// Provides the configuration information for the JWT token type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JwtTokenTypeConfiguration {
     ///
     /// The regular expression that identifies the claim.
@@ -621,7 +621,7 @@ pub struct JwtTokenTypeConfiguration {
     pub user_name_attribute_field: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JwtTokenTypeConfigurationKeyLocationEnum {
     /// SECRET_MANAGER
     #[serde(rename = "SECRET_MANAGER")]
@@ -773,7 +773,7 @@ impl cfn_resources::CfnResource for JwtTokenTypeConfiguration {
 }
 
 /// Provides information for tuning the relevance of a field in a search. When a query       includes terms that match the field, the results are given a boost in the response based       on these tuning parameters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Relevance {
     ///
     /// Specifies the time period that the boost applies to. For example, to make the boost       apply to documents with the field value within the last month, you would use "2628000s".       Once the field value is beyond the specified range, the effect of the boost drops off.       The higher the importance, the faster the effect drops off. If you don't specify a       value, the default is 3 months. The value of the field is a numeric string followed by       the character "s", for example "86400s" for one day, or "604800s" for one week.
@@ -858,7 +858,7 @@ pub struct Relevance {
     pub value_importance_items: Option<Vec<ValueImportanceItem>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RelevanceRankOrderEnum {
     /// ASCENDING
     #[serde(rename = "ASCENDING")]
@@ -930,7 +930,7 @@ impl cfn_resources::CfnResource for Relevance {
 }
 
 /// Provides information about how a custom index field is used during a search.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Search {
     ///
     /// Determines whether the field is returned in the query response. The default is         true.
@@ -996,7 +996,7 @@ impl cfn_resources::CfnResource for Search {
 }
 
 /// Provides the identifier of the AWS KMS customer master key (CMK)       used to encrypt data indexed by Amazon Kendra. We suggest that you       use a CMK from your account to help secure your index. Amazon Kendra       doesn't support asymmetric CMKs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerSideEncryptionConfiguration {
     ///
     /// The identifier of the AWS KMS key. Amazon Kendra doesn't support       asymmetric keys.
@@ -1058,7 +1058,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1096,7 +1096,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Provides the configuration information for a token.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserTokenConfiguration {
     ///
     /// Information about the JSON token type configuration.
@@ -1146,7 +1146,7 @@ impl cfn_resources::CfnResource for UserTokenConfiguration {
 }
 
 /// Specifies a key-value pair of the search boost value       for a document when the key is part of the metadata of a       document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValueImportanceItem {
     ///
     /// The document metadata value used for the search boost.

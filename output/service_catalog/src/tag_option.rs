@@ -1,5 +1,5 @@
 /// Specifies a TagOption. A TagOption is a key-value pair managed by AWS Service Catalog     that serves as a template for creating an AWS tag.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTagOption {
     ///
     /// The TagOption active state.

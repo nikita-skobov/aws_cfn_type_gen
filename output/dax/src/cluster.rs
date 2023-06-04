@@ -1,5 +1,5 @@
 /// Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// The Availability Zones (AZs) in which the cluster nodes will reside after the       cluster has been created or updated. If provided, the length of this list must equal the         ReplicationFactor parameter. If you omit this parameter, DAX will spread the nodes across Availability Zones for the highest       availability.
@@ -190,7 +190,7 @@ pub struct CfnCluster {
     pub att_cluster_discovery_endpoint_url: CfnClusterclusterdiscoveryendpointurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterClusterEndpointEncryptionTypeEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -207,7 +207,7 @@ impl Default for ClusterClusterEndpointEncryptionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterarn;
 impl CfnClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -215,7 +215,7 @@ impl CfnClusterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterclusterdiscoveryendpoint;
 impl CfnClusterclusterdiscoveryendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -223,7 +223,7 @@ impl CfnClusterclusterdiscoveryendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterclusterdiscoveryendpointurl;
 impl CfnClusterclusterdiscoveryendpointurl {
     pub fn att_name(&self) -> &'static str {
@@ -250,7 +250,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// Represents the settings used to enable server-side encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SSESpecification {
     ///
     /// Indicates whether server-side encryption is enabled (true) or disabled (false) on       the cluster.

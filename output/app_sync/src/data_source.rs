@@ -1,5 +1,5 @@
 /// The AWS::AppSync::DataSource resource creates data sources for resolvers in AWS AppSync to connect to, such as Amazon DynamoDB, AWS Lambda, and Amazon OpenSearch Service. Resolvers use these data sources to fetch data when clients make GraphQL calls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSource {
     ///
     /// Unique AWS AppSync GraphQL API identifier where this data source will be created.
@@ -155,7 +155,7 @@ pub struct CfnDataSource {
     pub att_name: CfnDataSourcename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcedatasourcearn;
 impl CfnDataSourcedatasourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnDataSourcedatasourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcename;
 impl CfnDataSourcename {
     pub fn att_name(&self) -> &'static str {
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 /// The AuthorizationConfig property type specifies the authorization type and configuration for an       AWS AppSync http data source.
 ///
 /// AuthorizationConfig is a property of the AWS AppSync DataSource HttpConfig property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthorizationConfig {
     ///
     /// The authorization type that the HTTP endpoint requires.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 /// Use the AwsIamConfig property type to specify AwsIamConfig for a AWS AppSync authorizaton.
 ///
 /// AwsIamConfig is a property of the AWS AppSync DataSource AuthorizationConfig resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsIamConfig {
     ///
     /// The signing Region for AWS Identity and Access Management authorization.
@@ -307,7 +307,7 @@ impl cfn_resources::CfnResource for AwsIamConfig {
 }
 
 /// Describes a Delta Sync configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeltaSyncConfig {
     ///
     /// The number of minutes that an Item is stored in the data source.
@@ -360,7 +360,7 @@ impl cfn_resources::CfnResource for DeltaSyncConfig {
 /// The DynamoDBConfig property type specifies the AwsRegion and       TableName for an Amazon DynamoDB table in your account for an AWS AppSync data source.
 ///
 /// DynamoDBConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDBConfig {
     ///
     /// The AWS Region.
@@ -444,7 +444,7 @@ impl cfn_resources::CfnResource for DynamoDBConfig {
 /// ElasticsearchConfig is a property of the AWS::AppSync::DataSource property type.
 ///
 /// As of September 2021, Amazon Elasticsearch Service is Amazon OpenSearch Service. This property is deprecated.     For new data sources, use OpenSearchServiceConfig to specify an OpenSearch Service data     source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchConfig {
     ///
     /// The AWS Region.
@@ -484,7 +484,7 @@ impl cfn_resources::CfnResource for ElasticsearchConfig {
 }
 
 /// The data source. This can be an API destination, resource, or AWS service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventBridgeConfig {
     ///
     /// The event bus pipeline's ARN. For more information about event buses, see EventBridge event buses.
@@ -515,7 +515,7 @@ impl cfn_resources::CfnResource for EventBridgeConfig {
 /// Use the HttpConfig property type to specify HttpConfig for an AWS AppSync data source.
 ///
 /// HttpConfig is a property of the AWS::AppSync::DataSource resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpConfig {
     ///
     /// The authorization configuration.
@@ -562,7 +562,7 @@ impl cfn_resources::CfnResource for HttpConfig {
 /// The LambdaConfig property type specifies the Lambda function ARN for an AWS AppSync data source.
 ///
 /// LambdaConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConfig {
     ///
     /// The ARN for the Lambda function.
@@ -593,7 +593,7 @@ impl cfn_resources::CfnResource for LambdaConfig {
 /// The OpenSearchServiceConfig property type specifies the AwsRegion and       Endpoints for an Amazon OpenSearch Service domain in your account for an AWS AppSync data source.
 ///
 /// OpenSearchServiceConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenSearchServiceConfig {
     ///
     /// The AWS Region.
@@ -635,7 +635,7 @@ impl cfn_resources::CfnResource for OpenSearchServiceConfig {
 /// Use the RdsHttpEndpointConfig property type to specify the RdsHttpEndpoint for an       AWS AppSync relational database.
 ///
 /// RdsHttpEndpointConfig is a property of the AWS AppSync DataSource RelationalDatabaseConfig resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RdsHttpEndpointConfig {
     ///
     /// AWS Region for RDS HTTP endpoint.
@@ -712,7 +712,7 @@ impl cfn_resources::CfnResource for RdsHttpEndpointConfig {
 /// Use the RelationalDatabaseConfig property type to specify RelationalDatabaseConfig     for an AWS AppSync data source.
 ///
 /// RelationalDatabaseConfig is a property of the AWS::AppSync::DataSource property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RelationalDatabaseConfig {
     ///
     /// Information about the Amazon RDS resource.

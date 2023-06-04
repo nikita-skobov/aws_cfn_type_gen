@@ -1,5 +1,5 @@
 /// High-level information for a firewall rule group. A firewall             rule group is a collection of rules that DNS Firewall uses to filter DNS network traffic for a VPC. To retrieve the rules for the rule group, call        ListFirewallRules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroup {
     ///
     /// A list of the rules that you have defined.
@@ -71,7 +71,7 @@ pub struct CfnFirewallRuleGroup {
     pub att_status_message: CfnFirewallRuleGroupstatusmessage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGrouparn;
 impl CfnFirewallRuleGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnFirewallRuleGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupcreationtime;
 impl CfnFirewallRuleGroupcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnFirewallRuleGroupcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupcreatorrequestid;
 impl CfnFirewallRuleGroupcreatorrequestid {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl CfnFirewallRuleGroupcreatorrequestid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupid;
 impl CfnFirewallRuleGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -103,7 +103,7 @@ impl CfnFirewallRuleGroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupmodificationtime;
 impl CfnFirewallRuleGroupmodificationtime {
     pub fn att_name(&self) -> &'static str {
@@ -111,7 +111,7 @@ impl CfnFirewallRuleGroupmodificationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupownerid;
 impl CfnFirewallRuleGroupownerid {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl CfnFirewallRuleGroupownerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupsharestatus;
 impl CfnFirewallRuleGroupsharestatus {
     pub fn att_name(&self) -> &'static str {
@@ -127,7 +127,7 @@ impl CfnFirewallRuleGroupsharestatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupstatus;
 impl CfnFirewallRuleGroupstatus {
     pub fn att_name(&self) -> &'static str {
@@ -135,7 +135,7 @@ impl CfnFirewallRuleGroupstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupstatusmessage;
 impl CfnFirewallRuleGroupstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroup {
 }
 
 /// A single firewall rule in a rule group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FirewallRule {
     ///
     /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list:
@@ -280,7 +280,7 @@ pub struct FirewallRule {
     pub priority: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FirewallRuleActionEnum {
     /// ALERT
     #[serde(rename = "ALERT")]
@@ -301,7 +301,7 @@ impl Default for FirewallRuleActionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FirewallRuleBlockOverrideDnsTypeEnum {
     /// CNAME
     #[serde(rename = "CNAME")]
@@ -314,7 +314,7 @@ impl Default for FirewallRuleBlockOverrideDnsTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FirewallRuleBlockResponseEnum {
     /// NODATA
     #[serde(rename = "NODATA")]
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for FirewallRule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

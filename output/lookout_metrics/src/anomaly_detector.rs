@@ -1,5 +1,5 @@
 /// The AWS::LookoutMetrics::AnomalyDetector type creates an anomaly detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAnomalyDetector {
     ///
     /// Contains information about the configuration of the anomaly detector.
@@ -63,7 +63,7 @@ pub struct CfnAnomalyDetector {
     pub att_arn: CfnAnomalyDetectorarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAnomalyDetectorarn;
 impl CfnAnomalyDetectorarn {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
 }
 
 /// Contains information about a detector's configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnomalyDetectorConfig {
     ///
     /// The frequency at which the detector analyzes its source data.
@@ -117,7 +117,7 @@ impl cfn_resources::CfnResource for AnomalyDetectorConfig {
 }
 
 /// Details about an Amazon AppFlow flow datasource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppFlowConfig {
     ///
     /// name of the flow.
@@ -157,7 +157,7 @@ impl cfn_resources::CfnResource for AppFlowConfig {
 }
 
 /// Details about an Amazon CloudWatch datasource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudwatchConfig {
     ///
     /// An IAM role that gives Amazon Lookout for Metrics permission to access data in Amazon CloudWatch.
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for CloudwatchConfig {
 }
 
 /// Contains information about how a source CSV data file should be analyzed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CsvFormatDescriptor {
     ///
     /// The character set in which the source CSV file is written.
@@ -276,7 +276,7 @@ impl cfn_resources::CfnResource for CsvFormatDescriptor {
 }
 
 /// Contains information about a source file's formatting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileFormatDescriptor {
     ///
     /// Contains information about how a source CSV data file should be analyzed.
@@ -326,7 +326,7 @@ impl cfn_resources::CfnResource for FileFormatDescriptor {
 }
 
 /// Contains information about how a source JSON data file should be analyzed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonFormatDescriptor {
     ///
     /// The character set in which the source JSON file is written.
@@ -368,7 +368,7 @@ impl cfn_resources::CfnResource for JsonFormatDescriptor {
 }
 
 /// A calculation made by contrasting a measure and a dimension from your source data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metric {
     ///
     /// The function with which the metric is calculated.
@@ -420,7 +420,7 @@ impl cfn_resources::CfnResource for Metric {
 }
 
 /// Contains information about a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricSet {
     ///
     /// A list of the fields you want to treat as dimensions.
@@ -549,7 +549,7 @@ impl cfn_resources::CfnResource for MetricSet {
 }
 
 /// Contains information about how the source data should be interpreted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricSource {
     ///
     /// Details about an AppFlow datasource.
@@ -647,7 +647,7 @@ impl cfn_resources::CfnResource for MetricSource {
 }
 
 /// Contains information about the Amazon Relational Database Service (RDS) configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RDSSourceConfig {
     ///
     /// A string identifying the database instance.
@@ -755,7 +755,7 @@ impl cfn_resources::CfnResource for RDSSourceConfig {
 }
 
 /// Provides information about the Amazon Redshift database configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftSourceConfig {
     ///
     /// A string identifying the Redshift cluster.
@@ -863,7 +863,7 @@ impl cfn_resources::CfnResource for RedshiftSourceConfig {
 }
 
 /// Contains information about the configuration of the S3 bucket that contains source files.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3SourceConfig {
     ///
     /// Contains information about a source file's formatting.
@@ -929,7 +929,7 @@ impl cfn_resources::CfnResource for S3SourceConfig {
 }
 
 /// Contains information about the column used to track time in a source data file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestampColumn {
     ///
     /// The format of the timestamp column.
@@ -971,7 +971,7 @@ impl cfn_resources::CfnResource for TimestampColumn {
 }
 
 /// Contains configuration information about the Amazon Virtual Private Cloud (VPC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// An array of strings containing the list of security groups.

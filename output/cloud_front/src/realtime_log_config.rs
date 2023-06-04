@@ -1,5 +1,5 @@
 /// A real-time log configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRealtimeLogConfig {
     ///
     /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data for this real-time log configuration.
@@ -51,7 +51,7 @@ pub struct CfnRealtimeLogConfig {
     pub att_arn: CfnRealtimeLogConfigarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRealtimeLogConfigarn;
 impl CfnRealtimeLogConfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -74,7 +74,7 @@ impl cfn_resources::CfnResource for CfnRealtimeLogConfig {
 }
 
 /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data in a real-time log configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndPoint {
     ///
     /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data.
@@ -116,7 +116,7 @@ impl cfn_resources::CfnResource for EndPoint {
 }
 
 /// Contains information about the Amazon Kinesis data stream where you are sending real-time 			log data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamConfig {
     ///
     /// The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that CloudFront can use to 			send real-time log data to your Kinesis data stream.

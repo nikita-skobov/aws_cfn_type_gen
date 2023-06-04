@@ -1,5 +1,5 @@
 /// Creates the local or partner profile to use for AS2 transfers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfile {
     ///
     /// The As2Id is the AS2-name, as defined in the   RFC 4130. For inbound transfers, this is the AS2-From header for the AS2 messages    sent from the partner. For outbound connectors, this is the AS2-To header for the    AS2 messages sent to the partner using the StartFileTransfer API operation. This ID cannot include spaces.
@@ -64,7 +64,7 @@ pub struct CfnProfile {
     pub att_profile_id: CfnProfileprofileid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProfileProfileTypeEnum {
     /// LOCAL
     #[serde(rename = "LOCAL")]
@@ -81,7 +81,7 @@ impl Default for ProfileProfileTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfilearn;
 impl CfnProfilearn {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnProfilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfileprofileid;
 impl CfnProfileprofileid {
     pub fn att_name(&self) -> &'static str {
@@ -149,7 +149,7 @@ impl cfn_resources::CfnResource for CfnProfile {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

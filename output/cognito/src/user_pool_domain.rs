@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPoolDomain resource creates a new domain for a user pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolDomain {
     ///
     /// The configuration for a custom domain that hosts the sign-up and sign-in pages for       your application. Use this object to specify an SSL certificate that is managed by       ACM.
@@ -53,7 +53,7 @@ pub struct CfnUserPoolDomain {
     pub att_cloud_front_distribution: CfnUserPoolDomaincloudfrontdistribution,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolDomaincloudfrontdistribution;
 impl CfnUserPoolDomaincloudfrontdistribution {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl cfn_resources::CfnResource for CfnUserPoolDomain {
 }
 
 /// The configuration for a custom domain that hosts the sign-up and sign-in webpages for       your application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomDomainConfigType {
     ///
     /// The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use       this certificate for the subdomain of your custom domain.

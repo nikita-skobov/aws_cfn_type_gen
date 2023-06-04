@@ -1,5 +1,5 @@
 /// The Alexa::ASK::Skill resource creates an Alexa skill that enables       customers to access new abilities. For more information about developing a skill, see       the Build Skills with the Alexa Skills Kit developer documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSkill {
     ///
     /// Login with Amazon (LWA) configuration used to authenticate with the Alexa service.       Only Login with Amazon clients created through the Amazon Developer Console are supported. The client ID, client secret, and refresh token are       required.
@@ -56,7 +56,7 @@ impl cfn_resources::CfnResource for CfnSkill {
 /// The AuthenticationConfiguration property type specifies the Login with       Amazon (LWA) configuration used to authenticate with the Alexa service. Only Login with       Amazon security profiles created through the Build Skills with the Alexa Skills Kit developer documentation are supported for authentication. A client ID, client secret, and       refresh token are required. You can generate a client ID and client secret by creating a       new security profile on the Amazon Developer Portal or you can retrieve them       from an existing profile. You can then retrieve the refresh token using the Alexa Skills       Kit CLI. For instructions, see util-command       in the ASK CLI Command Reference.
 ///
 /// AuthenticationConfiguration is a property of the         Alexa::ASK::Skill resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticationConfiguration {
     ///
     /// Client ID from Login with Amazon (LWA).
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
 /// The Overrides property type provides overrides to the skill package to       apply when creating or updating the skill. Values provided here do not modify the       contents of the original skill package. Currently, only overriding values inside of the       skill manifest component of the package is supported.
 ///
 /// Overrides is a property of the Alexa::ASK::Skill SkillPackage       property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Overrides {
     ///
     /// Overrides to apply to the skill manifest inside of the skill package. The skill       manifest contains metadata about the skill. For more information, see Skill Manifest Schemas.
@@ -141,7 +141,7 @@ impl cfn_resources::CfnResource for Overrides {
 /// The SkillPackage property type contains configuration details for the       skill package that contains the components of the Alexa skill. Skill packages are       retrieved from an Amazon S3 bucket and key and used to create and update the skill. More       details about the skill package format are located in the Skill Package API Reference.
 ///
 /// SkillPackage is a property of the Alexa::ASK::Skill       resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SkillPackage {
     ///
     /// Overrides to the skill package to apply when creating or updating the skill. Values       provided here do not modify the contents of the original skill package. Currently, only       overriding values inside of the skill manifest component of the package is       supported.

@@ -1,5 +1,5 @@
 /// The AWS::S3::AccessPoint resource is an Amazon S3 resource type that you can use to access    buckets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPoint {
     ///
     /// The name of the bucket associated with this access point.
@@ -85,7 +85,7 @@ pub struct CfnAccessPoint {
     pub att_network_origin: CfnAccessPointnetworkorigin,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointalias;
 impl CfnAccessPointalias {
     pub fn att_name(&self) -> &'static str {
@@ -93,7 +93,7 @@ impl CfnAccessPointalias {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointarn;
 impl CfnAccessPointarn {
     pub fn att_name(&self) -> &'static str {
@@ -101,7 +101,7 @@ impl CfnAccessPointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointname;
 impl CfnAccessPointname {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnAccessPointname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointnetworkorigin;
 impl CfnAccessPointnetworkorigin {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 }
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 }
 
 /// The Virtual Private Cloud (VPC) configuration for this access point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// If this field is specified, the access point will only allow connections from the    specified VPC ID.

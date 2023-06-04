@@ -1,7 +1,7 @@
 /// The AWS::AutoScaling::AutoScalingGroup resource defines an Amazon EC2 Auto    Scaling group, which is a collection of Amazon EC2 instances that are treated as a logical    grouping for the purposes of automatic scaling and management.
 ///
 /// For more information about Amazon EC2 Auto Scaling, see the Amazon EC2 Auto Scaling     User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGroup {
     ///
     /// The name of the Auto Scaling group. This name must be unique per Region per account.
@@ -403,7 +403,7 @@ pub struct CfnAutoScalingGroup {
     pub att_vpczone_identifier: CfnAutoScalingGroupvpczoneidentifier,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGrouplaunchconfigurationname;
 impl CfnAutoScalingGrouplaunchconfigurationname {
     pub fn att_name(&self) -> &'static str {
@@ -411,7 +411,7 @@ impl CfnAutoScalingGrouplaunchconfigurationname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGrouplaunchtemplatespecification;
 impl CfnAutoScalingGrouplaunchtemplatespecification {
     pub fn att_name(&self) -> &'static str {
@@ -419,7 +419,7 @@ impl CfnAutoScalingGrouplaunchtemplatespecification {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGroupmixedinstancespolicy;
 impl CfnAutoScalingGroupmixedinstancespolicy {
     pub fn att_name(&self) -> &'static str {
@@ -427,7 +427,7 @@ impl CfnAutoScalingGroupmixedinstancespolicy {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGroupplacementgroup;
 impl CfnAutoScalingGroupplacementgroup {
     pub fn att_name(&self) -> &'static str {
@@ -435,7 +435,7 @@ impl CfnAutoScalingGroupplacementgroup {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAutoScalingGroupvpczoneidentifier;
 impl CfnAutoScalingGroupvpczoneidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -466,7 +466,7 @@ impl cfn_resources::CfnResource for CfnAutoScalingGroup {
 }
 
 /// AcceleratorCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of accelerators for an instance type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorCountRequest {
     ///
     /// The maximum value.
@@ -530,7 +530,7 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
 }
 
 /// AcceleratorTotalMemoryMiBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total memory size for the accelerators for an instance type,    in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// The memory maximum in MiB.
@@ -594,7 +594,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
 }
 
 /// BaselineEbsBandwidthMbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum baseline bandwidth performance for an instance type, in    Mbps.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// The maximum value in Mbps.
@@ -668,7 +668,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
 /// For more information, see Creating an Auto     Scaling group using attribute-based instance type selection in the Amazon     EC2 Auto Scaling User Guide. For help determining which instance types match your    attributes before you apply them to your Auto Scaling group, see Preview instance types with specified attributes in the Amazon EC2 User     Guide for Linux Instances.
 ///
 /// InstanceRequirements is a property of the     LaunchTemplateOverrides property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplate property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceRequirements {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia       chips) for an instance type.
@@ -1033,7 +1033,7 @@ pub struct InstanceRequirements {
     pub vcpu_count: Option<VCpuCountRequest>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsBareMetalEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1054,7 +1054,7 @@ impl Default for InstanceRequirementsBareMetalEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsBurstablePerformanceEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1075,7 +1075,7 @@ impl Default for InstanceRequirementsBurstablePerformanceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsLocalStorageEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1175,7 +1175,7 @@ impl cfn_resources::CfnResource for InstanceRequirements {
 /// For more information, see Auto Scaling     groups with multiple instance types and purchase options in the Amazon EC2     Auto Scaling User Guide.
 ///
 /// InstancesDistribution is a property of the AWS::AutoScaling::AutoScalingGroup MixedInstancesPolicy property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstancesDistribution {
     ///
     /// The allocation strategy to apply to your On-Demand Instances when they are launched.    Possible instance types are determined by the launch template overrides that you    specify.
@@ -1291,7 +1291,7 @@ impl cfn_resources::CfnResource for InstancesDistribution {
 /// Use this structure to specify the launch templates and instance types (overrides) for a    mixed instances policy.
 ///
 /// LaunchTemplate is a property of the AWS::AutoScaling::AutoScalingGroup MixedInstancesPolicy property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplate {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplate.html#cfn-as-group-launchtemplate
     #[serde(rename = "LaunchTemplateSpecification")]
@@ -1326,7 +1326,7 @@ impl cfn_resources::CfnResource for LaunchTemplate {
 /// After you define your instance requirements, you don't have to keep updating these    settings to get new EC2 instance types automatically. Amazon EC2 Auto Scaling uses the    instance requirements of the Auto Scaling group to determine whether a new EC2 instance type    can be used.
 ///
 /// LaunchTemplateOverrides is a property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplate property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateOverrides {
     ///
     /// The instance requirements. Amazon EC2 Auto Scaling uses your specified requirements to identify       instance types. Then, it uses your On-Demand and Spot allocation strategies to launch       instances from these instance types.
@@ -1420,7 +1420,7 @@ impl cfn_resources::CfnResource for LaunchTemplateOverrides {
 /// For information about creating a launch template, see AWS::EC2::LaunchTemplate and Create a launch template for an     Auto Scaling group in the Amazon EC2 Auto Scaling User    Guide.
 ///
 /// For examples of launch templates, see Auto scaling template     snippets and the Examples section in the AWS::EC2::LaunchTemplate resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -1483,7 +1483,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 /// LifecycleHookSpecification specifies a lifecycle hook for the     LifecycleHookSpecificationList property of the AWS::AutoScaling::AutoScalingGroup resource. A lifecycle hook specifies actions to    perform when Amazon EC2 Auto Scaling launches or terminates instances.
 ///
 /// For more information, see Amazon EC2 Auto Scaling lifecycle     hooks in the Amazon EC2 Auto Scaling User Guide. You can find a    sample template snippet in the Examples section of the AWS::AutoScaling::LifecycleHook    resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecycleHookSpecification {
     ///
     /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an       unexpected failure occurs. The default value is ABANDON.
@@ -1642,7 +1642,7 @@ impl cfn_resources::CfnResource for LifecycleHookSpecification {
 }
 
 /// MemoryGiBPerVCpuRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum amount of memory per vCPU for an instance type, in    GiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryGiBPerVCpuRequest {
     ///
     /// The memory maximum in GiB.
@@ -1684,7 +1684,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
 }
 
 /// MemoryMiBRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum instance memory size for an instance type, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryMiBRequest {
     ///
     /// The memory maximum in MiB.
@@ -1750,7 +1750,7 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
 /// MetricsCollection is a property of the AWS::AutoScaling::AutoScalingGroup resource that describes the group metrics that    an Amazon EC2 Auto Scaling group sends to Amazon CloudWatch. These metrics describe the group    rather than any of its instances.
 ///
 /// For more information, see Monitor CloudWatch metrics for     your Auto Scaling groups and instances in the Amazon EC2 Auto Scaling User     Guide. You can find a sample template snippet in the Examples section of the AWS::AutoScaling::AutoScalingGroup    resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricsCollection {
     ///
     /// The frequency at which Amazon EC2 Auto Scaling sends aggregated data to CloudWatch. The only valid value is         1Minute.
@@ -1809,7 +1809,7 @@ impl cfn_resources::CfnResource for MetricsCollection {
 /// When a Spot Instance is terminated, Amazon EC2 Auto Scaling group attempts to launch a    replacement instance to maintain the desired capacity for the group.
 ///
 /// MixedInstancesPolicy is a property of the AWS::AutoScaling::AutoScalingGroup resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MixedInstancesPolicy {
     ///
     /// The instances distribution.
@@ -1856,7 +1856,7 @@ impl cfn_resources::CfnResource for MixedInstancesPolicy {
 }
 
 /// NetworkBandwidthGbpsRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum network bandwidth for an instance type, in Gbps.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkBandwidthGbpsRequest {
     ///
     /// The maximum amount of network bandwidth, in gigabits per second (Gbps).
@@ -1898,7 +1898,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
 }
 
 /// NetworkInterfaceCountRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of network interfaces for an instance type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterfaceCountRequest {
     ///
     /// The maximum number of network interfaces.
@@ -1966,7 +1966,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
 /// For an example template snippet, see Auto scaling template     snippets.
 ///
 /// For more information, see Get Amazon SNS notifications     when your Auto Scaling group scales in the Amazon EC2 Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationConfiguration {
     ///
     /// A list of event types that send a notification. Event types can include any of the    following types.
@@ -2015,7 +2015,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 /// For more information, see Tag Auto Scaling groups and     instances in the Amazon EC2 Auto Scaling User Guide. You can    find a sample template snippet in the Examples section of the AWS::AutoScaling::AutoScalingGroup    resource.
 ///
 /// CloudFormation adds the following tags to all Auto Scaling groups and associated    instances:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagProperty {
     ///
     /// The tag key.
@@ -2122,7 +2122,7 @@ impl cfn_resources::CfnResource for TagProperty {
 }
 
 /// TotalLocalStorageGBRequest is a property of the     InstanceRequirements property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum total local storage size for an instance type, in GB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalLocalStorageGBRequest {
     ///
     /// The storage maximum in GB.
@@ -2164,7 +2164,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
 }
 
 /// VCpuCountRequest is a property of the InstanceRequirements    property of the AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides property type that    describes the minimum and maximum number of vCPUs for an instance type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VCpuCountRequest {
     ///
     /// The maximum number of vCPUs.

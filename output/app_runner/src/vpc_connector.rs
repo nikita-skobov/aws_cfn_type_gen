@@ -1,7 +1,7 @@
 /// The AWS::AppRunner::VpcConnector resource is an AWS App Runner resource type that specifies an App Runner VPC connector.
 ///
 /// App Runner requires this resource when you want to associate your App Runner service to a custom Amazon Virtual Private Cloud (Amazon VPC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcConnector {
     ///
     /// A list of IDs of security groups that App Runner should use for access to AWS resources under the specified subnets. If not specified, App Runner uses the    default security group of the Amazon VPC. The default security group allows all outbound traffic.
@@ -64,7 +64,7 @@ pub struct CfnVpcConnector {
     pub att_vpc_connector_arn: CfnVpcConnectorvpcconnectorarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcConnectorvpcconnectorarn;
 impl CfnVpcConnectorvpcconnectorarn {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl cfn_resources::CfnResource for CfnVpcConnector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

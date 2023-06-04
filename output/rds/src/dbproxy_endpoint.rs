@@ -1,7 +1,7 @@
 /// The AWS::RDS::DBProxyEndpoint resource creates or updates a DB proxy endpoint. You can use custom proxy endpoints to access a proxy through a different       VPC than the proxy's default VPC.
 ///
 /// For more information about RDS Proxy, see                AWS::RDS::DBProxy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyEndpoint {
     ///
     /// The name of the DB proxy endpoint to create.
@@ -84,7 +84,7 @@ pub struct CfnDBProxyEndpoint {
     pub att_vpc_id: CfnDBProxyEndpointvpcid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DBProxyEndpointTargetRoleEnum {
     /// READ_WRITE
     #[serde(rename = "READ_WRITE")]
@@ -101,7 +101,7 @@ impl Default for DBProxyEndpointTargetRoleEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyEndpointdbproxyendpointarn;
 impl CfnDBProxyEndpointdbproxyendpointarn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnDBProxyEndpointdbproxyendpointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyEndpointendpoint;
 impl CfnDBProxyEndpointendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -117,7 +117,7 @@ impl CfnDBProxyEndpointendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyEndpointvpcid;
 impl CfnDBProxyEndpointvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnDBProxyEndpoint {
 }
 
 /// Metadata assigned to a DB proxy endpoint consisting of a key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFormat {
     ///
     /// A value is the optional value of the tag. The string value can be 1-256 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").

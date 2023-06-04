@@ -1,5 +1,5 @@
 /// The AWS::Location::Map resource specifies a map resource in your       AWS account, which provides map tiles of different styles sourced       from global location data providers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMap {
     ///
     /// Specifies the MapConfiguration, including the map style, for the       map resource that you create. The map style defines the look of maps and the data       provider for your map resource.
@@ -79,7 +79,7 @@ pub struct CfnMap {
     pub att_update_time: CfnMapupdatetime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MapPricingPlanEnum {
     /// RequestBasedUsage
     #[serde(rename = "RequestBasedUsage")]
@@ -92,7 +92,7 @@ impl Default for MapPricingPlanEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMaparn;
 impl CfnMaparn {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl CfnMaparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMapcreatetime;
 impl CfnMapcreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl CfnMapcreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMapdatasource;
 impl CfnMapdatasource {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnMapdatasource {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMapmaparn;
 impl CfnMapmaparn {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl CfnMapmaparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMapupdatetime;
 impl CfnMapupdatetime {
     pub fn att_name(&self) -> &'static str {
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for CfnMap {
 }
 
 /// Specifies the map tile style selected from an available provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MapConfiguration {
     ///
     /// Specifies the map style selected from an available data provider.

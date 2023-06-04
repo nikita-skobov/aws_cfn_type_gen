@@ -1,5 +1,5 @@
 /// Specifies a rotation in an on-call schedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRotation {
     ///
     /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
@@ -88,7 +88,7 @@ pub struct CfnRotation {
     pub att_arn: CfnRotationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRotationarn;
 impl CfnRotationarn {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl cfn_resources::CfnResource for CfnRotation {
 }
 
 /// Information about when an on-call shift begins and ends.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CoverageTime {
     ///
     /// Information about when an on-call rotation shift ends.
@@ -206,7 +206,7 @@ impl cfn_resources::CfnResource for CoverageTime {
 }
 
 /// Information about on-call rotations that recur monthly.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonthlySetting {
     ///
     /// The day of the month when monthly recurring on-call rotations begin.
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for MonthlySetting {
 }
 
 /// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecurrenceSettings {
     ///
     /// Information about on-call rotations that recur daily.
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for RecurrenceSettings {
 }
 
 /// Information about the days of the week that the on-call rotation coverage includes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShiftCoverage {
     ///
     /// The start and end times of the shift.
@@ -435,7 +435,7 @@ impl cfn_resources::CfnResource for ShiftCoverage {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -473,7 +473,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Information about rotations that recur weekly.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WeeklySetting {
     ///
     /// The day of the week when weekly recurring on-call shift rotations begins.
@@ -500,7 +500,7 @@ pub struct WeeklySetting {
     pub hand_off_time: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WeeklySettingDayOfWeekEnum {
     /// FRI
     #[serde(rename = "FRI")]

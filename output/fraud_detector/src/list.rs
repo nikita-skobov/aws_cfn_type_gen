@@ -1,7 +1,7 @@
 /// Creates a list.
 ///
 /// List is a set of input data for a variable in your event dataset. You use the input data in a rule that's associated with your detector.       For more information, see Lists.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnList {
     ///
     /// The description of the list.
@@ -84,7 +84,7 @@ pub struct CfnList {
     pub att_last_updated_time: CfnListlastupdatedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListarn;
 impl CfnListarn {
     pub fn att_name(&self) -> &'static str {
@@ -92,7 +92,7 @@ impl CfnListarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListcreatedtime;
 impl CfnListcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl CfnListcreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListlastupdatedtime;
 impl CfnListlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -173,7 +173,7 @@ impl cfn_resources::CfnResource for CfnList {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

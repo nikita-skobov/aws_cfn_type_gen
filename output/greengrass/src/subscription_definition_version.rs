@@ -1,5 +1,5 @@
 /// The     AWS::Greengrass::SubscriptionDefinitionVersion resource represents a subscription definition version for AWS IoT Greengrass.     A subscription definition version contains a list of subscriptions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionDefinitionVersion {
     ///
     /// The ID of the subscription definition associated with this version. This value is a GUID.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinitionVersion {
 /// Subscriptions define how MQTT messages can be exchanged between devices, functions, and connectors in the group, and   with AWS IoT or the local shadow service. A subscription defines a message source, message target, and a topic (or subject) that's used to route messages from the source to the target. A subscription defines the   message flow in one direction, from the source to the target. For two-way communication, you must set up two subscriptions, one for each direction.
 ///
 /// In an AWS CloudFormation template, the Subscriptions 		 property of the AWS::Greengrass::SubscriptionDefinitionVersion resource contains a      list of Subscription property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subscription {
     ///
     /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.

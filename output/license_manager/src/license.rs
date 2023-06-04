@@ -1,7 +1,7 @@
 /// Specifies a granted license.
 ///
 /// Granted licenses are licenses for products that your organization purchased from AWS Marketplace      or directly from a seller who integrated their software with managed entitlements. For more information,      see Granted       licenses in the AWS License Manager User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLicense {
     ///
     /// License beneficiary.
@@ -135,7 +135,7 @@ pub struct CfnLicense {
     pub att_version: CfnLicenseversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLicenselicensearn;
 impl CfnLicenselicensearn {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl CfnLicenselicensearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLicenseversion;
 impl CfnLicenseversion {
     pub fn att_name(&self) -> &'static str {
@@ -172,7 +172,7 @@ impl cfn_resources::CfnResource for CfnLicense {
 }
 
 /// Details about a borrow configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BorrowConfiguration {
     ///
     /// Indicates whether early check-ins are allowed.
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for BorrowConfiguration {
 }
 
 /// Details about a consumption configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConsumptionConfiguration {
     ///
     /// Details about a borrow configuration.
@@ -274,7 +274,7 @@ impl cfn_resources::CfnResource for ConsumptionConfiguration {
 }
 
 /// Describes a resource entitled for use with a license.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Entitlement {
     ///
     /// Indicates whether check-ins are allowed.
@@ -362,7 +362,7 @@ impl cfn_resources::CfnResource for Entitlement {
 }
 
 /// Details associated with the issuer of a license.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IssuerData {
     ///
     /// Issuer name.
@@ -403,7 +403,7 @@ impl cfn_resources::CfnResource for IssuerData {
 }
 
 /// Describes key/value pairs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metadata {
     ///
     /// The key name.
@@ -443,7 +443,7 @@ impl cfn_resources::CfnResource for Metadata {
 }
 
 /// Details about a provisional configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionalConfiguration {
     ///
     /// Maximum time for the provisional configuration, in minutes.
@@ -472,7 +472,7 @@ impl cfn_resources::CfnResource for ProvisionalConfiguration {
 }
 
 /// Date and time range during which the license is valid, in ISO8601-UTC format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValidityDateFormat {
     ///
     /// Start of the time range.

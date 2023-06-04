@@ -5,7 +5,7 @@
 /// When the Connection resource is created the secret will be passed to EventBridge and stored in the customer account using “Service Linked Secrets,”    effectively creating two secrets. This will minimize the cost because the original secret is only accessed when a CloudFormation template is created or updated,    not every time an event is sent to the ApiDestination. The secret stored in the customer account by EventBridge is the one used for each event sent to the    ApiDestination and AWS is responsible for the fees.
 ///
 /// For examples of CloudFormation templates that use secrets, see Examples.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiDestination {
     ///
     /// The ARN of the connection to use for the API destination. The destination endpoint must    support the authorization type specified for the connection.
@@ -106,7 +106,7 @@ pub struct CfnApiDestination {
     pub att_arn: CfnApiDestinationarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApiDestinationHttpMethodEnum {
     /// DELETE
     #[serde(rename = "DELETE")]
@@ -143,7 +143,7 @@ impl Default for ApiDestinationHttpMethodEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiDestinationarn;
 impl CfnApiDestinationarn {
     pub fn att_name(&self) -> &'static str {

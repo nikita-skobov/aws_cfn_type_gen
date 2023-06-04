@@ -1,5 +1,5 @@
 /// Specifies a permission for an Amazon EC2 network interface. For example, you can grant       an AWS authorized partner account permission to attach the specified       network interface to an instance in their account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInterfacePermission {
     ///
     /// The AWS account ID.
@@ -37,7 +37,7 @@ pub struct CfnNetworkInterfacePermission {
     pub permission: NetworkInterfacePermissionPermissionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkInterfacePermissionPermissionEnum {
     /// EIP-ASSOCIATE
     #[serde(rename = "EIP-ASSOCIATE")]

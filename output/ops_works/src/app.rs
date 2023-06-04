@@ -1,7 +1,7 @@
 /// Creates an app for a specified stack. For more information, see Creating    Apps.
 ///
 /// Required Permissions: To use this action, an IAM user must have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApp {
     ///
     /// A Source object that specifies the app repository.
@@ -151,7 +151,7 @@ pub struct CfnApp {
     pub cfn_type: AppTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AppTypeEnum {
     /// aws-flow-ruby
     #[serde(rename = "aws-flow-ruby")]
@@ -211,7 +211,7 @@ impl cfn_resources::CfnResource for CfnApp {
 }
 
 /// Describes an app's data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSource {
     ///
     /// The data source's ARN.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for DataSource {
 }
 
 /// Represents an app's environment variable.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentVariable {
     ///
     /// (Required) The environment variable's name, which can consist of up to 64 characters and must be specified.      The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.
@@ -317,7 +317,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 }
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Source {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-stack-source.html#cfn-opsworks-custcookbooksource-pw
     #[serde(rename = "Password")]
@@ -391,7 +391,7 @@ pub struct Source {
     pub username: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceTypeEnum {
     /// archive
     #[serde(rename = "archive")]
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for Source {
 }
 
 /// Describes an app's SSL configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SslConfiguration {
     ///
     /// The contents of the certificate's domain.crt file.

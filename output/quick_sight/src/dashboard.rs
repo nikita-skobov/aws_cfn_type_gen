@@ -1,7 +1,7 @@
 /// Creates a dashboard from a template. To first create a template, see the CreateTemplate API  operation.
 ///
 /// A dashboard is an entity in Amazon QuickSight that identifies Amazon QuickSight reports, created from  analyses. You can share Amazon QuickSight dashboards. With the right permissions, you can create scheduled email  reports from them. If you have the correct permissions, you can create a dashboard from a template that exists in a  different AWS account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboard {
     ///
     /// The ID of the AWS account where you want to create the dashboard.
@@ -192,7 +192,7 @@ pub struct CfnDashboard {
     pub att_version_theme_arn: CfnDashboardversionthemearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardarn;
 impl CfnDashboardarn {
     pub fn att_name(&self) -> &'static str {
@@ -200,7 +200,7 @@ impl CfnDashboardarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardcreatedtime;
 impl CfnDashboardcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -208,7 +208,7 @@ impl CfnDashboardcreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardlastpublishedtime;
 impl CfnDashboardlastpublishedtime {
     pub fn att_name(&self) -> &'static str {
@@ -216,7 +216,7 @@ impl CfnDashboardlastpublishedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardlastupdatedtime;
 impl CfnDashboardlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -224,7 +224,7 @@ impl CfnDashboardlastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversionarn;
 impl CfnDashboardversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -232,7 +232,7 @@ impl CfnDashboardversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversioncreatedtime;
 impl CfnDashboardversioncreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -240,7 +240,7 @@ impl CfnDashboardversioncreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversiondescription;
 impl CfnDashboardversiondescription {
     pub fn att_name(&self) -> &'static str {
@@ -248,7 +248,7 @@ impl CfnDashboardversiondescription {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversionsourceentityarn;
 impl CfnDashboardversionsourceentityarn {
     pub fn att_name(&self) -> &'static str {
@@ -256,7 +256,7 @@ impl CfnDashboardversionsourceentityarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversionstatus;
 impl CfnDashboardversionstatus {
     pub fn att_name(&self) -> &'static str {
@@ -264,7 +264,7 @@ impl CfnDashboardversionstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboardversionthemearn;
 impl CfnDashboardversionthemearn {
     pub fn att_name(&self) -> &'static str {
@@ -406,7 +406,7 @@ impl cfn_resources::CfnResource for CfnDashboard {
 }
 
 /// An ad hoc (one-time) filtering option.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdHocFilteringOption {
     ///
     /// Availability status.
@@ -423,7 +423,7 @@ pub struct AdHocFilteringOption {
     pub availability_status: Option<AdHocFilteringOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AdHocFilteringOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -457,7 +457,7 @@ impl cfn_resources::CfnResource for AdHocFilteringOption {
 /// An aggregation function aggregates values from a dimension or measure.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AggregationFunction {
     ///
     /// Aggregation for categorical values.
@@ -505,7 +505,7 @@ pub struct AggregationFunction {
     pub numerical_aggregation_function: Option<NumericalAggregationFunction>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AggregationFunctionCategoricalAggregationFunctionEnum {
     /// COUNT
     #[serde(rename = "COUNT")]
@@ -522,7 +522,7 @@ impl Default for AggregationFunctionCategoricalAggregationFunctionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AggregationFunctionDateAggregationFunctionEnum {
     /// COUNT
     #[serde(rename = "COUNT")]
@@ -566,7 +566,7 @@ impl cfn_resources::CfnResource for AggregationFunction {
 }
 
 /// The configuration options to sort aggregated values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AggregationSortConfiguration {
     ///
     /// The function that aggregates the values in Column.
@@ -606,7 +606,7 @@ pub struct AggregationSortConfiguration {
     pub sort_direction: AggregationSortConfigurationSortDirectionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AggregationSortConfigurationSortDirectionEnum {
     /// ASC
     #[serde(rename = "ASC")]
@@ -642,7 +642,7 @@ impl cfn_resources::CfnResource for AggregationSortConfiguration {
 }
 
 /// The configuration for default analysis settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisDefaults {
     ///
     /// The configuration for default new sheet settings.
@@ -673,7 +673,7 @@ impl cfn_resources::CfnResource for AnalysisDefaults {
 }
 
 /// The date configuration of the filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnchorDateConfiguration {
     ///
     /// The options for the date configuration. Choose one of the options below:
@@ -710,7 +710,7 @@ pub struct AnchorDateConfiguration {
     pub parameter_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AnchorDateConfigurationAnchorOptionEnum {
     /// NOW
     #[serde(rename = "NOW")]
@@ -760,7 +760,7 @@ impl cfn_resources::CfnResource for AnchorDateConfiguration {
 }
 
 /// The arc axis configuration of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArcAxisConfiguration {
     ///
     /// The arc axis range of a GaugeChartVisual.
@@ -804,7 +804,7 @@ impl cfn_resources::CfnResource for ArcAxisConfiguration {
 }
 
 /// The arc axis range of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArcAxisDisplayRange {
     ///
     /// The maximum value of the arc axis range.
@@ -846,7 +846,7 @@ impl cfn_resources::CfnResource for ArcAxisDisplayRange {
 }
 
 /// The arc configuration of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArcConfiguration {
     ///
     /// The option that determines the arc angle of a GaugeChartVisual.
@@ -875,7 +875,7 @@ pub struct ArcConfiguration {
     pub arc_thickness: Option<ArcConfigurationArcThicknessEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ArcConfigurationArcThicknessEnum {
     /// LARGE
     #[serde(rename = "LARGE")]
@@ -911,7 +911,7 @@ impl cfn_resources::CfnResource for ArcConfiguration {
 }
 
 /// The options that determine the arc thickness of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArcOptions {
     ///
     /// The arc thickness of a GaugeChartVisual.
@@ -928,7 +928,7 @@ pub struct ArcOptions {
     pub arc_thickness: Option<ArcOptionsArcThicknessEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ArcOptionsArcThicknessEnum {
     /// LARGE
     #[serde(rename = "LARGE")]
@@ -970,7 +970,7 @@ impl cfn_resources::CfnResource for ArcOptions {
 /// The data options for an axis.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisDataOptions {
     ///
     /// The options for an axis with a date field.
@@ -1020,7 +1020,7 @@ impl cfn_resources::CfnResource for AxisDataOptions {
 }
 
 /// The minimum and maximum setup for an axis display range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisDisplayMinMaxRange {
     ///
     /// The maximum setup for an axis display range.
@@ -1062,7 +1062,7 @@ impl cfn_resources::CfnResource for AxisDisplayMinMaxRange {
 }
 
 /// The display options for the axis label.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisDisplayOptions {
     ///
     /// Determines whether or not the axis line is visible.
@@ -1141,7 +1141,7 @@ pub struct AxisDisplayOptions {
     pub tick_label_options: Option<AxisTickLabelOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AxisDisplayOptionsAxisLineVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -1158,7 +1158,7 @@ impl Default for AxisDisplayOptionsAxisLineVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AxisDisplayOptionsGridLineVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -1204,7 +1204,7 @@ impl cfn_resources::CfnResource for AxisDisplayOptions {
 /// The range setup of a numeric axis display range.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisDisplayRange {
     ///
     /// The data-driven setup of an axis display range.
@@ -1248,7 +1248,7 @@ impl cfn_resources::CfnResource for AxisDisplayRange {
 }
 
 /// The label options for a chart axis. You must specify the field that the label is targeted to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisLabelOptions {
     ///
     /// The options that indicate which field the label belongs to.
@@ -1310,7 +1310,7 @@ impl cfn_resources::CfnResource for AxisLabelOptions {
 }
 
 /// The reference that specifies where the axis label is applied to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisLabelReferenceOptions {
     ///
     /// The column that the axis label is targeted to.
@@ -1380,7 +1380,7 @@ impl cfn_resources::CfnResource for AxisLabelReferenceOptions {
 /// The liner axis scale setup.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisLinearScale {
     ///
     /// The step count setup of a linear axis.
@@ -1422,7 +1422,7 @@ impl cfn_resources::CfnResource for AxisLinearScale {
 }
 
 /// The logarithmic axis scale setup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisLogarithmicScale {
     ///
     /// The base setup of a logarithmic axis scale.
@@ -1454,7 +1454,7 @@ impl cfn_resources::CfnResource for AxisLogarithmicScale {
 /// The scale setup       options for a numeric axis display.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisScale {
     ///
     /// The linear axis scale setup.
@@ -1502,7 +1502,7 @@ impl cfn_resources::CfnResource for AxisScale {
 }
 
 /// The tick label options of an axis.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AxisTickLabelOptions {
     ///
     /// Determines whether or not the axis ticks are visible.
@@ -1548,7 +1548,7 @@ impl cfn_resources::CfnResource for AxisTickLabelOptions {
 }
 
 /// The aggregated field wells of a bar chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BarChartAggregatedFieldWells {
     ///
     /// The category (y-axis) field well of a bar chart.
@@ -1658,7 +1658,7 @@ impl cfn_resources::CfnResource for BarChartAggregatedFieldWells {
 }
 
 /// The configuration of a BarChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BarChartConfiguration {
     ///
     /// Determines the arrangement of the bars. The orientation and arrangement of bars determine the type of bar that is used in the visual.
@@ -1863,7 +1863,7 @@ pub struct BarChartConfiguration {
     pub visual_palette: Option<VisualPalette>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BarChartConfigurationBarsArrangementEnum {
     /// CLUSTERED
     #[serde(rename = "CLUSTERED")]
@@ -1884,7 +1884,7 @@ impl Default for BarChartConfigurationBarsArrangementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BarChartConfigurationOrientationEnum {
     /// HORIZONTAL
     #[serde(rename = "HORIZONTAL")]
@@ -1977,7 +1977,7 @@ impl cfn_resources::CfnResource for BarChartConfiguration {
 /// The field wells of a BarChartVisual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BarChartFieldWells {
     ///
     /// The aggregated field wells of a bar chart.
@@ -2011,7 +2011,7 @@ impl cfn_resources::CfnResource for BarChartFieldWells {
 }
 
 /// sort-configuration-description
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BarChartSortConfiguration {
     ///
     /// The limit on the number of categories displayed in a bar chart.
@@ -2150,7 +2150,7 @@ impl cfn_resources::CfnResource for BarChartSortConfiguration {
 /// The BarChartVisual structure describes a visual that is a member of the bar chart family. The following charts can be described using this structure:
 ///
 /// For more information, see Using bar charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BarChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -2299,7 +2299,7 @@ impl cfn_resources::CfnResource for BarChartVisual {
 }
 
 /// The options that determine the bin count of a histogram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BinCountOptions {
     ///
     /// The options that determine the bin count value.
@@ -2340,7 +2340,7 @@ impl cfn_resources::CfnResource for BinCountOptions {
 }
 
 /// The options that determine the bin width of a histogram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BinWidthOptions {
     ///
     /// The options that determine the bin count limit.
@@ -2382,7 +2382,7 @@ impl cfn_resources::CfnResource for BinWidthOptions {
 }
 
 /// The configuration of a body section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BodySectionConfiguration {
     ///
     /// The configuration of content in a body section.
@@ -2482,7 +2482,7 @@ impl cfn_resources::CfnResource for BodySectionConfiguration {
 }
 
 /// The configuration of content in a body section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BodySectionContent {
     ///
     /// The layout configuration of a body section.
@@ -2514,7 +2514,7 @@ impl cfn_resources::CfnResource for BodySectionContent {
 }
 
 /// The aggregated field well for a box plot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotAggregatedFieldWells {
     ///
     /// The group by field well of a box plot chart. Values are grouped based on group by fields.
@@ -2578,7 +2578,7 @@ impl cfn_resources::CfnResource for BoxPlotAggregatedFieldWells {
 }
 
 /// The configuration of a BoxPlotVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotChartConfiguration {
     ///
     /// The box plot chart options for a box plot visual
@@ -2776,7 +2776,7 @@ impl cfn_resources::CfnResource for BoxPlotChartConfiguration {
 /// The field wells of a BoxPlotVisual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotFieldWells {
     ///
     /// The aggregated field wells of a box plot.
@@ -2810,7 +2810,7 @@ impl cfn_resources::CfnResource for BoxPlotFieldWells {
 }
 
 /// The options of a box plot visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotOptions {
     ///
     /// Determines the visibility of all data points of the box plot.
@@ -2853,7 +2853,7 @@ pub struct BoxPlotOptions {
     pub style_options: Option<BoxPlotStyleOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BoxPlotOptionsAllDataPointsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -2870,7 +2870,7 @@ impl Default for BoxPlotOptionsAllDataPointsVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BoxPlotOptionsOutlierVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -2906,7 +2906,7 @@ impl cfn_resources::CfnResource for BoxPlotOptions {
 }
 
 /// The sort configuration of a BoxPlotVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotSortConfiguration {
     ///
     /// The sort configuration of a group by fields.
@@ -2963,7 +2963,7 @@ impl cfn_resources::CfnResource for BoxPlotSortConfiguration {
 }
 
 /// The style options of the box plot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotStyleOptions {
     ///
     /// The fill styles (solid, transparent) of the box plot.
@@ -2980,7 +2980,7 @@ pub struct BoxPlotStyleOptions {
     pub fill_style: Option<BoxPlotStyleOptionsFillStyleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BoxPlotStyleOptionsFillStyleEnum {
     /// SOLID
     #[serde(rename = "SOLID")]
@@ -3014,7 +3014,7 @@ impl cfn_resources::CfnResource for BoxPlotStyleOptions {
 /// A box plot.
 ///
 /// For more information, see Using box plots in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BoxPlotVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -3163,7 +3163,7 @@ impl cfn_resources::CfnResource for BoxPlotVisual {
 }
 
 /// The calculated field of an analysis.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CalculatedField {
     ///
     /// The data set that is used in this calculated field.
@@ -3292,7 +3292,7 @@ impl cfn_resources::CfnResource for CalculatedField {
 }
 
 /// The table calculation measure field for pivot tables.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CalculatedMeasureField {
     ///
     /// The expression in the table calculation.
@@ -3384,7 +3384,7 @@ impl cfn_resources::CfnResource for CalculatedMeasureField {
 }
 
 /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CascadingControlConfiguration {
     ///
     /// A list of source controls that determine the values that are used in the current control.
@@ -3425,7 +3425,7 @@ impl cfn_resources::CfnResource for CascadingControlConfiguration {
 }
 
 /// The source controls that are used in a CascadingControlConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CascadingControlSource {
     ///
     /// The column identifier that determines which column to look up for the source sheet control.
@@ -3471,7 +3471,7 @@ impl cfn_resources::CfnResource for CascadingControlSource {
 }
 
 /// The dimension type field with categorical type columns..
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoricalDimensionField {
     ///
     /// The column that is used in the CategoricalDimensionField.
@@ -3593,7 +3593,7 @@ impl cfn_resources::CfnResource for CategoricalDimensionField {
 }
 
 /// The measure type field with categorical type columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoricalMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -3648,7 +3648,7 @@ pub struct CategoricalMeasureField {
     pub format_configuration: Option<StringFormatConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CategoricalMeasureFieldAggregationFunctionEnum {
     /// COUNT
     #[serde(rename = "COUNT")]
@@ -3708,7 +3708,7 @@ impl cfn_resources::CfnResource for CategoricalMeasureField {
 }
 
 /// The numeric equality type drill down filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoryDrillDownFilter {
     ///
     /// A list of the string inputs that are the values of the category drill down filter.
@@ -3763,7 +3763,7 @@ impl cfn_resources::CfnResource for CategoryDrillDownFilter {
 /// A CategoryFilter filters text values.
 ///
 /// For more information, see Adding text filters in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoryFilter {
     ///
     /// The column that the filter is applied to.
@@ -3848,7 +3848,7 @@ impl cfn_resources::CfnResource for CategoryFilter {
 /// The configuration for a CategoryFilter.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CategoryFilterConfiguration {
     ///
     /// A custom filter that filters based on a single value. This filter can be partially matched.
@@ -3914,7 +3914,7 @@ impl cfn_resources::CfnResource for CategoryFilterConfiguration {
 }
 
 /// The label options for an axis on a chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChartAxisLabelOptions {
     ///
     /// The label options for a chart axis.
@@ -3961,7 +3961,7 @@ pub struct ChartAxisLabelOptions {
     pub visibility: Option<ChartAxisLabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ChartAxisLabelOptionsSortIconVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -3978,7 +3978,7 @@ impl Default for ChartAxisLabelOptionsSortIconVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ChartAxisLabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -4019,7 +4019,7 @@ impl cfn_resources::CfnResource for ChartAxisLabelOptions {
 }
 
 /// The cluster marker that is a part of the cluster marker       configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterMarker {
     ///
     /// The simple cluster marker of the cluster marker.
@@ -4053,7 +4053,7 @@ impl cfn_resources::CfnResource for ClusterMarker {
 }
 
 /// The cluster marker configuration of the geospatial map selected point style.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterMarkerConfiguration {
     ///
     /// The cluster marker that is a part of the cluster marker configuration
@@ -4087,7 +4087,7 @@ impl cfn_resources::CfnResource for ClusterMarkerConfiguration {
 }
 
 /// Determines the color scale that is applied to the visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColorScale {
     ///
     /// Determines the color fill type.
@@ -4128,7 +4128,7 @@ pub struct ColorScale {
     pub null_value_color: Option<DataColor>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ColorScaleColorFillTypeEnum {
     /// DISCRETE
     #[serde(rename = "DISCRETE")]
@@ -4173,7 +4173,7 @@ impl cfn_resources::CfnResource for ColorScale {
 }
 
 /// The ColorsConfiguration property type specifies Property description not available. for an AWS::QuickSight::Dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColorsConfiguration {
     /// Property description not available.
     ///
@@ -4202,7 +4202,7 @@ impl cfn_resources::CfnResource for ColorsConfiguration {
 }
 
 /// The general configuration of a column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnConfiguration {
     /// Property description not available.
     ///
@@ -4253,7 +4253,7 @@ pub struct ColumnConfiguration {
     pub role: Option<ColumnConfigurationRoleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ColumnConfigurationRoleEnum {
     /// DIMENSION
     #[serde(rename = "DIMENSION")]
@@ -4295,7 +4295,7 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
 }
 
 /// The option that determines the hierarchy of the fields for a visual element.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnHierarchy {
     ///
     /// The option that determines the hierarchy of any DateTime fields.
@@ -4361,7 +4361,7 @@ impl cfn_resources::CfnResource for ColumnHierarchy {
 }
 
 /// A column of a data set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnIdentifier {
     ///
     /// The name of the column.
@@ -4453,7 +4453,7 @@ impl cfn_resources::CfnResource for ColumnIdentifier {
 }
 
 /// The sort configuration for a column that is not used in a field well.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnSort {
     ///
     /// The aggregation function that is defined in the column sort.
@@ -4491,7 +4491,7 @@ pub struct ColumnSort {
     pub sort_by: ColumnIdentifier,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ColumnSortDirectionEnum {
     /// ASC
     #[serde(rename = "ASC")]
@@ -4529,7 +4529,7 @@ impl cfn_resources::CfnResource for ColumnSort {
 }
 
 /// The tooltip item for the columns that are not part of a field well.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnTooltipItem {
     ///
     /// The aggregation function of the column tooltip item.
@@ -4581,7 +4581,7 @@ pub struct ColumnTooltipItem {
     pub visibility: Option<ColumnTooltipItemVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ColumnTooltipItemVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -4619,7 +4619,7 @@ impl cfn_resources::CfnResource for ColumnTooltipItem {
 }
 
 /// The aggregated field wells of a combo chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComboChartAggregatedFieldWells {
     ///
     /// The aggregated BarValues field well of a combo chart.
@@ -4729,7 +4729,7 @@ impl cfn_resources::CfnResource for ComboChartAggregatedFieldWells {
 }
 
 /// The configuration of a ComboChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComboChartConfiguration {
     ///
     /// The options that determine if visual data labels are displayed.
@@ -4934,7 +4934,7 @@ pub struct ComboChartConfiguration {
     pub visual_palette: Option<VisualPalette>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComboChartConfigurationBarsArrangementEnum {
     /// CLUSTERED
     #[serde(rename = "CLUSTERED")]
@@ -5033,7 +5033,7 @@ impl cfn_resources::CfnResource for ComboChartConfiguration {
 /// The field wells of the visual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComboChartFieldWells {
     ///
     /// The aggregated field wells of a combo chart. Combo charts only have aggregated field wells. Columns in a combo chart are aggregated by category.
@@ -5067,7 +5067,7 @@ impl cfn_resources::CfnResource for ComboChartFieldWells {
 }
 
 /// The sort configuration of a ComboChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComboChartSortConfiguration {
     ///
     /// The item limit configuration for the category field well of a combo chart.
@@ -5167,7 +5167,7 @@ impl cfn_resources::CfnResource for ComboChartSortConfiguration {
 /// The ComboChartVisual includes stacked bar combo charts and clustered bar combo charts
 ///
 /// For more information, see Using combo charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComboChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -5316,7 +5316,7 @@ impl cfn_resources::CfnResource for ComboChartVisual {
 }
 
 /// The comparison display configuration of a KPI or gauge chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComparisonConfiguration {
     ///
     /// The format of the comparison.
@@ -5347,7 +5347,7 @@ pub struct ComparisonConfiguration {
     pub comparison_method: Option<ComparisonConfigurationComparisonMethodEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComparisonConfigurationComparisonMethodEnum {
     /// DIFFERENCE
     #[serde(rename = "DIFFERENCE")]
@@ -5389,7 +5389,7 @@ impl cfn_resources::CfnResource for ComparisonConfiguration {
 /// The format of the comparison.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComparisonFormatConfiguration {
     ///
     /// The number display format.
@@ -5441,7 +5441,7 @@ impl cfn_resources::CfnResource for ComparisonFormatConfiguration {
 /// The computation union that is used in an insight visual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Computation {
     ///
     /// The forecast computation configuration.
@@ -5619,7 +5619,7 @@ impl cfn_resources::CfnResource for Computation {
 }
 
 /// The formatting configuration for the color.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingColor {
     ///
     /// Formatting configuration for gradient color.
@@ -5667,7 +5667,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingColor {
 }
 
 /// Determines the custom condition for an icon set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Determines the color of the icon.
@@ -5765,7 +5765,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingCustomIconCondition {
 }
 
 /// Custom icon options for an icon set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Determines the type of icon.
@@ -5796,7 +5796,7 @@ pub struct ConditionalFormattingCustomIconOptions {
     pub unicode_icon: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConditionalFormattingCustomIconOptionsIconEnum {
     /// ARROW_DOWN
     #[serde(rename = "ARROW_DOWN")]
@@ -5924,7 +5924,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingCustomIconOptions {
 }
 
 /// Formatting configuration for gradient color.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingGradientColor {
     ///
     /// Determines the color.
@@ -5992,7 +5992,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingGradientColor {
 }
 
 /// The formatting configuration for the icon.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingIcon {
     ///
     /// Determines the custom condition for an icon set.
@@ -6042,7 +6042,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIcon {
 }
 
 /// Determines the icon display configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingIconDisplayConfiguration {
     ///
     /// Determines the icon display configuration.
@@ -6060,7 +6060,7 @@ pub struct ConditionalFormattingIconDisplayConfiguration {
         Option<ConditionalFormattingIconDisplayConfigurationIconDisplayOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConditionalFormattingIconDisplayConfigurationIconDisplayOptionEnum {
     /// ICON_ONLY
     #[serde(rename = "ICON_ONLY")]
@@ -6088,7 +6088,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIconDisplayConfiguratio
 }
 
 /// Formatting configuration for icon set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingIconSet {
     ///
     /// The expression that determines the formatting configuration for the icon set.
@@ -6120,7 +6120,7 @@ pub struct ConditionalFormattingIconSet {
     pub icon_set_type: Option<ConditionalFormattingIconSetIconSetTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConditionalFormattingIconSetIconSetTypeEnum {
     /// BARS
     #[serde(rename = "BARS")]
@@ -6210,7 +6210,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingIconSet {
 }
 
 /// Formatting configuration for solid color.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionalFormattingSolidColor {
     ///
     /// Determines the color.
@@ -6279,7 +6279,7 @@ impl cfn_resources::CfnResource for ConditionalFormattingSolidColor {
 }
 
 /// The contribution analysis visual display for a line, pie, or bar chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContributionAnalysisDefault {
     ///
     /// The dimensions columns that are used in the contribution analysis,       usually a list of ColumnIdentifiers.
@@ -6356,7 +6356,7 @@ impl cfn_resources::CfnResource for ContributionAnalysisDefault {
 }
 
 /// The options that determine the currency display format configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -6467,7 +6467,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     pub symbol: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CurrencyDisplayFormatConfigurationNumberScaleEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -6575,7 +6575,7 @@ impl cfn_resources::CfnResource for CurrencyDisplayFormatConfiguration {
 }
 
 /// The filter operation that filters data included in a visual or in an entire sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomActionFilterOperation {
     ///
     /// The configuration that chooses the fields to be filtered.
@@ -6621,7 +6621,7 @@ impl cfn_resources::CfnResource for CustomActionFilterOperation {
 /// The navigation operation that navigates between different sheets in the same analysis.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomActionNavigationOperation {
     ///
     /// The configuration that chooses the navigation target.
@@ -6655,7 +6655,7 @@ impl cfn_resources::CfnResource for CustomActionNavigationOperation {
 }
 
 /// The set parameter operation that sets parameters in custom action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomActionSetParametersOperation {
     ///
     /// The parameter that determines the value configuration.
@@ -6692,7 +6692,7 @@ impl cfn_resources::CfnResource for CustomActionSetParametersOperation {
 }
 
 /// The URL operation that opens a link to another webpage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomActionURLOperation {
     ///
     /// The target of the CustomActionURLOperation.
@@ -6727,7 +6727,7 @@ pub struct CustomActionURLOperation {
     pub urltemplate: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomActionURLOperationURLTargetEnum {
     /// NEW_TAB
     #[serde(rename = "NEW_TAB")]
@@ -6785,7 +6785,7 @@ impl cfn_resources::CfnResource for CustomActionURLOperation {
 }
 
 /// The CustomColor property type specifies Property description not available. for an AWS::QuickSight::Dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomColor {
     /// Property description not available.
     ///
@@ -6835,7 +6835,7 @@ impl cfn_resources::CfnResource for CustomColor {
 }
 
 /// The configuration of a CustomContentVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomContentConfiguration {
     ///
     /// The content type of the custom content visual. You can use this to have the visual render as an image.
@@ -6882,7 +6882,7 @@ pub struct CustomContentConfiguration {
     pub image_scaling: Option<CustomContentConfigurationImageScalingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomContentConfigurationContentTypeEnum {
     /// IMAGE
     #[serde(rename = "IMAGE")]
@@ -6899,7 +6899,7 @@ impl Default for CustomContentConfigurationContentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomContentConfigurationImageScalingEnum {
     /// DO_NOT_SCALE
     #[serde(rename = "DO_NOT_SCALE")]
@@ -6963,7 +6963,7 @@ impl cfn_resources::CfnResource for CustomContentConfiguration {
 /// A visual that contains custom content.
 ///
 /// For more information, see Using custom visual content in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomContentVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -7126,7 +7126,7 @@ impl cfn_resources::CfnResource for CustomContentVisual {
 }
 
 /// A custom filter that filters based on a single value. This filter can be partially matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomFilterConfiguration {
     ///
     /// The category value for the filter.
@@ -7209,7 +7209,7 @@ pub struct CustomFilterConfiguration {
     pub select_all_options: Option<CustomFilterConfigurationSelectAllOptionsEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterConfigurationMatchOperatorEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -7242,7 +7242,7 @@ impl Default for CustomFilterConfigurationMatchOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterConfigurationNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -7263,7 +7263,7 @@ impl Default for CustomFilterConfigurationNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterConfigurationSelectAllOptionsEnum {
     /// FILTER_ALL_VALUES
     #[serde(rename = "FILTER_ALL_VALUES")]
@@ -7324,7 +7324,7 @@ impl cfn_resources::CfnResource for CustomFilterConfiguration {
 }
 
 /// A list of custom filter values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomFilterListConfiguration {
     ///
     /// The list of category values for the filter.
@@ -7385,7 +7385,7 @@ pub struct CustomFilterListConfiguration {
     pub select_all_options: Option<CustomFilterListConfigurationSelectAllOptionsEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterListConfigurationMatchOperatorEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -7418,7 +7418,7 @@ impl Default for CustomFilterListConfigurationMatchOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterListConfigurationNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -7439,7 +7439,7 @@ impl Default for CustomFilterListConfigurationNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomFilterListConfigurationSelectAllOptionsEnum {
     /// FILTER_ALL_VALUES
     #[serde(rename = "FILTER_ALL_VALUES")]
@@ -7476,7 +7476,7 @@ impl cfn_resources::CfnResource for CustomFilterListConfiguration {
 }
 
 /// The custom narrative options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomNarrativeOptions {
     ///
     /// The string input of custom narrative.
@@ -7520,7 +7520,7 @@ impl cfn_resources::CfnResource for CustomNarrativeOptions {
 /// The customized parameter values.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomParameterValues {
     ///
     /// A list of datetime-type parameter values.
@@ -7630,7 +7630,7 @@ impl cfn_resources::CfnResource for CustomParameterValues {
 }
 
 /// The configuration of custom values for the destination parameter in DestinationParameterValueConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomValuesConfiguration {
     /// Property description not available.
     ///
@@ -7672,7 +7672,7 @@ impl cfn_resources::CfnResource for CustomValuesConfiguration {
 }
 
 /// Dashboard error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardError {
     ///
     /// Message.
@@ -7717,7 +7717,7 @@ pub struct DashboardError {
     pub violated_entities: Option<Vec<Entity>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DashboardErrorTypeEnum {
     /// ACCESS_DENIED
     #[serde(rename = "ACCESS_DENIED")]
@@ -7790,7 +7790,7 @@ impl cfn_resources::CfnResource for DashboardError {
 }
 
 /// Dashboard publish options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardPublishOptions {
     ///
     /// Ad hoc (one-time) filtering option.
@@ -7984,7 +7984,7 @@ impl cfn_resources::CfnResource for DashboardPublishOptions {
 }
 
 /// Dashboard source entity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardSourceEntity {
     ///
     /// Source template.
@@ -8018,7 +8018,7 @@ impl cfn_resources::CfnResource for DashboardSourceEntity {
 }
 
 /// Dashboard source template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardSourceTemplate {
     ///
     /// The Amazon Resource Name (ARN) of the resource.
@@ -8058,7 +8058,7 @@ impl cfn_resources::CfnResource for DashboardSourceTemplate {
 }
 
 /// Dashboard version.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardVersion {
     ///
     /// The Amazon Resource Name (ARN) of the resource.
@@ -8191,7 +8191,7 @@ pub struct DashboardVersion {
     pub version_number: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DashboardVersionStatusEnum {
     /// CREATION_FAILED
     #[serde(rename = "CREATION_FAILED")]
@@ -8283,7 +8283,7 @@ impl cfn_resources::CfnResource for DashboardVersion {
 }
 
 /// The contents of a dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardVersionDefinition {
     /// Property description not available.
     ///
@@ -8448,7 +8448,7 @@ impl cfn_resources::CfnResource for DashboardVersionDefinition {
 }
 
 /// The visual publish options of a visual in a dashboard
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardVisualPublishOptions {
     ///
     /// Determines if hidden fields are included in an exported dashboard.
@@ -8482,7 +8482,7 @@ impl cfn_resources::CfnResource for DashboardVisualPublishOptions {
 }
 
 /// The options for data bars.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataBarsOptions {
     ///
     /// The field ID for the data bars options.
@@ -8565,7 +8565,7 @@ impl cfn_resources::CfnResource for DataBarsOptions {
 }
 
 /// Determines the color that is applied to a particular data value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataColor {
     ///
     /// The color that is applied to the data value.
@@ -8609,7 +8609,7 @@ impl cfn_resources::CfnResource for DataColor {
 }
 
 /// The data field series item configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataFieldSeriesItem {
     ///
     /// The axis that you are binding the field to.
@@ -8664,7 +8664,7 @@ pub struct DataFieldSeriesItem {
     pub settings: Option<LineChartSeriesSettings>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataFieldSeriesItemAxisBindingEnum {
     /// PRIMARY_YAXIS
     #[serde(rename = "PRIMARY_YAXIS")]
@@ -8722,7 +8722,7 @@ impl cfn_resources::CfnResource for DataFieldSeriesItem {
 }
 
 /// The options that determine the presentation of the data labels.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLabelOptions {
     ///
     /// Determines the visibility of the category field labels.
@@ -8849,7 +8849,7 @@ pub struct DataLabelOptions {
     pub visibility: Option<DataLabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsCategoryLabelVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -8866,7 +8866,7 @@ impl Default for DataLabelOptionsCategoryLabelVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsLabelContentEnum {
     /// PERCENT
     #[serde(rename = "PERCENT")]
@@ -8887,7 +8887,7 @@ impl Default for DataLabelOptionsLabelContentEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsMeasureLabelVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -8904,7 +8904,7 @@ impl Default for DataLabelOptionsMeasureLabelVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsOverlapEnum {
     /// DISABLE_OVERLAP
     #[serde(rename = "DISABLE_OVERLAP")]
@@ -8921,7 +8921,7 @@ impl Default for DataLabelOptionsOverlapEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsPositionEnum {
     /// BOTTOM
     #[serde(rename = "BOTTOM")]
@@ -8954,7 +8954,7 @@ impl Default for DataLabelOptionsPositionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataLabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -9001,7 +9001,7 @@ impl cfn_resources::CfnResource for DataLabelOptions {
 /// The option that determines the data label type.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLabelType {
     ///
     /// The option that specifies individual data values for labels.
@@ -9099,7 +9099,7 @@ impl cfn_resources::CfnResource for DataLabelType {
 }
 
 /// The color map that determines the color options for a particular element.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPathColor {
     ///
     /// The color that needs to be applied to the element.
@@ -9140,7 +9140,7 @@ pub struct DataPathColor {
     pub time_granularity: Option<DataPathColorTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPathColorTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -9202,7 +9202,7 @@ impl cfn_resources::CfnResource for DataPathColor {
 }
 
 /// The option that specifies individual data values for labels.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPathLabelType {
     ///
     /// The field ID of the field that the data label needs to be applied to.
@@ -9249,7 +9249,7 @@ pub struct DataPathLabelType {
     pub visibility: Option<DataPathLabelTypeVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPathLabelTypeVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -9314,7 +9314,7 @@ impl cfn_resources::CfnResource for DataPathLabelType {
 }
 
 /// Allows data paths to be sorted by a specific data value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPathSort {
     ///
     /// Determines the sort direction.
@@ -9343,7 +9343,7 @@ pub struct DataPathSort {
     pub sort_paths: Vec<DataPathValue>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPathSortDirectionEnum {
     /// ASC
     #[serde(rename = "ASC")]
@@ -9384,7 +9384,7 @@ impl cfn_resources::CfnResource for DataPathSort {
 }
 
 /// The data path that needs to be sorted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPathValue {
     ///
     /// The field ID of the field that needs to be sorted.
@@ -9463,7 +9463,7 @@ impl cfn_resources::CfnResource for DataPathValue {
 }
 
 /// The drill down options for data points in a dashbaord.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPointDrillUpDownOption {
     ///
     /// The status of the drill down options of data points.
@@ -9480,7 +9480,7 @@ pub struct DataPointDrillUpDownOption {
     pub availability_status: Option<DataPointDrillUpDownOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPointDrillUpDownOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -9512,7 +9512,7 @@ impl cfn_resources::CfnResource for DataPointDrillUpDownOption {
 }
 
 /// The data point menu options of a dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPointMenuLabelOption {
     ///
     /// The status of the data point menu options.
@@ -9529,7 +9529,7 @@ pub struct DataPointMenuLabelOption {
     pub availability_status: Option<DataPointMenuLabelOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPointMenuLabelOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -9561,7 +9561,7 @@ impl cfn_resources::CfnResource for DataPointMenuLabelOption {
 }
 
 /// The data point tooltip options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataPointTooltipOption {
     ///
     /// The status of the data point tool tip options.
@@ -9578,7 +9578,7 @@ pub struct DataPointTooltipOption {
     pub availability_status: Option<DataPointTooltipOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataPointTooltipOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -9610,7 +9610,7 @@ impl cfn_resources::CfnResource for DataPointTooltipOption {
 }
 
 /// A data set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSetIdentifierDeclaration {
     ///
     /// The Amazon Resource Name (ARN) of the data set.
@@ -9676,7 +9676,7 @@ impl cfn_resources::CfnResource for DataSetIdentifierDeclaration {
 }
 
 /// Dataset reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSetReference {
     ///
     /// Dataset Amazon Resource Name (ARN).
@@ -9718,7 +9718,7 @@ impl cfn_resources::CfnResource for DataSetReference {
 }
 
 /// The options that determine how a date axis is displayed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateAxisOptions {
     ///
     /// Determines whether or not missing dates are displayed.
@@ -9735,7 +9735,7 @@ pub struct DateAxisOptions {
     pub missing_date_visibility: Option<DateAxisOptionsMissingDateVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DateAxisOptionsMissingDateVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -9767,7 +9767,7 @@ impl cfn_resources::CfnResource for DateAxisOptions {
 }
 
 /// The dimension type field with date type columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateDimensionField {
     ///
     /// The column that is used in the DateDimensionField.
@@ -9840,7 +9840,7 @@ pub struct DateDimensionField {
     pub hierarchy_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DateDimensionFieldDateGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -9950,7 +9950,7 @@ impl cfn_resources::CfnResource for DateDimensionField {
 }
 
 /// The measure type field with date type columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -10005,7 +10005,7 @@ pub struct DateMeasureField {
     pub format_configuration: Option<DateTimeFormatConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DateMeasureFieldAggregationFunctionEnum {
     /// COUNT
     #[serde(rename = "COUNT")]
@@ -10073,7 +10073,7 @@ impl cfn_resources::CfnResource for DateMeasureField {
 }
 
 /// The default values of the DateTimeParameterDeclaration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeDefaultValues {
     ///
     /// The dynamic value of the DataTimeDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -10146,7 +10146,7 @@ impl cfn_resources::CfnResource for DateTimeDefaultValues {
 }
 
 /// Formatting configuration for DateTime fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeFormatConfiguration {
     ///
     /// Determines the DateTime format.
@@ -10234,7 +10234,7 @@ impl cfn_resources::CfnResource for DateTimeFormatConfiguration {
 }
 
 /// The option that determines the hierarchy of any DateTime fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeHierarchy {
     ///
     /// The option that determines the drill down filters for the         DateTime hierarchy.
@@ -10312,7 +10312,7 @@ impl cfn_resources::CfnResource for DateTimeHierarchy {
 }
 
 /// A date-time parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeParameter {
     ///
     /// A display name for the date-time parameter.
@@ -10354,7 +10354,7 @@ impl cfn_resources::CfnResource for DateTimeParameter {
 }
 
 /// A parameter declaration for the DateTime data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -10423,7 +10423,7 @@ pub struct DateTimeParameterDeclaration {
     pub value_when_unset: Option<DateTimeValueWhenUnsetConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DateTimeParameterDeclarationTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -10513,7 +10513,7 @@ impl cfn_resources::CfnResource for DateTimeParameterDeclaration {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Customize how dates are formatted in controls.
@@ -10585,7 +10585,7 @@ impl cfn_resources::CfnResource for DateTimePickerControlDisplayOptions {
 }
 
 /// The configuration that defines the default value of a DateTime parameter when a value has not been set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -10617,7 +10617,7 @@ pub struct DateTimeValueWhenUnsetConfiguration {
         Option<DateTimeValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DateTimeValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
     /// NULL
     #[serde(rename = "NULL")]
@@ -10649,7 +10649,7 @@ impl cfn_resources::CfnResource for DateTimeValueWhenUnsetConfiguration {
 }
 
 /// The default values of the DecimalParameterDeclaration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecimalDefaultValues {
     ///
     /// The dynamic value of the DecimalDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -10706,7 +10706,7 @@ impl cfn_resources::CfnResource for DecimalDefaultValues {
 }
 
 /// A decimal parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecimalParameter {
     ///
     /// A display name for the decimal parameter.
@@ -10748,7 +10748,7 @@ impl cfn_resources::CfnResource for DecimalParameter {
 }
 
 /// A parameter declaration for the Decimal data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecimalParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -10816,7 +10816,7 @@ pub struct DecimalParameterDeclaration {
     pub value_when_unset: Option<DecimalValueWhenUnsetConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DecimalParameterDeclarationParameterValueTypeEnum {
     /// MULTI_VALUED
     #[serde(rename = "MULTI_VALUED")]
@@ -10878,7 +10878,7 @@ impl cfn_resources::CfnResource for DecimalParameterDeclaration {
 }
 
 /// The option that determines the decimal places configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecimalPlacesConfiguration {
     ///
     /// The values of the decimal places.
@@ -10907,7 +10907,7 @@ impl cfn_resources::CfnResource for DecimalPlacesConfiguration {
 }
 
 /// The configuration that defines the default value of a Decimal parameter when a value has not been set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -10938,7 +10938,7 @@ pub struct DecimalValueWhenUnsetConfiguration {
     pub value_when_unset_option: Option<DecimalValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DecimalValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
     /// NULL
     #[serde(rename = "NULL")]
@@ -10970,7 +10970,7 @@ impl cfn_resources::CfnResource for DecimalValueWhenUnsetConfiguration {
 }
 
 /// The options that determine the default settings of a free-form layout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultFreeFormLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a free-form layout.
@@ -11001,7 +11001,7 @@ impl cfn_resources::CfnResource for DefaultFreeFormLayoutConfiguration {
 }
 
 /// The options that determine the default settings for a grid layout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultGridLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a grid layout.
@@ -11032,7 +11032,7 @@ impl cfn_resources::CfnResource for DefaultGridLayoutConfiguration {
 }
 
 /// The options that determine the default settings for interactive layout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// The options that determine the default settings of a free-form layout configuration.
@@ -11080,7 +11080,7 @@ impl cfn_resources::CfnResource for DefaultInteractiveLayoutConfiguration {
 }
 
 /// The configuration for default new sheet settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultNewSheetConfiguration {
     ///
     /// The options that determine the default settings for interactive layout configuration.
@@ -11121,7 +11121,7 @@ pub struct DefaultNewSheetConfiguration {
     pub sheet_content_type: Option<DefaultNewSheetConfigurationSheetContentTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DefaultNewSheetConfigurationSheetContentTypeEnum {
     /// INTERACTIVE
     #[serde(rename = "INTERACTIVE")]
@@ -11161,7 +11161,7 @@ impl cfn_resources::CfnResource for DefaultNewSheetConfiguration {
 }
 
 /// The options that determine the default settings for a paginated layout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultPaginatedLayoutConfiguration {
     ///
     /// The options that determine the default settings for a section-based layout configuration.
@@ -11195,7 +11195,7 @@ impl cfn_resources::CfnResource for DefaultPaginatedLayoutConfiguration {
 }
 
 /// The options that determine the default settings for a section-based layout configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultSectionBasedLayoutConfiguration {
     ///
     /// Determines the screen canvas size options for a section-based layout.
@@ -11228,7 +11228,7 @@ impl cfn_resources::CfnResource for DefaultSectionBasedLayoutConfiguration {
 /// The configuration of destination parameter values.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationParameterValueConfiguration {
     ///
     /// The configuration of custom values for destination parameter in DestinationParameterValueConfiguration.
@@ -11286,7 +11286,7 @@ pub struct DestinationParameterValueConfiguration {
     pub source_parameter_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DestinationParameterValueConfigurationSelectAllValueOptionsEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -11340,7 +11340,7 @@ impl cfn_resources::CfnResource for DestinationParameterValueConfiguration {
 }
 
 /// The dimension type field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DimensionField {
     ///
     /// The dimension type field with categorical type columns.
@@ -11406,7 +11406,7 @@ impl cfn_resources::CfnResource for DimensionField {
 }
 
 /// The label options of the label that is displayed in the center of a donut chart. This option isn't available for pie charts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DonutCenterOptions {
     ///
     /// Determines the visibility of the label in a donut chart. In the Amazon QuickSight console, this option is called 'Show total'.
@@ -11423,7 +11423,7 @@ pub struct DonutCenterOptions {
     pub label_visibility: Option<DonutCenterOptionsLabelVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DonutCenterOptionsLabelVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -11455,7 +11455,7 @@ impl cfn_resources::CfnResource for DonutCenterOptions {
 }
 
 /// The options for configuring a donut chart or pie chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DonutOptions {
     ///
     /// The option for define the arc of the chart shape. Valid values are as follows:
@@ -11509,7 +11509,7 @@ impl cfn_resources::CfnResource for DonutOptions {
 /// The drill down filter for the column hierarchies.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DrillDownFilter {
     ///
     /// The category type drill down filter. This filter is used for string type columns.
@@ -11575,7 +11575,7 @@ impl cfn_resources::CfnResource for DrillDownFilter {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DropDownControlDisplayOptions {
     ///
     /// The configuration of the Select all options in a       dropdown control.
@@ -11625,7 +11625,7 @@ impl cfn_resources::CfnResource for DropDownControlDisplayOptions {
 }
 
 /// Defines different defaults to the users or groups based on mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamicDefaultValue {
     ///
     /// The column that contains the default value of each user or group.
@@ -11690,7 +11690,7 @@ impl cfn_resources::CfnResource for DynamicDefaultValue {
 /// An empty visual.
 ///
 /// Empty visuals are used in layouts but have not been configured to show any data. A new visual created in the Amazon QuickSight console is considered an EmptyVisual until a visual type is selected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EmptyVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -11807,7 +11807,7 @@ impl cfn_resources::CfnResource for EmptyVisual {
 }
 
 /// An object, structure, or sub-structure of an analysis, template, or dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Entity {
     ///
     /// The hierarchical path of the entity within the analysis, template, or dashboard definition tree.
@@ -11839,7 +11839,7 @@ impl cfn_resources::CfnResource for Entity {
 }
 
 /// The exclude period of TimeRangeFilter or RelativeDatesFilter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExcludePeriodConfiguration {
     ///
     /// The amount or number of the exclude period.
@@ -11882,7 +11882,7 @@ pub struct ExcludePeriodConfiguration {
     pub status: Option<ExcludePeriodConfigurationStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExcludePeriodConfigurationGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -11927,7 +11927,7 @@ impl Default for ExcludePeriodConfigurationGranularityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExcludePeriodConfigurationStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -11959,7 +11959,7 @@ impl cfn_resources::CfnResource for ExcludePeriodConfiguration {
 }
 
 /// The option that determines the hierarchy of the fields that are built within a visual's field wells. These fields can't be duplicated to other visuals.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExplicitHierarchy {
     ///
     /// The list of columns that define the explicit hierarchy.
@@ -12059,7 +12059,7 @@ impl cfn_resources::CfnResource for ExplicitHierarchy {
 }
 
 /// Determines if hidden fields are included in an exported dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExportHiddenFieldsOption {
     ///
     /// The status of the export hidden fields options of a dashbaord.
@@ -12076,7 +12076,7 @@ pub struct ExportHiddenFieldsOption {
     pub availability_status: Option<ExportHiddenFieldsOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExportHiddenFieldsOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -12108,7 +12108,7 @@ impl cfn_resources::CfnResource for ExportHiddenFieldsOption {
 }
 
 /// Export to .csv option.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExportToCSVOption {
     ///
     /// Availability status.
@@ -12125,7 +12125,7 @@ pub struct ExportToCSVOption {
     pub availability_status: Option<ExportToCSVOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExportToCSVOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -12157,7 +12157,7 @@ impl cfn_resources::CfnResource for ExportToCSVOption {
 }
 
 /// Determines whether or not hidden fields are visible on exported dashbaords.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExportWithHiddenFieldsOption {
     ///
     /// The status of the export with hidden fields options.
@@ -12174,7 +12174,7 @@ pub struct ExportWithHiddenFieldsOption {
     pub availability_status: Option<ExportWithHiddenFieldsOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExportWithHiddenFieldsOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -12206,7 +12206,7 @@ impl cfn_resources::CfnResource for ExportWithHiddenFieldsOption {
 }
 
 /// The setup for the detailed tooltip.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldBasedTooltip {
     ///
     /// The visibility of Show aggregations.
@@ -12253,7 +12253,7 @@ pub struct FieldBasedTooltip {
     pub tooltip_title_type: Option<FieldBasedTooltipTooltipTitleTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldBasedTooltipAggregationVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -12270,7 +12270,7 @@ impl Default for FieldBasedTooltipAggregationVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldBasedTooltipTooltipTitleTypeEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -12311,7 +12311,7 @@ impl cfn_resources::CfnResource for FieldBasedTooltip {
 }
 
 /// The field label type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldLabelType {
     ///
     /// Indicates the field that is targeted by the field       label.
@@ -12344,7 +12344,7 @@ pub struct FieldLabelType {
     pub visibility: Option<FieldLabelTypeVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldLabelTypeVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -12398,7 +12398,7 @@ impl cfn_resources::CfnResource for FieldLabelType {
 }
 
 /// The field series item configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldSeriesItem {
     ///
     /// The axis that you are binding the field to.
@@ -12441,7 +12441,7 @@ pub struct FieldSeriesItem {
     pub settings: Option<LineChartSeriesSettings>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldSeriesItemAxisBindingEnum {
     /// PRIMARY_YAXIS
     #[serde(rename = "PRIMARY_YAXIS")]
@@ -12499,7 +12499,7 @@ impl cfn_resources::CfnResource for FieldSeriesItem {
 }
 
 /// The sort configuration for a field in a       field well.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldSort {
     ///
     /// The sort direction. Choose one of the following       options:
@@ -12532,7 +12532,7 @@ pub struct FieldSort {
     pub field_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldSortDirectionEnum {
     /// ASC
     #[serde(rename = "ASC")]
@@ -12586,7 +12586,7 @@ impl cfn_resources::CfnResource for FieldSort {
 }
 
 /// The field sort options in a chart configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldSortOptions {
     ///
     /// The sort configuration for a column that is not used in a field well.
@@ -12636,7 +12636,7 @@ impl cfn_resources::CfnResource for FieldSortOptions {
 }
 
 /// The tooltip item for the fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldTooltipItem {
     ///
     /// The unique ID of the field that is targeted by the tooltip.
@@ -12680,7 +12680,7 @@ pub struct FieldTooltipItem {
     pub visibility: Option<FieldTooltipItemVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldTooltipItemVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -12734,7 +12734,7 @@ impl cfn_resources::CfnResource for FieldTooltipItem {
 }
 
 /// The aggregated field well of the filled map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapAggregatedFieldWells {
     ///
     /// The aggregated location field well of the filled map. Values are grouped by location fields.
@@ -12798,7 +12798,7 @@ impl cfn_resources::CfnResource for FilledMapAggregatedFieldWells {
 }
 
 /// The conditional formatting of a FilledMapVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapConditionalFormatting {
     ///
     /// Conditional formatting options of a FilledMapVisual.
@@ -12835,7 +12835,7 @@ impl cfn_resources::CfnResource for FilledMapConditionalFormatting {
 }
 
 /// Conditional formatting options of a FilledMapVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapConditionalFormattingOption {
     ///
     /// The conditional formatting that determines the shape of the filled map.
@@ -12866,7 +12866,7 @@ impl cfn_resources::CfnResource for FilledMapConditionalFormattingOption {
 }
 
 /// The configuration for a FilledMapVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapConfiguration {
     ///
     /// The field wells of the visual.
@@ -12978,7 +12978,7 @@ impl cfn_resources::CfnResource for FilledMapConfiguration {
 /// The field wells of a FilledMapVisual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapFieldWells {
     ///
     /// The aggregated field well of the filled map.
@@ -13012,7 +13012,7 @@ impl cfn_resources::CfnResource for FilledMapFieldWells {
 }
 
 /// The conditional formatting that determines the shape of the filled map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapShapeConditionalFormatting {
     ///
     /// The field ID of the filled map shape.
@@ -13081,7 +13081,7 @@ impl cfn_resources::CfnResource for FilledMapShapeConditionalFormatting {
 }
 
 /// The sort configuration of a FilledMapVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapSortConfiguration {
     ///
     /// The sort configuration of the location fields.
@@ -13124,7 +13124,7 @@ impl cfn_resources::CfnResource for FilledMapSortConfiguration {
 /// A filled map.
 ///
 /// For more information, see Creating filled maps in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilledMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -13291,7 +13291,7 @@ impl cfn_resources::CfnResource for FilledMapVisual {
 /// With a Filter, you can remove portions of data from a particular visual or view.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     ///
     /// A CategoryFilter filters text values.
@@ -13425,7 +13425,7 @@ impl cfn_resources::CfnResource for Filter {
 /// The control of a filter that is used to interact with a dashboard or an analysis.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterControl {
     ///
     /// A control from a date filter that is used to specify date and time.
@@ -13551,7 +13551,7 @@ impl cfn_resources::CfnResource for FilterControl {
 }
 
 /// A control from a date filter that is used to specify date and time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterDateTimePickerControl {
     ///
     /// The display options of a control.
@@ -13631,7 +13631,7 @@ pub struct FilterDateTimePickerControl {
     pub cfn_type: Option<FilterDateTimePickerControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterDateTimePickerControlTypeEnum {
     /// DATE_RANGE
     #[serde(rename = "DATE_RANGE")]
@@ -13733,7 +13733,7 @@ impl cfn_resources::CfnResource for FilterDateTimePickerControl {
 }
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterDropDownControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -13837,7 +13837,7 @@ pub struct FilterDropDownControl {
     pub cfn_type: Option<FilterDropDownControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterDropDownControlTypeEnum {
     /// MULTI_SELECT
     #[serde(rename = "MULTI_SELECT")]
@@ -13949,7 +13949,7 @@ impl cfn_resources::CfnResource for FilterDropDownControl {
 /// A grouping of individual filters. Filter groups are applied to the same group of visuals.
 ///
 /// For more information, see Adding filter conditions (group filters) with AND and OR operators in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterGroup {
     ///
     /// The filter new feature which can apply filter group to all data sets. Choose one of the following options:
@@ -14024,7 +14024,7 @@ pub struct FilterGroup {
     pub status: Option<FilterGroupStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterGroupCrossDatasetEnum {
     /// ALL_DATASETS
     #[serde(rename = "ALL_DATASETS")]
@@ -14041,7 +14041,7 @@ impl Default for FilterGroupCrossDatasetEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterGroupStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -14106,7 +14106,7 @@ impl cfn_resources::CfnResource for FilterGroup {
 }
 
 /// A list of filter configurations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterListConfiguration {
     ///
     /// The list of category values for the filter.
@@ -14152,7 +14152,7 @@ pub struct FilterListConfiguration {
     pub select_all_options: Option<FilterListConfigurationSelectAllOptionsEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterListConfigurationMatchOperatorEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -14185,7 +14185,7 @@ impl Default for FilterListConfigurationMatchOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterListConfigurationSelectAllOptionsEnum {
     /// FILTER_ALL_VALUES
     #[serde(rename = "FILTER_ALL_VALUES")]
@@ -14222,7 +14222,7 @@ impl cfn_resources::CfnResource for FilterListConfiguration {
 }
 
 /// A control to display a list of buttons or boxes. This is used to select either a single value or multiple values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterListControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -14326,7 +14326,7 @@ pub struct FilterListControl {
     pub cfn_type: Option<FilterListControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterListControlTypeEnum {
     /// MULTI_SELECT
     #[serde(rename = "MULTI_SELECT")]
@@ -14438,7 +14438,7 @@ impl cfn_resources::CfnResource for FilterListControl {
 /// The configuration of selected fields in theCustomActionFilterOperation.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// A structure that contains the options that choose which fields are filtered in the CustomActionFilterOperation.
@@ -14474,7 +14474,7 @@ pub struct FilterOperationSelectedFieldsConfiguration {
     pub selected_fields: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterOperationSelectedFieldsConfigurationSelectedFieldOptionsEnum {
     /// ALL_FIELDS
     #[serde(rename = "ALL_FIELDS")]
@@ -14513,7 +14513,7 @@ impl cfn_resources::CfnResource for FilterOperationSelectedFieldsConfiguration {
 /// The configuration of target visuals that you want to be filtered.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterOperationTargetVisualsConfiguration {
     ///
     /// The configuration of the same-sheet target visuals that you want to be filtered.
@@ -14547,7 +14547,7 @@ impl cfn_resources::CfnResource for FilterOperationTargetVisualsConfiguration {
 }
 
 /// A control from a date filter that is used to specify the relative date.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterRelativeDateTimeControl {
     ///
     /// The display options of a control.
@@ -14698,7 +14698,7 @@ impl cfn_resources::CfnResource for FilterRelativeDateTimeControl {
 /// The scope configuration for a FilterGroup.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterScopeConfiguration {
     ///
     /// The configuration for applying a filter to specific sheets.
@@ -14732,7 +14732,7 @@ impl cfn_resources::CfnResource for FilterScopeConfiguration {
 }
 
 /// A list of selectable values that are used in a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterSelectableValues {
     ///
     /// The values that are used in the FilterSelectableValues.
@@ -14773,7 +14773,7 @@ impl cfn_resources::CfnResource for FilterSelectableValues {
 }
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterSliderControl {
     ///
     /// The display options of a control.
@@ -14886,7 +14886,7 @@ pub struct FilterSliderControl {
     pub cfn_type: Option<FilterSliderControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterSliderControlTypeEnum {
     /// RANGE
     #[serde(rename = "RANGE")]
@@ -14988,7 +14988,7 @@ impl cfn_resources::CfnResource for FilterSliderControl {
 }
 
 /// A control to display a text box that is used to enter multiple entries.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterTextAreaControl {
     ///
     /// The delimiter that is used to separate the lines in text.
@@ -15175,7 +15175,7 @@ impl cfn_resources::CfnResource for FilterTextAreaControl {
 }
 
 /// A control to display a text box that is used to enter a single entry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterTextFieldControl {
     ///
     /// The display options of a control.
@@ -15324,7 +15324,7 @@ impl cfn_resources::CfnResource for FilterTextFieldControl {
 }
 
 /// Configures the display properties of the given text.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FontConfiguration {
     ///
     /// Determines the color of the text.
@@ -15393,7 +15393,7 @@ pub struct FontConfiguration {
     pub font_weight: Option<FontWeight>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FontConfigurationFontDecorationEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -15410,7 +15410,7 @@ impl Default for FontConfigurationFontDecorationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FontConfigurationFontStyleEnum {
     /// ITALIC
     #[serde(rename = "ITALIC")]
@@ -15450,7 +15450,7 @@ impl cfn_resources::CfnResource for FontConfiguration {
 }
 
 /// The option that determines the text display size.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FontSize {
     ///
     /// The lexical name for the text size, proportional to its surrounding context.
@@ -15467,7 +15467,7 @@ pub struct FontSize {
     pub relative: Option<FontSizeRelativeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FontSizeRelativeEnum {
     /// EXTRA_LARGE
     #[serde(rename = "EXTRA_LARGE")]
@@ -15511,7 +15511,7 @@ impl cfn_resources::CfnResource for FontSize {
 }
 
 /// The option that determines the text display weight, or boldness.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FontWeight {
     ///
     /// The lexical name for the level of boldness of the text display.
@@ -15528,7 +15528,7 @@ pub struct FontWeight {
     pub name: Option<FontWeightNameEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FontWeightNameEnum {
     /// BOLD
     #[serde(rename = "BOLD")]
@@ -15560,7 +15560,7 @@ impl cfn_resources::CfnResource for FontWeight {
 }
 
 /// The forecast computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForecastComputation {
     ///
     /// The ID for a computation.
@@ -15719,7 +15719,7 @@ pub struct ForecastComputation {
     pub value: Option<MeasureField>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ForecastComputationSeasonalityEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -15846,7 +15846,7 @@ impl cfn_resources::CfnResource for ForecastComputation {
 }
 
 /// The forecast configuration that is used in a line chart's display properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForecastConfiguration {
     ///
     /// The forecast properties setup of a forecast in the line       chart.
@@ -15896,7 +15896,7 @@ impl cfn_resources::CfnResource for ForecastConfiguration {
 }
 
 /// The forecast scenario of a forecast in the line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForecastScenario {
     ///
     /// The what-if analysis forecast setup with the target date.
@@ -15946,7 +15946,7 @@ impl cfn_resources::CfnResource for ForecastScenario {
 }
 
 /// The formatting configuration for all types of field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormatConfiguration {
     ///
     /// Formatting configuration for DateTime fields.
@@ -16012,7 +16012,7 @@ impl cfn_resources::CfnResource for FormatConfiguration {
 }
 
 /// Configuration options for the canvas of a free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutCanvasSizeOptions {
     ///
     /// The options that determine the sizing of the canvas used in a free-form layout.
@@ -16046,7 +16046,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutCanvasSizeOptions {
 }
 
 /// The configuration of a free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutConfiguration {
     /// Property description not available.
     ///
@@ -16101,7 +16101,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutConfiguration {
 }
 
 /// An element within a free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutElement {
     ///
     /// The background style configuration of a free-form layout element.
@@ -16254,7 +16254,7 @@ pub struct FreeFormLayoutElement {
     pub yaxis_location: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FreeFormLayoutElementElementTypeEnum {
     /// FILTER_CONTROL
     #[serde(rename = "FILTER_CONTROL")]
@@ -16279,7 +16279,7 @@ impl Default for FreeFormLayoutElementElementTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FreeFormLayoutElementVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16358,7 +16358,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElement {
 }
 
 /// The background style configuration of a free-form layout element.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// The background color of a free-form layout element.
@@ -16389,7 +16389,7 @@ pub struct FreeFormLayoutElementBackgroundStyle {
     pub visibility: Option<FreeFormLayoutElementBackgroundStyleVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FreeFormLayoutElementBackgroundStyleVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16421,7 +16421,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElementBackgroundStyle {
 }
 
 /// The background style configuration of a free-form layout element.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// The border color of a free-form layout element.
@@ -16452,7 +16452,7 @@ pub struct FreeFormLayoutElementBorderStyle {
     pub visibility: Option<FreeFormLayoutElementBorderStyleVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FreeFormLayoutElementBorderStyleVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16484,7 +16484,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutElementBorderStyle {
 }
 
 /// The options that determine the sizing of the canvas used in a free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormLayoutScreenCanvasSizeOptions {
     ///
     /// The width that the view port will be optimized for when the layout renders.
@@ -16513,7 +16513,7 @@ impl cfn_resources::CfnResource for FreeFormLayoutScreenCanvasSizeOptions {
 }
 
 /// The free-form layout configuration of a section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FreeFormSectionLayoutConfiguration {
     ///
     /// The elements that are included in the free-form layout.
@@ -16553,7 +16553,7 @@ impl cfn_resources::CfnResource for FreeFormSectionLayoutConfiguration {
 }
 
 /// The field well configuration of a FunnelChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartAggregatedFieldWells {
     ///
     /// The category field wells of a funnel chart. Values are grouped by category fields.
@@ -16617,7 +16617,7 @@ impl cfn_resources::CfnResource for FunnelChartAggregatedFieldWells {
 }
 
 /// The configuration of a FunnelChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartConfiguration {
     ///
     /// The label options of the categories that are displayed in a FunnelChartVisual.
@@ -16745,7 +16745,7 @@ impl cfn_resources::CfnResource for FunnelChartConfiguration {
 }
 
 /// The options that determine the presentation of the data labels.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartDataLabelOptions {
     ///
     /// The visibility of the category labels within the data labels.
@@ -16846,7 +16846,7 @@ pub struct FunnelChartDataLabelOptions {
     pub visibility: Option<FunnelChartDataLabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16863,7 +16863,7 @@ impl Default for FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
     /// PERCENTAGE_BY_FIRST_STAGE
     #[serde(rename = "PERCENTAGE_BY_FIRST_STAGE")]
@@ -16892,7 +16892,7 @@ impl Default for FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunnelChartDataLabelOptionsMeasureLabelVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16909,7 +16909,7 @@ impl Default for FunnelChartDataLabelOptionsMeasureLabelVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunnelChartDataLabelOptionsPositionEnum {
     /// BOTTOM
     #[serde(rename = "BOTTOM")]
@@ -16942,7 +16942,7 @@ impl Default for FunnelChartDataLabelOptionsPositionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunnelChartDataLabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -16980,7 +16980,7 @@ impl cfn_resources::CfnResource for FunnelChartDataLabelOptions {
 /// The field well configuration of a FunnelChartVisual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartFieldWells {
     ///
     /// The field well configuration of a FunnelChartVisual.
@@ -17014,7 +17014,7 @@ impl cfn_resources::CfnResource for FunnelChartFieldWells {
 }
 
 /// The sort configuration of a FunnelChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartSortConfiguration {
     ///
     /// The limit on the number of categories displayed.
@@ -17073,7 +17073,7 @@ impl cfn_resources::CfnResource for FunnelChartSortConfiguration {
 /// A funnel chart.
 ///
 /// For more information, see Using funnel charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunnelChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -17222,7 +17222,7 @@ impl cfn_resources::CfnResource for FunnelChartVisual {
 }
 
 /// The options that determine the presentation of the arc of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartArcConditionalFormatting {
     ///
     /// The conditional formatting of the arc foreground color.
@@ -17256,7 +17256,7 @@ impl cfn_resources::CfnResource for GaugeChartArcConditionalFormatting {
 }
 
 /// The conditional formatting of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartConditionalFormatting {
     ///
     /// Conditional formatting options of a GaugeChartVisual.
@@ -17294,7 +17294,7 @@ impl cfn_resources::CfnResource for GaugeChartConditionalFormatting {
 }
 
 /// Conditional formatting options of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartConditionalFormattingOption {
     ///
     /// The options that determine the presentation of the arc of a GaugeChartVisual.
@@ -17342,7 +17342,7 @@ impl cfn_resources::CfnResource for GaugeChartConditionalFormattingOption {
 }
 
 /// The configuration of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartConfiguration {
     ///
     /// The data label configuration of a GaugeChartVisual.
@@ -17440,7 +17440,7 @@ impl cfn_resources::CfnResource for GaugeChartConfiguration {
 }
 
 /// The field well configuration of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartFieldWells {
     ///
     /// The target value field wells of a GaugeChartVisual.
@@ -17504,7 +17504,7 @@ impl cfn_resources::CfnResource for GaugeChartFieldWells {
 }
 
 /// The options that determine the presentation of the GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartOptions {
     ///
     /// The arc configuration of a GaugeChartVisual.
@@ -17569,7 +17569,7 @@ pub struct GaugeChartOptions {
     pub primary_value_font_configuration: Option<FontConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GaugeChartOptionsPrimaryValueDisplayTypeEnum {
     /// ACTUAL
     #[serde(rename = "ACTUAL")]
@@ -17619,7 +17619,7 @@ impl cfn_resources::CfnResource for GaugeChartOptions {
 }
 
 /// The conditional formatting for the primary value of a GaugeChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// The conditional formatting of the primary value icon.
@@ -17669,7 +17669,7 @@ impl cfn_resources::CfnResource for GaugeChartPrimaryValueConditionalFormatting 
 /// A gauge chart.
 ///
 /// For more information, see Using gauge charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GaugeChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -17811,7 +17811,7 @@ impl cfn_resources::CfnResource for GaugeChartVisual {
 }
 
 /// The bound       options (north, south, west, east) of the geospatial window options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialCoordinateBounds {
     ///
     /// The longitude of the east bound of the geospatial coordinate bounds.
@@ -17873,7 +17873,7 @@ impl cfn_resources::CfnResource for GeospatialCoordinateBounds {
 }
 
 /// The aggregated field wells for a geospatial map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// The color field wells of a geospatial map.
@@ -17960,7 +17960,7 @@ impl cfn_resources::CfnResource for GeospatialMapAggregatedFieldWells {
 }
 
 /// The configuration of a GeospatialMapVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialMapConfiguration {
     ///
     /// The field wells of the visual.
@@ -18087,7 +18087,7 @@ impl cfn_resources::CfnResource for GeospatialMapConfiguration {
 /// The field wells of a GeospatialMapVisual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialMapFieldWells {
     ///
     /// The aggregated field well for a geospatial map.
@@ -18121,7 +18121,7 @@ impl cfn_resources::CfnResource for GeospatialMapFieldWells {
 }
 
 /// The map style options of the geospatial map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialMapStyleOptions {
     ///
     /// The base map style of the geospatial map.
@@ -18138,7 +18138,7 @@ pub struct GeospatialMapStyleOptions {
     pub base_map_style: Option<GeospatialMapStyleOptionsBaseMapStyleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeospatialMapStyleOptionsBaseMapStyleEnum {
     /// DARK_GRAY
     #[serde(rename = "DARK_GRAY")]
@@ -18180,7 +18180,7 @@ impl cfn_resources::CfnResource for GeospatialMapStyleOptions {
 /// A geospatial map or a points on map visual.
 ///
 /// For more information, see Creating point maps in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -18329,7 +18329,7 @@ impl cfn_resources::CfnResource for GeospatialMapVisual {
 }
 
 /// The point style of the geospatial map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialPointStyleOptions {
     ///
     /// The cluster marker configuration of the geospatial point style.
@@ -18358,7 +18358,7 @@ pub struct GeospatialPointStyleOptions {
     pub selected_point_style: Option<GeospatialPointStyleOptionsSelectedPointStyleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeospatialPointStyleOptionsSelectedPointStyleEnum {
     /// CLUSTER
     #[serde(rename = "CLUSTER")]
@@ -18394,7 +18394,7 @@ impl cfn_resources::CfnResource for GeospatialPointStyleOptions {
 }
 
 /// The window options of the geospatial map visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeospatialWindowOptions {
     ///
     /// The bounds options (north, south, west, east) of the geospatial window options.
@@ -18423,7 +18423,7 @@ pub struct GeospatialWindowOptions {
     pub map_zoom_mode: Option<GeospatialWindowOptionsMapZoomModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeospatialWindowOptionsMapZoomModeEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -18457,7 +18457,7 @@ impl cfn_resources::CfnResource for GeospatialWindowOptions {
 }
 
 /// Determines the border options for a table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlobalTableBorderOptions {
     ///
     /// Determines the options for side specific border.
@@ -18507,7 +18507,7 @@ impl cfn_resources::CfnResource for GlobalTableBorderOptions {
 }
 
 /// Determines the gradient color settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GradientColor {
     ///
     /// The list of gradient color stops.
@@ -18548,7 +18548,7 @@ impl cfn_resources::CfnResource for GradientColor {
 }
 
 /// Determines the gradient stop configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GradientStop {
     ///
     /// Determines the color.
@@ -18603,7 +18603,7 @@ impl cfn_resources::CfnResource for GradientStop {
 }
 
 /// Configuration options for the canvas of a grid layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GridLayoutCanvasSizeOptions {
     ///
     /// The options that determine the sizing of the canvas used in a grid layout.
@@ -18639,7 +18639,7 @@ impl cfn_resources::CfnResource for GridLayoutCanvasSizeOptions {
 /// The configuration for a grid layout. Also called a tiled layout.
 ///
 /// Visuals snap to a grid with standard spacing and alignment. Dashboards are displayed as designed, with options to fit to screen or view at actual size.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GridLayoutConfiguration {
     /// Property description not available.
     ///
@@ -18694,7 +18694,7 @@ impl cfn_resources::CfnResource for GridLayoutConfiguration {
 }
 
 /// An element within a grid layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GridLayoutElement {
     ///
     /// The column index for the upper left corner of an element.
@@ -18789,7 +18789,7 @@ pub struct GridLayoutElement {
     pub row_span: f64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GridLayoutElementElementTypeEnum {
     /// FILTER_CONTROL
     #[serde(rename = "FILTER_CONTROL")]
@@ -18923,7 +18923,7 @@ impl cfn_resources::CfnResource for GridLayoutElement {
 }
 
 /// The options that determine the sizing of the canvas used in a grid layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GridLayoutScreenCanvasSizeOptions {
     ///
     /// The width that the view port will be optimized for when the layout renders.
@@ -18953,7 +18953,7 @@ pub struct GridLayoutScreenCanvasSizeOptions {
     pub resize_option: GridLayoutScreenCanvasSizeOptionsResizeOptionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GridLayoutScreenCanvasSizeOptionsResizeOptionEnum {
     /// FIXED
     #[serde(rename = "FIXED")]
@@ -18985,7 +18985,7 @@ impl cfn_resources::CfnResource for GridLayoutScreenCanvasSizeOptions {
 }
 
 /// The growth rate computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrowthRateComputation {
     ///
     /// The ID for a computation.
@@ -19115,7 +19115,7 @@ impl cfn_resources::CfnResource for GrowthRateComputation {
 }
 
 /// The configuration of a header or footer section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderFooterSectionConfiguration {
     ///
     /// The layout configuration of the header or footer section.
@@ -19199,7 +19199,7 @@ impl cfn_resources::CfnResource for HeaderFooterSectionConfiguration {
 }
 
 /// The aggregated field wells of a heat map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeatMapAggregatedFieldWells {
     ///
     /// The columns field well of a heat map.
@@ -19286,7 +19286,7 @@ impl cfn_resources::CfnResource for HeatMapAggregatedFieldWells {
 }
 
 /// The configuration of a heat map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeatMapConfiguration {
     ///
     /// The color options (gradient color, point of divergence) in a heat map.
@@ -19430,7 +19430,7 @@ impl cfn_resources::CfnResource for HeatMapConfiguration {
 /// The field well configuration of a heat map.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeatMapFieldWells {
     ///
     /// The aggregated field wells of a heat map.
@@ -19464,7 +19464,7 @@ impl cfn_resources::CfnResource for HeatMapFieldWells {
 }
 
 /// The sort configuration of a heat map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeatMapSortConfiguration {
     ///
     /// The limit on the number of columns that are displayed in a heat map.
@@ -19562,7 +19562,7 @@ impl cfn_resources::CfnResource for HeatMapSortConfiguration {
 /// A heat map.
 ///
 /// For more information, see Using heat maps in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeatMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -19711,7 +19711,7 @@ impl cfn_resources::CfnResource for HeatMapVisual {
 }
 
 /// The field well configuration of a histogram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistogramAggregatedFieldWells {
     ///
     /// The value field wells of a histogram. Values are aggregated by COUNT or DISTINCT_COUNT.
@@ -19752,7 +19752,7 @@ impl cfn_resources::CfnResource for HistogramAggregatedFieldWells {
 }
 
 /// The options that determine the presentation of histogram bins.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistogramBinOptions {
     ///
     /// The options that determine the bin count of a histogram.
@@ -19805,7 +19805,7 @@ pub struct HistogramBinOptions {
     pub start_value: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HistogramBinOptionsSelectedBinTypeEnum {
     /// BIN_COUNT
     #[serde(rename = "BIN_COUNT")]
@@ -19845,7 +19845,7 @@ impl cfn_resources::CfnResource for HistogramBinOptions {
 }
 
 /// The configuration for a HistogramVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistogramConfiguration {
     ///
     /// The options that determine the presentation of histogram bins.
@@ -19989,7 +19989,7 @@ impl cfn_resources::CfnResource for HistogramConfiguration {
 }
 
 /// The field well configuration of a histogram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistogramFieldWells {
     ///
     /// The field well configuration of a histogram.
@@ -20025,7 +20025,7 @@ impl cfn_resources::CfnResource for HistogramFieldWells {
 /// A histogram.
 ///
 /// For more information, see Using histograms in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HistogramVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -20151,7 +20151,7 @@ impl cfn_resources::CfnResource for HistogramVisual {
 }
 
 /// The configuration of an insight visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InsightConfiguration {
     ///
     /// The computations configurations of the insight visual
@@ -20210,7 +20210,7 @@ impl cfn_resources::CfnResource for InsightConfiguration {
 /// An insight visual.
 ///
 /// For more information, see Working with insights in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InsightVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -20373,7 +20373,7 @@ impl cfn_resources::CfnResource for InsightVisual {
 }
 
 /// The default values of the IntegerParameterDeclaration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerDefaultValues {
     ///
     /// The dynamic value of the IntegerDefaultValues. Different defaults are displayed according to users, groups, and values mapping.
@@ -20430,7 +20430,7 @@ impl cfn_resources::CfnResource for IntegerDefaultValues {
 }
 
 /// An integer parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerParameter {
     ///
     /// The name of the integer parameter.
@@ -20472,7 +20472,7 @@ impl cfn_resources::CfnResource for IntegerParameter {
 }
 
 /// A parameter declaration for the Integer data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -20540,7 +20540,7 @@ pub struct IntegerParameterDeclaration {
     pub value_when_unset: Option<IntegerValueWhenUnsetConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegerParameterDeclarationParameterValueTypeEnum {
     /// MULTI_VALUED
     #[serde(rename = "MULTI_VALUED")]
@@ -20604,7 +20604,7 @@ impl cfn_resources::CfnResource for IntegerParameterDeclaration {
 /// A parameter declaration for the Integer data type.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -20635,7 +20635,7 @@ pub struct IntegerValueWhenUnsetConfiguration {
     pub value_when_unset_option: Option<IntegerValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegerValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
     /// NULL
     #[serde(rename = "NULL")]
@@ -20667,7 +20667,7 @@ impl cfn_resources::CfnResource for IntegerValueWhenUnsetConfiguration {
 }
 
 /// The limit configuration of the visual display for an axis.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ItemsLimitConfiguration {
     ///
     /// The limit on how many items of a field are showed in the chart. For       example, the number of slices that are displayed in a pie chart.
@@ -20698,7 +20698,7 @@ pub struct ItemsLimitConfiguration {
     pub other_categories: Option<ItemsLimitConfigurationOtherCategoriesEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ItemsLimitConfigurationOtherCategoriesEnum {
     /// EXCLUDE
     #[serde(rename = "EXCLUDE")]
@@ -20730,7 +20730,7 @@ impl cfn_resources::CfnResource for ItemsLimitConfiguration {
 }
 
 /// The conditional formatting of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIConditionalFormatting {
     ///
     /// The conditional formatting options of a KPI visual.
@@ -20768,7 +20768,7 @@ impl cfn_resources::CfnResource for KPIConditionalFormatting {
 }
 
 /// The conditional formatting options of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIConditionalFormattingOption {
     ///
     /// The conditional formatting for the primary value of a KPI visual.
@@ -20818,7 +20818,7 @@ impl cfn_resources::CfnResource for KPIConditionalFormattingOption {
 }
 
 /// The configuration of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIConfiguration {
     ///
     /// The field well configuration of a KPI visual.
@@ -20884,7 +20884,7 @@ impl cfn_resources::CfnResource for KPIConfiguration {
 }
 
 /// The field well configuration of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIFieldWells {
     ///
     /// The target value field wells of a KPI visual.
@@ -20971,7 +20971,7 @@ impl cfn_resources::CfnResource for KPIFieldWells {
 }
 
 /// The options that determine the presentation of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIOptions {
     ///
     /// The comparison configuration of a KPI visual.
@@ -21060,7 +21060,7 @@ pub struct KPIOptions {
     pub trend_arrows: Option<TrendArrowOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KPIOptionsPrimaryValueDisplayTypeEnum {
     /// ACTUAL
     #[serde(rename = "ACTUAL")]
@@ -21120,7 +21120,7 @@ impl cfn_resources::CfnResource for KPIOptions {
 }
 
 /// The conditional formatting for the primary value of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// The conditional formatting of the primary value's icon.
@@ -21168,7 +21168,7 @@ impl cfn_resources::CfnResource for KPIPrimaryValueConditionalFormatting {
 }
 
 /// The conditional formatting for the progress bar of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIProgressBarConditionalFormatting {
     ///
     /// The conditional formatting of the progress bar's foreground color.
@@ -21202,7 +21202,7 @@ impl cfn_resources::CfnResource for KPIProgressBarConditionalFormatting {
 }
 
 /// The sort configuration of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPISortConfiguration {
     ///
     /// The sort configuration of the trend group fields.
@@ -21245,7 +21245,7 @@ impl cfn_resources::CfnResource for KPISortConfiguration {
 /// A key performance indicator (KPI).
 ///
 /// For more information, see Using KPIs in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KPIVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -21410,7 +21410,7 @@ impl cfn_resources::CfnResource for KPIVisual {
 }
 
 /// The share label options for the labels.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LabelOptions {
     ///
     /// The text for the label.
@@ -21451,7 +21451,7 @@ pub struct LabelOptions {
     pub visibility: Option<LabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -21491,7 +21491,7 @@ impl cfn_resources::CfnResource for LabelOptions {
 /// For more information, see Types of layout in the Amazon QuickSight User Guide.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Layout {
     ///
     /// The configuration that determines what the type of layout for a sheet.
@@ -21524,7 +21524,7 @@ impl cfn_resources::CfnResource for Layout {
 /// The configuration that determines what the type of layout will be used on a sheet.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LayoutConfiguration {
     ///
     /// A free-form is optimized for a fixed width and has more control over the exact placement of layout elements.
@@ -21590,7 +21590,7 @@ impl cfn_resources::CfnResource for LayoutConfiguration {
 }
 
 /// The options for the legend setup of a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LegendOptions {
     ///
     /// The height of the legend. If this value is omitted, a default height is used when       rendering.
@@ -21659,7 +21659,7 @@ pub struct LegendOptions {
     pub width: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LegendOptionsPositionEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -21684,7 +21684,7 @@ impl Default for LegendOptionsPositionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LegendOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -21718,7 +21718,7 @@ impl cfn_resources::CfnResource for LegendOptions {
 }
 
 /// The field well configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartAggregatedFieldWells {
     ///
     /// The category field wells of a line chart. Values are grouped by category fields.
@@ -21828,7 +21828,7 @@ impl cfn_resources::CfnResource for LineChartAggregatedFieldWells {
 }
 
 /// The configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartConfiguration {
     ///
     /// The default configuration of a line chart's contribution analysis.
@@ -22069,7 +22069,7 @@ pub struct LineChartConfiguration {
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartConfigurationTypeEnum {
     /// AREA
     #[serde(rename = "AREA")]
@@ -22187,7 +22187,7 @@ impl cfn_resources::CfnResource for LineChartConfiguration {
 }
 
 /// The options that determine the default presentation of all line series in LineChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartDefaultSeriesSettings {
     ///
     /// The axis to which you are binding all line series to.
@@ -22228,7 +22228,7 @@ pub struct LineChartDefaultSeriesSettings {
     pub marker_style_settings: Option<LineChartMarkerStyleSettings>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartDefaultSeriesSettingsAxisBindingEnum {
     /// PRIMARY_YAXIS
     #[serde(rename = "PRIMARY_YAXIS")]
@@ -22268,7 +22268,7 @@ impl cfn_resources::CfnResource for LineChartDefaultSeriesSettings {
 }
 
 /// The field well configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartFieldWells {
     ///
     /// The field well configuration of a line chart.
@@ -22302,7 +22302,7 @@ impl cfn_resources::CfnResource for LineChartFieldWells {
 }
 
 /// Line styles options for a line series in LineChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartLineStyleSettings {
     ///
     /// Interpolation style for line series.
@@ -22363,7 +22363,7 @@ pub struct LineChartLineStyleSettings {
     pub line_width: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartLineStyleSettingsLineInterpolationEnum {
     /// LINEAR
     #[serde(rename = "LINEAR")]
@@ -22384,7 +22384,7 @@ impl Default for LineChartLineStyleSettingsLineInterpolationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartLineStyleSettingsLineStyleEnum {
     /// DASHED
     #[serde(rename = "DASHED")]
@@ -22405,7 +22405,7 @@ impl Default for LineChartLineStyleSettingsLineStyleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartLineStyleSettingsLineVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -22437,7 +22437,7 @@ impl cfn_resources::CfnResource for LineChartLineStyleSettings {
 }
 
 /// Marker styles options for a line series in LineChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartMarkerStyleSettings {
     ///
     /// Color of marker in the series.
@@ -22496,7 +22496,7 @@ pub struct LineChartMarkerStyleSettings {
     pub marker_visibility: Option<LineChartMarkerStyleSettingsMarkerVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartMarkerStyleSettingsMarkerShapeEnum {
     /// CIRCLE
     #[serde(rename = "CIRCLE")]
@@ -22525,7 +22525,7 @@ impl Default for LineChartMarkerStyleSettingsMarkerShapeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LineChartMarkerStyleSettingsMarkerVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -22557,7 +22557,7 @@ impl cfn_resources::CfnResource for LineChartMarkerStyleSettings {
 }
 
 /// The options that determine the presentation of a line series in the visual
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartSeriesSettings {
     ///
     /// Line styles options for a line series in LineChartVisual.
@@ -22607,7 +22607,7 @@ impl cfn_resources::CfnResource for LineChartSeriesSettings {
 }
 
 /// The sort configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartSortConfiguration {
     ///
     /// The limit on the number of categories that are displayed in a line chart.
@@ -22721,7 +22721,7 @@ impl cfn_resources::CfnResource for LineChartSortConfiguration {
 /// A line chart.
 ///
 /// For more information, see Using line charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -22870,7 +22870,7 @@ impl cfn_resources::CfnResource for LineChartVisual {
 }
 
 /// The series axis configuration of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LineSeriesAxisDisplayOptions {
     ///
     /// The options that determine the presentation of the line series axis.
@@ -22924,7 +22924,7 @@ impl cfn_resources::CfnResource for LineSeriesAxisDisplayOptions {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListControlDisplayOptions {
     ///
     /// The configuration of the search options in a list control.
@@ -22990,7 +22990,7 @@ impl cfn_resources::CfnResource for ListControlDisplayOptions {
 }
 
 /// The configuration of the search options in a list control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListControlSearchOptions {
     ///
     /// The visibility configuration of the search options in a list control.
@@ -23007,7 +23007,7 @@ pub struct ListControlSearchOptions {
     pub visibility: Option<ListControlSearchOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListControlSearchOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -23039,7 +23039,7 @@ impl cfn_resources::CfnResource for ListControlSearchOptions {
 }
 
 /// The configuration of the Select all options in a list control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListControlSelectAllOptions {
     ///
     /// The visibility configuration of the Select all options in a list control.
@@ -23056,7 +23056,7 @@ pub struct ListControlSelectAllOptions {
     pub visibility: Option<ListControlSelectAllOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListControlSelectAllOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -23088,7 +23088,7 @@ impl cfn_resources::CfnResource for ListControlSelectAllOptions {
 }
 
 /// The configuration of loading animation in free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadingAnimation {
     ///
     /// The visibility configuration of LoadingAnimation.
@@ -23105,7 +23105,7 @@ pub struct LoadingAnimation {
     pub visibility: Option<LoadingAnimationVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoadingAnimationVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -23137,7 +23137,7 @@ impl cfn_resources::CfnResource for LoadingAnimation {
 }
 
 /// The navigation configuration for CustomActionNavigationOperation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocalNavigationConfiguration {
     ///
     /// The sheet that is targeted for navigation in the same analysis.
@@ -23196,7 +23196,7 @@ impl cfn_resources::CfnResource for LocalNavigationConfiguration {
 /// The text format for a subtitle.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LongFormatText {
     ///
     /// Plain text format.
@@ -23290,7 +23290,7 @@ impl cfn_resources::CfnResource for LongFormatText {
 }
 
 /// A dataset parameter that is mapped to an analysis parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MappedDataSetParameter {
     ///
     /// A unique name that identifies a dataset within the analysis or dashboard.
@@ -23381,7 +23381,7 @@ impl cfn_resources::CfnResource for MappedDataSetParameter {
 }
 
 /// The maximum label of a data path label.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaximumLabelType {
     ///
     /// The visibility of the maximum label.
@@ -23398,7 +23398,7 @@ pub struct MaximumLabelType {
     pub visibility: Option<MaximumLabelTypeVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaximumLabelTypeVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -23430,7 +23430,7 @@ impl cfn_resources::CfnResource for MaximumLabelType {
 }
 
 /// The maximum and minimum computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaximumMinimumComputation {
     ///
     /// The ID for a computation.
@@ -23500,7 +23500,7 @@ pub struct MaximumMinimumComputation {
     pub value: Option<MeasureField>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaximumMinimumComputationTypeEnum {
     /// MAXIMUM
     #[serde(rename = "MAXIMUM")]
@@ -23558,7 +23558,7 @@ impl cfn_resources::CfnResource for MaximumMinimumComputation {
 }
 
 /// The measure (metric) type field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MeasureField {
     ///
     /// The calculated measure field only used in pivot tables.
@@ -23640,7 +23640,7 @@ impl cfn_resources::CfnResource for MeasureField {
 }
 
 /// The metric comparison computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricComparisonComputation {
     ///
     /// The ID for a computation.
@@ -23748,7 +23748,7 @@ impl cfn_resources::CfnResource for MetricComparisonComputation {
 }
 
 /// The minimum label of a data path label.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MinimumLabelType {
     ///
     /// The visibility of the minimum label.
@@ -23765,7 +23765,7 @@ pub struct MinimumLabelType {
     pub visibility: Option<MinimumLabelTypeVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MinimumLabelTypeVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -23797,7 +23797,7 @@ impl cfn_resources::CfnResource for MinimumLabelType {
 }
 
 /// The configuration options that determine how missing data is treated during the rendering of a line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MissingDataConfiguration {
     ///
     /// The treatment option that determines how missing data should be rendered. Choose       from the following options:
@@ -23816,7 +23816,7 @@ pub struct MissingDataConfiguration {
     pub treatment_option: Option<MissingDataConfigurationTreatmentOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MissingDataConfigurationTreatmentOptionEnum {
     /// INTERPOLATE
     #[serde(rename = "INTERPOLATE")]
@@ -23852,7 +23852,7 @@ impl cfn_resources::CfnResource for MissingDataConfiguration {
 }
 
 /// The options that determine the negative value configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NegativeValueConfiguration {
     ///
     /// Determines the display mode of the negative value configuration.
@@ -23868,7 +23868,7 @@ pub struct NegativeValueConfiguration {
     pub display_mode: NegativeValueConfigurationDisplayModeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NegativeValueConfigurationDisplayModeEnum {
     /// NEGATIVE
     #[serde(rename = "NEGATIVE")]
@@ -23900,7 +23900,7 @@ impl cfn_resources::CfnResource for NegativeValueConfiguration {
 }
 
 /// The options that determine the null value format configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NullValueFormatConfiguration {
     ///
     /// Determines the null string of null values.
@@ -23955,7 +23955,7 @@ impl cfn_resources::CfnResource for NullValueFormatConfiguration {
 }
 
 /// The options that determine the number display format configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumberDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -24052,7 +24052,7 @@ pub struct NumberDisplayFormatConfiguration {
     pub suffix: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumberDisplayFormatConfigurationNumberScaleEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -24160,7 +24160,7 @@ impl cfn_resources::CfnResource for NumberDisplayFormatConfiguration {
 }
 
 /// Formatting configuration for number fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumberFormatConfiguration {
     ///
     /// The options that determine the numeric format configuration.
@@ -24194,7 +24194,7 @@ impl cfn_resources::CfnResource for NumberFormatConfiguration {
 }
 
 /// The options for an axis with a numeric field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericAxisOptions {
     ///
     /// The range setup of a numeric axis.
@@ -24240,7 +24240,7 @@ impl cfn_resources::CfnResource for NumericAxisOptions {
 }
 
 /// The category drill down filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericEqualityDrillDownFilter {
     ///
     /// The column that the filter is applied to.
@@ -24282,7 +24282,7 @@ impl cfn_resources::CfnResource for NumericEqualityDrillDownFilter {
 }
 
 /// A NumericEqualityFilter filters values that are equal to the specified value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericEqualityFilter {
     ///
     /// The aggregation function of the filter.
@@ -24399,7 +24399,7 @@ pub struct NumericEqualityFilter {
     pub value: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericEqualityFilterMatchOperatorEnum {
     /// DOES_NOT_EQUAL
     #[serde(rename = "DOES_NOT_EQUAL")]
@@ -24416,7 +24416,7 @@ impl Default for NumericEqualityFilterMatchOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericEqualityFilterNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -24437,7 +24437,7 @@ impl Default for NumericEqualityFilterNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericEqualityFilterSelectAllOptionsEnum {
     /// FILTER_ALL_VALUES
     #[serde(rename = "FILTER_ALL_VALUES")]
@@ -24517,7 +24517,7 @@ impl cfn_resources::CfnResource for NumericEqualityFilter {
 /// The options that determine the numeric format configuration.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericFormatConfiguration {
     ///
     /// The options that determine the currency display format configuration.
@@ -24583,7 +24583,7 @@ impl cfn_resources::CfnResource for NumericFormatConfiguration {
 }
 
 /// A NumericRangeFilter filters values that are within the value range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericRangeFilter {
     ///
     /// The aggregation function of the filter.
@@ -24705,7 +24705,7 @@ pub struct NumericRangeFilter {
     pub select_all_options: Option<NumericRangeFilterSelectAllOptionsEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericRangeFilterNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -24726,7 +24726,7 @@ impl Default for NumericRangeFilterNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericRangeFilterSelectAllOptionsEnum {
     /// FILTER_ALL_VALUES
     #[serde(rename = "FILTER_ALL_VALUES")]
@@ -24790,7 +24790,7 @@ impl cfn_resources::CfnResource for NumericRangeFilter {
 }
 
 /// The value input pf the numeric range filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericRangeFilterValue {
     ///
     /// The parameter that is used in the numeric range.
@@ -24860,7 +24860,7 @@ impl cfn_resources::CfnResource for NumericRangeFilterValue {
 }
 
 /// The options that determine the numeric separator configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericSeparatorConfiguration {
     ///
     /// Determines the decimal separator.
@@ -24889,7 +24889,7 @@ pub struct NumericSeparatorConfiguration {
     pub thousands_separator: Option<ThousandSeparatorOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericSeparatorConfigurationDecimalSeparatorEnum {
     /// COMMA
     #[serde(rename = "COMMA")]
@@ -24929,7 +24929,7 @@ impl cfn_resources::CfnResource for NumericSeparatorConfiguration {
 }
 
 /// Aggregation for numerical values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericalAggregationFunction {
     ///
     /// An aggregation based on the percentile of values in a dimension or measure.
@@ -24961,7 +24961,7 @@ pub struct NumericalAggregationFunction {
         Option<NumericalAggregationFunctionSimpleNumericalAggregationEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NumericalAggregationFunctionSimpleNumericalAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -25033,7 +25033,7 @@ impl cfn_resources::CfnResource for NumericalAggregationFunction {
 }
 
 /// The dimension type field with numerical type columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericalDimensionField {
     ///
     /// The column that is used in the NumericalDimensionField.
@@ -25155,7 +25155,7 @@ impl cfn_resources::CfnResource for NumericalDimensionField {
 }
 
 /// The measure type field with numerical type columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumericalMeasureField {
     ///
     /// The aggregation function of the measure field.
@@ -25255,7 +25255,7 @@ impl cfn_resources::CfnResource for NumericalMeasureField {
 }
 
 /// The pagination configuration for a table visual or boxplot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PaginationConfiguration {
     ///
     /// Indicates the page number.
@@ -25295,7 +25295,7 @@ impl cfn_resources::CfnResource for PaginationConfiguration {
 }
 
 /// A collection of options that configure how each panel displays in a small multiples chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PanelConfiguration {
     ///
     /// Sets the background color for each panel.
@@ -25418,7 +25418,7 @@ pub struct PanelConfiguration {
     pub title: Option<PanelTitleOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelConfigurationBackgroundVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -25435,7 +25435,7 @@ impl Default for PanelConfigurationBackgroundVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelConfigurationBorderStyleEnum {
     /// DASHED
     #[serde(rename = "DASHED")]
@@ -25456,7 +25456,7 @@ impl Default for PanelConfigurationBorderStyleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelConfigurationBorderVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -25473,7 +25473,7 @@ impl Default for PanelConfigurationBorderVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelConfigurationGutterVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -25507,7 +25507,7 @@ impl cfn_resources::CfnResource for PanelConfiguration {
 }
 
 /// The options that determine the title styles for each small multiples       panel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PanelTitleOptions {
     /// Property description not available.
     ///
@@ -25549,7 +25549,7 @@ pub struct PanelTitleOptions {
     pub visibility: Option<PanelTitleOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelTitleOptionsHorizontalTextAlignmentEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -25574,7 +25574,7 @@ impl Default for PanelTitleOptionsHorizontalTextAlignmentEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PanelTitleOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -25612,7 +25612,7 @@ impl cfn_resources::CfnResource for PanelTitleOptions {
 /// The control of a parameter that users can interact with in a dashboard or an analysis.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterControl {
     ///
     /// A control from a date parameter that specifies date and time.
@@ -25722,7 +25722,7 @@ impl cfn_resources::CfnResource for ParameterControl {
 }
 
 /// A control from a date parameter that specifies date and time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterDateTimePickerControl {
     ///
     /// The display options of a control.
@@ -25872,7 +25872,7 @@ impl cfn_resources::CfnResource for ParameterDateTimePickerControl {
 /// For more information, see Parameters in Amazon QuickSight in the Amazon QuickSight User Guide.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterDeclaration {
     ///
     /// A parameter declaration for the DateTime data type.
@@ -25954,7 +25954,7 @@ impl cfn_resources::CfnResource for ParameterDeclaration {
 }
 
 /// A control to display a dropdown list with buttons that are used to select a single value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterDropDownControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -26056,7 +26056,7 @@ pub struct ParameterDropDownControl {
     pub cfn_type: Option<ParameterDropDownControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParameterDropDownControlTypeEnum {
     /// MULTI_SELECT
     #[serde(rename = "MULTI_SELECT")]
@@ -26163,7 +26163,7 @@ impl cfn_resources::CfnResource for ParameterDropDownControl {
 }
 
 /// A control to display a list with buttons or boxes that are used to select either a single value or multiple values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterListControl {
     ///
     /// The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
@@ -26265,7 +26265,7 @@ pub struct ParameterListControl {
     pub cfn_type: Option<ParameterListControlTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParameterListControlTypeEnum {
     /// MULTI_SELECT
     #[serde(rename = "MULTI_SELECT")]
@@ -26372,7 +26372,7 @@ impl cfn_resources::CfnResource for ParameterListControl {
 }
 
 /// A list of selectable values that are used in a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterSelectableValues {
     ///
     /// The column identifier that fetches values from the data set.
@@ -26429,7 +26429,7 @@ impl cfn_resources::CfnResource for ParameterSelectableValues {
 }
 
 /// A control to display a horizontal toggle bar. This is used to change a value by sliding the toggle.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterSliderControl {
     ///
     /// The display options of a control.
@@ -26608,7 +26608,7 @@ impl cfn_resources::CfnResource for ParameterSliderControl {
 }
 
 /// A control to display a text box that is used to enter multiple entries.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterTextAreaControl {
     ///
     /// The delimiter that is used to separate the lines in text.
@@ -26792,7 +26792,7 @@ impl cfn_resources::CfnResource for ParameterTextAreaControl {
 }
 
 /// A control to display a text box that is used to enter a single entry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParameterTextFieldControl {
     ///
     /// The display options of a control.
@@ -26938,7 +26938,7 @@ impl cfn_resources::CfnResource for ParameterTextFieldControl {
 }
 
 /// A list of Amazon QuickSight parameters and the list's override values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Parameters {
     ///
     /// The parameters that have a data type of date-time.
@@ -27048,7 +27048,7 @@ impl cfn_resources::CfnResource for Parameters {
 }
 
 /// The percent range in the visible range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PercentVisibleRange {
     ///
     /// The lower bound of the range.
@@ -27090,7 +27090,7 @@ impl cfn_resources::CfnResource for PercentVisibleRange {
 }
 
 /// The options that determine the percentage display format configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PercentageDisplayFormatConfiguration {
     ///
     /// The option that determines the decimal places configuration.
@@ -27248,7 +27248,7 @@ impl cfn_resources::CfnResource for PercentageDisplayFormatConfiguration {
 }
 
 /// An aggregation based on the percentile of values in a dimension or measure.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PercentileAggregation {
     ///
     /// The percentile value. This value can be any numeric constant 0–100. A percentile value of 50 computes the median value of the measure.
@@ -27278,7 +27278,7 @@ impl cfn_resources::CfnResource for PercentileAggregation {
 }
 
 /// The period over period computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PeriodOverPeriodComputation {
     ///
     /// The ID for a computation.
@@ -27374,7 +27374,7 @@ impl cfn_resources::CfnResource for PeriodOverPeriodComputation {
 }
 
 /// The period to date computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PeriodToDateComputation {
     ///
     /// The ID for a computation.
@@ -27445,7 +27445,7 @@ pub struct PeriodToDateComputation {
     pub value: Option<MeasureField>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PeriodToDateComputationPeriodTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -27531,7 +27531,7 @@ impl cfn_resources::CfnResource for PeriodToDateComputation {
 }
 
 /// The field well configuration of a pie chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PieChartAggregatedFieldWells {
     ///
     /// The category (group/color) field wells of a pie chart.
@@ -27618,7 +27618,7 @@ impl cfn_resources::CfnResource for PieChartAggregatedFieldWells {
 }
 
 /// The configuration of a pie chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PieChartConfiguration {
     ///
     /// The label options of the group/color that is displayed in a pie chart.
@@ -27814,7 +27814,7 @@ impl cfn_resources::CfnResource for PieChartConfiguration {
 /// The field well configuration of a pie chart.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PieChartFieldWells {
     ///
     /// The field well configuration of a pie chart.
@@ -27848,7 +27848,7 @@ impl cfn_resources::CfnResource for PieChartFieldWells {
 }
 
 /// The sort configuration of a pie chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PieChartSortConfiguration {
     ///
     /// The limit on the number of categories that are displayed in a pie chart.
@@ -27952,7 +27952,7 @@ impl cfn_resources::CfnResource for PieChartSortConfiguration {
 /// For more information, see Using pie charts in the Amazon QuickSight User Guide.
 ///
 /// For more information, see Using donut charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PieChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -28101,7 +28101,7 @@ impl cfn_resources::CfnResource for PieChartVisual {
 }
 
 /// The field sort options for a pivot table sort configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotFieldSortOptions {
     ///
     /// The field ID for the field sort options.
@@ -28169,7 +28169,7 @@ impl cfn_resources::CfnResource for PivotFieldSortOptions {
 }
 
 /// The aggregated field well for the pivot table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableAggregatedFieldWells {
     ///
     /// The columns field well for a pivot table. Values are grouped by columns fields.
@@ -28256,7 +28256,7 @@ impl cfn_resources::CfnResource for PivotTableAggregatedFieldWells {
 }
 
 /// The cell conditional formatting option for a pivot table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableCellConditionalFormatting {
     ///
     /// The field ID of the cell for conditional formatting.
@@ -28341,7 +28341,7 @@ impl cfn_resources::CfnResource for PivotTableCellConditionalFormatting {
 }
 
 /// The conditional formatting for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableConditionalFormatting {
     ///
     /// Conditional formatting options for a PivotTableVisual.
@@ -28379,7 +28379,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormatting {
 }
 
 /// Conditional formatting options for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableConditionalFormattingOption {
     ///
     /// The cell conditional formatting option for a pivot table.
@@ -28411,7 +28411,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormattingOption {
 }
 
 /// The scope of the cell for conditional formatting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableConditionalFormattingScope {
     ///
     /// The role (field, field total, grand total) of the cell for conditional formatting.
@@ -28428,7 +28428,7 @@ pub struct PivotTableConditionalFormattingScope {
     pub role: Option<PivotTableConditionalFormattingScopeRoleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableConditionalFormattingScopeRoleEnum {
     /// FIELD
     #[serde(rename = "FIELD")]
@@ -28464,7 +28464,7 @@ impl cfn_resources::CfnResource for PivotTableConditionalFormattingScope {
 }
 
 /// The configuration for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableConfiguration {
     ///
     /// The field options for a pivot table visual.
@@ -28578,7 +28578,7 @@ impl cfn_resources::CfnResource for PivotTableConfiguration {
 }
 
 /// The data path options for the pivot table field options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableDataPathOption {
     ///
     /// The list of data path values for the data path options.
@@ -28630,7 +28630,7 @@ impl cfn_resources::CfnResource for PivotTableDataPathOption {
 }
 
 /// The selected field options for the pivot table field options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableFieldOption {
     ///
     /// The custom label of the pivot table field.
@@ -28678,7 +28678,7 @@ pub struct PivotTableFieldOption {
     pub visibility: Option<PivotTableFieldOptionVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableFieldOptionVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -28754,7 +28754,7 @@ impl cfn_resources::CfnResource for PivotTableFieldOption {
 }
 
 /// The field options for a pivot table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableFieldOptions {
     ///
     /// The data path options for the pivot table field options.
@@ -28815,7 +28815,7 @@ impl cfn_resources::CfnResource for PivotTableFieldOptions {
 }
 
 /// The optional configuration of subtotals cells.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableFieldSubtotalOptions {
     ///
     /// The field ID of the subtotal options.
@@ -28873,7 +28873,7 @@ impl cfn_resources::CfnResource for PivotTableFieldSubtotalOptions {
 /// The field wells for a pivot table visual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableFieldWells {
     ///
     /// The aggregated field well for the pivot table.
@@ -28907,7 +28907,7 @@ impl cfn_resources::CfnResource for PivotTableFieldWells {
 }
 
 /// The table options for a pivot table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableOptions {
     ///
     /// The table cell style of cells.
@@ -29026,7 +29026,7 @@ pub struct PivotTableOptions {
     pub toggle_buttons_visibility: Option<PivotTableOptionsToggleButtonsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableOptionsColumnNamesVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29043,7 +29043,7 @@ impl Default for PivotTableOptionsColumnNamesVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableOptionsMetricPlacementEnum {
     /// COLUMN
     #[serde(rename = "COLUMN")]
@@ -29060,7 +29060,7 @@ impl Default for PivotTableOptionsMetricPlacementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableOptionsSingleMetricVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29077,7 +29077,7 @@ impl Default for PivotTableOptionsSingleMetricVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTableOptionsToggleButtonsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29129,7 +29129,7 @@ impl cfn_resources::CfnResource for PivotTableOptions {
 }
 
 /// The paginated report options for a pivot table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTablePaginatedReportOptions {
     ///
     /// The visibility of the repeating header rows on each page.
@@ -29162,7 +29162,7 @@ pub struct PivotTablePaginatedReportOptions {
         Option<PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29179,7 +29179,7 @@ impl Default for PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityE
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29211,7 +29211,7 @@ impl cfn_resources::CfnResource for PivotTablePaginatedReportOptions {
 }
 
 /// The sort by field for the field sort options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableSortBy {
     ///
     /// The column sort (field id, direction) for the pivot table sort by options.
@@ -29273,7 +29273,7 @@ impl cfn_resources::CfnResource for PivotTableSortBy {
 }
 
 /// The sort configuration for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableSortConfiguration {
     ///
     /// The field sort options for a pivot table sort configuration.
@@ -29314,7 +29314,7 @@ impl cfn_resources::CfnResource for PivotTableSortConfiguration {
 }
 
 /// The total options for a pivot table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableTotalOptions {
     ///
     /// The column subtotal options.
@@ -29398,7 +29398,7 @@ impl cfn_resources::CfnResource for PivotTableTotalOptions {
 /// A pivot table.
 ///
 /// For more information, see Using pivot tables in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTableVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -29540,7 +29540,7 @@ impl cfn_resources::CfnResource for PivotTableVisual {
 }
 
 /// The optional configuration of totals cells in a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PivotTotalOptions {
     ///
     /// The custom label string for the total cells.
@@ -29633,7 +29633,7 @@ pub struct PivotTotalOptions {
     pub value_cell_style: Option<TableCellStyle>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTotalOptionsPlacementEnum {
     /// END
     #[serde(rename = "END")]
@@ -29650,7 +29650,7 @@ impl Default for PivotTotalOptionsPlacementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTotalOptionsScrollStatusEnum {
     /// PINNED
     #[serde(rename = "PINNED")]
@@ -29667,7 +29667,7 @@ impl Default for PivotTotalOptionsScrollStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PivotTotalOptionsTotalsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29711,7 +29711,7 @@ impl cfn_resources::CfnResource for PivotTotalOptions {
 }
 
 /// The option that determines the hierarchy of the fields that are defined during data preparation. These fields are available to use in any analysis that uses the data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredefinedHierarchy {
     ///
     /// The list of columns that define the predefined hierarchy.
@@ -29811,7 +29811,7 @@ impl cfn_resources::CfnResource for PredefinedHierarchy {
 }
 
 /// The options that determine the presentation of the progress bar of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProgressBarOptions {
     ///
     /// The visibility of the progress bar.
@@ -29828,7 +29828,7 @@ pub struct ProgressBarOptions {
     pub visibility: Option<ProgressBarOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProgressBarOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29860,7 +29860,7 @@ impl cfn_resources::CfnResource for ProgressBarOptions {
 }
 
 /// The aggregated field well configuration of a RadarChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartAggregatedFieldWells {
     ///
     /// The aggregated field well categories of a radar chart.
@@ -29947,7 +29947,7 @@ impl cfn_resources::CfnResource for RadarChartAggregatedFieldWells {
 }
 
 /// The configured style settings of a radar chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartAreaStyleSettings {
     ///
     /// The visibility settings of a radar chart.
@@ -29964,7 +29964,7 @@ pub struct RadarChartAreaStyleSettings {
     pub visibility: Option<RadarChartAreaStyleSettingsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RadarChartAreaStyleSettingsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -29996,7 +29996,7 @@ impl cfn_resources::CfnResource for RadarChartAreaStyleSettings {
 }
 
 /// The configuration of a RadarChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartConfiguration {
     ///
     /// Determines the visibility of the colors of alternatign bands in a radar chart.
@@ -30176,7 +30176,7 @@ pub struct RadarChartConfiguration {
     pub visual_palette: Option<VisualPalette>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RadarChartConfigurationAlternateBandColorsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -30193,7 +30193,7 @@ impl Default for RadarChartConfigurationAlternateBandColorsVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RadarChartConfigurationShapeEnum {
     /// CIRCLE
     #[serde(rename = "CIRCLE")]
@@ -30259,7 +30259,7 @@ impl cfn_resources::CfnResource for RadarChartConfiguration {
 }
 
 /// The field wells of a radar chart visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartFieldWells {
     ///
     /// The aggregated field wells of a radar chart visual.
@@ -30293,7 +30293,7 @@ impl cfn_resources::CfnResource for RadarChartFieldWells {
 }
 
 /// The series settings of a radar chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartSeriesSettings {
     ///
     /// The area style settings of a radar chart.
@@ -30327,7 +30327,7 @@ impl cfn_resources::CfnResource for RadarChartSeriesSettings {
 }
 
 /// The sort configuration of a RadarChartVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartSortConfiguration {
     ///
     /// The category items limit for a radar chart.
@@ -30423,7 +30423,7 @@ impl cfn_resources::CfnResource for RadarChartSortConfiguration {
 }
 
 /// A radar chart visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RadarChartVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -30572,7 +30572,7 @@ impl cfn_resources::CfnResource for RadarChartVisual {
 }
 
 /// The range ends label type of a data path label.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RangeEndsLabelType {
     ///
     /// The visibility of the range ends label.
@@ -30589,7 +30589,7 @@ pub struct RangeEndsLabelType {
     pub visibility: Option<RangeEndsLabelTypeVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RangeEndsLabelTypeVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -30621,7 +30621,7 @@ impl cfn_resources::CfnResource for RangeEndsLabelType {
 }
 
 /// The reference line visual display options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLine {
     ///
     /// The data configuration of the reference line.
@@ -30675,7 +30675,7 @@ pub struct ReferenceLine {
     pub style_configuration: Option<ReferenceLineStyleConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -30717,7 +30717,7 @@ impl cfn_resources::CfnResource for ReferenceLine {
 }
 
 /// The configuration for a custom label on a ReferenceLine.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineCustomLabelConfiguration {
     ///
     /// The string text of the custom label.
@@ -30748,7 +30748,7 @@ impl cfn_resources::CfnResource for ReferenceLineCustomLabelConfiguration {
 }
 
 /// The data configuration of the reference line.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineDataConfiguration {
     ///
     /// The axis binding type of the reference line. Choose one of the following options:
@@ -30791,7 +30791,7 @@ pub struct ReferenceLineDataConfiguration {
     pub static_configuration: Option<ReferenceLineStaticDataConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineDataConfigurationAxisBindingEnum {
     /// PRIMARY_YAXIS
     #[serde(rename = "PRIMARY_YAXIS")]
@@ -30831,7 +30831,7 @@ impl cfn_resources::CfnResource for ReferenceLineDataConfiguration {
 }
 
 /// The dynamic configuration of the reference line data configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineDynamicDataConfiguration {
     ///
     /// The calculation that is used in the dynamic data.
@@ -30888,7 +30888,7 @@ impl cfn_resources::CfnResource for ReferenceLineDynamicDataConfiguration {
 }
 
 /// The label configuration of a reference line.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineLabelConfiguration {
     ///
     /// The custom label configuration of the label in a reference line.
@@ -30973,7 +30973,7 @@ pub struct ReferenceLineLabelConfiguration {
     pub vertical_position: Option<ReferenceLineLabelConfigurationVerticalPositionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineLabelConfigurationHorizontalPositionEnum {
     /// CENTER
     #[serde(rename = "CENTER")]
@@ -30994,7 +30994,7 @@ impl Default for ReferenceLineLabelConfigurationHorizontalPositionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineLabelConfigurationVerticalPositionEnum {
     /// ABOVE
     #[serde(rename = "ABOVE")]
@@ -31038,7 +31038,7 @@ impl cfn_resources::CfnResource for ReferenceLineLabelConfiguration {
 }
 
 /// The static data configuration of the reference line data configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineStaticDataConfiguration {
     ///
     /// The double input of the static data.
@@ -31067,7 +31067,7 @@ impl cfn_resources::CfnResource for ReferenceLineStaticDataConfiguration {
 }
 
 /// The style configuration of the reference       line.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineStyleConfiguration {
     ///
     /// The hex color of the reference line.
@@ -31100,7 +31100,7 @@ pub struct ReferenceLineStyleConfiguration {
     pub pattern: Option<ReferenceLineStyleConfigurationPatternEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineStyleConfigurationPatternEnum {
     /// DASHED
     #[serde(rename = "DASHED")]
@@ -31136,7 +31136,7 @@ impl cfn_resources::CfnResource for ReferenceLineStyleConfiguration {
 }
 
 /// The value label configuration of the label in a reference line.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// The format configuration of the value label.
@@ -31167,7 +31167,7 @@ pub struct ReferenceLineValueLabelConfiguration {
     pub relative_position: Option<ReferenceLineValueLabelConfigurationRelativePositionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReferenceLineValueLabelConfigurationRelativePositionEnum {
     /// AFTER_CUSTOM_LABEL
     #[serde(rename = "AFTER_CUSTOM_LABEL")]
@@ -31203,7 +31203,7 @@ impl cfn_resources::CfnResource for ReferenceLineValueLabelConfiguration {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Customize how dates are formatted in controls.
@@ -31275,7 +31275,7 @@ impl cfn_resources::CfnResource for RelativeDateTimeControlDisplayOptions {
 }
 
 /// A RelativeDatesFilter filters relative dates values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RelativeDatesFilter {
     ///
     /// The date configuration of the filter.
@@ -31416,7 +31416,7 @@ pub struct RelativeDatesFilter {
     pub time_granularity: RelativeDatesFilterTimeGranularityEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RelativeDatesFilterMinimumGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -31461,7 +31461,7 @@ impl Default for RelativeDatesFilterMinimumGranularityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RelativeDatesFilterNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -31482,7 +31482,7 @@ impl Default for RelativeDatesFilterNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RelativeDatesFilterRelativeDateTypeEnum {
     /// LAST
     #[serde(rename = "LAST")]
@@ -31511,7 +31511,7 @@ impl Default for RelativeDatesFilterRelativeDateTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RelativeDatesFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -31623,7 +31623,7 @@ impl cfn_resources::CfnResource for RelativeDatesFilter {
 }
 
 /// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -31676,7 +31676,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 }
 
 /// The rolling date configuration of a date time filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RollingDateConfiguration {
     ///
     /// The data set that is used in the rolling date configuration.
@@ -31766,7 +31766,7 @@ impl cfn_resources::CfnResource for RollingDateConfiguration {
 }
 
 /// Determines the row alternate color options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RowAlternateColorOptions {
     ///
     /// Determines the list of row alternate colors.
@@ -31797,7 +31797,7 @@ pub struct RowAlternateColorOptions {
     pub status: Option<RowAlternateColorOptionsStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RowAlternateColorOptionsStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -31840,7 +31840,7 @@ impl cfn_resources::CfnResource for RowAlternateColorOptions {
 /// The configuration of the same-sheet target visuals that you want to be filtered.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SameSheetTargetVisualConfiguration {
     ///
     /// The options that choose the target visual in the same sheet.
@@ -31875,7 +31875,7 @@ pub struct SameSheetTargetVisualConfiguration {
     pub target_visuals: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SameSheetTargetVisualConfigurationTargetVisualOptionsEnum {
     /// ALL_VISUALS
     #[serde(rename = "ALL_VISUALS")]
@@ -31912,7 +31912,7 @@ impl cfn_resources::CfnResource for SameSheetTargetVisualConfiguration {
 }
 
 /// The field well configuration of a sankey diagram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// The destination field wells of a sankey diagram.
@@ -31999,7 +31999,7 @@ impl cfn_resources::CfnResource for SankeyDiagramAggregatedFieldWells {
 }
 
 /// The configuration of a sankey diagram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SankeyDiagramChartConfiguration {
     ///
     /// The data label configuration of a sankey diagram.
@@ -32065,7 +32065,7 @@ impl cfn_resources::CfnResource for SankeyDiagramChartConfiguration {
 }
 
 /// The field well configuration of a sankey diagram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SankeyDiagramFieldWells {
     ///
     /// The field well configuration of a sankey diagram.
@@ -32099,7 +32099,7 @@ impl cfn_resources::CfnResource for SankeyDiagramFieldWells {
 }
 
 /// The sort configuration of a sankey diagram.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SankeyDiagramSortConfiguration {
     ///
     /// The limit on the number of destination nodes that are displayed in a sankey diagram.
@@ -32174,7 +32174,7 @@ impl cfn_resources::CfnResource for SankeyDiagramSortConfiguration {
 /// A sankey diagram.
 ///
 /// For more information, see Using Sankey diagrams in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SankeyDiagramVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -32300,7 +32300,7 @@ impl cfn_resources::CfnResource for SankeyDiagramVisual {
 }
 
 /// The aggregated field well of a scatter plot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// The category field well of a scatter plot.
@@ -32414,7 +32414,7 @@ impl cfn_resources::CfnResource for ScatterPlotCategoricallyAggregatedFieldWells
 }
 
 /// The configuration of a scatter plot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScatterPlotConfiguration {
     ///
     /// The options that determine if visual data labels are displayed.
@@ -32574,7 +32574,7 @@ impl cfn_resources::CfnResource for ScatterPlotConfiguration {
 /// The field well configuration of a scatter plot.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScatterPlotFieldWells {
     ///
     /// The aggregated field wells of a scatter plot. The x and y-axes of scatter plots with aggregated field wells are aggregated by category, label, or both.
@@ -32625,7 +32625,7 @@ impl cfn_resources::CfnResource for ScatterPlotFieldWells {
 }
 
 /// The unaggregated field wells of a scatter plot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// The size field well of a scatter plot.
@@ -32718,7 +32718,7 @@ impl cfn_resources::CfnResource for ScatterPlotUnaggregatedFieldWells {
 /// A scatter plot.
 ///
 /// For more information, see Using scatter plots in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScatterPlotVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -32867,7 +32867,7 @@ impl cfn_resources::CfnResource for ScatterPlotVisual {
 }
 
 /// The visual display options for a data zoom scroll bar.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScrollBarOptions {
     ///
     /// The visibility of the data zoom scroll bar.
@@ -32896,7 +32896,7 @@ pub struct ScrollBarOptions {
     pub visible_range: Option<VisibleRangeOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScrollBarOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -32932,7 +32932,7 @@ impl cfn_resources::CfnResource for ScrollBarOptions {
 }
 
 /// The options that determine the presentation of the secondary value of a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecondaryValueOptions {
     ///
     /// Determines the visibility of the secondary value.
@@ -32949,7 +32949,7 @@ pub struct SecondaryValueOptions {
     pub visibility: Option<SecondaryValueOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SecondaryValueOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -32981,7 +32981,7 @@ impl cfn_resources::CfnResource for SecondaryValueOptions {
 }
 
 /// The configuration of a page break after a section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionAfterPageBreak {
     ///
     /// The option that enables or disables a page break at the end of a section.
@@ -32998,7 +32998,7 @@ pub struct SectionAfterPageBreak {
     pub status: Option<SectionAfterPageBreakStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SectionAfterPageBreakStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -33030,7 +33030,7 @@ impl cfn_resources::CfnResource for SectionAfterPageBreak {
 }
 
 /// The options for the canvas of a section-based layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionBasedLayoutCanvasSizeOptions {
     ///
     /// The options for a paper canvas of a section-based layout.
@@ -33064,7 +33064,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutCanvasSizeOptions {
 }
 
 /// The configuration for a       section-based layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionBasedLayoutConfiguration {
     ///
     /// A list of body section configurations.
@@ -33161,7 +33161,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutConfiguration {
 }
 
 /// The options for a paper canvas of a section-based layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Defines the spacing between the canvas content and the top, bottom, left, and right edges.
@@ -33206,7 +33206,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     pub paper_size: Option<SectionBasedLayoutPaperCanvasSizeOptionsPaperSizeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SectionBasedLayoutPaperCanvasSizeOptionsPaperOrientationEnum {
     /// LANDSCAPE
     #[serde(rename = "LANDSCAPE")]
@@ -33223,7 +33223,7 @@ impl Default for SectionBasedLayoutPaperCanvasSizeOptionsPaperOrientationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SectionBasedLayoutPaperCanvasSizeOptionsPaperSizeEnum {
     /// A0
     #[serde(rename = "A0")]
@@ -33295,7 +33295,7 @@ impl cfn_resources::CfnResource for SectionBasedLayoutPaperCanvasSizeOptions {
 }
 
 /// The layout configuration of a section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionLayoutConfiguration {
     ///
     /// The free-form layout configuration of a section.
@@ -33326,7 +33326,7 @@ impl cfn_resources::CfnResource for SectionLayoutConfiguration {
 }
 
 /// The configuration of a page break for a section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionPageBreakConfiguration {
     ///
     /// The configuration of a page break after a section.
@@ -33358,7 +33358,7 @@ impl cfn_resources::CfnResource for SectionPageBreakConfiguration {
 }
 
 /// The options that style a section.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionStyle {
     ///
     /// The height of a section.
@@ -33408,7 +33408,7 @@ impl cfn_resources::CfnResource for SectionStyle {
 /// The configuration for applying a filter to specific sheets or visuals. You can apply this filter to multiple visuals that are on one sheet or to all visuals on a sheet.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelectedSheetsFilterScopeConfiguration {
     ///
     /// The sheet ID and visual IDs of the sheet and visuals that the filter is applied to.
@@ -33448,7 +33448,7 @@ impl cfn_resources::CfnResource for SelectedSheetsFilterScopeConfiguration {
 /// The series item configuration of a line chart.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SeriesItem {
     ///
     /// The data field series item configuration of a line chart.
@@ -33498,7 +33498,7 @@ impl cfn_resources::CfnResource for SeriesItem {
 }
 
 /// The configuration of adding parameters in action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SetParameterValueConfiguration {
     ///
     /// The destination parameter name of the SetParameterValueConfiguration.
@@ -33561,7 +33561,7 @@ impl cfn_resources::CfnResource for SetParameterValueConfiguration {
 }
 
 /// The shape conditional formatting of a filled map visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShapeConditionalFormat {
     ///
     /// The conditional formatting for the shape background color of a filled map visual.
@@ -33592,7 +33592,7 @@ impl cfn_resources::CfnResource for ShapeConditionalFormat {
 }
 
 /// A sheet, which is an object that contains a set of visuals that       are viewed together on one page in Amazon QuickSight. Every analysis and dashboard       contains at least one sheet. Each sheet contains at least one visualization widget, for       example a chart, pivot table, or narrative insight. Sheets can be associated with other       components, such as controls, filters, and so on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Sheet {
     ///
     /// The name of a sheet. This name is displayed on the sheet's tab in the Amazon QuickSight       console.
@@ -33688,7 +33688,7 @@ impl cfn_resources::CfnResource for Sheet {
 }
 
 /// A grid layout to define the placement of sheet control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetControlLayout {
     ///
     /// The configuration that determines the elements and canvas size options of sheet control.
@@ -33719,7 +33719,7 @@ impl cfn_resources::CfnResource for SheetControlLayout {
 }
 
 /// The configuration that determines the elements and canvas size options of sheet control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetControlLayoutConfiguration {
     ///
     /// The configuration that determines the elements and canvas size options of sheet control.
@@ -33753,7 +33753,7 @@ impl cfn_resources::CfnResource for SheetControlLayoutConfiguration {
 }
 
 /// Sheet controls option.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetControlsOption {
     ///
     /// Visibility state.
@@ -33770,7 +33770,7 @@ pub struct SheetControlsOption {
     pub visibility_state: Option<SheetControlsOptionVisibilityStateEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SheetControlsOptionVisibilityStateEnum {
     /// COLLAPSED
     #[serde(rename = "COLLAPSED")]
@@ -33802,7 +33802,7 @@ impl cfn_resources::CfnResource for SheetControlsOption {
 }
 
 /// A sheet is an object that contains a set of visuals that       are viewed together on one page in a paginated report. Every analysis and dashboard must contain at least one sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetDefinition {
     ///
     /// The layout content type of the sheet. Choose one of the following options:
@@ -33976,7 +33976,7 @@ pub struct SheetDefinition {
     pub visuals: Option<Vec<Visual>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SheetDefinitionContentTypeEnum {
     /// INTERACTIVE
     #[serde(rename = "INTERACTIVE")]
@@ -34150,7 +34150,7 @@ impl cfn_resources::CfnResource for SheetDefinition {
 }
 
 /// The override configuration of the rendering rules of a sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetElementConfigurationOverrides {
     ///
     /// Determines whether or not the overrides are visible. Choose one of the following options:
@@ -34169,7 +34169,7 @@ pub struct SheetElementConfigurationOverrides {
     pub visibility: Option<SheetElementConfigurationOverridesVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SheetElementConfigurationOverridesVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -34201,7 +34201,7 @@ impl cfn_resources::CfnResource for SheetElementConfigurationOverrides {
 }
 
 /// The rendering rules of a sheet that uses a free-form layout.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetElementRenderingRule {
     ///
     /// The override configuration of the rendering rules of a sheet.
@@ -34269,7 +34269,7 @@ impl cfn_resources::CfnResource for SheetElementRenderingRule {
 }
 
 /// The sheet layout maximization options of a dashbaord.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetLayoutElementMaximizationOption {
     ///
     /// The status of the sheet layout maximization options of a dashbaord.
@@ -34286,7 +34286,7 @@ pub struct SheetLayoutElementMaximizationOption {
     pub availability_status: Option<SheetLayoutElementMaximizationOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SheetLayoutElementMaximizationOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -34318,7 +34318,7 @@ impl cfn_resources::CfnResource for SheetLayoutElementMaximizationOption {
 }
 
 /// A text box.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetTextBox {
     ///
     /// The content that is displayed in the text box.
@@ -34400,7 +34400,7 @@ impl cfn_resources::CfnResource for SheetTextBox {
 }
 
 /// The filter that is applied to the options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetVisualScopingConfiguration {
     ///
     /// The scope of the applied entities. Choose one of the following options:
@@ -34449,7 +34449,7 @@ pub struct SheetVisualScopingConfiguration {
     pub visual_ids: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SheetVisualScopingConfigurationScopeEnum {
     /// ALL_VISUALS
     #[serde(rename = "ALL_VISUALS")]
@@ -34514,7 +34514,7 @@ impl cfn_resources::CfnResource for SheetVisualScopingConfiguration {
 /// The text format for the title.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShortFormatText {
     ///
     /// Plain text format.
@@ -34608,7 +34608,7 @@ impl cfn_resources::CfnResource for ShortFormatText {
 }
 
 /// The simple cluster marker of the cluster marker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SimpleClusterMarker {
     ///
     /// The color of the simple cluster marker.
@@ -34640,7 +34640,7 @@ impl cfn_resources::CfnResource for SimpleClusterMarker {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SliderControlDisplayOptions {
     ///
     /// The options to configure the title visibility, name, and font size.
@@ -34674,7 +34674,7 @@ impl cfn_resources::CfnResource for SliderControlDisplayOptions {
 }
 
 /// Options that determine the layout and display options of a chart's small multiples.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SmallMultiplesOptions {
     ///
     /// Sets the maximum number of visible columns to display in the grid of small multiples panels.
@@ -34736,7 +34736,7 @@ impl cfn_resources::CfnResource for SmallMultiplesOptions {
 }
 
 /// The configuration of spacing (often a margin or padding).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Spacing {
     ///
     /// Define the bottom spacing.
@@ -34802,7 +34802,7 @@ impl cfn_resources::CfnResource for Spacing {
 }
 
 /// The default values of the StringParameterDeclaration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringDefaultValues {
     ///
     /// The dynamic value of the StringDefaultValues. Different defaults displayed according to users, groups, and values mapping.
@@ -34859,7 +34859,7 @@ impl cfn_resources::CfnResource for StringDefaultValues {
 }
 
 /// Formatting configuration for string fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringFormatConfiguration {
     ///
     /// The options that determine the null value format configuration.
@@ -34909,7 +34909,7 @@ impl cfn_resources::CfnResource for StringFormatConfiguration {
 }
 
 /// A string parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringParameter {
     ///
     /// A display name for a string parameter.
@@ -34951,7 +34951,7 @@ impl cfn_resources::CfnResource for StringParameter {
 }
 
 /// A parameter declaration for the String data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringParameterDeclaration {
     ///
     /// The default values of a parameter. If the parameter is a single-value parameter, a maximum of one default value can be provided.
@@ -35019,7 +35019,7 @@ pub struct StringParameterDeclaration {
     pub value_when_unset: Option<StringValueWhenUnsetConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StringParameterDeclarationParameterValueTypeEnum {
     /// MULTI_VALUED
     #[serde(rename = "MULTI_VALUED")]
@@ -35081,7 +35081,7 @@ impl cfn_resources::CfnResource for StringParameterDeclaration {
 }
 
 /// The configuration that defines the default value of a String parameter when a value has not been set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringValueWhenUnsetConfiguration {
     ///
     /// A custom value that's used when the value of a parameter isn't set.
@@ -35112,7 +35112,7 @@ pub struct StringValueWhenUnsetConfiguration {
     pub value_when_unset_option: Option<StringValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StringValueWhenUnsetConfigurationValueWhenUnsetOptionEnum {
     /// NULL
     #[serde(rename = "NULL")]
@@ -35144,7 +35144,7 @@ impl cfn_resources::CfnResource for StringValueWhenUnsetConfiguration {
 }
 
 /// The subtotal options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubtotalOptions {
     ///
     /// The custom label string for the subtotal cells.
@@ -35237,7 +35237,7 @@ pub struct SubtotalOptions {
     pub value_cell_style: Option<TableCellStyle>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SubtotalOptionsFieldLevelEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -35258,7 +35258,7 @@ impl Default for SubtotalOptionsFieldLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SubtotalOptionsTotalsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -35311,7 +35311,7 @@ impl cfn_resources::CfnResource for SubtotalOptions {
 }
 
 /// The aggregated field well for the table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableAggregatedFieldWells {
     ///
     /// The group by field well for a pivot table. Values are grouped by group by fields.
@@ -35375,7 +35375,7 @@ impl cfn_resources::CfnResource for TableAggregatedFieldWells {
 }
 
 /// The border options for a table border.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableBorderOptions {
     ///
     /// The color of a table border.
@@ -35422,7 +35422,7 @@ pub struct TableBorderOptions {
     pub thickness: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableBorderOptionsStyleEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -35472,7 +35472,7 @@ impl cfn_resources::CfnResource for TableBorderOptions {
 }
 
 /// The cell conditional formatting option for a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableCellConditionalFormatting {
     ///
     /// The field ID of the cell for conditional formatting.
@@ -35543,7 +35543,7 @@ impl cfn_resources::CfnResource for TableCellConditionalFormatting {
 }
 
 /// The sizing options for the table image configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableCellImageSizingConfiguration {
     ///
     /// The cell scaling configuration of the sizing options for the table image configuration.
@@ -35561,7 +35561,7 @@ pub struct TableCellImageSizingConfiguration {
         Option<TableCellImageSizingConfigurationTableCellImageScalingConfigurationEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableCellImageSizingConfigurationTableCellImageScalingConfigurationEnum {
     /// DO_NOT_SCALE
     #[serde(rename = "DO_NOT_SCALE")]
@@ -35597,7 +35597,7 @@ impl cfn_resources::CfnResource for TableCellImageSizingConfiguration {
 }
 
 /// The table cell style for a cell in pivot table or table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableCellStyle {
     ///
     /// The background color for the table cells.
@@ -35710,7 +35710,7 @@ pub struct TableCellStyle {
     pub visibility: Option<TableCellStyleVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableCellStyleHorizontalTextAlignmentEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -35735,7 +35735,7 @@ impl Default for TableCellStyleHorizontalTextAlignmentEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableCellStyleTextWrapEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -35752,7 +35752,7 @@ impl Default for TableCellStyleTextWrapEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableCellStyleVerticalTextAlignmentEnum {
     /// BOTTOM
     #[serde(rename = "BOTTOM")]
@@ -35773,7 +35773,7 @@ impl Default for TableCellStyleVerticalTextAlignmentEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableCellStyleVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -35829,7 +35829,7 @@ impl cfn_resources::CfnResource for TableCellStyle {
 }
 
 /// The conditional formatting for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableConditionalFormatting {
     ///
     /// Conditional formatting options for a PivotTableVisual.
@@ -35867,7 +35867,7 @@ impl cfn_resources::CfnResource for TableConditionalFormatting {
 }
 
 /// Conditional formatting options for a PivotTableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableConditionalFormattingOption {
     ///
     /// The cell conditional formatting option for a table.
@@ -35913,7 +35913,7 @@ impl cfn_resources::CfnResource for TableConditionalFormattingOption {
 }
 
 /// The configuration for a TableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableConfiguration {
     ///
     /// The field options for a table visual.
@@ -36047,7 +36047,7 @@ impl cfn_resources::CfnResource for TableConfiguration {
 }
 
 /// The custom icon content for the table link content configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldCustomIconContent {
     ///
     /// The icon set type (link) of the custom icon content for table URL link content.
@@ -36064,7 +36064,7 @@ pub struct TableFieldCustomIconContent {
     pub icon: Option<TableFieldCustomIconContentIconEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableFieldCustomIconContentIconEnum {
     /// LINK
     #[serde(rename = "LINK")]
@@ -36092,7 +36092,7 @@ impl cfn_resources::CfnResource for TableFieldCustomIconContent {
 }
 
 /// The custom text content (value, font configuration) for the table link content configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldCustomTextContent {
     ///
     /// The font configuration of the custom text content for the table URL link content.
@@ -36135,7 +36135,7 @@ impl cfn_resources::CfnResource for TableFieldCustomTextContent {
 }
 
 /// The image configuration of a table field URL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldImageConfiguration {
     ///
     /// The sizing options for the table image configuration.
@@ -36169,7 +36169,7 @@ impl cfn_resources::CfnResource for TableFieldImageConfiguration {
 }
 
 /// The link configuration of a table field URL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldLinkConfiguration {
     ///
     /// The URL content (text, icon) for the table link configuration.
@@ -36196,7 +36196,7 @@ pub struct TableFieldLinkConfiguration {
     pub target: TableFieldLinkConfigurationTargetEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableFieldLinkConfigurationTargetEnum {
     /// NEW_TAB
     #[serde(rename = "NEW_TAB")]
@@ -36234,7 +36234,7 @@ impl cfn_resources::CfnResource for TableFieldLinkConfiguration {
 }
 
 /// The URL content (text, icon) for the table link configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldLinkContentConfiguration {
     ///
     /// The custom icon content for the table link content configuration.
@@ -36284,7 +36284,7 @@ impl cfn_resources::CfnResource for TableFieldLinkContentConfiguration {
 }
 
 /// The options for a table field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldOption {
     ///
     /// The custom label for a table field.
@@ -36356,7 +36356,7 @@ pub struct TableFieldOption {
     pub width: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableFieldOptionVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -36436,7 +36436,7 @@ impl cfn_resources::CfnResource for TableFieldOption {
 }
 
 /// The field options for a table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldOptions {
     ///
     /// The order of field IDs of the field options for a table visual.
@@ -36497,7 +36497,7 @@ impl cfn_resources::CfnResource for TableFieldOptions {
 }
 
 /// The URL configuration for a table field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldURLConfiguration {
     ///
     /// The image configuration of a table field URL.
@@ -36549,7 +36549,7 @@ impl cfn_resources::CfnResource for TableFieldURLConfiguration {
 /// The field wells for a table visual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableFieldWells {
     ///
     /// The aggregated field well for the table.
@@ -36599,7 +36599,7 @@ impl cfn_resources::CfnResource for TableFieldWells {
 }
 
 /// The inline visualization of a specific type to display within a chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableInlineVisualization {
     ///
     /// The configuration of the inline visualization of the data bars within a chart.
@@ -36633,7 +36633,7 @@ impl cfn_resources::CfnResource for TableInlineVisualization {
 }
 
 /// The table options for a table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableOptions {
     ///
     /// The table cell style of table cells.
@@ -36686,7 +36686,7 @@ pub struct TableOptions {
     pub row_alternate_color_options: Option<RowAlternateColorOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableOptionsOrientationEnum {
     /// HORIZONTAL
     #[serde(rename = "HORIZONTAL")]
@@ -36730,7 +36730,7 @@ impl cfn_resources::CfnResource for TableOptions {
 }
 
 /// The paginated report options for a table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TablePaginatedReportOptions {
     ///
     /// The visibility of repeating header rows on each page.
@@ -36763,7 +36763,7 @@ pub struct TablePaginatedReportOptions {
         Option<TablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -36780,7 +36780,7 @@ impl Default for TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TablePaginatedReportOptionsVerticalOverflowVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -36812,7 +36812,7 @@ impl cfn_resources::CfnResource for TablePaginatedReportOptions {
 }
 
 /// The conditional formatting of a table row.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableRowConditionalFormatting {
     ///
     /// The conditional formatting color (solid, gradient) of the background for a table row.
@@ -36862,7 +36862,7 @@ impl cfn_resources::CfnResource for TableRowConditionalFormatting {
 }
 
 /// The side border options for a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableSideBorderOptions {
     ///
     /// The table border options of the bottom border.
@@ -36968,7 +36968,7 @@ impl cfn_resources::CfnResource for TableSideBorderOptions {
 }
 
 /// The sort configuration for a TableVisual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableSortConfiguration {
     ///
     /// The pagination configuration (page size, page number) for the table.
@@ -37025,7 +37025,7 @@ impl cfn_resources::CfnResource for TableSortConfiguration {
 }
 
 /// The unaggregated field well for the table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableUnaggregatedFieldWells {
     ///
     /// The values field well for a pivot table. Values are unaggregated for an unaggregated table.
@@ -37068,7 +37068,7 @@ impl cfn_resources::CfnResource for TableUnaggregatedFieldWells {
 /// A table visual.
 ///
 /// For more information, see Using tables as visuals in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -37216,7 +37216,7 @@ impl cfn_resources::CfnResource for TableVisual {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -37254,7 +37254,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TextAreaControlDisplayOptions {
     ///
     /// The configuration of the placeholder options in a text area control.
@@ -37304,7 +37304,7 @@ impl cfn_resources::CfnResource for TextAreaControlDisplayOptions {
 }
 
 /// The conditional formatting for the text.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TextConditionalFormat {
     ///
     /// The conditional formatting for the text background color.
@@ -37368,7 +37368,7 @@ impl cfn_resources::CfnResource for TextConditionalFormat {
 }
 
 /// The configuration of the placeholder options in a text control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TextControlPlaceholderOptions {
     ///
     /// The visibility configuration of the placeholder options in a text control.
@@ -37385,7 +37385,7 @@ pub struct TextControlPlaceholderOptions {
     pub visibility: Option<TextControlPlaceholderOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TextControlPlaceholderOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -37417,7 +37417,7 @@ impl cfn_resources::CfnResource for TextControlPlaceholderOptions {
 }
 
 /// The display options of a control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TextFieldControlDisplayOptions {
     ///
     /// The configuration of the placeholder options in a text field control.
@@ -37467,7 +37467,7 @@ impl cfn_resources::CfnResource for TextFieldControlDisplayOptions {
 }
 
 /// The options that determine the thousands separator configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThousandSeparatorOptions {
     ///
     /// Determines the thousands separator symbol.
@@ -37498,7 +37498,7 @@ pub struct ThousandSeparatorOptions {
     pub visibility: Option<ThousandSeparatorOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ThousandSeparatorOptionsSymbolEnum {
     /// COMMA
     #[serde(rename = "COMMA")]
@@ -37519,7 +37519,7 @@ impl Default for ThousandSeparatorOptionsSymbolEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ThousandSeparatorOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -37551,7 +37551,7 @@ impl cfn_resources::CfnResource for ThousandSeparatorOptions {
 }
 
 /// The forecast properties setup of a forecast in the line chart.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeBasedForecastProperties {
     ///
     /// The lower boundary setup of a forecast computation.
@@ -37731,7 +37731,7 @@ impl cfn_resources::CfnResource for TimeBasedForecastProperties {
 }
 
 /// A TimeEqualityFilter filters values that are equal to a given value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeEqualityFilter {
     ///
     /// The column that the filter is applied to.
@@ -37810,7 +37810,7 @@ pub struct TimeEqualityFilter {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TimeEqualityFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -37916,7 +37916,7 @@ impl cfn_resources::CfnResource for TimeEqualityFilter {
 }
 
 /// The time range drill down filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeRangeDrillDownFilter {
     ///
     /// The column that the filter is applied to.
@@ -37965,7 +37965,7 @@ pub struct TimeRangeDrillDownFilter {
     pub time_granularity: TimeRangeDrillDownFilterTimeGranularityEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TimeRangeDrillDownFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -38027,7 +38027,7 @@ impl cfn_resources::CfnResource for TimeRangeDrillDownFilter {
 }
 
 /// A TimeRangeFilter filters values that are between two specified values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeRangeFilter {
     ///
     /// The column that the filter is applied to.
@@ -38147,7 +38147,7 @@ pub struct TimeRangeFilter {
     pub time_granularity: Option<TimeRangeFilterTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TimeRangeFilterNullOptionEnum {
     /// ALL_VALUES
     #[serde(rename = "ALL_VALUES")]
@@ -38168,7 +38168,7 @@ impl Default for TimeRangeFilterNullOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TimeRangeFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -38266,7 +38266,7 @@ impl cfn_resources::CfnResource for TimeRangeFilter {
 /// The value of a time range filter.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeRangeFilterValue {
     ///
     /// The parameter type input value.
@@ -38354,7 +38354,7 @@ impl cfn_resources::CfnResource for TimeRangeFilterValue {
 /// The tooltip.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TooltipItem {
     ///
     /// The tooltip item for the columns that are not part of a field well.
@@ -38404,7 +38404,7 @@ impl cfn_resources::CfnResource for TooltipItem {
 }
 
 /// The display options for the visual tooltip.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TooltipOptions {
     ///
     /// The setup for the detailed tooltip. The tooltip setup is always saved. The display type is decided based on the tooltip type.
@@ -38449,7 +38449,7 @@ pub struct TooltipOptions {
     pub tooltip_visibility: Option<TooltipOptionsTooltipVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TooltipOptionsSelectedTooltipTypeEnum {
     /// BASIC
     #[serde(rename = "BASIC")]
@@ -38466,7 +38466,7 @@ impl Default for TooltipOptionsSelectedTooltipTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TooltipOptionsTooltipVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -38502,7 +38502,7 @@ impl cfn_resources::CfnResource for TooltipOptions {
 }
 
 /// A TopBottomFilter filters values that are at the top or the bottom.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopBottomFilter {
     ///
     /// The aggregation and sort configuration of the top bottom filter.
@@ -38590,7 +38590,7 @@ pub struct TopBottomFilter {
     pub time_granularity: Option<TopBottomFilterTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopBottomFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -38702,7 +38702,7 @@ impl cfn_resources::CfnResource for TopBottomFilter {
 }
 
 /// The top movers and bottom movers computation setup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopBottomMoversComputation {
     ///
     /// The category field that is used in a computation.
@@ -38813,7 +38813,7 @@ pub struct TopBottomMoversComputation {
     pub value: Option<MeasureField>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopBottomMoversComputationSortOrderEnum {
     /// ABSOLUTE_DIFFERENCE
     #[serde(rename = "ABSOLUTE_DIFFERENCE")]
@@ -38830,7 +38830,7 @@ impl Default for TopBottomMoversComputationSortOrderEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopBottomMoversComputationTypeEnum {
     /// BOTTOM
     #[serde(rename = "BOTTOM")]
@@ -38908,7 +38908,7 @@ impl cfn_resources::CfnResource for TopBottomMoversComputation {
 }
 
 /// The top ranked and bottom ranked computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopBottomRankedComputation {
     ///
     /// The category field that is used in a computation.
@@ -38994,7 +38994,7 @@ pub struct TopBottomRankedComputation {
     pub value: Option<MeasureField>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopBottomRankedComputationTypeEnum {
     /// BOTTOM
     #[serde(rename = "BOTTOM")]
@@ -39070,7 +39070,7 @@ impl cfn_resources::CfnResource for TopBottomRankedComputation {
 }
 
 /// The total aggregation computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalAggregationComputation {
     ///
     /// The ID for a computation.
@@ -39152,7 +39152,7 @@ impl cfn_resources::CfnResource for TotalAggregationComputation {
 }
 
 /// The total options for a table visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalOptions {
     ///
     /// The custom label string for the total cells.
@@ -39221,7 +39221,7 @@ pub struct TotalOptions {
     pub totals_visibility: Option<TotalOptionsTotalsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TotalOptionsPlacementEnum {
     /// END
     #[serde(rename = "END")]
@@ -39238,7 +39238,7 @@ impl Default for TotalOptionsPlacementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TotalOptionsScrollStatusEnum {
     /// PINNED
     #[serde(rename = "PINNED")]
@@ -39255,7 +39255,7 @@ impl Default for TotalOptionsScrollStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TotalOptionsTotalsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -39291,7 +39291,7 @@ impl cfn_resources::CfnResource for TotalOptions {
 }
 
 /// Aggregated field wells of a tree map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreeMapAggregatedFieldWells {
     ///
     /// The color field well of a tree map. Values are grouped by aggregations based on group by fields.
@@ -39378,7 +39378,7 @@ impl cfn_resources::CfnResource for TreeMapAggregatedFieldWells {
 }
 
 /// The configuration of a tree map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreeMapConfiguration {
     ///
     /// The label options (label text, label visibility) for the colors displayed in a tree map.
@@ -39538,7 +39538,7 @@ impl cfn_resources::CfnResource for TreeMapConfiguration {
 /// The field wells of a tree map.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreeMapFieldWells {
     ///
     /// The aggregated field wells of a tree map.
@@ -39572,7 +39572,7 @@ impl cfn_resources::CfnResource for TreeMapFieldWells {
 }
 
 /// The sort configuration of a tree map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreeMapSortConfiguration {
     ///
     /// The limit on the number of groups that are displayed.
@@ -39631,7 +39631,7 @@ impl cfn_resources::CfnResource for TreeMapSortConfiguration {
 /// A tree map.
 ///
 /// For more information, see Using tree maps in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreeMapVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -39780,7 +39780,7 @@ impl cfn_resources::CfnResource for TreeMapVisual {
 }
 
 /// The options that determine the presentation of trend arrows in a KPI visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrendArrowOptions {
     ///
     /// The visibility of the trend arrows.
@@ -39797,7 +39797,7 @@ pub struct TrendArrowOptions {
     pub visibility: Option<TrendArrowOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrendArrowOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -39829,7 +39829,7 @@ impl cfn_resources::CfnResource for TrendArrowOptions {
 }
 
 /// The unaggregated field for a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UnaggregatedField {
     ///
     /// The column that is used in the UnaggregatedField.
@@ -39913,7 +39913,7 @@ impl cfn_resources::CfnResource for UnaggregatedField {
 }
 
 /// The unique values computation configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UniqueValuesComputation {
     ///
     /// The category field that is used in a computation.
@@ -39995,7 +39995,7 @@ impl cfn_resources::CfnResource for UniqueValuesComputation {
 }
 
 /// The range options for the data zoom scroll bar.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisibleRangeOptions {
     ///
     /// The percent range in the visible range.
@@ -40031,7 +40031,7 @@ impl cfn_resources::CfnResource for VisibleRangeOptions {
 /// A visual displayed on a sheet in an analysis, dashboard, or template.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Visual {
     ///
     /// A bar chart.
@@ -40461,7 +40461,7 @@ impl cfn_resources::CfnResource for Visual {
 }
 
 /// The axis sort options for a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualAxisSortOption {
     ///
     /// The availaiblity status of a visual's axis sort options.
@@ -40478,7 +40478,7 @@ pub struct VisualAxisSortOption {
     pub availability_status: Option<VisualAxisSortOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualAxisSortOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -40510,7 +40510,7 @@ impl cfn_resources::CfnResource for VisualAxisSortOption {
 }
 
 /// A custom action defined on a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualCustomAction {
     ///
     /// A list of VisualCustomActionOperations.
@@ -40591,7 +40591,7 @@ pub struct VisualCustomAction {
     pub trigger: VisualCustomActionTriggerEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualCustomActionStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -40608,7 +40608,7 @@ impl Default for VisualCustomActionStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualCustomActionTriggerEnum {
     /// DATA_POINT_CLICK
     #[serde(rename = "DATA_POINT_CLICK")]
@@ -40695,7 +40695,7 @@ impl cfn_resources::CfnResource for VisualCustomAction {
 /// The operation that is defined by the custom action.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualCustomActionOperation {
     ///
     /// The filter operation that filters data included in a visual or in an entire sheet.
@@ -40777,7 +40777,7 @@ impl cfn_resources::CfnResource for VisualCustomActionOperation {
 }
 
 /// The menu options for a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualMenuOption {
     ///
     /// The availaiblity status of a visual's menu options.
@@ -40794,7 +40794,7 @@ pub struct VisualMenuOption {
     pub availability_status: Option<VisualMenuOptionAvailabilityStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualMenuOptionAvailabilityStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -40826,7 +40826,7 @@ impl cfn_resources::CfnResource for VisualMenuOption {
 }
 
 /// The visual display options for the visual palette.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualPalette {
     ///
     /// The chart color options for the visual palette.
@@ -40881,7 +40881,7 @@ impl cfn_resources::CfnResource for VisualPalette {
 }
 
 /// The subtitle label options for a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualSubtitleLabelOptions {
     ///
     /// The long text format of the subtitle label, such as plain text or rich text.
@@ -40910,7 +40910,7 @@ pub struct VisualSubtitleLabelOptions {
     pub visibility: Option<VisualSubtitleLabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualSubtitleLabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -40946,7 +40946,7 @@ impl cfn_resources::CfnResource for VisualSubtitleLabelOptions {
 }
 
 /// The title label options for a visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualTitleLabelOptions {
     ///
     /// The short text format of the title label, such as plain text or rich text.
@@ -40975,7 +40975,7 @@ pub struct VisualTitleLabelOptions {
     pub visibility: Option<VisualTitleLabelOptionsVisibilityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VisualTitleLabelOptionsVisibilityEnum {
     /// HIDDEN
     #[serde(rename = "HIDDEN")]
@@ -41011,7 +41011,7 @@ impl cfn_resources::CfnResource for VisualTitleLabelOptions {
 }
 
 /// The field well configuration of a waterfall visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// The breakdown field wells of a waterfall visual.
@@ -41098,7 +41098,7 @@ impl cfn_resources::CfnResource for WaterfallChartAggregatedFieldWells {
 }
 
 /// The configuration for a waterfall visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallChartConfiguration {
     ///
     /// The options that determine the presentation of the category axis.
@@ -41274,7 +41274,7 @@ impl cfn_resources::CfnResource for WaterfallChartConfiguration {
 }
 
 /// The field well configuration of a waterfall visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallChartFieldWells {
     ///
     /// The field well configuration of a waterfall visual.
@@ -41308,7 +41308,7 @@ impl cfn_resources::CfnResource for WaterfallChartFieldWells {
 }
 
 /// The options that determine the presentation of a waterfall visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallChartOptions {
     ///
     /// This option determines the total bar label of a waterfall visual.
@@ -41338,7 +41338,7 @@ impl cfn_resources::CfnResource for WaterfallChartOptions {
 }
 
 /// The sort configuration of a waterfall visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallChartSortConfiguration {
     ///
     /// The limit on the number of bar groups that are displayed.
@@ -41397,7 +41397,7 @@ impl cfn_resources::CfnResource for WaterfallChartSortConfiguration {
 /// A waterfall chart.
 ///
 /// For more information, see Using waterfall charts in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WaterfallVisual {
     ///
     /// The list of custom actions that are configured for a visual.
@@ -41546,7 +41546,7 @@ impl cfn_resources::CfnResource for WaterfallVisual {
 }
 
 /// Provides the forecast to meet the target for a particular date.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WhatIfPointScenario {
     ///
     /// The date that you need the forecast results for.
@@ -41586,7 +41586,7 @@ impl cfn_resources::CfnResource for WhatIfPointScenario {
 }
 
 /// Provides the forecast to meet the target for a particular date range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WhatIfRangeScenario {
     ///
     /// The end date in the date range that you need the forecast results for.
@@ -41637,7 +41637,7 @@ impl cfn_resources::CfnResource for WhatIfRangeScenario {
 }
 
 /// The aggregated field wells of a word cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudAggregatedFieldWells {
     ///
     /// The group by field well of a word cloud. Values are grouped by group by fields.
@@ -41701,7 +41701,7 @@ impl cfn_resources::CfnResource for WordCloudAggregatedFieldWells {
 }
 
 /// The configuration of a word cloud visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudChartConfiguration {
     ///
     /// The label options (label text, label visibility, and sort icon visibility) for the word cloud category.
@@ -41785,7 +41785,7 @@ impl cfn_resources::CfnResource for WordCloudChartConfiguration {
 /// The field wells of a word cloud visual.
 ///
 /// This is a union type structure. For this structure to be valid, only one of the attributes can be defined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudFieldWells {
     ///
     /// The aggregated field wells of a word cloud.
@@ -41819,7 +41819,7 @@ impl cfn_resources::CfnResource for WordCloudFieldWells {
 }
 
 /// The word cloud options for a word cloud visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudOptions {
     ///
     /// The cloud layout options (fluid, normal) of a word cloud.
@@ -41908,7 +41908,7 @@ pub struct WordCloudOptions {
     pub word_scaling: Option<WordCloudOptionsWordScalingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WordCloudOptionsCloudLayoutEnum {
     /// FLUID
     #[serde(rename = "FLUID")]
@@ -41925,7 +41925,7 @@ impl Default for WordCloudOptionsCloudLayoutEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WordCloudOptionsWordCasingEnum {
     /// EXISTING_CASE
     #[serde(rename = "EXISTING_CASE")]
@@ -41942,7 +41942,7 @@ impl Default for WordCloudOptionsWordCasingEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WordCloudOptionsWordOrientationEnum {
     /// HORIZONTAL
     #[serde(rename = "HORIZONTAL")]
@@ -41959,7 +41959,7 @@ impl Default for WordCloudOptionsWordOrientationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WordCloudOptionsWordPaddingEnum {
     /// LARGE
     #[serde(rename = "LARGE")]
@@ -41984,7 +41984,7 @@ impl Default for WordCloudOptionsWordPaddingEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WordCloudOptionsWordScalingEnum {
     /// EMPHASIZE
     #[serde(rename = "EMPHASIZE")]
@@ -42031,7 +42031,7 @@ impl cfn_resources::CfnResource for WordCloudOptions {
 }
 
 /// The sort configuration of a word cloud visual.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudSortConfiguration {
     ///
     /// The limit on the number of groups that are displayed in a word cloud.
@@ -42090,7 +42090,7 @@ impl cfn_resources::CfnResource for WordCloudSortConfiguration {
 /// A word cloud.
 ///
 /// For more information, see Using word clouds in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WordCloudVisual {
     ///
     /// The list of custom actions that are configured for a visual.

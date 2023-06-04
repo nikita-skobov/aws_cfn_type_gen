@@ -1,7 +1,7 @@
 /// The AWS::AutoScaling::ScalingPolicy resource specifies an Amazon EC2 Auto    Scaling scaling policy so that the Auto Scaling group can scale the number of instances    available for your application.
 ///
 /// For more information about using scaling policies to scale your Auto Scaling group    automatically, see Dynamic scaling and     Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPolicy {
     ///
     /// Specifies how the scaling adjustment is interpreted (for example, an absolute number       or a percentage). The valid values are ChangeInCapacity,         ExactCapacity, and PercentChangeInCapacity.
@@ -177,7 +177,7 @@ pub struct CfnScalingPolicy {
     pub att_policy_name: CfnScalingPolicypolicyname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPolicyarn;
 impl CfnScalingPolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -185,7 +185,7 @@ impl CfnScalingPolicyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPolicypolicyname;
 impl CfnScalingPolicypolicyname {
     pub fn att_name(&self) -> &'static str {
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
 /// For more information about CloudWatch, see Amazon CloudWatch     Concepts.
 ///
 /// CustomizedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomizedMetricSpecification {
     ///
     /// The dimensions of the metric.
@@ -286,7 +286,7 @@ pub struct CustomizedMetricSpecification {
     pub unit: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomizedMetricSpecificationStatisticEnum {
     /// Average
     #[serde(rename = "Average")]
@@ -332,7 +332,7 @@ impl cfn_resources::CfnResource for CustomizedMetricSpecification {
 /// Represents a specific metric.
 ///
 /// Metric is a property of the AWS::AutoScaling::ScalingPolicy MetricStat property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metric {
     ///
     /// The dimensions for the metric. For the list of available dimensions, see the AWS       documentation available from the table in AWS         services that publish CloudWatch metrics in the Amazon CloudWatch User         Guide.
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for Metric {
 /// You can call for a single metric or perform math expressions on multiple metrics. Any    expressions used in a metric specification must eventually return a single time series.
 ///
 /// For more information and examples, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDataQuery {
     ///
     /// The math expression to perform on the returned data, if this object is performing a       math expression. This expression can use the Id of the other metrics to       refer to those metrics, and can also use the Id of other expressions to use       the result of those expressions.
@@ -554,7 +554,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 }
 
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::AutoScaling::ScalingPolicy CustomizedMetricSpecification property type.    Duplicate dimensions are not allowed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -598,7 +598,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 /// This structure defines the CloudWatch metric to return, along with the statistic, period,    and unit.
 ///
 /// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts in the Amazon CloudWatch User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStat {
     ///
     /// The CloudWatch metric to return, including the metric name, namespace, and dimensions. To       get the exact metric name, namespace, and dimensions, inspect the Metric object that is returned by a call to ListMetrics.
@@ -684,7 +684,7 @@ impl cfn_resources::CfnResource for MetricStat {
 /// Contains predefined metric specification information for a target tracking scaling policy    for Amazon EC2 Auto Scaling.
 ///
 /// PredefinedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredefinedMetricSpecification {
     ///
     /// The metric type. The following predefined metrics are available:
@@ -730,7 +730,7 @@ pub struct PredefinedMetricSpecification {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredefinedMetricSpecificationPredefinedMetricTypeEnum {
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
@@ -794,7 +794,7 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
 /// PredictiveScalingConfiguration is a property of the AWS::AutoScaling::ScalingPolicy resource that specifies a predictive scaling policy    for Amazon EC2 Auto Scaling.
 ///
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingConfiguration {
     ///
     /// Defines the behavior that should be applied if the forecast capacity approaches or       exceeds the maximum capacity of the Auto Scaling group. Defaults to         HonorMaxCapacity if not specified.
@@ -879,7 +879,7 @@ pub struct PredictiveScalingConfiguration {
     pub scheduling_buffer_time: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
     /// HonorMaxCapacity
     #[serde(rename = "HonorMaxCapacity")]
@@ -896,7 +896,7 @@ impl Default for PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredictiveScalingConfigurationModeEnum {
     /// ForecastAndScale
     #[serde(rename = "ForecastAndScale")]
@@ -955,7 +955,7 @@ impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
 }
 
 /// Contains capacity metric information for the     CustomizedCapacityMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingCustomizedCapacityMetric {
     ///
     /// One or more metric data queries to provide the data points for a capacity metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -984,7 +984,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
 }
 
 /// Contains load metric information for the CustomizedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingCustomizedLoadMetric {
     ///
     /// One or more metric data queries to provide the data points for a load metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -1013,7 +1013,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
 }
 
 /// Contains scaling metric information for the     CustomizedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingCustomizedScalingMetric {
     ///
     /// One or more metric data queries to provide the data points for a scaling metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
@@ -1048,7 +1048,7 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
 /// Example
 ///
 /// For information about using custom metrics with predictive scaling, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingMetricSpecification {
     ///
     /// The customized capacity metric specification.
@@ -1175,7 +1175,7 @@ impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
 }
 
 /// Contains load metric information for the PredefinedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingPredefinedLoadMetric {
     ///
     /// The metric type.
@@ -1213,7 +1213,7 @@ pub struct PredictiveScalingPredefinedLoadMetric {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
     /// ALBTargetGroupRequestCount
     #[serde(rename = "ALBTargetGroupRequestCount")]
@@ -1255,7 +1255,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
 /// Contains metric pair information for the PredefinedMetricPairSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 ///
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingPredefinedMetricPair {
     ///
     /// Indicates which metrics to use. There are two different types of metrics for each       metric type: one is a load metric and one is a scaling metric. For example, if the       metric type is ASGCPUUtilization, the Auto Scaling group's total CPU metric is used       as the load metric, and the average CPU metric is used for the scaling metric.
@@ -1299,7 +1299,7 @@ pub struct PredictiveScalingPredefinedMetricPair {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
     /// ALBRequestCount
     #[serde(rename = "ALBRequestCount")]
@@ -1361,7 +1361,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
 }
 
 /// Contains scaling metric information for the     PredefinedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredictiveScalingPredefinedScalingMetric {
     ///
     /// The metric type.
@@ -1399,7 +1399,7 @@ pub struct PredictiveScalingPredefinedScalingMetric {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum {
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
@@ -1447,7 +1447,7 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
 /// For more information, see Step     adjustments in the Amazon EC2 Auto Scaling User Guide.
 ///
 /// You can find a sample template snippet in the Examples section of the AWS::AutoScaling::ScalingPolicy    resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepAdjustment {
     ///
     /// The lower bound for the difference between the alarm threshold and the CloudWatch metric. If       the metric value is above the breach threshold, the lower bound is inclusive (the metric       must be greater than or equal to the threshold plus the lower bound). Otherwise, it is       exclusive (the metric must be greater than the threshold plus the lower bound). A null       value indicates negative infinity.
@@ -1504,7 +1504,7 @@ impl cfn_resources::CfnResource for StepAdjustment {
 /// TargetTrackingConfiguration is a property of the AWS::AutoScaling::ScalingPolicy resource that specifies a target tracking scaling    policy configuration for Amazon EC2 Auto Scaling.
 ///
 /// For more information about scaling policies, see Dynamic scaling in the     Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetTrackingConfiguration {
     ///
     /// A customized metric. You must specify either a predefined metric or a customized       metric.

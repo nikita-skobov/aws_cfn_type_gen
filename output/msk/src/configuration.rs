@@ -1,7 +1,7 @@
 /// Creates a new MSK configuration. To see an example of how to use this operation, first save the following text to a file and name the file config-file.txt.
 ///
 /// Now run the following Python 3.6 script in the folder where you saved config-file.txt. This script uses the properties specified in config-file.txt to create a configuration named SalesClusterConfiguration. This configuration can work with Apache Kafka versions 1.1.1 and 2.1.0.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfiguration {
     ///
     /// The description of the configuration.
@@ -52,7 +52,7 @@ pub struct CfnConfiguration {
     pub att_arn: CfnConfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationarn;
 impl CfnConfigurationarn {
     pub fn att_name(&self) -> &'static str {

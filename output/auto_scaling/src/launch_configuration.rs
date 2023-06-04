@@ -1,7 +1,7 @@
 /// The AWS::AutoScaling::LaunchConfiguration resource specifies the launch    configuration that can be used by an Auto Scaling group to configure Amazon EC2 instances.
 ///
 /// When you update the launch configuration for an Auto Scaling group, CloudFormation deletes    that resource and creates a new launch configuration with the updated properties and a new    name. Existing instances are not affected. To update existing instances when you update the     AWS::AutoScaling::LaunchConfiguration resource, you can specify an UpdatePolicy     attribute for the group. You can find sample update policies for rolling updates in     Auto scaling template     snippets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchConfiguration {
     ///
     /// Specifies whether to assign a public IPv4 address to the group's instances. If the       instance is launched into a default subnet, the default is to assign a public IPv4       address, unless you disabled the option to assign a public IPv4 address on the subnet.       If the instance is launched into a nondefault subnet, the default is not to assign a       public IPv4 address, unless you enabled the option to assign a public IPv4 address on       the subnet.
@@ -314,7 +314,7 @@ impl cfn_resources::CfnResource for CfnLaunchConfiguration {
 }
 
 /// BlockDevice is a property of the EBS property of the AWS::AutoScaling::LaunchConfiguration BlockDeviceMapping property type that    describes an Amazon EBS volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockDevice {
     ///
     /// Indicates whether the volume is deleted on instance termination. For Amazon EC2 Auto Scaling, the       default value is true.
@@ -482,7 +482,7 @@ impl cfn_resources::CfnResource for BlockDevice {
 /// Each instance that is launched has an associated root device volume, either an Amazon EBS    volume or an instance store volume. You can use block device mappings to specify additional    EBS volumes or instance store volumes to attach to an instance when it is launched.
 ///
 /// For more information, see Example block device mapping in the Amazon EC2 User Guide for Linux     Instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name assigned to the volume (for example, /dev/sdh or         xvdh). For more information, see Device naming on Linux         instances in the Amazon EC2 User Guide for Linux Instances.
@@ -555,7 +555,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 /// MetadataOptions is a property of AWS::AutoScaling::LaunchConfiguration that describes metadata options for the    instances.
 ///
 /// For more information, see Configure the instance metadata options in the Amazon EC2 Auto Scaling     User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetadataOptions {
     ///
     /// This parameter enables or disables the HTTP metadata endpoint on your instances. If       the parameter is not specified, the default state is enabled.
@@ -610,7 +610,7 @@ pub struct MetadataOptions {
     pub http_tokens: Option<MetadataOptionsHttpTokensEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsHttpEndpointEnum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -627,7 +627,7 @@ impl Default for MetadataOptionsHttpEndpointEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsHttpTokensEnum {
     /// optional
     #[serde(rename = "optional")]

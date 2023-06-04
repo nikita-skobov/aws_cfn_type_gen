@@ -1,5 +1,5 @@
 /// Creates or updates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data     for the log events in that log group. For more information, see       Using Contributor Insights to Analyze High-Cardinality Data in the Amazon CloudWatch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInsightRule {
     /// The definition of the rule, as a JSON object.     For details about the syntax, see       Contributor Insights Rule Syntax in the Amazon CloudWatch User Guide.
     ///
@@ -56,7 +56,7 @@ pub struct CfnInsightRule {
     pub att_rule_name: CfnInsightRulerulename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInsightRulearn;
 impl CfnInsightRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -64,7 +64,7 @@ impl CfnInsightRulearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInsightRulerulename;
 impl CfnInsightRulerulename {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl cfn_resources::CfnResource for CfnInsightRule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -137,7 +137,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
 ///
 /// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tags {}
 
 impl cfn_resources::CfnResource for Tags {

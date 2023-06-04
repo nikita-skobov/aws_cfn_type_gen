@@ -9,7 +9,7 @@
 /// When this operation creates an alarm, the alarm state is immediately set to INSUFFICIENT_DATA. The alarm is then evaluated and       its state is set appropriately. Any actions associated with the new state are then executed. For a composite alarm, this initial       time after creation is the only time that the alarm can be in INSUFFICIENT_DATA state.
 ///
 /// When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCompositeAlarm {
     ///
     /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
@@ -147,7 +147,7 @@ pub struct CfnCompositeAlarm {
     pub att_arn: CfnCompositeAlarmarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCompositeAlarmarn;
 impl CfnCompositeAlarmarn {
     pub fn att_name(&self) -> &'static str {

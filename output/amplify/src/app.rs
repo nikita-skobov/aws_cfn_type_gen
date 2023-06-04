@@ -1,5 +1,5 @@
 /// The AWS::Amplify::App resource specifies Apps in Amplify Hosting. An App is a    collection of branches.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApp {
     ///
     /// The personal access token for a GitHub repository for an Amplify app. The personal access    token is used to authorize access to a GitHub repository using the Amplify GitHub App. The    token is not stored.
@@ -233,7 +233,7 @@ pub struct CfnApp {
     pub att_default_domain: CfnAppdefaultdomain,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppappid;
 impl CfnAppappid {
     pub fn att_name(&self) -> &'static str {
@@ -241,7 +241,7 @@ impl CfnAppappid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppappname;
 impl CfnAppappname {
     pub fn att_name(&self) -> &'static str {
@@ -249,7 +249,7 @@ impl CfnAppappname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApparn;
 impl CfnApparn {
     pub fn att_name(&self) -> &'static str {
@@ -257,7 +257,7 @@ impl CfnApparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppdefaultdomain;
 impl CfnAppdefaultdomain {
     pub fn att_name(&self) -> &'static str {
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for CfnApp {
 }
 
 /// Use the AutoBranchCreationConfig property type to automatically create branches that    match a certain pattern.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoBranchCreationConfig {
     ///
     /// Automated branch creation glob patterns for the Amplify app.
@@ -460,7 +460,7 @@ impl cfn_resources::CfnResource for AutoBranchCreationConfig {
 }
 
 /// Use the BasicAuthConfig property type to set password protection at an app level to all    your branches.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BasicAuthConfig {
     ///
     /// Enables basic authorization for the Amplify app's branches.
@@ -518,7 +518,7 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
 }
 
 /// The CustomRule property type allows you to specify redirects, rewrites, and reverse    proxies. Redirects enable a web app to reroute navigation from one URL to another.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomRule {
     ///
     /// The condition for a URL rewrite or redirect rule, such as a country code.
@@ -600,7 +600,7 @@ impl cfn_resources::CfnResource for CustomRule {
 }
 
 /// Environment variables are key-value pairs that are available at build time. Set    environment variables for all branches in your app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable name.
@@ -654,7 +654,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

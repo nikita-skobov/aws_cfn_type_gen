@@ -3,7 +3,7 @@
 /// A virtual gateway allows resources outside your mesh to communicate to resources that     are inside your mesh. The virtual gateway represents an Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or on an Amazon EC2 instance. Unlike a     virtual node, which represents an Envoy running with an application, a virtual gateway     represents Envoy deployed by itself.
 ///
 /// For more information about virtual gateways, see Virtual gateways.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGateway {
     ///
     /// The name of the service mesh that the virtual gateway resides in.
@@ -96,7 +96,7 @@ pub struct CfnVirtualGateway {
     pub att_virtual_gateway_name: CfnVirtualGatewayvirtualgatewayname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewayarn;
 impl CfnVirtualGatewayarn {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnVirtualGatewayarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewaymeshname;
 impl CfnVirtualGatewaymeshname {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnVirtualGatewaymeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewaymeshowner;
 impl CfnVirtualGatewaymeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnVirtualGatewaymeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewayresourceowner;
 impl CfnVirtualGatewayresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnVirtualGatewayresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewayuid;
 impl CfnVirtualGatewayuid {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnVirtualGatewayuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualGatewayvirtualgatewayname;
 impl CfnVirtualGatewayvirtualgatewayname {
     pub fn att_name(&self) -> &'static str {
@@ -233,7 +233,7 @@ impl cfn_resources::CfnResource for CfnVirtualGateway {
 }
 
 /// An object that represents the key value pairs for the JSON.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonFormatRef {
     ///
     /// The specified key for the JSON.
@@ -325,7 +325,7 @@ impl cfn_resources::CfnResource for JsonFormatRef {
 }
 
 /// An object that represents the format for the logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingFormat {
     ///
     /// The logging format for JSON.
@@ -393,7 +393,7 @@ impl cfn_resources::CfnResource for LoggingFormat {
 }
 
 /// An object that represents the methods by which a subject alternative name on a peer     Transport Layer Security (TLS) certificate can be matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubjectAlternativeNameMatchers {
     ///
     /// The values sent must match the specified values exactly.
@@ -423,7 +423,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
 }
 
 /// An object that represents the subject alternative names secured by the     certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubjectAlternativeNames {
     ///
     /// An object that represents the criteria for determining a SANs match.
@@ -460,7 +460,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNames {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -498,7 +498,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The access log configuration for a virtual gateway.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayAccessLog {
     ///
     /// The file object to send virtual gateway access logs to.
@@ -530,7 +530,7 @@ impl cfn_resources::CfnResource for VirtualGatewayAccessLog {
 }
 
 /// An object that represents the default properties for a backend.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayBackendDefaults {
     ///
     /// A reference to an object that represents a client policy.
@@ -564,7 +564,7 @@ impl cfn_resources::CfnResource for VirtualGatewayBackendDefaults {
 }
 
 /// An object that represents a client policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayClientPolicy {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
@@ -596,7 +596,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientPolicy {
 }
 
 /// An object that represents a Transport Layer Security (TLS) client policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayClientPolicyTls {
     ///
     /// A reference to an object that represents a virtual gateway's client's Transport Layer Security (TLS)     certificate.
@@ -667,7 +667,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientPolicyTls {
 }
 
 /// An object that represents the virtual gateway's client's Transport Layer Security (TLS) certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayClientTlsCertificate {
     ///
     /// An object that represents a local file certificate. The certificate must meet specific     requirements and you must have proxy authorization enabled. For more information, see       Transport Layer Security (TLS)     .
@@ -717,7 +717,7 @@ impl cfn_resources::CfnResource for VirtualGatewayClientTlsCertificate {
 /// Only one protocol is used at a time and should be the same protocol as the one chosen     under port mapping.
 ///
 /// If not present the default value for maxPendingRequests is       2147483647.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayConnectionPool {
     ///
     /// An object that represents a type of connection pool.
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for VirtualGatewayConnectionPool {
 }
 
 /// An object that represents an access log file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayFileAccessLog {
     ///
     /// The specified format for the virtual gateway access logs. It can be either       json_format or text_format.
@@ -846,7 +846,7 @@ impl cfn_resources::CfnResource for VirtualGatewayFileAccessLog {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayGrpcConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -886,7 +886,7 @@ impl cfn_resources::CfnResource for VirtualGatewayGrpcConnectionPool {
 }
 
 /// An object that represents the health check policy for a virtual gateway's     listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayHealthCheckPolicy {
     ///
     /// The number of consecutive successful health checks that must occur before declaring the     listener healthy.
@@ -982,7 +982,7 @@ pub struct VirtualGatewayHealthCheckPolicy {
     pub unhealthy_threshold: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VirtualGatewayHealthCheckPolicyProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -1072,7 +1072,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHealthCheckPolicy {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayHttp2ConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -1112,7 +1112,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHttp2ConnectionPool {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayHttpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -1175,7 +1175,7 @@ impl cfn_resources::CfnResource for VirtualGatewayHttpConnectionPool {
 }
 
 /// An object that represents a listener for a virtual gateway.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListener {
     ///
     /// The connection pool information for the listener.
@@ -1252,7 +1252,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListener {
 }
 
 /// An object that represents the Transport Layer Security (TLS) properties for a listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTls {
     ///
     /// An object that represents a Transport Layer Security (TLS) certificate.
@@ -1293,7 +1293,7 @@ pub struct VirtualGatewayListenerTls {
     pub validation: Option<VirtualGatewayListenerTlsValidationContext>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VirtualGatewayListenerTlsModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1335,7 +1335,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTls {
 }
 
 /// An object that represents an AWS Certificate Manager certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsAcmCertificate {
     ///
     /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
@@ -1364,7 +1364,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsAcmCertificate {
 }
 
 /// An object that represents a listener's Transport Layer Security (TLS) certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsCertificate {
     ///
     /// A reference to an object that represents an AWS Certificate Manager certificate.
@@ -1424,7 +1424,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsCertificate {
 }
 
 /// An object that represents a local file certificate.     The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsFileCertificate {
     ///
     /// The certificate chain for the certificate.
@@ -1516,7 +1516,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsFileCertificate {
 }
 
 /// An object that represents the virtual gateway's listener's Secret Discovery Service     certificate.The proxy must be configured with a local SDS provider via a Unix Domain     Socket. See App MeshTLS       documentation for more info.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsSdsCertificate {
     ///
     /// A reference to an object that represents the name of the secret secret requested from     the Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or     certificate chain.
@@ -1545,7 +1545,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsSdsCertificate {
 }
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) validation     context.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a virtual gateway listener's Transport Layer Security (TLS)     validation context.
@@ -1592,7 +1592,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContext {
 }
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) validation context     trust.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayListenerTlsValidationContextTrust {
     ///
     /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
@@ -1638,7 +1638,7 @@ impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContextTr
 }
 
 /// An object that represents logging information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayLogging {
     ///
     /// The access log configuration.
@@ -1672,7 +1672,7 @@ impl cfn_resources::CfnResource for VirtualGatewayLogging {
 }
 
 /// An object that represents a port mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayPortMapping {
     ///
     /// The port used for the port mapping. Specify one protocol.
@@ -1703,7 +1703,7 @@ pub struct VirtualGatewayPortMapping {
     pub protocol: VirtualGatewayPortMappingProtocolEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VirtualGatewayPortMappingProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -1757,7 +1757,7 @@ impl cfn_resources::CfnResource for VirtualGatewayPortMapping {
 }
 
 /// An object that represents the specification of a service mesh resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewaySpec {
     ///
     /// A reference to an object that represents the defaults for backends.
@@ -1816,7 +1816,7 @@ impl cfn_resources::CfnResource for VirtualGatewaySpec {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a virtual gateway's listener's     Transport Layer Security (TLS) validation context.
@@ -1863,7 +1863,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContext {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager     certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayTlsValidationContextAcmTrust {
     ///
     /// One or more ACM Amazon Resource Name (ARN)s.
@@ -1903,7 +1903,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextAcmTrust {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayTlsValidationContextFileTrust {
     ///
     /// The certificate trust chain for a certificate stored on the file system of the virtual     node that the proxy is running on.
@@ -1958,7 +1958,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextFileTrust 
 }
 
 /// An object that represents a virtual gateway's listener's Transport Layer Security (TLS) Secret Discovery Service     validation context trust. The proxy must be configured with a local SDS provider via a Unix     Domain Socket. See App Mesh     TLS       documentation for more info.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayTlsValidationContextSdsTrust {
     ///
     /// A reference to an object that represents the name of the secret for a virtual gateway's     Transport Layer Security (TLS) Secret Discovery Service validation context trust.
@@ -1987,7 +1987,7 @@ impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextSdsTrust {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualGatewayTlsValidationContextTrust {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager certificate.

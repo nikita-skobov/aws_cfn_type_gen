@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::TopicRule resource to declare an AWS IoT rule. For     information about working with AWS IoT rules, see Rules for AWS IoT in the       AWS IoT Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicRule {
     ///
     /// The name of the rule.
@@ -42,7 +42,7 @@ pub struct CfnTopicRule {
     pub att_arn: CfnTopicRulearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicRulearn;
 impl CfnTopicRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -67,7 +67,7 @@ impl cfn_resources::CfnResource for CfnTopicRule {
 }
 
 /// Describes the actions associated with a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// Change the state of a CloudWatch alarm.
@@ -425,7 +425,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// An asset property timestamp entry containing the following information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyTimestamp {
     ///
     /// Optional. A string that contains the nanosecond time offset. Accepts substitution    templates.
@@ -466,7 +466,7 @@ impl cfn_resources::CfnResource for AssetPropertyTimestamp {
 }
 
 /// An asset property value entry containing the following information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyValue {
     ///
     /// Optional. A string that describes the quality of the value. Accepts substitution    templates. Must be GOOD, BAD, or UNCERTAIN.
@@ -522,7 +522,7 @@ impl cfn_resources::CfnResource for AssetPropertyValue {
 }
 
 /// Contains an asset property value (of a single type).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyVariant {
     ///
     /// Optional. A string that contains the boolean value (true or     false) of the value entry. Accepts substitution templates.
@@ -588,7 +588,7 @@ impl cfn_resources::CfnResource for AssetPropertyVariant {
 }
 
 /// Describes an action that updates a CloudWatch alarm.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudwatchAlarmAction {
     ///
     /// The CloudWatch alarm name.
@@ -650,7 +650,7 @@ impl cfn_resources::CfnResource for CloudwatchAlarmAction {
 }
 
 /// Describes an action that updates a CloudWatch log.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudwatchLogsAction {
     ///
     /// Indicates whether batches of log records will be extracted and uploaded into CloudWatch.
@@ -702,7 +702,7 @@ impl cfn_resources::CfnResource for CloudwatchLogsAction {
 }
 
 /// Describes an action that captures a CloudWatch metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudwatchMetricAction {
     ///
     /// The CloudWatch metric name.
@@ -801,7 +801,7 @@ impl cfn_resources::CfnResource for CloudwatchMetricAction {
 /// "rangeKeyValue": "${timestamp()}"
 ///
 /// For more information, see DynamoDBv2 Action in the       AWS IoT Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDBAction {
     ///
     /// The hash key name.
@@ -925,7 +925,7 @@ impl cfn_resources::CfnResource for DynamoDBAction {
 /// Describes an action to write to a DynamoDB table.
 ///
 /// This DynamoDB action writes each attribute in the message payload into it's own     column in the DynamoDB table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDBv2Action {
     ///
     /// Specifies the DynamoDB table to which the message data will be written. For     example:
@@ -975,7 +975,7 @@ impl cfn_resources::CfnResource for DynamoDBv2Action {
 }
 
 /// Describes an action that writes data to an Amazon OpenSearch Service     domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchAction {
     ///
     /// The endpoint of your OpenSearch domain.
@@ -1048,7 +1048,7 @@ impl cfn_resources::CfnResource for ElasticsearchAction {
 }
 
 /// Describes an action that writes data to an Amazon Kinesis Firehose stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FirehoseAction {
     ///
     /// Whether to deliver the Kinesis Data Firehose stream as a batch by using PutRecordBatch. The default value is     false.
@@ -1114,7 +1114,7 @@ impl cfn_resources::CfnResource for FirehoseAction {
 }
 
 /// Send data to an HTTPS endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpAction {
     ///
     /// The authentication method to use when sending data to an HTTPS endpoint.
@@ -1181,7 +1181,7 @@ impl cfn_resources::CfnResource for HttpAction {
 }
 
 /// The HTTP action header.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpActionHeader {
     ///
     /// The HTTP header key.
@@ -1221,7 +1221,7 @@ impl cfn_resources::CfnResource for HttpActionHeader {
 }
 
 /// The authorization method used to send messages.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpAuthorization {
     ///
     /// Use Sig V4 authorization. For more information, see Signature       Version 4 Signing Process.
@@ -1253,7 +1253,7 @@ impl cfn_resources::CfnResource for HttpAuthorization {
 }
 
 /// Sends message data to an AWS IoT Analytics channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotAnalyticsAction {
     ///
     /// Whether to process the action as a batch. The default value is     false.
@@ -1307,7 +1307,7 @@ impl cfn_resources::CfnResource for IotAnalyticsAction {
 }
 
 /// Sends an input to an AWS IoT Events detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotEventsAction {
     ///
     /// Whether to process the event actions as a batch. The default value is       false.
@@ -1379,7 +1379,7 @@ impl cfn_resources::CfnResource for IotEventsAction {
 }
 
 /// Describes an action to send data from an MQTT message that triggered the rule to AWS IoT    SiteWise asset properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotSiteWiseAction {
     ///
     /// A list of asset property value entries.
@@ -1419,7 +1419,7 @@ impl cfn_resources::CfnResource for IotSiteWiseAction {
 }
 
 /// Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or self-managed Apache Kafka cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KafkaAction {
     ///
     /// Properties of the Apache Kafka producer client.
@@ -1494,7 +1494,7 @@ impl cfn_resources::CfnResource for KafkaAction {
 }
 
 /// Describes an action to write data to an Amazon Kinesis stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisAction {
     ///
     /// The partition key.
@@ -1546,7 +1546,7 @@ impl cfn_resources::CfnResource for KinesisAction {
 }
 
 /// Describes an action to invoke a Lambda function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaAction {
     ///
     /// The ARN of the Lambda function.
@@ -1576,7 +1576,7 @@ impl cfn_resources::CfnResource for LambdaAction {
 }
 
 /// Describes an action to send device location updates from an MQTT message to an Amazon Location tracker resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocationAction {
     ///
     /// The unique ID of the device providing the location data.
@@ -1665,7 +1665,7 @@ impl cfn_resources::CfnResource for LocationAction {
 }
 
 /// Describes an action that writes data to an Amazon OpenSearch Service domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenSearchAction {
     ///
     /// The endpoint of your OpenSearch domain.
@@ -1738,7 +1738,7 @@ impl cfn_resources::CfnResource for OpenSearchAction {
 }
 
 /// An asset property value entry containing the following information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PutAssetPropertyValueEntry {
     ///
     /// The ID of the AWS IoT SiteWise asset. You must specify either a propertyAlias    or both an aliasId and a propertyId. Accepts substitution    templates.
@@ -1815,7 +1815,7 @@ impl cfn_resources::CfnResource for PutAssetPropertyValueEntry {
 }
 
 /// The input for the DynamoActionVS action that specifies the DynamoDB table to which     the message data will be written.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PutItemInput {
     ///
     /// The table where the message data will be written.
@@ -1844,7 +1844,7 @@ impl cfn_resources::CfnResource for PutItemInput {
 }
 
 /// Describes an action to republish to another topic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RepublishAction {
     ///
     /// MQTT Version 5.0 headers information. For more information, see MQTT in the IoT Core Developer Guide.
@@ -1910,7 +1910,7 @@ impl cfn_resources::CfnResource for RepublishAction {
 }
 
 /// Specifies MQTT Version 5.0 headers information. For more information, see MQTT in the IoT Core Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RepublishActionHeaders {
     ///
     /// A UTF-8 encoded string that describes the content of the publishing message.
@@ -2022,7 +2022,7 @@ impl cfn_resources::CfnResource for RepublishActionHeaders {
 }
 
 /// Describes an action to write data to an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Action {
     ///
     /// The Amazon S3 bucket.
@@ -2085,7 +2085,7 @@ impl cfn_resources::CfnResource for S3Action {
 }
 
 /// For more information, see Signature Version 4 signing process.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SigV4Authorization {
     ///
     /// The ARN of the signing role.
@@ -2136,7 +2136,7 @@ impl cfn_resources::CfnResource for SigV4Authorization {
 }
 
 /// Describes an action to publish to an Amazon SNS topic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnsAction {
     ///
     /// (Optional) The message format of the message to publish. Accepted values are "JSON"     and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine     if the payload should be parsed and relevant platform-specific bits of the payload should     be extracted. For more information, see Amazon SNS Message and JSON Formats in the       Amazon Simple Notification Service Developer Guide.
@@ -2188,7 +2188,7 @@ impl cfn_resources::CfnResource for SnsAction {
 }
 
 /// Describes an action to publish data to an Amazon SQS queue.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqsAction {
     ///
     /// The URL of the Amazon SQS queue.
@@ -2240,7 +2240,7 @@ impl cfn_resources::CfnResource for SqsAction {
 }
 
 /// Starts execution of a Step Functions state machine.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepFunctionsAction {
     ///
     /// (Optional) A name will be given to the state machine execution consisting of this    prefix followed by a UUID. Step Functions automatically creates a unique name for each state    machine execution if one is not provided.
@@ -2298,7 +2298,7 @@ impl cfn_resources::CfnResource for StepFunctionsAction {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2336,7 +2336,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes how to interpret an application-defined timestamp value from an MQTT message payload and the precision of that value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Timestamp {
     ///
     /// The precision of the timestamp value that results from the expression described in value.
@@ -2377,7 +2377,7 @@ impl cfn_resources::CfnResource for Timestamp {
 }
 
 /// Describes an action that writes records into an Amazon Timestream table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestreamAction {
     ///
     /// The name of an Amazon Timestream database that has the table to write records into.
@@ -2455,7 +2455,7 @@ impl cfn_resources::CfnResource for TimestreamAction {
 }
 
 /// Metadata attributes of the time series that are written in each measure record.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestreamDimension {
     ///
     /// The metadata dimension name. This is the name of the column in the Amazon Timestream database table record.
@@ -2495,7 +2495,7 @@ impl cfn_resources::CfnResource for TimestreamDimension {
 }
 
 /// The value to use for the entry's timestamp. If blank, the time that the entry was processed is used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimestreamTimestamp {
     ///
     /// The precision of the timestamp value that results from the expression described in value.
@@ -2535,7 +2535,7 @@ impl cfn_resources::CfnResource for TimestreamTimestamp {
 }
 
 /// Describes a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicRulePayload {
     ///
     /// The actions associated with the rule.
@@ -2629,7 +2629,7 @@ impl cfn_resources::CfnResource for TopicRulePayload {
 }
 
 /// A key-value pair that you define in the header.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserProperty {
     ///
     /// A key to be specified in UserProperty.

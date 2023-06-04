@@ -1,7 +1,7 @@
 /// Creates a new stack. For more information, see Create a New     Stack.
 ///
 /// Required Permissions: To use this action, an IAM user must have an attached policy    that explicitly grants permissions. For more information about user permissions, see Managing User     Permissions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStack {
     ///
     /// The default AWS OpsWorks Stacks agent version. You have the following options:
@@ -345,7 +345,7 @@ pub struct CfnStack {
     pub vpc_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StackDefaultRootDeviceTypeEnum {
     /// ebs
     #[serde(rename = "ebs")]
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for CfnStack {
 }
 
 /// Describes the Chef configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChefConfiguration {
     ///
     /// The Berkshelf version.
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for ChefConfiguration {
 }
 
 /// Describes an Elastic IP address.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticIp {
     ///
     /// The IP address.
@@ -472,7 +472,7 @@ impl cfn_resources::CfnResource for ElasticIp {
 }
 
 /// Describes an Amazon RDS instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RdsDbInstance {
     ///
     /// AWS OpsWorks Stacks returns *****FILTERED***** instead of the actual value.
@@ -523,7 +523,7 @@ impl cfn_resources::CfnResource for RdsDbInstance {
 }
 
 /// Contains the information required to retrieve an app or cookbook from a repository. For more    information, see Creating Apps or Custom Recipes and     Cookbooks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Source {
     ///
     /// When included in a request, the parameter depends on the repository type.
@@ -610,7 +610,7 @@ pub struct Source {
     pub username: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceTypeEnum {
     /// archive
     #[serde(rename = "archive")]
@@ -650,7 +650,7 @@ impl cfn_resources::CfnResource for Source {
 }
 
 /// Describes the configuration manager.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StackConfigurationManager {
     ///
     /// The name. This parameter must be set to Chef.
@@ -698,7 +698,7 @@ impl cfn_resources::CfnResource for StackConfigurationManager {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

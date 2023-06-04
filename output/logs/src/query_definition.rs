@@ -1,5 +1,5 @@
 /// Creates a query definition for    CloudWatch Logs Insights. For more information, see         Analyzing Log Data with CloudWatch Logs Insights.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueryDefinition {
     /// Use this parameter if  you want the query to query only certain log groups.
     ///
@@ -36,7 +36,7 @@ pub struct CfnQueryDefinition {
     pub att_query_definition_id: CfnQueryDefinitionquerydefinitionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueryDefinitionquerydefinitionid;
 impl CfnQueryDefinitionquerydefinitionid {
     pub fn att_name(&self) -> &'static str {

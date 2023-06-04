@@ -1,5 +1,5 @@
 /// Create or update cluster policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterPolicy {
     ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
@@ -27,7 +27,7 @@ pub struct CfnClusterPolicy {
     pub att_current_version: CfnClusterPolicycurrentversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterPolicycurrentversion;
 impl CfnClusterPolicycurrentversion {
     pub fn att_name(&self) -> &'static str {

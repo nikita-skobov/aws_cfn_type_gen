@@ -1,5 +1,5 @@
 /// Enables the attribute-based access control (ABAC) feature for the specified IAM Identity Center     instance. You can also specify new attributes to add to your ABAC configuration during the     enabling process. For more information about ABAC, see Attribute-Based Access Control in     the IAM Identity Center User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceAccessControlAttributeConfiguration {
     ///
     /// Lists the attributes that are configured for ABAC in the specified IAM Identity Center     instance.
@@ -76,7 +76,7 @@ impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfigurati
 }
 
 /// These are IAM Identity Center identity store attributes that you can configure for use in     attributes-based access control (ABAC). You can create permissions policies that determine     who can access your AWS resources based upon the configured attribute values. When you     enable ABAC and specify AccessControlAttributes, IAM Identity Center passes the attribute     values of the authenticated user into IAM for use in policy evaluation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlAttribute {
     ///
     /// The name of the attribute associated with your identities in your identity source. This     is used to map a specified attribute in your identity source with an attribute in IAM Identity Center.
@@ -146,7 +146,7 @@ impl cfn_resources::CfnResource for AccessControlAttribute {
 }
 
 /// The value used for mapping a specified attribute to an identity source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlAttributeValue {
     ///
     /// The identity source to use when mapping a specified attribute to IAM Identity Center.

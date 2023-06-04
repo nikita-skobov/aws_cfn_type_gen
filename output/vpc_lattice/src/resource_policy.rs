@@ -1,5 +1,5 @@
 /// Retrieves information about the resource policy. The resource policy is an IAM policy  created on behalf of the resource owner when they share a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourcePolicy {
     ///
     /// The Amazon Resource Name (ARN) of the service network or service.

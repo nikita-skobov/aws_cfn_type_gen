@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::UsagePlanKey resource associates an API key with a usage plan. This association determines which users the usage plan is applied to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUsagePlanKey {
     ///
     /// The Id of the UsagePlanKey resource to be deleted.
@@ -38,7 +38,7 @@ pub struct CfnUsagePlanKey {
     pub att_id: CfnUsagePlanKeyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUsagePlanKeyid;
 impl CfnUsagePlanKeyid {
     pub fn att_name(&self) -> &'static str {

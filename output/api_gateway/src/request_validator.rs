@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming requests to your API. For more information, see Enable Basic Request Validation for an API in API Gateway in the API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRequestValidator {
     ///
     /// The name of this RequestValidator
@@ -52,7 +52,7 @@ pub struct CfnRequestValidator {
     pub att_request_validator_id: CfnRequestValidatorrequestvalidatorid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRequestValidatorrequestvalidatorid;
 impl CfnRequestValidatorrequestvalidatorid {
     pub fn att_name(&self) -> &'static str {

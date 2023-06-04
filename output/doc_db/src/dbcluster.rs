@@ -1,5 +1,5 @@
 /// The AWS::DocDB::DBCluster Amazon DocumentDB (with MongoDB compatibility) resource describes a DBCluster.      Amazon DocumentDB is a fully managed, MongoDB-compatible document database engine. For more information, see      DBCluster in the Amazon DocumentDB Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBCluster {
     ///
     /// A list of Amazon EC2 Availability Zones that instances in the       cluster can be created in.
@@ -335,7 +335,7 @@ pub struct CfnDBCluster {
     pub att_read_endpoint: CfnDBClusterreadendpoint,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterclusterresourceid;
 impl CfnDBClusterclusterresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -343,7 +343,7 @@ impl CfnDBClusterclusterresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterendpoint;
 impl CfnDBClusterendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -351,7 +351,7 @@ impl CfnDBClusterendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterport;
 impl CfnDBClusterport {
     pub fn att_name(&self) -> &'static str {
@@ -359,7 +359,7 @@ impl CfnDBClusterport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterreadendpoint;
 impl CfnDBClusterreadendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -388,7 +388,7 @@ impl cfn_resources::CfnResource for CfnDBCluster {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

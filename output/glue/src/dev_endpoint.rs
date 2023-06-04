@@ -1,5 +1,5 @@
 /// The AWS::Glue::DevEndpoint resource specifies a development endpoint       where a developer can remotely debug ETL scripts for AWS Glue. For more information, see         DevEndpoint Structure in the AWS Glue Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDevEndpoint {
     ///
     /// A map of arguments used to configure the DevEndpoint.

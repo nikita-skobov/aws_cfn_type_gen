@@ -3,7 +3,7 @@
 /// To create canaries, you must have the CloudWatchSyntheticsFullAccess policy.     If you are creating a new IAM role for the canary, you also need the     the iam:CreateRole, iam:CreatePolicy and       iam:AttachRolePolicy permissions. For more information, see Necessary       Roles and Permissions.
 ///
 /// Do not include secrets or proprietary information in your canary names. The canary name     makes up part of the Amazon Resource Name (ARN) for the canary, and the ARN is included in     outbound calls over the internet. For more information, see Security       Considerations for Synthetics Canaries.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCanary {
     ///
     /// A structure that contains the configuration for canary artifacts, including      the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
@@ -211,7 +211,7 @@ pub struct CfnCanary {
     pub att_state: CfnCanarystate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCanarycodesourcelocationarn;
 impl CfnCanarycodesourcelocationarn {
     pub fn att_name(&self) -> &'static str {
@@ -219,7 +219,7 @@ impl CfnCanarycodesourcelocationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCanaryid;
 impl CfnCanaryid {
     pub fn att_name(&self) -> &'static str {
@@ -227,7 +227,7 @@ impl CfnCanaryid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCanarystate;
 impl CfnCanarystate {
     pub fn att_name(&self) -> &'static str {
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for CfnCanary {
 }
 
 /// A structure that contains the configuration for canary artifacts,    including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArtifactConfig {
     /// A structure that contains the configuration    of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.    Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3    or later. For more information, see    Encrypting canary artifacts.
     ///
@@ -418,7 +418,7 @@ impl cfn_resources::CfnResource for ArtifactConfig {
 }
 
 /// A structure representing a screenshot that is used as a baseline during visual monitoring comparisons made by the canary.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaseScreenshot {
     /// Coordinates that define the part of a screen to ignore during screenshot comparisons. To obtain the coordinates to use here, use the      CloudWatch Logs console to draw the boundaries on the screen. For more information, see {LINK}
     ///
@@ -457,7 +457,7 @@ impl cfn_resources::CfnResource for BaseScreenshot {
 }
 
 /// Use this structure to input your script code for the canary. This structure contains the     Lambda handler with the location where the canary should start running the script. If the     script is stored in an S3 bucket, the bucket name, key, and version are also included. If     the script is passed into the canary directly, the script code is contained in the value     of Script.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Code {
     ///
     /// The entry point to use for the source code when running the canary. For canaries that use the      syn-python-selenium-1.0 runtime     or a syn-nodejs.puppeteer runtime earlier than syn-nodejs.puppeteer-3.4,      the handler must be specified as         fileName.handler. For      syn-python-selenium-1.1, syn-nodejs.puppeteer-3.4, and later runtimes, the handler can be specified as               fileName.functionName       , or       you can specify a folder where canary scripts reside as         folder/fileName.functionName       .
@@ -672,7 +672,7 @@ impl cfn_resources::CfnResource for Code {
 }
 
 /// A structure that contains input information for a canary run. This structure     is required.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunConfig {
     ///
     /// Specifies whether this canary is to use active AWS X-Ray tracing when it runs. Active tracing      enables this canary run to be displayed in the ServiceLens and X-Ray service maps even if the      canary does not hit an endpoint that has X-Ray tracing enabled. Using X-Ray tracing      incurs charges. For more information, see      Canaries and X-Ray tracing.
@@ -789,7 +789,7 @@ impl cfn_resources::CfnResource for RunConfig {
 }
 
 /// A structure that contains the configuration      of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.      Artifact encryption functionality is available only for canaries that use Synthetics runtime version syn-nodejs-puppeteer-3.3      or later. For more information, see     Encrypting canary artifacts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Encryption {
     /// The encryption method to use      for artifacts created by this canary. Specify SSE_S3 to use     server-side encryption (SSE) with an Amazon S3-managed     key. Specify SSE-KMS to use server-side encryption with a customer-managed AWS KMS key.
     ///
@@ -832,7 +832,7 @@ impl cfn_resources::CfnResource for S3Encryption {
 }
 
 /// This structure specifies how often a canary is to make runs and the date and time     when it should stop making runs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schedule {
     ///
     /// How long, in seconds, for the canary to continue making regular runs according to     the schedule in the Expression value. If you specify 0, the canary continues     making runs until you stop it. If you omit this field, the default of 0 is used.
@@ -913,7 +913,7 @@ impl cfn_resources::CfnResource for Schedule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -951,7 +951,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// If this canary is to test an endpoint in a VPC, this structure contains    information about the subnet and security groups of the VPC endpoint.    For more information, see      Running a Canary in a VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VPCConfig {
     ///
     /// The IDs of the security groups for this canary.
@@ -1027,7 +1027,7 @@ impl cfn_resources::CfnResource for VPCConfig {
 /// Defines the screenshots to use as the baseline for comparisons during visual monitoring comparisons during future runs of this canary. If you omit this      parameter, no changes are made to any baseline screenshots that the canary might be using already.
 ///
 /// Visual monitoring is supported only on canaries running the syn-puppeteer-node-3.2       runtime or later. For more information, see         Visual monitoring and          Visual monitoring blueprint
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisualReference {
     /// Specifies which canary run to use the screenshots from as the baseline for future visual monitoring with this canary. Valid values are      nextrun to use the screenshots from the next run after this update is made, lastrun to use the screenshots from the most recent run      before this update was made, or the value of Id in the       CanaryRun from any past run of this canary.
     ///

@@ -1,5 +1,5 @@
 /// A self-service action association consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceActionAssociation {
     ///
     /// The product identifier. For example, prod-abcdzk7xy33qa.

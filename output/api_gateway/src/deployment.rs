@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Deployment resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeployment {
     ///
     /// The input configuration for a canary deployment.
@@ -64,7 +64,7 @@ pub struct CfnDeployment {
     pub att_deployment_id: CfnDeploymentdeploymentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeploymentdeploymentid;
 impl CfnDeploymentdeploymentid {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl cfn_resources::CfnResource for CfnDeployment {
 /// The AccessLogSetting property type specifies settings for logging access in this stage.
 ///
 /// AccessLogSetting is a property of the StageDescription property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLogSetting {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with amazon-apigateway-.
@@ -141,7 +141,7 @@ impl cfn_resources::CfnResource for AccessLogSetting {
 /// The CanarySetting property type specifies settings for the canary deployment in this stage.
 ///
 /// CanarySetting is a property of the StageDescription property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CanarySetting {
     ///
     /// The percent (0-100) of traffic diverted to a canary deployment.
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for CanarySetting {
 }
 
 /// The DeploymentCanarySettings property type specifies settings for the canary deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentCanarySettings {
     ///
     /// The percentage (0.0-100.0) of traffic routed to the canary deployment.
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for DeploymentCanarySettings {
 /// The MethodSetting property type configures settings for all methods in a stage.
 ///
 /// The MethodSettings property of the Amazon API Gateway Deployment StageDescription property type contains a list of MethodSetting property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MethodSetting {
     ///
     /// Specifies whether the cached responses are encrypted.
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for MethodSetting {
 }
 
 /// StageDescription is a property of the AWS::ApiGateway::Deployment resource that configures a deployment stage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StageDescription {
     ///
     /// Specifies settings for logging access in this stage.
@@ -651,7 +651,7 @@ impl cfn_resources::CfnResource for StageDescription {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

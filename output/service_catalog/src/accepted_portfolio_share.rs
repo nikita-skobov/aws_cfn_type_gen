@@ -1,5 +1,5 @@
 /// Accepts an offer to share the specified portfolio.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAcceptedPortfolioShare {
     ///
     /// The language code.

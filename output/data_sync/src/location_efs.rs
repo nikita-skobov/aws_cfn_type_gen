@@ -1,5 +1,5 @@
 /// The AWS::DataSync::LocationEFS resource creates an endpoint for an Amazon EFS file system. AWS DataSync can access this endpoint as a source or destination location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationEFS {
     ///
     /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses    to access the Amazon EFS file system.
@@ -115,7 +115,7 @@ pub struct CfnLocationEFS {
     pub att_location_uri: CfnLocationEFSlocationuri,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LocationEFSInTransitEncryptionEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -132,7 +132,7 @@ impl Default for LocationEFSInTransitEncryptionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationEFSlocationarn;
 impl CfnLocationEFSlocationarn {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl CfnLocationEFSlocationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationEFSlocationuri;
 impl CfnLocationEFSlocationuri {
     pub fn att_name(&self) -> &'static str {
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for CfnLocationEFS {
 }
 
 /// The subnet and security groups that AWS DataSync uses to access your Amazon EFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ec2Config {
     ///
     /// Specifies the Amazon Resource Names (ARNs) of the security groups associated with an     Amazon EFS file system's mount target.
@@ -290,7 +290,7 @@ impl cfn_resources::CfnResource for Ec2Config {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

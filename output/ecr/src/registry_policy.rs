@@ -1,7 +1,7 @@
 /// The AWS::ECR::RegistryPolicy resource creates or updates the permissions       policy for a private registry.
 ///
 /// A private registry policy is used to specify permissions for another AWS account and is used when configuring cross-account replication. For       more information, see Registry         permissions in the Amazon Elastic Container Registry User         Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryPolicy {
     ///
     /// The JSON policy text for your registry.
@@ -18,7 +18,7 @@ pub struct CfnRegistryPolicy {
     pub att_registry_id: CfnRegistryPolicyregistryid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegistryPolicyregistryid;
 impl CfnRegistryPolicyregistryid {
     pub fn att_name(&self) -> &'static str {

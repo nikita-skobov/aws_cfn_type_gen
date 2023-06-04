@@ -1,7 +1,7 @@
 /// Creates an Amazon SageMaker Model Card.
 ///
 /// For information about how to use model cards, see Amazon SageMaker Model Card.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCard {
     ///
     /// The content of the model card. Content uses the model card JSON         schema.
@@ -128,7 +128,7 @@ pub struct CfnModelCard {
     pub att_model_card_processing_status: CfnModelCardmodelcardprocessingstatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ModelCardModelCardStatusEnum {
     /// Approved
     #[serde(rename = "Approved")]
@@ -153,7 +153,7 @@ impl Default for ModelCardModelCardStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardcreatedbydomainid;
 impl CfnModelCardcreatedbydomainid {
     pub fn att_name(&self) -> &'static str {
@@ -161,7 +161,7 @@ impl CfnModelCardcreatedbydomainid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardcreatedbyuserprofilearn;
 impl CfnModelCardcreatedbyuserprofilearn {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl CfnModelCardcreatedbyuserprofilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardcreatedbyuserprofilename;
 impl CfnModelCardcreatedbyuserprofilename {
     pub fn att_name(&self) -> &'static str {
@@ -177,7 +177,7 @@ impl CfnModelCardcreatedbyuserprofilename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardcreationtime;
 impl CfnModelCardcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -185,7 +185,7 @@ impl CfnModelCardcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardlastmodifiedbydomainid;
 impl CfnModelCardlastmodifiedbydomainid {
     pub fn att_name(&self) -> &'static str {
@@ -193,7 +193,7 @@ impl CfnModelCardlastmodifiedbydomainid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardlastmodifiedbyuserprofilearn;
 impl CfnModelCardlastmodifiedbyuserprofilearn {
     pub fn att_name(&self) -> &'static str {
@@ -201,7 +201,7 @@ impl CfnModelCardlastmodifiedbyuserprofilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardlastmodifiedbyuserprofilename;
 impl CfnModelCardlastmodifiedbyuserprofilename {
     pub fn att_name(&self) -> &'static str {
@@ -209,7 +209,7 @@ impl CfnModelCardlastmodifiedbyuserprofilename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardlastmodifiedtime;
 impl CfnModelCardlastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -217,7 +217,7 @@ impl CfnModelCardlastmodifiedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardmodelcardarn;
 impl CfnModelCardmodelcardarn {
     pub fn att_name(&self) -> &'static str {
@@ -225,7 +225,7 @@ impl CfnModelCardmodelcardarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelCardmodelcardprocessingstatus;
 impl CfnModelCardmodelcardprocessingstatus {
     pub fn att_name(&self) -> &'static str {
@@ -293,7 +293,7 @@ impl cfn_resources::CfnResource for CfnModelCard {
 }
 
 /// Additional information about the model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdditionalInformation {
     ///
     /// Caveats and recommendations for those who might use this model in their       applications.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for AdditionalInformation {
 }
 
 /// Information about how the model supports business goals.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BusinessDetails {
     ///
     /// The specific business problem that the model is trying to solve.
@@ -401,7 +401,7 @@ impl cfn_resources::CfnResource for BusinessDetails {
 }
 
 /// The Container property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Container {
     /// Property description not available.
     ///
@@ -451,7 +451,7 @@ impl cfn_resources::CfnResource for Container {
 }
 
 /// The content of the model card. It follows the model card json         schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Content {
     ///
     /// Additional information about the model.
@@ -576,7 +576,7 @@ impl cfn_resources::CfnResource for Content {
 }
 
 /// The evaluation details of the model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EvaluationDetail {
     ///
     /// The location of the datasets used to evaluate the model.
@@ -665,7 +665,7 @@ impl cfn_resources::CfnResource for EvaluationDetail {
 }
 
 /// Function details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Function {
     ///
     /// An optional description of any conditions of your objective function metric.
@@ -723,7 +723,7 @@ impl cfn_resources::CfnResource for Function {
 }
 
 /// An overview of a model's inference environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceEnvironment {
     ///
     /// The container used to run the inference environment.
@@ -753,7 +753,7 @@ impl cfn_resources::CfnResource for InferenceEnvironment {
 }
 
 /// The InferenceSpecification property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceSpecification {
     /// Property description not available.
     ///
@@ -781,7 +781,7 @@ impl cfn_resources::CfnResource for InferenceSpecification {
 }
 
 /// The intended uses of a model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntendedUses {
     ///
     /// An explanation of why your organization categorizes the model with its risk       rating.
@@ -861,7 +861,7 @@ impl cfn_resources::CfnResource for IntendedUses {
 }
 
 /// Metric data. The type determines the data types that you specify for         value, XAxisName and YAxisName. For       information about specifying values for metrics, see model card JSON         schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDataItems {
     ///
     /// The names of the metrics.
@@ -950,7 +950,7 @@ impl cfn_resources::CfnResource for MetricDataItems {
 }
 
 /// A group of metric data that you use to initialize a metric group object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricGroup {
     ///
     /// A list of metric objects. The MetricDataItems list can have one of the following values:
@@ -994,7 +994,7 @@ impl cfn_resources::CfnResource for MetricGroup {
 }
 
 /// An overview about the model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelOverview {
     ///
     /// The algorithm used to solve the problem.
@@ -1136,7 +1136,7 @@ impl cfn_resources::CfnResource for ModelOverview {
 }
 
 /// The ModelPackageCreator property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelPackageCreator {
     /// Property description not available.
     ///
@@ -1165,7 +1165,7 @@ impl cfn_resources::CfnResource for ModelPackageCreator {
 }
 
 /// The ModelPackageDetails property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModelPackageDetails {
     /// Property description not available.
     ///
@@ -1334,7 +1334,7 @@ impl cfn_resources::CfnResource for ModelPackageDetails {
 }
 
 /// The function that is optimized during model training.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ObjectiveFunction {
     ///
     /// A function object that details optimization direction, metric, and additional       descriptions.
@@ -1380,7 +1380,7 @@ impl cfn_resources::CfnResource for ObjectiveFunction {
 }
 
 /// The security configuration used to protect model card data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecurityConfig {
     ///
     /// A AWS Key Management Service       key ID used to encrypt a model card.
@@ -1410,7 +1410,7 @@ impl cfn_resources::CfnResource for SecurityConfig {
 }
 
 /// The SourceAlgorithm property type specifies Property description not available. for an AWS::SageMaker::ModelCard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceAlgorithm {
     /// Property description not available.
     ///
@@ -1455,7 +1455,7 @@ impl cfn_resources::CfnResource for SourceAlgorithm {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1493,7 +1493,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The training details of the model
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrainingDetails {
     ///
     /// The function that is optimized during model training.
@@ -1555,7 +1555,7 @@ impl cfn_resources::CfnResource for TrainingDetails {
 }
 
 /// SageMaker training image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrainingEnvironment {
     ///
     /// SageMaker inference image URI.
@@ -1585,7 +1585,7 @@ impl cfn_resources::CfnResource for TrainingEnvironment {
 }
 
 /// A hyper parameter that was configured in training the model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrainingHyperParameter {
     ///
     /// The name of the hyper parameter.
@@ -1625,7 +1625,7 @@ impl cfn_resources::CfnResource for TrainingHyperParameter {
 }
 
 /// The overview of a training job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrainingJobDetails {
     ///
     /// The hyper parameters used in the training job.
@@ -1731,7 +1731,7 @@ impl cfn_resources::CfnResource for TrainingJobDetails {
 }
 
 /// A result from a SageMaker training job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrainingMetric {
     ///
     /// The name of the result from the SageMaker training job.
@@ -1783,7 +1783,7 @@ impl cfn_resources::CfnResource for TrainingMetric {
 }
 
 /// Information about the user who created or modified an experiment, trial, trial    component, lineage group, project, or model card.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserContext {
     ///
     /// The domain associated with the user.

@@ -1,5 +1,5 @@
 /// Details about a filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFilter {
     ///
     /// A description of the filter.
@@ -50,7 +50,7 @@ pub struct CfnFilter {
     pub att_arn: CfnFilterarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFilterarn;
 impl CfnFilterarn {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl cfn_resources::CfnResource for CfnFilter {
 }
 
 /// Contains details on the time range used to filter findings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DateFilter {
     ///
     /// A timestamp representing the end of the time period filtered on.
@@ -117,7 +117,7 @@ impl cfn_resources::CfnResource for DateFilter {
 }
 
 /// Details on the criteria used to define the filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterCriteria {
     ///
     /// Details of the AWS account IDs used to filter findings.
@@ -506,7 +506,7 @@ impl cfn_resources::CfnResource for FilterCriteria {
 }
 
 /// An object that describes details of a map filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MapFilter {
     ///
     /// The operator to use when comparing values in the filter.
@@ -559,7 +559,7 @@ impl cfn_resources::CfnResource for MapFilter {
 }
 
 /// An object that describes the details of a number filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumberFilter {
     ///
     /// The lowest number to be included in the filter.
@@ -601,7 +601,7 @@ impl cfn_resources::CfnResource for NumberFilter {
 }
 
 /// Contains information on the details of a package filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PackageFilter {
     ///
     /// An object that contains details on the package architecture type to filter on.
@@ -707,7 +707,7 @@ impl cfn_resources::CfnResource for PackageFilter {
 }
 
 /// An object that describes the details of a port range filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortRangeFilter {
     /// The port number the port range begins at.
     ///
@@ -748,7 +748,7 @@ impl cfn_resources::CfnResource for PortRangeFilter {
 }
 
 /// An object that describes the details of a string filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringFilter {
     ///
     /// The operator to use when comparing values in the filter.

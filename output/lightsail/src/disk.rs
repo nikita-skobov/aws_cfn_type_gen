@@ -1,5 +1,5 @@
 /// The AWS::Lightsail::Disk resource specifies a disk that can be attached to     an Amazon Lightsail instance that is in the same AWS Region     and Availability Zone.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDisk {
     ///
     /// An array of add-ons for the disk.
@@ -106,7 +106,7 @@ pub struct CfnDisk {
     pub att_support_code: CfnDisksupportcode,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskattachedto;
 impl CfnDiskattachedto {
     pub fn att_name(&self) -> &'static str {
@@ -114,7 +114,7 @@ impl CfnDiskattachedto {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskattachmentstate;
 impl CfnDiskattachmentstate {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl CfnDiskattachmentstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskdiskarn;
 impl CfnDiskdiskarn {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl CfnDiskdiskarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDisklocationavailabilityzone;
 impl CfnDisklocationavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnDisklocationavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDisklocationregionname;
 impl CfnDisklocationregionname {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnDisklocationregionname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskpath;
 impl CfnDiskpath {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnDiskpath {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskresourcetype;
 impl CfnDiskresourcetype {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl CfnDiskresourcetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiskstate;
 impl CfnDiskstate {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl CfnDiskstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDisksupportcode;
 impl CfnDisksupportcode {
     pub fn att_name(&self) -> &'static str {
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for CfnDisk {
 }
 
 /// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AddOn {
     ///
     /// The add-on type (for example, AutoSnapshot).
@@ -239,7 +239,7 @@ pub struct AddOn {
     pub status: Option<AddOnStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AddOnStatusEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -275,7 +275,7 @@ impl cfn_resources::CfnResource for AddOn {
 }
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoSnapshotAddOn {
     ///
     /// The daily time when an automatic snapshot will be created.
@@ -311,7 +311,7 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
 }
 
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Location {
     /// Property description not available.
     ///
@@ -357,7 +357,7 @@ impl cfn_resources::CfnResource for Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

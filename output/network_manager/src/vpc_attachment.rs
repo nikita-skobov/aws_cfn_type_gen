@@ -1,5 +1,5 @@
 /// Creates a VPC attachment on an edge location of a core network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachment {
     ///
     /// The core network ID.
@@ -92,7 +92,7 @@ pub struct CfnVpcAttachment {
     pub att_updated_at: CfnVpcAttachmentupdatedat,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentattachmentid;
 impl CfnVpcAttachmentattachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl CfnVpcAttachmentattachmentid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentattachmenttype;
 impl CfnVpcAttachmentattachmenttype {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl CfnVpcAttachmentattachmenttype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentcorenetworkarn;
 impl CfnVpcAttachmentcorenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnVpcAttachmentcorenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentcreatedat;
 impl CfnVpcAttachmentcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl CfnVpcAttachmentcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentedgelocation;
 impl CfnVpcAttachmentedgelocation {
     pub fn att_name(&self) -> &'static str {
@@ -132,7 +132,7 @@ impl CfnVpcAttachmentedgelocation {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentowneraccountid;
 impl CfnVpcAttachmentowneraccountid {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl CfnVpcAttachmentowneraccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentproposedsegmentchangesegmentname;
 impl CfnVpcAttachmentproposedsegmentchangesegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnVpcAttachmentproposedsegmentchangesegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentresourcearn;
 impl CfnVpcAttachmentresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl CfnVpcAttachmentresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentsegmentname;
 impl CfnVpcAttachmentsegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnVpcAttachmentsegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentstate;
 impl CfnVpcAttachmentstate {
     pub fn att_name(&self) -> &'static str {
@@ -172,7 +172,7 @@ impl CfnVpcAttachmentstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcAttachmentupdatedat;
 impl CfnVpcAttachmentupdatedat {
     pub fn att_name(&self) -> &'static str {
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for CfnVpcAttachment {
 }
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProposedSegmentChange {
     ///
     /// The rule number in the policy document that applies to this change.
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the VPC options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcOptions {
     ///
     /// Indicates whether appliance mode is supported. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. The default value is false.

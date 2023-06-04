@@ -1,5 +1,5 @@
 /// The AWS::IoTAnalytics::Pipeline resource consumes messages from one or more channels and allows      you to process the messages before storing them in a data store. You must specify both a      channel and a datastore activity and, optionally, as many      as 23 additional activities in the pipelineActivities array. For more information, see            How to Use AWS IoT Analytics in the AWS IoT Analytics User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipeline {
     ///
     /// A list of "PipelineActivity" objects. Activities perform transformations on your messages,      such as removing, renaming or adding message attributes; filtering messages based on attribute      values; invoking your Lambda functions on messages for advanced processing; or performing      mathematical transformations to normalize device data.
@@ -56,7 +56,7 @@ pub struct CfnPipeline {
     pub att_id: CfnPipelineid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipelineid;
 impl CfnPipelineid {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 /// An activity that performs a transformation on a message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Activity {
     ///
     /// Adds other attributes based on existing attributes in the message.
@@ -289,7 +289,7 @@ impl cfn_resources::CfnResource for Activity {
 }
 
 /// An activity that adds other attributes based on existing attributes in the message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AddAttributes {
     ///
     /// A list of 1-50 "AttributeNameMapping"     objects that map an existing attribute to a new attribute.
@@ -395,7 +395,7 @@ impl cfn_resources::CfnResource for AddAttributes {
 }
 
 /// Determines the source of the messages to be processed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Channel {
     ///
     /// The name of the channel from which the messages are processed.
@@ -527,7 +527,7 @@ impl cfn_resources::CfnResource for Channel {
 }
 
 /// The datastore activity that specifies where to store the processed data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Datastore {
     ///
     /// The name of the data store where processed messages are stored.
@@ -621,7 +621,7 @@ impl cfn_resources::CfnResource for Datastore {
 }
 
 /// An activity that adds data from the AWS IoT device registry to your message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceRegistryEnrich {
     ///
     /// The name of the attribute that is added to the message.
@@ -825,7 +825,7 @@ impl cfn_resources::CfnResource for DeviceRegistryEnrich {
 }
 
 /// An activity that adds information from the AWS IoT Device Shadows service to a message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceShadowEnrich {
     ///
     /// The name of the attribute that is added to the message.
@@ -1029,7 +1029,7 @@ impl cfn_resources::CfnResource for DeviceShadowEnrich {
 }
 
 /// An activity that filters a message based on its attributes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     ///
     /// An expression that looks like an SQL WHERE clause that must return a Boolean value.
@@ -1159,7 +1159,7 @@ impl cfn_resources::CfnResource for Filter {
 }
 
 /// An activity that runs a Lambda function to modify the message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Lambda {
     ///
     /// The number of messages passed to the Lambda function for processing.
@@ -1326,7 +1326,7 @@ impl cfn_resources::CfnResource for Lambda {
 }
 
 /// An activity that computes an arithmetic expression using the message's attributes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Math {
     ///
     /// The name of the attribute that contains the result of the math operation.
@@ -1493,7 +1493,7 @@ impl cfn_resources::CfnResource for Math {
 }
 
 /// An activity that removes attributes from a message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemoveAttributes {
     ///
     /// A list of 1-50 attributes to remove from the message.
@@ -1608,7 +1608,7 @@ impl cfn_resources::CfnResource for RemoveAttributes {
 }
 
 /// Creates a new message using only the specified attributes     from the original message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelectAttributes {
     ///
     /// A list of the attributes to select from the message.
@@ -1729,7 +1729,7 @@ impl cfn_resources::CfnResource for SelectAttributes {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

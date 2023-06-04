@@ -1,5 +1,5 @@
 /// The AWS::ECS::Service resource creates an Amazon Elastic Container Service (Amazon ECS) service  that runs and maintains the requested number of tasks and associated load balancers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnService {
     ///
     /// The capacity provider strategy to use for the service.
@@ -314,7 +314,7 @@ pub struct CfnService {
     pub att_service_arn: CfnServiceservicearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceLaunchTypeEnum {
     /// EC2
     #[serde(rename = "EC2")]
@@ -335,7 +335,7 @@ impl Default for ServiceLaunchTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServicePropagateTagsEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -356,7 +356,7 @@ impl Default for ServicePropagateTagsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceSchedulingStrategyEnum {
     /// DAEMON
     #[serde(rename = "DAEMON")]
@@ -373,7 +373,7 @@ impl Default for ServiceSchedulingStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServicename;
 impl CfnServicename {
     pub fn att_name(&self) -> &'static str {
@@ -381,7 +381,7 @@ impl CfnServicename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceservicearn;
 impl CfnServiceservicearn {
     pub fn att_name(&self) -> &'static str {
@@ -429,7 +429,7 @@ impl cfn_resources::CfnResource for CfnService {
 }
 
 /// An object representing the networking details for a task or service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsVpcConfiguration {
     ///
     /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
@@ -474,7 +474,7 @@ pub struct AwsVpcConfiguration {
     pub subnets: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AwsVpcConfigurationAssignPublicIpEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -512,7 +512,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 /// If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be  created. New Auto Scaling group capacity providers can be created with the CreateCapacityProvider API  operation.
 ///
 /// To use an AWS Fargate capacity provider, specify either the FARGATE or   FARGATE_SPOT capacity providers. The AWS Fargate capacity providers are available to  all accounts and only need to be associated with a cluster to be used in a capacity provider strategy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
@@ -620,7 +620,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 /// You can only use the DeploymentAlarms method to detect failures when the 				DeploymentController is set to ECS (rolling 			update).
 ///
 /// For more information, see Rolling 				update in the         Amazon Elastic Container Service Developer Guide       .
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentAlarms {
     ///
     /// One or more CloudWatch alarm names. Use a "," to separate the alarms.
@@ -671,7 +671,7 @@ impl cfn_resources::CfnResource for DeploymentAlarms {
 }
 
 /// The deployment circuit breaker determines whether a 			service deployment will fail if the service can't reach a steady state. If it is turned on, a 			service deployment will transition to a failed state and stop launching new tasks. You 			can also configure Amazon ECS to roll back your service to the last completed deployment 			after a failure. For more information, see Rolling 				update in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentCircuitBreaker {
     ///
     /// Determines whether to use the deployment circuit breaker logic for the service.
@@ -711,7 +711,7 @@ impl cfn_resources::CfnResource for DeploymentCircuitBreaker {
 }
 
 /// The DeploymentConfiguration property specifies optional deployment parameters that control how many  tasks run during the deployment and the ordering of stopping and starting tasks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentConfiguration {
     ///
     /// Information about the CloudWatch alarms.
@@ -797,7 +797,7 @@ impl cfn_resources::CfnResource for DeploymentConfiguration {
 }
 
 /// The deployment controller to use for the service. For more information, see Amazon ECS deployment types in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentController {
     ///
     /// The deployment controller type to use. There are three deployment controller types available:
@@ -816,7 +816,7 @@ pub struct DeploymentController {
     pub cfn_type: Option<DeploymentControllerTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentControllerTypeEnum {
     /// CODE_DEPLOY
     #[serde(rename = "CODE_DEPLOY")]
@@ -856,7 +856,7 @@ impl cfn_resources::CfnResource for DeploymentController {
 /// If the service is using the CODE_DEPLOY deployment controller, the service is required to use  either an Application Load Balancer or Network Load Balancer. When you are creating an AWS CodeDeploy  deployment group, you specify two target groups (referred to as a targetGroupPair). Each target group  binds to a separate task set in the deployment. The load balancer can also have up to two listeners, a required  listener for production traffic and an optional listener that allows you to test new revisions of the service before  routing production traffic to it.
 ///
 /// Services with tasks that use the awsvpc network mode (for example, those with the Fargate launch  type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not supported.  Also, when you create any target groups for these services, you must choose ip as the target type, not   instance. Tasks that use the awsvpc network mode are associated with an elastic network  interface, not an Amazon EC2 instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancer {
     ///
     /// The name of the container (as it appears in a container definition) to associate with 			the load balancer.
@@ -936,7 +936,7 @@ impl cfn_resources::CfnResource for LoadBalancer {
 /// By default, containers use the same logging driver that the Docker daemon uses. 			However, the container might use a different logging driver than the Docker daemon by 			specifying a log driver configuration in the container definition. For more information 			about the options for different supported log drivers, see Configure logging 				drivers in the Docker documentation.
 ///
 /// Understand the following when specifying a log configuration for your 			containers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container.
@@ -987,7 +987,7 @@ pub struct LogConfiguration {
     pub secret_options: Option<Vec<Secret>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LogConfigurationLogDriverEnum {
     /// awsfirelens
     #[serde(rename = "awsfirelens")]
@@ -1043,7 +1043,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 }
 
 /// The NetworkConfiguration property specifies an object representing the network configuration for a  task or service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// The VPC subnets and security groups that are associated with a task.
@@ -1079,7 +1079,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// The PlacementConstraint property specifies an object representing a constraint on task placement in  the task definition. For more information, see Task Placement Constraints in the   Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. The expression can 			have a maximum length of 2000 characters. You can't specify an expression if the 			constraint type is distinctInstance. For more information, see Cluster query language in the Amazon Elastic Container Service Developer Guide.
@@ -1107,7 +1107,7 @@ pub struct PlacementConstraint {
     pub cfn_type: PlacementConstraintTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementConstraintTypeEnum {
     /// distinctInstance
     #[serde(rename = "distinctInstance")]
@@ -1139,7 +1139,7 @@ impl cfn_resources::CfnResource for PlacementConstraint {
 }
 
 /// The PlacementStrategy property specifies the task placement strategy for a task or service. For  more information, see Task Placement Strategies in the   Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementStrategy {
     ///
     /// The field to apply the placement strategy against. For the spread placement strategy, valid values  are instanceId (or host, which has the same effect), or any platform or custom attribute  that is applied to a container instance, such as attribute:ecs.availability-zone. For the   binpack placement strategy, valid values are CPU and MEMORY. For the   random placement strategy, this field is not used.
@@ -1167,7 +1167,7 @@ pub struct PlacementStrategy {
     pub cfn_type: PlacementStrategyTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementStrategyTypeEnum {
     /// binpack
     #[serde(rename = "binpack")]
@@ -1205,7 +1205,7 @@ impl cfn_resources::CfnResource for PlacementStrategy {
 /// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
 ///
 /// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -1253,7 +1253,7 @@ impl cfn_resources::CfnResource for Secret {
 /// Each name and port mapping must be unique within the namespace.
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceConnectClientAlias {
     ///
     /// The dnsName is the name that you use in the applications of client tasks 			to connect to this service. The name must be a valid DNS name but doesn't need to be 			fully-qualified. The name can include up to 127 characters. The name can include 			lowercase letters, numbers, underscores (_), hyphens (-), and periods (.). The name 			can't start with a hyphen.
@@ -1324,7 +1324,7 @@ impl cfn_resources::CfnResource for ServiceConnectClientAlias {
 /// The Service Connect configuration of your Amazon ECS service. The configuration for this 			service to discover and connect to services, and be discovered by, and connected from, 			other services within a namespace.
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceConnectConfiguration {
     ///
     /// Specifies whether to use Service Connect with this service.
@@ -1403,7 +1403,7 @@ impl cfn_resources::CfnResource for ServiceConnectConfiguration {
 }
 
 /// The Service Connect service object configuration. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceConnectService {
     ///
     /// The list of client aliases for this Service Connect service. You use these to assign 			names that can be used by client applications. The maximum number of client aliases that 			you can have in this list is 1.
@@ -1499,7 +1499,7 @@ impl cfn_resources::CfnResource for ServiceConnectService {
 }
 
 /// The ServiceRegistry property specifies details of the service registry. For more information, see   Service Discovery  in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceRegistry {
     ///
     /// The container name value to be used for your service discovery service. It's already 			specified in the task definition. If the task definition that your service task 			specifies uses the bridge or host network mode, you must 			specify a containerName and containerPort combination from the 			task definition. If the task definition that your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.
@@ -1571,7 +1571,7 @@ impl cfn_resources::CfnResource for ServiceRegistry {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

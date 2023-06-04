@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::NotebookInstanceLifecycleConfig resource creates       shell scripts that run when you create and/or start a notebook instance. For information       about notebook instance lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNotebookInstanceLifecycleConfig {
     ///
     /// The name of the lifecycle configuration.
@@ -50,7 +50,7 @@ pub struct CfnNotebookInstanceLifecycleConfig {
         CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname;
 impl CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl cfn_resources::CfnResource for CfnNotebookInstanceLifecycleConfig {
 }
 
 /// Specifies the notebook instance lifecycle configuration script. Each lifecycle       configuration script has a limit of 16384 characters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotebookInstanceLifecycleHook {
     ///
     /// A base64-encoded string that contains a shell script for a notebook instance lifecycle       configuration.

@@ -1,5 +1,5 @@
 /// The AWS::AccessAnalyzer::Analyzer resource specifies a new analyzer. The analyzer is an object that represents the IAM Access Analyzer feature. An analyzer is required      for Access Analyzer to become operational.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAnalyzer {
     ///
     /// The name of the analyzer.
@@ -54,7 +54,7 @@ pub struct CfnAnalyzer {
     pub att_arn: CfnAnalyzerarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AnalyzerTypeEnum {
     /// ACCOUNT
     #[serde(rename = "ACCOUNT")]
@@ -71,7 +71,7 @@ impl Default for AnalyzerTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAnalyzerarn;
 impl CfnAnalyzerarn {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl cfn_resources::CfnResource for CfnAnalyzer {
 }
 
 /// The criteria for an archive rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveRule {
     /// The criteria for the rule.
     ///
@@ -134,7 +134,7 @@ impl cfn_resources::CfnResource for ArchiveRule {
 /// The criteria that defines the rule.
 ///
 /// To learn about filter keys that you can use to create an archive rule, see AWS Identity and Access Management Access Analyzer filter keys in the     AWS Identity and Access Management User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     /// A "contains" condition to match for the rule.
     ///
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for Filter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

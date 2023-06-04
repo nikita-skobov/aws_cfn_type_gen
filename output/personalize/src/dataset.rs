@@ -7,7 +7,7 @@
 /// A dataset can be in one of the following states:
 ///
 /// To get the status of the dataset, call DescribeDataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataset {
     ///
     /// The Amazon Resource Name (ARN) of the dataset group.
@@ -87,7 +87,7 @@ pub struct CfnDataset {
     pub att_dataset_arn: CfnDatasetdatasetarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatasetdatasetarn;
 impl CfnDatasetdatasetarn {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 }
 
 /// The DataSource property type specifies Property description not available. for an AWS::Personalize::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSource {
     /// Property description not available.
     ///
@@ -200,7 +200,7 @@ impl cfn_resources::CfnResource for DataSource {
 /// Describes a job that imports training data from a data source (Amazon S3    bucket) to an Amazon Personalize dataset. For more information, see CreateDatasetImportJob.
 ///
 /// A dataset import job can be in one of the following states:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatasetImportJob {
     ///
     /// The Amazon S3 bucket that contains the training data to import.

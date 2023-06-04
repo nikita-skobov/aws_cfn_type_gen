@@ -1,7 +1,7 @@
 /// Creates an Amazon FSx for Lustre data repository association (DRA). A data       repository association is a link between a directory on the file system and       an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository       associations on a file system. Data repository associations are supported only       for file systems with the Persistent_2 deployment type.
 ///
 /// Each data repository association must have a unique Amazon FSx file       system directory and a unique S3 bucket or prefix associated with it. You       can configure a data repository association for automatic import only,       for automatic export only, or for both. To learn more about linking a       data repository to your file system, see       Linking your file system to an S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataRepositoryAssociation {
     ///
     /// A boolean flag indicating whether an import data repository task to import       metadata should run after the data repository association is created. The       task runs if this flag is set to true.
@@ -115,7 +115,7 @@ pub struct CfnDataRepositoryAssociation {
     pub att_resource_arn: CfnDataRepositoryAssociationresourcearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataRepositoryAssociationassociationid;
 impl CfnDataRepositoryAssociationassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnDataRepositoryAssociationassociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataRepositoryAssociationresourcearn;
 impl CfnDataRepositoryAssociationresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {
 /// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
 ///
 /// The AutoExportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoExportPolicy {
     ///
     /// The AutoExportPolicy can have the following event values:
@@ -252,7 +252,7 @@ impl cfn_resources::CfnResource for AutoExportPolicy {
 /// Describes the data repository association's automatic import policy.       The AutoImportPolicy defines how Amazon FSx keeps your file metadata and directory       listings up to date by importing changes to your Amazon FSx for Lustre file system       as you modify objects in a linked S3 bucket.
 ///
 /// The AutoImportPolicy is only supported on Amazon FSx for Lustre file systems       with a data repository association.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoImportPolicy {
     ///
     /// The AutoImportPolicy can have the following event values:
@@ -296,7 +296,7 @@ impl cfn_resources::CfnResource for AutoImportPolicy {
 }
 
 /// The configuration for an Amazon S3 data repository linked to an       Amazon FSx Lustre file system with a data repository association.       The configuration defines which file events (new, changed, or       deleted files or directories) are automatically imported from       the linked data repository to the file system or automatically       exported from the file system to the data repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3 {
     ///
     /// Describes a data repository association's automatic export policy. The       AutoExportPolicy defines the types of updated objects on the       file system that will be automatically exported to the data repository.       As you create, modify, or delete files, Amazon FSx for Lustre       automatically exports the defined changes asynchronously once your application finishes       modifying the file.
@@ -356,7 +356,7 @@ impl cfn_resources::CfnResource for S3 {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

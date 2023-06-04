@@ -11,7 +11,7 @@
 /// For more information, see Configuring Inventory Collection and Setting Up Systems     Manager Explorer to Display Data from Multiple Accounts and Regions in the     AWS Systems Manager User Guide.
 ///
 /// Important: The following Syntax section shows all fields that are    supported for a resource data sync. The Examples section below shows the    recommended way to specify configurations for each sync type. Please see the     Examples section when you create your resource data sync.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDataSync {
     ///
     /// The name of the S3 bucket where the aggregated data is stored.
@@ -152,7 +152,7 @@ pub struct CfnResourceDataSync {
     pub att_sync_name: CfnResourceDataSyncsyncname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceDataSyncSyncFormatEnum {
     /// JsonSerDe
     #[serde(rename = "JsonSerDe")]
@@ -165,7 +165,7 @@ impl Default for ResourceDataSyncSyncFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDataSyncsyncname;
 impl CfnResourceDataSyncsyncname {
     pub fn att_name(&self) -> &'static str {
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
 }
 
 /// Information about the AwsOrganizationsSource resource data sync source. A sync  source of this type can synchronize data from AWS Organizations or, if an AWS organization isn't  present, from multiple AWS Regions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsOrganizationsSource {
     ///
     /// If an AWS organization is present, this is either OrganizationalUnits or   EntireOrganization. For OrganizationalUnits, the data is aggregated  from a set of organization units. For EntireOrganization, the data is aggregated  from the entire AWS organization.
@@ -400,7 +400,7 @@ impl cfn_resources::CfnResource for AwsOrganizationsSource {
 }
 
 /// Information about the target S3 bucket for the resource data sync.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Destination {
     ///
     /// The name of the S3 bucket where the aggregated data is stored.
@@ -480,7 +480,7 @@ pub struct S3Destination {
     pub sync_format: S3DestinationSyncFormatEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3DestinationSyncFormatEnum {
     /// JsonSerDe
     #[serde(rename = "JsonSerDe")]
@@ -596,7 +596,7 @@ impl cfn_resources::CfnResource for S3Destination {
 }
 
 /// Information about the source of the data included in the resource data sync.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SyncSource {
     ///
     /// Information about the AwsOrganizationsSource resource data sync source. A sync source of    this type can synchronize data from AWS Organizations.

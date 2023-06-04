@@ -1,5 +1,5 @@
 /// Specifies an Application Load Balancer, a Network Load Balancer, or a Gateway Load     Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancer {
     ///
     /// The IP address type. The possible values are ipv4 (for IPv4 addresses) and     dualstack (for IPv4 and IPv6 addresses).    You can’t specify     dualstack for a load balancer with a UDP or TCP_UDP listener.
@@ -158,7 +158,7 @@ pub struct CfnLoadBalancer {
     pub att_load_balancer_name: CfnLoadBalancerloadbalancername,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoadBalancerIpAddressTypeEnum {
     /// dualstack
     #[serde(rename = "dualstack")]
@@ -175,7 +175,7 @@ impl Default for LoadBalancerIpAddressTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoadBalancerSchemeEnum {
     /// internal
     #[serde(rename = "internal")]
@@ -192,7 +192,7 @@ impl Default for LoadBalancerSchemeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoadBalancerTypeEnum {
     /// application
     #[serde(rename = "application")]
@@ -213,7 +213,7 @@ impl Default for LoadBalancerTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancercanonicalhostedzoneid;
 impl CfnLoadBalancercanonicalhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -221,7 +221,7 @@ impl CfnLoadBalancercanonicalhostedzoneid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerdnsname;
 impl CfnLoadBalancerdnsname {
     pub fn att_name(&self) -> &'static str {
@@ -229,7 +229,7 @@ impl CfnLoadBalancerdnsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerloadbalancerfullname;
 impl CfnLoadBalancerloadbalancerfullname {
     pub fn att_name(&self) -> &'static str {
@@ -237,7 +237,7 @@ impl CfnLoadBalancerloadbalancerfullname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerloadbalancername;
 impl CfnLoadBalancerloadbalancername {
     pub fn att_name(&self) -> &'static str {
@@ -266,7 +266,7 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
 }
 
 /// Specifies an attribute for an Application Load Balancer, a Network Load Balancer, or a     Gateway Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancerAttribute {
     ///
     /// The name of the attribute.
@@ -348,7 +348,7 @@ impl cfn_resources::CfnResource for LoadBalancerAttribute {
 }
 
 /// Specifies a subnet for a load balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubnetMapping {
     ///
     /// [Network Load Balancers] The allocation ID of the Elastic IP address for an    internet-facing load balancer.
@@ -419,7 +419,7 @@ impl cfn_resources::CfnResource for SubnetMapping {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// An image build version. An image is a customized, secure, and up-to-date “golden” server     image that is pre-installed and pre-configured with software and settings to meet specific     IT standards.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImage {
     ///
     /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
@@ -112,7 +112,7 @@ pub struct CfnImage {
     pub att_name: CfnImagename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImagearn;
 impl CfnImagearn {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnImagearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageimageid;
 impl CfnImageimageid {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnImageimageid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageimageuri;
 impl CfnImageimageuri {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnImageimageuri {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImagename;
 impl CfnImagename {
     pub fn att_name(&self) -> &'static str {
@@ -167,7 +167,7 @@ impl cfn_resources::CfnResource for CfnImage {
 }
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcrConfiguration {
     /// Property description not available.
     ///
@@ -207,7 +207,7 @@ impl cfn_resources::CfnResource for EcrConfiguration {
 }
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::Image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageScanningConfiguration {
     /// Property description not available.
     ///
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 }
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that are used to create the final image. You must have at least one build   		component to create a recipe, but test components are not required. If you have added tests,   		they run after the image is created, to ensure that the target image is functional and can   		be used reliably for launching Amazon EC2 instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageTestsConfiguration {
     ///
     /// Determines if tests should run after building the image. Image Builder defaults to enable tests 			to run following the image build, before image distribution.

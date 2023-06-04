@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::RobotApplication resource creates an AWS     RoboMaker robot application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplication {
     ///
     /// The current revision id.
@@ -85,7 +85,7 @@ pub struct CfnRobotApplication {
     pub att_current_revision_id: CfnRobotApplicationcurrentrevisionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplicationarn;
 impl CfnRobotApplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -93,7 +93,7 @@ impl CfnRobotApplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplicationcurrentrevisionid;
 impl CfnRobotApplicationcurrentrevisionid {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnRobotApplication {
 }
 
 /// Information about a robot software suite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RobotSoftwareSuite {
     ///
     /// The name of the robot software suite. General is the only supported value.
@@ -170,7 +170,7 @@ pub struct RobotSoftwareSuite {
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RobotSoftwareSuiteNameEnum {
     /// General
     #[serde(rename = "General")]
@@ -191,7 +191,7 @@ impl Default for RobotSoftwareSuiteNameEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RobotSoftwareSuiteVersionEnum {
     /// Dashing
     #[serde(rename = "Dashing")]
@@ -231,7 +231,7 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
 }
 
 /// Information about a source configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConfig {
     ///
     /// The target processor architecture for the application.
@@ -281,7 +281,7 @@ pub struct SourceConfig {
     pub s3_key: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceConfigArchitectureEnum {
     /// ARM64
     #[serde(rename = "ARM64")]

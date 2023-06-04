@@ -5,7 +5,7 @@
 /// A launch template can contain some or all of the configuration information to launch an     instance. When you launch an instance using a launch template, instance properties that are     not specified in the launch template use default values, except the ImageId     property, which has no default value. If you do not specify an AMI ID for the launch     template ImageId property, you must specify an AMI ID for the instance       ImageId property.
 ///
 /// For more information, see Launch an instance from a       launch template in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchTemplate {
     ///
     /// The information for the launch template.
@@ -73,7 +73,7 @@ pub struct CfnLaunchTemplate {
     pub att_latest_version_number: CfnLaunchTemplatelatestversionnumber,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchTemplatedefaultversionnumber;
 impl CfnLaunchTemplatedefaultversionnumber {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnLaunchTemplatedefaultversionnumber {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchTemplatelatestversionnumber;
 impl CfnLaunchTemplatelatestversionnumber {
     pub fn att_name(&self) -> &'static str {
@@ -144,7 +144,7 @@ impl cfn_resources::CfnResource for CfnLaunchTemplate {
 }
 
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorCount {
     ///
     /// The maximum number of accelerators. To specify no maximum limit, omit this     parameter. To exclude accelerator-enabled instance types, set Max to     0.
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for AcceleratorCount {
 }
 
 /// The minimum and maximum amount of total accelerator memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorTotalMemoryMiB {
     ///
     /// The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -228,7 +228,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiB {
 }
 
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaselineEbsBandwidthMbps {
     ///
     /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit     this parameter.
@@ -272,7 +272,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbps {
 /// Information about a block device mapping for an Amazon EC2 launch template.
 ///
 /// BlockDeviceMapping is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name (for example, /dev/sdh or xvdh).
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 /// Specifies an instance's Capacity Reservation targeting option. You can specify only one     option at a time.
 ///
 /// CapacityReservationSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityReservationSpecification {
     ///
     /// Indicates the instance's Capacity Reservation preferences. Possible preferences       include:
@@ -374,7 +374,7 @@ pub struct CapacityReservationSpecification {
     pub capacity_reservation_target: Option<CapacityReservationTarget>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationSpecificationCapacityReservationPreferenceEnum {
     /// none
     #[serde(rename = "none")]
@@ -412,7 +412,7 @@ impl cfn_resources::CfnResource for CapacityReservationSpecification {
 /// Specifies a target Capacity Reservation.
 ///
 /// CapacityReservationTarget is a property of the Amazon EC2 LaunchTemplate LaunchTemplateData property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityReservationTarget {
     ///
     /// The ID of the Capacity Reservation in which to run the instance.
@@ -456,7 +456,7 @@ impl cfn_resources::CfnResource for CapacityReservationTarget {
 /// Specifies the CPU options for an instance. For more information, see Optimize       CPU options in the Amazon Elastic Compute Cloud User     Guide.
 ///
 /// CpuOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CpuOptions {
     ///
     /// Indicates whether to enable the instance for AMD SEV-SNP. AMD SEV-SNP is supported       with M6a, R6a, and C6a instance types only. For more information, see       AMD SEV-SNP.
@@ -497,7 +497,7 @@ pub struct CpuOptions {
     pub threads_per_core: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CpuOptionsAmdSevSnpEnum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -531,7 +531,7 @@ impl cfn_resources::CfnResource for CpuOptions {
 /// Specifies the credit option for CPU usage of a T2, T3, or T3a instance.
 ///
 /// CreditSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreditSpecification {
     ///
     /// The credit option for CPU usage of a T instance.
@@ -565,7 +565,7 @@ impl cfn_resources::CfnResource for CreditSpecification {
 /// Parameters for a block device for an EBS volume in an Amazon EC2 launch template.
 ///
 /// Ebs is a property of AWS::EC2::LaunchTemplate BlockDeviceMapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ebs {
     ///
     /// Indicates whether the EBS volume is deleted on instance termination.
@@ -678,7 +678,7 @@ pub struct Ebs {
     pub volume_type: Option<EbsVolumeTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EbsVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -732,7 +732,7 @@ impl cfn_resources::CfnResource for Ebs {
 /// Specifies a specification for an Elastic GPU for an Amazon EC2 launch template.
 ///
 /// ElasticGpuSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticGpuSpecification {
     ///
     /// The type of Elastic Graphics accelerator. For more information about the values to specify for       Type, see Elastic Graphics Basics, specifically the Elastic Graphics accelerator column, in the       Amazon Elastic Compute Cloud User Guide for Windows Instances.
@@ -762,7 +762,7 @@ impl cfn_resources::CfnResource for ElasticGpuSpecification {
 }
 
 /// Indicates whether the instance is enabled for AWS Nitro       Enclaves.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnclaveOptions {
     ///
     /// If this parameter is set to true, the instance is enabled for AWS Nitro Enclaves; otherwise, it is not enabled for AWS Nitro       Enclaves.
@@ -794,7 +794,7 @@ impl cfn_resources::CfnResource for EnclaveOptions {
 /// Specifies whether your instance is configured for hibernation. This parameter is valid     only if the instance meets the hibernation       prerequisites. For more information, see Hibernate Your Instance in the       Amazon EC2 User Guide.
 ///
 /// HibernationOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HibernationOptions {
     ///
     /// If you set this parameter to true, the instance is enabled for       hibernation.
@@ -830,7 +830,7 @@ impl cfn_resources::CfnResource for HibernationOptions {
 /// If you are creating the launch template for use with an Amazon EC2 Auto Scaling group,     you can specify either the name or the ARN of the instance profile, but not both.
 ///
 /// IamInstanceProfile is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IamInstanceProfile {
     ///
     /// The Amazon Resource Name (ARN) of the instance profile.
@@ -874,7 +874,7 @@ impl cfn_resources::CfnResource for IamInstanceProfile {
 /// Specifies the market (purchasing) option for an instance.
 ///
 /// InstanceMarketOptions is a property of the AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceMarketOptions {
     ///
     /// The market type.
@@ -903,7 +903,7 @@ pub struct InstanceMarketOptions {
     pub spot_options: Option<SpotOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceMarketOptionsMarketTypeEnum {
     /// spot
     #[serde(rename = "spot")]
@@ -941,7 +941,7 @@ impl cfn_resources::CfnResource for InstanceMarketOptions {
 /// To limit the list of instance types from which Amazon EC2 can identify matching instance types,      you can use one of the following parameters, but not both in the same request:
 ///
 /// For more information, see Attribute-based instance type selection for EC2 Fleet, Attribute-based instance type selection for Spot Fleet, and Spot        placement score in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceRequirements {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on     an instance.
@@ -1326,7 +1326,7 @@ pub struct InstanceRequirements {
     pub vcpu_count: Option<VCpuCount>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsBareMetalEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1347,7 +1347,7 @@ impl Default for InstanceRequirementsBareMetalEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsBurstablePerformanceEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1368,7 +1368,7 @@ impl Default for InstanceRequirementsBurstablePerformanceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsLocalStorageEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1454,7 +1454,7 @@ impl cfn_resources::CfnResource for InstanceRequirements {
 /// Specifies an IPv4 prefix for a network interface.
 ///
 /// Ipv4PrefixSpecification is a property of AWS::EC2::LaunchTemplate NetworkInterface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ipv4PrefixSpecification {
     ///
     /// The IPv4 prefix. For information, see       Assigning prefixes to Amazon EC2 network interfaces in the         Amazon Elastic Compute Cloud User Guide.
@@ -1486,7 +1486,7 @@ impl cfn_resources::CfnResource for Ipv4PrefixSpecification {
 /// Specifies an IPv6 address in an Amazon EC2 launch template.
 ///
 /// Ipv6Add is a property of AWS::EC2::LaunchTemplate NetworkInterface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ipv6Add {
     ///
     /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You       can't use this option if you're specifying a number of IPv6 addresses.
@@ -1518,7 +1518,7 @@ impl cfn_resources::CfnResource for Ipv6Add {
 /// Specifies an IPv6 prefix for a network interface.
 ///
 /// Ipv6PrefixSpecification is a property of AWS::EC2::LaunchTemplate NetworkInterface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ipv6PrefixSpecification {
     ///
     /// The IPv6 prefix.
@@ -1548,7 +1548,7 @@ impl cfn_resources::CfnResource for Ipv6PrefixSpecification {
 }
 
 /// The information to include in the launch template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateData {
     ///
     /// The block device mapping.
@@ -1958,7 +1958,7 @@ pub struct LaunchTemplateData {
     pub user_data: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
     /// stop
     #[serde(rename = "stop")]
@@ -1975,7 +1975,7 @@ impl Default for LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LaunchTemplateDataInstanceTypeEnum {
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
@@ -4593,7 +4593,7 @@ impl cfn_resources::CfnResource for LaunchTemplateData {
 /// Specifies an elastic inference accelerator.
 ///
 /// LaunchTemplateElasticInferenceAccelerator is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// The number of elastic inference accelerators to attach to the instance.
@@ -4650,7 +4650,7 @@ impl cfn_resources::CfnResource for LaunchTemplateElasticInferenceAccelerator {
 /// Specifies the tags to apply to the launch template during creation.
 ///
 /// LaunchTemplateTagSpecification is a property of AWS::EC2::LaunchTemplate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateTagSpecification {
     ///
     /// The type of resource. To tag the launch template, ResourceType must be       launch-template.
@@ -4679,7 +4679,7 @@ pub struct LaunchTemplateTagSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LaunchTemplateTagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
@@ -5045,7 +5045,7 @@ impl cfn_resources::CfnResource for LaunchTemplateTagSpecification {
 /// Specifies a license configuration for an instance.
 ///
 /// LicenseSpecification is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LicenseSpecification {
     ///
     /// The Amazon Resource Name (ARN) of the license configuration.
@@ -5075,7 +5075,7 @@ impl cfn_resources::CfnResource for LicenseSpecification {
 }
 
 /// The maintenance options of your instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceOptions {
     ///
     /// Disables the automatic recovery behavior of your instance or sets it to       default.
@@ -5092,7 +5092,7 @@ pub struct MaintenanceOptions {
     pub auto_recovery: Option<MaintenanceOptionsAutoRecoveryEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaintenanceOptionsAutoRecoveryEnum {
     /// default
     #[serde(rename = "default")]
@@ -5124,7 +5124,7 @@ impl cfn_resources::CfnResource for MaintenanceOptions {
 }
 
 /// The minimum and maximum amount of memory per vCPU, in GiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryGiBPerVCpu {
     ///
     /// The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this     parameter.
@@ -5166,7 +5166,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpu {
 }
 
 /// The minimum and maximum amount of memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryMiB {
     ///
     /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -5210,7 +5210,7 @@ impl cfn_resources::CfnResource for MemoryMiB {
 /// The metadata options for the instance. For more information, see Instance metadata and user data in the     Amazon EC2 User Guide.
 ///
 /// MetadataOptions is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetadataOptions {
     ///
     /// Enables or disables the HTTP metadata endpoint on your instances. If the parameter is       not specified, the default state is enabled.
@@ -5295,7 +5295,7 @@ pub struct MetadataOptions {
     pub instance_metadata_tags: Option<MetadataOptionsInstanceMetadataTagsEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsHttpEndpointEnum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -5312,7 +5312,7 @@ impl Default for MetadataOptionsHttpEndpointEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsHttpProtocolIpv6Enum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -5329,7 +5329,7 @@ impl Default for MetadataOptionsHttpProtocolIpv6Enum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsHttpTokensEnum {
     /// optional
     #[serde(rename = "optional")]
@@ -5346,7 +5346,7 @@ impl Default for MetadataOptionsHttpTokensEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetadataOptionsInstanceMetadataTagsEnum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -5380,7 +5380,7 @@ impl cfn_resources::CfnResource for MetadataOptions {
 /// Specifies whether detailed monitoring is enabled for an instance. For more information     about detailed monitoring, see Enable or turn off detailed       monitoring for your instances in the Amazon EC2 User       Guide.
 ///
 /// Monitoring is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Monitoring {
     ///
     /// Specify true to enable detailed monitoring. Otherwise, basic monitoring       is enabled.
@@ -5410,7 +5410,7 @@ impl cfn_resources::CfnResource for Monitoring {
 }
 
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkBandwidthGbps {
     ///
     /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this     parameter.
@@ -5454,7 +5454,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbps {
 /// Specifies the parameters for a network interface.
 ///
 /// NetworkInterface is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterface {
     ///
     /// Indicates whether to associate a Carrier IP address with eth0 for a new network       interface.
@@ -5706,7 +5706,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 }
 
 /// The minimum and maximum number of network interfaces.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterfaceCount {
     ///
     /// The maximum number of network interfaces. To specify no maximum limit, omit this     parameter.
@@ -5750,7 +5750,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCount {
 /// Specifies the placement of an instance.
 ///
 /// Placement is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Placement {
     ///
     /// The affinity setting for an instance on a Dedicated Host.
@@ -5863,7 +5863,7 @@ pub struct Placement {
     pub tenancy: Option<PlacementTenancyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementTenancyEnum {
     /// dedicated
     #[serde(rename = "dedicated")]
@@ -5899,7 +5899,7 @@ impl cfn_resources::CfnResource for Placement {
 }
 
 /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries should be handled. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrivateDnsNameOptions {
     ///
     /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA       records.
@@ -5940,7 +5940,7 @@ pub struct PrivateDnsNameOptions {
     pub hostname_type: Option<PrivateDnsNameOptionsHostnameTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PrivateDnsNameOptionsHostnameTypeEnum {
     /// ip-name
     #[serde(rename = "ip-name")]
@@ -5974,7 +5974,7 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptions {
 /// Specifies a secondary private IPv4 address for a network interface.
 ///
 /// PrivateIpAdd is a property of AWS::EC2::LaunchTemplate NetworkInterface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrivateIpAdd {
     ///
     /// Indicates whether the private IPv4 address is the primary private IPv4 address. Only       one IPv4 address can be designated as primary.
@@ -6018,7 +6018,7 @@ impl cfn_resources::CfnResource for PrivateIpAdd {
 /// Specifies options for Spot Instances.
 ///
 /// SpotOptions is a property of AWS::EC2::LaunchTemplate InstanceMarketOptions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotOptions {
     ///
     /// Deprecated.
@@ -6093,7 +6093,7 @@ pub struct SpotOptions {
     pub valid_until: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotOptionsInstanceInterruptionBehaviorEnum {
     /// hibernate
     #[serde(rename = "hibernate")]
@@ -6114,7 +6114,7 @@ impl Default for SpotOptionsInstanceInterruptionBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotOptionsSpotInstanceTypeEnum {
     /// one-time
     #[serde(rename = "one-time")]
@@ -6152,7 +6152,7 @@ impl cfn_resources::CfnResource for SpotOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -6192,7 +6192,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Specifies the tags to apply to a resource when the resource is created for the launch     template.
 ///
 /// TagSpecification is a property type of TagSpecifications. TagSpecifications is a property of AWS::EC2::LaunchTemplate LaunchTemplateData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag.
@@ -6225,7 +6225,7 @@ pub struct TagSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
@@ -6589,7 +6589,7 @@ impl cfn_resources::CfnResource for TagSpecification {
 }
 
 /// The minimum and maximum amount of total local storage, in GB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalLocalStorageGB {
     ///
     /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this     parameter.
@@ -6631,7 +6631,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGB {
 }
 
 /// The minimum and maximum number of vCPUs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VCpuCount {
     ///
     /// The maximum number of vCPUs. To specify no maximum limit, omit this parameter.

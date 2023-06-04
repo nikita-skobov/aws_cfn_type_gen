@@ -1,7 +1,7 @@
 /// Registers your account as a publisher of public extensions in the CloudFormation registry. Public  extensions are available for use by all CloudFormation users.
 ///
 /// For information on requirements for registering as a public extension publisher, see Registering your account   to publish CloudFormation extensions in the CloudFormation CLI User   Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublisher {
     ///
     /// Whether you accept the Terms and Conditions for publishing extensions in the CloudFormation registry. You must accept the  terms and conditions in order to register to publish public extensions to the CloudFormation  registry.
@@ -49,7 +49,7 @@ pub struct CfnPublisher {
     pub att_publisher_status: CfnPublisherpublisherstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublisheridentityprovider;
 impl CfnPublisheridentityprovider {
     pub fn att_name(&self) -> &'static str {
@@ -57,7 +57,7 @@ impl CfnPublisheridentityprovider {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublisherpublisherid;
 impl CfnPublisherpublisherid {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnPublisherpublisherid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublisherpublisherprofile;
 impl CfnPublisherpublisherprofile {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnPublisherpublisherprofile {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublisherpublisherstatus;
 impl CfnPublisherpublisherstatus {
     pub fn att_name(&self) -> &'static str {

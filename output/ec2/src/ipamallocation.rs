@@ -1,5 +1,5 @@
 /// In IPAM, an allocation is a CIDR assignment from an IPAM pool to another IPAM pool or to a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMAllocation {
     ///
     /// The CIDR you would like to allocate from the IPAM pool. Note the following:
@@ -60,7 +60,7 @@ pub struct CfnIPAMAllocation {
     pub att_ipam_pool_allocation_id: CfnIPAMAllocationipampoolallocationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMAllocationipampoolallocationid;
 impl CfnIPAMAllocationipampoolallocationid {
     pub fn att_name(&self) -> &'static str {

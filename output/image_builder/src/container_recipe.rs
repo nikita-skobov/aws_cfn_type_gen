@@ -1,5 +1,5 @@
 /// Creates a new container recipe. Container recipes define how images are configured, 			tested, and assessed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainerRecipe {
     ///
     /// Build and test components that are included in the container recipe. 			Recipes require a minimum of one build component, and can 			have a maximum of 20 build and test components in any combination.
@@ -206,7 +206,7 @@ pub struct CfnContainerRecipe {
     pub att_name: CfnContainerRecipename,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ContainerRecipeContainerTypeEnum {
     /// DOCKER
     #[serde(rename = "DOCKER")]
@@ -219,7 +219,7 @@ impl Default for ContainerRecipeContainerTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainerRecipearn;
 impl CfnContainerRecipearn {
     pub fn att_name(&self) -> &'static str {
@@ -227,7 +227,7 @@ impl CfnContainerRecipearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContainerRecipename;
 impl CfnContainerRecipename {
     pub fn att_name(&self) -> &'static str {
@@ -341,7 +341,7 @@ impl cfn_resources::CfnResource for CfnContainerRecipe {
 }
 
 /// Configuration details of the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -384,7 +384,7 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 }
 
 /// The ComponentParameter property type specifies Property description not available. for an AWS::ImageBuilder::ContainerRecipe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentParameter {
     /// Property description not available.
     ///
@@ -422,7 +422,7 @@ impl cfn_resources::CfnResource for ComponentParameter {
 }
 
 /// Amazon EBS-specific block device mapping specifications.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Use to configure delete on termination of the associated device.
@@ -543,7 +543,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     pub volume_type: Option<EbsInstanceBlockDeviceSpecificationVolumeTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -693,7 +693,7 @@ impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
 }
 
 /// Defines block device mappings for the instance used to configure your image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceBlockDeviceMapping {
     ///
     /// The device to which these mappings apply.
@@ -839,7 +839,7 @@ impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
 }
 
 /// Defines a custom base AMI and block device mapping configurations of an instance    used for building and testing container images.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceConfiguration {
     ///
     /// Defines the block devices to attach for building an instance from this Image Builder 			AMI.
@@ -907,7 +907,7 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
 }
 
 /// The container repository where the output container image is stored.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetContainerRepository {
     ///
     /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
@@ -940,7 +940,7 @@ pub struct TargetContainerRepository {
     pub service: Option<TargetContainerRepositoryServiceEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TargetContainerRepositoryServiceEnum {
     /// ECR
     #[serde(rename = "ECR")]

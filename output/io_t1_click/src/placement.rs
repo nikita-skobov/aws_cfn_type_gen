@@ -1,5 +1,5 @@
 /// The AWS::IoT1Click::Placement resource creates a placement to be associated with an AWS IoT 1-Click project. A placement is an instance of a device in a location.      For more information, see Projects, Templates, and Placements in the AWS IoT 1-Click Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlacement {
     ///
     /// The devices to associate with the placement, as defined by a mapping of zero or more key-value pairs wherein the key is a template name and the value is a device ID.
@@ -55,7 +55,7 @@ pub struct CfnPlacement {
     pub att_project_name: CfnPlacementprojectname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlacementplacementname;
 impl CfnPlacementplacementname {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnPlacementplacementname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlacementprojectname;
 impl CfnPlacementprojectname {
     pub fn att_name(&self) -> &'static str {

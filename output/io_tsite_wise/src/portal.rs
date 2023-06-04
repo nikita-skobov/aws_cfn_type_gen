@@ -1,5 +1,5 @@
 /// Creates a portal, which can contain projects and dashboards. Before you can create a       portal, you must enable IAM Identity Center. AWS IoT SiteWise Monitor uses IAM Identity Center to manage user permissions. For more    information, see Enabling      IAM Identity Center in the AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortal {
     ///
     /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
@@ -115,7 +115,7 @@ pub struct CfnPortal {
     pub att_portal_start_url: CfnPortalportalstarturl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortalportalarn;
 impl CfnPortalportalarn {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnPortalportalarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortalportalclientid;
 impl CfnPortalportalclientid {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl CfnPortalportalclientid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortalportalid;
 impl CfnPortalportalid {
     pub fn att_name(&self) -> &'static str {
@@ -139,7 +139,7 @@ impl CfnPortalportalid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortalportalstarturl;
 impl CfnPortalportalstarturl {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl cfn_resources::CfnResource for CfnPortal {
 }
 
 /// Contains the configuration information of an alarm created in an AWS IoT SiteWise Monitor portal.  You can use the alarm to monitor an asset property and get notified when the asset property value is outside a specified range.  For more information, see Monitoring with alarms in the         AWS IoT SiteWise Application Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Alarms {
     ///
     /// The ARN of the IAM role that allows the alarm to perform actions and access AWS    resources and services, such as AWS IoT Events.
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for Alarms {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

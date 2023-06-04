@@ -1,5 +1,5 @@
 /// Associates a resource      with an application.      Both the resource and the application can be specified either      by ID or name.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceAssociation {
     ///
     /// The name or ID      of the application.
@@ -44,7 +44,7 @@ pub struct CfnResourceAssociation {
     pub att_resource_arn: CfnResourceAssociationresourcearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceAssociationapplicationarn;
 impl CfnResourceAssociationapplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl CfnResourceAssociationapplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceAssociationid;
 impl CfnResourceAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -60,7 +60,7 @@ impl CfnResourceAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceAssociationresourcearn;
 impl CfnResourceAssociationresourcearn {
     pub fn att_name(&self) -> &'static str {

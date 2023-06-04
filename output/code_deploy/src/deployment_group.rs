@@ -1,5 +1,5 @@
 /// The AWS::CodeDeploy::DeploymentGroup resource creates an AWS CodeDeploy deployment group that specifies which instances your application revisions    are deployed to, along with other deployment options. For more information, see CreateDeploymentGroup in the CodeDeploy API     Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeploymentGroup {
     ///
     /// Information about the Amazon CloudWatch alarms that are associated with the    deployment group.
@@ -356,7 +356,7 @@ impl cfn_resources::CfnResource for CfnDeploymentGroup {
 }
 
 /// The Alarm property type specifies a CloudWatch alarm to use for an     AWS CodeDeploy deployment group. The Alarm property of the CodeDeploy DeploymentGroup AlarmConfiguration property contains a list of     Alarm property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Alarm {
     ///
     /// The name of the alarm. Maximum length is 255 characters. Each alarm name can be used       only once in a list of alarms.
@@ -386,7 +386,7 @@ impl cfn_resources::CfnResource for Alarm {
 }
 
 /// The AlarmConfiguration property type configures CloudWatch alarms    for an AWS CodeDeploy deployment group. AlarmConfiguration is a    property of the DeploymentGroup resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlarmConfiguration {
     ///
     /// A list of alarms configured for the deployment or deployment group. A maximum of 10       alarms can be added.
@@ -444,7 +444,7 @@ impl cfn_resources::CfnResource for AlarmConfiguration {
 /// The AutoRollbackConfiguration property type configures automatic rollback for    an AWS CodeDeploy deployment group when a deployment is not completed successfully.    For more information, see Automatic Rollbacks in the AWS CodeDeploy User    Guide.
 ///
 /// AutoRollbackConfiguration is a property of the DeploymentGroup resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoRollbackConfiguration {
     ///
     /// Indicates whether a defined automatic rollback configuration is currently       enabled.
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for AutoRollbackConfiguration {
 }
 
 /// Information about blue/green deployment options for a deployment group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlueGreenDeploymentConfiguration {
     ///
     /// Information about the action to take when newly provisioned instances are ready to       receive traffic in a blue/green deployment.
@@ -552,7 +552,7 @@ impl cfn_resources::CfnResource for BlueGreenDeploymentConfiguration {
 }
 
 /// Information about whether instances in the original environment are terminated when a       blue/green deployment is successful. BlueInstanceTerminationOption does not       apply to Lambda deployments.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlueInstanceTerminationOption {
     ///
     /// The action to take on instances in the original environment after a successful       blue/green deployment.
@@ -587,7 +587,7 @@ pub struct BlueInstanceTerminationOption {
     pub termination_wait_time_in_minutes: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BlueInstanceTerminationOptionActionEnum {
     /// KEEP_ALIVE
     #[serde(rename = "KEEP_ALIVE")]
@@ -619,7 +619,7 @@ impl cfn_resources::CfnResource for BlueInstanceTerminationOption {
 }
 
 /// Deployment is a property of the DeploymentGroup resource that specifies an AWS CodeDeploy application    revision to be deployed to instances in the deployment group. If you specify an application    revision, your target revision is deployed as soon as the provisioning process is complete.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Deployment {
     ///
     /// A comment about the deployment.
@@ -680,7 +680,7 @@ impl cfn_resources::CfnResource for Deployment {
 }
 
 /// Information about how traffic is rerouted to instances in a replacement environment in       a blue/green deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentReadyOption {
     ///
     /// Information about when to reroute traffic from an original environment to a replacement    environment in a blue/green deployment.
@@ -711,7 +711,7 @@ pub struct DeploymentReadyOption {
     pub wait_time_in_minutes: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentReadyOptionActionOnTimeoutEnum {
     /// CONTINUE_DEPLOYMENT
     #[serde(rename = "CONTINUE_DEPLOYMENT")]
@@ -743,7 +743,7 @@ impl cfn_resources::CfnResource for DeploymentReadyOption {
 }
 
 /// Information about the type of deployment, either in-place or blue/green, you want to       run and whether to route deployment traffic behind a load balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentStyle {
     ///
     /// Indicates whether to route deployment traffic behind a load balancer.
@@ -776,7 +776,7 @@ pub struct DeploymentStyle {
     pub deployment_type: Option<DeploymentStyleDeploymentTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentStyleDeploymentOptionEnum {
     /// WITH_TRAFFIC_CONTROL
     #[serde(rename = "WITH_TRAFFIC_CONTROL")]
@@ -793,7 +793,7 @@ impl Default for DeploymentStyleDeploymentOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentStyleDeploymentTypeEnum {
     /// BLUE_GREEN
     #[serde(rename = "BLUE_GREEN")]
@@ -827,7 +827,7 @@ impl cfn_resources::CfnResource for DeploymentStyle {
 /// Information about an Amazon EC2 tag filter.
 ///
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EC2TagFilter {
     ///
     /// The tag filter key.
@@ -870,7 +870,7 @@ pub struct EC2TagFilter {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EC2TagFilterTypeEnum {
     /// KEY_AND_VALUE
     #[serde(rename = "KEY_AND_VALUE")]
@@ -908,7 +908,7 @@ impl cfn_resources::CfnResource for EC2TagFilter {
 /// The EC2TagSet property type specifies information about groups of tags    applied to Amazon EC2 instances. The deployment group includes only Amazon EC2 instances identified by all the tag groups. EC2TagSet cannot be    used in the same template as EC2TagFilter.
 ///
 /// For information about using tags and tag groups to help manage your Amazon EC2    instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EC2TagSet {
     ///
     /// The Amazon EC2 tags that are already applied to Amazon EC2 instances    that you want to include in the deployment group. CodeDeploy includes all Amazon EC2 instances identified by any of the tags you specify in this deployment group.
@@ -944,7 +944,7 @@ impl cfn_resources::CfnResource for EC2TagSet {
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
 ///
 /// EC2TagSet is a property of the DeploymentGroup resource type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EC2TagSetListObject {
     ///
     /// A list that contains other lists of Amazon EC2 instance tag groups. For an       instance to be included in the deployment group, it must be identified by all of the tag       groups in the list.
@@ -974,7 +974,7 @@ impl cfn_resources::CfnResource for EC2TagSetListObject {
 }
 
 /// Contains the service and cluster names used to identify an Amazon ECS       deployment's target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ECSService {
     ///
     /// The name of the cluster that the Amazon ECS service is associated with.
@@ -1018,7 +1018,7 @@ impl cfn_resources::CfnResource for ECSService {
 /// If you specify the ELBInfo property, the     DeploymentStyle.DeploymentOption property must be set to     WITH_TRAFFIC_CONTROL for AWS CodeDeploy to route your traffic using    the specified load balancers.
 ///
 /// ELBInfo is a property of the AWS CodeDeploy DeploymentGroup LoadBalancerInfo property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ELBInfo {
     ///
     /// For blue/green deployments, the name of the load balancer that is used to route traffic    from original instances to replacement instances in a blue/green deployment. For in-place    deployments, the name of the load balancer that instances are deregistered from so they are    not serving traffic during a deployment, and then re-registered with after the deployment is    complete.
@@ -1050,7 +1050,7 @@ impl cfn_resources::CfnResource for ELBInfo {
 }
 
 /// GitHubLocation is a property of the CodeDeploy DeploymentGroup Revision property that specifies the    location of an application revision that is stored in GitHub.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GitHubLocation {
     ///
     /// The SHA1 commit ID of the GitHub commit that represents the bundled artifacts for the       application revision.
@@ -1092,7 +1092,7 @@ impl cfn_resources::CfnResource for GitHubLocation {
 }
 
 /// Information about the instances that belong to the replacement environment in a       blue/green deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GreenFleetProvisioningOption {
     ///
     /// The method used to add instances to a replacement environment.
@@ -1111,7 +1111,7 @@ pub struct GreenFleetProvisioningOption {
     pub action: Option<GreenFleetProvisioningOptionActionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GreenFleetProvisioningOptionActionEnum {
     /// COPY_AUTO_SCALING_GROUP
     #[serde(rename = "COPY_AUTO_SCALING_GROUP")]
@@ -1147,7 +1147,7 @@ impl cfn_resources::CfnResource for GreenFleetProvisioningOption {
 /// For AWS CloudFormation to use the properties specified in LoadBalancerInfo,    the DeploymentStyle.DeploymentOption property must be set to     WITH_TRAFFIC_CONTROL. If DeploymentStyle.DeploymentOption is not    set to WITH_TRAFFIC_CONTROL, AWS CloudFormation ignores any settings specified    in LoadBalancerInfo.
 ///
 /// LoadBalancerInfo is a property of the DeploymentGroup resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancerInfo {
     ///
     /// An array that contains information about the load balancer to use for load balancing       in a deployment. In Elastic Load Balancing, load balancers are used with Classic Load       Balancers.
@@ -1208,7 +1208,7 @@ impl cfn_resources::CfnResource for LoadBalancerInfo {
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
 ///
 /// OnPremisesTagSet is a property of the DeploymentGroup resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnPremisesTagSet {
     ///
     /// A list that contains other lists of on-premises instance tag groups. For an instance to be    included in the deployment group, it must be identified by all of the tag groups in the    list.
@@ -1242,7 +1242,7 @@ impl cfn_resources::CfnResource for OnPremisesTagSet {
 /// The OnPremisesTagSetListObject property type specifies lists of on-premises    instance tag groups. In order for an instance to be included in the deployment group, it must    be identified by all the tag groups in the list.
 ///
 /// OnPremisesTagSetListObject is a property of the CodeDeploy DeploymentGroup OnPremisesTagSet property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnPremisesTagSetListObject {
     ///
     /// Information about groups of on-premises instance tags.
@@ -1272,7 +1272,7 @@ impl cfn_resources::CfnResource for OnPremisesTagSetListObject {
 }
 
 /// RevisionLocation is a property that defines the location of the CodeDeploy application revision to deploy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RevisionLocation {
     ///
     /// Information about the location of application artifacts stored in GitHub.
@@ -1315,7 +1315,7 @@ pub struct RevisionLocation {
     pub s3_location: Option<S3Location>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RevisionLocationRevisionTypeEnum {
     /// AppSpecContent
     #[serde(rename = "AppSpecContent")]
@@ -1363,7 +1363,7 @@ impl cfn_resources::CfnResource for RevisionLocation {
 }
 
 /// S3Location is a property of the     CodeDeploy DeploymentGroup Revision property that specifies the location    of an application revision that is stored in Amazon Simple Storage Service (Amazon S3).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The name of the Amazon S3 bucket where the application revision is       stored.
@@ -1432,7 +1432,7 @@ pub struct S3Location {
     pub version: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3LocationBundleTypeEnum {
     /// JSON
     #[serde(rename = "JSON")]
@@ -1482,7 +1482,7 @@ impl cfn_resources::CfnResource for S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1522,7 +1522,7 @@ impl cfn_resources::CfnResource for Tag {
 /// TagFilter is a property type of the AWS::CodeDeploy::DeploymentGroup resource that specifies which on-premises    instances to associate with the deployment group. To register on-premise instances with     AWS CodeDeploy, see Configure Existing On-Premises     Instances by Using AWS CodeDeploy in the AWS CodeDeploy User Guide.
 ///
 /// For more information about using tags and tag groups to help manage your Amazon EC2 instances and on-premises instances, see Tagging Instances for Deployment     Groups in AWS CodeDeploy in the AWS CodeDeploy User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFilter {
     ///
     /// The on-premises instance tag filter key.
@@ -1565,7 +1565,7 @@ pub struct TagFilter {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TagFilterTypeEnum {
     /// KEY_AND_VALUE
     #[serde(rename = "KEY_AND_VALUE")]
@@ -1605,7 +1605,7 @@ impl cfn_resources::CfnResource for TagFilter {
 /// If you specify the TargetGroupInfo property, the     DeploymentStyle.DeploymentOption property must be set to     WITH_TRAFFIC_CONTROL for CodeDeploy to route your traffic using the    specified target groups.
 ///
 /// TargetGroupInfo is a property of the LoadBalancerInfo property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupInfo {
     ///
     /// For blue/green deployments, the name of the target group that instances in the original    environment are deregistered from, and instances in the replacement environment registered    with. For in-place deployments, the name of the target group that instances are deregistered    from, so they are not serving traffic during a deployment, and then re-registered with after    the deployment completes. No duplicates allowed.
@@ -1639,7 +1639,7 @@ impl cfn_resources::CfnResource for TargetGroupInfo {
 }
 
 /// The TargetGroupPairInfo property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupPairInfo {
     /// Property description not available.
     ///
@@ -1698,7 +1698,7 @@ impl cfn_resources::CfnResource for TargetGroupPairInfo {
 }
 
 /// The TrafficRoute property type specifies Property description not available. for an AWS::CodeDeploy::DeploymentGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrafficRoute {
     /// Property description not available.
     ///
@@ -1727,7 +1727,7 @@ impl cfn_resources::CfnResource for TrafficRoute {
 }
 
 /// Information about notification triggers for the deployment group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TriggerConfig {
     ///
     /// The event type or types that trigger notifications.

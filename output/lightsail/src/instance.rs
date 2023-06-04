@@ -1,5 +1,5 @@
 /// The AWS::Lightsail::Instance resource specifies an Amazon Lightsail instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstance {
     ///
     /// An array of add-ons for the instance.
@@ -197,7 +197,7 @@ pub struct CfnInstance {
     pub att_user_name: CfnInstanceusername,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceinstancearn;
 impl CfnInstanceinstancearn {
     pub fn att_name(&self) -> &'static str {
@@ -205,7 +205,7 @@ impl CfnInstanceinstancearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancelocationavailabilityzone;
 impl CfnInstancelocationavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -213,7 +213,7 @@ impl CfnInstancelocationavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancelocationregionname;
 impl CfnInstancelocationregionname {
     pub fn att_name(&self) -> &'static str {
@@ -221,7 +221,7 @@ impl CfnInstancelocationregionname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancenetworkingmonthlytransfergbpermonthallocated;
 impl CfnInstancenetworkingmonthlytransfergbpermonthallocated {
     pub fn att_name(&self) -> &'static str {
@@ -229,7 +229,7 @@ impl CfnInstancenetworkingmonthlytransfergbpermonthallocated {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceprivateipaddress;
 impl CfnInstanceprivateipaddress {
     pub fn att_name(&self) -> &'static str {
@@ -237,7 +237,7 @@ impl CfnInstanceprivateipaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancepublicipaddress;
 impl CfnInstancepublicipaddress {
     pub fn att_name(&self) -> &'static str {
@@ -245,7 +245,7 @@ impl CfnInstancepublicipaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceresourcetype;
 impl CfnInstanceresourcetype {
     pub fn att_name(&self) -> &'static str {
@@ -253,7 +253,7 @@ impl CfnInstanceresourcetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancesshkeyname;
 impl CfnInstancesshkeyname {
     pub fn att_name(&self) -> &'static str {
@@ -261,7 +261,7 @@ impl CfnInstancesshkeyname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancestatename;
 impl CfnInstancestatename {
     pub fn att_name(&self) -> &'static str {
@@ -269,7 +269,7 @@ impl CfnInstancestatename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancesupportcode;
 impl CfnInstancesupportcode {
     pub fn att_name(&self) -> &'static str {
@@ -277,7 +277,7 @@ impl CfnInstancesupportcode {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceusername;
 impl CfnInstanceusername {
     pub fn att_name(&self) -> &'static str {
@@ -314,7 +314,7 @@ impl cfn_resources::CfnResource for CfnInstance {
 }
 
 /// AddOn is a property of the AWS::Lightsail::Instance resource. It describes the add-ons for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AddOn {
     ///
     /// The add-on type (for example, AutoSnapshot).
@@ -356,7 +356,7 @@ pub struct AddOn {
     pub status: Option<AddOnStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AddOnStatusEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -392,7 +392,7 @@ impl cfn_resources::CfnResource for AddOn {
 }
 
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoSnapshotAddOn {
     ///
     /// The daily time when an automatic snapshot will be created.
@@ -428,7 +428,7 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
 }
 
 /// Disk is a property of the Hardware property. It describes a disk attached to an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Disk {
     ///
     /// The resources to which the disk is attached.
@@ -530,7 +530,7 @@ impl cfn_resources::CfnResource for Disk {
 }
 
 /// Hardware is a property of the AWS::Lightsail::Instance resource. It describes the hardware properties for the     instance, such as the vCPU count, attached disks, and amount of RAM.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Hardware {
     ///
     /// The number of vCPUs the instance has.
@@ -590,7 +590,7 @@ impl cfn_resources::CfnResource for Hardware {
 }
 
 /// Location is a property of the AWS::Lightsail::Instance resource. It describes the location for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Location {
     ///
     /// The Availability Zone for the instance.
@@ -632,7 +632,7 @@ impl cfn_resources::CfnResource for Location {
 }
 
 /// MonthlyTransfer is a property of the Networking property. It describes the amount of allocated monthly data transfer     (in GB) for an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonthlyTransfer {
     ///
     /// The amount of allocated monthly data transfer (in GB) for an instance.
@@ -662,7 +662,7 @@ impl cfn_resources::CfnResource for MonthlyTransfer {
 }
 
 /// Networking is a property of the AWS::Lightsail::Instance resource. It describes the public ports and the     monthly amount of data transfer allocated for the instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Networking {
     ///
     /// The monthly amount of data transfer, in GB, allocated for the instance
@@ -707,7 +707,7 @@ impl cfn_resources::CfnResource for Networking {
 }
 
 /// Port is a property of the Networking property. It describes information about ports for an     instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Port {
     ///
     /// The access direction (inbound or outbound).
@@ -869,7 +869,7 @@ impl cfn_resources::CfnResource for Port {
 }
 
 /// State is a property of the AWS::Lightsail::Instance resource. It describes the status code and the state     (for example, running) of an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct State {
     ///
     /// The status code of the instance.
@@ -917,7 +917,7 @@ impl cfn_resources::CfnResource for State {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

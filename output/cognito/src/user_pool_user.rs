@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPoolUser resource creates an Amazon Cognito user pool    user.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolUser {
     ///
     /// A map of custom key-value pairs that you can provide as input for the custom workflow that    is invoked by the pre sign-up trigger.
@@ -133,7 +133,7 @@ pub struct CfnUserPoolUser {
     pub validation_data: Option<Vec<AttributeType>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolUserMessageActionEnum {
     /// RESEND
     #[serde(rename = "RESEND")]
@@ -209,7 +209,7 @@ impl cfn_resources::CfnResource for CfnUserPoolUser {
 }
 
 /// Specifies whether the attribute is standard or custom.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributeType {
     ///
     /// The name of the attribute.

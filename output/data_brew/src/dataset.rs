@@ -1,5 +1,5 @@
 /// Specifies a new DataBrew dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataset {
     ///
     /// The file format of a dataset that is created from an Amazon S3 file or folder.
@@ -78,7 +78,7 @@ pub struct CfnDataset {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DatasetFormatEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -154,7 +154,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 }
 
 /// Represents a set of options that define how DataBrew will read a       comma-separated value (CSV) file when creating a dataset from that file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CsvOptions {
     ///
     /// A single character that specifies the delimiter being used in the CSV file.
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for CsvOptions {
 }
 
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataCatalogInputDefinition {
     ///
     /// The unique identifier of the AWS account that holds the Data Catalog that stores the       data.
@@ -370,7 +370,7 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 }
 
 /// Connection information for dataset input files stored in a database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseInputDefinition {
     ///
     /// The table within the target database.
@@ -439,7 +439,7 @@ impl cfn_resources::CfnResource for DatabaseInputDefinition {
 }
 
 /// Represents a dataset paramater that defines type and conditions for a parameter in the         Amazon S3 path of the dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatasetParameter {
     ///
     /// Optional boolean value that defines whether the captured value of this parameter       should be loaded as an additional column in the dataset.
@@ -521,7 +521,7 @@ impl cfn_resources::CfnResource for DatasetParameter {
 }
 
 /// Represents additional options for correct interpretation of datetime parameters used       in the Amazon S3 path of a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatetimeOptions {
     ///
     /// Required option, that defines the datetime format used for a date parameter in the         Amazon S3 path. Should use only supported datetime specifiers and       separation characters, all litera a-z or A-Z character should be escaped with single       quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
@@ -574,7 +574,7 @@ impl cfn_resources::CfnResource for DatetimeOptions {
 }
 
 /// Represents a set of options that define how DataBrew will interpret a Microsoft Excel file when       creating a dataset from that file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExcelOptions {
     ///
     /// A variable that specifies whether the first row in the file is parsed as the       header. If this value is false, column names are auto-generated.
@@ -650,7 +650,7 @@ impl cfn_resources::CfnResource for ExcelOptions {
 }
 
 /// Represents a limit imposed on number of Amazon S3 files that should be       selected for a dataset from a connected Amazon S3 path.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilesLimit {
     ///
     /// The number of Amazon S3 files to select.
@@ -703,7 +703,7 @@ impl cfn_resources::CfnResource for FilesLimit {
 }
 
 /// Represents a structure for defining parameter conditions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterExpression {
     ///
     /// The expression which includes condition names followed by substitution variables,       possibly grouped and combined with other conditions. For example, "(starts_with :prefix1       or starts_with :prefix2) and (ends_with :suffix1 or ends_with :suffix2)". Substitution       variables should start with ':' symbol.
@@ -743,7 +743,7 @@ impl cfn_resources::CfnResource for FilterExpression {
 }
 
 /// Represents a single entry in the ValuesMap of a         FilterExpression. A FilterValue associates the name of a       substitution variable in an expression to its value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterValue {
     ///
     /// The value to be associated with the substitution variable.
@@ -783,7 +783,7 @@ impl cfn_resources::CfnResource for FilterValue {
 }
 
 /// Represents a set of options that define the structure of either comma-separated value (CSV),       Excel, or JSON input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormatOptions {
     ///
     /// Options that define how CSV input is to be interpreted by DataBrew.
@@ -843,7 +843,7 @@ impl cfn_resources::CfnResource for FormatOptions {
 }
 
 /// Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or       Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Input {
     ///
     /// The AWS Glue Data Catalog parameters for the data.
@@ -925,7 +925,7 @@ impl cfn_resources::CfnResource for Input {
 }
 
 /// Represents the JSON-specific options that define how input is to be interpreted by AWS Glue DataBrew.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonOptions {
     ///
     /// A value that specifies whether JSON input contains embedded new line       characters.
@@ -955,7 +955,7 @@ impl cfn_resources::CfnResource for JsonOptions {
 }
 
 /// Contains additional resource information needed for specific datasets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metadata {
     ///
     /// The Amazon Resource Name (ARN) associated with the dataset. Currently, DataBrew       only supports ARNs from Amazon AppFlow.
@@ -1011,7 +1011,7 @@ impl cfn_resources::CfnResource for Metadata {
 }
 
 /// Represents a set of options that define how DataBrew selects files for a       given Amazon S3 path in a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathOptions {
     ///
     /// If provided, this structure imposes a limit on a number of files that should be       selected.
@@ -1073,7 +1073,7 @@ impl cfn_resources::CfnResource for PathOptions {
 }
 
 /// Represents a single entry in the path parameters of a dataset. Each         PathParameter consists of a name and a parameter definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathParameter {
     ///
     /// The path parameter definition.
@@ -1115,7 +1115,7 @@ impl cfn_resources::CfnResource for PathParameter {
 }
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The Amazon S3 bucket name.
@@ -1214,7 +1214,7 @@ impl cfn_resources::CfnResource for S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

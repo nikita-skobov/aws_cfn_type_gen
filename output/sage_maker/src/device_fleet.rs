@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::DeviceFleet resource is an Amazon SageMaker resource       type that allows you to create a DeviceFleet that manages your SageMaker Edge Manager       Devices. You must register your devices against the DeviceFleet       separately.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceFleet {
     ///
     /// A description of the fleet.
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnDeviceFleet {
 }
 
 /// The output configuration for storing sample data collected by the fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EdgeOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume after compilation job. If       you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3       for your role's account.
@@ -220,7 +220,7 @@ impl cfn_resources::CfnResource for EdgeOutputConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

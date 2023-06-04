@@ -1,5 +1,5 @@
 /// The AWS::MSK::BatchScramSecret resource Property description not available. for MSK.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBatchScramSecret {
     /// Property description not available.
     ///

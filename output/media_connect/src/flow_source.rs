@@ -1,5 +1,5 @@
 /// The AWS::MediaConnect::FlowSource resource is used to add additional sources to an       existing flow. Adding an additional source requires Failover to be enabled. When you       enable Failover, the additional source must use the same protocol as the existing       source. A source is the external video content that includes configuration information       (encryption and source type) and a network address. Each flow has at least one source. A       standard source comes from a source other than another AWS Elemental       MediaConnect flow, such as an on-premises encoder.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowSource {
     ///
     /// The type of encryption that is used on the content ingested from the        source.
@@ -215,7 +215,7 @@ pub struct CfnFlowSource {
     pub att_source_ingest_port: CfnFlowSourcesourceingestport,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowSourceingestip;
 impl CfnFlowSourceingestip {
     pub fn att_name(&self) -> &'static str {
@@ -223,7 +223,7 @@ impl CfnFlowSourceingestip {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowSourcesourcearn;
 impl CfnFlowSourcesourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -231,7 +231,7 @@ impl CfnFlowSourcesourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowSourcesourceingestport;
 impl CfnFlowSourcesourceingestport {
     pub fn att_name(&self) -> &'static str {
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for CfnFlowSource {
 }
 
 /// Information about the encryption of the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.

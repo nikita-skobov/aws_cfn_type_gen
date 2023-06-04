@@ -1,5 +1,5 @@
 /// Use the AWS::SDB::Domain resource to declare a SimpleDB domain.     When you specify AWS::SDB::Domain as an argument in a Ref function,      AWS CloudFormation returns the value of the DomainName.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// Information about the SimpleDB domain.

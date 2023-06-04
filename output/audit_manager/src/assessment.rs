@@ -1,5 +1,5 @@
 /// The AWS::AuditManager::Assessment resource is an Audit Manager     resource type that defines the scope of audit evidence collected by Audit Manager. An       Audit Manager assessment is an implementation of an Audit Manager framework.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssessment {
     ///
     /// The destination that evidence reports are stored in for the assessment.
@@ -150,7 +150,7 @@ pub struct CfnAssessment {
     pub att_assessment_id: CfnAssessmentassessmentid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssessmentStatusEnum {
     /// ACTIVE
     #[serde(rename = "ACTIVE")]
@@ -167,7 +167,7 @@ impl Default for AssessmentStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssessmentarn;
 impl CfnAssessmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -175,7 +175,7 @@ impl CfnAssessmentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssessmentassessmentid;
 impl CfnAssessmentassessmentid {
     pub fn att_name(&self) -> &'static str {
@@ -263,7 +263,7 @@ impl cfn_resources::CfnResource for CfnAssessment {
 }
 
 /// The AWSAccount property type specifies the wrapper of the AWS account details, such as account ID, email address, and so on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AWSAccount {
     ///
     /// The email address that's associated with the AWS account.
@@ -401,7 +401,7 @@ impl cfn_resources::CfnResource for AWSAccount {
 }
 
 /// The AWSService property type specifies an AWS service     such as Amazon S3, AWS CloudTrail, and so on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AWSService {
     ///
     /// The name of the AWS service.
@@ -459,7 +459,7 @@ impl cfn_resources::CfnResource for AWSService {
 }
 
 /// The AssessmentReportsDestination property type specifies the location in     which AWS Audit Manager saves assessment reports for the given assessment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssessmentReportsDestination {
     ///
     /// The destination of the assessment report.
@@ -494,7 +494,7 @@ pub struct AssessmentReportsDestination {
     pub destination_type: Option<AssessmentReportsDestinationDestinationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssessmentReportsDestinationDestinationTypeEnum {
     /// S3
     #[serde(rename = "S3")]
@@ -544,7 +544,7 @@ impl cfn_resources::CfnResource for AssessmentReportsDestination {
 }
 
 /// The Delegation property type specifies the assignment of a control set to a delegate for review.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Delegation {
     ///
     /// The identifier for the assessment that's associated with the delegation.
@@ -725,7 +725,7 @@ pub struct Delegation {
     pub status: Option<DelegationStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DelegationRoleTypeEnum {
     /// PROCESS_OWNER
     #[serde(rename = "PROCESS_OWNER")]
@@ -742,7 +742,7 @@ impl Default for DelegationRoleTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DelegationStatusEnum {
     /// COMPLETE
     #[serde(rename = "COMPLETE")]
@@ -921,7 +921,7 @@ impl cfn_resources::CfnResource for Delegation {
 }
 
 /// The Role property type specifies the wrapper that contains AWS Audit Manager role information, such as the role type and IAM Amazon     Resource Name (ARN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Role {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role.
@@ -958,7 +958,7 @@ pub struct Role {
     pub role_type: Option<RoleRoleTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RoleRoleTypeEnum {
     /// PROCESS_OWNER
     #[serde(rename = "PROCESS_OWNER")]
@@ -1012,7 +1012,7 @@ impl cfn_resources::CfnResource for Role {
 }
 
 /// The Scope property type specifies the wrapper that contains the AWS accounts and services that are in scope for the assessment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scope {
     ///
     /// The AWS accounts that are included in the scope of the assessment.
@@ -1060,7 +1060,7 @@ impl cfn_resources::CfnResource for Scope {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

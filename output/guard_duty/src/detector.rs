@@ -1,7 +1,7 @@
 /// The AWS::GuardDuty::Detector resource specifies a new detector. A detector is an object that          represents the service. A detector is          required for to become operational.
 ///
 /// Make sure you use either DataSources or          Features in a one request, and not both.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetector {
     ///
     /// Describes which data sources will be enabled for the detector.
@@ -69,7 +69,7 @@ pub struct CfnDetector {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DetectorFindingPublishingFrequencyEnum {
     /// FIFTEEN_MINUTES
     #[serde(rename = "FIFTEEN_MINUTES")]
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for CfnDetector {
 }
 
 /// Describes whether S3 data event logs, Kubernetes audit logs, or Malware Protection          will be enabled as a data source when the detector is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNDataSourceConfigurations {
     ///
     /// Describes which Kubernetes data sources are enabled for a detector.
@@ -173,7 +173,7 @@ impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
 }
 
 /// Describes which optional data sources are enabled for a detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNKubernetesAuditLogsConfiguration {
     ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
@@ -203,7 +203,7 @@ impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
 }
 
 /// Describes which Kubernetes protection data sources are enabled for the          detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNKubernetesConfiguration {
     ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
 }
 
 /// Describes whether Malware Protection will be enabled as a data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNMalwareProtectionConfiguration {
     ///
     /// Describes the configuration of Malware Protection for EC2 instances with          findings.
@@ -271,7 +271,7 @@ impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
 }
 
 /// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNS3LogsConfiguration {
     ///
     /// The status of S3 data event logs as a data source.
@@ -301,7 +301,7 @@ impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
 }
 
 /// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CFNScanEc2InstanceWithFindingsConfiguration {
     ///
     /// Describes the configuration for scanning EBS volumes as data source.
@@ -333,7 +333,7 @@ impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration 
 /// Describes the additional configuration for a feature. If you want to specify any additional          configuration for your feature, it is required to provide the Name and Status          for that additional configuration. For more information, see          DetectorAdditionalConfiguration.
 ///
 /// If you're providing additional configuration, ensure to provide the corresponding       FeatureConfigurations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FeatureAdditionalConfiguration {
     ///
     /// Name of the additional configuration of a feature.
@@ -377,7 +377,7 @@ impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
 /// Describes the configuration for a feature.
 ///
 /// Although the Required field associated with the following properties specifies          No, if you provide information for Name, you will need to          provide the information for Status too. For information about the available feature configurations, see          DetectorFeatureConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FeatureConfigurations {
     ///
     /// Additional configuration of the feature.
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for FeatureConfigurations {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

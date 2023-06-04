@@ -1,5 +1,5 @@
 /// The AWS::GlobalAccelerator::Listener resource is a Global Accelerator resource type that contains information about 	   		how you create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static 			IP addresses on a port, port range, or list of port ranges that you specify.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListener {
     ///
     /// The Amazon Resource Name (ARN) of your accelerator.
@@ -64,7 +64,7 @@ pub struct CfnListener {
     pub att_listener_arn: CfnListenerlistenerarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListenerClientAffinityEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -81,7 +81,7 @@ impl Default for ListenerClientAffinityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListenerProtocolEnum {
     /// TCP
     #[serde(rename = "TCP")]
@@ -98,7 +98,7 @@ impl Default for ListenerProtocolEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerlistenerarn;
 impl CfnListenerlistenerarn {
     pub fn att_name(&self) -> &'static str {
@@ -141,7 +141,7 @@ impl cfn_resources::CfnResource for CfnListener {
 }
 
 /// A complex type for a range of ports for a listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortRange {
     ///
     /// The first port in the range of ports, inclusive.

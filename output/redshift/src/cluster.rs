@@ -1,7 +1,7 @@
 /// Specifies a cluster. A cluster is a fully managed data warehouse       that consists of a set of compute nodes.
 ///
 /// To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet       group name. The cluster subnet group identifies the subnets of your VPC that Amazon       Redshift uses when creating the cluster. For more information about managing clusters,       go to Amazon Redshift Clusters in the Amazon Redshift Cluster         Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// If true, major version upgrades can be applied during the maintenance       window to the Amazon Redshift engine that is running on the cluster.
@@ -743,7 +743,7 @@ pub struct CfnCluster {
     pub att_id: CfnClusterid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterAquaConfigurationStatusEnum {
     /// auto
     #[serde(rename = "auto")]
@@ -764,7 +764,7 @@ impl Default for ClusterAquaConfigurationStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterClusterTypeEnum {
     /// multi-node
     #[serde(rename = "multi-node")]
@@ -781,7 +781,7 @@ impl Default for ClusterClusterTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterNodeTypeEnum {
     /// ds2.xlarge
     #[serde(rename = "ds2.xlarge")]
@@ -826,7 +826,7 @@ impl Default for ClusterNodeTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterdefermaintenanceidentifier;
 impl CfnClusterdefermaintenanceidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -834,7 +834,7 @@ impl CfnClusterdefermaintenanceidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterendpointaddress;
 impl CfnClusterendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -842,7 +842,7 @@ impl CfnClusterendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterendpointport;
 impl CfnClusterendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -850,7 +850,7 @@ impl CfnClusterendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterid;
 impl CfnClusterid {
     pub fn att_name(&self) -> &'static str {
@@ -1044,7 +1044,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// Describes a connection endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoint {
     ///
     /// The DNS address of the cluster. This property is read only.
@@ -1099,7 +1099,7 @@ impl cfn_resources::CfnResource for Endpoint {
 }
 
 /// Specifies logging information, such as queries and connection attempts, for the       specified Amazon Redshift cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingProperties {
     ///
     /// The name of an existing S3 bucket where the log files are to be stored.
@@ -1177,7 +1177,7 @@ impl cfn_resources::CfnResource for LoggingProperties {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

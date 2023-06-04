@@ -1,5 +1,5 @@
 /// Use the AWS::NetworkFirewall::FirewallPolicy to define the stateless and stateful network traffic filtering behavior for your AWS::NetworkFirewall::Firewall. You can use one firewall policy for multiple firewalls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallPolicy {
     ///
     /// A description of the firewall policy.
@@ -68,7 +68,7 @@ pub struct CfnFirewallPolicy {
     pub att_firewall_policy_id: CfnFirewallPolicyfirewallpolicyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallPolicyfirewallpolicyarn;
 impl CfnFirewallPolicyfirewallpolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl CfnFirewallPolicyfirewallpolicyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallPolicyfirewallpolicyid;
 impl CfnFirewallPolicyfirewallpolicyid {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnFirewallPolicy {
 }
 
 /// A custom action to use in stateless rule actions settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionDefinition {
     ///
     /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
@@ -183,7 +183,7 @@ impl cfn_resources::CfnResource for ActionDefinition {
 /// You define and name the custom actions that you want to be able to use, and then you     reference them by name in your actions settings.
 ///
 /// You can use custom actions in the following places:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomAction {
     ///
     /// The custom action associated with the action name.
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for CustomAction {
 /// AWS Network Firewall sets the dimension name to CustomAction and you provide the     dimension value.
 ///
 /// For more information about CloudWatch custom metric dimensions, see      Publishing Custom Metrics in the Amazon CloudWatch User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Dimension {
     ///
     /// The value to use in the custom metric dimension.
@@ -314,7 +314,7 @@ impl cfn_resources::CfnResource for Dimension {
 }
 
 /// The traffic filtering behavior of a firewall policy, defined in a collection of stateless     and stateful rule groups and other settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FirewallPolicy {
     ///
     /// Contains variables that you can use to override default Suricata settings in your firewall policy.
@@ -448,7 +448,7 @@ impl cfn_resources::CfnResource for FirewallPolicy {
 }
 
 /// A list of IP addresses and address ranges, in CIDR notation. This is part of a RuleVariables.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IPSet {
     ///
     /// The list of IP addresses and address ranges, in CIDR notation.
@@ -478,7 +478,7 @@ impl cfn_resources::CfnResource for IPSet {
 }
 
 /// Contains variables that you can use to override default Suricata settings in your firewall policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyVariables {
     ///
     /// The IPv4 or IPv6 addresses in CIDR notation to use for the Suricata HOME_NET variable. If your firewall uses an inspection VPC, you might want to override the HOME_NET variable with the CIDRs of your home networks. If you don't override HOME_NET with your own CIDRs, Network Firewall by default uses the CIDR of your inspection VPC.
@@ -508,7 +508,7 @@ impl cfn_resources::CfnResource for PolicyVariables {
 }
 
 /// Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the     matching packet. This setting defines a CloudWatch dimension value to be published.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublishMetricAction {
     ///
     ///
@@ -548,7 +548,7 @@ impl cfn_resources::CfnResource for PublishMetricAction {
 }
 
 /// Configuration settings for the handling of the stateful rule groups in a firewall policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatefulEngineOptions {
     ///
     /// Indicates how to manage the order of stateful rule evaluation for the policy. DEFAULT_ACTION_ORDER is     the default behavior. Stateful rules are provided to the rule engine as Suricata compatible strings, and Suricata evaluates them     based on certain settings. For more information, see     Evaluation order for stateful rules in the         AWS Network Firewall Developer Guide.
@@ -581,7 +581,7 @@ pub struct StatefulEngineOptions {
     pub stream_exception_policy: Option<StatefulEngineOptionsStreamExceptionPolicyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StatefulEngineOptionsRuleOrderEnum {
     /// DEFAULT_ACTION_ORDER
     #[serde(rename = "DEFAULT_ACTION_ORDER")]
@@ -598,7 +598,7 @@ impl Default for StatefulEngineOptionsRuleOrderEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StatefulEngineOptionsStreamExceptionPolicyEnum {
     /// CONTINUE
     #[serde(rename = "CONTINUE")]
@@ -634,7 +634,7 @@ impl cfn_resources::CfnResource for StatefulEngineOptions {
 }
 
 /// The setting that allows the policy owner to change the behavior of the rule group within a policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatefulRuleGroupOverride {
     ///
     /// The action that changes the rule group from DROP to ALERT. This only applies to    managed rule groups.
@@ -651,7 +651,7 @@ pub struct StatefulRuleGroupOverride {
     pub action: Option<StatefulRuleGroupOverrideActionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StatefulRuleGroupOverrideActionEnum {
     /// DROP_TO_ALERT
     #[serde(rename = "DROP_TO_ALERT")]
@@ -679,7 +679,7 @@ impl cfn_resources::CfnResource for StatefulRuleGroupOverride {
 }
 
 /// Identifier for a single stateful rule group, used in a firewall policy to refer to a     rule group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatefulRuleGroupReference {
     ///
     /// The action that allows the policy owner to override the behavior of the rule group within a policy.
@@ -790,7 +790,7 @@ impl cfn_resources::CfnResource for StatefulRuleGroupReference {
 }
 
 /// Identifier for a single stateless rule group, used in a firewall policy to refer to the     rule group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatelessRuleGroupReference {
     ///
     /// An integer setting that indicates the order in which to run the stateless rule groups in     a single AWS::NetworkFirewall::FirewallPolicy. Network Firewall applies each stateless rule group     to a packet starting with the group that has the lowest priority setting. You must ensure     that the priority settings are unique within each policy.
@@ -886,7 +886,7 @@ impl cfn_resources::CfnResource for StatelessRuleGroupReference {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

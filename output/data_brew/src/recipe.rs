@@ -1,5 +1,5 @@
 /// Specifies a new AWS Glue DataBrew transformation recipe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRecipe {
     ///
     /// The description of the recipe.
@@ -102,7 +102,7 @@ impl cfn_resources::CfnResource for CfnRecipe {
 }
 
 /// Represents a transformation and associated parameters that are used to apply a change       to an AWS Glue DataBrew dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// The name of a valid DataBrew transformation to be performed on the       data.
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for Action {
 /// Conditions are used with recipe actions. The action is only performed for column values where the       condition evaluates to true.
 ///
 /// If a recipe requires more than one condition, then the recipe must specify multiple       ConditionExpression elements. Each condition is applied to the rows in a dataset first, before       the recipe action is performed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionExpression {
     ///
     /// A specific condition to apply to a recipe action. For more information, see Recipe         structure in the AWS Glue DataBrew Developer         Guide.
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for ConditionExpression {
 }
 
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataCatalogInputDefinition {
     ///
     /// The unique identifier of the AWS account that holds the Data Catalog that stores the       data.
@@ -418,7 +418,7 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 }
 
 /// The Input property type specifies Property description not available. for an AWS::DataBrew::Recipe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Input {
     /// Property description not available.
     ///
@@ -466,7 +466,7 @@ impl cfn_resources::CfnResource for Input {
 }
 
 /// Parameters that are used as inputs for various recipe actions. The parameters are       specific to the context in which they're used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecipeParameters {
     ///
     /// The name of an aggregation function to apply.
@@ -1698,7 +1698,7 @@ impl cfn_resources::CfnResource for RecipeParameters {
 }
 
 /// Represents a single step from a DataBrew recipe to be performed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecipeStep {
     ///
     /// The particular action to be performed in the recipe step.
@@ -1743,7 +1743,7 @@ impl cfn_resources::CfnResource for RecipeStep {
 }
 
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The Amazon S3 bucket name.
@@ -1836,7 +1836,7 @@ impl cfn_resources::CfnResource for S3Location {
 }
 
 /// Represents secondary inputs in a UNION transform.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecondaryInput {
     ///
     /// The AWS Glue Data Catalog parameters for the data.
@@ -1892,7 +1892,7 @@ impl cfn_resources::CfnResource for SecondaryInput {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

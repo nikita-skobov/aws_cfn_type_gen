@@ -1,7 +1,7 @@
 /// Activates a public third-party extension, making it available for use in stack templates. For more information,  see Using public   extensions in the         AWS CloudFormation User Guide.
 ///
 /// Once you have activated a public third-party extension in your account and Region, use SetTypeConfiguration to specify configuration properties for the extension. For more information, see   Configuring extensions at   the account level in the CloudFormation User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTypeActivation {
     ///
     /// Whether to automatically update the extension in this account and Region when a new minor  version is published by the extension publisher. Major versions released by the publisher must be manually  updated.
@@ -175,7 +175,7 @@ pub struct CfnTypeActivation {
     pub att_arn: CfnTypeActivationarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TypeActivationTypeEnum {
     /// HOOK
     #[serde(rename = "HOOK")]
@@ -196,7 +196,7 @@ impl Default for TypeActivationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TypeActivationVersionBumpEnum {
     /// MAJOR
     #[serde(rename = "MAJOR")]
@@ -213,7 +213,7 @@ impl Default for TypeActivationVersionBumpEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTypeActivationarn;
 impl CfnTypeActivationarn {
     pub fn att_name(&self) -> &'static str {
@@ -336,7 +336,7 @@ impl cfn_resources::CfnResource for CfnTypeActivation {
 }
 
 /// Contains logging configuration information for an extension.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking  the extension's handlers.

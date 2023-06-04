@@ -1,5 +1,5 @@
 /// The AWS::MediaConnect::FlowEntitlement resource defines the permission that an AWS account grants to another AWS account to allow access       to the content in a specific AWS Elemental MediaConnect flow. The       content originator grants an entitlement to a specific AWS account (the       subscriber). When an entitlement is granted, the subscriber can create a flow using the       originator's flow as the source. Each flow can have up to 50 entitlements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowEntitlement {
     ///
     /// The percentage of the entitlement data transfer fee that you want the subscriber        to be responsible for.
@@ -85,7 +85,7 @@ pub struct CfnFlowEntitlement {
     pub att_entitlement_arn: CfnFlowEntitlemententitlementarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowEntitlemententitlementarn;
 impl CfnFlowEntitlemententitlementarn {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl cfn_resources::CfnResource for CfnFlowEntitlement {
 }
 
 /// Information about the encryption of the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.

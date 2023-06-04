@@ -1,7 +1,7 @@
 /// The AWS::MediaLive::InputSecurityGroup is a MediaLive resource       type that creates an input security group.
 ///
 /// A MediaLive input security group is associated with a MediaLive       input. The input security group is an "allow list" of IP addresses       that controls whether an external IP address can push content to the       associated MediaLive input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInputSecurityGroup {
     ///
     /// A collection of tags for this input security group. Each tag is a       key-value pair.
@@ -31,7 +31,7 @@ pub struct CfnInputSecurityGroup {
     pub att_arn: CfnInputSecurityGrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInputSecurityGrouparn;
 impl CfnInputSecurityGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -56,7 +56,7 @@ impl cfn_resources::CfnResource for CfnInputSecurityGroup {
 /// An IPv4 CIDR range to include in this input security group.
 ///
 /// The parent of this entity is InputSecurityGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputWhitelistRuleCidr {
     ///
     /// An IPv4 CIDR range to include in this input security group.

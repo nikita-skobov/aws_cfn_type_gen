@@ -1,7 +1,7 @@
 /// Enables a virtual private gateway (VGW) to propagate routes to the specified route table     of a VPC.
 ///
 /// If you reference a VPN gateway that is in the same template as your VPN gateway route     propagation, you must explicitly declare a dependency on the VPN gateway attachment. The       AWS::EC2::VPNGatewayRoutePropagation resource cannot use the VPN gateway     until it has successfully attached to the VPC. Add a DependsOn       Attribute in the AWS::EC2::VPNGatewayRoutePropagation resource to     explicitly declare a dependency on the VPN gateway attachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPNGatewayRoutePropagation {
     ///
     /// The ID of the route table. The routing table must be associated with the same VPC that       the virtual private gateway is attached to.
@@ -29,7 +29,7 @@ pub struct CfnVPNGatewayRoutePropagation {
     pub att_id: CfnVPNGatewayRoutePropagationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPNGatewayRoutePropagationid;
 impl CfnVPNGatewayRoutePropagationid {
     pub fn att_name(&self) -> &'static str {

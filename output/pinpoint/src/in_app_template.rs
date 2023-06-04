@@ -1,5 +1,5 @@
 /// Creates a message template that you can use to send in-app messages. A message       template is a set of content and settings that you can define, save, and reuse in       messages for any of your Amazon Pinpoint applications.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInAppTemplate {
     ///
     /// An object that contains information about the content of an in-app message,           including its title and body text, text colors, background colors, images,           buttons, and behaviors.
@@ -80,7 +80,7 @@ pub struct CfnInAppTemplate {
     pub att_arn: CfnInAppTemplatearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInAppTemplatearn;
 impl CfnInAppTemplatearn {
     pub fn att_name(&self) -> &'static str {
@@ -103,7 +103,7 @@ impl cfn_resources::CfnResource for CfnInAppTemplate {
 }
 
 /// Specifies the configuration of the main body text of the in-app message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BodyConfig {
     ///
     /// The text alignment of the main body text of the message. Acceptable values:         LEFT, CENTER, RIGHT.
@@ -157,7 +157,7 @@ impl cfn_resources::CfnResource for BodyConfig {
 }
 
 /// Specifies the behavior of buttons that appear in an in-app message template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ButtonConfig {
     ///
     /// Optional button configuration to use for in-app messages sent to Android devices. This       button configuration overrides the default button configuration.
@@ -233,7 +233,7 @@ impl cfn_resources::CfnResource for ButtonConfig {
 }
 
 /// Specifies the default behavior of a button that appears in an in-app message. You can       optionally add button configurations that specifically apply to iOS, Android, or web       browser users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultButtonConfiguration {
     ///
     /// The background color of a button, expressed as a hex color code (such as #000000 for       black).
@@ -325,7 +325,7 @@ impl cfn_resources::CfnResource for DefaultButtonConfiguration {
 }
 
 /// Specifies the configuration and content of the header or title text of the in-app       message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderConfig {
     ///
     /// The text alignment of the title of the message. Acceptable values: LEFT,         CENTER, RIGHT.
@@ -379,7 +379,7 @@ impl cfn_resources::CfnResource for HeaderConfig {
 }
 
 /// Specifies the configuration of an in-app message, including its header, body, buttons,       colors, and images.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InAppMessageContent {
     ///
     /// The background color for an in-app message banner, expressed as a hex color code (such       as #000000 for black).
@@ -485,7 +485,7 @@ impl cfn_resources::CfnResource for InAppMessageContent {
 }
 
 /// Specifies the configuration of a button with settings that are specific to a certain       device type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OverrideButtonConfiguration {
     ///
     /// The action that occurs when a recipient chooses a button in an in-app message.           You can specify one of the following:

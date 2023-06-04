@@ -1,5 +1,5 @@
 /// Represents a job template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobTemplate {
     ///
     /// The criteria that determine when and how a job abort takes place.
@@ -151,7 +151,7 @@ pub struct CfnJobTemplate {
     pub att_arn: CfnJobTemplatearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobTemplatearn;
 impl CfnJobTemplatearn {
     pub fn att_name(&self) -> &'static str {
@@ -194,7 +194,7 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
 }
 
 /// The criteria that determine when and how a job abort takes place.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AbortConfig {
     ///
     /// The list of criteria that determine when and how to abort the job.
@@ -223,7 +223,7 @@ impl cfn_resources::CfnResource for AbortConfig {
 }
 
 /// The criteria that determine when and how a job abort takes place.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AbortCriteria {
     ///
     /// The type of job action to take to initiate the job abort.
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for AbortCriteria {
 }
 
 /// Allows you to create an exponential rate of rollout for a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExponentialRolloutRate {
     ///
     /// The minimum number of things that will be notified of a pending job, per minute at the start of job rollout.       This parameter allows you to define the initial rate of rollout.
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for ExponentialRolloutRate {
 }
 
 /// The configuration that determines how many retries are allowed for each failure       type for a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JobExecutionsRetryConfig {
     /// Property description not available.
     ///
@@ -371,7 +371,7 @@ impl cfn_resources::CfnResource for JobExecutionsRetryConfig {
 }
 
 /// Allows you to create a staged rollout of a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JobExecutionsRolloutConfig {
     /// Property description not available.
     ///
@@ -416,7 +416,7 @@ impl cfn_resources::CfnResource for JobExecutionsRolloutConfig {
 }
 
 /// An optional configuration within the SchedulingConfig to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceWindow {
     ///
     /// Displays the duration of the next maintenance window.
@@ -458,7 +458,7 @@ impl cfn_resources::CfnResource for MaintenanceWindow {
 }
 
 /// Configuration for pre-signed S3 URLs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PresignedUrlConfig {
     ///
     /// How long (in seconds) pre-signed URLs are valid. Valid values are 60 - 3600, the default value is 3600       seconds. Pre-signed URLs are generated when Jobs receives an MQTT request for the job document.
@@ -501,7 +501,7 @@ impl cfn_resources::CfnResource for PresignedUrlConfig {
 }
 
 /// Allows you to define a criteria to initiate the increase in rate of rollout for a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RateIncreaseCriteria {
     ///
     /// The threshold for number of notified things that will initiate the increase in rate of rollout.
@@ -543,7 +543,7 @@ impl cfn_resources::CfnResource for RateIncreaseCriteria {
 }
 
 /// The criteria that determines how many retries are allowed for each failure       type for a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetryCriteria {
     ///
     /// The type of job execution failures that can initiate a job retry.
@@ -591,7 +591,7 @@ impl cfn_resources::CfnResource for RetryCriteria {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -629,7 +629,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies the amount of time each device has to finish its execution of the job. A timer       is started when the job execution status is set to IN_PROGRESS. If the job       execution status is not set to another terminal state before the timer expires, it will      be automatically set to TIMED_OUT.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeoutConfig {
     ///
     /// Specifies the amount of time, in minutes, this device has to finish execution of this job.       The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The       in progress timer can't be updated and will apply to all job executions for the job. Whenever a job       execution remains in the IN_PROGRESS status for longer than this interval, the job execution will fail       and switch to the terminal TIMED_OUT status.

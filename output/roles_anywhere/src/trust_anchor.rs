@@ -1,7 +1,7 @@
 /// Creates a trust anchor to establish trust between IAM Roles Anywhere and     your certificate authority (CA). You can define a trust anchor as a reference to an AWS Private Certificate Authority (AWS Private CA) or      by uploading a CA certificate. Your AWS workloads can authenticate with the trust anchor using certificates issued by     the CA in exchange for temporary AWS credentials.
 ///
 /// Required permissions: rolesanywhere:CreateTrustAnchor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrustAnchor {
     ///
     /// Indicates whether the trust anchor is enabled.
@@ -64,7 +64,7 @@ pub struct CfnTrustAnchor {
     pub att_trust_anchor_id: CfnTrustAnchortrustanchorid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrustAnchortrustanchorarn;
 impl CfnTrustAnchortrustanchorarn {
     pub fn att_name(&self) -> &'static str {
@@ -72,7 +72,7 @@ impl CfnTrustAnchortrustanchorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrustAnchortrustanchorid;
 impl CfnTrustAnchortrustanchorid {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for CfnTrustAnchor {
 }
 
 /// The trust anchor type and its related certificate data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Source {
     ///
     /// The data field of the trust anchor depending on its type.
@@ -157,7 +157,7 @@ pub struct Source {
     pub source_type: Option<SourceSourceTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceSourceTypeEnum {
     /// AWS_ACM_PCA
     #[serde(rename = "AWS_ACM_PCA")]
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for Source {
 }
 
 /// The data field of the trust anchor depending on its type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceData {
     ///
     /// The root certificate of the AWS Private Certificate Authority specified by this ARN is used in trust     validation for temporary credential requests. Included for trust anchors of type AWS_ACM_PCA.
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for SourceData {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -3,7 +3,7 @@
 /// If no DeletionPolicy is set for AWS::Neptune::DBCluster     resources, the default deletion behavior is that the entire volume will be deleted without a snapshot.     To retain a backup of the volume, the DeletionPolicy should be set to Snapshot.     For more information about how AWS CloudFormation deletes resources,     see DeletionPolicy Attribute.
 ///
 /// You can use AWS::Neptune::DBCluster.DeletionProtection to help guard against     unintended deletion of your DB cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBCluster {
     ///
     /// Provides a list of the Amazon Identity and Access Management (IAM) roles that are associated    with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the    DB cluster to access other Amazon services on your behalf.
@@ -339,7 +339,7 @@ pub struct CfnDBCluster {
     pub att_read_endpoint: CfnDBClusterreadendpoint,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterclusterresourceid;
 impl CfnDBClusterclusterresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -347,7 +347,7 @@ impl CfnDBClusterclusterresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterendpoint;
 impl CfnDBClusterendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -355,7 +355,7 @@ impl CfnDBClusterendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterport;
 impl CfnDBClusterport {
     pub fn att_name(&self) -> &'static str {
@@ -363,7 +363,7 @@ impl CfnDBClusterport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterreadendpoint;
 impl CfnDBClusterreadendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -390,7 +390,7 @@ impl cfn_resources::CfnResource for CfnDBCluster {
 }
 
 /// Describes an Amazon Identity and Access Management (IAM) role that is associated with a DB    cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DBClusterRole {
     ///
     /// The name of the feature associated with the Amazon Identity and Access Management (IAM) role.    For the list of supported feature names, see DescribeDBEngineVersions.
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for DBClusterRole {
 }
 
 /// The ServerlessScalingConfiguration property type specifies Property description not available. for an AWS::Neptune::DBCluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerlessScalingConfiguration {
     /// Property description not available.
     ///
@@ -475,7 +475,7 @@ impl cfn_resources::CfnResource for ServerlessScalingConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

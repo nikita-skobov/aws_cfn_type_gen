@@ -1,5 +1,5 @@
 /// Creates a view that users can query by using the Search       operation. Results from queries that you make using this view include only resources       that match the view's Filters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnView {
     ///
     /// An array of strings that include search keywords, prefixes, and operators that filter       the results that are returned for queries made using this view. When you use this view       in a Search       operation, the filter string is combined with the search's QueryString       parameter using a logical AND operator.
@@ -58,7 +58,7 @@ pub struct CfnView {
     pub att_view_arn: CfnViewviewarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnViewviewarn;
 impl CfnViewviewarn {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl cfn_resources::CfnResource for CfnView {
 }
 
 /// An object with a FilterString that specifies which resources to include       in the results of queries made using this view.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filters {
     /// Property description not available.
     ///
@@ -111,7 +111,7 @@ impl cfn_resources::CfnResource for Filters {
 }
 
 /// Information about an additional property that describes a resource, that you can       optionally include in a view.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IncludedProperty {
     ///
     /// The name of the property that is included in this view.

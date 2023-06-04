@@ -1,7 +1,7 @@
 /// Associates the specified product with the specified portfolio.
 ///
 /// A delegated admin is authorized to invoke this command.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortfolioProductAssociation {
     ///
     /// The language code.

@@ -1,7 +1,7 @@
 /// The AWS::Macie::Session resource represents the Amazon Macie       service and certain configuration settings for an Amazon Macie account in a       specific AWS Region. It enables Macie to become       operational for a specific account in a specific Region. An account can have only one       session in each Region.
 ///
 /// You must create an AWS::Macie::Session resource for an account before you       can create other types of resources for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSession {
     ///
     /// Specifies how often Amazon Macie publishes updates to policy findings for       the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events). Valid values are:
@@ -36,7 +36,7 @@ pub struct CfnSession {
     pub att_service_role: CfnSessionservicerole,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSessionawsaccountid;
 impl CfnSessionawsaccountid {
     pub fn att_name(&self) -> &'static str {
@@ -44,7 +44,7 @@ impl CfnSessionawsaccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSessionservicerole;
 impl CfnSessionservicerole {
     pub fn att_name(&self) -> &'static str {

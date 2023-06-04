@@ -1,5 +1,5 @@
 /// Associates the specified principal ARN with the specified portfolio.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortfolioPrincipalAssociation {
     ///
     /// The language code.
@@ -63,7 +63,7 @@ pub struct CfnPortfolioPrincipalAssociation {
     pub principal_type: PortfolioPrincipalAssociationPrincipalTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortfolioPrincipalAssociationPrincipalTypeEnum {
     /// IAM
     #[serde(rename = "IAM")]

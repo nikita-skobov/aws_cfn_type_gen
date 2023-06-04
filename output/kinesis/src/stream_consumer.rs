@@ -3,7 +3,7 @@
 /// You can register up to five consumers per stream. However, you can request a limit       increase using the Kinesis Data Streams limits         form. A given consumer can only be registered with one stream at a time.
 ///
 /// For more information, see Using Consumers         with Enhanced Fan-Out.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumer {
     ///
     /// The name of the consumer is something you choose when you register the       consumer.
@@ -55,7 +55,7 @@ pub struct CfnStreamConsumer {
     pub att_stream_arn: CfnStreamConsumerstreamarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumerconsumerarn;
 impl CfnStreamConsumerconsumerarn {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnStreamConsumerconsumerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumerconsumercreationtimestamp;
 impl CfnStreamConsumerconsumercreationtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -71,7 +71,7 @@ impl CfnStreamConsumerconsumercreationtimestamp {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumerconsumername;
 impl CfnStreamConsumerconsumername {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnStreamConsumerconsumername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumerconsumerstatus;
 impl CfnStreamConsumerconsumerstatus {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnStreamConsumerconsumerstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamConsumerstreamarn;
 impl CfnStreamConsumerstreamarn {
     pub fn att_name(&self) -> &'static str {

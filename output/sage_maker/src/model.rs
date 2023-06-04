@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::Model resource to create a model to host at an Amazon       SageMaker endpoint. For more information, see Deploying a Model on Amazon         SageMaker Hosting Services in the Amazon SageMaker Developer         Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModel {
     ///
     /// Specifies the containers in the inference pipeline.
@@ -118,7 +118,7 @@ pub struct CfnModel {
     pub att_model_name: CfnModelmodelname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelmodelname;
 impl CfnModelmodelname {
     pub fn att_name(&self) -> &'static str {
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for CfnModel {
 }
 
 /// Describes the container, as part of model definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerDefinition {
     ///
     /// This parameter is ignored for models that contain only a       PrimaryContainer.
@@ -347,7 +347,7 @@ pub struct ContainerDefinition {
     pub multi_model_config: Option<MultiModelConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ContainerDefinitionModeEnum {
     /// MultiModel
     #[serde(rename = "MultiModel")]
@@ -436,7 +436,7 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 }
 
 /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageConfig {
     ///
     /// Set this to one of the following values:
@@ -466,7 +466,7 @@ pub struct ImageConfig {
     pub repository_auth_config: Option<RepositoryAuthConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ImageConfigRepositoryAccessModeEnum {
     /// Platform
     #[serde(rename = "Platform")]
@@ -502,7 +502,7 @@ impl cfn_resources::CfnResource for ImageConfig {
 }
 
 /// Specifies details about how containers in a multi-container endpoint are run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceExecutionConfig {
     ///
     /// How containers in a multi-container are run. The following values are valid.
@@ -533,7 +533,7 @@ impl cfn_resources::CfnResource for InferenceExecutionConfig {
 }
 
 /// Specifies additional configuration for hosting multi-model endpoints.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiModelConfig {
     ///
     /// Whether to cache models for a multi-model endpoint. By default, multi-model endpoints       cache models so that a model does not have to be loaded into memory each time it is       invoked. Some use cases do not benefit from model caching. For example, if an endpoint       hosts a large number of models that are each invoked infrequently, the endpoint might       perform better if you disable model caching. To disable model caching, set the value of       this parameter to Disabled.
@@ -563,7 +563,7 @@ impl cfn_resources::CfnResource for MultiModelConfig {
 }
 
 /// Specifies an authentication configuration for the private docker registry where your       model image is hosted. Specify a value for this property only if you specified         Vpc as the value for the RepositoryAccessMode field of the         ImageConfig object that you passed to a call to         CreateModel and the private Docker registry where the model image is       hosted requires authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RepositoryAuthConfig {
     ///
     /// The Amazon Resource Name (ARN) of an AWS Lambda function that provides       credentials to authenticate to the private Docker registry where your model image is       hosted. For information about how to create an AWS Lambda function, see         Create a Lambda function         with the console in the         AWS Lambda Developer         Guide.
@@ -620,7 +620,7 @@ impl cfn_resources::CfnResource for RepositoryAuthConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -658,7 +658,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.

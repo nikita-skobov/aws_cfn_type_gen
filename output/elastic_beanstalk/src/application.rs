@@ -1,5 +1,5 @@
 /// The AWS::ElasticBeanstalk::Application resource is an AWS Elastic Beanstalk Beanstalk resource    type that specifies an Elastic Beanstalk application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name. For    more information, see Name Type.
@@ -100,7 +100,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// The resource lifecycle configuration for an application. Defines lifecycle settings for    resources that belong to the application, and the service role that Elastic Beanstalk assumes    in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle    settings for application versions.
 ///
 /// ApplicationResourceLifecycleConfig is a property of the AWS::ElasticBeanstalk::Application resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationResourceLifecycleConfig {
     ///
     /// The ARN of an IAM service role that Elastic Beanstalk has permission to    assume.
@@ -152,7 +152,7 @@ impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
 /// When Elastic Beanstalk deletes an application version from its database, you can no    longer deploy that version to an environment. The source bundle remains in S3 unless you    configure the rule to delete it.
 ///
 /// ApplicationVersionLifecycleConfig is a property of the ApplicationResourceLifecycleConfig    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationVersionLifecycleConfig {
     ///
     /// Specify a max age rule to restrict the length of time that application versions are    retained for an application.
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
 /// A lifecycle rule that deletes application versions after the specified number of    days.
 ///
 /// MaxAgeRule is a property of the ApplicationVersionLifecycleConfig    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaxAgeRule {
     ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
@@ -260,7 +260,7 @@ impl cfn_resources::CfnResource for MaxAgeRule {
 /// A lifecycle rule that deletes the oldest application version when the maximum count is    exceeded.
 ///
 /// MaxCountRule is a property of the ApplicationVersionLifecycleConfig    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaxCountRule {
     ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.

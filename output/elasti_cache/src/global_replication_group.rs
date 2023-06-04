@@ -1,5 +1,5 @@
 /// Consists of a primary cluster that accepts writes and an associated secondary cluster that resides in a different Amazon region. The secondary cluster accepts only reads. The primary     cluster automatically replicates updates to the secondary cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalReplicationGroup {
     /// Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.
     ///
@@ -112,7 +112,7 @@ pub struct CfnGlobalReplicationGroup {
     pub att_status: CfnGlobalReplicationGroupstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalReplicationGroupglobalreplicationgroupid;
 impl CfnGlobalReplicationGroupglobalreplicationgroupid {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnGlobalReplicationGroupglobalreplicationgroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalReplicationGroupstatus;
 impl CfnGlobalReplicationGroupstatus {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
 }
 
 /// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlobalReplicationGroupMember {
     ///
     /// The replication group id of the Global datastore member.
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
 }
 
 /// A list of the replication groups
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RegionalConfiguration {
     ///
     /// The name of the secondary cluster
@@ -250,7 +250,7 @@ impl cfn_resources::CfnResource for RegionalConfiguration {
 }
 
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReshardingConfiguration {
     ///
     /// Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these       configuration values apply to.

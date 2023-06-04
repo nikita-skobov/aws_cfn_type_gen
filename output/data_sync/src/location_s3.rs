@@ -1,7 +1,7 @@
 /// The AWS::DataSync::LocationS3 resource specifies an endpoint for an Amazon     S3 bucket.
 ///
 /// For more information, see Create       an Amazon S3 location in the AWS DataSync User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationS3 {
     ///
     /// The ARN of the Amazon S3 bucket.
@@ -85,7 +85,7 @@ pub struct CfnLocationS3 {
     pub att_location_uri: CfnLocationS3locationuri,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LocationS3S3StorageClassEnum {
     /// DEEP_ARCHIVE
     #[serde(rename = "DEEP_ARCHIVE")]
@@ -126,7 +126,7 @@ impl Default for LocationS3S3StorageClassEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationS3locationarn;
 impl CfnLocationS3locationarn {
     pub fn att_name(&self) -> &'static str {
@@ -134,7 +134,7 @@ impl CfnLocationS3locationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationS3locationuri;
 impl CfnLocationS3locationuri {
     pub fn att_name(&self) -> &'static str {
@@ -192,7 +192,7 @@ impl cfn_resources::CfnResource for CfnLocationS3 {
 /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role used to access    an Amazon S3 bucket.
 ///
 /// For detailed information about using such a role, see Creating a     Location for Amazon S3 in the         AWS DataSync User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Config {
     ///
     /// The ARN of the IAM role for accessing the S3 bucket.
@@ -239,7 +239,7 @@ impl cfn_resources::CfnResource for S3Config {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

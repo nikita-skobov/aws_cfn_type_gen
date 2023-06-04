@@ -1,7 +1,7 @@
 /// The AWS::ApiGatewayV2::DomainName resource specifies a custom domain          name for your API in Amazon API Gateway (API Gateway).
 ///
 /// You can use a custom domain name to provide a URL that's more intuitive and easier          to recall. For more information about using custom domain names, see Set up             Custom Domain Name for an API in API Gateway in the API             Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainName {
     ///
     /// The custom domain name for your API in Amazon API Gateway. Uppercase letters are          not supported.
@@ -57,7 +57,7 @@ pub struct CfnDomainName {
     pub att_regional_hosted_zone_id: CfnDomainNameregionalhostedzoneid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNameregionaldomainname;
 impl CfnDomainNameregionaldomainname {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnDomainNameregionaldomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNameregionalhostedzoneid;
 impl CfnDomainNameregionalhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl cfn_resources::CfnResource for CfnDomainName {
 /// The DomainNameConfiguration property type specifies the configuration          for a an API's domain name.
 ///
 /// DomainNameConfiguration is a property of the AWS::ApiGatewayV2::DomainName resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainNameConfiguration {
     ///
     /// An AWS-managed certificate that will be used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
@@ -172,7 +172,7 @@ impl cfn_resources::CfnResource for DomainNameConfiguration {
 }
 
 /// If specified, API Gateway performs two-way authentication between the client and the server. Clients must present a trusted certificate to access your API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MutualTlsAuthentication {
     ///
     /// An Amazon S3 URL that specifies the truststore for mutual TLS           authentication, for example, s3://bucket-name/key-name           .           The truststore can contain certificates from public or private certificate           authorities. To update the truststore, upload a new version to S3, and then           update your custom domain name to use the new version. To update the truststore,           you must have permissions to access the S3 object.

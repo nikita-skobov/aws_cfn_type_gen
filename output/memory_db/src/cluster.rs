@@ -1,5 +1,5 @@
 /// Specifies a cluster. All nodes in the cluster run the same     protocol-compliant engine software.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// The name of the Access Control List to associate with the cluster.
@@ -322,7 +322,7 @@ pub struct CfnCluster {
     pub att_status: CfnClusterstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterarn;
 impl CfnClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -330,7 +330,7 @@ impl CfnClusterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterclusterendpointaddress;
 impl CfnClusterclusterendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -338,7 +338,7 @@ impl CfnClusterclusterendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterparametergroupstatus;
 impl CfnClusterparametergroupstatus {
     pub fn att_name(&self) -> &'static str {
@@ -346,7 +346,7 @@ impl CfnClusterparametergroupstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterstatus;
 impl CfnClusterstatus {
     pub fn att_name(&self) -> &'static str {
@@ -384,7 +384,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// Represents the information required for client programs to connect to the cluster and     its nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoint {
     ///
     /// The DNS hostname of the node.
@@ -432,7 +432,7 @@ impl cfn_resources::CfnResource for Endpoint {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

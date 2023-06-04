@@ -1,7 +1,7 @@
 /// The HttpNamespace resource is an AWS Cloud Map resource type that contains information  about an HTTP namespace. Service instances that you register using an HTTP namespace can be discovered using a   DiscoverInstances request but can't be discovered using DNS.
 ///
 /// For the current quota on the number of namespaces that you can create using the same AWS  account, see AWS Cloud Map   quotas in the AWS Cloud Map Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHttpNamespace {
     ///
     /// A description for the namespace.
@@ -53,7 +53,7 @@ pub struct CfnHttpNamespace {
     pub att_id: CfnHttpNamespaceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHttpNamespacearn;
 impl CfnHttpNamespacearn {
     pub fn att_name(&self) -> &'static str {
@@ -61,7 +61,7 @@ impl CfnHttpNamespacearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHttpNamespaceid;
 impl CfnHttpNamespaceid {
     pub fn att_name(&self) -> &'static str {
@@ -121,7 +121,7 @@ impl cfn_resources::CfnResource for CfnHttpNamespace {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

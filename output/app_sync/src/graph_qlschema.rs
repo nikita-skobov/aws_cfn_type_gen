@@ -1,5 +1,5 @@
 /// The AWS::AppSync::GraphQLSchema resource is used for your AWS AppSync GraphQL     schema that controls the data model for your API. Schema files are text written in Schema Definition Language     (SDL) format. For more information about schema authoring, see Designing a GraphQL API in the        AWS AppSync Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLSchema {
     ///
     /// The AWS AppSync GraphQL API identifier to which you want to apply this schema.

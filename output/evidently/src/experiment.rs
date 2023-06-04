@@ -1,7 +1,7 @@
 /// Creates or updates an Evidently experiment. Before you create an experiment,       you must create the feature to use for the experiment.
 ///
 /// An experiment helps you make feature design       decisions based on evidence and data. An experiment can test as       many as five variations at once. Evidently collects experiment data and analyzes it by statistical methods, and provides       clear recommendations about which variations perform better.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExperiment {
     ///
     /// An optional description of the experiment.
@@ -157,7 +157,7 @@ pub struct CfnExperiment {
     pub att_arn: CfnExperimentarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExperimentarn;
 impl CfnExperimentarn {
     pub fn att_name(&self) -> &'static str {
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for CfnExperiment {
 }
 
 /// Use this structure to tell Evidently whether higher or lower values are desired for a metric that is       used in an experiment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricGoalObject {
     ///
     /// INCREASE means that a variation with a higher number for this metric is performing       better.
@@ -276,7 +276,7 @@ impl cfn_resources::CfnResource for MetricGoalObject {
 }
 
 /// A structure that contains the configuration of which variation to use as the "control"       version. The "control" version is used for comparison with other variations. This structure       also specifies how much experiment traffic is allocated to each variation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnlineAbConfigObject {
     ///
     /// The name of the variation that is to be the default variation that the other variations are compared to.
@@ -318,7 +318,7 @@ impl cfn_resources::CfnResource for OnlineAbConfigObject {
 }
 
 /// Use this structure to start and stop the experiment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunningStatusObject {
     /// If you are using     AWS CloudFormation to start the experiment, use this field to specify when the experiment is to end. The format   is as a UNIX timestamp. For more information about this format, see     The Current Epoch Unix Timestamp.
     ///
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for RunningStatusObject {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -423,7 +423,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// A structure that defines one treatment in an experiment. A treatment is a variation of the feature       that you are including in the experiment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreatmentObject {
     ///
     /// The description of the treatment.
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for TreatmentObject {
 }
 
 /// This structure defines how much experiment traffic to allocate to     one treatment used in the experiment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TreatmentToWeight {
     ///
     /// The portion of experiment traffic to allocate to this treatment.     Specify the traffic portion in     thousandths of a percent, so 20,000 allocated to a treatment would allocate 20% of the experiment     traffic to that treatment.

@@ -1,5 +1,5 @@
 /// Creates a Data Store that can ingest and export FHIR formatted data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastore {
     ///
     /// The user generated name for the Data Store.
@@ -86,7 +86,7 @@ pub struct CfnFHIRDatastore {
     pub att_datastore_status: CfnFHIRDatastoredatastorestatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FHIRDatastoreDatastoreTypeVersionEnum {
     /// R4
     #[serde(rename = "R4")]
@@ -99,7 +99,7 @@ impl Default for FHIRDatastoreDatastoreTypeVersionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastorecreatedatseconds;
 impl CfnFHIRDatastorecreatedatseconds {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnFHIRDatastorecreatedatseconds {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastoredatastorearn;
 impl CfnFHIRDatastoredatastorearn {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnFHIRDatastoredatastorearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastoredatastoreendpoint;
 impl CfnFHIRDatastoredatastoreendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnFHIRDatastoredatastoreendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastoredatastoreid;
 impl CfnFHIRDatastoredatastoreid {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl CfnFHIRDatastoredatastoreid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFHIRDatastoredatastorestatus;
 impl CfnFHIRDatastoredatastorestatus {
     pub fn att_name(&self) -> &'static str {
@@ -184,7 +184,7 @@ impl cfn_resources::CfnResource for CfnFHIRDatastore {
 }
 
 /// The CreatedAt property type specifies Property description not available. for an AWS::HealthLake::FHIRDatastore.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreatedAt {
     /// Property description not available.
     ///
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for CreatedAt {
 }
 
 /// The customer-managed-key(CMK) used when creating a Data Store. If a customer owned key is not specified, an    Amazon owned key will be used for encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KmsEncryptionConfig {
     ///
     /// The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned    CMKs and Amazon owned CMKs. For more information on CMK types, see KmsEncryptionConfig.
@@ -291,7 +291,7 @@ impl cfn_resources::CfnResource for KmsEncryptionConfig {
 }
 
 /// Optional parameter to preload data upon creation of the Data Store. Currently, the only     supported preloaded data is synthetic data generated from Synthea.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PreloadDataConfig {
     ///
     /// The type of preloaded data. Only Synthea preloaded data is supported.
@@ -307,7 +307,7 @@ pub struct PreloadDataConfig {
     pub preload_data_type: PreloadDataConfigPreloadDataTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PreloadDataConfigPreloadDataTypeEnum {
     /// SYNTHEA
     #[serde(rename = "SYNTHEA")]
@@ -335,7 +335,7 @@ impl cfn_resources::CfnResource for PreloadDataConfig {
 }
 
 /// The server-side encryption key configuration for a customer provided encryption key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SseConfiguration {
     ///
     /// The server-side encryption key configuration for a customer provided encryption key (CMK).
@@ -372,7 +372,7 @@ impl cfn_resources::CfnResource for SseConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

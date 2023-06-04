@@ -1,5 +1,5 @@
 /// Specifies an email template. Email templates enable you to send personalized email to       one or more destinations in a single API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTemplate {
     ///
     /// The content of the email, composed of a subject line and either an HTML part or a       text-only part.
@@ -17,7 +17,7 @@ pub struct CfnTemplate {
     pub att_id: CfnTemplateid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTemplateid;
 impl CfnTemplateid {
     pub fn att_name(&self) -> &'static str {
@@ -44,7 +44,7 @@ impl cfn_resources::CfnResource for CfnTemplate {
 }
 
 /// The content of the email, composed of a subject line and either an HTML part or a       text-only part.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Template {
     ///
     /// The HTML body of the email.

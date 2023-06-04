@@ -3,7 +3,7 @@
 /// If you call CreateReportPlan with a plan that already exists, you receive     an AlreadyExistsException exception.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReportPlan {
     ///
     /// Contains information about where and how to deliver your reports, specifically your       Amazon S3 bucket name, S3 key prefix, and the formats of your reports.
@@ -83,7 +83,7 @@ pub struct CfnReportPlan {
     pub att_report_plan_arn: CfnReportPlanreportplanarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReportPlanreportplanarn;
 impl CfnReportPlanreportplanarn {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl cfn_resources::CfnResource for CfnReportPlan {
 }
 
 /// Contains information from your report plan about where to deliver your reports,     specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your     reports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReportDeliveryChannel {
     ///
     /// A list of the format of your reports: CSV, JSON, or both. If     not specified, the default format is CSV.
@@ -201,7 +201,7 @@ impl cfn_resources::CfnResource for ReportDeliveryChannel {
 }
 
 /// Contains detailed information about a report setting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReportSetting {
     ///
     /// These are the accounts to be included in the report.
@@ -286,7 +286,7 @@ impl cfn_resources::CfnResource for ReportSetting {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

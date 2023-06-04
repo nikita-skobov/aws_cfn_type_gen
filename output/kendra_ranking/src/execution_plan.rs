@@ -1,7 +1,7 @@
 /// Creates a rescore execution plan. A rescore execution       plan is an Amazon Kendra Intelligent Ranking resource       used for provisioning the Rescore API. You set       the number of capacity units that you require for       Amazon Kendra Intelligent Ranking to rescore or re-rank       a search service's results.
 ///
 /// For an example of using the       CreateRescoreExecutionPlan API, including using       the Python and Java SDKs, see Semantically         ranking a search service's results.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExecutionPlan {
     ///
     /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
@@ -71,7 +71,7 @@ pub struct CfnExecutionPlan {
     pub att_id: CfnExecutionPlanid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExecutionPlanarn;
 impl CfnExecutionPlanarn {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnExecutionPlanarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExecutionPlanid;
 impl CfnExecutionPlanid {
     pub fn att_name(&self) -> &'static str {
@@ -159,7 +159,7 @@ impl cfn_resources::CfnResource for CfnExecutionPlan {
 }
 
 /// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityUnitsConfiguration {
     ///
     /// The amount of extra capacity for your rescore execution       plan.
@@ -207,7 +207,7 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

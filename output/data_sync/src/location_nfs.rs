@@ -1,5 +1,5 @@
 /// The AWS::DataSync::LocationNFS resource specifies a file system on a     Network File System (NFS) server that can be read from or written to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationNFS {
     ///
     /// The NFS mount options that DataSync can use to mount your NFS share.
@@ -91,7 +91,7 @@ pub struct CfnLocationNFS {
     pub att_location_uri: CfnLocationNFSlocationuri,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationNFSlocationarn;
 impl CfnLocationNFSlocationarn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnLocationNFSlocationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationNFSlocationuri;
 impl CfnLocationNFSlocationuri {
     pub fn att_name(&self) -> &'static str {
@@ -159,7 +159,7 @@ impl cfn_resources::CfnResource for CfnLocationNFS {
 }
 
 /// The NFS mount options that DataSync can use to mount your NFS share.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MountOptions {
     ///
     /// Specifies the NFS version that you want DataSync to use when mounting your NFS    share. If the server refuses to use the version specified, the task fails.
@@ -182,7 +182,7 @@ pub struct MountOptions {
     pub version: Option<MountOptionsVersionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MountOptionsVersionEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for MountOptions {
 }
 
 /// A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)    location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnPremConfig {
     ///
     /// ARNs of the agents to use for an NFS location.
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for OnPremConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

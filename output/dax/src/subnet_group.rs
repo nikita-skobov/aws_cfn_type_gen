@@ -1,5 +1,5 @@
 /// Creates a new subnet group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubnetGroup {
     ///
     /// The description of the subnet group.

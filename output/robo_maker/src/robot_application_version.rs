@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::RobotApplicationVersion resource creates an AWS RoboMaker robot version.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplicationVersion {
     ///
     /// The application information for the robot application.
@@ -43,7 +43,7 @@ pub struct CfnRobotApplicationVersion {
     pub att_arn: CfnRobotApplicationVersionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplicationVersionapplicationversion;
 impl CfnRobotApplicationVersionapplicationversion {
     pub fn att_name(&self) -> &'static str {
@@ -51,7 +51,7 @@ impl CfnRobotApplicationVersionapplicationversion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotApplicationVersionarn;
 impl CfnRobotApplicationVersionarn {
     pub fn att_name(&self) -> &'static str {

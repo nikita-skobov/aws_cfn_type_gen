@@ -1,5 +1,5 @@
 /// The AWS::S3ObjectLambda::AccessPointPolicy resource specifies the Object       Lambda Access Point resource policy document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointPolicy {
     ///
     /// An access point with an attached AWS Lambda function used to access transformed data from an Amazon S3     bucket.

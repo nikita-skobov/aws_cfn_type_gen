@@ -7,7 +7,7 @@
 /// For information about RDS Proxy for Amazon Aurora, see Managing Connections with         Amazon RDS Proxy in the Amazon Aurora User Guide.
 ///
 /// For a sample template that creates a DB proxy and registers a DB instance, see                Examples in AWS::RDS::DBProxy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyTargetGroup {
     ///
     /// Settings that control the size and behavior of the connection pool associated with a         DBProxyTargetGroup.
@@ -73,7 +73,7 @@ pub struct CfnDBProxyTargetGroup {
     pub att_target_group_arn: CfnDBProxyTargetGrouptargetgrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyTargetGrouptargetgrouparn;
 impl CfnDBProxyTargetGrouptargetgrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {
 }
 
 /// Specifies the settings that control the size and behavior of the connection pool       associated with a DBProxyTargetGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionPoolConfigurationInfoFormat {
     ///
     /// The number of seconds for a proxy to wait for a connection to become available in the connection pool. Only applies when the     proxy has opened its maximum number of connections and all connections are busy with client sessions.

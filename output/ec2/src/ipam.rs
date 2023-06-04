@@ -1,5 +1,5 @@
 /// IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts throughout your AWS Organization. For more information, see What is IPAM? in the Amazon VPC IPAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAM {
     ///
     /// The IPAM's default resource discovery association ID.
@@ -76,7 +76,7 @@ pub struct CfnIPAM {
     pub att_public_default_scope_id: CfnIPAMpublicdefaultscopeid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMarn;
 impl CfnIPAMarn {
     pub fn att_name(&self) -> &'static str {
@@ -84,7 +84,7 @@ impl CfnIPAMarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMipamid;
 impl CfnIPAMipamid {
     pub fn att_name(&self) -> &'static str {
@@ -92,7 +92,7 @@ impl CfnIPAMipamid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMprivatedefaultscopeid;
 impl CfnIPAMprivatedefaultscopeid {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl CfnIPAMprivatedefaultscopeid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMpublicdefaultscopeid;
 impl CfnIPAMpublicdefaultscopeid {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl cfn_resources::CfnResource for CfnIPAM {
 /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
 ///
 /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IpamOperatingRegion {
     ///
     /// The name of the operating Region.
@@ -160,7 +160,7 @@ impl cfn_resources::CfnResource for IpamOperatingRegion {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

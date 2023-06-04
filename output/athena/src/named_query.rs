@@ -1,5 +1,5 @@
 /// The AWS::Athena::NamedQuery resource specifies an Amazon Athena saved query, where QueryString contains the SQL query statements that       make up the query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamedQuery {
     ///
     /// The database to which the query belongs.
@@ -81,7 +81,7 @@ pub struct CfnNamedQuery {
     pub att_named_query_id: CfnNamedQuerynamedqueryid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNamedQuerynamedqueryid;
 impl CfnNamedQuerynamedqueryid {
     pub fn att_name(&self) -> &'static str {

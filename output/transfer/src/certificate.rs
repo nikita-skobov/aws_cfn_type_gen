@@ -1,5 +1,5 @@
 /// Imports the signing and encryption certificates that you need to create local (AS2)    profiles and partner    profiles.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificate {
     ///
     /// An optional date that specifies when the certificate becomes active.
@@ -139,7 +139,7 @@ pub struct CfnCertificate {
     pub att_cfn_type: CfnCertificatecfntype,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateUsageEnum {
     /// ENCRYPTION
     #[serde(rename = "ENCRYPTION")]
@@ -156,7 +156,7 @@ impl Default for CertificateUsageEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatearn;
 impl CfnCertificatearn {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnCertificatearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatecertificateid;
 impl CfnCertificatecertificateid {
     pub fn att_name(&self) -> &'static str {
@@ -172,7 +172,7 @@ impl CfnCertificatecertificateid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatenotafterdate;
 impl CfnCertificatenotafterdate {
     pub fn att_name(&self) -> &'static str {
@@ -180,7 +180,7 @@ impl CfnCertificatenotafterdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatenotbeforedate;
 impl CfnCertificatenotbeforedate {
     pub fn att_name(&self) -> &'static str {
@@ -188,7 +188,7 @@ impl CfnCertificatenotbeforedate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificateserial;
 impl CfnCertificateserial {
     pub fn att_name(&self) -> &'static str {
@@ -196,7 +196,7 @@ impl CfnCertificateserial {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatestatus;
 impl CfnCertificatestatus {
     pub fn att_name(&self) -> &'static str {
@@ -204,7 +204,7 @@ impl CfnCertificatestatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatecfntype;
 impl CfnCertificatecfntype {
     pub fn att_name(&self) -> &'static str {
@@ -305,7 +305,7 @@ impl cfn_resources::CfnResource for CfnCertificate {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

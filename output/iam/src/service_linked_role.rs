@@ -1,7 +1,7 @@
 /// Creates an IAM role that is linked to a specific AWS service. The service controls       the attached policies and when the role can be deleted. This helps ensure that the       service is not broken by an unexpectedly changed or deleted role, which could put your       AWS resources into an unknown state. Allowing the service to control the role helps       improve service stability and proper cleanup when a service and its role are no longer       needed. For more information, see Using service-linked         roles in the IAM User Guide.
 ///
 /// To attach a policy to this service-linked role, you must make the request using the       AWS service that depends on this role.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceLinkedRole {
     ///
     /// The service principal for the AWS service to which this role is attached. You use a       string similar to a URL but without the http:// in front. For example:         elasticbeanstalk.amazonaws.com.

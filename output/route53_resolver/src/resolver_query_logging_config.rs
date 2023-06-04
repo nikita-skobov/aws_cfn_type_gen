@@ -1,5 +1,5 @@
 /// The AWS::Route53Resolver::ResolverQueryLoggingConfig resource is a complex type that contains settings for one query logging configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfig {
     ///
     /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
@@ -57,7 +57,7 @@ pub struct CfnResolverQueryLoggingConfig {
     pub att_status: CfnResolverQueryLoggingConfigstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigarn;
 impl CfnResolverQueryLoggingConfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnResolverQueryLoggingConfigarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigcreationtime;
 impl CfnResolverQueryLoggingConfigcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnResolverQueryLoggingConfigcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigcreatorrequestid;
 impl CfnResolverQueryLoggingConfigcreatorrequestid {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnResolverQueryLoggingConfigcreatorrequestid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigid;
 impl CfnResolverQueryLoggingConfigid {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnResolverQueryLoggingConfigid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigownerid;
 impl CfnResolverQueryLoggingConfigownerid {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl CfnResolverQueryLoggingConfigownerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigsharestatus;
 impl CfnResolverQueryLoggingConfigsharestatus {
     pub fn att_name(&self) -> &'static str {
@@ -105,7 +105,7 @@ impl CfnResolverQueryLoggingConfigsharestatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigstatus;
 impl CfnResolverQueryLoggingConfigstatus {
     pub fn att_name(&self) -> &'static str {

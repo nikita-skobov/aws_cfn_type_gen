@@ -1,5 +1,5 @@
 /// Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpoint {
     ///
     /// Indicates whether the Resolver endpoint allows inbound or outbound DNS queries:
@@ -134,7 +134,7 @@ pub struct CfnResolverEndpoint {
     pub att_resolver_endpoint_type: CfnResolverEndpointresolverendpointtype,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResolverEndpointDirectionEnum {
     /// INBOUND
     #[serde(rename = "INBOUND")]
@@ -151,7 +151,7 @@ impl Default for ResolverEndpointDirectionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResolverEndpointResolverEndpointTypeEnum {
     /// DUALSTACK
     #[serde(rename = "DUALSTACK")]
@@ -172,7 +172,7 @@ impl Default for ResolverEndpointResolverEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointarn;
 impl CfnResolverEndpointarn {
     pub fn att_name(&self) -> &'static str {
@@ -180,7 +180,7 @@ impl CfnResolverEndpointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointdirection;
 impl CfnResolverEndpointdirection {
     pub fn att_name(&self) -> &'static str {
@@ -188,7 +188,7 @@ impl CfnResolverEndpointdirection {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointhostvpcid;
 impl CfnResolverEndpointhostvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -196,7 +196,7 @@ impl CfnResolverEndpointhostvpcid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointipaddresscount;
 impl CfnResolverEndpointipaddresscount {
     pub fn att_name(&self) -> &'static str {
@@ -204,7 +204,7 @@ impl CfnResolverEndpointipaddresscount {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointname;
 impl CfnResolverEndpointname {
     pub fn att_name(&self) -> &'static str {
@@ -212,7 +212,7 @@ impl CfnResolverEndpointname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointoutpostarn;
 impl CfnResolverEndpointoutpostarn {
     pub fn att_name(&self) -> &'static str {
@@ -220,7 +220,7 @@ impl CfnResolverEndpointoutpostarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointpreferredinstancetype;
 impl CfnResolverEndpointpreferredinstancetype {
     pub fn att_name(&self) -> &'static str {
@@ -228,7 +228,7 @@ impl CfnResolverEndpointpreferredinstancetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointresolverendpointid;
 impl CfnResolverEndpointresolverendpointid {
     pub fn att_name(&self) -> &'static str {
@@ -236,7 +236,7 @@ impl CfnResolverEndpointresolverendpointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverEndpointresolverendpointtype;
 impl CfnResolverEndpointresolverendpointtype {
     pub fn att_name(&self) -> &'static str {
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for CfnResolverEndpoint {
 }
 
 /// In a 			CreateResolverEndpoint 			request, the IP address that DNS queries originate from (for outbound endpoints) or that you forward DNS queries to (for inbound endpoints). 			IpAddressRequest also includes the ID of the subnet that contains the IP address.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IpAddressRequest {
     ///
     /// The IPv4 address that you want to use for DNS queries.
@@ -425,7 +425,7 @@ impl cfn_resources::CfnResource for IpAddressRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

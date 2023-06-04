@@ -1,5 +1,5 @@
 /// The AWS::AppSync::FunctionConfiguration resource defines the functions in GraphQL APIs to     perform certain operations. You can use pipeline resolvers to attach functions. For more information, see       Pipeline Resolvers     in the AWS AppSync Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionConfiguration {
     ///
     /// The AWS AppSync GraphQL API that you want to attach using this function.
@@ -183,7 +183,7 @@ pub struct CfnFunctionConfiguration {
     pub att_name: CfnFunctionConfigurationname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionConfigurationdatasourcename;
 impl CfnFunctionConfigurationdatasourcename {
     pub fn att_name(&self) -> &'static str {
@@ -191,7 +191,7 @@ impl CfnFunctionConfigurationdatasourcename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionConfigurationfunctionarn;
 impl CfnFunctionConfigurationfunctionarn {
     pub fn att_name(&self) -> &'static str {
@@ -199,7 +199,7 @@ impl CfnFunctionConfigurationfunctionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionConfigurationfunctionid;
 impl CfnFunctionConfigurationfunctionid {
     pub fn att_name(&self) -> &'static str {
@@ -207,7 +207,7 @@ impl CfnFunctionConfigurationfunctionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionConfigurationname;
 impl CfnFunctionConfigurationname {
     pub fn att_name(&self) -> &'static str {
@@ -236,7 +236,7 @@ impl cfn_resources::CfnResource for CfnFunctionConfiguration {
 }
 
 /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync     function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must     also be specified.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppSyncRuntime {
     ///
     /// The name of the runtime to use. Currently, the only allowed value is     APPSYNC_JS.
@@ -276,7 +276,7 @@ impl cfn_resources::CfnResource for AppSyncRuntime {
 }
 
 /// The LambdaConflictHandlerConfig object when configuring LAMBDA     as the Conflict Handler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConflictHandlerConfig {
     ///
     /// The Amazon Resource Name (ARN) for the Lambda function to use as the     Conflict Handler.
@@ -308,7 +308,7 @@ impl cfn_resources::CfnResource for LambdaConflictHandlerConfig {
 /// Describes a Sync configuration for a resolver.
 ///
 /// Specifies which Conflict Detection strategy and Resolution strategy to use when the     resolver is invoked.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SyncConfig {
     ///
     /// The Conflict Detection strategy to use.

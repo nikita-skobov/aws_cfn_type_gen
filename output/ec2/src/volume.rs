@@ -11,7 +11,7 @@
 /// DeletionPolicy attribute
 ///
 /// To control how AWS CloudFormation handles the volume when the stack is deleted,     set a deletion policy for your volume. You can choose to retain the volume, to delete the     volume, or to create a snapshot of the volume. For more information, see DeletionPolicy attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolume {
     ///
     /// Indicates whether the volume is auto-enabled for I/O operations. By default, Amazon EBS     disables I/O to the volume from attached EC2 instances when it determines that a volume's     data is potentially inconsistent. If the consistency of the volume is not a concern, and     you prefer that the volume be made available immediately if it's impaired, you can     configure the volume to automatically enable I/O.
@@ -194,7 +194,7 @@ pub struct CfnVolume {
     pub att_volume_id: CfnVolumevolumeid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VolumeVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -231,7 +231,7 @@ impl Default for VolumeVolumeTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolumevolumeid;
 impl CfnVolumevolumeid {
     pub fn att_name(&self) -> &'static str {
@@ -260,7 +260,7 @@ impl cfn_resources::CfnResource for CfnVolume {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

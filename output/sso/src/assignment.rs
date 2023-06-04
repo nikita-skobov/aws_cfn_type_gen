@@ -1,5 +1,5 @@
 /// Assigns access to a Principal for a specified AWS account using a specified permission     set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssignment {
     ///
     /// The ARN of the IAM Identity Center instance under which the operation will be executed. For more     information about ARNs, see Amazon Resource Names (ARNs) and       AWS Service Namespaces in the AWS General Reference.
@@ -96,7 +96,7 @@ pub struct CfnAssignment {
     pub target_type: AssignmentTargetTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssignmentPrincipalTypeEnum {
     /// GROUP
     #[serde(rename = "GROUP")]
@@ -113,7 +113,7 @@ impl Default for AssignmentPrincipalTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssignmentTargetTypeEnum {
     /// AWS_ACCOUNT
     #[serde(rename = "AWS_ACCOUNT")]

@@ -13,7 +13,7 @@
 /// Regions
 ///
 /// AWS KMS CloudFormation resources are available in all Regions in which AWS KMS and AWS CloudFormation are supported.    You can use the AWS::KMS::Key resource to create and manage all KMS key types that are supported in a Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKey {
     ///
     /// A description of the KMS key. Use a description that helps you to distinguish this KMS key from    others in the account, such as its intended use.
@@ -205,7 +205,7 @@ pub struct CfnKey {
     pub att_key_id: CfnKeykeyid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KeyKeySpecEnum {
     /// ECC_NIST_P256
     #[serde(rename = "ECC_NIST_P256")]
@@ -266,7 +266,7 @@ impl Default for KeyKeySpecEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KeyKeyUsageEnum {
     /// ENCRYPT_DECRYPT
     #[serde(rename = "ENCRYPT_DECRYPT")]
@@ -287,7 +287,7 @@ impl Default for KeyKeyUsageEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyarn;
 impl CfnKeyarn {
     pub fn att_name(&self) -> &'static str {
@@ -295,7 +295,7 @@ impl CfnKeyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeykeyid;
 impl CfnKeykeyid {
     pub fn att_name(&self) -> &'static str {
@@ -361,7 +361,7 @@ impl cfn_resources::CfnResource for CfnKey {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

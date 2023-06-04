@@ -3,7 +3,7 @@
 /// A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
 ///
 /// You need the Traffic Mirror filter ID when you create the rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrafficMirrorFilterRule {
     ///
     /// The description of the Traffic Mirror rule.
@@ -126,7 +126,7 @@ pub struct CfnTrafficMirrorFilterRule {
     pub traffic_mirror_filter_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrafficMirrorFilterRuleRuleActionEnum {
     /// accept
     #[serde(rename = "accept")]
@@ -143,7 +143,7 @@ impl Default for TrafficMirrorFilterRuleRuleActionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrafficMirrorFilterRuleTrafficDirectionEnum {
     /// egress
     #[serde(rename = "egress")]
@@ -183,7 +183,7 @@ impl cfn_resources::CfnResource for CfnTrafficMirrorFilterRule {
 }
 
 /// Describes the Traffic Mirror port range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrafficMirrorPortRange {
     ///
     /// The start of the Traffic Mirror port range. This applies to the TCP and UDP protocols.

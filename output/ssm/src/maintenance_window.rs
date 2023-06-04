@@ -1,7 +1,7 @@
 /// The AWS::SSM::MaintenanceWindow resource represents general information about    a maintenance window for AWS Systems Manager. Maintenance Windows let you define a schedule    for when to perform potentially disruptive actions on your instances, such as patching an    operating system (OS), updating drivers, or installing software. Each maintenance window has a    schedule, a duration, a set of registered targets, and a set of registered tasks.
 ///
 /// For more information, see Systems Manager     Maintenance Windows in the AWS Systems Manager User Guide and         CreateMaintenanceWindow in the AWS Systems Manager API     Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMaintenanceWindow {
     ///
     /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindow {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

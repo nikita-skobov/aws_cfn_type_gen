@@ -1,5 +1,5 @@
 /// The AWS::S3ObjectLambda::AccessPoint resource specifies an Object Lambda       Access Point used to access a bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPoint {
     ///
     /// The name of this access point.
@@ -37,7 +37,7 @@ pub struct CfnAccessPoint {
     pub att_creation_date: CfnAccessPointcreationdate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointaliasstatus;
 impl CfnAccessPointaliasstatus {
     pub fn att_name(&self) -> &'static str {
@@ -45,7 +45,7 @@ impl CfnAccessPointaliasstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointaliasvalue;
 impl CfnAccessPointaliasvalue {
     pub fn att_name(&self) -> &'static str {
@@ -53,7 +53,7 @@ impl CfnAccessPointaliasvalue {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointarn;
 impl CfnAccessPointarn {
     pub fn att_name(&self) -> &'static str {
@@ -61,7 +61,7 @@ impl CfnAccessPointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointcreationdate;
 impl CfnAccessPointcreationdate {
     pub fn att_name(&self) -> &'static str {
@@ -86,7 +86,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 }
 
 /// The alias of an Object Lambda Access Point. For more information, see How to use a bucket-style alias for your S3 bucket     Object Lambda Access Point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Alias {
     ///
     /// The status of the Object Lambda Access Point alias. If the status is PROVISIONING, the Object Lambda Access Point is provisioning the alias and the alias is not ready for use yet. If      the status is READY, the Object Lambda Access Point alias is successfully provisioned and ready for use.
@@ -126,7 +126,7 @@ impl cfn_resources::CfnResource for Alias {
 }
 
 /// The AwsLambda property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsLambda {
     /// Property description not available.
     ///
@@ -165,7 +165,7 @@ impl cfn_resources::CfnResource for AwsLambda {
 }
 
 /// The ContentTransformation property type specifies Property description not available. for an AWS::S3ObjectLambda::AccessPoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContentTransformation {
     /// Property description not available.
     ///
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for ContentTransformation {
 }
 
 /// A configuration used when creating an Object Lambda Access Point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ObjectLambdaConfiguration {
     ///
     /// A container for allowed features. Valid inputs are GetObject-Range,         GetObject-PartNumber, HeadObject-Range, and         HeadObject-PartNumber.
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for ObjectLambdaConfiguration {
 }
 
 /// Indicates whether this access point policy is public. For more information about how Amazon S3     evaluates policies to determine whether they are public, see The Meaning of "Public" in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyStatus {
     ///
     ///
@@ -291,7 +291,7 @@ impl cfn_resources::CfnResource for PolicyStatus {
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3     account. You can enable the configuration options in any combination. For more information     about when Amazon S3 considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
 ///
 /// This data type is not supported for Amazon S3 on Outposts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for buckets in     this account. Setting this element to TRUE causes the following     behavior:
@@ -375,7 +375,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 }
 
 /// A configuration used when creating an Object Lambda Access Point transformation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformationConfiguration {
     ///
     /// A container for the action of an Object Lambda Access Point configuration. Valid       inputs are GetObject, HeadObject, ListObject, and         ListObjectV2.

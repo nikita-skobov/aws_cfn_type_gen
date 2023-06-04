@@ -5,7 +5,7 @@
 /// For the rotation function, you have two options:
 ///
 /// For database secrets, if you define    both the secret and the database or service in the AWS CloudFormation template, then    you need to define the AWS::SecretsManager::SecretTargetAttachment resource to populate the secret with    the connection details of the database or service before you attempt to configure    rotation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRotationSchedule {
     ///
     /// Creates a new Lambda rotation    function based on one of the     Secrets Manager rotation function templates. To use a rotation function that already   exists, specify RotationLambdaARN instead.
@@ -108,7 +108,7 @@ impl cfn_resources::CfnResource for CfnRotationSchedule {
 /// You must specify Transform:     AWS::SecretsManager-2020-07-23 at the beginning of the CloudFormation    template.
 ///
 /// For Amazon RDS master user credentials, see AWS::RDS::DBCluster MasterUserSecret.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostedRotationLambda {
     ///
     /// A string of the characters that you don't want in the password.
@@ -277,7 +277,7 @@ impl cfn_resources::CfnResource for HostedRotationLambda {
 }
 
 /// The rotation schedule and window. We recommend you use ScheduleExpression to       set a cron or rate expression for the schedule and Duration to set the length of       the rotation window.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RotationRules {
     ///
     /// The number of days between automatic scheduled rotations of the secret. You can use this    value to check that your secret meets your compliance guidelines for how often secrets must    be rotated.

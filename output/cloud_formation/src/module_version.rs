@@ -3,7 +3,7 @@
 /// To specify a module version as the default version, use the AWS::CloudFormation::ModuleDefaultVersion resource.
 ///
 /// For more information using modules, see Using modules to encapsulate and reuse resource   configurations and Registering extensions in the   CloudFormation User Guide. For information on developing modules, see Developing modules in the   CloudFormation CLI User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersion {
     ///
     /// The name of the module being registered.
@@ -61,7 +61,7 @@ pub struct CfnModuleVersion {
     pub att_visibility: CfnModuleVersionvisibility,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersionarn;
 impl CfnModuleVersionarn {
     pub fn att_name(&self) -> &'static str {
@@ -69,7 +69,7 @@ impl CfnModuleVersionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersiondescription;
 impl CfnModuleVersiondescription {
     pub fn att_name(&self) -> &'static str {
@@ -77,7 +77,7 @@ impl CfnModuleVersiondescription {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersiondocumentationurl;
 impl CfnModuleVersiondocumentationurl {
     pub fn att_name(&self) -> &'static str {
@@ -85,7 +85,7 @@ impl CfnModuleVersiondocumentationurl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersionschema;
 impl CfnModuleVersionschema {
     pub fn att_name(&self) -> &'static str {
@@ -93,7 +93,7 @@ impl CfnModuleVersionschema {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersiontimecreated;
 impl CfnModuleVersiontimecreated {
     pub fn att_name(&self) -> &'static str {
@@ -101,7 +101,7 @@ impl CfnModuleVersiontimecreated {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersionversionid;
 impl CfnModuleVersionversionid {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnModuleVersionversionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleVersionvisibility;
 impl CfnModuleVersionvisibility {
     pub fn att_name(&self) -> &'static str {

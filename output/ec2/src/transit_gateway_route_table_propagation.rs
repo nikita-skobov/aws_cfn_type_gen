@@ -1,7 +1,7 @@
 /// Enables the specified attachment to propagate routes to the specified propagation route     table.
 ///
 /// For more information about enabling transit gateway route propagation, see EnableTransitGatewayRouteTablePropagation in the Amazon EC2 API     Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayRouteTablePropagation {
     ///
     /// The ID of the attachment.

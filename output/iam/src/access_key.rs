@@ -1,7 +1,7 @@
 /// Creates a new AWS secret access key and corresponding AWS     access key ID for the specified user. The default status for new keys is       Active.
 ///
 /// For information about quotas on the number of keys you can create, see IAM and        AWS STS quotas in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessKey {
     ///
     /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
@@ -52,7 +52,7 @@ pub struct CfnAccessKey {
     pub att_secret_access_key: CfnAccessKeysecretaccesskey,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccessKeyStatusEnum {
     /// Active
     #[serde(rename = "Active")]
@@ -69,7 +69,7 @@ impl Default for AccessKeyStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessKeysecretaccesskey;
 impl CfnAccessKeysecretaccesskey {
     pub fn att_name(&self) -> &'static str {

@@ -1,5 +1,5 @@
 /// Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. For API reference, see     CreateMitigationAction and for general information,      see Mitigation actions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMitigationAction {
     ///
     /// The friendly name of the mitigation action.
@@ -54,7 +54,7 @@ pub struct CfnMitigationAction {
     pub att_mitigation_action_id: CfnMitigationActionmitigationactionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMitigationActionmitigationactionarn;
 impl CfnMitigationActionmitigationactionarn {
     pub fn att_name(&self) -> &'static str {
@@ -62,7 +62,7 @@ impl CfnMitigationActionmitigationactionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMitigationActionmitigationactionid;
 impl CfnMitigationActionmitigationactionid {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl cfn_resources::CfnResource for CfnMitigationAction {
 }
 
 /// Defines the type of action and the parameters for that action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionParams {
     ///
     /// Specifies the group to which you want to add the devices.
@@ -201,7 +201,7 @@ impl cfn_resources::CfnResource for ActionParams {
 }
 
 /// Parameters used when defining a mitigation action that move a set of things to a thing group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AddThingsToThingGroupParams {
     ///
     /// Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.
@@ -242,7 +242,7 @@ impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
 }
 
 /// Parameters used when defining a mitigation action that enable AWS IoT Core logging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnableIoTLoggingParams {
     ///
     /// Specifies the type of information to be logged.
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for EnableIoTLoggingParams {
 }
 
 /// Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublishFindingToSnsParams {
     ///
     /// The ARN of the topic to which you want to publish the findings.
@@ -311,7 +311,7 @@ impl cfn_resources::CfnResource for PublishFindingToSnsParams {
 }
 
 /// Parameters to define a mitigation action that adds a blank policy to restrict permissions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplaceDefaultPolicyVersionParams {
     ///
     /// The name of the template to be applied. The only supported value is BLANK_POLICY.
@@ -346,7 +346,7 @@ impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -384,7 +384,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpdateCACertificateParams {
     ///
     /// The action that you want to apply to the CA certificate. The only supported value is DEACTIVATE.
@@ -413,7 +413,7 @@ impl cfn_resources::CfnResource for UpdateCACertificateParams {
 }
 
 /// Parameters to define a mitigation action that changes the state of the device certificate to inactive.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpdateDeviceCertificateParams {
     ///
     /// The action that you want to apply to the device certificate. The only supported value is DEACTIVATE.

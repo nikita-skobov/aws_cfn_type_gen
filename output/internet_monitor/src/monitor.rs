@@ -3,7 +3,7 @@
 /// Internet Monitor also alerts you to internet issues that impact your application in the city-networks (geographies and networks) 			where your end users use it. With Internet Monitor, you can quickly pinpoint the locations and providers that are affected, so 			that you can address the issue.
 ///
 /// For more information, see 		Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitor {
     ///
     /// Publish internet measurements for a monitor for all city-networks (up to the 500,000 service limit) to another location, such as an Amazon S3 bucket. 			Measurements are also published to Amazon CloudWatch Logs for the first 500 (by traffic volume) city-networks (client locations and ASNs, typically 			internet service providers or ISPs).
@@ -134,7 +134,7 @@ pub struct CfnMonitor {
     pub att_processing_status_info: CfnMonitorprocessingstatusinfo,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitorcreatedat;
 impl CfnMonitorcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl CfnMonitorcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitormodifiedat;
 impl CfnMonitormodifiedat {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnMonitormodifiedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitormonitorarn;
 impl CfnMonitormonitorarn {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnMonitormonitorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitorprocessingstatus;
 impl CfnMonitorprocessingstatus {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnMonitorprocessingstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitorprocessingstatusinfo;
 impl CfnMonitorprocessingstatusinfo {
     pub fn att_name(&self) -> &'static str {
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for CfnMonitor {
 }
 
 /// The InternetMeasurementsLogDelivery property type specifies Property description not available. for an AWS::InternetMonitor::Monitor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InternetMeasurementsLogDelivery {
     ///
     /// The configuration information for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
@@ -227,7 +227,7 @@ impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
 }
 
 /// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Config {
     ///
     /// The Amazon S3 bucket name for internet measurements publishing.
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for S3Config {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

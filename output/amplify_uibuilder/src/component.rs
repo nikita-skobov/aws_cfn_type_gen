@@ -1,5 +1,5 @@
 /// The AWS::AmplifyUIBuilder::Component resource specifies a component within an Amplify app.    A component is a user interface (UI) element that you can customize. Use     ComponentChild to configure an instance of a Component. A     ComponentChild instance inherits the configuration of the main     Component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponent {
     /// Property description not available.
     ///
@@ -168,7 +168,7 @@ pub struct CfnComponent {
     pub att_id: CfnComponentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentid;
 impl CfnComponentid {
     pub fn att_name(&self) -> &'static str {
@@ -191,7 +191,7 @@ impl cfn_resources::CfnResource for CfnComponent {
 }
 
 /// Represents the event action configuration for an element of a Component or     ComponentChild. Use for the workflow feature in Amplify Studio    that allows you to bind events and actions to components. ActionParameters    defines the action that is performed when an event occurs on the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionParameters {
     ///
     /// The HTML anchor link to the location to open. Specify this value for a navigation    action.
@@ -333,7 +333,7 @@ impl cfn_resources::CfnResource for ActionParameters {
 }
 
 /// The ComponentBindingPropertiesValue property specifies the data binding configuration for a component at runtime. You can use     ComponentBindingPropertiesValue to add exposed properties to a component to    allow different values to be entered when a component is reused in different places in an    app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentBindingPropertiesValue {
     ///
     /// Describes the properties to customize with data at runtime.
@@ -391,7 +391,7 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
 }
 
 /// The ComponentBindingPropertiesValueProperties property specifies the data    binding configuration for a specific property using data stored in AWS. For     AWS connected properties, you can bind a property to data stored in an     Amazon S3 bucket, an Amplify DataStore model or an authenticated user    attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// An Amazon S3 bucket.
@@ -493,7 +493,7 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
 }
 
 /// The ComponentChild property specifies a nested UI configuration within a    parent Component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentChild {
     ///
     /// The list of ComponentChild instances for this component.
@@ -568,7 +568,7 @@ impl cfn_resources::CfnResource for ComponentChild {
 }
 
 /// The ComponentConditionProperty property specifies a conditional expression    for setting a component property. Use ComponentConditionProperty to set a    property to different values conditionally, based on the value of another property.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentConditionProperty {
     ///
     /// The value to assign to the property if the condition is not met.
@@ -676,7 +676,7 @@ impl cfn_resources::CfnResource for ComponentConditionProperty {
 }
 
 /// The ComponentDataConfiguration property specifies the configuration for    binding a component's properties to data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentDataConfiguration {
     ///
     /// A list of IDs to use to bind data to a component. Use this property to bind specifically    chosen data, rather than data retrieved from a query.
@@ -745,7 +745,7 @@ impl cfn_resources::CfnResource for ComponentDataConfiguration {
 }
 
 /// The ComponentEvent property specifies the configuration of an event. You can bind an event and a corresponding    action to a Component or a ComponentChild. A button click    is an example of an event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentEvent {
     ///
     /// The action to perform when a specific event is raised.
@@ -791,7 +791,7 @@ impl cfn_resources::CfnResource for ComponentEvent {
 }
 
 /// The ComponentProperty property specifies the configuration for all of a    component's properties. Use ComponentProperty to specify the values to render or    bind by default.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentProperty {
     ///
     /// The information to bind the component property to data at runtime.
@@ -1001,7 +1001,7 @@ impl cfn_resources::CfnResource for ComponentProperty {
 }
 
 /// The ComponentPropertyBindingProperties property specifies a component    property to associate with a binding property. This enables exposed properties on the top    level component to propagate data to the component's property values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentPropertyBindingProperties {
     ///
     /// The data field to bind the property to.
@@ -1042,7 +1042,7 @@ impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
 }
 
 /// The ComponentVariant property specifies the style configuration of a unique    variation of a main component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentVariant {
     ///
     /// The properties of the component variant that can be overriden when customizing an instance    of the component. You can't specify tags as a valid property for     overrides.
@@ -1084,7 +1084,7 @@ impl cfn_resources::CfnResource for ComponentVariant {
 }
 
 /// The FormBindingElement property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormBindingElement {
     /// Property description not available.
     ///
@@ -1122,7 +1122,7 @@ impl cfn_resources::CfnResource for FormBindingElement {
 }
 
 /// Represents the state configuration when an action modifies a property of another element    within the same component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MutationActionSetStateParameter {
     ///
     /// The name of the component that is being modified.
@@ -1175,7 +1175,7 @@ impl cfn_resources::CfnResource for MutationActionSetStateParameter {
 }
 
 /// The Predicate property specifies information for generating Amplify DataStore queries. Use Predicate to retrieve a subset of the    data in a collection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Predicate {
     ///
     /// A list of predicates to combine logically.
@@ -1253,7 +1253,7 @@ impl cfn_resources::CfnResource for Predicate {
 }
 
 /// The SortProperty property specifies how to sort the data that you bind to a    component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SortProperty {
     ///
     /// The direction of the sort, either ascending or descending.

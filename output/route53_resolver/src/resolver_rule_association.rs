@@ -1,5 +1,5 @@
 /// In the response to an 			AssociateResolverRule, 			DisassociateResolverRule, 			or 			ListResolverRuleAssociations 			request, provides information about an association between a resolver rule and a VPC. The association determines which 			DNS queries that originate in the VPC are forwarded to your network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleAssociation {
     ///
     /// The name of an association between a Resolver rule and a VPC.
@@ -60,7 +60,7 @@ pub struct CfnResolverRuleAssociation {
     pub att_vpcid: CfnResolverRuleAssociationvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleAssociationname;
 impl CfnResolverRuleAssociationname {
     pub fn att_name(&self) -> &'static str {
@@ -68,7 +68,7 @@ impl CfnResolverRuleAssociationname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleAssociationresolverruleassociationid;
 impl CfnResolverRuleAssociationresolverruleassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl CfnResolverRuleAssociationresolverruleassociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleAssociationresolverruleid;
 impl CfnResolverRuleAssociationresolverruleid {
     pub fn att_name(&self) -> &'static str {
@@ -84,7 +84,7 @@ impl CfnResolverRuleAssociationresolverruleid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleAssociationvpcid;
 impl CfnResolverRuleAssociationvpcid {
     pub fn att_name(&self) -> &'static str {

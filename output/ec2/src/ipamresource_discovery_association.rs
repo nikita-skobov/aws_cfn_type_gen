@@ -1,5 +1,5 @@
 /// An IPAM resource discovery association. An associated resource discovery is a resource discovery that has been associated with an IPAM. IPAM aggregates the resource CIDRs discovered by the associated resource discovery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociation {
     ///
     /// The IPAM ID.
@@ -59,7 +59,7 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     pub att_state: CfnIPAMResourceDiscoveryAssociationstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationipamarn;
 impl CfnIPAMResourceDiscoveryAssociationipamarn {
     pub fn att_name(&self) -> &'static str {
@@ -67,7 +67,7 @@ impl CfnIPAMResourceDiscoveryAssociationipamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationipamregion;
 impl CfnIPAMResourceDiscoveryAssociationipamregion {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl CfnIPAMResourceDiscoveryAssociationipamregion {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationarn;
 impl CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationarn {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationid;
 impl CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl CfnIPAMResourceDiscoveryAssociationipamresourcediscoveryassociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationownerid;
 impl CfnIPAMResourceDiscoveryAssociationownerid {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnIPAMResourceDiscoveryAssociationownerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationresourcediscoverystatus;
 impl CfnIPAMResourceDiscoveryAssociationresourcediscoverystatus {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnIPAMResourceDiscoveryAssociationresourcediscoverystatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMResourceDiscoveryAssociationstate;
 impl CfnIPAMResourceDiscoveryAssociationstate {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl cfn_resources::CfnResource for CfnIPAMResourceDiscoveryAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

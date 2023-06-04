@@ -1,5 +1,5 @@
 /// The AWS::CE::CostCategory resource creates groupings of cost that you can use    across products in the AWS Billing and Cost Management console, such as Cost Explorer and AWS Budgets. For more information, see Managing Your Costs with     Cost Categories in the AWS Billing and Cost Management User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCostCategory {
     ///
     /// The default value for the cost category.
@@ -71,7 +71,7 @@ pub struct CfnCostCategory {
     pub att_effective_start: CfnCostCategoryeffectivestart,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCostCategoryarn;
 impl CfnCostCategoryarn {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnCostCategoryarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCostCategoryeffectivestart;
 impl CfnCostCategoryeffectivestart {
     pub fn att_name(&self) -> &'static str {

@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::SecurityProfile resource to create a Device Defender     security profile. For API reference, see CreateSecurityProfile and for general information, see Detect.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityProfile {
     ///
     /// A list of metrics whose data is retained (stored). By default, data is retained for any     metric used in the profile's behaviors, but it's also retained for any metric     specified here. Can be used with custom metrics; can't be used with dimensions.
@@ -89,7 +89,7 @@ pub struct CfnSecurityProfile {
     pub att_security_profile_arn: CfnSecurityProfilesecurityprofilearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityProfilesecurityprofilearn;
 impl CfnSecurityProfilesecurityprofilearn {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl cfn_resources::CfnResource for CfnSecurityProfile {
 }
 
 /// A structure containing the alert target ARN and the role ARN.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlertTarget {
     ///
     /// The Amazon Resource Name (ARN) of the notification target to which alerts are sent.
@@ -152,7 +152,7 @@ impl cfn_resources::CfnResource for AlertTarget {
 }
 
 /// A Device Defender security profile behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Behavior {
     ///
     /// The criteria that determine if a device is behaving normally in regard to      the metric.
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for Behavior {
 }
 
 /// The criteria by which the behavior is determined to be normal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BehaviorCriteria {
     ///
     /// The operator that relates the thing measured (metric) to the criteria      (containing a value or statisticalThreshold). Valid operators include:
@@ -351,7 +351,7 @@ impl cfn_resources::CfnResource for BehaviorCriteria {
 }
 
 /// The MachineLearningDetectionConfig property type controls confidence of the machine learning model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MachineLearningDetectionConfig {
     ///
     /// The model confidence level.
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for MachineLearningDetectionConfig {
 }
 
 /// The dimension of the metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 }
 
 /// The metric you want to retain. Dimensions are optional.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricToRetain {
     ///
     /// A standard of measurement.
@@ -471,7 +471,7 @@ impl cfn_resources::CfnResource for MetricToRetain {
 }
 
 /// The value to be compared with the metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricValue {
     ///
     /// If the comparisonOperator calls for a set of CIDRs, use this      to specify that set to be compared with the metric.
@@ -561,7 +561,7 @@ impl cfn_resources::CfnResource for MetricValue {
 }
 
 /// A statistical ranking (percentile) that    indicates a threshold value by which a behavior is determined to be in compliance or in    violation of the behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatisticalThreshold {
     ///
     /// The percentile that    resolves to a threshold value by which compliance with a behavior is determined. Metrics are    collected over the specified period (durationSeconds) from all reporting devices    in your account and statistical ranks are calculated. Then, the measurements from a device are    collected over the same period. If the accumulated measurements from the device fall above or    below (comparisonOperator) the value associated with the percentile specified,    then the device is considered to be in compliance with the behavior, otherwise a violation    occurs.
@@ -597,7 +597,7 @@ impl cfn_resources::CfnResource for StatisticalThreshold {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

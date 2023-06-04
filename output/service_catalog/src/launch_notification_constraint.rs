@@ -1,5 +1,5 @@
 /// Specifies a notification constraint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchNotificationConstraint {
     ///
     /// The language code.

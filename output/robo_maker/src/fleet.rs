@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::Fleet resource creates an AWS RoboMaker     fleet. Fleets contain robots and can receive deployments.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFleet {
     ///
     /// The name of the fleet.
@@ -35,7 +35,7 @@ pub struct CfnFleet {
     pub att_arn: CfnFleetarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFleetarn;
 impl CfnFleetarn {
     pub fn att_name(&self) -> &'static str {

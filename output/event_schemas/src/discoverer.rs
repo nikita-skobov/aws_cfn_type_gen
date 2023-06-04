@@ -1,5 +1,5 @@
 /// Use the AWS::EventSchemas::Discoverer resource to specify a         discoverer that is associated with an event bus. A discoverer       allows the Amazon EventBridge Schema Registry to automatically generate schemas based on       events on an event bus.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiscoverer {
     ///
     /// Allows for the discovery of the event schemas that are sent to the event bus from another account.
@@ -55,7 +55,7 @@ pub struct CfnDiscoverer {
     pub att_discoverer_id: CfnDiscovererdiscovererid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiscovererdiscovererarn;
 impl CfnDiscovererdiscovererarn {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnDiscovererdiscovererarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDiscovererdiscovererid;
 impl CfnDiscovererdiscovererid {
     pub fn att_name(&self) -> &'static str {
@@ -86,7 +86,7 @@ impl cfn_resources::CfnResource for CfnDiscoverer {
 }
 
 /// Tags to associate with the discoverer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

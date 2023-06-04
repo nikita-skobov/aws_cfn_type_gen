@@ -3,7 +3,7 @@
 /// Use lifecycle hooks to prepare new instances for use or to delay them from being    registered behind a load balancer before their configuration has been applied completely. You    can also use lifecycle hooks to prepare running instances to be terminated by, for example,    downloading logs or other data.
 ///
 /// For more information, see Amazon EC2 Auto Scaling lifecycle     hooks in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLifecycleHook {
     ///
     /// The name of the Auto Scaling group.

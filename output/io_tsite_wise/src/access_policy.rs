@@ -1,5 +1,5 @@
 /// Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or    IAM user) access to the specified AWS IoT SiteWise Monitor portal or project resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPolicy {
     ///
     /// The identity for this access policy. Choose an IAM Identity Center user, an IAM Identity Center group, or an IAM user.
@@ -41,7 +41,7 @@ pub struct CfnAccessPolicy {
     pub att_access_policy_id: CfnAccessPolicyaccesspolicyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPolicyaccesspolicyarn;
 impl CfnAccessPolicyaccesspolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -49,7 +49,7 @@ impl CfnAccessPolicyaccesspolicyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPolicyaccesspolicyid;
 impl CfnAccessPolicyaccesspolicyid {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl cfn_resources::CfnResource for CfnAccessPolicy {
 }
 
 /// The identity (IAM Identity Center user, IAM Identity Center group, or IAM user) to which this access policy    applies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessPolicyIdentity {
     ///
     /// An IAM role identity.
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for AccessPolicyIdentity {
 }
 
 /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessPolicyResource {
     ///
     /// The AWS IoT SiteWise Monitor portal for this access policy.
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for AccessPolicyResource {
 }
 
 /// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IamRole {
     ///
     /// The ARN of the IAM role. For more information, see IAM ARNs in the     IAM User Guide.
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for IamRole {
 }
 
 /// Contains information about an AWS Identity and Access Management user.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IamUser {
     ///
     /// The ARN of the IAM user. For more information, see IAM ARNs in the     IAM User Guide.
@@ -248,7 +248,7 @@ impl cfn_resources::CfnResource for IamUser {
 }
 
 /// The Portal property type specifies the AWS IoT SiteWise Monitor portal for an       AWS::IoTSiteWise::AccessPolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Portal {
     ///
     /// The ID of the portal.
@@ -278,7 +278,7 @@ impl cfn_resources::CfnResource for Portal {
 }
 
 /// The Project property type specifies the AWS IoT SiteWise Monitor project for an       AWS::IoTSiteWise::AccessPolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Project {
     ///
     /// The ID of the project.
@@ -308,7 +308,7 @@ impl cfn_resources::CfnResource for Project {
 }
 
 /// The User property type specifies the AWS IoT SiteWise Monitor user for       an AWS::IoTSiteWise::AccessPolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct User {
     ///
     /// The ID of the user.

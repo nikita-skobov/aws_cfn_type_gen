@@ -1,5 +1,5 @@
 /// The AWS::MediaConvert::Queue resource is an AWS Elemental MediaConvert resource type       that you can use to manage the resources that are available to your account for parallel       processing of jobs. For more information about queues, see Working with AWS Elemental MediaConvert Queues in the AWS Elemental MediaConvert User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueue {
     ///
     /// Optional. A description of the queue that you are creating.
@@ -72,7 +72,7 @@ pub struct CfnQueue {
     pub att_name: CfnQueuename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuearn;
 impl CfnQueuearn {
     pub fn att_name(&self) -> &'static str {
@@ -80,7 +80,7 @@ impl CfnQueuearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuename;
 impl CfnQueuename {
     pub fn att_name(&self) -> &'static str {

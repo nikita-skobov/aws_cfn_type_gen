@@ -1,5 +1,5 @@
 /// The AWS::GameLift::GameSessionQueue resource creates a placement queue    that processes requests for new game sessions. A queue uses FleetIQ algorithms to determine    the best placement locations and find an available game server, then prompts the game server    to start a new game session. Queues can have destinations (GameLift fleets or aliases), which    determine where the queue can place new game sessions. A queue can have destinations with    varied fleet type (Spot and On-Demand), instance type, and AWS Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameSessionQueue {
     ///
     /// Information to be added to all events that are related to this game session       queue.
@@ -137,7 +137,7 @@ pub struct CfnGameSessionQueue {
     pub att_name: CfnGameSessionQueuename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameSessionQueuearn;
 impl CfnGameSessionQueuearn {
     pub fn att_name(&self) -> &'static str {
@@ -145,7 +145,7 @@ impl CfnGameSessionQueuearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameSessionQueuename;
 impl CfnGameSessionQueuename {
     pub fn att_name(&self) -> &'static str {
@@ -254,7 +254,7 @@ impl cfn_resources::CfnResource for CfnGameSessionQueue {
 }
 
 /// A fleet or alias designated in a game session queue. Queues fulfill requests for new       game sessions by placing a new game session on any of the queue's destinations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Destination {
     ///
     /// The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which       include a fleet ID or alias ID and a Region name, provide a unique identifier across all       Regions.
@@ -312,7 +312,7 @@ impl cfn_resources::CfnResource for Destination {
 }
 
 /// A list of fleet locations where a game session queue can place new game sessions. You    can use a filter to temporarily turn off placements for specific locations. For queues    that have multi-location fleets, you can use a filter configuration allow placement with    some, but not all of these locations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterConfiguration {
     ///
     /// A list of locations to allow game session placement in, in the form of AWS Region       codes such as us-west-2.
@@ -353,7 +353,7 @@ impl cfn_resources::CfnResource for FilterConfiguration {
 }
 
 /// The queue setting that determines the highest latency allowed for individual    players when placing a game session. When a latency policy is in force, a game session cannot    be placed with any fleet in a Region where a player reports latency higher than the cap.    Latency policies are only enforced when the placement request contains player latency    information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlayerLatencyPolicy {
     ///
     /// The maximum latency value that is allowed for any player, in milliseconds. All       policies must have a value set for this property.
@@ -416,7 +416,7 @@ impl cfn_resources::CfnResource for PlayerLatencyPolicy {
 /// Custom prioritization settings for use by a game session queue when placing new game    sessions with available game servers. When defined, this configuration replaces the    default FleetIQ prioritization process, which is as follows:
 ///
 /// Changing the priority order will affect how game sessions are placed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PriorityConfiguration {
     ///
     /// The prioritization order to use for fleet locations, when the         PriorityOrder property includes LOCATION. Locations are       identified by AWS Region codes such as us-west-2. Each location can only       be listed once.
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for PriorityConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

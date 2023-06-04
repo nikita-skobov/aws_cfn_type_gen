@@ -1,5 +1,5 @@
 /// The AWS::LakeFormation::DataLakeSettings resource is an AWS Lake Formation resource type that manages the data lake settings for your account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataLakeSettings {
     ///
     /// A list of AWS Lake Formation principals.
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for CfnDataLakeSettings {
 }
 
 /// A list of AWS Lake Formation principals.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Admins {}
 
 impl cfn_resources::CfnResource for Admins {
@@ -171,7 +171,7 @@ impl cfn_resources::CfnResource for Admins {
 /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS.
 ///
 /// For more information, see Changing the default security settings for your data lake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreateDatabaseDefaultPermissions {}
 
 impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
 /// The only permitted values are an empty array or an array that contains a single JSON object that grants ALL to IAM_ALLOWED_PRINCIPALS.
 ///
 /// For more information, see Changing the Default Security Settings for Your Data Lake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreateTableDefaultPermissions {}
 
 impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
@@ -213,7 +213,7 @@ impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
 }
 
 /// The Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the Lake Formation principal.
@@ -243,7 +243,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 }
 
 /// A list of the account IDs of AWS accounts with Amazon EMR     clusters that are allowed to perform data filtering.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExternalDataFilteringAllowList {}
 
 impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
@@ -261,7 +261,7 @@ impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
 }
 
 /// Permissions granted to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Permissions {}
 
 impl cfn_resources::CfnResource for Permissions {
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for Permissions {
 }
 
 /// Permissions granted to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrincipalPermissions {
     ///
     /// The permissions that are granted to the principal.

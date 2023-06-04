@@ -1,5 +1,5 @@
 /// Creates a new Capacity Reservation with the specified attributes. For more information,     see Capacity       Reservations in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservation {
     ///
     /// The Availability Zone in which to create the Capacity Reservation.
@@ -192,7 +192,7 @@ pub struct CfnCapacityReservation {
     pub att_tenancy: CfnCapacityReservationtenancy,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationEndDateTypeEnum {
     /// limited
     #[serde(rename = "limited")]
@@ -209,7 +209,7 @@ impl Default for CapacityReservationEndDateTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationInstanceMatchCriteriaEnum {
     /// open
     #[serde(rename = "open")]
@@ -226,7 +226,7 @@ impl Default for CapacityReservationInstanceMatchCriteriaEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationInstancePlatformEnum {
     /// Linux with SQL Server Enterprise
     #[serde(rename = "Linux with SQL Server Enterprise")]
@@ -303,7 +303,7 @@ impl Default for CapacityReservationInstancePlatformEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationTenancyEnum {
     /// dedicated
     #[serde(rename = "dedicated")]
@@ -320,7 +320,7 @@ impl Default for CapacityReservationTenancyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationavailabilityzone;
 impl CfnCapacityReservationavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -328,7 +328,7 @@ impl CfnCapacityReservationavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationid;
 impl CfnCapacityReservationid {
     pub fn att_name(&self) -> &'static str {
@@ -336,7 +336,7 @@ impl CfnCapacityReservationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationinstancetype;
 impl CfnCapacityReservationinstancetype {
     pub fn att_name(&self) -> &'static str {
@@ -344,7 +344,7 @@ impl CfnCapacityReservationinstancetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityReservationtenancy;
 impl CfnCapacityReservationtenancy {
     pub fn att_name(&self) -> &'static str {
@@ -373,7 +373,7 @@ impl cfn_resources::CfnResource for CfnCapacityReservation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -413,7 +413,7 @@ impl cfn_resources::CfnResource for Tag {
 /// An array of key-value pairs to apply to this resource.
 ///
 /// For more information, see Tag.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag. Specify capacity-reservation.
@@ -442,7 +442,7 @@ pub struct TagSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]

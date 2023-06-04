@@ -1,7 +1,7 @@
 /// Specifies a route calculator resource in your AWS account.
 ///
 /// You can send requests to a route calculator resource to estimate travel time,       distance, and get directions. A route calculator sources traffic and road network data       from your chosen data provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteCalculator {
     ///
     /// The name of the route calculator resource.
@@ -86,7 +86,7 @@ pub struct CfnRouteCalculator {
     pub att_update_time: CfnRouteCalculatorupdatetime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RouteCalculatorPricingPlanEnum {
     /// RequestBasedUsage
     #[serde(rename = "RequestBasedUsage")]
@@ -99,7 +99,7 @@ impl Default for RouteCalculatorPricingPlanEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteCalculatorarn;
 impl CfnRouteCalculatorarn {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnRouteCalculatorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteCalculatorcalculatorarn;
 impl CfnRouteCalculatorcalculatorarn {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnRouteCalculatorcalculatorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteCalculatorcreatetime;
 impl CfnRouteCalculatorcreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnRouteCalculatorcreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouteCalculatorupdatetime;
 impl CfnRouteCalculatorupdatetime {
     pub fn att_name(&self) -> &'static str {

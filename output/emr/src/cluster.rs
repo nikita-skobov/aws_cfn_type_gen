@@ -1,7 +1,7 @@
 /// The AWS::EMR::Cluster resource specifies an Amazon EMR cluster. This cluster is a collection of Amazon EC2 instances that run open source big data frameworks and applications to process and analyze vast amounts of data. For more information, see the Amazon EMR Management Guide.
 ///
 /// Amazon EMR now supports launching task instance groups and task instance     fleets as part of the AWS::EMR::Cluster resource. This can be done by using     the JobFlowInstancesConfig property type's TaskInstanceGroups and       TaskInstanceFleets subproperties. Using these subproperties reduces delays     in provisioning task nodes compared to specifying task nodes with the       AWS::EMR::InstanceGroupConfig and       AWS::EMR::InstanceFleetConfig resources. Please refer to the examples at     the bottom of this page to learn how to use these subproperties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// A JSON string for selecting additional features.
@@ -323,7 +323,7 @@ pub struct CfnCluster {
     pub att_master_public_dns: CfnClustermasterpublicdns,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterScaleDownBehaviorEnum {
     /// TERMINATE_AT_INSTANCE_HOUR
     #[serde(rename = "TERMINATE_AT_INSTANCE_HOUR")]
@@ -340,7 +340,7 @@ impl Default for ClusterScaleDownBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClustermasterpublicdns;
 impl CfnClustermasterpublicdns {
     pub fn att_name(&self) -> &'static str {
@@ -460,7 +460,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 /// With Amazon EMR release version 4.0 and later, the only accepted parameter is the application Name. To pass arguments to these applications, you use configuration classifications specified using JSON objects in a Configuration property. For more information, see Configuring Applications.
 ///
 /// With earlier Amazon EMR releases, the application is any AWS or third-party software that you can add to the cluster. You can specify the version of the application and arguments to pass to it. Amazon EMR accepts and forwards the argument list to the corresponding installation script as a bootstrap action argument.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Application {
     ///
     /// This option is for advanced users only. This is meta information about clusters and applications that are used for testing and troubleshooting.
@@ -526,7 +526,7 @@ impl cfn_resources::CfnResource for Application {
 }
 
 /// AutoScalingPolicy is a subproperty of InstanceGroupConfig. AutoScalingPolicy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. For more information, see Using Automatic Scaling in Amazon EMR in the Amazon EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoScalingPolicy {
     ///
     /// The upper and lower EC2 instance limits for an automatic scaling policy. Automatic     scaling activity will not cause an instance group to grow above or below these     limits.
@@ -568,7 +568,7 @@ impl cfn_resources::CfnResource for AutoScalingPolicy {
 }
 
 /// The AutoTerminationPolicy property type specifies Property description not available. for an AWS::EMR::Cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoTerminationPolicy {
     /// Property description not available.
     ///
@@ -597,7 +597,7 @@ impl cfn_resources::CfnResource for AutoTerminationPolicy {
 }
 
 /// BootstrapActionConfig is a property of AWS::EMR::Cluster that can be used to run bootstrap actions on EMR clusters. You can use a bootstrap action to install software and configure EC2 instances for all cluster nodes before EMR installs and configures open-source big data applications on cluster instances. For more information, see Create Bootstrap Actions to Install Additional Software in the Amazon EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BootstrapActionConfig {
     ///
     /// The name of the bootstrap action.
@@ -667,7 +667,7 @@ impl cfn_resources::CfnResource for BootstrapActionConfig {
 }
 
 /// CloudWatchAlarmDefinition is a subproperty of the ScalingTrigger property, which determines when to trigger an automatic scaling activity. Scaling activity begins when you satisfy the defined alarm conditions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchAlarmDefinition {
     ///
     /// Determines how the metric specified by MetricName is compared to the value     specified by Threshold.
@@ -780,7 +780,7 @@ pub struct CloudWatchAlarmDefinition {
     pub unit: Option<CloudWatchAlarmDefinitionUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CloudWatchAlarmDefinitionComparisonOperatorEnum {
     /// GREATER_THAN
     #[serde(rename = "GREATER_THAN")]
@@ -805,7 +805,7 @@ impl Default for CloudWatchAlarmDefinitionComparisonOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CloudWatchAlarmDefinitionStatisticEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -834,7 +834,7 @@ impl Default for CloudWatchAlarmDefinitionStatisticEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CloudWatchAlarmDefinitionUnitEnum {
     /// BITS
     #[serde(rename = "BITS")]
@@ -966,7 +966,7 @@ impl cfn_resources::CfnResource for CloudWatchAlarmDefinition {
 }
 
 /// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster can not be above or below these limits. The limit only applies to the core and task     nodes. The master node cannot be scaled after initial configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComputeLimits {
     ///
     /// The upper boundary of EC2 units. It is measured through vCPU cores or instances for     instance groups and measured through units for instance fleets. Managed scaling activities     are not allowed beyond this boundary. The limit only applies to the core and task nodes.     The master node cannot be scaled after initial configuration.
@@ -1028,7 +1028,7 @@ pub struct ComputeLimits {
     pub unit_type: ComputeLimitsUnitTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComputeLimitsUnitTypeEnum {
     /// InstanceFleetUnits
     #[serde(rename = "InstanceFleetUnits")]
@@ -1064,7 +1064,7 @@ impl cfn_resources::CfnResource for ComputeLimits {
 }
 
 /// Configuration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. Configuration specifies optional configurations for customizing open-source big data applications and environment parameters. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see Configuring Applications in the Amazon EMR Release Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Configuration {
     ///
     /// The classification within a configuration.
@@ -1118,7 +1118,7 @@ impl cfn_resources::CfnResource for Configuration {
 }
 
 /// EbsBlockDeviceConfig is a subproperty of the EbsConfiguration property type. EbsBlockDeviceConfig defines the number and type of EBS volumes to associate with all EC2 instances in an EMR cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsBlockDeviceConfig {
     ///
     /// EBS volume specifications such as volume type, IOPS, size (GiB) and throughput (MiB/s)     that are requested for the EBS volume attached to an EC2 instance in the cluster.
@@ -1161,7 +1161,7 @@ impl cfn_resources::CfnResource for EbsBlockDeviceConfig {
 }
 
 /// EbsConfiguration is a subproperty of InstanceFleetConfig or InstanceGroupConfig. EbsConfiguration determines the EBS volumes to attach to EMR cluster instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsConfiguration {
     ///
     /// An array of Amazon EBS volume specifications attached to a cluster     instance.
@@ -1203,7 +1203,7 @@ impl cfn_resources::CfnResource for EbsConfiguration {
 }
 
 /// The HadoopJarStepConfig property type specifies a job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for the cluster to execute as a step on the master node, and then waits for the job to finish or fail before executing subsequent steps.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HadoopJarStepConfig {
     ///
     /// A list of command line arguments passed to the JAR file's main function when     executed.
@@ -1324,7 +1324,7 @@ impl cfn_resources::CfnResource for HadoopJarStepConfig {
 }
 
 /// Use InstanceFleetConfig to define instance fleets for an EMR cluster. A cluster can not use both instance fleets and instance groups. For more information, see Configure Instance Fleets in the Amazon EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceFleetConfig {
     ///
     /// The instance type configurations that define the EC2 instances in the instance     fleet.
@@ -1460,7 +1460,7 @@ impl cfn_resources::CfnResource for InstanceFleetConfig {
 }
 
 /// InstanceFleetProvisioningSpecification is a subproperty of InstanceFleetConfig. InstanceFleetProvisioningSpecification defines the launch specification for Spot instances in an instance fleet, which determines the defined duration and provisioning timeout behavior for Spot instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceFleetProvisioningSpecifications {
     ///
     /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
@@ -1512,7 +1512,7 @@ impl cfn_resources::CfnResource for InstanceFleetProvisioningSpecifications {
 }
 
 /// Use InstanceGroupConfig to define instance groups for an EMR cluster. A cluster can not use both instance groups and instance fleets. For more information, see Create a Cluster with Instance Fleets or Uniform Instance Groups in the Amazon EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceGroupConfig {
     ///
     /// AutoScalingPolicy is a subproperty of the InstanceGroupConfig property type that specifies the constraints and rules of an automatic scaling policy in Amazon EMR. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. Only core and task instance groups can use automatic scaling policies. For more information, see Using Automatic Scaling in Amazon EMR.
@@ -1649,7 +1649,7 @@ pub struct InstanceGroupConfig {
     pub name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceGroupConfigMarketEnum {
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
@@ -1777,7 +1777,7 @@ impl cfn_resources::CfnResource for InstanceGroupConfig {
 }
 
 /// InstanceTypeConfig is a sub-property of InstanceFleetConfig. InstanceTypeConfig determines the EC2 instances that Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceTypeConfig {
     ///
     /// The bid price for each EC2 Spot Instance type as defined by InstanceType.     Expressed in USD. If neither BidPrice nor       BidPriceAsPercentageOfOnDemandPrice is provided,       BidPriceAsPercentageOfOnDemandPrice defaults to 100%.
@@ -1979,7 +1979,7 @@ impl cfn_resources::CfnResource for InstanceTypeConfig {
 /// JobFlowInstancesConfig is a property of the AWS::EMR::Cluster resource. JobFlowInstancesConfig defines the instance groups or instance fleets that comprise the cluster. JobFlowInstancesConfig must contain either InstanceFleetConfig or InstanceGroupConfig. They cannot be used together.
 ///
 /// You can now define task instance groups or task instance fleets using the       TaskInstanceGroups and TaskInstanceFleets subproperties. Using     these subproperties reduces delays in provisioning task nodes compared to specifying task     nodes with the InstanceFleetConfig and InstanceGroupConfig     resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JobFlowInstancesConfig {
     ///
     /// A list of additional Amazon EC2 security group IDs for the master node.
@@ -2391,7 +2391,7 @@ impl cfn_resources::CfnResource for JobFlowInstancesConfig {
 }
 
 /// KerberosAttributes is a property of the AWS::EMR::Cluster resource. KerberosAttributes define the cluster-specific Kerberos configuration when Kerberos authentication is enabled using a security configuration. The cluster-specific configuration must be compatible with the security configuration. For more information see Use Kerberos Authentication in the EMR Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KerberosAttributes {
     ///
     /// The Active Directory password for ADDomainJoinUser.
@@ -2592,7 +2592,7 @@ impl cfn_resources::CfnResource for KerberosAttributes {
 }
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyValue {
     ///
     /// The unique identifier of a key-value pair.
@@ -2690,7 +2690,7 @@ impl cfn_resources::CfnResource for KeyValue {
 }
 
 /// Managed scaling policy for an Amazon EMR cluster. The policy specifies the     limits for resources that can be added or terminated from a cluster. The policy only     applies to the core and task nodes. The master node cannot be scaled after initial     configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManagedScalingPolicy {
     ///
     /// The EC2 unit limits for a managed scaling policy. The managed scaling activity of a     cluster is not allowed to go above or below these limits. The limit only applies to the     core and task nodes. The master node cannot be scaled after initial configuration.
@@ -2724,7 +2724,7 @@ impl cfn_resources::CfnResource for ManagedScalingPolicy {
 }
 
 /// MetricDimension is a subproperty of the CloudWatchAlarmDefinition property type. MetricDimension specifies a CloudWatch dimension, which is specified with a Key Value pair. The key is known as a Name in CloudWatch. By default, Amazon EMR uses one dimension whose Key is JobFlowID and Value is a variable representing the cluster ID, which is ${emr.clusterId}. This enables the automatic scaling rule for EMR to bootstrap when the cluster ID becomes available during cluster creation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDimension {
     ///
     /// The dimension name.
@@ -2764,7 +2764,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 }
 
 /// The launch specification for On-Demand Instances in the instance fleet, which     determines the allocation strategy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnDemandProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the     only option is lowest-price (the default), which launches the lowest price     first.
@@ -2780,7 +2780,7 @@ pub struct OnDemandProvisioningSpecification {
     pub allocation_strategy: OnDemandProvisioningSpecificationAllocationStrategyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OnDemandProvisioningSpecificationAllocationStrategyEnum {
     /// lowest-price
     #[serde(rename = "lowest-price")]
@@ -2808,7 +2808,7 @@ impl cfn_resources::CfnResource for OnDemandProvisioningSpecification {
 }
 
 /// PlacementType is a property of the AWS::EMR::Cluster resource. PlacementType determines the Amazon EC2 Availability Zone configuration of the cluster (job flow).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementType {
     ///
     /// The Amazon EC2 Availability Zone for the cluster. AvailabilityZone     is used for uniform instance groups, while AvailabilityZones (plural) is used     for instance fleets.
@@ -2865,7 +2865,7 @@ impl cfn_resources::CfnResource for PlacementType {
 }
 
 /// ScalingAction is a subproperty of the ScalingRule property type. ScalingAction determines the type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingAction {
     ///
     /// Not available for instance groups. Instance groups use the market type specified for the     group.
@@ -2893,7 +2893,7 @@ pub struct ScalingAction {
     pub simple_scaling_policy_configuration: SimpleScalingPolicyConfiguration,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingActionMarketEnum {
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
@@ -2927,7 +2927,7 @@ impl cfn_resources::CfnResource for ScalingAction {
 }
 
 /// ScalingConstraints is a subproperty of the AutoScalingPolicy property type. ScalingConstraints defines the upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or shrink below these limits.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingConstraints {
     ///
     /// The upper boundary of EC2 instances in an instance group beyond which scaling activities     are not allowed to grow. Scale-out activities will not add instances beyond this     boundary.
@@ -2967,7 +2967,7 @@ impl cfn_resources::CfnResource for ScalingConstraints {
 }
 
 /// ScalingRule is a subproperty of the AutoScalingPolicy property type. ScalingRule defines the scale-in or scale-out rules for scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingRule {
     ///
     /// The conditions that trigger an automatic scaling activity.
@@ -3034,7 +3034,7 @@ impl cfn_resources::CfnResource for ScalingRule {
 }
 
 /// ScalingTrigger is a subproperty of the ScalingRule property type. ScalingTrigger determines the conditions that trigger an automatic scaling activity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingTrigger {
     ///
     /// The definition of a CloudWatch metric alarm. When the defined alarm conditions are met     along with other trigger parameters, scaling activity begins.
@@ -3065,7 +3065,7 @@ impl cfn_resources::CfnResource for ScalingTrigger {
 }
 
 /// ScriptBootstrapActionConfig is a subproperty of the BootstrapActionConfig property type. ScriptBootstrapActionConfig specifies the arguments and location of the bootstrap script for EMR to run on all cluster nodes before it installs open-source big data applications on them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScriptBootstrapActionConfig {
     ///
     /// A list of command line arguments to pass to the bootstrap action script.
@@ -3134,7 +3134,7 @@ impl cfn_resources::CfnResource for ScriptBootstrapActionConfig {
 }
 
 /// SimpleScalingPolicyConfiguration is a subproperty of the ScalingAction property type. SimpleScalingPolicyConfiguration determines how an automatic scaling action adds or removes instances, the cooldown period, and the number of EC2 instances that are added each time the CloudWatch metric alarm condition is satisfied.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SimpleScalingPolicyConfiguration {
     ///
     /// The way in which EC2 instances are added (if ScalingAdjustment is a     positive number) or terminated (if ScalingAdjustment is a negative number)     each time the scaling activity is triggered. CHANGE_IN_CAPACITY is the     default. CHANGE_IN_CAPACITY indicates that the EC2 instance count increments     or decrements by ScalingAdjustment, which should be expressed as an integer.       PERCENT_CHANGE_IN_CAPACITY indicates the instance count increments or     decrements by the percentage specified by ScalingAdjustment, which should be     expressed as an integer. For example, 20 indicates an increase in 20% increments of cluster     capacity. EXACT_CAPACITY indicates the scaling activity results in an instance     group with the number of EC2 instances specified by ScalingAdjustment, which     should be expressed as a positive integer.
@@ -3174,7 +3174,7 @@ pub struct SimpleScalingPolicyConfiguration {
     pub scaling_adjustment: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SimpleScalingPolicyConfigurationAdjustmentTypeEnum {
     /// CHANGE_IN_CAPACITY
     #[serde(rename = "CHANGE_IN_CAPACITY")]
@@ -3210,7 +3210,7 @@ impl cfn_resources::CfnResource for SimpleScalingPolicyConfiguration {
 }
 
 /// SpotProvisioningSpecification is a subproperty of the InstanceFleetProvisioningSpecifications property type. SpotProvisioningSpecification determines the launch specification for Spot instances in the instance fleet, which includes the defined duration and provisioning timeout behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotProvisioningSpecification {
     ///
     /// Specifies the strategy to use in launching Spot Instance fleets. Currently, the only     option is capacity-optimized (the default), which launches instances from Spot Instance     pools with optimal capacity for the number of instances that are launching.
@@ -3269,7 +3269,7 @@ pub struct SpotProvisioningSpecification {
     pub timeout_duration_minutes: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotProvisioningSpecificationAllocationStrategyEnum {
     /// capacity-optimized
     #[serde(rename = "capacity-optimized")]
@@ -3282,7 +3282,7 @@ impl Default for SpotProvisioningSpecificationAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotProvisioningSpecificationTimeoutActionEnum {
     /// SWITCH_TO_ON_DEMAND
     #[serde(rename = "SWITCH_TO_ON_DEMAND")]
@@ -3332,7 +3332,7 @@ impl cfn_resources::CfnResource for SpotProvisioningSpecification {
 }
 
 /// StepConfig is a property of the AWS::EMR::Cluster resource. The StepConfig property type specifies a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to the cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepConfig {
     ///
     /// The action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
@@ -3420,7 +3420,7 @@ impl cfn_resources::CfnResource for StepConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -3458,7 +3458,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// VolumeSpecification is a subproperty of the EbsBlockDeviceConfig property type. VolumeSecification determines the volume type, IOPS, and size (GiB) for EBS volumes attached to EC2 instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VolumeSpecification {
     ///
     /// The number of I/O operations per second (IOPS) that the volume supports.

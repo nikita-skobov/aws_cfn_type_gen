@@ -1,5 +1,5 @@
 /// Specifies a place index resource in your AWS account. Use a place index resource to       geocode addresses and other text queries by using the         SearchPlaceIndexForText operation, and reverse geocode coordinates by       using the SearchPlaceIndexForPosition operation, and enable autosuggestions       by using the SearchPlaceIndexForSuggestions operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlaceIndex {
     ///
     /// Specifies the geospatial data provider for the new place index.
@@ -96,7 +96,7 @@ pub struct CfnPlaceIndex {
     pub att_update_time: CfnPlaceIndexupdatetime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlaceIndexPricingPlanEnum {
     /// RequestBasedUsage
     #[serde(rename = "RequestBasedUsage")]
@@ -109,7 +109,7 @@ impl Default for PlaceIndexPricingPlanEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlaceIndexarn;
 impl CfnPlaceIndexarn {
     pub fn att_name(&self) -> &'static str {
@@ -117,7 +117,7 @@ impl CfnPlaceIndexarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlaceIndexcreatetime;
 impl CfnPlaceIndexcreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl CfnPlaceIndexcreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlaceIndexindexarn;
 impl CfnPlaceIndexindexarn {
     pub fn att_name(&self) -> &'static str {
@@ -133,7 +133,7 @@ impl CfnPlaceIndexindexarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlaceIndexupdatetime;
 impl CfnPlaceIndexupdatetime {
     pub fn att_name(&self) -> &'static str {
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for CfnPlaceIndex {
 }
 
 /// Specifies the data storage option requesting Places.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceConfiguration {
     ///
     /// Specifies how the results of an operation will be stored by the caller.
@@ -227,7 +227,7 @@ pub struct DataSourceConfiguration {
     pub intended_use: Option<DataSourceConfigurationIntendedUseEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataSourceConfigurationIntendedUseEnum {
     /// SingleUse
     #[serde(rename = "SingleUse")]

@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::FunctionDefinition resource represents a function definition for AWS IoT Greengrass.   Function definitions are used to organize your function definition versions.
 ///
 /// Function definitions can reference multiple function definition versions. All function definition versions      must be associated with a function definition. Each function definition version can contain one or more functions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionDefinition {
     ///
     /// The function definition version to include when the function definition is created.          A function definition version contains a list of          function property types.
@@ -57,7 +57,7 @@ pub struct CfnFunctionDefinition {
     pub att_name: CfnFunctionDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionDefinitionarn;
 impl CfnFunctionDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnFunctionDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionDefinitionid;
 impl CfnFunctionDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnFunctionDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionDefinitionlatestversionarn;
 impl CfnFunctionDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnFunctionDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionDefinitionname;
 impl CfnFunctionDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnFunctionDefinition {
 /// The default configuration 		that applies to all Lambda functions in the function definition version. Individual Lambda functions can override these settings.
 ///
 /// In an AWS CloudFormation template,      DefaultConfig is a property of the FunctionDefinitionVersion 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultConfig {
     ///
     /// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for DefaultConfig {
 /// The environment configuration for a Lambda function on the AWS IoT Greengrass core.
 ///
 /// In an AWS CloudFormation template,      Environment is a property of the FunctionConfiguration 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Environment {
     ///
     /// Indicates whether the function is allowed to access the /sys directory on the core device, which allows the 				 read device information from /sys.
@@ -219,7 +219,7 @@ impl cfn_resources::CfnResource for Environment {
 /// Configuration settings for the Lambda execution environment on the AWS IoT Greengrass core.
 ///
 /// In an AWS CloudFormation template,      Execution is a property of the DefaultConfig property type for a function definition version and      the 		 Environment property type for a function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Execution {
     ///
     /// The containerization that the Lambda function runs in.           Valid values are GreengrassContainer or NoContainer. Typically, this is GreengrassContainer.           For more information,           see Containerization in the AWS IoT Greengrass Version 1 Developer Guide.
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for Execution {
 /// A function is a Lambda function 		that's referenced from an AWS IoT Greengrass group. The function is deployed to a Greengrass core where it runs locally. 	For more information, 	see Run Lambda Functions on the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Functions 		 property of the FunctionDefinitionVersion 		 property type contains a list of Function property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Function {
     ///
     /// The Amazon Resource Name (ARN) of the alias (recommended) or version of the referenced Lambda function.
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for Function {
 /// The      group-specific configuration settings for a Lambda function. These settings configure the function's behavior in the Greengrass group. 		 For more information, 	see Controlling Execution of Greengrass Lambda Functions by Using Group-Specific Configuration in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template,      FunctionConfiguration is a property of the Function 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunctionConfiguration {
     ///
     /// The expected encoding type of the input payload for the function. Valid values are json (default) and binary.
@@ -438,7 +438,7 @@ impl cfn_resources::CfnResource for FunctionConfiguration {
 /// A function definition version contains a list of functions.
 ///
 /// In an AWS CloudFormation template, FunctionDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::FunctionDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunctionDefinitionVersion {
     ///
     /// The default configuration that applies to all Lambda functions in the group. Individual Lambda functions can override these settings.
@@ -485,7 +485,7 @@ impl cfn_resources::CfnResource for FunctionDefinitionVersion {
 /// A list of the 		resources in the group 				 that the function can access, with the corresponding read-only or read-write permissions. The maximum is 10 resources.
 ///
 /// In an AWS CloudFormation template,      ResourceAccessPolicy is a property of the Environment 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceAccessPolicy {
     ///
     /// The read-only or read-write access that the Lambda function has to the resource. 				 Valid values are ro or rw.
@@ -528,7 +528,7 @@ impl cfn_resources::CfnResource for ResourceAccessPolicy {
 /// The access identity whose permissions 		are used to run the Lambda function. This setting overrides the default access identity that's specified 		for the group (by default, ggc_user and ggc_group). You can override the user, group, or both. 	For more information, 	see Run as in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template,      RunAs is a property of the Execution 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunAs {
     ///
     /// The group ID whose permissions are used to run the Lambda function. You can use the getent group 				 command on your core device to look up the group ID.

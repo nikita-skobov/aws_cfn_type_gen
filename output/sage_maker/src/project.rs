@@ -1,5 +1,5 @@
 /// Creates a machine learning (ML) project that can contain one or more templates that set       up an ML pipeline from training to deploying an approved model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProject {
     ///
     /// The description of the project.
@@ -80,7 +80,7 @@ pub struct CfnProject {
         CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectcreationtime;
 impl CfnProjectcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl CfnProjectcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectprojectarn;
 impl CfnProjectprojectarn {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnProjectprojectarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectprojectid;
 impl CfnProjectprojectid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnProjectprojectid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectprojectstatus;
 impl CfnProjectprojectstatus {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnProjectprojectstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid;
 impl CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage;
 impl CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -175,7 +175,7 @@ impl cfn_resources::CfnResource for CfnProject {
 }
 
 /// A key value pair used when you provision a project as a service catalog product. For       information, see What is AWS Service         Catalog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisioningParameter {
     ///
     /// The key that identifies a provisioning parameter.
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
 }
 
 /// Details of a provisioned service catalog product. For information about service catalog,       see What is AWS Service         Catalog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// The ID of the provisioned product.
@@ -326,7 +326,7 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
 }
 
 /// Details that you specify to provision a service catalog product. For information about       service catalog, see What is AWS Service         Catalog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceCatalogProvisioningDetails {
     ///
     /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
@@ -475,7 +475,7 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,7 +1,7 @@
 /// The AWS::CloudWatch::Dashboard resource specifies an Amazon CloudWatch dashboard. A dashboard is a       customizable home page in the CloudWatch console that you can use to monitor your AWS resources in a single view.
 ///
 /// All dashboards in your account are global, not region-specific.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDashboard {
     ///
     /// The detailed information about the dashboard in JSON format, including the widgets to include and their location 			on the dashboard. This parameter is required.

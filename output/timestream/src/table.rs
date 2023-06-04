@@ -1,5 +1,5 @@
 /// The CreateTable operation adds a new table to an existing database in your account. In an     AWS account, table names must be at least unique within each Region if they    are in the same database. You may have identical table names in the same Region if the tables    are in separate databases. While creating the table, you must specify the table name, database    name, and the retention properties. Service quotas apply. See     code sample    for details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTable {
     ///
     /// The name of the Timestream database that contains this table.
@@ -101,7 +101,7 @@ pub struct CfnTable {
     pub att_name: CfnTablename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTablearn;
 impl CfnTablearn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnTablearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTablename;
 impl CfnTablename {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnTable {
 }
 
 /// The location to write error reports for records rejected, asynchronously, during     magnetic store writes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MagneticStoreRejectedDataLocation {
     ///
     /// Configuration of an S3 location to write error reports for records rejected,     asynchronously, during magnetic store writes.
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for MagneticStoreRejectedDataLocation {
 }
 
 /// The set of properties on a table for configuring magnetic store writes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MagneticStoreWriteProperties {
     ///
     /// A flag to enable magnetic store writes.
@@ -219,7 +219,7 @@ impl cfn_resources::CfnResource for MagneticStoreWriteProperties {
 }
 
 /// Retention properties contain the duration for which your time-series data must be stored     in the magnetic store and the memory store.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetentionProperties {
     ///
     /// The duration for which data must be stored in the magnetic store.
@@ -261,7 +261,7 @@ impl cfn_resources::CfnResource for RetentionProperties {
 }
 
 /// The configuration that specifies an S3 location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Configuration {
     ///
     /// The bucket name of the customer S3 bucket.
@@ -328,7 +328,7 @@ pub struct S3Configuration {
     pub object_key_prefix: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3ConfigurationEncryptionOptionEnum {
     /// SSE_KMS
     #[serde(rename = "SSE_KMS")]
@@ -429,7 +429,7 @@ impl cfn_resources::CfnResource for S3Configuration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -3,7 +3,7 @@
 /// When you declare this entity in your AWS CloudFormation template, you pass in your       transcoding job settings in JSON or YAML format. This settings specification must be       formed in a particular way that conforms to AWS Elemental MediaConvert job validation. For       more information about creating a job template model for the SettingsJson       property, see the Remarks section later in this topic.
 ///
 /// For information about job templates,       see Working with AWS Elemental MediaConvert Job Templates in the AWS Elemental MediaConvert User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobTemplate {
     ///
     /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see Job Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
@@ -167,7 +167,7 @@ pub struct CfnJobTemplate {
     pub att_name: CfnJobTemplatename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobTemplatearn;
 impl CfnJobTemplatearn {
     pub fn att_name(&self) -> &'static str {
@@ -175,7 +175,7 @@ impl CfnJobTemplatearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobTemplatename;
 impl CfnJobTemplatename {
     pub fn att_name(&self) -> &'static str {
@@ -211,7 +211,7 @@ impl cfn_resources::CfnResource for CfnJobTemplate {
 }
 
 /// Accelerated transcoding can significantly speed up jobs with long, visually complex       content. Outputs that use this feature incur pro-tier pricing. For information about       feature limitations, For more information, see       Job         Limitations for Accelerated Transcoding in AWS Elemental MediaConvert in the AWS Elemental MediaConvert User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccelerationSettings {
     ///
     /// Specify the conditions when the service will run your job with accelerated transcoding.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for AccelerationSettings {
 }
 
 /// Optional. Configuration for a destination queue to which the job can hop once a       customer-defined minimum wait time has passed. For more information, see Setting Up Queue Hopping to Avoid Long Waits in the AWS Elemental MediaConvert User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HopDestination {
     ///
     /// Optional. When you set up a job to use queue hopping, you can specify a different relative priority for the job in the destination queue. If you don't specify, the relative priority will remain the same as in the previous queue.

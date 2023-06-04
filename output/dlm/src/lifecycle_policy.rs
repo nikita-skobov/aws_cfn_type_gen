@@ -1,7 +1,7 @@
 /// Specifies a lifecycle policy, which is used to automate operations on Amazon EBS resources.
 ///
 /// The properties are required when you add a lifecycle policy and optional when you update a lifecycle policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLifecyclePolicy {
     ///
     /// A description of the lifecycle policy. The characters ^[0-9A-Za-z _-]+$ are 			supported.
@@ -81,7 +81,7 @@ pub struct CfnLifecyclePolicy {
     pub att_arn: CfnLifecyclePolicyarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LifecyclePolicyStateEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -102,7 +102,7 @@ impl Default for LifecyclePolicyStateEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLifecyclePolicyarn;
 impl CfnLifecyclePolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for CfnLifecyclePolicy {
 }
 
 /// [Event-based policies only] Specifies an action for an event-based policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// The rule for copying shared snapshots across Regions.
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// The ArchiveRetainRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveRetainRule {
     /// Property description not available.
     ///
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for ArchiveRetainRule {
 }
 
 /// The ArchiveRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveRule {
     /// Property description not available.
     ///
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for ArchiveRule {
 }
 
 /// [Snapshot and AMI policies only] Specifies when the policy should create snapshots or AMIs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreateRule {
     ///
     /// The schedule, as a Cron expression. The schedule interval must be between 1 hour and 1 			year. For more information, see Cron 				expressions in the Amazon CloudWatch User Guide.
@@ -390,7 +390,7 @@ pub struct CreateRule {
     pub times: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CreateRuleIntervalUnitEnum {
     /// HOURS
     #[serde(rename = "HOURS")]
@@ -403,7 +403,7 @@ impl Default for CreateRuleIntervalUnitEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CreateRuleLocationEnum {
     /// CLOUD
     #[serde(rename = "CLOUD")]
@@ -475,7 +475,7 @@ impl cfn_resources::CfnResource for CreateRule {
 }
 
 /// [Event-based policies only] Specifies a cross-Region copy action for event-based policies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CrossRegionCopyAction {
     ///
     /// The encryption settings for the copied snapshot.
@@ -561,7 +561,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyAction {
 }
 
 /// The CrossRegionCopyDeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CrossRegionCopyDeprecateRule {
     /// Property description not available.
     ///
@@ -599,7 +599,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyDeprecateRule {
 }
 
 /// Specifies a retention rule for cross-Region snapshot copies created by snapshot or 			event-based policies, or cross-Region AMI copies created by AMI policies. After the 			retention period expires, the cross-Region copy is deleted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CrossRegionCopyRetainRule {
     ///
     /// The amount of time to retain a cross-Region snapshot or AMI copy. The maximum is 100 years. 			This is equivalent to 1200 months, 5200 weeks, or 36500 days.
@@ -628,7 +628,7 @@ pub struct CrossRegionCopyRetainRule {
     pub interval_unit: CrossRegionCopyRetainRuleIntervalUnitEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CrossRegionCopyRetainRuleIntervalUnitEnum {
     /// DAYS
     #[serde(rename = "DAYS")]
@@ -677,7 +677,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyRetainRule {
 }
 
 /// [Snapshot and AMI policies only] Specifies a cross-Region copy rule for snapshot and AMI policies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CrossRegionCopyRule {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS key to use for EBS encryption. If this 			parameter is not specified, the default KMS key for the account is used.
@@ -871,7 +871,7 @@ impl cfn_resources::CfnResource for CrossRegionCopyRule {
 }
 
 /// The DeprecateRule property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeprecateRule {
     /// Property description not available.
     ///
@@ -922,7 +922,7 @@ impl cfn_resources::CfnResource for DeprecateRule {
 }
 
 /// [Event-based policies only] Specifies the encryption settings for cross-Region snapshot copies created by 			event-based policies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS key to use for EBS encryption. If 			this parameter is not specified, the default KMS key for the account is used.
@@ -991,7 +991,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventParameters {
     ///
     /// The snapshot description that can trigger the policy. The description pattern is specified using 			a regular expression. The policy runs only if a snapshot with a description that matches the 			specified pattern is shared with your account.
@@ -1040,7 +1040,7 @@ pub struct EventParameters {
     pub snapshot_owner: Vec<String>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EventParametersEventTypeEnum {
     /// shareSnapshot
     #[serde(rename = "shareSnapshot")]
@@ -1096,7 +1096,7 @@ impl cfn_resources::CfnResource for EventParameters {
 }
 
 /// [Event-based policies only] Specifies an event that activates an event-based policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventSource {
     ///
     /// Information about the event.
@@ -1124,7 +1124,7 @@ pub struct EventSource {
     pub cfn_type: EventSourceTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EventSourceTypeEnum {
     /// MANAGED_CWE
     #[serde(rename = "MANAGED_CWE")]
@@ -1156,7 +1156,7 @@ impl cfn_resources::CfnResource for EventSource {
 }
 
 /// [Snapshot policies only] Specifies a rule for enabling fast snapshot restore for snapshots created by 			snapshot policies. You can enable fast snapshot restore based on either a count or a 			time interval.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FastRestoreRule {
     ///
     /// The Availability Zones in which to enable fast snapshot restore.
@@ -1217,7 +1217,7 @@ pub struct FastRestoreRule {
     pub interval_unit: Option<FastRestoreRuleIntervalUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FastRestoreRuleIntervalUnitEnum {
     /// DAYS
     #[serde(rename = "DAYS")]
@@ -1295,7 +1295,7 @@ impl cfn_resources::CfnResource for FastRestoreRule {
 /// [Snapshot and AMI policies only] Specifies optional parameters for snapshot and AMI policies. The 			set of valid parameters depends on the combination of policy type and target resource 			type.
 ///
 /// If you choose to exclude boot volumes and you specify tags that consequently exclude 			all of the additional data volumes attached to an instance, then Amazon Data Lifecycle Manager will not create 			any snapshots for the affected instance, and it will emit a SnapshotsCreateFailed 			Amazon CloudWatch metric. For more information, see Monitor your policies 				using Amazon CloudWatch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Parameters {
     ///
     /// [Snapshot policies that target instances only] Indicates whether to exclude the root volume from multi-volume 			snapshot sets. The default is false. If you specify true, 			then the root volumes attached to targeted instances will be excluded from the multi-volume 			snapshot sets created by the policy.
@@ -1348,7 +1348,7 @@ impl cfn_resources::CfnResource for Parameters {
 }
 
 /// [All policy types] Specifies the configuration of a lifecycle policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyDetails {
     ///
     /// [Event-based policies only] The actions to be performed when the event-based policy is activated. You can specify 			only one action per policy.
@@ -1465,7 +1465,7 @@ pub struct PolicyDetails {
     pub target_tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PolicyDetailsPolicyTypeEnum {
     /// EBS_SNAPSHOT_MANAGEMENT
     #[serde(rename = "EBS_SNAPSHOT_MANAGEMENT")]
@@ -1556,7 +1556,7 @@ impl cfn_resources::CfnResource for PolicyDetails {
 /// [Snapshot and AMI policies only] Specifies a retention rule for snapshots created by snapshot policies, or for AMIs 			created by AMI policies.
 ///
 /// You can retain snapshots based on either a count or a time interval.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetainRule {
     ///
     /// The number of snapshots to retain for each volume, up to a maximum of 1000. For example if you want to 			retain a maximum of three snapshots, specify 3. When the fourth snapshot is created, the 			oldest retained snapshot is deleted, or it is moved to the archive tier if you have specified an 			ArchiveRule.
@@ -1603,7 +1603,7 @@ pub struct RetainRule {
     pub interval_unit: Option<RetainRuleIntervalUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RetainRuleIntervalUnitEnum {
     /// DAYS
     #[serde(rename = "DAYS")]
@@ -1670,7 +1670,7 @@ impl cfn_resources::CfnResource for RetainRule {
 }
 
 /// The RetentionArchiveTier property type specifies Property description not available. for an AWS::DLM::LifecyclePolicy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetentionArchiveTier {
     /// Property description not available.
     ///
@@ -1721,7 +1721,7 @@ impl cfn_resources::CfnResource for RetentionArchiveTier {
 }
 
 /// [Snapshot and AMI policies only] Specifies a schedule for a snapshot or AMI lifecycle policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schedule {
     /// Property description not available.
     ///
@@ -1960,7 +1960,7 @@ impl cfn_resources::CfnResource for Schedule {
 }
 
 /// [Snapshot policies only] Specifies a rule for sharing snapshots across AWS accounts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShareRule {
     ///
     /// The IDs of the AWS accounts with which to share the snapshots.
@@ -2003,7 +2003,7 @@ pub struct ShareRule {
     pub unshare_interval_unit: Option<ShareRuleUnshareIntervalUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ShareRuleUnshareIntervalUnitEnum {
     /// DAYS
     #[serde(rename = "DAYS")]
@@ -2058,7 +2058,7 @@ impl cfn_resources::CfnResource for ShareRule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

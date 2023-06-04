@@ -4,7 +4,7 @@
 ///
 /// When you update an existing alarm, its state is left unchanged, but the 			update completely overwrites the previous configuration of the alarm.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlarm {
     ///
     /// Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE.
@@ -336,7 +336,7 @@ pub struct CfnAlarm {
     pub att_arn: CfnAlarmarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmComparisonOperatorEnum {
     /// GreaterThanOrEqualToThreshold
     #[serde(rename = "GreaterThanOrEqualToThreshold")]
@@ -373,7 +373,7 @@ impl Default for AlarmComparisonOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmStatisticEnum {
     /// Average
     #[serde(rename = "Average")]
@@ -402,7 +402,7 @@ impl Default for AlarmStatisticEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmUnitEnum {
     /// Bits
     #[serde(rename = "Bits")]
@@ -519,7 +519,7 @@ impl Default for AlarmUnitEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlarmarn;
 impl CfnAlarmarn {
     pub fn att_name(&self) -> &'static str {
@@ -741,7 +741,7 @@ impl cfn_resources::CfnResource for CfnAlarm {
 }
 
 /// Dimension is an embedded property of the AWS::CloudWatch::Alarm type. Dimensions       are name/value pairs that can be associated with a CloudWatch metric. You can       specify a maximum of 10 dimensions for a given metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Dimension {
     ///
     /// The name of the dimension, from 1–255 characters in length. This dimension      name must have been included when      the metric was published.
@@ -833,7 +833,7 @@ impl cfn_resources::CfnResource for Dimension {
 }
 
 /// The Metric property type represents a specific metric. Metric is a property of the 		      MetricStat property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metric {
     ///
     /// The metric dimensions that you want to be used for the metric that 		      the alarm will watch.
@@ -954,7 +954,7 @@ impl cfn_resources::CfnResource for Metric {
 /// The MetricDataQuery property type specifies the metric data to return, and whether this call is       just retrieving a batch set of data for one metric, or is performing a math expression on metric data.
 ///
 /// Any expression used must return a single time series. For more information, see Metric Math Syntax and Functions in the Amazon CloudWatch User 				Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDataQuery {
     ///
     /// The ID of the account where the metrics are located, if this is a cross-account alarm.
@@ -1132,7 +1132,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
 ///
 /// MetricStat is a property of the       MetricDataQuery property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStat {
     ///
     /// The metric to return, including the metric name, namespace, and dimensions.
@@ -1190,7 +1190,7 @@ pub struct MetricStat {
     pub unit: Option<MetricStatUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetricStatUnitEnum {
     /// Bits
     #[serde(rename = "Bits")]

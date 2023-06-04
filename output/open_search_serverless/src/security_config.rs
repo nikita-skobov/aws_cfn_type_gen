@@ -1,5 +1,5 @@
 /// Specifies a security configuration for OpenSearch Serverless. For more information, see       SAML         authentication for Amazon OpenSearch Serverless.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityConfig {
     ///
     /// The description of the security configuration.
@@ -53,7 +53,7 @@ pub struct CfnSecurityConfig {
     pub att_id: CfnSecurityConfigid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityConfigid;
 impl CfnSecurityConfigid {
     pub fn att_name(&self) -> &'static str {
@@ -80,7 +80,7 @@ impl cfn_resources::CfnResource for CfnSecurityConfig {
 }
 
 /// Describes SAML options for an OpenSearch Serverless security configuration in the form of a key-value       map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SamlConfigOptions {
     ///
     /// The group attribute for this SAML integration.

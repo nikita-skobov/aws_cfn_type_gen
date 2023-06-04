@@ -1,5 +1,5 @@
 /// A complex type that contains an optional comment, the name and ID of the hosted zone that you want to make changes in, 			and values for the records that you want to create.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRecordSetGroup {
     ///
     /// Optional: Any comments you want to include about a change batch 			request.
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for CfnRecordSetGroup {
 /// Alias records only: Information about the AWS resource, such as a CloudFront distribution or 			an Amazon S3 bucket, that you want to route traffic to.
 ///
 /// When creating records for a private hosted zone, note the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AliasTarget {
     ///
     /// Alias records only: The value that you specify depends on where you want to route queries:
@@ -199,7 +199,7 @@ impl cfn_resources::CfnResource for AliasTarget {
 /// The object that is specified in resource record set object when you are linking a 			resource record set to a CIDR location.
 ///
 /// A LocationName with an asterisk “*” can be used to create a default CIDR 			record. CollectionId is still required for default record.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CidrRoutingConfig {
     ///
     /// The CIDR collection ID.
@@ -269,7 +269,7 @@ impl cfn_resources::CfnResource for CidrRoutingConfig {
 }
 
 /// A complex type that contains information about a geographic location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeoLocation {
     ///
     /// For geolocation resource record sets, a two-letter abbreviation that identifies a continent. Route 53 supports the following continent codes:
@@ -413,7 +413,7 @@ impl cfn_resources::CfnResource for GeoLocation {
 /// The AWS::Route53::RecordSet type can be used as a standalone resource or as an embedded property in the 			AWS::Route53::RecordSetGroup type. Note that some AWS::Route53::RecordSet properties are valid 			only when used within AWS::Route53::RecordSetGroup.
 ///
 /// For more information, see ChangeResourceRecordSets 			in the Amazon Route 53 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordSet {
     ///
     /// Alias resource record sets only: Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that 			you want to route traffic to.
@@ -720,7 +720,7 @@ pub struct RecordSet {
     pub weight: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecordSetFailoverEnum {
     /// PRIMARY
     #[serde(rename = "PRIMARY")]
@@ -737,7 +737,7 @@ impl Default for RecordSetFailoverEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecordSetRegionEnum {
     /// af-south-1
     #[serde(rename = "af-south-1")]
@@ -842,7 +842,7 @@ impl Default for RecordSetRegionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecordSetTypeEnum {
     /// A
     #[serde(rename = "A")]

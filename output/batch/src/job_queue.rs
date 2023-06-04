@@ -1,5 +1,5 @@
 /// The AWS::Batch::JobQueue resource specifies the parameters for an AWS Batch job queue  definition. For more information, see Job   Queues in the AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobQueue {
     ///
     /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler  uses this parameter to determine which compute environment runs a specific job. Compute environments must be in  the VALID state before you can associate them with a job queue. You can associate up to three compute  environments with a job queue. All of the compute environments must be either EC2 (EC2 or   SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and Fargate compute  environments can't be mixed.
@@ -79,7 +79,7 @@ pub struct CfnJobQueue {
     pub att_job_queue_arn: CfnJobQueuejobqueuearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JobQueueStateEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -96,7 +96,7 @@ impl Default for JobQueueStateEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJobQueuejobqueuearn;
 impl CfnJobQueuejobqueuearn {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for CfnJobQueue {
 }
 
 /// The order that compute environments are tried in for job placement within a queue. Compute  environments are tried in ascending order. For example, if two compute environments are  associated with a job queue, the compute environment with a lower order integer value is tried  for job placement first. Compute environments must be in the VALID state before you  can associate them with a job queue. All of the compute environments must be either EC2   (EC2 or SPOT) or Fargate (FARGATE or   FARGATE_SPOT); EC2 and Fargate compute environments can't be mixed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComputeEnvironmentOrder {
     ///
     /// The Amazon Resource Name (ARN) of the compute environment.

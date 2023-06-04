@@ -1,7 +1,7 @@
 /// Designates the IAM role and Amazon Simple Notification Service (SNS) topic to use to record SNS logs.
 ///
 /// To perform this action outside of the console, you must configure the SNS topic to allow the    role AWSServiceRoleForFMS to publish SNS logs. For more information, see    Firewall Manager required permissions for API actions in the         AWS Firewall Manager Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNotificationChannel {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record AWS Firewall Manager activity.

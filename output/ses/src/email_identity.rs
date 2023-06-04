@@ -5,7 +5,7 @@
 /// Alternatively, you can perform the verification process by providing your own       public-private key pair. This verification method is known as Bring Your Own DKIM       (BYODKIM). To use BYODKIM, your resource must include DkimSigningAttributes properties       DomainSigningSelector and DomainSigningPrivateKey. When you specify this object, you       provide a selector (DomainSigningSelector) (a component of the DNS record name that       identifies the public key to use for DKIM authentication) and a private key       (DomainSigningPrivateKey).
 ///
 /// Additionally, you can associate an existing configuration set with the email identity       that you're verifying.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentity {
     ///
     /// Used to associate a configuration set with an email identity.
@@ -97,7 +97,7 @@ pub struct CfnEmailIdentity {
     pub att_dkim_dnstoken_value3: CfnEmailIdentitydkimdnstokenvalue3,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenname1;
 impl CfnEmailIdentitydkimdnstokenname1 {
     pub fn att_name(&self) -> &'static str {
@@ -105,7 +105,7 @@ impl CfnEmailIdentitydkimdnstokenname1 {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenname2;
 impl CfnEmailIdentitydkimdnstokenname2 {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl CfnEmailIdentitydkimdnstokenname2 {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenname3;
 impl CfnEmailIdentitydkimdnstokenname3 {
     pub fn att_name(&self) -> &'static str {
@@ -121,7 +121,7 @@ impl CfnEmailIdentitydkimdnstokenname3 {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenvalue1;
 impl CfnEmailIdentitydkimdnstokenvalue1 {
     pub fn att_name(&self) -> &'static str {
@@ -129,7 +129,7 @@ impl CfnEmailIdentitydkimdnstokenvalue1 {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenvalue2;
 impl CfnEmailIdentitydkimdnstokenvalue2 {
     pub fn att_name(&self) -> &'static str {
@@ -137,7 +137,7 @@ impl CfnEmailIdentitydkimdnstokenvalue2 {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEmailIdentitydkimdnstokenvalue3;
 impl CfnEmailIdentitydkimdnstokenvalue3 {
     pub fn att_name(&self) -> &'static str {
@@ -180,7 +180,7 @@ impl cfn_resources::CfnResource for CfnEmailIdentity {
 }
 
 /// Used to associate a configuration set with an email identity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationSetAttributes {
     ///
     /// The configuration set to associate with an email identity.
@@ -210,7 +210,7 @@ impl cfn_resources::CfnResource for ConfigurationSetAttributes {
 }
 
 /// Used to enable or disable DKIM authentication for an email identity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DkimAttributes {
     ///
     /// Sets the DKIM signing configuration for the identity.
@@ -242,7 +242,7 @@ impl cfn_resources::CfnResource for DkimAttributes {
 }
 
 /// Used to configure or change the DKIM authentication settings for an email domain       identity. You can use this operation to do any of the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DkimSigningAttributes {
     ///
     /// [Bring Your Own DKIM] A private key that's used to generate a DKIM signature.
@@ -287,7 +287,7 @@ pub struct DkimSigningAttributes {
     pub next_signing_key_length: Option<DkimSigningAttributesNextSigningKeyLengthEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DkimSigningAttributesNextSigningKeyLengthEnum {
     /// RSA_1024_BIT
     #[serde(rename = "RSA_1024_BIT")]
@@ -319,7 +319,7 @@ impl cfn_resources::CfnResource for DkimSigningAttributes {
 }
 
 /// Used to enable or disable feedback forwarding for an identity. This setting determines       what happens when an identity is used to send an email that results in a bounce or       complaint event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FeedbackAttributes {
     ///
     /// Sets the feedback forwarding configuration for the identity.
@@ -353,7 +353,7 @@ impl cfn_resources::CfnResource for FeedbackAttributes {
 }
 
 /// Used to enable or disable the custom Mail-From domain configuration for an email       identity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MailFromAttributes {
     ///
     /// The action to take if the required MX record isn't found when you send an email. When       you set this value to USE_DEFAULT_VALUE, the mail is sent using         amazonses.com as the MAIL FROM domain. When you set this value       to REJECT_MESSAGE, the Amazon SES API v2 returns a         MailFromDomainNotVerified error, and doesn't attempt to deliver the       email.
@@ -386,7 +386,7 @@ pub struct MailFromAttributes {
     pub mail_from_domain: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MailFromAttributesBehaviorOnMxFailureEnum {
     /// USE_DEFAULT_VALUE
     #[serde(rename = "USE_DEFAULT_VALUE")]

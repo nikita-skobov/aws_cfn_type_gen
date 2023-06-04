@@ -1,5 +1,5 @@
 /// A group object, which contains a specified group’s metadata and attributes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroup {
     ///
     /// A string containing the description of the group.
@@ -37,7 +37,7 @@ pub struct CfnGroup {
     pub att_group_id: CfnGroupgroupid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroupgroupid;
 impl CfnGroupgroupid {
     pub fn att_name(&self) -> &'static str {

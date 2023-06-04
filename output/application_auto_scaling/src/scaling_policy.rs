@@ -1,7 +1,7 @@
 /// The AWS::ApplicationAutoScaling::ScalingPolicy resource defines a scaling    policy that Application Auto Scaling uses to adjust the capacity of a scalable target.
 ///
 /// For more information, see Target     tracking scaling policies and Step scaling policies in the Application Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPolicy {
     ///
     /// The name of the scaling policy.
@@ -131,7 +131,7 @@ pub struct CfnScalingPolicy {
         Option<TargetTrackingScalingPolicyConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingPolicyPolicyTypeEnum {
     /// StepScaling
     #[serde(rename = "StepScaling")]
@@ -148,7 +148,7 @@ impl Default for ScalingPolicyPolicyTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingPolicyScalableDimensionEnum {
     /// appstream:fleet:DesiredCapacity
     #[serde(rename = "appstream:fleet:DesiredCapacity")]
@@ -241,7 +241,7 @@ impl Default for ScalingPolicyScalableDimensionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingPolicyServiceNamespaceEnum {
     /// appstream
     #[serde(rename = "appstream")]
@@ -383,7 +383,7 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
 /// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts.
 ///
 /// CustomizedMetricSpecification is a property of the AWS::ApplicationAutoScaling::ScalingPolicy TargetTrackingScalingPolicyConfiguration    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomizedMetricSpecification {
     ///
     /// The dimensions of the metric.
@@ -447,7 +447,7 @@ pub struct CustomizedMetricSpecification {
     pub unit: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomizedMetricSpecificationStatisticEnum {
     /// Average
     #[serde(rename = "Average")]
@@ -491,7 +491,7 @@ impl cfn_resources::CfnResource for CustomizedMetricSpecification {
 }
 
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::ApplicationAutoScaling::ScalingPolicy CustomizedMetricSpecification property    type. Duplicate dimensions are not allowed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -533,7 +533,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 /// Contains predefined metric specification information for a target tracking scaling policy    for Application Auto Scaling.
 ///
 /// PredefinedMetricSpecification is a property of the AWS::ApplicationAutoScaling::ScalingPolicy TargetTrackingScalingPolicyConfiguration    property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredefinedMetricSpecification {
     ///
     /// The metric type. The ALBRequestCountPerTarget metric type applies only to    Spot fleet requests and ECS services.
@@ -575,7 +575,7 @@ pub struct PredefinedMetricSpecification {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredefinedMetricSpecificationPredefinedMetricTypeEnum {
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
@@ -715,7 +715,7 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
 /// For more information, see Step adjustments in the Application Auto Scaling User    Guide.
 ///
 /// You can find a sample template snippet in the Examples section of the AWS::ApplicationAutoScaling::ScalingPolicy    documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepAdjustment {
     ///
     /// The lower bound for the difference between the alarm threshold and the CloudWatch metric.    If the metric value is above the breach threshold, the lower bound is inclusive (the metric    must be greater than or equal to the threshold plus the lower bound). Otherwise, it is    exclusive (the metric must be greater than the threshold plus the lower bound). A null value    indicates negative infinity.
@@ -774,7 +774,7 @@ impl cfn_resources::CfnResource for StepAdjustment {
 /// StepScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a step scaling    policy configuration for Application Auto Scaling.
 ///
 /// For more information, see Step scaling policies in the Application Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepScalingPolicyConfiguration {
     ///
     /// Specifies whether the ScalingAdjustment value in the     StepAdjustment property is an absolute number or a percentage of the current    capacity.
@@ -843,7 +843,7 @@ pub struct StepScalingPolicyConfiguration {
     pub step_adjustments: Option<Vec<StepAdjustment>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StepScalingPolicyConfigurationAdjustmentTypeEnum {
     /// ChangeInCapacity
     #[serde(rename = "ChangeInCapacity")]
@@ -864,7 +864,7 @@ impl Default for StepScalingPolicyConfigurationAdjustmentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StepScalingPolicyConfigurationMetricAggregationTypeEnum {
     /// Average
     #[serde(rename = "Average")]
@@ -902,7 +902,7 @@ impl cfn_resources::CfnResource for StepScalingPolicyConfiguration {
 /// TargetTrackingScalingPolicyConfiguration is a property of the AWS::ApplicationAutoScaling::ScalingPolicy resource that specifies a target    tracking scaling policy configuration for Application Auto Scaling. Use a target tracking    scaling policy to adjust the capacity of the specified scalable target in response to actual    workloads, so that resource utilization remains at or near the target utilization value.
 ///
 /// For more information, see Target     tracking scaling policies in the Application Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// A customized metric. You can specify either a predefined metric or a customized     metric.

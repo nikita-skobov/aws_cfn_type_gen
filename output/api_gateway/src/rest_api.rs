@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::RestApi resource creates a REST API. For more information, see restapi:create in the Amazon API Gateway REST API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRestApi {
     ///
     /// The source of the API key for metering requests according to a usage plan. Valid values    are: HEADER to read the API key from the X-API-Key header of a    request. AUTHORIZER to read the API key from the UsageIdentifierKey    from a custom authorizer.
@@ -198,7 +198,7 @@ pub struct CfnRestApi {
     pub att_root_resource_id: CfnRestApirootresourceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRestApirestapiid;
 impl CfnRestApirestapiid {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl CfnRestApirestapiid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRestApirootresourceid;
 impl CfnRestApirootresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -239,7 +239,7 @@ impl cfn_resources::CfnResource for CfnRestApi {
 /// The EndpointConfiguration property type specifies the endpoint types of a REST API.
 ///
 /// EndpointConfiguration is a property of the AWS::ApiGateway::RestApi resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointConfiguration {
     ///
     /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 }
 
 /// S3Location is a property of the AWS::ApiGateway::RestApi resource that specifies the Amazon S3 location of a OpenAPI (formerly Swagger) file that defines a set of RESTful APIs in JSON or YAML.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The name of the S3 bucket where the OpenAPI file is stored.
@@ -353,7 +353,7 @@ impl cfn_resources::CfnResource for S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

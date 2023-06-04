@@ -1,5 +1,5 @@
 /// The AWS::GameLift::Fleet resource creates an Amazon GameLift (GameLift) fleet to host      custom game server or Realtime Servers. A fleet is a set of EC2 instances, configured with instructions to      run game servers on each instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFleet {
     /// Property description not available.
     ///
@@ -309,7 +309,7 @@ pub struct CfnFleet {
     pub att_fleet_id: CfnFleetfleetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetComputeTypeEnum {
     /// ANYWHERE
     #[serde(rename = "ANYWHERE")]
@@ -326,7 +326,7 @@ impl Default for FleetComputeTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetEC2InstanceTypeEnum {
     /// c3.2xlarge
     #[serde(rename = "c3.2xlarge")]
@@ -791,7 +791,7 @@ impl Default for FleetEC2InstanceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetFleetTypeEnum {
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
@@ -808,7 +808,7 @@ impl Default for FleetFleetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetNewGameSessionProtectionPolicyEnum {
     /// FullProtection
     #[serde(rename = "FullProtection")]
@@ -825,7 +825,7 @@ impl Default for FleetNewGameSessionProtectionPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFleetfleetid;
 impl CfnFleetfleetid {
     pub fn att_name(&self) -> &'static str {
@@ -1008,7 +1008,7 @@ impl cfn_resources::CfnResource for CfnFleet {
 }
 
 /// Amazon GameLift Anywhere configuration options for your Anywhere fleets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnywhereConfiguration {
     ///
     /// The cost to run your fleet per hour. Amazon GameLift uses the provided cost of your fleet to       balance usage in queues. For more information about queues, see Setting         up queues in the Amazon GameLift Developer Guide.
@@ -1065,7 +1065,7 @@ impl cfn_resources::CfnResource for AnywhereConfiguration {
 }
 
 /// Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be       enabled when creating the fleet. All instances in a fleet share the same       certificate. The certificate can be retrieved by calling the         GameLift Server         SDK operation GetInstanceCertificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CertificateConfiguration {
     ///
     /// Indicates whether a TLS/SSL certificate is generated for a fleet.
@@ -1085,7 +1085,7 @@ pub struct CertificateConfiguration {
     pub certificate_type: CertificateConfigurationCertificateTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateConfigurationCertificateTypeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1117,7 +1117,7 @@ impl cfn_resources::CfnResource for CertificateConfiguration {
 }
 
 /// A range of IP addresses and port settings that allow inbound traffic to connect to    server processes on an instance in a fleet. New game sessions are assigned an IP    address/port number combination, which must fall into the fleet's allowed ranges. Fleets    with custom game builds must have permissions explicitly set. For Realtime Servers fleets, GameLift    automatically opens two port ranges, one for TCP messaging and one for UDP.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IpPermission {
     ///
     /// A starting value for a range of allowed port numbers.
@@ -1184,7 +1184,7 @@ pub struct IpPermission {
     pub to_port: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IpPermissionProtocolEnum {
     /// TCP
     #[serde(rename = "TCP")]
@@ -1256,7 +1256,7 @@ impl cfn_resources::CfnResource for IpPermission {
 /// Related actions
 ///
 /// DescribeFleetCapacity | DescribeFleetLocationCapacity | UpdateFleetCapacity
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocationCapacity {
     ///
     /// The number of Amazon EC2 instances you want to maintain in the specified fleet location.       This value must fall between the minimum and maximum size limits.
@@ -1340,7 +1340,7 @@ impl cfn_resources::CfnResource for LocationCapacity {
 }
 
 /// A remote location where a multi-location fleet can deploy game servers for game       hosting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocationConfiguration {
     ///
     /// An AWS Region code, such as us-west-2.
@@ -1419,7 +1419,7 @@ impl cfn_resources::CfnResource for LocationConfiguration {
 /// A policy that limits the number of game sessions a player can create on the same fleet.    This optional policy gives game owners control over how players can consume available game    server resources. A resource creation policy makes the following statement: "An individual    player can create a maximum number of new game sessions within a specified time    period".
 ///
 /// The policy is evaluated when a player tries to create a new game session. For example,    assume you have a policy of 10 new game sessions and a time period of 60 minutes. On receiving    a CreateGameSession request, Amazon GameLift checks that the player (identified    by CreatorId) has created fewer than 10 game sessions in the past 60    minutes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceCreationLimitPolicy {
     ///
     /// A policy that puts limits on the number of game sessions that a player can create       within a specified span of time. With this policy, you can control players' ability to       consume available resources.
@@ -1484,7 +1484,7 @@ impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
 /// A collection of server process configurations that describe the set of processes to    run on each instance in a fleet. Server processes run either an executable in a custom    game build or a Realtime Servers script. GameLift launches the configured processes, manages their    life cycle, and replaces them as needed. Each instance checks regularly for an updated    runtime configuration.
 ///
 /// A GameLift instance is limited to 50 processes running concurrently. To calculate the    total number of processes in a runtime configuration, add the values of the    ConcurrentExecutions parameter for each ServerProcess. Learn more about     Running Multiple     Processes on a Fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuntimeConfiguration {
     ///
     /// The maximum amount of time (in seconds) allowed to launch a new game session and have       it report ready to host players. During this time, the game session is in status         ACTIVATING. If the game session does not become active before the       timeout, it is ended and the game session status is changed to       TERMINATED.
@@ -1581,7 +1581,7 @@ impl cfn_resources::CfnResource for RuntimeConfiguration {
 }
 
 /// A set of instructions for launching server processes on each instance in a fleet.       Server processes run either an executable in a custom game build or a Realtime Servers script.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerProcess {
     ///
     /// The number of server processes using this configuration that run concurrently on each       instance.

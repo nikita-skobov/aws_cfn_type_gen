@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Integration resource creates an integration          for an API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIntegration {
     ///
     /// The API identifier.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for CfnIntegration {
 }
 
 /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseParameter {
     ///
     /// Specifies the location of the response to modify, and how to modify it. To learn more, see Transforming API requests and responses.
@@ -305,7 +305,7 @@ impl cfn_resources::CfnResource for ResponseParameter {
 }
 
 /// Specifies a list of response parameters for an HTTP API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseParameterList {
     ///
     /// Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend      integration before returning the response to clients. Specify a key-value map from a selection key to response      parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key      must match the pattern <action>:<header>.<location> or       overwrite.statuscode. The action can be append, overwrite or       remove. The value can be a static value, or map to response data, stage variables, or context      variables that are evaluated at runtime. To learn more, see Transforming API requests and responses.
@@ -335,7 +335,7 @@ impl cfn_resources::CfnResource for ResponseParameterList {
 }
 
 /// The TlsConfig property specifies the TLS configuration for a private       integration. If you specify a TLS configuration, private integration traffic uses the       HTTPS protocol. Supported only for HTTP APIs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsConfig {
     ///
     /// If you specify a server name, API Gateway uses it to verify the hostname on           the integration's certificate. The server name is also included in the TLS           handshake to support Server Name Indication (SNI) or virtual hosting.

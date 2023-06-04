@@ -5,7 +5,7 @@
 /// You can create a global database that is initially empty, and then     add a primary cluster and a secondary cluster to it.
 ///
 /// For information about Aurora global databases, see       Working with Amazon Aurora Global Databases in the Amazon Aurora User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalCluster {
     ///
     /// The deletion protection setting for the new global database.     The global database can't be deleted when deletion protection is enabled.

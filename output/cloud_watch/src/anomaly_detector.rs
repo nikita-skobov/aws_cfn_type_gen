@@ -1,5 +1,5 @@
 /// The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band for a certain metric and statistic. The band     represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values,     and for alarms.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAnomalyDetector {
     ///
     /// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude     when training and updating the model. The configuration can also include the time zone to use for the metric.
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for CfnAnomalyDetector {
 }
 
 /// Specifies details about how the anomaly detection model is to be trained, including time ranges to exclude         when training and updating the model. The configuration can also include the time zone to use for the metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Configuration {
     ///
     /// Specifies an array of time ranges to exclude from use when the anomaly detection model is trained and updated.       Use this to make sure that events that could cause unusual values for the metric, such as deployments, aren't used when       CloudWatch creates or updates the model.
@@ -159,7 +159,7 @@ impl cfn_resources::CfnResource for Configuration {
 /// A dimension is a name/value pair that is part of the identity of a metric. Because dimensions are part of the unique 			identifier for a metric, whenever you add a unique name/value pair to one of 			your metrics, you are creating a new variation of that metric. For example, many Amazon EC2 metrics publish 		InstanceId as a dimension name, and the actual instance ID as the value for that dimension.
 ///
 /// You 		can assign up to 30 dimensions to a metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Dimension {
     ///
     /// The name of the dimension.
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for Dimension {
 }
 
 /// Represents a specific metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metric {
     ///
     /// The dimensions for the metric.
@@ -368,7 +368,7 @@ impl cfn_resources::CfnResource for Metric {
 }
 
 /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDataQueries {}
 
 impl cfn_resources::CfnResource for MetricDataQueries {
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for MetricDataQueries {
 /// Any expression used in a PutMetricAlarm 			operation must return a single time series. For more information, see Metric Math Syntax and Functions in the Amazon CloudWatch User 				Guide.
 ///
 /// Some of the parameters of this structure also have different uses whether you are using this structure in a GetMetricData 			operation or a PutMetricAlarm operation. These differences are explained in the following parameter list.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDataQuery {
     ///
     /// The ID of the account where the metrics are located.
@@ -602,7 +602,7 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 }
 
 /// Indicates the CloudWatch math expression that provides the time series the anomaly detector 			uses as input. 			The designated math expression must return a single time series.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricMathAnomalyDetector {
     ///
     /// An array of metric data query structures 			that enables you to create an anomaly detector 			based on the result of a metric math expression. 			Each item in MetricDataQueries gets a metric or performs a math expression. 			One item in MetricDataQueries is the expression 			that provides the time series 			that the anomaly detector uses as input. 			Designate the expression by setting ReturnData to true 			for this object in the array. 			For all other expressions and metrics, set ReturnData to false. 			The designated expression must return 			a single time series.
@@ -632,7 +632,7 @@ impl cfn_resources::CfnResource for MetricMathAnomalyDetector {
 }
 
 /// This structure defines the metric to be returned, along with the statistics, period, and units.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStat {
     ///
     /// The metric to return, including the metric name, namespace, and dimensions.
@@ -690,7 +690,7 @@ pub struct MetricStat {
     pub unit: Option<MetricStatUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetricStatUnitEnum {
     /// Bits
     #[serde(rename = "Bits")]
@@ -833,7 +833,7 @@ impl cfn_resources::CfnResource for MetricStat {
 }
 
 /// Each Range specifies one range of days or times to exclude from use for training or updating an     anomaly detection model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Range {
     ///
     /// The end time of the range to exclude. The format is yyyy-MM-dd'T'HH:mm:ss. For example,         2019-07-01T23:59:59.
@@ -873,7 +873,7 @@ impl cfn_resources::CfnResource for Range {
 }
 
 /// Designates the CloudWatch metric and statistic that provides the time series the anomaly detector 			uses as input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleMetricAnomalyDetector {
     ///
     /// The metric dimensions to create the anomaly detection model for.

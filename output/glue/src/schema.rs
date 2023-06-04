@@ -1,5 +1,5 @@
 /// The AWS::Glue::Schema is an AWS Glue resource type that manages schemas in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchema {
     ///
     /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
@@ -106,7 +106,7 @@ pub struct CfnSchema {
     pub att_initial_schema_version_id: CfnSchemainitialschemaversionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaarn;
 impl CfnSchemaarn {
     pub fn att_name(&self) -> &'static str {
@@ -114,7 +114,7 @@ impl CfnSchemaarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemainitialschemaversionid;
 impl CfnSchemainitialschemaversionid {
     pub fn att_name(&self) -> &'static str {
@@ -167,7 +167,7 @@ impl cfn_resources::CfnResource for CfnSchema {
 }
 
 /// Specifies a registry in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Registry {
     ///
     /// The Amazon Resource Name (ARN) of the registry.
@@ -209,7 +209,7 @@ impl cfn_resources::CfnResource for Registry {
 }
 
 /// Specifies the version of a schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaVersion {
     ///
     /// Indicates if this version is the latest version of the schema.
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for SchemaVersion {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

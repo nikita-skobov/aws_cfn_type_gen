@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Model resource defines the structure of a request or response payload for an API method.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModel {
     ///
     /// The content-type for the model.

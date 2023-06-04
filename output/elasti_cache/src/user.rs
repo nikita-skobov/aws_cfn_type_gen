@@ -1,5 +1,5 @@
 /// For Redis engine version 6.0 onwards: Creates a Redis user. For more information, see Using Role Based Access Control (RBAC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUser {
     ///
     /// Access permissions string used for this user.
@@ -112,7 +112,7 @@ pub struct CfnUser {
     pub att_status: CfnUserstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserarn;
 impl CfnUserarn {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnUserarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserstatus;
 impl CfnUserstatus {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl cfn_resources::CfnResource for CfnUser {
 }
 
 /// Specifies the authentication mode to use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticationMode {
     ///
     /// Specifies the passwords to use for authentication if Type is set to password.
@@ -197,7 +197,7 @@ pub struct AuthenticationMode {
     pub cfn_type: AuthenticationModeTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthenticationModeTypeEnum {
     /// iam
     #[serde(rename = "iam")]
@@ -239,7 +239,7 @@ impl cfn_resources::CfnResource for AuthenticationMode {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

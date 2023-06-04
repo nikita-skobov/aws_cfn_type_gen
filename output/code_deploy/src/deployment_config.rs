@@ -1,5 +1,5 @@
 /// The AWS::CodeDeploy::DeploymentConfig resource creates a set of deployment    rules, deployment success conditions, and deployment failure conditions that AWS CodeDeploy uses during a deployment. The deployment configuration specifies, through    the use of a MinimumHealthyHosts value, the number or percentage of instances    that must remain available at any time during a deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeploymentConfig {
     ///
     /// The destination platform type for the deployment (Lambda,         Server, or ECS).
@@ -68,7 +68,7 @@ pub struct CfnDeploymentConfig {
     pub traffic_routing_config: Option<TrafficRoutingConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentConfigComputePlatformEnum {
     /// ECS
     #[serde(rename = "ECS")]
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for CfnDeploymentConfig {
 }
 
 /// MinimumHealthyHosts is a property of the DeploymentConfig resource that defines how many instances must remain healthy    during an AWS CodeDeploy deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MinimumHealthyHosts {
     ///
     /// The minimum healthy instance type:
@@ -163,7 +163,7 @@ pub struct MinimumHealthyHosts {
     pub value: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MinimumHealthyHostsTypeEnum {
     /// FLEET_PERCENT
     #[serde(rename = "FLEET_PERCENT")]
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for MinimumHealthyHosts {
 }
 
 /// A configuration that shifts traffic from one version of a Lambda function       or Amazon ECS task set to another in two increments. The original and target         Lambda function versions or ECS task sets are specified in the       deployment's AppSpec file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeBasedCanary {
     ///
     /// The number of minutes between the first and second traffic shifts of a         TimeBasedCanary deployment.
@@ -235,7 +235,7 @@ impl cfn_resources::CfnResource for TimeBasedCanary {
 }
 
 /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in equal increments, with an equal number of minutes between       each increment. The original and target Lambda function versions or ECS task       sets are specified in the deployment's AppSpec file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeBasedLinear {
     ///
     /// The number of minutes between each incremental traffic shift of a         TimeBasedLinear deployment.
@@ -275,7 +275,7 @@ impl cfn_resources::CfnResource for TimeBasedLinear {
 }
 
 /// The configuration that specifies how traffic is shifted from one version of a Lambda function to another version during an AWS Lambda deployment,       or from one Amazon ECS task set to another during an Amazon ECS       deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrafficRoutingConfig {
     ///
     /// A configuration that shifts traffic from one version of a Lambda function       or ECS task set to another in two increments. The original and target Lambda       function versions or ECS task sets are specified in the deployment's AppSpec       file.
@@ -315,7 +315,7 @@ pub struct TrafficRoutingConfig {
     pub cfn_type: TrafficRoutingConfigTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrafficRoutingConfigTypeEnum {
     /// AllAtOnce
     #[serde(rename = "AllAtOnce")]

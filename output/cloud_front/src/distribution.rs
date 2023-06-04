@@ -1,5 +1,5 @@
 /// A distribution tells CloudFront where you want content to be delivered from, and the details 			about how to track and manage content delivery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistribution {
     ///
     /// The distribution's configuration.
@@ -31,7 +31,7 @@ pub struct CfnDistribution {
     pub att_id: CfnDistributionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistributiondomainname;
 impl CfnDistributiondomainname {
     pub fn att_name(&self) -> &'static str {
@@ -39,7 +39,7 @@ impl CfnDistributiondomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistributionid;
 impl CfnDistributionid {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl cfn_resources::CfnResource for CfnDistribution {
 /// To add, change, or remove one or more cache behaviors, update the distribution 			configuration and specify all of the cache behaviors that you want to include in the 			updated distribution.
 ///
 /// For more information about cache behaviors, see Cache Behavior Settings in the Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CacheBehavior {
     ///
     /// A complex type that controls which HTTP methods CloudFront processes and forwards to your 			Amazon S3 bucket or your custom origin. There are three choices:
@@ -362,7 +362,7 @@ pub struct CacheBehavior {
     pub viewer_protocol_policy: CacheBehaviorViewerProtocolPolicyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CacheBehaviorViewerProtocolPolicyEnum {
     /// allow-all
     #[serde(rename = "allow-all")]
@@ -408,7 +408,7 @@ impl cfn_resources::CfnResource for CacheBehavior {
 /// If you want to send cookies to the origin but not include them in the cache key, use 			an origin request policy. For more information, see Creating origin request policies in the 			Amazon CloudFront Developer Guide.
 ///
 /// A complex type that specifies whether you want CloudFront to forward cookies to the origin 			and, if so, which ones. For more information about forwarding cookies to the origin, see 				How CloudFront Forwards, Caches, 				and Logs Cookies in the Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Cookies {
     ///
     /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field.
@@ -454,7 +454,7 @@ pub struct Cookies {
     pub whitelisted_names: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CookiesForwardEnum {
     /// all
     #[serde(rename = "all")]
@@ -492,7 +492,7 @@ impl cfn_resources::CfnResource for Cookies {
 /// A complex type that controls:
 ///
 /// For more information about custom error pages, see Customizing 				Error Responses in the Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomErrorResponse {
     ///
     /// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status 			code specified in ErrorCode. When this time period has elapsed, CloudFront 			queries your origin to see whether the problem that caused the error has been resolved 			and the requested object is now available.
@@ -569,7 +569,7 @@ impl cfn_resources::CfnResource for CustomErrorResponse {
 }
 
 /// A custom origin. A custom origin is any origin that is not an 			Amazon S3 bucket, with one exception. An Amazon S3 bucket that is configured with 				static website hosting       is a custom origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomOriginConfig {
     ///
     /// The HTTP port that CloudFront uses to connect to the origin. Specify the HTTP port that the 			origin listens on.
@@ -653,7 +653,7 @@ pub struct CustomOriginConfig {
     pub origin_sslprotocols: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomOriginConfigOriginProtocolPolicyEnum {
     /// http-only
     #[serde(rename = "http-only")]
@@ -689,7 +689,7 @@ impl cfn_resources::CfnResource for CustomOriginConfig {
 }
 
 /// A complex type that describes the default cache behavior if you don't specify a 				CacheBehavior element or if request URLs don't match any of the values 			of PathPattern in CacheBehavior elements. You must create 			exactly one default cache behavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultCacheBehavior {
     ///
     /// A complex type that controls which HTTP methods CloudFront processes and forwards to your 			Amazon S3 bucket or your custom origin. There are three choices:
@@ -958,7 +958,7 @@ pub struct DefaultCacheBehavior {
     pub viewer_protocol_policy: DefaultCacheBehaviorViewerProtocolPolicyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DefaultCacheBehaviorViewerProtocolPolicyEnum {
     /// allow-all
     #[serde(rename = "allow-all")]
@@ -998,7 +998,7 @@ impl cfn_resources::CfnResource for DefaultCacheBehavior {
 }
 
 /// A distribution configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DistributionConfig {
     ///
     /// A complex type that contains information about CNAMEs (alternate domain names), if 			any, for this distribution.
@@ -1288,7 +1288,7 @@ pub struct DistributionConfig {
     pub web_aclid: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DistributionConfigHttpVersionEnum {
     /// http1.1
     #[serde(rename = "http1.1")]
@@ -1313,7 +1313,7 @@ impl Default for DistributionConfigHttpVersionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DistributionConfigPriceClassEnum {
     /// PriceClass_100
     #[serde(rename = "PriceClass_100")]
@@ -1379,7 +1379,7 @@ impl cfn_resources::CfnResource for DistributionConfig {
 /// If you want to send values to the origin but not include them in the cache key, use an 			origin request policy. For more information, see Creating origin request policies in the 			Amazon CloudFront Developer Guide.
 ///
 /// A complex type that specifies how CloudFront handles query strings, cookies, and HTTP 			headers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForwardedValues {
     ///
     /// This field is deprecated. We recommend that you use a cache policy or an origin 			request policy instead of this field.
@@ -1480,7 +1480,7 @@ impl cfn_resources::CfnResource for ForwardedValues {
 }
 
 /// A CloudFront function that is associated with a cache behavior in a CloudFront 			distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunctionAssociation {
     ///
     /// The event type of the function, either viewer-request or 				viewer-response. You cannot use origin-facing event types 				(origin-request and origin-response) with a CloudFront 			function.
@@ -1513,7 +1513,7 @@ pub struct FunctionAssociation {
     pub function_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunctionAssociationEventTypeEnum {
     /// origin-request
     #[serde(rename = "origin-request")]
@@ -1564,7 +1564,7 @@ impl cfn_resources::CfnResource for FunctionAssociation {
 }
 
 /// A complex type that controls the countries in which your content is distributed. CloudFront 			determines the location of your users using MaxMind GeoIP databases. To disable geo restriction, remove the Restrictions property from your stack template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeoRestriction {
     ///
     /// A complex type that contains a Location element for each country in 			which you want CloudFront either to distribute your content (whitelist) or not 			distribute your content (blacklist).
@@ -1598,7 +1598,7 @@ pub struct GeoRestriction {
     pub restriction_type: GeoRestrictionRestrictionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeoRestrictionRestrictionTypeEnum {
     /// blacklist
     #[serde(rename = "blacklist")]
@@ -1634,7 +1634,7 @@ impl cfn_resources::CfnResource for GeoRestriction {
 }
 
 /// A complex type that contains a Lambda@Edge function association.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaFunctionAssociation {
     ///
     /// Specifies the event type that triggers a Lambda@Edge function invocation. You can 			specify the following values:
@@ -1677,7 +1677,7 @@ pub struct LambdaFunctionAssociation {
     pub lambda_function_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LambdaFunctionAssociationEventTypeEnum {
     /// origin-request
     #[serde(rename = "origin-request")]
@@ -1717,7 +1717,7 @@ impl cfn_resources::CfnResource for LambdaFunctionAssociation {
 }
 
 /// The LegacyCustomOrigin property type specifies Property description not available. for an AWS::CloudFront::Distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LegacyCustomOrigin {
     /// Property description not available.
     ///
@@ -1787,7 +1787,7 @@ impl cfn_resources::CfnResource for LegacyCustomOrigin {
 }
 
 /// The LegacyS3Origin property type specifies Property description not available. for an AWS::CloudFront::Distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LegacyS3Origin {
     /// Property description not available.
     ///
@@ -1826,7 +1826,7 @@ impl cfn_resources::CfnResource for LegacyS3Origin {
 }
 
 /// A complex type that controls whether access logs are written for the 			distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logging {
     ///
     /// The Amazon S3 bucket to store the access logs in, for example, 				myawslogbucket.s3.amazonaws.com.
@@ -1883,7 +1883,7 @@ impl cfn_resources::CfnResource for Logging {
 /// An origin is the location where content is stored, and from which CloudFront gets content to 			serve to viewers. To specify an origin:
 ///
 /// For the current maximum number of origins that you can specify per distribution, see 				General Quotas on Web Distributions in the 				Amazon CloudFront Developer Guide (quotas were formerly referred to as 			limits).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Origin {
     ///
     /// The number of times that CloudFront attempts to connect to the origin. The minimum number is 			1, the maximum is 3, and the default (if you don't specify otherwise) is 3.
@@ -2049,7 +2049,7 @@ impl cfn_resources::CfnResource for Origin {
 }
 
 /// A complex type that contains HeaderName and HeaderValue 			elements, if any, for this distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginCustomHeader {
     ///
     /// The name of a header that you want CloudFront to send to your origin. For more information, 			see Adding 				Custom Headers to Origin Requests in the 				Amazon CloudFront Developer Guide.
@@ -2089,7 +2089,7 @@ impl cfn_resources::CfnResource for OriginCustomHeader {
 }
 
 /// An origin group includes two origins (a primary origin and a second origin to failover 			to) and a failover criteria that you specify. You create an origin group to support 			origin failover in CloudFront. When you create or update a distribution, you can 			specifiy the origin group instead of a single origin, and CloudFront will failover from 			the primary origin to the second origin under the failover conditions that you've 			chosen.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginGroup {
     ///
     /// A complex type that contains information about the failover criteria for an origin 			group.
@@ -2144,7 +2144,7 @@ impl cfn_resources::CfnResource for OriginGroup {
 }
 
 /// A complex data type that includes information about the failover criteria for an 			origin group, including the status codes for which CloudFront will failover from the 			primary origin to the second origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginGroupFailoverCriteria {
     ///
     /// The status codes that, when returned from the primary origin, will trigger CloudFront 			to failover to the second origin.
@@ -2175,7 +2175,7 @@ impl cfn_resources::CfnResource for OriginGroupFailoverCriteria {
 }
 
 /// An origin in an origin group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginGroupMember {
     ///
     /// The ID for an origin in an origin group.
@@ -2204,7 +2204,7 @@ impl cfn_resources::CfnResource for OriginGroupMember {
 }
 
 /// A complex data type for the origins included in an origin group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginGroupMembers {
     ///
     /// Items (origins) in an origin group.
@@ -2255,7 +2255,7 @@ impl cfn_resources::CfnResource for OriginGroupMembers {
 }
 
 /// A complex data type for the origin groups specified for a distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginGroups {
     ///
     /// The items (origin groups) in a distribution.
@@ -2298,7 +2298,7 @@ impl cfn_resources::CfnResource for OriginGroups {
 /// CloudFront Origin Shield.
 ///
 /// Using Origin Shield can help reduce the load on your origin. For more information, see 				Using Origin Shield in the 				Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginShield {
     ///
     /// A flag that specifies whether Origin Shield is enabled.
@@ -2371,7 +2371,7 @@ impl cfn_resources::CfnResource for OriginShield {
 }
 
 /// A complex type that identifies ways in which you want to restrict distribution of your 			content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Restrictions {
     ///
     /// A complex type that controls the countries in which your content is distributed. CloudFront 			determines the location of your users using MaxMind GeoIP databases. To disable geo restriction, remove the Restrictions property from your stack template.
@@ -2402,7 +2402,7 @@ impl cfn_resources::CfnResource for Restrictions {
 }
 
 /// A complex type that contains information about the Amazon S3 origin. If the origin is a 			custom origin or an S3 bucket that is configured as a website endpoint, use the 				CustomOriginConfig element instead.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3OriginConfig {
     ///
     /// The CloudFront origin access identity to associate with the origin. Use an origin access 			identity to configure the origin so that viewers can only access 			objects in an Amazon S3 bucket through CloudFront. The format of the value is:
@@ -2444,7 +2444,7 @@ impl cfn_resources::CfnResource for S3OriginConfig {
 }
 
 /// A complex data type for the status codes that you specify that, when returned by a 			primary origin, trigger CloudFront to failover to a second origin.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatusCodes {
     ///
     /// The items (status codes) for an origin group.
@@ -2490,7 +2490,7 @@ impl cfn_resources::CfnResource for StatusCodes {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2536,7 +2536,7 @@ impl cfn_resources::CfnResource for Tag {
 /// All distributions support HTTPS connections from viewers. To require viewers to use 			HTTPS only, or to redirect them from HTTP to HTTPS, use 				ViewerProtocolPolicy in the CacheBehavior or 				DefaultCacheBehavior. To specify how CloudFront should use SSL/TLS to 			communicate with your custom origin, use CustomOriginConfig.
 ///
 /// For more information, see Using HTTPS with CloudFront and Using Alternate Domain Names and HTTPS in the 				Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ViewerCertificate {
     ///
     /// NoteIn CloudFormation, this field name is AcmCertificateArn. Note the 				different capitalization.
@@ -2631,7 +2631,7 @@ pub struct ViewerCertificate {
     pub ssl_support_method: Option<ViewerCertificateSslSupportMethodEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ViewerCertificateMinimumProtocolVersionEnum {
     /// SSLv3
     #[serde(rename = "SSLv3")]
@@ -2668,7 +2668,7 @@ impl Default for ViewerCertificateMinimumProtocolVersionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ViewerCertificateSslSupportMethodEnum {
     /// sni-only
     #[serde(rename = "sni-only")]

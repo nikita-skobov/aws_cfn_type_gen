@@ -1,7 +1,7 @@
 /// Specifies an entry, known as a rule, in a network ACL with a rule number you specify.     Each network ACL has a set of numbered ingress rules and a separate set of numbered egress     rules.
 ///
 /// For information about the protocol value, see Protocol       Numbers on the Internet Assigned Numbers Authority (IANA) website.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkAclEntry {
     ///
     /// The IPv4 CIDR range to allow or deny, in CIDR notation (for example, 172.16.0.0/24).     Requirement is conditional: You must specify the CidrBlock or       Ipv6CidrBlock property.
@@ -115,7 +115,7 @@ pub struct CfnNetworkAclEntry {
     pub att_id: CfnNetworkAclEntryid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkAclEntryRuleActionEnum {
     /// allow
     #[serde(rename = "allow")]
@@ -132,7 +132,7 @@ impl Default for NetworkAclEntryRuleActionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkAclEntryid;
 impl CfnNetworkAclEntryid {
     pub fn att_name(&self) -> &'static str {
@@ -161,7 +161,7 @@ impl cfn_resources::CfnResource for CfnNetworkAclEntry {
 }
 
 /// Describes the ICMP type and code.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Icmp {
     ///
     /// The Internet Control Message Protocol (ICMP) code. You can use -1 to specify all ICMP     codes for the given ICMP type. Requirement is conditional: Required if you specify 1 (ICMP)     for the protocol parameter.
@@ -203,7 +203,7 @@ impl cfn_resources::CfnResource for Icmp {
 }
 
 /// Describes a range of ports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortRange {
     ///
     /// The first port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the     protocol parameter.

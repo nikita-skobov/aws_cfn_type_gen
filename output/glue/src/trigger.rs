@@ -1,5 +1,5 @@
 /// The AWS::Glue::Trigger resource specifies triggers that run AWS Glue       jobs. For more information, see Triggering Jobs in AWS Glue and Trigger Structure in the AWS Glue Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrigger {
     ///
     /// The actions initiated by this trigger.
@@ -132,7 +132,7 @@ pub struct CfnTrigger {
     pub workflow_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TriggerTypeEnum {
     /// CONDITIONAL
     #[serde(rename = "CONDITIONAL")]
@@ -224,7 +224,7 @@ impl cfn_resources::CfnResource for CfnTrigger {
 }
 
 /// Defines an action to be initiated by a trigger.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// The job arguments used when this trigger fires. For this job run, they replace the       default arguments set in the job definition itself.
@@ -371,7 +371,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// Defines a condition under which a trigger fires.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Condition {
     /// The state of the crawler to which this condition applies.
     ///
@@ -442,7 +442,7 @@ pub struct Condition {
     pub state: Option<ConditionStateEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConditionLogicalOperatorEnum {
     /// EQUALS
     #[serde(rename = "EQUALS")]
@@ -455,7 +455,7 @@ impl Default for ConditionLogicalOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConditionStateEnum {
     /// ERROR
     #[serde(rename = "ERROR")]
@@ -537,7 +537,7 @@ impl cfn_resources::CfnResource for Condition {
 }
 
 /// Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventBatchingCondition {
     ///
     /// Number of events that must be received from Amazon EventBridge before EventBridge event trigger fires.
@@ -578,7 +578,7 @@ impl cfn_resources::CfnResource for EventBatchingCondition {
 }
 
 /// Specifies configuration properties of a job run notification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationProperty {
     /// After a job run starts, the number of minutes to wait before sending a job run delay notification
     ///
@@ -607,7 +607,7 @@ impl cfn_resources::CfnResource for NotificationProperty {
 }
 
 /// Defines the predicate of the trigger, which determines when it fires.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Predicate {
     ///
     /// A list of the conditions that determine when the trigger will fire.
@@ -636,7 +636,7 @@ pub struct Predicate {
     pub logical: Option<PredicateLogicalEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredicateLogicalEnum {
     /// AND
     #[serde(rename = "AND")]

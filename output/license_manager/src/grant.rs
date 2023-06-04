@@ -1,7 +1,7 @@
 /// Specifies a grant.
 ///
 /// A grant shares the use of license entitlements with specific AWS accounts. For more information,      see Granted       licenses in the AWS License Manager User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrant {
     ///
     /// Allowed operations for the grant.
@@ -88,7 +88,7 @@ pub struct CfnGrant {
     pub att_version: CfnGrantversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrantgrantarn;
 impl CfnGrantgrantarn {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnGrantgrantarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrantversion;
 impl CfnGrantversion {
     pub fn att_name(&self) -> &'static str {

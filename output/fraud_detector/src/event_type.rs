@@ -1,5 +1,5 @@
 /// Manages an event type. An event is a business activity that is evaluated for fraud risk. With Amazon Fraud Detector, you generate fraud predictions for events.       An event type defines the structure for an event sent to Amazon Fraud Detector. This includes the variables sent as part of the event, the entity performing the event       (such as a customer), and the labels that classify the event. Example event types include online payment transactions, account registrations, and authentications.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventType {
     ///
     /// The event type description.
@@ -87,7 +87,7 @@ pub struct CfnEventType {
     pub att_last_updated_time: CfnEventTypelastupdatedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventTypearn;
 impl CfnEventTypearn {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl CfnEventTypearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventTypecreatedtime;
 impl CfnEventTypecreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -103,7 +103,7 @@ impl CfnEventTypecreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventTypelastupdatedtime;
 impl CfnEventTypelastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl cfn_resources::CfnResource for CfnEventType {
 }
 
 /// The entity type details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EntityType {
     ///
     /// The entity type ARN.
@@ -362,7 +362,7 @@ impl cfn_resources::CfnResource for EntityType {
 }
 
 /// The variables associated with this event type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventVariable {
     ///
     /// The event variable ARN.
@@ -520,7 +520,7 @@ impl cfn_resources::CfnResource for EventVariable {
 }
 
 /// The label associated with the event type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Label {
     ///
     /// The label ARN.
@@ -738,7 +738,7 @@ impl cfn_resources::CfnResource for Label {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

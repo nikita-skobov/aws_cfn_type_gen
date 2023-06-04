@@ -1,5 +1,5 @@
 /// A complex type that contains SqlInjectionMatchTuple objects, which specify the parts of web requests that you           want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a 			SqlInjectionMatchSet contains more than one SqlInjectionMatchTuple object, a request needs to 			include snippets of SQL code in only one of the specified parts of the request to be considered a match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSqlInjectionMatchSet {
     ///
     /// The name, if any, of the SqlInjectionMatchSet.
@@ -68,7 +68,7 @@ impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
 }
 
 /// Specifies where in a web request to look for TargetString.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldToMatch {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
     #[serde(rename = "Data")]
@@ -95,7 +95,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 }
 
 /// Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqlInjectionMatchTuple {
     ///
     /// The part of a web request that you want to inspect, such as a specified header or a query string.
@@ -156,7 +156,7 @@ pub struct SqlInjectionMatchTuple {
     pub text_transformation: SqlInjectionMatchTupleTextTransformationEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SqlInjectionMatchTupleTextTransformationEnum {
     /// CMD_LINE
     #[serde(rename = "CMD_LINE")]

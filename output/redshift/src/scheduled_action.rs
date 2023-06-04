@@ -1,5 +1,5 @@
 /// Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action.       For example, you can create a schedule of when to run the ResizeCluster API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledAction {
     ///
     /// If true, the schedule is enabled. If false, the scheduled action does not trigger.       For more information about state of the scheduled action, see AWS::Redshift::ScheduledAction.
@@ -114,7 +114,7 @@ pub struct CfnScheduledAction {
     pub att_state: CfnScheduledActionstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledActionstate;
 impl CfnScheduledActionstate {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnScheduledAction {
 }
 
 /// Describes a pause cluster operation. For example, a scheduled action to run the PauseCluster API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PauseClusterMessage {
     ///
     /// The identifier of the cluster to be paused.
@@ -218,7 +218,7 @@ impl cfn_resources::CfnResource for PauseClusterMessage {
 }
 
 /// Describes a resize cluster operation. For example, a scheduled action to run the ResizeCluster API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResizeClusterMessage {
     ///
     /// A boolean value indicating whether the resize operation is using the classic resize       process. If you don't provide this parameter or set the value to       false, the resize type is elastic.
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for ResizeClusterMessage {
 }
 
 /// Describes a resume cluster operation. For example, a scheduled action to run the ResumeCluster API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResumeClusterMessage {
     ///
     /// The identifier of the cluster to be resumed.
@@ -367,7 +367,7 @@ impl cfn_resources::CfnResource for ResumeClusterMessage {
 }
 
 /// The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduledActionType {
     ///
     /// An action that runs a PauseCluster API operation.

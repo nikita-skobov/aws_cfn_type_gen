@@ -3,7 +3,7 @@
 /// A gateway route is attached to a virtual gateway and routes traffic to an existing     virtual service. If a route matches a request, it can distribute traffic to a target     virtual service.
 ///
 /// For more information about gateway routes, see Gateway routes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoute {
     ///
     /// The name of the gateway route.
@@ -114,7 +114,7 @@ pub struct CfnGatewayRoute {
     pub att_virtual_gateway_name: CfnGatewayRoutevirtualgatewayname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoutearn;
 impl CfnGatewayRoutearn {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl CfnGatewayRoutearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoutegatewayroutename;
 impl CfnGatewayRoutegatewayroutename {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl CfnGatewayRoutegatewayroutename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoutemeshname;
 impl CfnGatewayRoutemeshname {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnGatewayRoutemeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoutemeshowner;
 impl CfnGatewayRoutemeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnGatewayRoutemeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRouteresourceowner;
 impl CfnGatewayRouteresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnGatewayRouteresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRouteuid;
 impl CfnGatewayRouteuid {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl CfnGatewayRouteuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayRoutevirtualgatewayname;
 impl CfnGatewayRoutevirtualgatewayname {
     pub fn att_name(&self) -> &'static str {
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for CfnGatewayRoute {
 }
 
 /// An object representing the gateway route host name to match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteHostnameMatch {
     ///
     /// The exact host name to match on.
@@ -375,7 +375,7 @@ impl cfn_resources::CfnResource for GatewayRouteHostnameMatch {
 }
 
 /// An object representing the gateway route host name to rewrite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteHostnameRewrite {
     ///
     /// The default target host name to write to.
@@ -392,7 +392,7 @@ pub struct GatewayRouteHostnameRewrite {
     pub default_target_hostname: Option<GatewayRouteHostnameRewriteDefaultTargetHostnameEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GatewayRouteHostnameRewriteDefaultTargetHostnameEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -424,7 +424,7 @@ impl cfn_resources::CfnResource for GatewayRouteHostnameRewrite {
 }
 
 /// An object representing the method header to be matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteMetadataMatch {
     ///
     /// The exact method header to be matched on.
@@ -608,7 +608,7 @@ impl cfn_resources::CfnResource for GatewayRouteMetadataMatch {
 }
 
 /// An object that represents the range of values to match on. The first character of the range is included in the range, though the last character is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteRangeMatch {
     ///
     /// The end of the range.
@@ -648,7 +648,7 @@ impl cfn_resources::CfnResource for GatewayRouteRangeMatch {
 }
 
 /// An object that represents a gateway route specification. Specify one gateway route     type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteSpec {
     ///
     /// An object that represents the specification of a gRPC gateway route.
@@ -748,7 +748,7 @@ impl cfn_resources::CfnResource for GatewayRouteSpec {
 }
 
 /// An object that represents a gateway route target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteTarget {
     ///
     /// The port number of the gateway route target.
@@ -813,7 +813,7 @@ impl cfn_resources::CfnResource for GatewayRouteTarget {
 }
 
 /// An object that represents the virtual service that traffic is routed to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayRouteVirtualService {
     ///
     /// The name of the virtual service that traffic is routed to.
@@ -868,7 +868,7 @@ impl cfn_resources::CfnResource for GatewayRouteVirtualService {
 }
 
 /// An object that represents a gRPC gateway route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcGatewayRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -912,7 +912,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRoute {
 }
 
 /// An object that represents the action to take if a match is determined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcGatewayRouteAction {
     ///
     /// The gateway route action to rewrite.
@@ -957,7 +957,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteAction {
 }
 
 /// An object that represents the criteria for determining a request match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcGatewayRouteMatch {
     ///
     /// The gateway route host name to be matched on.
@@ -1060,7 +1060,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteMatch {
 }
 
 /// An object representing the metadata of the gateway route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcGatewayRouteMetadata {
     ///
     /// Specify True to match anything except the match criteria. The default value     is False.
@@ -1143,7 +1143,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteMetadata {
 }
 
 /// An object that represents the gateway route to rewrite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcGatewayRouteRewrite {
     ///
     /// The host name of the gateway route to rewrite.
@@ -1177,7 +1177,7 @@ impl cfn_resources::CfnResource for GrpcGatewayRouteRewrite {
 }
 
 /// An object that represents an HTTP gateway route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRoute {
     ///
     /// An object that represents the action to take if a match is determined.
@@ -1221,7 +1221,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoute {
 }
 
 /// An object that represents the action to take if a match is determined.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRouteAction {
     ///
     /// The gateway route action to rewrite.
@@ -1266,7 +1266,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteAction {
 }
 
 /// An object that represents the HTTP header in the gateway route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRouteHeader {
     ///
     /// Specify True to match anything except the match criteria. The default value     is False.
@@ -1349,7 +1349,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteHeader {
 }
 
 /// An object that represents the method and value to match with the header value sent in a     request. Specify one match method.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRouteHeaderMatch {
     ///
     /// The value sent by the client must match the specified value exactly.
@@ -1533,7 +1533,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteHeaderMatch {
 }
 
 /// An object that represents the criteria for determining a request match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRouteMatch {
     ///
     /// The client request headers to match on.
@@ -1630,7 +1630,7 @@ pub struct HttpGatewayRouteMatch {
     pub query_parameters: Option<Vec<QueryParameter>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpGatewayRouteMatchMethodEnum {
     /// CONNECT
     #[serde(rename = "CONNECT")]
@@ -1732,7 +1732,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteMatch {
 }
 
 /// An object that represents the path to rewrite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRoutePathRewrite {
     ///
     /// The exact path to rewrite.
@@ -1788,7 +1788,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoutePathRewrite {
 }
 
 /// An object representing the beginning characters of the route to rewrite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRoutePrefixRewrite {
     ///
     /// The default prefix used to replace the incoming route prefix when rewritten.
@@ -1821,7 +1821,7 @@ pub struct HttpGatewayRoutePrefixRewrite {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpGatewayRoutePrefixRewriteDefaultPrefixEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1875,7 +1875,7 @@ impl cfn_resources::CfnResource for HttpGatewayRoutePrefixRewrite {
 }
 
 /// An object representing the gateway route to rewrite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpGatewayRouteRewrite {
     ///
     /// The host name to rewrite.
@@ -1937,7 +1937,7 @@ impl cfn_resources::CfnResource for HttpGatewayRouteRewrite {
 }
 
 /// An object representing the path to match in the request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpPathMatch {
     ///
     /// The exact path to match on.
@@ -2031,7 +2031,7 @@ impl cfn_resources::CfnResource for HttpPathMatch {
 }
 
 /// An object representing the query parameter to match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpQueryParameterMatch {
     ///
     /// The exact query parameter to match on.
@@ -2061,7 +2061,7 @@ impl cfn_resources::CfnResource for HttpQueryParameterMatch {
 }
 
 /// An object that represents the query parameter in the request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueryParameter {
     ///
     /// The query parameter to match on.
@@ -2112,7 +2112,7 @@ impl cfn_resources::CfnResource for QueryParameter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

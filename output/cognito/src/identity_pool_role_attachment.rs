@@ -1,5 +1,5 @@
 /// The AWS::Cognito::IdentityPoolRoleAttachment resource manages the role    configuration for an Amazon Cognito identity pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIdentityPoolRoleAttachment {
     ///
     /// An identity pool ID in the format REGION:GUID.
@@ -56,7 +56,7 @@ impl cfn_resources::CfnResource for CfnIdentityPoolRoleAttachment {
 }
 
 /// Defines how to map a claim to a role ARN.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MappingRule {
     ///
     /// The claim name that must be present in the token. For example: "isAdmin" or "paid".
@@ -120,7 +120,7 @@ impl cfn_resources::CfnResource for MappingRule {
 }
 
 /// RoleMapping is a property of the AWS::Cognito::IdentityPoolRoleAttachment resource that defines the role-mapping    attributes of an Amazon Cognito identity pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RoleMapping {
     ///
     /// Specifies the action to be taken if either no rules match the claim value for the Rules    type, or there is no cognito:preferred_role claim and there are multiple     cognito:roles matches for the Token type. If you specify Token or Rules as the    Type, AmbiguousRoleResolution is required.
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for RoleMapping {
 }
 
 /// RulesConfigurationType is a subproperty of the RoleMapping property that defines the rules to be used for mapping users to    roles.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RulesConfigurationType {
     ///
     /// The rules. You can specify up to 25 rules per identity provider.

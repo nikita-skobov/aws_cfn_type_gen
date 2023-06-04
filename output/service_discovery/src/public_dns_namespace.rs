@@ -1,5 +1,5 @@
 /// Creates a public namespace based on DNS, which is visible on the internet. The namespace  defines your service naming scheme. For example, if you name your namespace   example.com and name your service backend, the resulting DNS name for  the service is backend.example.com. You can discover instances that were registered  with a public DNS namespace by using either a DiscoverInstances request or using  DNS. For the current quota on the number of namespaces that you can create using the same AWS account, see AWS Cloud Map quotas in the           AWS Cloud Map Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicDnsNamespace {
     ///
     /// A description for the namespace.
@@ -68,7 +68,7 @@ pub struct CfnPublicDnsNamespace {
     pub att_id: CfnPublicDnsNamespaceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicDnsNamespacearn;
 impl CfnPublicDnsNamespacearn {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl CfnPublicDnsNamespacearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicDnsNamespacehostedzoneid;
 impl CfnPublicDnsNamespacehostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -84,7 +84,7 @@ impl CfnPublicDnsNamespacehostedzoneid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicDnsNamespaceid;
 impl CfnPublicDnsNamespaceid {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl cfn_resources::CfnResource for CfnPublicDnsNamespace {
 }
 
 /// Properties for the  public DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Properties {
     ///
     /// DNS properties for  the public DNS namespace.
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for Properties {
 }
 
 /// DNS properties for  the public DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicDnsPropertiesMutable {
     ///
     /// Start of Authority  (SOA) record for the hosted zone for the public DNS namespace.
@@ -208,7 +208,7 @@ impl cfn_resources::CfnResource for PublicDnsPropertiesMutable {
 }
 
 /// Start of Authority  (SOA) properties for a public or private DNS namespace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SOA {
     ///
     /// The time to live  (TTL) for purposes of negative caching.
@@ -244,7 +244,7 @@ impl cfn_resources::CfnResource for SOA {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

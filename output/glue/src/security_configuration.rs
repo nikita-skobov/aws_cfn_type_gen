@@ -1,5 +1,5 @@
 /// Creates a new security configuration. A security configuration is a set of security properties that can be used by AWS Glue. You can use a security configuration to encrypt data at rest. For information about using security configurations in AWS Glue, see Encrypting Data Written by Crawlers, Jobs, and Development Endpoints.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityConfiguration {
     ///
     /// The encryption configuration associated with this security configuration.
@@ -69,7 +69,7 @@ impl cfn_resources::CfnResource for CfnSecurityConfiguration {
 }
 
 /// Specifies how Amazon CloudWatch data should be encrypted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchEncryption {
     ///
     /// The encryption mode to use for CloudWatch data.
@@ -100,7 +100,7 @@ pub struct CloudWatchEncryption {
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CloudWatchEncryptionCloudWatchEncryptionModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -132,7 +132,7 @@ impl cfn_resources::CfnResource for CloudWatchEncryption {
 }
 
 /// Specifies an encryption configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// The encryption configuration for Amazon CloudWatch.
@@ -198,7 +198,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// Specifies how job bookmark data should be encrypted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JobBookmarksEncryption {
     ///
     /// The encryption mode to use for job bookmarks data.
@@ -229,7 +229,7 @@ pub struct JobBookmarksEncryption {
     pub kms_key_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
     /// CSE-KMS
     #[serde(rename = "CSE-KMS")]
@@ -261,7 +261,7 @@ impl cfn_resources::CfnResource for JobBookmarksEncryption {
 }
 
 /// Specifies how Amazon Simple Storage Service (Amazon S3) data should be encrypted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Encryption {
     ///
     /// The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
@@ -292,7 +292,7 @@ pub struct S3Encryption {
     pub s3_encryption_mode: Option<S3EncryptionS3EncryptionModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3EncryptionS3EncryptionModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for S3Encryption {
 }
 
 /// The S3Encryptions property type specifies the encyption configuration for       Amazon Simple Storage Service (Amazon S3) data for a security configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Encryptions {}
 
 impl cfn_resources::CfnResource for S3Encryptions {

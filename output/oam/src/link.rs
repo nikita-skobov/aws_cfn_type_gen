@@ -7,7 +7,7 @@
 /// Each monitoring account can be linked to as many as 100,000 source accounts.
 ///
 /// Each source account can be linked to as many as five monitoring accounts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLink {
     ///
     /// Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring    account.
@@ -68,7 +68,7 @@ pub struct CfnLink {
     pub att_label: CfnLinklabel,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLinkarn;
 impl CfnLinkarn {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl CfnLinkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLinklabel;
 impl CfnLinklabel {
     pub fn att_name(&self) -> &'static str {

@@ -7,7 +7,7 @@
 /// To use the flywheel with a new model, you need to provide a dataset for training data (and optional test data)     when you create the flywheel.
 ///
 /// For more information about flywheels, see   Flywheel overview in the Amazon Comprehend Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlywheel {
     ///
     /// The Amazon Resource Number (ARN) of the active model version.
@@ -126,7 +126,7 @@ pub struct CfnFlywheel {
     pub att_arn: CfnFlywheelarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FlywheelModelTypeEnum {
     /// DOCUMENT_CLASSIFIER
     #[serde(rename = "DOCUMENT_CLASSIFIER")]
@@ -143,7 +143,7 @@ impl Default for FlywheelModelTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlywheelarn;
 impl CfnFlywheelarn {
     pub fn att_name(&self) -> &'static str {
@@ -226,7 +226,7 @@ impl cfn_resources::CfnResource for CfnFlywheel {
 }
 
 /// Data security configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSecurityConfig {
     ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt the data in the data lake.
@@ -334,7 +334,7 @@ impl cfn_resources::CfnResource for DataSecurityConfig {
 }
 
 /// Configuration required for a document classification model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentClassificationConfig {
     ///
     /// One or more labels to associate with the custom classifier.
@@ -364,7 +364,7 @@ pub struct DocumentClassificationConfig {
     pub mode: DocumentClassificationConfigModeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentClassificationConfigModeEnum {
     /// MULTI_CLASS
     #[serde(rename = "MULTI_CLASS")]
@@ -405,7 +405,7 @@ impl cfn_resources::CfnResource for DocumentClassificationConfig {
 }
 
 /// Configuration required for an entity recognition model.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EntityRecognitionConfig {
     ///
     /// Up to 25 entity types that the model is trained to recognize.
@@ -435,7 +435,7 @@ impl cfn_resources::CfnResource for EntityRecognitionConfig {
 }
 
 /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EntityTypesListItem {
     ///
     /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
@@ -487,7 +487,7 @@ impl cfn_resources::CfnResource for EntityTypesListItem {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -525,7 +525,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Configuration about the model associated with a flywheel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TaskConfig {
     ///
     /// Configuration required for a document classification model.
@@ -565,7 +565,7 @@ pub struct TaskConfig {
     pub language_code: TaskConfigLanguageCodeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskConfigLanguageCodeEnum {
     /// ar
     #[serde(rename = "ar")]
@@ -645,7 +645,7 @@ impl cfn_resources::CfnResource for TaskConfig {
 }
 
 /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// The ID number for a security group on an instance of your private VPC. Security groups on    your VPC function serve as a virtual firewall to control inbound and outbound traffic and    provides security for the resources that you’ll be accessing on the VPC. This ID number is    preceded by "sg-", for instance: "sg-03b388029b0a285ea". For more information, see Security     Groups for your VPC.

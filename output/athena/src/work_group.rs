@@ -1,5 +1,5 @@
 /// The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup,       which contains a name, description, creation time, state, and other configuration,       listed under WorkGroupConfiguration. Each workgroup enables you to       isolate queries for you or your group from other queries in the same account. For more       information, see CreateWorkGroup in       the Amazon Athena API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkGroup {
     ///
     /// The workgroup description.
@@ -88,7 +88,7 @@ pub struct CfnWorkGroup {
         CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WorkGroupStateEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -105,7 +105,7 @@ impl Default for WorkGroupStateEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkGroupcreationtime;
 impl CfnWorkGroupcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl CfnWorkGroupcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion;
 impl CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl cfn_resources::CfnResource for CfnWorkGroup {
 }
 
 /// The AclConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AclConfiguration {
     /// Property description not available.
     ///
@@ -190,7 +190,7 @@ impl cfn_resources::CfnResource for AclConfiguration {
 }
 
 /// The CustomerContentEncryptionConfiguration property type specifies Property description not available. for an AWS::Athena::WorkGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomerContentEncryptionConfiguration {
     /// Property description not available.
     ///
@@ -218,7 +218,7 @@ impl cfn_resources::CfnResource for CustomerContentEncryptionConfiguration {
 }
 
 /// If query results are encrypted in Amazon S3, indicates the encryption option used (for       example, SSE_KMS or CSE_KMS) and key information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys         (SSE_S3), server-side encryption with KMS-managed keys         (SSE_KMS), or client-side encryption with KMS-managed keys         (CSE_KMS) is used.
@@ -248,7 +248,7 @@ pub struct EncryptionConfiguration {
     pub kms_key: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EncryptionConfigurationEncryptionOptionEnum {
     /// CSE_KMS
     #[serde(rename = "CSE_KMS")]
@@ -284,7 +284,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// The Athena engine version for running queries, or the PySpark engine       version for running sessions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EngineVersion {
     ///
     /// Read only. The engine version on which the query runs. If the user requests a valid       engine version other than Auto, the effective engine version is the same as the engine       version that the user requested. If the user requests Auto, the effective engine version       is chosen by Athena. When a request to update the engine version is made by       a CreateWorkGroup or UpdateWorkGroup operation, the         EffectiveEngineVersion field is ignored.
@@ -366,7 +366,7 @@ impl cfn_resources::CfnResource for EngineVersion {
 }
 
 /// The location in Amazon S3 where query and calculation results are stored and the encryption       option, if any, used for query and calculation results. These are known as "client-side settings". If       workgroup settings override client-side settings, then the query uses the workgroup       settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResultConfiguration {
     /// Property description not available.
     ///
@@ -444,7 +444,7 @@ impl cfn_resources::CfnResource for ResultConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -482,7 +482,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The configuration of the workgroup, which includes the location in Amazon S3 where       query results are stored, the encryption option, if any, used for query results, whether       Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of       bytes scanned (cutoff) per query, if it is specified. The EnforceWorkGroupConfiguration option determines whether workgroup       settings override client-side query settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkGroupConfiguration {
     /// Property description not available.
     ///

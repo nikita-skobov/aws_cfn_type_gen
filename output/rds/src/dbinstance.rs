@@ -17,7 +17,7 @@
 /// For DB instances that are part of an Aurora DB cluster, you can set a deletion policy       for your DB instance to control how AWS CloudFormation handles the DB instance when the       stack is deleted. For Amazon RDS DB instances, you can choose to         retain the DB instance, to delete the DB       instance, or to create a snapshot of the DB instance. The default       AWS CloudFormation behavior depends on the DBClusterIdentifier       property:
 ///
 /// For more information, see DeletionPolicy Attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstance {
     ///
     /// The amount of storage in gibibytes (GiB) to be initially allocated for the database       instance.
@@ -1375,7 +1375,7 @@ pub struct CfnDBInstance {
     pub att_master_user_secret_secret_arn: CfnDBInstancemasterusersecretsecretarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DBInstanceReplicaModeEnum {
     /// open-read-only or mounted
     #[serde(rename = "open-read-only or mounted")]
@@ -1388,7 +1388,7 @@ impl Default for DBInstanceReplicaModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DBInstanceRestoreTimeEnum {
     /// Value must be a time in Universal Coordinated Time (UTC) format
     #[serde(rename = "Value must be a time in Universal Coordinated Time (UTC) format")]
@@ -1401,7 +1401,7 @@ impl Default for DBInstanceRestoreTimeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancecertificatedetailscaidentifier;
 impl CfnDBInstancecertificatedetailscaidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -1409,7 +1409,7 @@ impl CfnDBInstancecertificatedetailscaidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancecertificatedetailsvalidtill;
 impl CfnDBInstancecertificatedetailsvalidtill {
     pub fn att_name(&self) -> &'static str {
@@ -1417,7 +1417,7 @@ impl CfnDBInstancecertificatedetailsvalidtill {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancedbinstancearn;
 impl CfnDBInstancedbinstancearn {
     pub fn att_name(&self) -> &'static str {
@@ -1425,7 +1425,7 @@ impl CfnDBInstancedbinstancearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancedbsystemid;
 impl CfnDBInstancedbsystemid {
     pub fn att_name(&self) -> &'static str {
@@ -1433,7 +1433,7 @@ impl CfnDBInstancedbsystemid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancedbiresourceid;
 impl CfnDBInstancedbiresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -1441,7 +1441,7 @@ impl CfnDBInstancedbiresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstanceendpointaddress;
 impl CfnDBInstanceendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -1449,7 +1449,7 @@ impl CfnDBInstanceendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstanceendpointhostedzoneid;
 impl CfnDBInstanceendpointhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -1457,7 +1457,7 @@ impl CfnDBInstanceendpointhostedzoneid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstanceendpointport;
 impl CfnDBInstanceendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -1465,7 +1465,7 @@ impl CfnDBInstanceendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBInstancemasterusersecretsecretarn;
 impl CfnDBInstancemasterusersecretsecretarn {
     pub fn att_name(&self) -> &'static str {
@@ -1502,7 +1502,7 @@ impl cfn_resources::CfnResource for CfnDBInstance {
 /// Returns the details of the DB instance’s server certificate.
 ///
 /// For more information, see Using SSL/TLS to encrypt a connection to a DB       instance in the Amazon RDS User Guide and              Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon Aurora       User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CertificateDetails {
     ///
     /// The CA identifier of the CA certificate used for the DB instance's server certificate.
@@ -1544,7 +1544,7 @@ impl cfn_resources::CfnResource for CertificateDetails {
 }
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DBInstanceRole {
     ///
     /// The name of the feature associated with the AWS Identity and Access Management (IAM)       role. IAM roles that are associated with a DB instance grant permission for the DB       instance to access other AWS services on your behalf. For the list of supported feature       names, see the SupportedFeatureNames description in DBEngineVersion       in the Amazon RDS API Reference.
@@ -1586,7 +1586,7 @@ impl cfn_resources::CfnResource for DBInstanceRole {
 /// This data type represents the information you need to connect to an Amazon RDS DB instance.    This data type is used as a response element in the following actions:
 ///
 /// For the data structure that represents Amazon Aurora DB cluster endpoints,     see DBClusterEndpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoint {
     ///
     /// Specifies the DNS address of the DB instance.
@@ -1642,7 +1642,7 @@ impl cfn_resources::CfnResource for Endpoint {
 /// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
 ///
 /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MasterUserSecret {
     ///
     /// The AWS KMS key identifier that is used to encrypt the secret.
@@ -1684,7 +1684,7 @@ impl cfn_resources::CfnResource for MasterUserSecret {
 }
 
 /// The ProcessorFeature property type specifies the processor features of a       DB instance class status.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProcessorFeature {
     ///
     /// The name of the processor feature. Valid names are coreCount and threadsPerCore.
@@ -1732,7 +1732,7 @@ impl cfn_resources::CfnResource for ProcessorFeature {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

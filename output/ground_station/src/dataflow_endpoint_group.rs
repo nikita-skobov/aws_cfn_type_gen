@@ -3,7 +3,7 @@
 /// Dataflow endpoint groups contain a list of endpoints.       When the name of a dataflow endpoint group is specified in a mission profile, the Ground Station service will connect to the endpoints and flow data during a contact.
 ///
 /// For more information about dataflow endpoint groups, see Dataflow Endpoint Groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataflowEndpointGroup {
     /// Property description not available.
     ///
@@ -57,7 +57,7 @@ pub struct CfnDataflowEndpointGroup {
     pub att_id: CfnDataflowEndpointGroupid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataflowEndpointGrouparn;
 impl CfnDataflowEndpointGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnDataflowEndpointGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataflowEndpointGroupid;
 impl CfnDataflowEndpointGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {
 }
 
 /// The AwsGroundStationAgentEndpoint property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsGroundStationAgentEndpoint {
     /// Property description not available.
     ///
@@ -169,7 +169,7 @@ impl cfn_resources::CfnResource for AwsGroundStationAgentEndpoint {
 }
 
 /// The ConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionDetails {
     /// Property description not available.
     ///
@@ -213,7 +213,7 @@ impl cfn_resources::CfnResource for ConnectionDetails {
 }
 
 /// Contains information such as socket address and name that defines an endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataflowEndpoint {
     ///
     /// The address and port of an endpoint.
@@ -271,7 +271,7 @@ impl cfn_resources::CfnResource for DataflowEndpoint {
 }
 
 /// The security details and endpoint information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointDetails {
     /// Property description not available.
     ///
@@ -336,7 +336,7 @@ impl cfn_resources::CfnResource for EndpointDetails {
 }
 
 /// The IntegerRange property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegerRange {
     /// Property description not available.
     ///
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for IntegerRange {
 }
 
 /// The RangedConnectionDetails property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RangedConnectionDetails {
     /// Property description not available.
     ///
@@ -420,7 +420,7 @@ impl cfn_resources::CfnResource for RangedConnectionDetails {
 }
 
 /// The RangedSocketAddress property type specifies Property description not available. for an AWS::GroundStation::DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RangedSocketAddress {
     /// Property description not available.
     ///
@@ -464,7 +464,7 @@ impl cfn_resources::CfnResource for RangedSocketAddress {
 }
 
 /// Information about IAM roles, subnets, and security groups needed for this DataflowEndpointGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecurityDetails {
     ///
     /// The ARN of a role which Ground Station has permission to assume, such as       arn:aws:iam::1234567890:role/DataDeliveryServiceRole.
@@ -520,7 +520,7 @@ impl cfn_resources::CfnResource for SecurityDetails {
 }
 
 /// The address of the endpoint, such as       192.168.1.1.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SocketAddress {
     ///
     /// The name of the endpoint, such as       Endpoint 1.
@@ -568,7 +568,7 @@ impl cfn_resources::CfnResource for SocketAddress {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

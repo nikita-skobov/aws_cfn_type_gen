@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::CoreDefinition resource represents a core definition for AWS IoT Greengrass.      Core definitions are used to organize your core definition versions.
 ///
 /// Core definitions can reference multiple core definition versions. All core definition versions      must be associated with a core definition. Each core definition version can contain one Greengrass core.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinition {
     ///
     /// The core definition version to include when the core definition is created.          Currently, a core definition version can contain only one          core.
@@ -57,7 +57,7 @@ pub struct CfnCoreDefinition {
     pub att_name: CfnCoreDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinitionarn;
 impl CfnCoreDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnCoreDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinitionid;
 impl CfnCoreDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnCoreDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinitionlatestversionarn;
 impl CfnCoreDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnCoreDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreDefinitionname;
 impl CfnCoreDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnCoreDefinition {
 /// A core is an AWS IoT device that runs the AWS IoT Greengrass core software 		and manages local processes for a Greengrass group. For more information, see    What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Cores 		 property of the CoreDefinitionVersion property type contains a list       of Core property types. Currently, the list can contain only one core.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Core {
     ///
     /// The Amazon Resource Name (ARN) of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
@@ -175,7 +175,7 @@ impl cfn_resources::CfnResource for Core {
 /// A core definition version contains a Greengrass core.
 ///
 /// In an AWS CloudFormation template, CoreDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::CoreDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CoreDefinitionVersion {
     ///
     /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.

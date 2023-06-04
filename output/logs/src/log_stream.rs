@@ -3,7 +3,7 @@
 /// There is no limit on the number of log streams that you can create for a log group.
 ///
 /// You must use the following guidelines when naming a log stream:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLogStream {
     ///
     /// The name of the log group where the log stream is created.

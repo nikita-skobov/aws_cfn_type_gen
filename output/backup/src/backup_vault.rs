@@ -3,7 +3,7 @@
 /// Do not include sensitive data, such as passport numbers, in the name of a backup     vault.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupVault {
     ///
     /// A resource-based policy that is used to manage access permissions on the target backup     vault.
@@ -87,7 +87,7 @@ pub struct CfnBackupVault {
     pub att_backup_vault_name: CfnBackupVaultbackupvaultname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupVaultbackupvaultarn;
 impl CfnBackupVaultbackupvaultarn {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl CfnBackupVaultbackupvaultarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupVaultbackupvaultname;
 impl CfnBackupVaultbackupvaultname {
     pub fn att_name(&self) -> &'static str {
@@ -126,7 +126,7 @@ impl cfn_resources::CfnResource for CfnBackupVault {
 }
 
 /// The LockConfigurationType property type specifies configuration for AWS Backup Vault Lock.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LockConfigurationType {
     ///
     /// The AWS Backup Vault Lock configuration that specifies the number of days     before the lock date. For example, setting ChangeableForDays to 30 on Jan. 1,     2022 at 8pm UTC will set the lock date to Jan. 31, 2022 at 8pm UTC.
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for LockConfigurationType {
 }
 
 /// Specifies an object containing SNS event notification properties for the target backup     vault.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationObjectType {
     ///
     /// An array of events that indicate the status of jobs to back up resources to the backup     vault. For valid events, see BackupVaultEvents in the AWS Backup API     Guide.

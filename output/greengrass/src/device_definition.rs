@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::DeviceDefinition resource represents a device definition for AWS IoT Greengrass. 			Device definitions are used to organize your device definition versions.
 ///
 /// Device definitions can reference multiple device definition versions. All device definition versions      must be associated with a device definition. Each device definition version can contain one or more devices.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinition {
     ///
     /// The device definition version to include when the device definition is created.          A device definition version contains a list of          device property types.
@@ -57,7 +57,7 @@ pub struct CfnDeviceDefinition {
     pub att_name: CfnDeviceDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinitionarn;
 impl CfnDeviceDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnDeviceDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinitionid;
 impl CfnDeviceDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnDeviceDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinitionlatestversionarn;
 impl CfnDeviceDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnDeviceDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinitionname;
 impl CfnDeviceDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnDeviceDefinition {
 /// A device is an AWS IoT device (thing) that's added to a Greengrass group. 	 Greengrass devices can communicate with the Greengrass core in the same group. For more information,   see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the DeviceDefinitionVersion property type contains a list       of Device property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Device {
     ///
     /// The Amazon Resource Name (ARN) of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
@@ -175,7 +175,7 @@ impl cfn_resources::CfnResource for Device {
 /// A device definition version contains a list of devices.
 ///
 /// In an AWS CloudFormation template, DeviceDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::DeviceDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceDefinitionVersion {
     ///
     /// The devices in this version.

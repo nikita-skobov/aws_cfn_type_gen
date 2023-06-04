@@ -1,7 +1,7 @@
 /// Specifies a connection notification for a VPC endpoint or VPC endpoint service. A     connection notification notifies you of specific endpoint events. You must create an SNS     topic to receive notifications. For more information, see Create a Topic in the Amazon       Simple Notification Service Developer Guide.
 ///
 /// You can create a connection notification for interface endpoints only.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// The endpoint events for which to receive notifications. Valid values are         Accept, Connect, Delete, and         Reject.

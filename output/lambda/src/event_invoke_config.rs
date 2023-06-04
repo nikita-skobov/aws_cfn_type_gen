@@ -1,7 +1,7 @@
 /// The AWS::Lambda::EventInvokeConfig resource configures options for asynchronous invocation on a version or an alias.
 ///
 /// By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains    events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous    invocation queue for too long, Lambda discards it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventInvokeConfig {
     ///
     /// A destination for events after they have been sent to a function for processing.
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnEventInvokeConfig {
 }
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationConfig {
     ///
     /// The destination configuration for failed invocations.
@@ -229,7 +229,7 @@ impl cfn_resources::CfnResource for DestinationConfig {
 }
 
 /// A destination for events that failed processing.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnFailure {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.
@@ -286,7 +286,7 @@ impl cfn_resources::CfnResource for OnFailure {
 }
 
 /// A destination for events that were processed successfully.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnSuccess {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.

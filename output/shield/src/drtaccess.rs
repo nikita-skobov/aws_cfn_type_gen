@@ -1,5 +1,5 @@
 /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-drtaccess.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDRTAccess {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-drtaccess.html#cfn-shield-drtaccess-logbucketlist
     #[serde(rename = "LogBucketList")]
@@ -14,7 +14,7 @@ pub struct CfnDRTAccess {
     pub att_account_id: CfnDRTAccessaccountid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDRTAccessaccountid;
 impl CfnDRTAccessaccountid {
     pub fn att_name(&self) -> &'static str {

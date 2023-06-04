@@ -1,7 +1,7 @@
 /// The AWS::ApiGateway::DomainName resource specifies a custom domain name for your API in API Gateway.
 ///
 /// You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see Set up Custom Domain Name for an API in API Gateway in the API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainName {
     ///
     /// The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
@@ -113,7 +113,7 @@ pub struct CfnDomainName {
     pub att_regional_hosted_zone_id: CfnDomainNameregionalhostedzoneid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DomainNameSecurityPolicyEnum {
     /// TLS_1_0
     #[serde(rename = "TLS_1_0")]
@@ -130,7 +130,7 @@ impl Default for DomainNameSecurityPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNamedistributiondomainname;
 impl CfnDomainNamedistributiondomainname {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnDomainNamedistributiondomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNamedistributionhostedzoneid;
 impl CfnDomainNamedistributionhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnDomainNamedistributionhostedzoneid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNameregionaldomainname;
 impl CfnDomainNameregionaldomainname {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnDomainNameregionaldomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainNameregionalhostedzoneid;
 impl CfnDomainNameregionalhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl cfn_resources::CfnResource for CfnDomainName {
 /// The EndpointConfiguration property type specifies the endpoint types of an Amazon API Gateway domain name.
 ///
 /// EndpointConfiguration is a property of the AWS::ApiGateway::DomainName resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointConfiguration {
     ///
     /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
@@ -217,7 +217,7 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 }
 
 /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MutualTlsAuthentication {
     ///
     /// An Amazon S3 URL that specifies the truststore for mutual TLS authentication, for example    s3://bucket-name/key-name. The truststore can contain certificates from public or private    certificate authorities. To update the truststore, upload a new version to S3, and then update    your custom domain name to use the new version. To update the truststore, you must have    permissions to access the S3 object.
@@ -265,7 +265,7 @@ impl cfn_resources::CfnResource for MutualTlsAuthentication {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

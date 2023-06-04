@@ -1,7 +1,7 @@
 /// The AWS::S3::Bucket resource creates an Amazon S3 bucket in the same AWS Region where you create the AWS CloudFormation stack.
 ///
 /// To control how AWS CloudFormation handles the bucket when the stack is    deleted, you can set a deletion policy for your bucket. You can choose to     retain the bucket or to delete the bucket. For    more information, see DeletionPolicy     Attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucket {
     ///
     /// Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see       Amazon S3       Transfer Acceleration in the Amazon S3 User Guide.
@@ -267,7 +267,7 @@ pub struct CfnBucket {
     pub att_website_url: CfnBucketwebsiteurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketarn;
 impl CfnBucketarn {
     pub fn att_name(&self) -> &'static str {
@@ -275,7 +275,7 @@ impl CfnBucketarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketdomainname;
 impl CfnBucketdomainname {
     pub fn att_name(&self) -> &'static str {
@@ -283,7 +283,7 @@ impl CfnBucketdomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketdualstackdomainname;
 impl CfnBucketdualstackdomainname {
     pub fn att_name(&self) -> &'static str {
@@ -291,7 +291,7 @@ impl CfnBucketdualstackdomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketregionaldomainname;
 impl CfnBucketregionaldomainname {
     pub fn att_name(&self) -> &'static str {
@@ -299,7 +299,7 @@ impl CfnBucketregionaldomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketwebsiteurl;
 impl CfnBucketwebsiteurl {
     pub fn att_name(&self) -> &'static str {
@@ -370,7 +370,7 @@ impl cfn_resources::CfnResource for CfnBucket {
 }
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3    will wait before permanently removing all parts of the upload. For more information, see         Stopping Incomplete Multipart Uploads Using a Bucket Lifecycle Policy in the     Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AbortIncompleteMultipartUpload {
     ///
     /// Specifies the number of days after which Amazon S3 stops an incomplete multipart    upload.
@@ -399,7 +399,7 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
 }
 
 /// Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see       Amazon S3       Transfer Acceleration in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccelerateConfiguration {
     ///
     /// Specifies the transfer acceleration status of the bucket.
@@ -415,7 +415,7 @@ pub struct AccelerateConfiguration {
     pub acceleration_status: AccelerateConfigurationAccelerationStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccelerateConfigurationAccelerationStatusEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -447,7 +447,7 @@ impl cfn_resources::CfnResource for AccelerateConfiguration {
 }
 
 /// Specify this only in a cross-account scenario (where source and destination bucket     owners are not the same), and you want to change replica ownership to the AWS account     that owns the destination bucket. If this is not specified in the replication     configuration, the replicas are owned by same AWS account that owns the source     object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlTranslation {
     ///
     /// Specifies the replica ownership. For default and valid values, see PUT bucket       replication in the Amazon S3 API Reference.
@@ -463,7 +463,7 @@ pub struct AccessControlTranslation {
     pub owner: AccessControlTranslationOwnerEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccessControlTranslationOwnerEnum {
     /// Destination
     #[serde(rename = "Destination")]
@@ -491,7 +491,7 @@ impl cfn_resources::CfnResource for AccessControlTranslation {
 }
 
 /// Specifies the configuration and any analyses for the analytics filter of an Amazon S3     bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalyticsConfiguration {
     ///
     /// The ID that identifies the analytics configuration.
@@ -559,7 +559,7 @@ impl cfn_resources::CfnResource for AnalyticsConfiguration {
 }
 
 /// Specifies default encryption for a bucket using server-side encryption with Amazon    S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS) bucket. For    information about the Amazon S3 default encryption feature, see Amazon S3 Default Encryption for S3     Buckets in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BucketEncryption {
     ///
     /// Specifies the default server-side-encryption configuration.
@@ -588,7 +588,7 @@ impl cfn_resources::CfnResource for BucketEncryption {
 }
 
 /// Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more     information, see Enabling       Cross-Origin Resource Sharing in the     Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CorsConfiguration {
     ///
     /// A set of origins and methods (cross-origin access that you want to allow). You can add     up to 100 rules to the configuration.
@@ -617,7 +617,7 @@ impl cfn_resources::CfnResource for CorsConfiguration {
 }
 
 /// Specifies a cross-origin access rule for an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CorsRule {
     ///
     /// Headers that are specified in the Access-Control-Request-Headers header.     These headers are allowed in a preflight OPTIONS request. In response to any preflight     OPTIONS request, Amazon S3 returns any requested headers that are allowed.
@@ -707,7 +707,7 @@ impl cfn_resources::CfnResource for CorsRule {
 }
 
 /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be     exported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataExport {
     ///
     /// The place to store the data for an analysis.
@@ -734,7 +734,7 @@ pub struct DataExport {
     pub output_schema_version: DataExportOutputSchemaVersionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataExportOutputSchemaVersionEnum {
     /// V_1
     #[serde(rename = "V_1")]
@@ -764,7 +764,7 @@ impl cfn_resources::CfnResource for DataExport {
 }
 
 /// The container element for specifying the default Object Lock retention settings for new     objects placed in the specified bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultRetention {
     ///
     /// The number of days that you want to specify for the default retention period. If Object    Lock is turned on, you must specify Mode and specify either Days or     Years.
@@ -805,7 +805,7 @@ pub struct DefaultRetention {
     pub years: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DefaultRetentionModeEnum {
     /// COMPLIANCE
     #[serde(rename = "COMPLIANCE")]
@@ -839,7 +839,7 @@ impl cfn_resources::CfnResource for DefaultRetention {
 /// Specifies whether Amazon S3 replicates delete markers. If you specify a Filter     in your replication configuration, you must also include a       DeleteMarkerReplication element. If your Filter includes a       Tag element, the DeleteMarkerReplication       Status must be set to Disabled, because Amazon S3 does not support replicating     delete markers for tag-based rules. For an example configuration, see Basic Rule Configuration.
 ///
 /// For more information about delete marker replication, see Basic Rule       Configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeleteMarkerReplication {
     ///
     /// Indicates whether to replicate delete markers. Disabled by default.
@@ -856,7 +856,7 @@ pub struct DeleteMarkerReplication {
     pub status: Option<DeleteMarkerReplicationStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeleteMarkerReplicationStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -888,7 +888,7 @@ impl cfn_resources::CfnResource for DeleteMarkerReplication {
 }
 
 /// Specifies information about where to publish analysis or configuration results for an    Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Destination {
     ///
     /// The account ID that owns the destination S3 bucket. If no account ID is provided, the     owner is not validated before exporting data.
@@ -941,7 +941,7 @@ pub struct Destination {
     pub prefix: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DestinationFormatEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -977,7 +977,7 @@ impl cfn_resources::CfnResource for Destination {
 }
 
 /// Specifies encryption-related information for an Amazon S3 bucket that is a destination for     replicated objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in     AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to     encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more     information, see Asymmetric keys in AWS       KMS in the         AWS Key Management Service Developer     Guide.
@@ -1008,7 +1008,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 /// Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your    bucket, see Using     EventBridge in the Amazon S3 User Guide.
 ///
 /// Unlike other destinations, delivery of events to EventBridge can be either enabled or    disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use    EventBridge rules to route events to additional targets. For more information, see What Is Amazon     EventBridge in the Amazon EventBridge User Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventBridgeConfiguration {
     ///
     /// Enables delivery of events to Amazon EventBridge.
@@ -1038,7 +1038,7 @@ impl cfn_resources::CfnResource for EventBridgeConfiguration {
 }
 
 /// Specifies the Amazon S3 object key name to filter on and whether to filter on the suffix or     prefix of the key name.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterRule {
     ///
     /// The object key name prefix or suffix identifying one or more objects to which the     filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and     suffixes are not supported. For more information, see Configuring Event Notifications     in the Amazon S3 User Guide.
@@ -1065,7 +1065,7 @@ pub struct FilterRule {
     pub value: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterRuleNameEnum {
     /// prefix
     #[serde(rename = "prefix")]
@@ -1099,7 +1099,7 @@ impl cfn_resources::CfnResource for FilterRule {
 /// Specifies the S3 Intelligent-Tiering configuration for an Amazon S3 bucket.
 ///
 /// For information about the S3 Intelligent-Tiering storage class, see Storage class       for automatically optimizing frequently and infrequently accessed     objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntelligentTieringConfiguration {
     ///
     /// The ID used to identify the S3 Intelligent-Tiering configuration.
@@ -1163,7 +1163,7 @@ pub struct IntelligentTieringConfiguration {
     pub tierings: Vec<Tiering>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntelligentTieringConfigurationStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -1195,7 +1195,7 @@ impl cfn_resources::CfnResource for IntelligentTieringConfiguration {
 }
 
 /// Specifies the inventory configuration for an Amazon S3 bucket. For more information, see       GET Bucket inventory in the Amazon S3 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InventoryConfiguration {
     ///
     /// Contains information about where to publish the inventory results.
@@ -1283,7 +1283,7 @@ pub struct InventoryConfiguration {
     pub schedule_frequency: InventoryConfigurationScheduleFrequencyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InventoryConfigurationIncludedObjectVersionsEnum {
     /// All
     #[serde(rename = "All")]
@@ -1300,7 +1300,7 @@ impl Default for InventoryConfigurationIncludedObjectVersionsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InventoryConfigurationScheduleFrequencyEnum {
     /// Daily
     #[serde(rename = "Daily")]
@@ -1334,7 +1334,7 @@ impl cfn_resources::CfnResource for InventoryConfiguration {
 }
 
 /// Describes the AWS Lambda functions to invoke and the events for which to invoke     them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConfiguration {
     ///
     /// The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more information,     see Supported       Event Types in the Amazon S3 User Guide.
@@ -1388,7 +1388,7 @@ impl cfn_resources::CfnResource for LambdaConfiguration {
 }
 
 /// Specifies the lifecycle configuration for objects in an Amazon S3 bucket. For more     information, see Object Lifecycle Management     in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecycleConfiguration {
     ///
     /// A lifecycle rule for individual objects in an Amazon S3 bucket.
@@ -1417,7 +1417,7 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
 }
 
 /// Describes where logs are stored and the prefix that Amazon S3 assigns to all log object    keys for a bucket. For examples and more information, see PUT Bucket logging in the     Amazon S3 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfiguration {
     ///
     /// The name of the bucket where Amazon S3 should store server access log files. You can store    log files in any bucket that you own. By default, logs are stored in the bucket where the     LoggingConfiguration property is defined.
@@ -1459,7 +1459,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 }
 
 /// A container specifying replication metrics-related settings enabling replication     metrics and events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Metrics {
     ///
     /// A container specifying the time threshold for emitting the       s3:Replication:OperationMissedThreshold event.
@@ -1487,7 +1487,7 @@ pub struct Metrics {
     pub status: MetricsStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetricsStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -1523,7 +1523,7 @@ impl cfn_resources::CfnResource for Metrics {
 }
 
 /// Specifies a metrics configuration for the CloudWatch request metrics (specified by the    metrics configuration ID) from an Amazon S3 bucket. If you're updating an existing metrics    configuration, note that this is a full replacement of the existing metrics configuration. If    you don't include the elements you want to keep, they are erased. For examples, see AWS::S3::Bucket. For more information, see PUT Bucket metrics    in the Amazon S3 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricsConfiguration {
     ///
     /// The access point that was used while performing operations on the object. The metrics    configuration only includes objects that meet the filter's criteria.
@@ -1588,7 +1588,7 @@ impl cfn_resources::CfnResource for MetricsConfiguration {
 }
 
 /// Specifies when noncurrent object versions expire. Upon expiration, Amazon S3    permanently deletes the noncurrent object versions. You set this lifecycle configuration    action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's    lifetime.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NoncurrentVersionExpiration {
     ///
     /// Specifies how many noncurrent versions Amazon S3 will retain. If there are this many more recent     noncurrent versions, Amazon S3 will take the associated action. For more information about noncurrent    versions, see Lifecycle configuration elements    in the Amazon S3 User Guide.
@@ -1629,7 +1629,7 @@ impl cfn_resources::CfnResource for NoncurrentVersionExpiration {
 }
 
 /// Container for the transition rule that describes when noncurrent objects transition to the     STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING,     GLACIER_IR, GLACIER, or DEEP_ARCHIVE storage class.    If your bucket is versioning-enabled (or versioning is suspended), you can set this action to    request that Amazon S3 transition noncurrent object versions to the STANDARD_IA,     ONEZONE_IA, INTELLIGENT_TIERING, GLACIER_IR,     GLACIER, or DEEP_ARCHIVE storage class at a specific period in the    object's lifetime. If you specify this property, don't specify the     NoncurrentVersionTransitions property.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NoncurrentVersionTransition {
     ///
     /// Specifies how many noncurrent versions Amazon S3 will retain. If there are this    many more recent noncurrent versions, Amazon S3 will take the associated action. For    more information about noncurrent versions, see Lifecycle configuration     elements in the Amazon S3 User Guide.
@@ -1668,7 +1668,7 @@ pub struct NoncurrentVersionTransition {
     pub transition_in_days: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NoncurrentVersionTransitionStorageClassEnum {
     /// DEEP_ARCHIVE
     #[serde(rename = "DEEP_ARCHIVE")]
@@ -1716,7 +1716,7 @@ impl cfn_resources::CfnResource for NoncurrentVersionTransition {
 }
 
 /// Describes the notification configuration for an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationConfiguration {
     ///
     /// Enables delivery of events to Amazon EventBridge.
@@ -1786,7 +1786,7 @@ impl cfn_resources::CfnResource for NotificationConfiguration {
 }
 
 /// Specifies object key name filtering rules. For information about key name filtering, see     Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationFilter {
     ///
     /// A container for object key name prefix and suffix filtering rules.
@@ -1817,7 +1817,7 @@ impl cfn_resources::CfnResource for NotificationFilter {
 }
 
 /// Places an Object Lock configuration on the specified bucket. The rule specified in the    Object Lock configuration will be applied by default to every new object placed in the    specified bucket. For more information, see Locking Objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ObjectLockConfiguration {
     ///
     /// Indicates whether this bucket has an Object Lock configuration enabled. Enable       ObjectLockEnabled when you apply ObjectLockConfiguration to a     bucket.
@@ -1846,7 +1846,7 @@ pub struct ObjectLockConfiguration {
     pub rule: Option<ObjectLockRule>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ObjectLockConfigurationObjectLockEnabledEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -1876,7 +1876,7 @@ impl cfn_resources::CfnResource for ObjectLockConfiguration {
 }
 
 /// Specifies the Object Lock rule for the specified object. Enable the this rule when you    apply ObjectLockConfiguration to a bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ObjectLockRule {
     ///
     /// The default Object Lock retention mode and period that you want to apply to new objects    placed in the specified bucket. If Object Lock is turned on, bucket settings require both     Mode and a period of either Days or Years. You cannot    specify Days and Years at the same time. For more information about    allowable values for mode and period, see DefaultRetention.
@@ -1912,7 +1912,7 @@ impl cfn_resources::CfnResource for ObjectLockRule {
 /// Specifies the container element for Object Ownership rules.
 ///
 /// S3 Object Ownership is an Amazon S3 bucket-level setting that you can use to disable    access control lists (ACLs) and take ownership of every object in your bucket, simplifying    access management for data stored in Amazon S3. For more information, see Controlling     ownership of objects and disabling ACLs in the Amazon S3 User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OwnershipControls {
     ///
     /// Specifies the container element for Object Ownership rules.
@@ -1943,7 +1943,7 @@ impl cfn_resources::CfnResource for OwnershipControls {
 /// Specifies an Object Ownership rule.
 ///
 /// S3 Object Ownership is an Amazon S3 bucket-level setting that you can use to disable    access control lists (ACLs) and take ownership of every object in your bucket, simplifying    access management for data stored in Amazon S3. For more information, see Controlling     ownership of objects and disabling ACLs in the Amazon S3 User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OwnershipControlsRule {
     ///
     /// Specifies an Object Ownership rule.
@@ -1960,7 +1960,7 @@ pub struct OwnershipControlsRule {
     pub object_ownership: Option<OwnershipControlsRuleObjectOwnershipEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OwnershipControlsRuleObjectOwnershipEnum {
     /// BucketOwnerEnforced
     #[serde(rename = "BucketOwnerEnforced")]
@@ -1996,7 +1996,7 @@ impl cfn_resources::CfnResource for OwnershipControlsRule {
 }
 
 /// The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can     enable the configuration options in any combination. For more information about when Amazon S3     considers a bucket or object public, see The Meaning of "Public" in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicAccessBlockConfiguration {
     ///
     /// Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket     and objects in this bucket. Setting this element to TRUE causes the following     behavior:
@@ -2072,7 +2072,7 @@ impl cfn_resources::CfnResource for PublicAccessBlockConfiguration {
 }
 
 /// Specifies the configuration for publishing messages to an Amazon Simple Queue Service     (Amazon SQS) queue when Amazon S3 detects specified events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueueConfiguration {
     ///
     /// The Amazon S3 bucket event about which you want to publish messages to Amazon SQS. For    more information, see Supported Event Types in the     Amazon S3 User Guide.
@@ -2126,7 +2126,7 @@ impl cfn_resources::CfnResource for QueueConfiguration {
 }
 
 /// Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3     bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedirectAllRequestsTo {
     ///
     /// Name of the host where requests are redirected.
@@ -2154,7 +2154,7 @@ pub struct RedirectAllRequestsTo {
     pub protocol: Option<RedirectAllRequestsToProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedirectAllRequestsToProtocolEnum {
     /// http
     #[serde(rename = "http")]
@@ -2186,7 +2186,7 @@ impl cfn_resources::CfnResource for RedirectAllRequestsTo {
 }
 
 /// Specifies how requests are redirected. In the event of an error, you can specify a     different error code to return.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedirectRule {
     ///
     /// The host name to use in the redirect request.
@@ -2255,7 +2255,7 @@ pub struct RedirectRule {
     pub replace_key_with: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedirectRuleProtocolEnum {
     /// http
     #[serde(rename = "http")]
@@ -2287,7 +2287,7 @@ impl cfn_resources::CfnResource for RedirectRule {
 }
 
 /// A filter that you can specify for selection for modifications on replicas.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicaModifications {
     ///
     /// Specifies whether Amazon S3 replicates modifications on replicas.
@@ -2303,7 +2303,7 @@ pub struct ReplicaModifications {
     pub status: ReplicaModificationsStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicaModificationsStatusEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -2335,7 +2335,7 @@ impl cfn_resources::CfnResource for ReplicaModifications {
 }
 
 /// A container for replication rules. You can add up to 1,000 rules. The maximum size of a     replication configuration is 2 MB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon S3 assumes when     replicating objects. For more information, see How to Set Up Replication     in the Amazon S3 User Guide.
@@ -2375,7 +2375,7 @@ impl cfn_resources::CfnResource for ReplicationConfiguration {
 }
 
 /// A container for information about the replication destination and its configurations     including enabling the S3 Replication Time Control (S3 RTC).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationDestination {
     ///
     /// Specify this only in a cross-account scenario (where source and destination bucket     owners are not the same), and you want to change replica ownership to the AWS account     that owns the destination bucket. If this is not specified in the replication     configuration, the replicas are owned by same AWS account that owns the source     object.
@@ -2467,7 +2467,7 @@ pub struct ReplicationDestination {
     pub storage_class: Option<ReplicationDestinationStorageClassEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationDestinationStorageClassEnum {
     /// DEEP_ARCHIVE
     #[serde(rename = "DEEP_ARCHIVE")]
@@ -2545,7 +2545,7 @@ impl cfn_resources::CfnResource for ReplicationDestination {
 }
 
 /// Specifies which Amazon S3 objects to replicate and where to store the replicas.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationRule {
     ///
     /// Specifies whether Amazon S3 replicates delete markers. If you specify a Filter     in your replication configuration, you must also include a       DeleteMarkerReplication element. If your Filter includes a       Tag element, the DeleteMarkerReplication       Status must be set to Disabled, because Amazon S3 does not support replicating     delete markers for tag-based rules. For an example configuration, see Basic Rule Configuration.
@@ -2654,7 +2654,7 @@ pub struct ReplicationRule {
     pub status: ReplicationRuleStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationRuleStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -2700,7 +2700,7 @@ impl cfn_resources::CfnResource for ReplicationRule {
 /// A container for specifying rule filters. The filters determine the subset of objects to    which the rule applies. This element is required only if you specify more than one filter.
 ///
 /// For example:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationRuleAndOperator {
     ///
     /// An object key name prefix that identifies the subset of objects to which the rule     applies.
@@ -2742,7 +2742,7 @@ impl cfn_resources::CfnResource for ReplicationRuleAndOperator {
 }
 
 /// A filter that identifies the subset of objects to which the replication rule applies. A     Filter must specify exactly one Prefix, TagFilter, or    an And child element.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationRuleFilter {
     ///
     /// A container for specifying rule filters. The filters determine the subset of objects to    which the rule applies. This element is required only if you specify more than one filter. For    example:
@@ -2808,7 +2808,7 @@ impl cfn_resources::CfnResource for ReplicationRuleFilter {
 }
 
 /// A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is     enabled and the time when all objects and operations on objects must be replicated. Must be     specified together with a Metrics block.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationTime {
     ///
     /// Specifies whether the replication time is enabled.
@@ -2835,7 +2835,7 @@ pub struct ReplicationTime {
     pub time: ReplicationTimeValue,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationTimeStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -2869,7 +2869,7 @@ impl cfn_resources::CfnResource for ReplicationTime {
 }
 
 /// A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics       EventThreshold.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationTimeValue {
     ///
     /// Contains an integer specifying time in minutes.
@@ -2900,7 +2900,7 @@ impl cfn_resources::CfnResource for ReplicationTimeValue {
 }
 
 /// Specifies the redirect behavior and when a redirect is applied. For more information     about routing rules, see Configuring advanced conditional redirects in the       Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RoutingRule {
     ///
     /// Container for redirect information. You can redirect requests to another host, to     another page, or with another protocol. In the event of an error, you can specify a     different error code to return.
@@ -2947,7 +2947,7 @@ impl cfn_resources::CfnResource for RoutingRule {
 }
 
 /// A container for describing a condition that must be met for the specified redirect to     apply. For example, 1. If request is for pages in the /docs folder, redirect     to the /documents folder. 2. If request results in HTTP error 4xx, redirect     request to another host where you might process the error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RoutingRuleCondition {
     ///
     /// The HTTP error code when the redirect is applied. In the event of an error, if the error    code equals this value, then the specified redirect is applied.
@@ -2995,7 +2995,7 @@ impl cfn_resources::CfnResource for RoutingRuleCondition {
 /// Specifies lifecycle rules for an Amazon S3 bucket. For more information, see Put Bucket     Lifecycle Configuration in the Amazon S3 API Reference.
 ///
 /// You must specify at least one of the following properties:     AbortIncompleteMultipartUpload, ExpirationDate,     ExpirationInDays, NoncurrentVersionExpirationInDays,     NoncurrentVersionTransition, NoncurrentVersionTransitions,     Transition, or Transitions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// Specifies a lifecycle rule that stops incomplete multipart uploads to an Amazon S3    bucket.
@@ -3193,7 +3193,7 @@ pub struct Rule {
     pub transitions: Option<Vec<Transition>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuleStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -3241,7 +3241,7 @@ impl cfn_resources::CfnResource for Rule {
 }
 
 /// A container for object key name prefix and suffix filtering rules. For more information about object key name filtering, see Configuring event notifications using object key name filtering in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3KeyFilter {
     ///
     /// A list of containers for the key-value pair that defines the criteria for the filter     rule.
@@ -3270,7 +3270,7 @@ impl cfn_resources::CfnResource for S3KeyFilter {
 }
 
 /// Describes the default server-side encryption to apply to new objects in the bucket. If a     PUT Object request doesn't specify any server-side encryption, this default encryption will     be applied. If you don't specify a customer managed key at configuration, Amazon S3 automatically creates     an AWS KMS key in your AWS account the first time that you add an object encrypted     with SSE-KMS to a bucket. By default, Amazon S3 uses this KMS key for SSE-KMS. For more     information, see PUT Bucket encryption in     the Amazon S3 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerSideEncryptionByDefault {
     ///
     /// KMS key ID to use for the default encryption. This parameter is allowed if SSEAlgorithm is    aws:kms.
@@ -3306,7 +3306,7 @@ pub struct ServerSideEncryptionByDefault {
     pub ssealgorithm: ServerSideEncryptionByDefaultSSEAlgorithmEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServerSideEncryptionByDefaultSSEAlgorithmEnum {
     /// AES256
     #[serde(rename = "AES256")]
@@ -3338,7 +3338,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionByDefault {
 }
 
 /// Specifies the default server-side encryption configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerSideEncryptionRule {
     ///
     /// Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using    KMS (SSE-KMS) for new objects in the bucket. Existing objects are not affected. Setting the     BucketKeyEnabled element to true causes Amazon S3 to use an S3    Bucket Key. By default, S3 Bucket Key is not enabled.
@@ -3386,7 +3386,7 @@ impl cfn_resources::CfnResource for ServerSideEncryptionRule {
 }
 
 /// A container that describes additional filters for identifying the source objects that you    want to replicate. You can choose to enable or disable the replication of these    objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceSelectionCriteria {
     ///
     /// A filter that you can specify for selection for modifications on replicas.
@@ -3436,7 +3436,7 @@ impl cfn_resources::CfnResource for SourceSelectionCriteria {
 }
 
 /// A container for filter information for the selection of S3 objects encrypted with AWS     KMS.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SseKmsEncryptedObjects {
     ///
     /// Specifies whether Amazon S3 replicates objects created with server-side encryption using an     AWS KMS key stored in AWS Key Management Service.
@@ -3452,7 +3452,7 @@ pub struct SseKmsEncryptedObjects {
     pub status: SseKmsEncryptedObjectsStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SseKmsEncryptedObjectsStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -3484,7 +3484,7 @@ impl cfn_resources::CfnResource for SseKmsEncryptedObjects {
 }
 
 /// Specifies data related to access patterns to be collected and made available to analyze     the tradeoffs between different storage classes for an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageClassAnalysis {
     ///
     /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be     exported.
@@ -3524,7 +3524,7 @@ impl cfn_resources::CfnResource for StorageClassAnalysis {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -3562,7 +3562,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies tags to use to identify a subset of objects for an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFilter {
     ///
     /// The tag key.
@@ -3602,7 +3602,7 @@ impl cfn_resources::CfnResource for TagFilter {
 }
 
 /// The S3 Intelligent-Tiering storage class is designed to optimize storage costs by     automatically moving data to the most cost-effective storage access tier, without     additional operational overhead.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tiering {
     ///
     /// S3 Intelligent-Tiering access tier. See Storage class       for automatically optimizing frequently and infrequently accessed objects for a     list of access tiers in the S3 Intelligent-Tiering storage class.
@@ -3629,7 +3629,7 @@ pub struct Tiering {
     pub days: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TieringAccessTierEnum {
     /// ARCHIVE_ACCESS
     #[serde(rename = "ARCHIVE_ACCESS")]
@@ -3661,7 +3661,7 @@ impl cfn_resources::CfnResource for Tiering {
 }
 
 /// A container for specifying the configuration for publication of messages to an Amazon     Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicConfiguration {
     ///
     /// The Amazon S3 bucket event about which to send notifications. For more information, see       Supported       Event Types in the Amazon S3 User Guide.
@@ -3715,7 +3715,7 @@ impl cfn_resources::CfnResource for TopicConfiguration {
 }
 
 /// Specifies when an object transitions to a specified storage class. For more information     about Amazon S3 lifecycle configuration rules, see Transitioning       Objects Using Amazon S3 Lifecycle in the Amazon S3 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Transition {
     ///
     /// The storage class to which you want the object to transition.
@@ -3755,7 +3755,7 @@ pub struct Transition {
     pub transition_in_days: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitionStorageClassEnum {
     /// DEEP_ARCHIVE
     #[serde(rename = "DEEP_ARCHIVE")]
@@ -3803,7 +3803,7 @@ impl cfn_resources::CfnResource for Transition {
 }
 
 /// Describes the versioning state of an Amazon S3 bucket. For more information, see PUT       Bucket versioning in the Amazon S3 API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VersioningConfiguration {
     ///
     /// The versioning state of the bucket.
@@ -3819,7 +3819,7 @@ pub struct VersioningConfiguration {
     pub status: VersioningConfigurationStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VersioningConfigurationStatusEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
@@ -3851,7 +3851,7 @@ impl cfn_resources::CfnResource for VersioningConfiguration {
 }
 
 /// Specifies website configuration parameters for an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebsiteConfiguration {
     ///
     /// The name of the error document for the website.

@@ -1,7 +1,7 @@
 /// The AWS::Chatbot::MicrosoftTeamsChannelConfiguration resource configures a Microsoft Teams channel to allow users to use AWS Chatbot with AWS CloudFormation templates.
 ///
 /// This resource requires some setup to be done in the AWS Chatbot console. To provide the required Microsoft Teams team and tenant IDs, you must perform the initial authorization flow with       Microsoft Teams in the AWS Chatbot console, then copy and paste the IDs from the console.       For more details, see steps 1-4 in Setting Up AWS Chatbot with Microsoft Teams in the AWS Chatbot Administrator Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMicrosoftTeamsChannelConfiguration {
     ///
     /// The name of the configuration.
@@ -120,7 +120,7 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     pub att_arn: CfnMicrosoftTeamsChannelConfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMicrosoftTeamsChannelConfigurationarn;
 impl CfnMicrosoftTeamsChannelConfigurationarn {
     pub fn att_name(&self) -> &'static str {

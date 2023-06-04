@@ -1,5 +1,5 @@
 /// A public key that you can use with signed URLs and signed cookies, or with field-level encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicKey {
     ///
     /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
@@ -19,7 +19,7 @@ pub struct CfnPublicKey {
     pub att_id: CfnPublicKeyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicKeycreatedtime;
 impl CfnPublicKeycreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -27,7 +27,7 @@ impl CfnPublicKeycreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicKeyid;
 impl CfnPublicKeyid {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl cfn_resources::CfnResource for CfnPublicKey {
 }
 
 /// Configuration information about a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicKeyConfig {
     ///
     /// A string included in the request to help make sure that the request can't be 			replayed.

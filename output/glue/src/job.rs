@@ -1,5 +1,5 @@
 /// The AWS::Glue::Job resource specifies an AWS Glue job in the data       catalog. For more information, see Adding Jobs in AWS Glue and Job         Structure in the AWS Glue Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnJob {
     ///
     /// This parameter is no longer supported. Use MaxCapacity instead.
@@ -290,7 +290,7 @@ pub struct CfnJob {
     pub worker_type: Option<JobWorkerTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JobWorkerTypeEnum {
     /// G.025X
     #[serde(rename = "G.025X")]
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for CfnJob {
 }
 
 /// Specifies the connections used by a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionsList {
     ///
     /// A list of connections used by the job.
@@ -456,7 +456,7 @@ impl cfn_resources::CfnResource for ConnectionsList {
 }
 
 /// An execution property of a job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExecutionProperty {
     ///
     /// The maximum number of concurrent runs allowed for the job. The default is 1. An error       is returned when this threshold is reached. The maximum value you can specify is       controlled by a service limit.
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for ExecutionProperty {
 }
 
 /// Specifies code executed when a job is run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JobCommand {
     ///
     /// The name of the job command. For an Apache Spark ETL job, this must be    glueetl. For a Python shell job, it must be pythonshell.    For an Apache Spark streaming ETL job, this must be gluestreaming.
@@ -552,7 +552,7 @@ impl cfn_resources::CfnResource for JobCommand {
 }
 
 /// Specifies configuration properties of a notification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationProperty {
     /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
     ///

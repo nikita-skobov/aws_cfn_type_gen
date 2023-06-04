@@ -1,5 +1,5 @@
 /// The AWS::Lambda::LayerVersion resource creates a Lambda layer from a ZIP archive.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLayerVersion {
     ///
     /// A list of compatible  instruction set architectures.
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnLayerVersion {
 }
 
 /// A ZIP archive that contains the contents of an Lambda layer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Content {
     ///
     /// The Amazon S3 bucket of the layer archive.

@@ -1,7 +1,7 @@
 /// The AWS::AutoScalingPlans::ScalingPlan resource defines an AWS Auto Scaling scaling plan. A scaling plan is used to scale application resources to     size them appropriately to ensure that enough resource is available in the application at     peak times and to reduce allocated resource during periods of low utilization. The     following resources can be added to a scaling plan:
 ///
 /// For more information, see the AWS Auto Scaling       User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPlan {
     ///
     /// A CloudFormation stack or a set of tags. You can create one scaling plan per application     source. The ApplicationSource property must be present to ensure     interoperability with the AWS Auto Scaling console.
@@ -32,7 +32,7 @@ pub struct CfnScalingPlan {
     pub att_scaling_plan_version: CfnScalingPlanscalingplanversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPlanscalingplanname;
 impl CfnScalingPlanscalingplanname {
     pub fn att_name(&self) -> &'static str {
@@ -40,7 +40,7 @@ impl CfnScalingPlanscalingplanname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalingPlanscalingplanversion;
 impl CfnScalingPlanscalingplanversion {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl cfn_resources::CfnResource for CfnScalingPlan {
 }
 
 /// ApplicationSource is a property of ScalingPlan that specifies the application source to use with AWS Auto Scaling (Auto Scaling Plans). You can create one scaling plan per application source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationSource {
     ///
     /// The Amazon Resource Name (ARN) of a CloudFormation stack.
@@ -125,7 +125,7 @@ impl cfn_resources::CfnResource for ApplicationSource {
 /// For information about terminology, available metrics, or how to publish new metrics, see       Amazon CloudWatch       Concepts in the Amazon CloudWatch User Guide.
 ///
 /// After creating your scaling plan, you can use the AWS Auto Scaling console to     visualize forecasts for the specified metric. For more information, see View       Scaling Information for a Resource in the AWS Auto Scaling User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomizedLoadMetricSpecification {
     ///
     /// The dimensions of the metric.
@@ -189,7 +189,7 @@ pub struct CustomizedLoadMetricSpecification {
     pub unit: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomizedLoadMetricSpecificationStatisticEnum {
     /// Sum
     #[serde(rename = "Sum")]
@@ -221,7 +221,7 @@ impl cfn_resources::CfnResource for CustomizedLoadMetricSpecification {
 /// To create your customized scaling metric specification:
 ///
 /// For information about terminology, available metrics, or how to publish new metrics, see       Amazon CloudWatch       Concepts in the Amazon CloudWatch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomizedScalingMetricSpecification {
     ///
     /// The dimensions of the metric.
@@ -285,7 +285,7 @@ pub struct CustomizedScalingMetricSpecification {
     pub unit: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomizedScalingMetricSpecificationStatisticEnum {
     /// Average
     #[serde(rename = "Average")]
@@ -329,7 +329,7 @@ impl cfn_resources::CfnResource for CustomizedScalingMetricSpecification {
 }
 
 /// MetricDimension is a subproperty of CustomizedScalingMetricSpecification that specifies a dimension for a     customized metric to use with AWS Auto Scaling (Auto Scaling Plans).     Dimensions are arbitrary name/value pairs that can be associated with a CloudWatch metric.     Duplicate dimensions are not allowed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDimension {
     ///
     /// The name of the dimension.
@@ -372,7 +372,7 @@ impl cfn_resources::CfnResource for MetricDimension {
 ///
 /// After creating your scaling plan, you can use the AWS Auto Scaling console to     visualize forecasts for the specified metric. For more information, see View       Scaling Information for a Resource in the AWS Auto Scaling User       Guide.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredefinedLoadMetricSpecification {
     ///
     /// The metric type.
@@ -412,7 +412,7 @@ pub struct PredefinedLoadMetricSpecification {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredefinedLoadMetricSpecificationPredefinedLoadMetricTypeEnum {
     /// ALBTargetGroupRequestCount
     #[serde(rename = "ALBTargetGroupRequestCount")]
@@ -475,7 +475,7 @@ impl cfn_resources::CfnResource for PredefinedLoadMetricSpecification {
 
 /// PredefinedScalingMetricSpecification is a subproperty of TargetTrackingConfiguration that specifies a customized scaling metric for a     target tracking configuration to use with AWS Auto Scaling (Auto Scaling Plans).
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PredefinedScalingMetricSpecification {
     ///
     /// The metric type. The ALBRequestCountPerTarget metric type applies only to     Auto Scaling groups, Spot Fleet requests, and ECS services.
@@ -516,7 +516,7 @@ pub struct PredefinedScalingMetricSpecification {
     pub resource_label: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredefinedScalingMetricSpecificationPredefinedScalingMetricTypeEnum {
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
@@ -618,7 +618,7 @@ impl cfn_resources::CfnResource for PredefinedScalingMetricSpecification {
 /// AWS Auto Scaling creates target tracking scaling policies based on the scaling     instructions. Target tracking scaling policies adjust the capacity of your scalable     resource as required to maintain resource utilization at the target value that you     specified.
 ///
 /// AWS Auto Scaling also configures predictive scaling for your Amazon EC2 Auto     Scaling groups using a subset of properties, including the load metric, the scaling metric,     the target value for the scaling metric, the predictive scaling mode (forecast and scale or     forecast only), and the desired behavior when the forecast capacity exceeds the maximum     capacity of the resource. With predictive scaling, AWS Auto Scaling generates     forecasts with traffic predictions for the two days ahead and schedules scaling actions     that proactively add and remove resource capacity to match the forecast.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingInstruction {
     ///
     /// The customized load metric to use for predictive scaling. This property or a PredefinedLoadMetricSpecification is required when configuring     predictive scaling, and cannot be used otherwise.
@@ -824,7 +824,7 @@ pub struct ScalingInstruction {
     pub target_tracking_configurations: Vec<TargetTrackingConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingInstructionPredictiveScalingMaxCapacityBehaviorEnum {
     /// SetForecastCapacityToMaxCapacity
     #[serde(rename = "SetForecastCapacityToMaxCapacity")]
@@ -845,7 +845,7 @@ impl Default for ScalingInstructionPredictiveScalingMaxCapacityBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingInstructionPredictiveScalingModeEnum {
     /// ForecastAndScale
     #[serde(rename = "ForecastAndScale")]
@@ -862,7 +862,7 @@ impl Default for ScalingInstructionPredictiveScalingModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingInstructionScalableDimensionEnum {
     /// autoscaling:autoScalingGroup:DesiredCapacity
     #[serde(rename = "autoscaling:autoScalingGroup:DesiredCapacity")]
@@ -903,7 +903,7 @@ impl Default for ScalingInstructionScalableDimensionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingInstructionScalingPolicyUpdateBehaviorEnum {
     /// KeepExternalPolicies
     #[serde(rename = "KeepExternalPolicies")]
@@ -920,7 +920,7 @@ impl Default for ScalingInstructionScalingPolicyUpdateBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalingInstructionServiceNamespaceEnum {
     /// autoscaling
     #[serde(rename = "autoscaling")]
@@ -1000,7 +1000,7 @@ impl cfn_resources::CfnResource for ScalingInstruction {
 }
 
 /// TagFilter is a subproperty of ApplicationSource that specifies a tag for an application source to use with     AWS Auto Scaling (Auto Scaling Plans).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFilter {
     ///
     /// The tag key.
@@ -1069,7 +1069,7 @@ impl cfn_resources::CfnResource for TagFilter {
 }
 
 /// TargetTrackingConfiguration is a subproperty of ScalingInstruction that specifies a target tracking configuration to use with       AWS Auto Scaling (Auto Scaling Plans).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetTrackingConfiguration {
     ///
     /// A customized metric. You can specify either a predefined metric or a customized metric.

@@ -1,5 +1,5 @@
 /// Specifies a template constraint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchTemplateConstraint {
     ///
     /// The language code.

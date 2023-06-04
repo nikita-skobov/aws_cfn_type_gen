@@ -1,5 +1,5 @@
 /// The AWS::AppStream::StackUserAssociation resource associates the specified users with the specified stacks for Amazon AppStream 2.0. Users in an AppStream 2.0 user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStackUserAssociation {
     ///
     /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
@@ -59,7 +59,7 @@ pub struct CfnStackUserAssociation {
     pub user_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StackUserAssociationAuthenticationTypeEnum {
     /// API
     #[serde(rename = "API")]

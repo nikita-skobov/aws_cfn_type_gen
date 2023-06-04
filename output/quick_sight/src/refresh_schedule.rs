@@ -1,5 +1,5 @@
 /// Creates a refresh schedule for a dataset in Amazon QuickSight.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRefreshSchedule {
     ///
     /// The AWS account ID of the account that you are creating a schedule in.
@@ -41,7 +41,7 @@ pub struct CfnRefreshSchedule {
     pub att_arn: CfnRefreshSchedulearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRefreshSchedulearn;
 impl CfnRefreshSchedulearn {
     pub fn att_name(&self) -> &'static str {
@@ -68,7 +68,7 @@ impl cfn_resources::CfnResource for CfnRefreshSchedule {
 }
 
 /// The day that you want yout dataset to refresh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RefreshOnDay {
     ///
     /// The day of the month that you want your dataset to refresh. This value is required for monthly refresh  intervals.
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for RefreshOnDay {
 }
 
 /// A summary of a configured refresh schedule for a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RefreshScheduleMap {
     ///
     /// The type of refresh that a dataset undergoes. Valid values are as follows:
@@ -184,7 +184,7 @@ impl cfn_resources::CfnResource for RefreshScheduleMap {
 }
 
 /// The frequency for the refresh schedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduleFrequency {
     ///
     /// The interval between scheduled refreshes. Valid values are as follows:

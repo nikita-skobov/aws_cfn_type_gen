@@ -5,7 +5,7 @@
 /// You cannot associate a service and service network that are shared with a caller. The caller  must own either the service or the service network.
 ///
 /// As a result of this operation, the association is created in the service network account and  the association owner account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociation {
     /// Property description not available.
     ///
@@ -91,7 +91,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     pub att_status: CfnServiceNetworkServiceAssociationstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationarn;
 impl CfnServiceNetworkServiceAssociationarn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnServiceNetworkServiceAssociationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationcreatedat;
 impl CfnServiceNetworkServiceAssociationcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnServiceNetworkServiceAssociationcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationdnsentrydomainname;
 impl CfnServiceNetworkServiceAssociationdnsentrydomainname {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnServiceNetworkServiceAssociationdnsentrydomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationdnsentryhostedzoneid;
 impl CfnServiceNetworkServiceAssociationdnsentryhostedzoneid {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnServiceNetworkServiceAssociationdnsentryhostedzoneid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationid;
 impl CfnServiceNetworkServiceAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl CfnServiceNetworkServiceAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationservicearn;
 impl CfnServiceNetworkServiceAssociationservicearn {
     pub fn att_name(&self) -> &'static str {
@@ -139,7 +139,7 @@ impl CfnServiceNetworkServiceAssociationservicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationserviceid;
 impl CfnServiceNetworkServiceAssociationserviceid {
     pub fn att_name(&self) -> &'static str {
@@ -147,7 +147,7 @@ impl CfnServiceNetworkServiceAssociationserviceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationservicename;
 impl CfnServiceNetworkServiceAssociationservicename {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl CfnServiceNetworkServiceAssociationservicename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationservicenetworkarn;
 impl CfnServiceNetworkServiceAssociationservicenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnServiceNetworkServiceAssociationservicenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationservicenetworkid;
 impl CfnServiceNetworkServiceAssociationservicenetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -171,7 +171,7 @@ impl CfnServiceNetworkServiceAssociationservicenetworkid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationservicenetworkname;
 impl CfnServiceNetworkServiceAssociationservicenetworkname {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl CfnServiceNetworkServiceAssociationservicenetworkname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceNetworkServiceAssociationstatus;
 impl CfnServiceNetworkServiceAssociationstatus {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
 }
 
 /// DNS information about the service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DnsEntry {
     ///
     /// The domain name of the service.
@@ -254,7 +254,7 @@ impl cfn_resources::CfnResource for DnsEntry {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

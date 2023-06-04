@@ -11,7 +11,7 @@
 /// You can specify tags for the Spot Fleet request and instances launched by the fleet.       You cannot tag other resource types in a Spot Fleet request because only the         spot-fleet-request and instance resource types are       supported.
 ///
 /// For more information, see Spot Fleet       in the Amazon EC2 User Guide for Linux Instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSpotFleet {
     ///
     /// Describes the configuration of a Spot Fleet request.
@@ -28,7 +28,7 @@ pub struct CfnSpotFleet {
     pub att_id: CfnSpotFleetid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSpotFleetid;
 impl CfnSpotFleetid {
     pub fn att_name(&self) -> &'static str {
@@ -53,7 +53,7 @@ impl cfn_resources::CfnResource for CfnSpotFleet {
 }
 
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance. To exclude accelerator-enabled instance types, set Max to       0.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorCountRequest {
     ///
     /// The maximum number of accelerators. To specify no maximum limit, omit this     parameter. To exclude accelerator-enabled instance types, set Max to     0.
@@ -95,7 +95,7 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
 }
 
 /// The minimum and maximum amount of total accelerator memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -137,7 +137,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
 }
 
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit     this parameter.
@@ -181,7 +181,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
 /// Specifies a block device mapping.
 ///
 /// You can specify Ebs or VirtualName, but not both.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name (for example, /dev/sdh or xvdh).
@@ -252,7 +252,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 }
 
 /// Specifies a Classic Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClassicLoadBalancer {
     ///
     /// The name of the load balancer.
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for ClassicLoadBalancer {
 }
 
 /// Specifies the Classic Load Balancers to attach to a Spot Fleet. Spot Fleet registers the     running Spot Instances with these Classic Load Balancers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClassicLoadBalancersConfig {
     ///
     /// One or more Classic Load Balancers.
@@ -321,7 +321,7 @@ impl cfn_resources::CfnResource for ClassicLoadBalancersConfig {
 }
 
 /// Describes a block device for an EBS volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsBlockDevice {
     ///
     /// Indicates whether the EBS volume is deleted on instance termination. For more       information, see Preserving Amazon EBS volumes on instance termination in the         Amazon EC2 User Guide.
@@ -416,7 +416,7 @@ pub struct EbsBlockDevice {
     pub volume_type: Option<EbsBlockDeviceVolumeTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EbsBlockDeviceVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -476,7 +476,7 @@ impl cfn_resources::CfnResource for EbsBlockDevice {
 /// For information about creating a launch template, see      AWS::EC2::LaunchTemplate and      Create a launch template     in the Amazon EC2 User Guide.
 ///
 /// For examples of launch templates, see Examples.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FleetLaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -560,7 +560,7 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecification {
 }
 
 /// Describes a security group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GroupIdentifier {
     ///
     /// The ID of the security group.
@@ -589,7 +589,7 @@ impl cfn_resources::CfnResource for GroupIdentifier {
 }
 
 /// Describes an IAM instance profile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IamInstanceProfileSpecification {
     ///
     /// The Amazon Resource Name (ARN) of the instance profile.
@@ -619,7 +619,7 @@ impl cfn_resources::CfnResource for IamInstanceProfileSpecification {
 }
 
 /// Describes an IPv6 address.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceIpv6Address {
     ///
     /// The IPv6 address.
@@ -648,7 +648,7 @@ impl cfn_resources::CfnResource for InstanceIpv6Address {
 }
 
 /// Describes a network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The       public IP address can only be assigned to a network interface for eth0, and can only be       assigned to a new network interface, not an existing one. You cannot specify more than one       network interface in the request. If launching into a default subnet, the default value is       true.
@@ -808,7 +808,7 @@ impl cfn_resources::CfnResource for InstanceNetworkInterfaceSpecification {
 /// To limit the list of instance types from which Amazon EC2 can identify matching instance types,      you can use one of the following parameters, but not both in the same request:
 ///
 /// For more information, see Attribute-based instance type selection for EC2 Fleet, Attribute-based instance type selection for Spot Fleet, and Spot        placement score in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceRequirementsRequest {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on     an instance.
@@ -1193,7 +1193,7 @@ pub struct InstanceRequirementsRequest {
     pub vcpu_count: Option<VCpuCountRangeRequest>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestBareMetalEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1214,7 +1214,7 @@ impl Default for InstanceRequirementsRequestBareMetalEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestBurstablePerformanceEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1235,7 +1235,7 @@ impl Default for InstanceRequirementsRequestBurstablePerformanceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestLocalStorageEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -1319,7 +1319,7 @@ impl cfn_resources::CfnResource for InstanceRequirementsRequest {
 }
 
 /// Specifies a launch template and overrides.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateConfig {
     ///
     /// The launch template to use. Make sure that the launch template does not contain the       NetworkInterfaceId parameter because you can't specify a network interface     ID in a Spot Fleet.
@@ -1365,7 +1365,7 @@ impl cfn_resources::CfnResource for LaunchTemplateConfig {
 }
 
 /// Specifies overrides for a launch template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateOverrides {
     ///
     /// The Availability Zone in which to launch the instances.
@@ -1464,7 +1464,7 @@ pub struct LaunchTemplateOverrides {
     pub weighted_capacity: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LaunchTemplateOverridesInstanceTypeEnum {
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
@@ -4032,7 +4032,7 @@ impl cfn_resources::CfnResource for LaunchTemplateOverrides {
 }
 
 /// Specifies the Classic Load Balancers and target groups to attach to a Spot Fleet     request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancersConfig {
     ///
     /// The Classic Load Balancers.
@@ -4082,7 +4082,7 @@ impl cfn_resources::CfnResource for LoadBalancersConfig {
 }
 
 /// The minimum and maximum amount of memory per vCPU, in GiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryGiBPerVCpuRequest {
     ///
     /// The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this     parameter.
@@ -4124,7 +4124,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
 }
 
 /// The minimum and maximum amount of memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryMiBRequest {
     ///
     /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -4168,7 +4168,7 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
 ///
 /// Default: No minimum or maximum limits
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkBandwidthGbpsRequest {
     ///
     /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this     parameter.
@@ -4210,7 +4210,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
 }
 
 /// The minimum and maximum number of network interfaces.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterfaceCountRequest {
     ///
     /// The maximum number of network interfaces. To specify no maximum limit, omit this     parameter.
@@ -4252,7 +4252,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
 }
 
 /// Describes a secondary private IPv4 address for a network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrivateIpAddressSpecification {
     ///
     /// Indicates whether the private IPv4 address is the primary private IPv4 address. Only       one IPv4 address can be designated as primary.
@@ -4293,7 +4293,7 @@ impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
 }
 
 /// The Spot Instance replacement strategy to use when Amazon EC2 emits a signal that your       Spot Instance is at an elevated risk of being interrupted. For more information, see         Capacity rebalancing in the Amazon EC2 User Guide for Linux Instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotCapacityRebalance {
     ///
     /// The replacement strategy to use. Only available for fleets of type       maintain.
@@ -4332,7 +4332,7 @@ pub struct SpotCapacityRebalance {
     pub termination_delay: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotCapacityRebalanceReplacementStrategyEnum {
     /// launch
     #[serde(rename = "launch")]
@@ -4364,7 +4364,7 @@ impl cfn_resources::CfnResource for SpotCapacityRebalance {
 }
 
 /// Specifies the launch specification for one or more Spot Instances. If you include     On-Demand capacity in your fleet request, you can't use       SpotFleetLaunchSpecification; you must use LaunchTemplateConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotFleetLaunchSpecification {
     ///
     /// One or more block devices that are mapped to the Spot Instances. You can't specify both       a snapshot ID and an encryption value. This is because only blank volumes can be       encrypted on creation. If a snapshot is the basis for a volume, it is not blank and its       encryption status is used for the volume encryption status.
@@ -4594,7 +4594,7 @@ pub struct SpotFleetLaunchSpecification {
     pub weighted_capacity: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetLaunchSpecificationInstanceTypeEnum {
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
@@ -7174,7 +7174,7 @@ impl cfn_resources::CfnResource for SpotFleetLaunchSpecification {
 }
 
 /// Describes whether monitoring is enabled.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotFleetMonitoring {
     ///
     /// Enables monitoring for the instance.
@@ -7208,7 +7208,7 @@ impl cfn_resources::CfnResource for SpotFleetMonitoring {
 /// Specifies the configuration of a Spot Fleet request. For more information, see Spot Fleet       in the Amazon EC2 User Guide.
 ///
 /// You must specify either LaunchSpecifications or       LaunchTemplateConfigs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotFleetRequestConfigData {
     ///
     /// The strategy that determines how to allocate the target Spot Instance capacity across the Spot Instance       pools specified by the Spot Fleet launch configuration. For more information, see Allocation         strategies for Spot Instances in the Amazon EC2 User Guide.
@@ -7514,7 +7514,7 @@ pub struct SpotFleetRequestConfigData {
     pub valid_until: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataAllocationStrategyEnum {
     /// capacityOptimized
     #[serde(rename = "capacityOptimized")]
@@ -7543,7 +7543,7 @@ impl Default for SpotFleetRequestConfigDataAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
     /// default
     #[serde(rename = "default")]
@@ -7560,7 +7560,7 @@ impl Default for SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataInstanceInterruptionBehaviorEnum {
     /// hibernate
     #[serde(rename = "hibernate")]
@@ -7581,7 +7581,7 @@ impl Default for SpotFleetRequestConfigDataInstanceInterruptionBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataOnDemandAllocationStrategyEnum {
     /// lowestPrice
     #[serde(rename = "lowestPrice")]
@@ -7598,7 +7598,7 @@ impl Default for SpotFleetRequestConfigDataOnDemandAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataTargetCapacityUnitTypeEnum {
     /// memory-mib
     #[serde(rename = "memory-mib")]
@@ -7619,7 +7619,7 @@ impl Default for SpotFleetRequestConfigDataTargetCapacityUnitTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetRequestConfigDataTypeEnum {
     /// instant
     #[serde(rename = "instant")]
@@ -7663,7 +7663,7 @@ impl cfn_resources::CfnResource for SpotFleetRequestConfigData {
 }
 
 /// The tags for a Spot Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotFleetTagSpecification {
     ///
     /// The type of resource. Currently, the only resource type that is supported is         instance. To tag the Spot Fleet request on creation, use the         TagSpecifications parameter in         SpotFleetRequestConfigData       .
@@ -7692,7 +7692,7 @@ pub struct SpotFleetTagSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotFleetTagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
@@ -8056,7 +8056,7 @@ impl cfn_resources::CfnResource for SpotFleetTagSpecification {
 }
 
 /// The strategies for managing your Spot Instances that are at an elevated risk of being       interrupted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotMaintenanceStrategies {
     ///
     /// The Spot Instance replacement strategy to use when Amazon EC2 emits a signal that your       Spot Instance is at an elevated risk of being interrupted. For more information, see       Capacity rebalancing in the Amazon EC2 User Guide for Linux Instances.
@@ -8090,7 +8090,7 @@ impl cfn_resources::CfnResource for SpotMaintenanceStrategies {
 }
 
 /// Describes Spot Instance placement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotPlacement {
     ///
     /// The Availability Zone.
@@ -8133,7 +8133,7 @@ pub struct SpotPlacement {
     pub tenancy: Option<SpotPlacementTenancyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotPlacementTenancyEnum {
     /// dedicated
     #[serde(rename = "dedicated")]
@@ -8175,7 +8175,7 @@ impl cfn_resources::CfnResource for SpotPlacement {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -8213,7 +8213,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes a load balancer target group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroup {
     ///
     /// The Amazon Resource Name (ARN) of the target group.
@@ -8242,7 +8242,7 @@ impl cfn_resources::CfnResource for TargetGroup {
 }
 
 /// Describes the target groups to attach to a Spot Fleet. Spot Fleet registers the       running Spot Instances with these target groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetGroupsConfig {
     ///
     /// One or more target groups.
@@ -8282,7 +8282,7 @@ impl cfn_resources::CfnResource for TargetGroupsConfig {
 }
 
 /// The minimum and maximum amount of total local storage, in GB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalLocalStorageGBRequest {
     ///
     /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this     parameter.
@@ -8324,7 +8324,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
 }
 
 /// The minimum and maximum number of vCPUs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VCpuCountRangeRequest {
     ///
     /// The maximum number of vCPUs. To specify no maximum limit, omit this parameter.

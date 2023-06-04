@@ -1,5 +1,5 @@
 /// The AWS::EMRServerless::Application resource specifies an EMR Serverless       application. An application uses open source analytics frameworks to run jobs that       process data. To create an application, you must specify the release version for the       open source framework version you want to use and the type of application you want, such       as Apache Spark or Apache Hive. After you create an application, you can submit data       processing jobs or interactive requests to it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     /// The CPU architecture type of the application. Allowed values: X86_64 or ARM64
     ///
@@ -160,7 +160,7 @@ pub struct CfnApplication {
     pub att_arn: CfnApplicationarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationArchitectureEnum {
     /// X86_64 or ARM64
     #[serde(rename = "X86_64 or ARM64")]
@@ -173,7 +173,7 @@ impl Default for ApplicationArchitectureEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapplicationid;
 impl CfnApplicationapplicationid {
     pub fn att_name(&self) -> &'static str {
@@ -181,7 +181,7 @@ impl CfnApplicationapplicationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationarn;
 impl CfnApplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// The conﬁguration for an application to automatically start on job submission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoStartConfiguration {
     ///
     /// Enables the application to automatically start on job submission. Defaults to       true.
@@ -298,7 +298,7 @@ impl cfn_resources::CfnResource for AutoStartConfiguration {
 }
 
 /// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoStopConfiguration {
     ///
     /// Enables the application to automatically stop after a certain amount of time being       idle. Defaults to true.
@@ -359,7 +359,7 @@ impl cfn_resources::CfnResource for AutoStopConfiguration {
 }
 
 /// The ImageConfigurationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageConfigurationInput {
     /// Property description not available.
     ///
@@ -388,7 +388,7 @@ impl cfn_resources::CfnResource for ImageConfigurationInput {
 }
 
 /// The initial capacity configuration per worker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InitialCapacityConfig {
     ///
     /// The resource configuration of the initial capacity configuration.
@@ -452,7 +452,7 @@ impl cfn_resources::CfnResource for InitialCapacityConfig {
 }
 
 /// The initial capacity configuration per worker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InitialCapacityConfigKeyValuePair {
     ///
     /// The worker type for an analytics framework. For Spark applications, the key can either       be set to Driver or Executor. For Hive applications, it can be       set to HiveDriver or TezTask.
@@ -522,7 +522,7 @@ impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
 }
 
 /// The maximum allowed cumulative resources for an application. No new resources will be     created once the limit is hit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaximumAllowedResources {
     ///
     /// The maximum allowed CPU for an application.
@@ -658,7 +658,7 @@ impl cfn_resources::CfnResource for MaximumAllowedResources {
 }
 
 /// The network configuration for customer VPC connectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// The array of security group Ids for customer VPC connectivity.
@@ -754,7 +754,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -792,7 +792,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The resource configuration of the initial capacity configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkerConfiguration {
     ///
     /// Minimum: 1
@@ -922,7 +922,7 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 }
 
 /// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkerTypeSpecificationInput {
     /// Property description not available.
     ///

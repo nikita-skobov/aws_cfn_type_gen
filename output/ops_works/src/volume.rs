@@ -1,5 +1,5 @@
 /// Describes an instance's Amazon EBS volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolume {
     ///
     /// The Amazon EC2 volume ID.

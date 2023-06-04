@@ -1,5 +1,5 @@
 /// Allows you to create a workflow with specified steps and step details the workflow invokes after file transfer completes.    After creating a workflow, you can associate the workflow created with any transfer servers by specifying the workflow-details field in CreateServer and UpdateServer operations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkflow {
     ///
     /// Specifies the text description for the workflow.
@@ -65,7 +65,7 @@ pub struct CfnWorkflow {
     pub att_workflow_id: CfnWorkflowworkflowid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkflowarn;
 impl CfnWorkflowarn {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnWorkflowarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkflowworkflowid;
 impl CfnWorkflowworkflowid {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl cfn_resources::CfnResource for CfnWorkflow {
 /// Details for a step that performs a file copy.
 ///
 /// Consists of the following values:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CopyStepDetails {
     ///
     /// Specifies the location for the file being copied. Use ${Transfer:UserName} or     ${Transfer:UploadDate} in this field to parametrize the destination prefix by    username or uploaded date.
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for CopyStepDetails {
 /// Details for a step that invokes an AWS Lambda function.
 ///
 /// Consists of the Lambda function's name, target, and timeout (in seconds).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -286,7 +286,7 @@ impl cfn_resources::CfnResource for CustomStepDetails {
 /// Details for a step that decrypts an encrypted file.
 ///
 /// Consists of the following values:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecryptStepDetails {
     ///
     /// Specifies the location for the file being decrypted. Use ${Transfer:UserName} or    ${Transfer:UploadDate} in this field to parametrize the destination prefix by    username or uploaded date.
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for DecryptStepDetails {
 }
 
 /// An object that contains the name and file location for a file being deleted by a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeleteStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -420,7 +420,7 @@ impl cfn_resources::CfnResource for DeleteStepDetails {
 }
 
 /// Specifies the Amazon EFS identifier and the path for the file being used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EfsInputFileLocation {
     ///
     /// The identifier of the file system, assigned by Amazon EFS.
@@ -462,7 +462,7 @@ impl cfn_resources::CfnResource for EfsInputFileLocation {
 }
 
 /// Specifies the location for the file that's being processed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputFileLocation {
     ///
     /// Specifies the details for the Amazon Elastic File System (Amazon EFS) file that's being    decrypted.
@@ -512,7 +512,7 @@ impl cfn_resources::CfnResource for InputFileLocation {
 }
 
 /// Specifies the S3 details for the file being used, such as bucket, ETag, and so    forth.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3FileLocation {
     ///
     /// Specifies the details for the file location for the file that's being used in the workflow. Only applicable if you are using Amazon S3 storage.
@@ -546,7 +546,7 @@ impl cfn_resources::CfnResource for S3FileLocation {
 }
 
 /// Specifies the details for the Amazon S3 location for an input file to a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3InputFileLocation {
     ///
     /// Specifies the S3 bucket for the customer input file.
@@ -588,7 +588,7 @@ impl cfn_resources::CfnResource for S3InputFileLocation {
 }
 
 /// Specifies the key-value pair that are assigned to a file during the execution of a Tagging step.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Tag {
     ///
     /// The name assigned to the tag that you create.
@@ -634,7 +634,7 @@ impl cfn_resources::CfnResource for S3Tag {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -674,7 +674,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Details for a step that creates one or more tags.
 ///
 /// You specify one or more tags. Each tag contains a key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagStepDetails {
     ///
     /// The name of the step, used as an identifier.
@@ -730,7 +730,7 @@ impl cfn_resources::CfnResource for TagStepDetails {
 }
 
 /// The basic building block of a workflow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkflowStep {
     ///
     /// Details for a step that performs a file copy.

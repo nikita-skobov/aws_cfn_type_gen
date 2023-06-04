@@ -3,7 +3,7 @@
 /// This type supports updates. For more information about updating stacks, see AWS         CloudFormation Stacks Updates.
 ///
 /// For details about the settings for DB security group ingress, see AuthorizeDBSecurityGroupIngress.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBSecurityGroupIngress {
     ///
     /// The IP range to authorize.

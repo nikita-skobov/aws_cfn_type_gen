@@ -1,5 +1,5 @@
 /// Provisions a state machine. A state machine consists of a collection of states that can     do work (Task states), determine to which states to transition next       (Choice states), stop an execution with an error (Fail     states), and so on. State machines are specified using a JSON-based, structured     language.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStateMachine {
     ///
     /// The Amazon States Language definition of the state machine. The state machine definition must be in JSON or YAML, and the format of the object must     match the format of your AWS Step Functions template file. See Amazon States Language.
@@ -140,7 +140,7 @@ pub struct CfnStateMachine {
     pub att_state_machine_revision_id: CfnStateMachinestatemachinerevisionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStateMachinearn;
 impl CfnStateMachinearn {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnStateMachinearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStateMachinename;
 impl CfnStateMachinename {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl CfnStateMachinename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStateMachinestatemachinerevisionid;
 impl CfnStateMachinestatemachinerevisionid {
     pub fn att_name(&self) -> &'static str {
@@ -191,7 +191,7 @@ impl cfn_resources::CfnResource for CfnStateMachine {
 }
 
 /// Defines a CloudWatch log group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogsLogGroup {
     ///
     /// The ARN of the the CloudWatch log group to which you want your logs emitted to. The ARN    must end with :*
@@ -221,7 +221,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogGroup {
 }
 
 /// Defines a destination for LoggingConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogDestination {
     ///
     /// An object describing a CloudWatch log group. For more information, see AWS::Logs::LogGroup in the AWS CloudFormation User Guide.
@@ -255,7 +255,7 @@ impl cfn_resources::CfnResource for LogDestination {
 }
 
 /// Defines what execution history events are logged and where they are logged.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfiguration {
     ///
     /// An array of objects that describes where your execution history events will be logged.    Limited to size 1. Required, if your log level is not set to OFF.
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 }
 
 /// Defines the S3 bucket location where a state machine definition is stored. The state machine definition must be a JSON or YAML file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The name of the S3 bucket where the state machine definition JSON or YAML file is stored.
@@ -361,7 +361,7 @@ impl cfn_resources::CfnResource for S3Location {
 }
 
 /// The TagsEntry property specifies tags to identify a     state machine.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// The key for a key-value pair in a tag entry.
@@ -401,7 +401,7 @@ impl cfn_resources::CfnResource for TagsEntry {
 }
 
 /// Selects whether or not the state machine's AWS X-Ray tracing is enabled. To configure     your state machine to send trace data to X-Ray, set Enabled to       true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TracingConfiguration {
     ///
     /// When set to true, X-Ray tracing is enabled.

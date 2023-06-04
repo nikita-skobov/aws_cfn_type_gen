@@ -9,7 +9,7 @@
 /// Private Hosted Zones
 ///
 /// You can associate health checks with failover records in a private hosted zone. Note the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHealthCheck {
     ///
     /// A complex type that contains detailed information about one health check.
@@ -40,7 +40,7 @@ pub struct CfnHealthCheck {
     pub att_health_check_id: CfnHealthCheckhealthcheckid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHealthCheckhealthcheckid;
 impl CfnHealthCheckhealthcheckid {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl cfn_resources::CfnResource for CfnHealthCheck {
 }
 
 /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlarmIdentifier {
     ///
     /// The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use 			to determine whether this health check is healthy.
@@ -100,7 +100,7 @@ pub struct AlarmIdentifier {
     pub region: AlarmIdentifierRegionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmIdentifierRegionEnum {
     /// af-south-1
     #[serde(rename = "af-south-1")]
@@ -262,7 +262,7 @@ impl cfn_resources::CfnResource for AlarmIdentifier {
 }
 
 /// A complex type that contains information about the health check.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckConfig {
     ///
     /// A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 			health checkers to use to determine whether the specified health check is 			healthy.
@@ -571,7 +571,7 @@ pub struct HealthCheckConfig {
     pub cfn_type: HealthCheckConfigTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HealthCheckConfigInsufficientDataHealthStatusEnum {
     /// Healthy
     #[serde(rename = "Healthy")]
@@ -592,7 +592,7 @@ impl Default for HealthCheckConfigInsufficientDataHealthStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HealthCheckConfigTypeEnum {
     /// CALCULATED
     #[serde(rename = "CALCULATED")]
@@ -783,7 +783,7 @@ impl cfn_resources::CfnResource for HealthCheckConfig {
 }
 
 /// The HealthCheckTag property describes one key-value pair that is associated with an AWS::Route53::HealthCheck resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckTag {
     ///
     /// The value of Key depends on the operation that you want to 			perform:

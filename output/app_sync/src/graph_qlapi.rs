@@ -1,5 +1,5 @@
 /// The AWS::AppSync::GraphQLApi resource creates a new AWS AppSync GraphQL API. This is     the top-level construct for your application. For more information, see Quick Start in the AWS AppSync       Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApi {
     ///
     /// A list of additional authentication providers for the GraphqlApi     API.
@@ -153,7 +153,7 @@ pub struct CfnGraphQLApi {
     pub att_realtime_url: CfnGraphQLApirealtimeurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApiapiid;
 impl CfnGraphQLApiapiid {
     pub fn att_name(&self) -> &'static str {
@@ -161,7 +161,7 @@ impl CfnGraphQLApiapiid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApiarn;
 impl CfnGraphQLApiarn {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl CfnGraphQLApiarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApigraphqldns;
 impl CfnGraphQLApigraphqldns {
     pub fn att_name(&self) -> &'static str {
@@ -177,7 +177,7 @@ impl CfnGraphQLApigraphqldns {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApigraphqlurl;
 impl CfnGraphQLApigraphqlurl {
     pub fn att_name(&self) -> &'static str {
@@ -185,7 +185,7 @@ impl CfnGraphQLApigraphqlurl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApirealtimedns;
 impl CfnGraphQLApirealtimedns {
     pub fn att_name(&self) -> &'static str {
@@ -193,7 +193,7 @@ impl CfnGraphQLApirealtimedns {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGraphQLApirealtimeurl;
 impl CfnGraphQLApirealtimeurl {
     pub fn att_name(&self) -> &'static str {
@@ -232,7 +232,7 @@ impl cfn_resources::CfnResource for CfnGraphQLApi {
 }
 
 /// Describes an additional authentication provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdditionalAuthenticationProvider {
     ///
     /// The authentication type for API key, AWS Identity and Access Management, OIDC, Amazon Cognito user pools, or AWS Lambda.
@@ -284,7 +284,7 @@ pub struct AdditionalAuthenticationProvider {
     pub user_pool_config: Option<CognitoUserPoolConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AdditionalAuthenticationProviderAuthenticationTypeEnum {
     /// API_KEY
     #[serde(rename = "API_KEY")]
@@ -340,7 +340,7 @@ impl cfn_resources::CfnResource for AdditionalAuthenticationProvider {
 }
 
 /// Describes an Amazon Cognito user pool configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoUserPoolConfig {
     ///
     /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for CognitoUserPoolConfig {
 }
 
 /// Configuration for AWS Lambda function authorization.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaAuthorizerConfig {
     ///
     /// The number of seconds a response should be cached for. The default is 0 seconds, which disables caching. If     you don't specify a value for authorizerResultTtlInSeconds, the default value is used. The maximum     value is one hour (3600 seconds). The Lambda function can override this by returning a       ttlOverride key in its response.
@@ -454,7 +454,7 @@ impl cfn_resources::CfnResource for LambdaAuthorizerConfig {
 /// The LogConfig property type specifies the logging configuration when writing GraphQL operations     and tracing to Amazon CloudWatch for an AWS AppSync GraphQL API.
 ///
 /// LogConfig is a property of the AWS::AppSync::GraphQLApi property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogConfig {
     ///
     /// The service role that AWS AppSync will assume to publish to Amazon CloudWatch Logs in your     account.
@@ -512,7 +512,7 @@ impl cfn_resources::CfnResource for LogConfig {
 /// The OpenIDConnectConfig property type specifies the optional authorization configuration for     using an OpenID Connect compliant service with your GraphQL endpoint for an AWS AppSync GraphQL     API.
 ///
 /// OpenIDConnectConfig is a property of the AWS::AppSync::GraphQLApi property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenIDConnectConfig {
     ///
     /// The number of milliseconds that a token is valid after being authenticated.
@@ -584,7 +584,7 @@ impl cfn_resources::CfnResource for OpenIDConnectConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -622,7 +622,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The UserPoolConfig property type specifies the optional authorization configuration for using       Amazon Cognito user pools with your GraphQL endpoint for an AWS AppSync GraphQL API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserPoolConfig {
     ///
     /// A regular expression for validating the incoming Amazon Cognito user pool app client     ID. If this value isn't set, no filtering is applied.

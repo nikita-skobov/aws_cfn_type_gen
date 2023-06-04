@@ -1,5 +1,5 @@
 /// Details about a Code signing configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCodeSigningConfig {
     ///
     /// List of allowed publishers.
@@ -47,7 +47,7 @@ pub struct CfnCodeSigningConfig {
     pub att_code_signing_config_id: CfnCodeSigningConfigcodesigningconfigid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCodeSigningConfigcodesigningconfigarn;
 impl CfnCodeSigningConfigcodesigningconfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -55,7 +55,7 @@ impl CfnCodeSigningConfigcodesigningconfigarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCodeSigningConfigcodesigningconfigid;
 impl CfnCodeSigningConfigcodesigningconfigid {
     pub fn att_name(&self) -> &'static str {
@@ -106,7 +106,7 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
 }
 
 /// List of signing profiles that can sign a code package.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AllowedPublishers {
     ///
     /// The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user    who can sign a code package.
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for AllowedPublishers {
 }
 
 /// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeSigningPolicies {
     ///
     /// Code signing configuration policy for deployment validation failure. If you set the policy to    Enforce, Lambda blocks the deployment request if signature validation checks fail. If you set the    policy to Warn, Lambda allows the deployment and creates a CloudWatch log.
@@ -161,7 +161,7 @@ pub struct CodeSigningPolicies {
     pub untrusted_artifact_on_deployment: CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
     /// Enforce
     #[serde(rename = "Enforce")]

@@ -1,5 +1,5 @@
 /// The AWS::Route53Resolver::ResolverDNSSECConfig resource is a complex type that contains information about a configuration for DNSSEC validation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverDNSSECConfig {
     ///
     /// The ID of the virtual private cloud (VPC) that you're configuring the DNSSEC validation status for.
@@ -27,7 +27,7 @@ pub struct CfnResolverDNSSECConfig {
     pub att_validation_status: CfnResolverDNSSECConfigvalidationstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverDNSSECConfigid;
 impl CfnResolverDNSSECConfigid {
     pub fn att_name(&self) -> &'static str {
@@ -35,7 +35,7 @@ impl CfnResolverDNSSECConfigid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverDNSSECConfigownerid;
 impl CfnResolverDNSSECConfigownerid {
     pub fn att_name(&self) -> &'static str {
@@ -43,7 +43,7 @@ impl CfnResolverDNSSECConfigownerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverDNSSECConfigvalidationstatus;
 impl CfnResolverDNSSECConfigvalidationstatus {
     pub fn att_name(&self) -> &'static str {

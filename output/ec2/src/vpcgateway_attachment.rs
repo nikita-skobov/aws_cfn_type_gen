@@ -1,5 +1,5 @@
 /// Attaches an internet gateway, or a virtual private gateway to a VPC, enabling     connectivity between the internet and the VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCGatewayAttachment {
     ///
     /// The ID of the internet gateway.

@@ -5,7 +5,7 @@
 /// To send VPC traffic to an attached transit gateway, add a route to the VPC route table     using AWS::EC2::Route.
 ///
 /// To update tags for a VPC attachment after creation without replacing the attachment, use      AWS::EC2::TransitGatewayVpcAttachment instead.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayAttachment {
     ///
     /// The VPC attachment options, in JSON or YAML.
@@ -70,7 +70,7 @@ pub struct CfnTransitGatewayAttachment {
     pub att_id: CfnTransitGatewayAttachmentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayAttachmentid;
 impl CfnTransitGatewayAttachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl cfn_resources::CfnResource for CfnTransitGatewayAttachment {
 }
 
 /// Describes the VPC attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Options {
     ///
     /// Indicates whether appliance mode support is enabled.
@@ -140,7 +140,7 @@ pub struct Options {
     pub ipv6_support: Option<OptionsIpv6SupportEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsApplianceModeSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -157,7 +157,7 @@ impl Default for OptionsApplianceModeSupportEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsDnsSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -174,7 +174,7 @@ impl Default for OptionsDnsSupportEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsIpv6SupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for Options {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

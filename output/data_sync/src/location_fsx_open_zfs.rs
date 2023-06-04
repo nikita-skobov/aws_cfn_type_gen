@@ -1,5 +1,5 @@
 /// The AWS::DataSync::LocationFSxOpenZFS resource specifies an endpoint for an Amazon FSx for OpenZFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationFSxOpenZFS {
     ///
     /// The Amazon Resource Name (ARN) of the FSx for OpenZFS file system.
@@ -82,7 +82,7 @@ pub struct CfnLocationFSxOpenZFS {
     pub att_location_uri: CfnLocationFSxOpenZFSlocationuri,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationFSxOpenZFSlocationarn;
 impl CfnLocationFSxOpenZFSlocationarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnLocationFSxOpenZFSlocationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationFSxOpenZFSlocationuri;
 impl CfnLocationFSxOpenZFSlocationuri {
     pub fn att_name(&self) -> &'static str {
@@ -152,7 +152,7 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
 }
 
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MountOptions {
     ///
     /// The specific NFS version that you want DataSync to use to mount your NFS share. If the server refuses to use the version specified, the sync will fail. If you don't specify a version, DataSync defaults to AUTOMATIC. That is, DataSync automatically selects a version based on negotiation with the NFS server.
@@ -173,7 +173,7 @@ pub struct MountOptions {
     pub version: Option<MountOptionsVersionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MountOptionsVersionEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -213,7 +213,7 @@ impl cfn_resources::CfnResource for MountOptions {
 }
 
 /// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NFS {
     ///
     /// Represents the mount options that are available for DataSync to access an NFS location.
@@ -244,7 +244,7 @@ impl cfn_resources::CfnResource for NFS {
 }
 
 /// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Protocol {
     ///
     /// Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system.
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for Protocol {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

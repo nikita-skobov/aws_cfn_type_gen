@@ -1,5 +1,5 @@
 /// The AWS::Budgets::BudgetsAction resource enables you to take predefined actions that are initiated when a budget threshold has been exceeded. 		For more information, see Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBudgetsAction {
     /// The trigger threshold of the action.
     ///
@@ -98,7 +98,7 @@ pub struct CfnBudgetsAction {
     pub att_action_id: CfnBudgetsActionactionid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BudgetsActionActionTypeEnum {
     /// APPLY_IAM_POLICY
     #[serde(rename = "APPLY_IAM_POLICY")]
@@ -119,7 +119,7 @@ impl Default for BudgetsActionActionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BudgetsActionApprovalModelEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -136,7 +136,7 @@ impl Default for BudgetsActionApprovalModelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BudgetsActionNotificationTypeEnum {
     /// ACTUAL
     #[serde(rename = "ACTUAL")]
@@ -153,7 +153,7 @@ impl Default for BudgetsActionNotificationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBudgetsActionactionid;
 impl CfnBudgetsActionactionid {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
 }
 
 /// The trigger threshold of the action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionThreshold {
     /// The type of threshold for a notification.
     ///
@@ -227,7 +227,7 @@ pub struct ActionThreshold {
     pub value: f64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ActionThresholdTypeEnum {
     /// ABSOLUTE_VALUE
     #[serde(rename = "ABSOLUTE_VALUE")]
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for ActionThreshold {
 }
 
 /// The definition is where you specify all of the type-specific parameters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Definition {
     /// The AWS Identity and Access Management (IAM) action definition details.
     ///
@@ -322,7 +322,7 @@ impl cfn_resources::CfnResource for Definition {
 }
 
 /// The AWS Identity and Access Management (IAM) action definition details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IamActionDefinition {
     /// A list of groups to be attached. There must be at least one group.
     ///
@@ -444,7 +444,7 @@ impl cfn_resources::CfnResource for IamActionDefinition {
 }
 
 /// The service control policies (SCP) action definition details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScpActionDefinition {
     /// The policy ID attached.
     ///
@@ -521,7 +521,7 @@ impl cfn_resources::CfnResource for ScpActionDefinition {
 }
 
 /// The Amazon EC2 Systems Manager (SSM) action definition details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SsmActionDefinition {
     /// The EC2 and RDS instance IDs.
     ///
@@ -564,7 +564,7 @@ pub struct SsmActionDefinition {
     pub subtype: SsmActionDefinitionSubtypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SsmActionDefinitionSubtypeEnum {
     /// STOP_EC2_INSTANCES
     #[serde(rename = "STOP_EC2_INSTANCES")]
@@ -629,7 +629,7 @@ impl cfn_resources::CfnResource for SsmActionDefinition {
 /// The subscriber to a budget notification. The subscriber consists of a subscription type and either an Amazon SNS topic or an email address.
 ///
 /// For example, an email subscriber has the following parameters:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subscriber {
     ///
     /// The address that AWS sends budget notifications to, either an SNS topic or an email.

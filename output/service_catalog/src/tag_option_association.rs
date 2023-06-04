@@ -1,5 +1,5 @@
 /// Associate the specified TagOption with the specified portfolio or product.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTagOptionAssociation {
     ///
     /// The resource identifier.

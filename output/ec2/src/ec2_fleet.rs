@@ -1,5 +1,5 @@
 /// Specifies the configuration information to launch a fleet--or group--of instances. An     EC2 Fleet can launch multiple instance types across multiple Availability Zones, using the     On-Demand Instance, Reserved Instance, and Spot Instance purchasing models together. Using     EC2 Fleet, you can define separate On-Demand and Spot capacity targets, specify the     instance types that work best for your applications, and specify how Amazon EC2 should     distribute your fleet capacity within each purchasing model. For more information, see       Launching an       EC2 Fleet in the Amazon EC2 User Guide for Linux     Instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEC2Fleet {
     ///
     /// Reserved.
@@ -163,7 +163,7 @@ pub struct CfnEC2Fleet {
     pub att_fleet_id: CfnEC2Fleetfleetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EC2FleetExcessCapacityTerminationPolicyEnum {
     /// no-termination
     #[serde(rename = "no-termination")]
@@ -180,7 +180,7 @@ impl Default for EC2FleetExcessCapacityTerminationPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EC2FleetTypeEnum {
     /// instant
     #[serde(rename = "instant")]
@@ -201,7 +201,7 @@ impl Default for EC2FleetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEC2Fleetfleetid;
 impl CfnEC2Fleetfleetid {
     pub fn att_name(&self) -> &'static str {
@@ -243,7 +243,7 @@ impl cfn_resources::CfnResource for CfnEC2Fleet {
 }
 
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance. To exclude accelerator-enabled instance types, set Max to       0.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorCountRequest {
     ///
     /// The maximum number of accelerators. To specify no maximum limit, omit this     parameter. To exclude accelerator-enabled instance types, set Max to     0.
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
 }
 
 /// The minimum and maximum amount of total accelerator memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -327,7 +327,7 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
 }
 
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit     this parameter.
@@ -369,7 +369,7 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
 }
 
 /// The Spot Instance replacement strategy to use when Amazon EC2 emits a rebalance     notification signal that your Spot Instance is at an elevated risk of being interrupted.     For more information, see Capacity rebalancing in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityRebalance {
     ///
     /// The replacement strategy to use. Only available for fleets of type     maintain.
@@ -408,7 +408,7 @@ pub struct CapacityRebalance {
     pub termination_delay: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityRebalanceReplacementStrategyEnum {
     /// launch
     #[serde(rename = "launch")]
@@ -442,7 +442,7 @@ impl cfn_resources::CfnResource for CapacityRebalance {
 /// Describes the strategy for using unused Capacity Reservations for fulfilling On-Demand     capacity.
 ///
 /// For more information about Capacity Reservations, see On-Demand Capacity       Reservations in the Amazon EC2 User Guide. For examples of using     Capacity Reservations in an EC2 Fleet, see EC2 Fleet example       configurations in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityReservationOptionsRequest {
     ///
     /// Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity.
@@ -463,7 +463,7 @@ pub struct CapacityReservationOptionsRequest {
     pub usage_strategy: Option<CapacityReservationOptionsRequestUsageStrategyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CapacityReservationOptionsRequestUsageStrategyEnum {
     /// use-capacity-reservations-first
     #[serde(rename = "use-capacity-reservations-first")]
@@ -493,7 +493,7 @@ impl cfn_resources::CfnResource for CapacityReservationOptionsRequest {
 /// Specifies a launch template and overrides for an EC2 Fleet.
 ///
 /// FleetLaunchTemplateConfigRequest is a property of the AWS::EC2::EC2Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FleetLaunchTemplateConfigRequest {
     ///
     /// The launch template to use. You must specify either the launch template ID or launch     template name in the request.
@@ -543,7 +543,7 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateConfigRequest {
 /// Specifies overrides for a launch template for an EC2 Fleet.
 ///
 /// FleetLaunchTemplateOverridesRequest is a property of the FleetLaunchTemplateConfigRequest property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FleetLaunchTemplateOverridesRequest {
     ///
     /// The Availability Zone in which to launch the instances.
@@ -658,7 +658,7 @@ pub struct FleetLaunchTemplateOverridesRequest {
     pub weighted_capacity: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetLaunchTemplateOverridesRequestInstanceTypeEnum {
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
@@ -3238,7 +3238,7 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateOverridesRequest {
 /// For information about creating a launch template, see      AWS::EC2::LaunchTemplate and      Create a launch template     in the Amazon EC2 User Guide.
 ///
 /// For examples of launch templates, see Examples.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FleetLaunchTemplateSpecificationRequest {
     ///
     /// The ID of the launch template.
@@ -3330,7 +3330,7 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
 /// To limit the list of instance types from which Amazon EC2 can identify matching instance types,      you can use one of the following parameters, but not both in the same request:
 ///
 /// For more information, see Attribute-based instance type selection for EC2 Fleet, Attribute-based instance type selection for Spot Fleet, and Spot        placement score in the Amazon EC2 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceRequirementsRequest {
     ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on     an instance.
@@ -3715,7 +3715,7 @@ pub struct InstanceRequirementsRequest {
     pub vcpu_count: Option<VCpuCountRangeRequest>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestBareMetalEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -3736,7 +3736,7 @@ impl Default for InstanceRequirementsRequestBareMetalEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestBurstablePerformanceEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -3757,7 +3757,7 @@ impl Default for InstanceRequirementsRequestBurstablePerformanceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRequirementsRequestLocalStorageEnum {
     /// excluded
     #[serde(rename = "excluded")]
@@ -3841,7 +3841,7 @@ impl cfn_resources::CfnResource for InstanceRequirementsRequest {
 }
 
 /// The strategies for managing your Spot Instances that are at an elevated risk of being     interrupted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceStrategies {
     ///
     /// The strategy to use when Amazon EC2 emits a signal that your Spot Instance is at an     elevated risk of being interrupted.
@@ -3875,7 +3875,7 @@ impl cfn_resources::CfnResource for MaintenanceStrategies {
 }
 
 /// The minimum and maximum amount of memory per vCPU, in GiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryGiBPerVCpuRequest {
     ///
     /// The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this     parameter.
@@ -3917,7 +3917,7 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
 }
 
 /// The minimum and maximum amount of memory, in MiB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemoryMiBRequest {
     ///
     /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this     parameter.
@@ -3959,7 +3959,7 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
 }
 
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkBandwidthGbpsRequest {
     ///
     /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this     parameter.
@@ -4001,7 +4001,7 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
 }
 
 /// The minimum and maximum number of network interfaces.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterfaceCountRequest {
     ///
     /// The maximum number of network interfaces. To specify no maximum limit, omit this     parameter.
@@ -4045,7 +4045,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
 /// Specifies the allocation strategy of On-Demand Instances in an EC2 Fleet.
 ///
 /// OnDemandOptionsRequest is a property of the AWS::EC2::EC2Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnDemandOptionsRequest {
     ///
     /// The strategy that determines the order of the launch template overrides to use in     fulfilling On-Demand capacity.
@@ -4138,7 +4138,7 @@ pub struct OnDemandOptionsRequest {
     pub single_instance_type: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OnDemandOptionsRequestAllocationStrategyEnum {
     /// lowest-price
     #[serde(rename = "lowest-price")]
@@ -4174,7 +4174,7 @@ impl cfn_resources::CfnResource for OnDemandOptionsRequest {
 }
 
 /// Describes the placement of an instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Placement {
     ///
     /// The affinity setting for the instance on the Dedicated Host.
@@ -4291,7 +4291,7 @@ pub struct Placement {
     pub tenancy: Option<PlacementTenancyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementTenancyEnum {
     /// dedicated
     #[serde(rename = "dedicated")]
@@ -4329,7 +4329,7 @@ impl cfn_resources::CfnResource for Placement {
 /// Specifies the configuration of Spot Instances for an EC2 Fleet.
 ///
 /// SpotOptionsRequest is a property of the       AWS::EC2::EC2Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpotOptionsRequest {
     ///
     /// Indicates how to allocate the target Spot Instance capacity across the Spot Instance     pools specified by the EC2 Fleet.
@@ -4452,7 +4452,7 @@ pub struct SpotOptionsRequest {
     pub single_instance_type: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotOptionsRequestAllocationStrategyEnum {
     /// lowestPrice
     #[serde(rename = "lowestPrice")]
@@ -4477,7 +4477,7 @@ impl Default for SpotOptionsRequestAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SpotOptionsRequestInstanceInterruptionBehaviorEnum {
     /// hibernate
     #[serde(rename = "hibernate")]
@@ -4523,7 +4523,7 @@ impl cfn_resources::CfnResource for SpotOptionsRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -4563,7 +4563,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Specifies the tags to apply to a resource when the resource is being created for an EC2     Fleet.
 ///
 /// TagSpecification is a property of the       AWS::EC2::EC2Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag. ResourceType must be     fleet.
@@ -4592,7 +4592,7 @@ pub struct TagSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
@@ -4958,7 +4958,7 @@ impl cfn_resources::CfnResource for TagSpecification {
 /// Specifies the number of units to request for an EC2 Fleet. You can choose to set the     target capacity in terms of instances or a performance characteristic that is important to     your application workload, such as vCPUs, memory, or I/O. If the request type is       maintain, you can specify a target capacity of 0 and add     capacity later.
 ///
 /// TargetCapacitySpecificationRequest is a property of the AWS::EC2::EC2Fleet resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetCapacitySpecificationRequest {
     ///
     /// The default TotalTargetCapacity, which is either Spot or     On-Demand.
@@ -5028,7 +5028,7 @@ pub struct TargetCapacitySpecificationRequest {
     pub total_target_capacity: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum {
     /// on-demand
     #[serde(rename = "on-demand")]
@@ -5045,7 +5045,7 @@ impl Default for TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum {
     /// memory-mib
     #[serde(rename = "memory-mib")]
@@ -5081,7 +5081,7 @@ impl cfn_resources::CfnResource for TargetCapacitySpecificationRequest {
 }
 
 /// The minimum and maximum amount of total local storage, in GB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TotalLocalStorageGBRequest {
     ///
     /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this     parameter.
@@ -5123,7 +5123,7 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
 }
 
 /// The minimum and maximum number of vCPUs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VCpuCountRangeRequest {
     ///
     /// The maximum number of vCPUs. To specify no maximum limit, omit this parameter.

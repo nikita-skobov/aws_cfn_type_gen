@@ -1,5 +1,5 @@
 /// The AWS::ECR::Repository resource specifies an Amazon Elastic Container       Registry (Amazon ECR) repository, where users can push and pull Docker images, Open       Container Initiative (OCI) images, and OCI compatible artifacts. For more information,       see Amazon ECR private repositories in the Amazon ECR User         Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRepository {
     ///
     /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
@@ -108,7 +108,7 @@ pub struct CfnRepository {
     pub att_repository_uri: CfnRepositoryrepositoryuri,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RepositoryImageTagMutabilityEnum {
     /// IMMUTABLE
     #[serde(rename = "IMMUTABLE")]
@@ -125,7 +125,7 @@ impl Default for RepositoryImageTagMutabilityEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRepositoryarn;
 impl CfnRepositoryarn {
     pub fn att_name(&self) -> &'static str {
@@ -133,7 +133,7 @@ impl CfnRepositoryarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRepositoryrepositoryuri;
 impl CfnRepositoryrepositoryuri {
     pub fn att_name(&self) -> &'static str {
@@ -194,7 +194,7 @@ impl cfn_resources::CfnResource for CfnRepository {
 /// By default, when no encryption configuration is set or the AES256       encryption type is used, Amazon ECR uses server-side encryption with Amazon S3-managed encryption       keys which encrypts your data at rest using an AES-256 encryption algorithm. This does       not require any action on your part.
 ///
 /// For more control over the encryption of the contents of your repository, you can use       server-side encryption with AWS Key Management Service key stored in AWS Key Management Service (AWS KMS) to encrypt your       images. For more information, see Amazon ECR encryption at         rest in the Amazon Elastic Container Registry User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// The encryption type to use.
@@ -230,7 +230,7 @@ pub struct EncryptionConfiguration {
     pub kms_key: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EncryptionConfigurationEncryptionTypeEnum {
     /// AES256
     #[serde(rename = "AES256")]
@@ -284,7 +284,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// The image scanning configuration for a repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageScanningConfiguration {
     ///
     /// The setting that determines whether images are scanned after being pushed to a       repository. If set to true, images will be scanned after being pushed. If       this parameter is not specified, it will default to false and images will       not be scanned unless a scan is manually started.
@@ -314,7 +314,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 }
 
 /// The LifecyclePolicy property type specifies a lifecycle policy. For       information about lifecycle policy syntax, see Lifecycle policy         template in the Amazon ECR User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecyclePolicy {
     ///
     /// The JSON repository policy text to apply to the repository.
@@ -384,7 +384,7 @@ impl cfn_resources::CfnResource for LifecyclePolicy {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Creates a new event bus within your account. This can be a custom event bus which you can    use to receive events from your custom applications and services, or it can be a partner event    bus which can be matched to a partner event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventBus {
     ///
     /// If you are creating a partner event bus, this specifies the partner event source that the    new event bus will be matched with.
@@ -62,7 +62,7 @@ pub struct CfnEventBus {
     pub att_policy: CfnEventBuspolicy,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventBusarn;
 impl CfnEventBusarn {
     pub fn att_name(&self) -> &'static str {
@@ -70,7 +70,7 @@ impl CfnEventBusarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventBusname;
 impl CfnEventBusname {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl CfnEventBusname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventBuspolicy;
 impl CfnEventBuspolicy {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl cfn_resources::CfnResource for CfnEventBus {
 }
 
 /// A key-value pair associated with an AWS resource. In EventBridge, rules and event buses    support tagging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagEntry {
     ///
     /// A string you can use to assign a value. The combination of tag keys and values can help    you organize and categorize your resources.

@@ -1,5 +1,5 @@
 /// The AWS::Location::GeofenceCollection resource specifies the ability to       detect and act when a tracked device enters or exits a defined geographical boundary       known as a geofence.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeofenceCollection {
     ///
     /// A custom name for the geofence collection.
@@ -67,7 +67,7 @@ pub struct CfnGeofenceCollection {
     pub att_update_time: CfnGeofenceCollectionupdatetime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeofenceCollectionarn;
 impl CfnGeofenceCollectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl CfnGeofenceCollectionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeofenceCollectioncollectionarn;
 impl CfnGeofenceCollectioncollectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnGeofenceCollectioncollectionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeofenceCollectioncreatetime;
 impl CfnGeofenceCollectioncreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl CfnGeofenceCollectioncreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGeofenceCollectionupdatetime;
 impl CfnGeofenceCollectionupdatetime {
     pub fn att_name(&self) -> &'static str {

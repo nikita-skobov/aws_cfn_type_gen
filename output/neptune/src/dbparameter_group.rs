@@ -1,7 +1,7 @@
 /// AWS::Neptune::DBParameterGroup creates a new DB parameter group.      This type can be declared in a template and referenced in the DBParameterGroupName      parameter of AWS::Neptune::DBInstance.
 ///
 /// A DB parameter group is initially created with the default parameters for the database    engine used by the DB instance. To provide custom values for any of the parameters, you must    modify the group after creating it using ModifyDBParameterGroup. Once    you've created a DB parameter group, you need to associate it with your DB instance using    ModifyDBInstance. When you associate a new DB parameter group with a    running DB instance, you need to reboot the DB instance without failover for the new DB    parameter group and associated settings to take effect.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBParameterGroup {
     ///
     /// Provides the customer-specified description for this DB parameter group.
@@ -86,7 +86,7 @@ impl cfn_resources::CfnResource for CfnDBParameterGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

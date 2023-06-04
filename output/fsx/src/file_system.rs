@@ -1,5 +1,5 @@
 /// The AWS::FSx::FileSystem resource is an Amazon FSx resource type       that specifies an Amazon FSx file system. You can create any of the following       supported file system types:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystem {
     ///
     /// The ID of the file system backup that you are using to create a file system. For more information,       see CreateFileSystemFromBackup.
@@ -216,7 +216,7 @@ pub struct CfnFileSystem {
     pub att_root_volume_id: CfnFileSystemrootvolumeid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FileSystemStorageTypeEnum {
     /// HDD
     #[serde(rename = "HDD")]
@@ -233,7 +233,7 @@ impl Default for FileSystemStorageTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemdnsname;
 impl CfnFileSystemdnsname {
     pub fn att_name(&self) -> &'static str {
@@ -241,7 +241,7 @@ impl CfnFileSystemdnsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemlustremountname;
 impl CfnFileSystemlustremountname {
     pub fn att_name(&self) -> &'static str {
@@ -249,7 +249,7 @@ impl CfnFileSystemlustremountname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemresourcearn;
 impl CfnFileSystemresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -257,7 +257,7 @@ impl CfnFileSystemresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemrootvolumeid;
 impl CfnFileSystemrootvolumeid {
     pub fn att_name(&self) -> &'static str {
@@ -354,7 +354,7 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 }
 
 /// The configuration that Amazon FSx for Windows File Server uses to audit and log       user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server       file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuditLogConfiguration {
     ///
     /// The Amazon Resource Name (ARN) for the destination of the audit logs.       The destination can be any Amazon CloudWatch Logs log group ARN or       Amazon Kinesis Data Firehose delivery stream ARN.
@@ -409,7 +409,7 @@ pub struct AuditLogConfiguration {
     pub file_share_access_audit_log_level: AuditLogConfigurationFileShareAccessAuditLogLevelEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuditLogConfigurationFileAccessAuditLogLevelEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -434,7 +434,7 @@ impl Default for AuditLogConfigurationFileAccessAuditLogLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuditLogConfigurationFileShareAccessAuditLogLevelEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -493,7 +493,7 @@ impl cfn_resources::CfnResource for AuditLogConfiguration {
 }
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientConfigurations {
     ///
     /// A value that specifies who can mount the file system. You can provide a wildcard       character (*), an IP address (0.0.0.0), or a CIDR address         (192.0.2.0/24). By default, Amazon FSx uses the wildcard       character when specifying the client.
@@ -576,7 +576,7 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 }
 
 /// The SSD IOPS (input/output operations per second) configuration for an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS file system. The       default is 3 IOPS per GB of storage capacity, but you can provision additional IOPS per       GB of storage. The configuration consists of the total number of provisioned SSD IOPS       and how the amount was provisioned (by the customer or by the system).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DiskIopsConfiguration {
     ///
     /// The total number of SSD IOPS provisioned for the file system.
@@ -605,7 +605,7 @@ pub struct DiskIopsConfiguration {
     pub mode: Option<DiskIopsConfigurationModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DiskIopsConfigurationModeEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -637,7 +637,7 @@ impl cfn_resources::CfnResource for DiskIopsConfiguration {
 }
 
 /// The configuration for the Amazon FSx for Lustre file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LustreConfiguration {
     ///
     /// (Optional) Available with Scratch and Persistent_1 deployment types. When you       create your file system, your existing S3 objects appear as file and directory listings.       Use this property to choose how Amazon FSx keeps your file and directory listings up to date       as you add or modify objects in your linked S3 bucket. AutoImportPolicy can       have the following values:
@@ -854,7 +854,7 @@ pub struct LustreConfiguration {
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LustreConfigurationAutoImportPolicyEnum {
     /// NEW
     #[serde(rename = "NEW")]
@@ -879,7 +879,7 @@ impl Default for LustreConfigurationAutoImportPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LustreConfigurationDataCompressionTypeEnum {
     /// LZ4
     #[serde(rename = "LZ4")]
@@ -896,7 +896,7 @@ impl Default for LustreConfigurationDataCompressionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LustreConfigurationDeploymentTypeEnum {
     /// PERSISTENT_1
     #[serde(rename = "PERSISTENT_1")]
@@ -921,7 +921,7 @@ impl Default for LustreConfigurationDeploymentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LustreConfigurationDriveCacheTypeEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -1024,7 +1024,7 @@ impl cfn_resources::CfnResource for LustreConfiguration {
 }
 
 /// The configuration object for mounting a file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NfsExports {
     ///
     /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
@@ -1065,7 +1065,7 @@ impl cfn_resources::CfnResource for NfsExports {
 }
 
 /// The configuration for this Amazon FSx for NetApp ONTAP file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OntapConfiguration {
     ///
     /// The number of days to retain automatic backups. Setting this property to         0 disables automatic backups. You can retain automatic backups for a       maximum of 90 days. The default is 0.
@@ -1217,7 +1217,7 @@ pub struct OntapConfiguration {
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OntapConfigurationDeploymentTypeEnum {
     /// MULTI_AZ_1
     #[serde(rename = "MULTI_AZ_1")]
@@ -1312,7 +1312,7 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 }
 
 /// The OpenZFS configuration for the file system that's being created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenZFSConfiguration {
     ///
     /// The number of days to retain automatic backups. Setting this property to         0 disables automatic backups. You can retain automatic backups for a       maximum of 90 days. The default is 0.
@@ -1456,7 +1456,7 @@ pub struct OpenZFSConfiguration {
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OpenZFSConfigurationDeploymentTypeEnum {
     /// SINGLE_AZ_1
     #[serde(rename = "SINGLE_AZ_1")]
@@ -1520,7 +1520,7 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 }
 
 /// The configuration of an Amazon FSx for OpenZFS root volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RootVolumeConfiguration {
     ///
     /// A Boolean value indicating whether tags for the volume should be copied to snapshots       of the volume. This value defaults to false. If it's set to true,       all tags for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true and you specify one or more tags, only the specified tags are       copied to snapshots. If you specify one or more tags when creating the snapshot, no tags       are copied from the volume, regardless of this value.
@@ -1607,7 +1607,7 @@ pub struct RootVolumeConfiguration {
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RootVolumeConfigurationDataCompressionTypeEnum {
     /// LZ4
     #[serde(rename = "LZ4")]
@@ -1676,7 +1676,7 @@ impl cfn_resources::CfnResource for RootVolumeConfiguration {
 }
 
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
@@ -1913,7 +1913,7 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1951,7 +1951,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The configuration for how much storage a user or group can use on the volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserAndGroupQuotas {
     ///
     /// The ID of the user or group.
@@ -2000,7 +2000,7 @@ pub struct UserAndGroupQuotas {
     pub cfn_type: Option<UserAndGroupQuotasTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserAndGroupQuotasTypeEnum {
     /// GROUP
     #[serde(rename = "GROUP")]
@@ -2062,7 +2062,7 @@ impl cfn_resources::CfnResource for UserAndGroupQuotas {
 }
 
 /// The Microsoft Windows configuration for the file system that's being created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WindowsConfiguration {
     ///
     /// The ID for an existing AWS Managed Microsoft Active Directory (AD)       instance that the file system should join when it's created. Required if you are joining the file system to an existing     AWS Managed Microsoft AD.
@@ -2229,7 +2229,7 @@ pub struct WindowsConfiguration {
     pub weekly_maintenance_start_time: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WindowsConfigurationDeploymentTypeEnum {
     /// MULTI_AZ_1
     #[serde(rename = "MULTI_AZ_1")]

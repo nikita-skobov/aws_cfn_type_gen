@@ -1,5 +1,5 @@
 /// Creates a static route for the specified local gateway route table. You must specify one of the      following targets:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRoute {
     ///
     /// The CIDR block used for destination matches.
@@ -54,7 +54,7 @@ pub struct CfnLocalGatewayRoute {
     pub att_cfn_type: CfnLocalGatewayRoutecfntype,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRoutestate;
 impl CfnLocalGatewayRoutestate {
     pub fn att_name(&self) -> &'static str {
@@ -62,7 +62,7 @@ impl CfnLocalGatewayRoutestate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocalGatewayRoutecfntype;
 impl CfnLocalGatewayRoutecfntype {
     pub fn att_name(&self) -> &'static str {

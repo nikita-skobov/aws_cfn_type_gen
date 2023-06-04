@@ -1,7 +1,7 @@
 /// Use the AWS::NetworkFirewall::Firewall to provide stateful, managed, network firewall and intrusion detection and prevention filtering for your VPCs in Amazon VPC.
 ///
 /// The firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewall {
     ///
     /// A flag indicating whether it is possible to delete the firewall. A setting of TRUE indicates     that the firewall is protected against deletion. Use this setting to protect against     accidentally deleting a firewall that is in use. When you create a firewall, the operation initializes this flag to TRUE.
@@ -140,7 +140,7 @@ pub struct CfnFirewall {
     pub att_firewall_id: CfnFirewallfirewallid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallfirewallarn;
 impl CfnFirewallfirewallarn {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnFirewallfirewallarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallfirewallid;
 impl CfnFirewallfirewallid {
     pub fn att_name(&self) -> &'static str {
@@ -248,7 +248,7 @@ impl cfn_resources::CfnResource for CfnFirewall {
 }
 
 /// The ID for a subnet that you want to associate with the firewall. AWS Network Firewall     creates an instance of the associated firewall in each subnet that you specify, to filter     traffic in the subnet's Availability Zone.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubnetMapping {
     ///
     /// The subnet's IP address type. You can't change the IP address type after you create the subnet.
@@ -276,7 +276,7 @@ pub struct SubnetMapping {
     pub subnet_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SubnetMappingIPAddressTypeEnum {
     /// DUALSTACK
     #[serde(rename = "DUALSTACK")]
@@ -318,7 +318,7 @@ impl cfn_resources::CfnResource for SubnetMapping {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

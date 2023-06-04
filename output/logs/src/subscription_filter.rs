@@ -1,7 +1,7 @@
 /// The AWS::Logs::SubscriptionFilter resource specifies a subscription filter and associates it with the specified log    group. Subscription filters allow you to subscribe to a real-time stream of log events    and have them delivered to a specific    destination. Currently, the supported destinations are:
 ///
 /// There can be as many as two subscription filters associated with a log group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscriptionFilter {
     ///
     /// The Amazon Resource Name (ARN) of the destination.

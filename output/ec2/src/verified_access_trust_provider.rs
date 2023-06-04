@@ -1,5 +1,5 @@
 /// Describes a Verified Access trust provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// A description for the AWS Verified Access trust provider.
@@ -112,7 +112,7 @@ pub struct CfnVerifiedAccessTrustProvider {
         CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     /// crowdstrike
     #[serde(rename = "crowdstrike")]
@@ -129,7 +129,7 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
     /// device
     #[serde(rename = "device")]
@@ -146,7 +146,7 @@ impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     /// iam-identity-center
     #[serde(rename = "iam-identity-center")]
@@ -163,7 +163,7 @@ impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessTrustProvidercreationtime;
 impl CfnVerifiedAccessTrustProvidercreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -171,7 +171,7 @@ impl CfnVerifiedAccessTrustProvidercreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessTrustProviderlastupdatedtime;
 impl CfnVerifiedAccessTrustProviderlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl CfnVerifiedAccessTrustProviderlastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid;
 impl CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid {
     pub fn att_name(&self) -> &'static str {
@@ -210,7 +210,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
 }
 
 /// Describes the options for an AWS Verified Access device-identity based trust provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceOptions {
     ///
     /// The ID of the tenant application with the device-identity provider.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for DeviceOptions {
 }
 
 /// Describes the options for an OpenID Connect-compatible user-identity trust     provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OidcOptions {
     ///
     /// The OIDC authorization endpoint.
@@ -348,7 +348,7 @@ impl cfn_resources::CfnResource for OidcOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

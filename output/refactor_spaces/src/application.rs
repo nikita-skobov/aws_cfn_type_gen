@@ -1,7 +1,7 @@
 /// Creates an AWS Migration Hub Refactor Spaces application. The account that owns the environment also owns the    applications created inside the environment, regardless of the account that creates the    application. Refactor Spaces provisions an Amazon API Gateway, API Gateway VPC link, and     Network Load Balancer for the application proxy inside your account.
 ///
 /// In environments created with a CreateEnvironment:NetworkFabricType of NONE you need to configure     VPC to VPC connectivity between your service VPC and the application proxy VPC to    route traffic through the application proxy to a service with a private URL endpoint. For more    information, see     Create an application in the Refactor Spaces User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// The endpoint URL of the Amazon API Gateway proxy.
@@ -96,7 +96,7 @@ pub struct CfnApplication {
     pub att_vpc_link_id: CfnApplicationvpclinkid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapigatewayid;
 impl CfnApplicationapigatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnApplicationapigatewayid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapplicationidentifier;
 impl CfnApplicationapplicationidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnApplicationapplicationidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationarn;
 impl CfnApplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnApplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationnlbarn;
 impl CfnApplicationnlbarn {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnApplicationnlbarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationnlbname;
 impl CfnApplicationnlbname {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnApplicationnlbname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationproxyurl;
 impl CfnApplicationproxyurl {
     pub fn att_name(&self) -> &'static str {
@@ -144,7 +144,7 @@ impl CfnApplicationproxyurl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationstagename;
 impl CfnApplicationstagename {
     pub fn att_name(&self) -> &'static str {
@@ -152,7 +152,7 @@ impl CfnApplicationstagename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationvpclinkid;
 impl CfnApplicationvpclinkid {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// A wrapper object holding the Amazon API Gateway endpoint input.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApiGatewayProxyInput {
     ///
     /// The type of endpoint to use for the API Gateway proxy. If no value is specified in    the request, the value is set to REGIONAL by default.
@@ -229,7 +229,7 @@ impl cfn_resources::CfnResource for ApiGatewayProxyInput {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

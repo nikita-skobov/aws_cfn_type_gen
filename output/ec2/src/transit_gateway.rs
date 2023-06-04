@@ -7,7 +7,7 @@
 /// To attach a VPN connection, use AWS::EC2::CustomerGateway to create a customer gateway and specify the ID of     the customer gateway and the ID of the transit gateway in a call to AWS::EC2::VPNConnection.
 ///
 /// When you create a transit gateway, we create a default transit gateway route table and     use it as the default association route table and the default propagation route table. You     can use AWS::EC2::TransitGatewayRouteTable to create additional transit gateway route     tables. If you disable automatic route propagation, we do not create a default transit     gateway route table. You can use AWS::EC2::TransitGatewayRouteTablePropagation to propagate routes from a     resource attachment to a transit gateway route table. If you disable automatic     associations, you can use AWS::EC2::TransitGatewayRouteTableAssociation to associate a resource     attachment with a transit gateway route table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGateway {
     ///
     /// A private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range     is 64512 to 65534 for 16-bit ASNs. The default is 64512.
@@ -169,7 +169,7 @@ pub struct CfnTransitGateway {
     pub att_id: CfnTransitGatewayid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayAutoAcceptSharedAttachmentsEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -186,7 +186,7 @@ impl Default for TransitGatewayAutoAcceptSharedAttachmentsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayDefaultRouteTableAssociationEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -203,7 +203,7 @@ impl Default for TransitGatewayDefaultRouteTableAssociationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayDefaultRouteTablePropagationEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -220,7 +220,7 @@ impl Default for TransitGatewayDefaultRouteTablePropagationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayDnsSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -237,7 +237,7 @@ impl Default for TransitGatewayDnsSupportEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayMulticastSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -254,7 +254,7 @@ impl Default for TransitGatewayMulticastSupportEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayVpnEcmpSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -271,7 +271,7 @@ impl Default for TransitGatewayVpnEcmpSupportEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayid;
 impl CfnTransitGatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -300,7 +300,7 @@ impl cfn_resources::CfnResource for CfnTransitGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

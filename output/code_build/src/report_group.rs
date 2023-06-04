@@ -1,5 +1,5 @@
 /// Represents a report group. A report group contains a collection of reports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReportGroup {
     ///
     /// When deleting a report group, specifies if reports within the report group should be       deleted.
@@ -77,7 +77,7 @@ pub struct CfnReportGroup {
     pub att_arn: CfnReportGrouparn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReportGroupTypeEnum {
     /// CODE_COVERAGE
     #[serde(rename = "CODE_COVERAGE")]
@@ -94,7 +94,7 @@ impl Default for ReportGroupTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReportGrouparn;
 impl CfnReportGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl cfn_resources::CfnResource for CfnReportGroup {
 }
 
 /// Information about the location where the run of a report is exported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReportExportConfig {
     ///
     /// The export configuration type. Valid values are:
@@ -180,7 +180,7 @@ pub struct ReportExportConfig {
     pub s3_destination: Option<S3ReportExportConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReportExportConfigExportConfigTypeEnum {
     /// NO_EXPORT
     #[serde(rename = "NO_EXPORT")]
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for ReportExportConfig {
 }
 
 /// Information about the S3 bucket where the raw data of a report are exported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3ReportExportConfig {
     ///
     /// The name of the S3 bucket where the raw data of a report are exported.
@@ -298,7 +298,7 @@ pub struct S3ReportExportConfig {
     pub path: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3ReportExportConfigPackagingEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -358,7 +358,7 @@ impl cfn_resources::CfnResource for S3ReportExportConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

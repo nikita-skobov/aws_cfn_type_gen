@@ -1,7 +1,7 @@
 /// The AWS::EFS::AccessPoint resource creates an EFS access point.     An access point is an application-specific view into an EFS file system that applies an operating system user and    group, and a file system path, to any file system request made through the access point. The operating system    user and group override any identity information provided by the NFS client. The file system path is exposed as    the access point's root directory. Applications using the access point can only access data in its own directory and below. To learn more, see    Mounting a file system using EFS access points.
 ///
 /// This operation requires permissions for the elasticfilesystem:CreateAccessPoint action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPoint {
     ///
     /// An array of key-value pairs to apply to this resource.
@@ -81,7 +81,7 @@ pub struct CfnAccessPoint {
     pub att_arn: CfnAccessPointarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointaccesspointid;
 impl CfnAccessPointaccesspointid {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnAccessPointaccesspointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointarn;
 impl CfnAccessPointarn {
     pub fn att_name(&self) -> &'static str {
@@ -153,7 +153,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 }
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties       are letters, white space, and numbers that       can be represented in UTF-8, and the following characters: + - = . _ : /
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessPointTag {
     ///
     /// The tag key (String). The key can't start with aws:.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for AccessPointTag {
 /// Required if the RootDirectory > Path specified does not exist.    Specifies the POSIX IDs and permissions to apply to the access point's RootDirectory > Path.    If the access point root directory does not exist, EFS creates it with these settings when a client connects to the access point.    When specifying CreationInfo, you must include values for all properties.
 ///
 /// Amazon EFS creates a root directory only if you have provided the CreationInfo: OwnUid, OwnGID, and permissions for the directory.    If you do not provide this information, Amazon EFS does not create the root directory. If the root directory does not exist, attempts to mount    using the access point will fail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreationInfo {
     ///
     /// Specifies the POSIX group ID to apply to the RootDirectory. Accepts values from 0 to 2^32 (4294967295).
@@ -319,7 +319,7 @@ impl cfn_resources::CfnResource for CreationInfo {
 }
 
 /// The full POSIX identity, including the user ID, group ID, and any secondary group IDs, on the access point that is used for all file system operations performed by    NFS clients using the access point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PosixUser {
     ///
     /// The POSIX group ID used for all file system operations using this access point.
@@ -382,7 +382,7 @@ impl cfn_resources::CfnResource for PosixUser {
 }
 
 /// Specifies the directory on the Amazon EFS file system that the access point provides access to.    The access point exposes the specified file system path as    the root directory of your file system to applications using the access point.    NFS clients using the access point can only access data in the access point's RootDirectory and it's subdirectories.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RootDirectory {
     ///
     /// (Optional) Specifies the POSIX IDs and permissions to apply to the access point's RootDirectory.    If the RootDirectory > Path specified does not exist,    EFS creates the root directory using the CreationInfo settings when a client connects to an access point.    When specifying the CreationInfo, you must provide values for all properties.

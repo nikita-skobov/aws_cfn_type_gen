@@ -1,5 +1,5 @@
 /// You can use the AWS::GuardDuty::Member resource to add an AWS account as a          member account to the current          administrator account. If the value of the Status property is not          provided or is set to Created, a member account is created but not          invited. If the value of the Status property is set to             Invited, a member account is created and invited. An             AWS::GuardDuty::Member resource must be created with the             Status property set to Invited before the             AWS::GuardDuty::Master resource can be created in a member account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMember {
     ///
     /// The ID of the detector associated with the service to add the member to.

@@ -1,5 +1,5 @@
 /// Specifies a launch constraint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunchRoleConstraint {
     ///
     /// The language code.

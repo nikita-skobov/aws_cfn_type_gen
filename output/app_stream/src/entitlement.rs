@@ -1,5 +1,5 @@
 /// Creates an entitlement to control access, based on user attributes, to specific     applications within a stack. Entitlements apply to SAML 2.0 federated user identities.     Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in     a stack. Entitlements don't apply to the desktop stream view application or to applications     managed by a dynamic app provider using the Dynamic Application Framework.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEntitlement {
     ///
     /// Specifies whether to entitle all apps or only selected apps.
@@ -72,7 +72,7 @@ pub struct CfnEntitlement {
     pub att_last_modified_time: CfnEntitlementlastmodifiedtime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EntitlementAppVisibilityEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -89,7 +89,7 @@ impl Default for EntitlementAppVisibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEntitlementcreatedtime;
 impl CfnEntitlementcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl CfnEntitlementcreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEntitlementlastmodifiedtime;
 impl CfnEntitlementlastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl cfn_resources::CfnResource for CfnEntitlement {
 }
 
 /// An attribute that belongs to an entitlement. Application entitlements work by matching a     supported SAML 2.0 attribute name to a value when a user identity federates to an AppStream     2.0 SAML application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Attribute {
     /// A supported AWS IAM SAML PrincipalTag attribute that is matched to a value when a user     identity federates to an AppStream 2.0 SAML application.
     ///

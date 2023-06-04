@@ -1,5 +1,5 @@
 /// Creates a connector using the specified properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnector {
     ///
     /// The connector's compute capacity settings.
@@ -139,7 +139,7 @@ pub struct CfnConnector {
     pub att_connector_arn: CfnConnectorconnectorarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorconnectorarn;
 impl CfnConnectorconnectorarn {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnConnector {
 }
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApacheKafkaCluster {
     ///
     /// The bootstrap servers of the cluster.
@@ -220,7 +220,7 @@ impl cfn_resources::CfnResource for ApacheKafkaCluster {
 }
 
 /// Specifies how the connector scales.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoScaling {
     ///
     /// The maximum number of workers allocated to the connector.
@@ -297,7 +297,7 @@ impl cfn_resources::CfnResource for AutoScaling {
 }
 
 /// Information about the capacity of the connector, whether it is auto scaled or     provisioned.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Capacity {
     ///
     /// Information about the auto scaling parameters for the connector.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for Capacity {
 }
 
 /// The settings for delivering connector logs to Amazon CloudWatch Logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogsLogDelivery {
     ///
     /// Whether log delivery to Amazon CloudWatch Logs is enabled.
@@ -388,7 +388,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
 }
 
 /// A plugin is an AWS resource that contains the code that defines a connector's logic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomPlugin {
     ///
     /// The Amazon Resource Name (ARN) of the custom plugin.
@@ -428,7 +428,7 @@ impl cfn_resources::CfnResource for CustomPlugin {
 }
 
 /// The settings for delivering logs to Amazon Kinesis Data Firehose.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FirehoseLogDelivery {
     ///
     /// The name of the Kinesis Data Firehose delivery stream that is the destination for log     delivery.
@@ -469,7 +469,7 @@ impl cfn_resources::CfnResource for FirehoseLogDelivery {
 }
 
 /// The details of the Apache Kafka cluster to which the connector is connected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KafkaCluster {
     ///
     /// The Apache Kafka cluster to which the connector is connected.
@@ -500,7 +500,7 @@ impl cfn_resources::CfnResource for KafkaCluster {
 }
 
 /// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KafkaClusterClientAuthentication {
     ///
     /// The type of client authentication used to connect to the Apache Kafka cluster. Value     NONE means that no client authentication is used.
@@ -529,7 +529,7 @@ impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
 }
 
 /// Details of encryption in transit to the Apache Kafka cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KafkaClusterEncryptionInTransit {
     ///
     /// The type of encryption in transit to the Apache Kafka cluster.
@@ -558,7 +558,7 @@ impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
 }
 
 /// Details about log delivery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogDelivery {
     ///
     /// The workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
@@ -589,7 +589,7 @@ impl cfn_resources::CfnResource for LogDelivery {
 }
 
 /// A plugin is an AWS resource that contains the code that defines your connector logic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Plugin {
     ///
     /// Details about a custom plugin.
@@ -620,7 +620,7 @@ impl cfn_resources::CfnResource for Plugin {
 }
 
 /// Details about a connector's provisioned capacity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedCapacity {
     ///
     /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
@@ -661,7 +661,7 @@ impl cfn_resources::CfnResource for ProvisionedCapacity {
 }
 
 /// Details about delivering logs to Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3LogDelivery {
     ///
     /// The name of the S3 bucket that is the destination for log delivery.
@@ -714,7 +714,7 @@ impl cfn_resources::CfnResource for S3LogDelivery {
 }
 
 /// The scale-in policy for the connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScaleInPolicy {
     ///
     /// Specifies the CPU utilization percentage threshold at which you want connector scale in     to be triggered.
@@ -743,7 +743,7 @@ impl cfn_resources::CfnResource for ScaleInPolicy {
 }
 
 /// The scale-out policy for the connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScaleOutPolicy {
     ///
     /// The CPU utilization percentage threshold at which you want connector scale out to be     triggered.
@@ -772,7 +772,7 @@ impl cfn_resources::CfnResource for ScaleOutPolicy {
 }
 
 /// Information about the VPC in which the connector resides.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Vpc {
     ///
     /// The security groups for the connector.
@@ -812,7 +812,7 @@ impl cfn_resources::CfnResource for Vpc {
 }
 
 /// The configuration of the workers, which are the processes that run the connector     logic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkerConfiguration {
     ///
     /// The revision of the worker configuration.
@@ -852,7 +852,7 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 }
 
 /// Workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkerLogDelivery {
     ///
     /// Details about delivering logs to Amazon CloudWatch Logs.

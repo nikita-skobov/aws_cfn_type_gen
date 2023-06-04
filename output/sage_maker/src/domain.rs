@@ -11,7 +11,7 @@
 /// All SageMaker Studio traffic between the domain and the EFS volume is through the specified   VPC and subnets. For other Studio traffic, you can specify the AppNetworkAccessType   parameter. AppNetworkAccessType corresponds to the network access type that you   choose when you onboard to Studio. The following options are available:
 ///
 /// For more information, see   Connect    SageMaker Studio Notebooks to Resources in a VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// Specifies the VPC used for non-EFS traffic. The default value is         PublicInternetOnly.
@@ -189,7 +189,7 @@ pub struct CfnDomain {
     pub att_url: CfnDomainurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DomainAppNetworkAccessTypeEnum {
     /// PublicInternetOnly
     #[serde(rename = "PublicInternetOnly")]
@@ -206,7 +206,7 @@ impl Default for DomainAppNetworkAccessTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DomainAppSecurityGroupManagementEnum {
     /// Service
     #[serde(rename = "Service")]
@@ -223,7 +223,7 @@ impl Default for DomainAppSecurityGroupManagementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DomainAuthModeEnum {
     /// SSO
     #[serde(rename = "SSO")]
@@ -240,7 +240,7 @@ impl Default for DomainAuthModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainarn;
 impl CfnDomaindomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -248,7 +248,7 @@ impl CfnDomaindomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainid;
 impl CfnDomaindomainid {
     pub fn att_name(&self) -> &'static str {
@@ -256,7 +256,7 @@ impl CfnDomaindomainid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainhomeefsfilesystemid;
 impl CfnDomainhomeefsfilesystemid {
     pub fn att_name(&self) -> &'static str {
@@ -264,7 +264,7 @@ impl CfnDomainhomeefsfilesystemid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainsecuritygroupidfordomainboundary;
 impl CfnDomainsecuritygroupidfordomainboundary {
     pub fn att_name(&self) -> &'static str {
@@ -272,7 +272,7 @@ impl CfnDomainsecuritygroupidfordomainboundary {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainsinglesignonmanagedapplicationinstanceid;
 impl CfnDomainsinglesignonmanagedapplicationinstanceid {
     pub fn att_name(&self) -> &'static str {
@@ -280,7 +280,7 @@ impl CfnDomainsinglesignonmanagedapplicationinstanceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainurl;
 impl CfnDomainurl {
     pub fn att_name(&self) -> &'static str {
@@ -324,7 +324,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 }
 
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomImage {
     ///
     /// The name of the AppImageConfig.
@@ -430,7 +430,7 @@ impl cfn_resources::CfnResource for CustomImage {
 }
 
 /// A collection of settings that apply to spaces created in the Domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultSpaceSettings {
     ///
     /// The ARN of the execution role for the space.
@@ -542,7 +542,7 @@ impl cfn_resources::CfnResource for DefaultSpaceSettings {
 }
 
 /// A collection of settings that apply to the SageMaker Domain. These       settings are specified through the CreateDomain API call.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainSettings {
     ///
     /// A collection of settings that configure the RStudioServerPro Domain-level       app.
@@ -599,7 +599,7 @@ impl cfn_resources::CfnResource for DomainSettings {
 }
 
 /// The JupyterServer app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JupyterServerAppSettings {
     ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker       image used by the JupyterServer app.
@@ -633,7 +633,7 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
 }
 
 /// The KernelGateway app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KernelGatewayAppSettings {
     ///
     /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
@@ -692,7 +692,7 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
 }
 
 /// A collection of settings that apply to an RSessionGateway app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RSessionAppSettings {
     ///
     /// A list of custom SageMaker images that are configured to run as a RSession app.
@@ -749,7 +749,7 @@ impl cfn_resources::CfnResource for RSessionAppSettings {
 }
 
 /// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RStudioServerProAppSettings {
     ///
     /// Indicates whether the current user has access to the RStudioServerPro       app.
@@ -780,7 +780,7 @@ pub struct RStudioServerProAppSettings {
     pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RStudioServerProAppSettingsAccessStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -797,7 +797,7 @@ impl Default for RStudioServerProAppSettingsAccessStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RStudioServerProAppSettingsUserGroupEnum {
     /// R_STUDIO_ADMIN
     #[serde(rename = "R_STUDIO_ADMIN")]
@@ -829,7 +829,7 @@ impl cfn_resources::CfnResource for RStudioServerProAppSettings {
 }
 
 /// A collection of settings that configure the RStudioServerPro Domain-level       app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RStudioServerProDomainSettings {
     ///
     /// A collection that defines the default InstanceType,         SageMakerImageArn, and SageMakerImageVersionArn for the       Domain.
@@ -920,7 +920,7 @@ impl cfn_resources::CfnResource for RStudioServerProDomainSettings {
 }
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceSpec {
     ///
     /// The instance type that the image version runs on.
@@ -987,7 +987,7 @@ pub struct ResourceSpec {
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceSpecInstanceTypeEnum {
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
@@ -1275,7 +1275,7 @@ impl cfn_resources::CfnResource for ResourceSpec {
 }
 
 /// Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are       specified as part of DefaultUserSettings when the CreateDomain API is called, and as part of UserSettings when       the CreateUserProfile API is called.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SharingSettings {
     ///
     /// Whether to include the notebook cell output when sharing the notebook. The default     is Disabled.
@@ -1324,7 +1324,7 @@ pub struct SharingSettings {
     pub s3_output_path: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SharingSettingsNotebookOutputOptionEnum {
     /// Allowed
     #[serde(rename = "Allowed")]
@@ -1384,7 +1384,7 @@ impl cfn_resources::CfnResource for SharingSettings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1424,7 +1424,7 @@ impl cfn_resources::CfnResource for Tag {
 /// A collection of settings that apply to users of Amazon SageMaker Studio. These       settings are specified when the CreateUserProfile API is called, and as DefaultUserSettings       when the CreateDomain API       is called.
 ///
 /// SecurityGroups is aggregated when specified in both calls. For all other       settings in UserSettings, the values specified in         CreateUserProfile take precedence over those specified in         CreateDomain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserSettings {
     ///
     /// The execution role for the user.

@@ -1,5 +1,5 @@
 /// The AWS::AppRunner::Service resource is an AWS App Runner resource type that specifies an App Runner service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnService {
     ///
     /// The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner    associates the latest revision of a default auto scaling configuration.
@@ -139,7 +139,7 @@ pub struct CfnService {
     pub att_status: CfnServicestatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceservicearn;
 impl CfnServiceservicearn {
     pub fn att_name(&self) -> &'static str {
@@ -147,7 +147,7 @@ impl CfnServiceservicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceserviceid;
 impl CfnServiceserviceid {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl CfnServiceserviceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceserviceurl;
 impl CfnServiceserviceurl {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnServiceserviceurl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServicestatus;
 impl CfnServicestatus {
     pub fn att_name(&self) -> &'static str {
@@ -246,7 +246,7 @@ impl cfn_resources::CfnResource for CfnService {
 }
 
 /// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthenticationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories    (but not for ECR Public repositories).
@@ -344,7 +344,7 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
 }
 
 /// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeConfiguration {
     ///
     /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a     apprunner.yaml file in the source code repository (or ignoring the file if it exists).
@@ -374,7 +374,7 @@ pub struct CodeConfiguration {
     pub configuration_source: CodeConfigurationConfigurationSourceEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CodeConfigurationConfigurationSourceEnum {
     /// API
     #[serde(rename = "API")]
@@ -410,7 +410,7 @@ impl cfn_resources::CfnResource for CodeConfiguration {
 }
 
 /// Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible    configuration options. Fur full configuration capabilities, use a apprunner.yaml file in the source code repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeConfigurationValues {
     ///
     /// The command App Runner runs to build your application.
@@ -497,7 +497,7 @@ pub struct CodeConfigurationValues {
     pub start_command: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CodeConfigurationValuesRuntimeEnum {
     /// CORRETTO_11
     #[serde(rename = "CORRETTO_11")]
@@ -583,7 +583,7 @@ impl cfn_resources::CfnResource for CodeConfigurationValues {
 }
 
 /// Describes a source code repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CodeRepository {
     ///
     /// Configuration for building and running the service from a source code repository.
@@ -671,7 +671,7 @@ impl cfn_resources::CfnResource for CodeRepository {
 }
 
 /// Describes configuration settings related to outbound network traffic of an AWS App Runner service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EgressConfiguration {
     ///
     /// The type of egress configuration.
@@ -709,7 +709,7 @@ pub struct EgressConfiguration {
     pub vpc_connector_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EgressConfigurationEgressTypeEnum {
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
@@ -760,7 +760,7 @@ impl cfn_resources::CfnResource for EgressConfiguration {
 }
 
 /// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// The ARN of the KMS key that's used for encryption.
@@ -817,7 +817,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheckConfiguration {
     ///
     /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy.
@@ -928,7 +928,7 @@ pub struct HealthCheckConfiguration {
     pub unhealthy_threshold: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HealthCheckConfigurationProtocolEnum {
     /// HTTP
     #[serde(rename = "HTTP")]
@@ -1043,7 +1043,7 @@ impl cfn_resources::CfnResource for HealthCheckConfiguration {
 }
 
 /// Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageConfiguration {
     ///
     /// The port that your application listens to in the container.
@@ -1140,7 +1140,7 @@ impl cfn_resources::CfnResource for ImageConfiguration {
 }
 
 /// Describes a source image repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageRepository {
     ///
     /// Configuration for running the identified image.
@@ -1187,7 +1187,7 @@ pub struct ImageRepository {
     pub image_repository_type: ImageRepositoryImageRepositoryTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ImageRepositoryImageRepositoryTypeEnum {
     /// ECR
     #[serde(rename = "ECR")]
@@ -1245,7 +1245,7 @@ impl cfn_resources::CfnResource for ImageRepository {
 }
 
 /// Network configuration settings for inbound network traffic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IngressConfiguration {
     ///
     /// Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service    privately accessible, from only within an Amazon VPC set it to False.
@@ -1274,7 +1274,7 @@ impl cfn_resources::CfnResource for IngressConfiguration {
 }
 
 /// Describes the runtime configuration of an AWS App Runner service instance (scaling unit).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceConfiguration {
     ///
     /// The number of CPU units reserved for each instance of your App Runner service.
@@ -1413,7 +1413,7 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
 }
 
 /// Describes a key-value pair, which is a string-to-string mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyValuePair {
     ///
     /// The key name string to map to a value.
@@ -1455,7 +1455,7 @@ impl cfn_resources::CfnResource for KeyValuePair {
 }
 
 /// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// Network configuration settings for outbound message traffic.
@@ -1505,7 +1505,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceObservabilityConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when     ObservabilityEnabled is true.
@@ -1572,7 +1572,7 @@ impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
 }
 
 /// Identifies a version of code that AWS App Runner refers to within a source code repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceCodeVersion {
     ///
     /// The type of version identifier.
@@ -1609,7 +1609,7 @@ pub struct SourceCodeVersion {
     pub value: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceCodeVersionTypeEnum {
     /// BRANCH
     #[serde(rename = "BRANCH")]
@@ -1659,7 +1659,7 @@ impl cfn_resources::CfnResource for SourceCodeVersion {
 }
 
 /// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConfiguration {
     ///
     /// Describes the resources that are needed to authenticate access to some source repositories.
@@ -1749,7 +1749,7 @@ impl cfn_resources::CfnResource for SourceConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Associates an attribute group      with an application      to augment the application's metadata      with the group's attributes.      This feature enables applications      to be described      with user-defined details     that are machine-readable,      such as third-party integrations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroupAssociation {
     ///
     /// The name or ID     of the application.
@@ -33,7 +33,7 @@ pub struct CfnAttributeGroupAssociation {
     pub att_id: CfnAttributeGroupAssociationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroupAssociationapplicationarn;
 impl CfnAttributeGroupAssociationapplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -41,7 +41,7 @@ impl CfnAttributeGroupAssociationapplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroupAssociationattributegrouparn;
 impl CfnAttributeGroupAssociationattributegrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -49,7 +49,7 @@ impl CfnAttributeGroupAssociationattributegrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroupAssociationid;
 impl CfnAttributeGroupAssociationid {
     pub fn att_name(&self) -> &'static str {

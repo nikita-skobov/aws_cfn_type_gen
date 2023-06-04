@@ -1,5 +1,5 @@
 /// Creates a version of the SageMaker image specified by ImageName. The       version represents the Amazon Container Registry (ECR) container image specified by         BaseImage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageVersion {
     ///
     /// The container image that the SageMaker image version is based on.
@@ -41,7 +41,7 @@ pub struct CfnImageVersion {
     pub att_image_version_arn: CfnImageVersionimageversionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageVersioncontainerimage;
 impl CfnImageVersioncontainerimage {
     pub fn att_name(&self) -> &'static str {
@@ -49,7 +49,7 @@ impl CfnImageVersioncontainerimage {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageVersionimagearn;
 impl CfnImageVersionimagearn {
     pub fn att_name(&self) -> &'static str {
@@ -57,7 +57,7 @@ impl CfnImageVersionimagearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageVersionimageversionarn;
 impl CfnImageVersionimageversionarn {
     pub fn att_name(&self) -> &'static str {

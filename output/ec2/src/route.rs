@@ -3,7 +3,7 @@
 /// You must specify either DestinationCidrBlock or     DestinationIpv6CidrBlock, plus the ID of one of the target     resources.
 ///
 /// If you create a route that references a transit gateway in the same template where you     create the transit gateway, you must declare a dependency on the transit gateway     attachment. The route table cannot use the transit gateway until it has successfully     attached to the VPC. Add a DependsOn       Attribute in the AWS::EC2::Route resource to explicitly declare a     dependency on the AWS::EC2::TransitGatewayAttachment resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoute {
     ///
     /// The ID of the carrier gateway.

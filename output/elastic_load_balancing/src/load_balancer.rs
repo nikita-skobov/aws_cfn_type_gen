@@ -3,7 +3,7 @@
 /// You can specify the AvailabilityZones or Subnets property, but not both.
 ///
 /// If this resource has a public IP address and is also in a VPC that is defined in the same template, you must use     the DependsOn attribute    to declare a dependency on the VPC-gateway attachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancer {
     ///
     /// Information about where and how access logs are stored for the load balancer.
@@ -232,7 +232,7 @@ pub struct CfnLoadBalancer {
     pub att_source_security_group_owner_alias: CfnLoadBalancersourcesecuritygroupowneralias,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancercanonicalhostedzonename;
 impl CfnLoadBalancercanonicalhostedzonename {
     pub fn att_name(&self) -> &'static str {
@@ -240,7 +240,7 @@ impl CfnLoadBalancercanonicalhostedzonename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancercanonicalhostedzonenameid;
 impl CfnLoadBalancercanonicalhostedzonenameid {
     pub fn att_name(&self) -> &'static str {
@@ -248,7 +248,7 @@ impl CfnLoadBalancercanonicalhostedzonenameid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerdnsname;
 impl CfnLoadBalancerdnsname {
     pub fn att_name(&self) -> &'static str {
@@ -256,7 +256,7 @@ impl CfnLoadBalancerdnsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancersourcesecuritygroupgroupname;
 impl CfnLoadBalancersourcesecuritygroupgroupname {
     pub fn att_name(&self) -> &'static str {
@@ -264,7 +264,7 @@ impl CfnLoadBalancersourcesecuritygroupgroupname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancersourcesecuritygroupowneralias;
 impl CfnLoadBalancersourcesecuritygroupowneralias {
     pub fn att_name(&self) -> &'static str {
@@ -303,7 +303,7 @@ impl cfn_resources::CfnResource for CfnLoadBalancer {
 }
 
 /// Specifies where and how access logs are stored for your Classic Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLoggingPolicy {
     ///
     /// The interval for publishing the access logs. You can specify an interval of either 5 minutes or 60 minutes.
@@ -371,7 +371,7 @@ impl cfn_resources::CfnResource for AccessLoggingPolicy {
 /// Specifies a policy for application-controlled session stickiness for your Classic Load Balancer.
 ///
 /// To associate a policy with a listener, use the PolicyNames     property for the listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppCookieStickinessPolicy {
     ///
     /// The name of the application cookie used for stickiness.
@@ -411,7 +411,7 @@ impl cfn_resources::CfnResource for AppCookieStickinessPolicy {
 }
 
 /// Specifies the connection draining settings for your Classic Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionDrainingPolicy {
     ///
     /// Specifies whether connection draining is enabled for the load balancer.
@@ -452,7 +452,7 @@ impl cfn_resources::CfnResource for ConnectionDrainingPolicy {
 }
 
 /// Specifies the idle timeout value for your Classic Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionSettings {
     ///
     /// The time, in seconds, that the connection is allowed to be idle (no data has been sent over the connection) before it is closed by the load balancer.
@@ -503,7 +503,7 @@ impl cfn_resources::CfnResource for ConnectionSettings {
 }
 
 /// Specifies health check settings for your Classic Load Balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheck {
     ///
     /// The number of consecutive health checks successes required before moving the instance to the Healthy state.
@@ -692,7 +692,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 /// Specifies a policy for duration-based session stickiness for your Classic Load Balancer.
 ///
 /// To associate a policy with a listener, use the PolicyNames     property for the listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LBCookieStickinessPolicy {
     ///
     /// The time period, in seconds, after which the cookie should be considered stale. If this parameter is not specified, the stickiness session lasts for the duration of the browser session.
@@ -736,7 +736,7 @@ impl cfn_resources::CfnResource for LBCookieStickinessPolicy {
 /// Specifies a listener for your Classic Load Balancer.
 ///
 /// Modifying any property replaces the listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Listeners {
     ///
     /// The port on which the instance is listening.
@@ -857,7 +857,7 @@ impl cfn_resources::CfnResource for Listeners {
 /// Specifies policies for your Classic Load Balancer.
 ///
 /// To associate policies with a listener, use the PolicyNames     property for the listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Policies {
     ///
     /// The policy attributes.
@@ -938,7 +938,7 @@ impl cfn_resources::CfnResource for Policies {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

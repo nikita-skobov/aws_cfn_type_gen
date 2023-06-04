@@ -1,7 +1,7 @@
 /// Creates a managed node group for an Amazon EKS cluster. You can only create a       node group for your cluster that is equal to the current Kubernetes version for the       cluster. All node groups are created with the latest AMI release version for the       respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using       a launch template. For more information about using launch templates, see Launch         template support.
 ///
 /// An Amazon EKS managed node group is an Amazon EC2       Auto Scaling group and associated Amazon EC2 instances that are managed by         AWS for an Amazon EKS cluster. For more information, see         Managed node groups in the Amazon EKS User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodegroup {
     ///
     /// The AMI type for your node group. If you specify launchTemplate, and your launch template uses a custom AMI,         then don't specify amiType, or the node group deployment       will fail. If your launch template uses a Windows custom AMI, then add         eks:kube-proxy-windows to your Windows nodes rolearn in       the aws-auth       ConfigMap. For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
@@ -239,7 +239,7 @@ pub struct CfnNodegroup {
     pub att_nodegroup_name: CfnNodegroupnodegroupname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NodegroupAmiTypeEnum {
     /// AL2_ARM_64
     #[serde(rename = "AL2_ARM_64")]
@@ -296,7 +296,7 @@ impl Default for NodegroupAmiTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NodegroupCapacityTypeEnum {
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
@@ -313,7 +313,7 @@ impl Default for NodegroupCapacityTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodegrouparn;
 impl CfnNodegrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -321,7 +321,7 @@ impl CfnNodegrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodegroupclustername;
 impl CfnNodegroupclustername {
     pub fn att_name(&self) -> &'static str {
@@ -329,7 +329,7 @@ impl CfnNodegroupclustername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodegroupid;
 impl CfnNodegroupid {
     pub fn att_name(&self) -> &'static str {
@@ -337,7 +337,7 @@ impl CfnNodegroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNodegroupnodegroupname;
 impl CfnNodegroupnodegroupname {
     pub fn att_name(&self) -> &'static str {
@@ -378,7 +378,7 @@ impl cfn_resources::CfnResource for CfnNodegroup {
 /// An object representing a node group launch template specification. The launch template       can't include SubnetId, IamInstanceProfile, RequestSpotInstances, HibernationOptions, or TerminateInstances, or the node group deployment or       update will fail. For more information about launch templates, see CreateLaunchTemplate in the Amazon EC2 API       Reference. For more information about using launch templates with Amazon EKS, see Launch template support in the Amazon EKS User Guide.
 ///
 /// You must specify either the launch template ID or the launch template name in the       request, but not both.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -436,7 +436,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 }
 
 /// An object representing the remote access configuration for the managed node       group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemoteAccess {
     ///
     /// The Amazon EC2 SSH key name that provides access for SSH communication with       the nodes in the managed node group. For more information, see Amazon EC2 key pairs and Linux instances in the Amazon Elastic Compute Cloud User Guide for Linux Instances. For       Windows, an Amazon EC2 SSH key is used to obtain the RDP password. For more       information, see Amazon EC2 key pairs and Windows instances in       the Amazon Elastic Compute Cloud User Guide for Windows Instances.
@@ -477,7 +477,7 @@ impl cfn_resources::CfnResource for RemoteAccess {
 }
 
 /// An object representing the scaling configuration details for the Auto Scaling group       that is associated with your node group. When creating a node group, you must specify       all or none of the properties. When updating a node group, you can specify any or none       of the properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingConfig {
     ///
     /// The current number of nodes that the managed node group should maintain.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for ScalingConfig {
 }
 
 /// A property that allows a node to repel a set of pods. For more information, see Node taints on managed node groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Taint {
     ///
     /// The effect of the taint.
@@ -619,7 +619,7 @@ pub struct Taint {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaintEffectEnum {
     /// NO_EXECUTE
     #[serde(rename = "NO_EXECUTE")]
@@ -699,7 +699,7 @@ impl cfn_resources::CfnResource for Taint {
 }
 
 /// The update configuration for the node group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpdateConfig {
     ///
     /// The maximum number of nodes unavailable at once during a version update. Nodes will be       updated in parallel. This value or maxUnavailablePercentage is required to       have a value.The maximum number is 100.

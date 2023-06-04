@@ -1,7 +1,7 @@
 /// Associates the specified subnets and transit gateway attachments with the specified     transit gateway multicast domain.
 ///
 /// The transit gateway attachment must be in the available state before you can add a     resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomainAssociation {
     ///
     /// The IDs of the subnets to associate with the transit gateway multicast domain.
@@ -46,7 +46,7 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     pub att_state: CfnTransitGatewayMulticastDomainAssociationstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomainAssociationresourceid;
 impl CfnTransitGatewayMulticastDomainAssociationresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -54,7 +54,7 @@ impl CfnTransitGatewayMulticastDomainAssociationresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomainAssociationresourcetype;
 impl CfnTransitGatewayMulticastDomainAssociationresourcetype {
     pub fn att_name(&self) -> &'static str {
@@ -62,7 +62,7 @@ impl CfnTransitGatewayMulticastDomainAssociationresourcetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomainAssociationstate;
 impl CfnTransitGatewayMulticastDomainAssociationstate {
     pub fn att_name(&self) -> &'static str {

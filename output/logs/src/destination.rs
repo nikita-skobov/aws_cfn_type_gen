@@ -1,5 +1,5 @@
 /// The AWS::Logs::Destination resource specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such    as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDestination {
     ///
     /// The name of the destination.
@@ -62,7 +62,7 @@ pub struct CfnDestination {
     pub att_arn: CfnDestinationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDestinationarn;
 impl CfnDestinationarn {
     pub fn att_name(&self) -> &'static str {

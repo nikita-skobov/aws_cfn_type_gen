@@ -3,7 +3,7 @@
 /// For information about RDS Proxy for Amazon RDS, see Managing Connections with Amazon         RDS Proxy in the Amazon RDS User Guide.
 ///
 /// For information about RDS Proxy for Amazon Aurora, see Managing Connections with         Amazon RDS Proxy in the Amazon Aurora User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxy {
     ///
     /// The authorization mechanism that the proxy uses.
@@ -134,7 +134,7 @@ pub struct CfnDBProxy {
     pub att_vpc_id: CfnDBProxyvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxydbproxyarn;
 impl CfnDBProxydbproxyarn {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl CfnDBProxydbproxyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyendpoint;
 impl CfnDBProxyendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnDBProxyendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBProxyvpcid;
 impl CfnDBProxyvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -173,7 +173,7 @@ impl cfn_resources::CfnResource for CfnDBProxy {
 }
 
 /// Specifies the details of authentication used by a proxy to log in as a specific       database user.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthFormat {
     ///
     /// The type of authentication that the proxy uses for connections from the proxy to the       underlying database.
@@ -240,7 +240,7 @@ pub struct AuthFormat {
     pub secret_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthFormatAuthSchemeEnum {
     /// SECRETS
     #[serde(rename = "SECRETS")]
@@ -253,7 +253,7 @@ impl Default for AuthFormatAuthSchemeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthFormatIAMAuthEnum {
     /// ENABLED
     #[serde(rename = "ENABLED")]
@@ -289,7 +289,7 @@ impl cfn_resources::CfnResource for AuthFormat {
 }
 
 /// Metadata assigned to a DB proxy consisting of a key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFormat {
     ///
     /// A key is the required name of the tag. The string value can be 1-128 Unicode       characters in length and can't be prefixed with aws:. The string can contain only the       set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:       "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").

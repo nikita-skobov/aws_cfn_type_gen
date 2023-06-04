@@ -1,5 +1,5 @@
 /// Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrail {
     ///
     /// Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that     represents the log group to which CloudTrail logs are delivered. You must use a log     group that exists in your account.
@@ -206,7 +206,7 @@ pub struct CfnTrail {
     pub att_sns_topic_arn: CfnTrailsnstopicarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrailarn;
 impl CfnTrailarn {
     pub fn att_name(&self) -> &'static str {
@@ -214,7 +214,7 @@ impl CfnTrailarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrailsnstopicarn;
 impl CfnTrailsnstopicarn {
     pub fn att_name(&self) -> &'static str {
@@ -241,7 +241,7 @@ impl cfn_resources::CfnResource for CfnTrail {
 /// The following example demonstrates how logging works when you configure logging of all data events     for an S3 bucket named bucket-1. In this example, the CloudTrail user specified an empty prefix,    and the option to log both Read and Write data events.
 ///
 /// The following example demonstrates how logging works when you configure logging of AWS Lambda data events for a      Lambda function named MyLambdaFunction, but not for all Lambda functions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataResource {
     ///
     /// The resource type in which you want to log data events. You can specify     the following basic event selector resource types:
@@ -290,7 +290,7 @@ impl cfn_resources::CfnResource for DataResource {
 /// You can configure up to five event selectors for a trail.
 ///
 /// You cannot apply both event selectors and advanced event selectors to a trail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventSelector {
     ///
     /// In AWS CloudFormation, CloudTrail supports data event logging for Amazon S3 objects,      Amazon DynamoDB tables, and AWS Lambda functions. Currently, advanced event selectors for      data events are not supported in AWS CloudFormation templates.      You can specify      up to 250 resources for an individual event selector, but the total number of data resources cannot exceed      250 across all event selectors in a trail. This limit does not apply if you configure resource logging for all data events.
@@ -353,7 +353,7 @@ pub struct EventSelector {
     pub read_write_type: Option<EventSelectorReadWriteTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EventSelectorReadWriteTypeEnum {
     /// All
     #[serde(rename = "All")]
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for EventSelector {
 }
 
 /// A JSON string that contains a list of Insights types that are logged on a trail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InsightSelector {
     ///
     /// The type of Insights events to log on a trail. ApiCallRateInsight and       ApiErrorRateInsight are valid Insight types.
@@ -410,7 +410,7 @@ pub struct InsightSelector {
     pub insight_type: Option<InsightSelectorInsightTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InsightSelectorInsightTypeEnum {
     /// ApiCallRateInsight
     #[serde(rename = "ApiCallRateInsight")]
@@ -448,7 +448,7 @@ impl cfn_resources::CfnResource for InsightSelector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

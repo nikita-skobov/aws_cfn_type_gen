@@ -1,7 +1,7 @@
 /// Creates an agreement. An agreement is a bilateral trading partner agreement, or partnership,    between an AWS Transfer Family server and an AS2 process. The agreement defines the file and message    transfer relationship between the server and the AS2 process. To define an agreement, Transfer Family    combines a server, local profile, partner profile, certificate, and other    attributes.
 ///
 /// The partner is identified with the PartnerProfileId, and the AS2 process is identified with the LocalProfileId.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAgreement {
     ///
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
@@ -139,7 +139,7 @@ pub struct CfnAgreement {
     pub att_arn: CfnAgreementarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AgreementStatusEnum {
     /// ACTIVE
     #[serde(rename = "ACTIVE")]
@@ -156,7 +156,7 @@ impl Default for AgreementStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAgreementagreementid;
 impl CfnAgreementagreementid {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnAgreementagreementid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAgreementarn;
 impl CfnAgreementarn {
     pub fn att_name(&self) -> &'static str {
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for CfnAgreement {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

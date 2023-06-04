@@ -1,5 +1,5 @@
 /// Creates a new event data store.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventDataStore {
     ///
     /// The advanced event selectors to use to select the events for the data store. You can     configure up to five advanced event selectors for each event data store.
@@ -142,7 +142,7 @@ pub struct CfnEventDataStore {
     pub att_updated_timestamp: CfnEventDataStoreupdatedtimestamp,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventDataStorecreatedtimestamp;
 impl CfnEventDataStorecreatedtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnEventDataStorecreatedtimestamp {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventDataStoreeventdatastorearn;
 impl CfnEventDataStoreeventdatastorearn {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnEventDataStoreeventdatastorearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventDataStorestatus;
 impl CfnEventDataStorestatus {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnEventDataStorestatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventDataStoreupdatedtimestamp;
 impl CfnEventDataStoreupdatedtimestamp {
     pub fn att_name(&self) -> &'static str {
@@ -262,7 +262,7 @@ impl cfn_resources::CfnResource for CfnEventDataStore {
 /// Advanced event selectors let you create fine-grained selectors for the following AWS CloudTrail event record ﬁelds. They help you control costs by logging only those     events that are important to you. For more information about advanced event selectors, see       Logging data events in the         AWS CloudTrail User Guide.
 ///
 /// You cannot apply both event selectors and advanced event selectors to a trail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedEventSelector {
     ///
     /// Contains all selector statements in an advanced event selector.
@@ -331,7 +331,7 @@ impl cfn_resources::CfnResource for AdvancedEventSelector {
 }
 
 /// A single selector statement in an advanced event selector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedFieldSelector {
     ///
     /// An operator that includes events that match the last few characters of the event record     field specified as the value of Field.
@@ -472,7 +472,7 @@ impl cfn_resources::CfnResource for AdvancedFieldSelector {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

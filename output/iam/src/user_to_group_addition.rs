@@ -1,5 +1,5 @@
 /// Adds the specified user to the specified group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserToGroupAddition {
     ///
     /// The name of the group to update.

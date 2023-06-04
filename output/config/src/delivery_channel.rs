@@ -7,7 +7,7 @@
 /// When you create the delivery channel, you can specify; how often AWS Config delivers configuration snapshots to your Amazon S3 bucket (for example, 24 hours),            the S3 bucket to which AWS Config sends configuration snapshots and configuration history files, and the       Amazon SNS topic to which AWS Config sends notifications about configuration changes, such as updated resources, AWS Config rule evaluations, and when AWS Config delivers the configuration snapshot to your S3 bucket.      For more information, see Deliver Configuration Items in the AWS Config Developer Guide.
 ///
 /// For more information, see Managing the Delivery Channel in the AWS Config Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeliveryChannel {
     ///
     /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
@@ -140,7 +140,7 @@ impl cfn_resources::CfnResource for CfnDeliveryChannel {
 /// You should set the MaximumExecutionFrequency value 			to be at least as frequent as the deliveryFrequency 			value. You can view the deliveryFrequency value by 			using the DescribeDeliveryChannnels action.
 ///
 /// To update the deliveryFrequency with which AWS Config delivers your configuration snapshots, use the PutDeliveryChannel action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigSnapshotDeliveryProperties {
     ///
     /// The frequency with which AWS Config delivers configuration 			snapshots.
@@ -157,7 +157,7 @@ pub struct ConfigSnapshotDeliveryProperties {
     pub delivery_frequency: Option<ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
     /// One_Hour
     #[serde(rename = "One_Hour")]

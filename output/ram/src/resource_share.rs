@@ -1,5 +1,5 @@
 /// Creates a resource share. You can provide a list of the Amazon Resource Names (ARNs)       for the resources that you want to share, a list of principals you want to share the       resources with, and the permissions to grant those principals.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceShare {
     ///
     /// Specifies whether principals outside your organization in AWS Organizations can be associated       with a resource share. A value of true lets you share with individual AWS accounts       that are not in your organization. A value of false       only has meaning if your account is a member of an AWS Organization. The default value       is true.
@@ -80,7 +80,7 @@ pub struct CfnResourceShare {
     pub att_arn: CfnResourceSharearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceSharearn;
 impl CfnResourceSharearn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for CfnResourceShare {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

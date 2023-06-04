@@ -5,7 +5,7 @@
 /// When you successfully enable logging using a PutLoggingConfiguration      request, AWS WAF creates an additional role or policy that is required to write        logs to the logging destination. For an Amazon CloudWatch Logs log group, AWS WAF creates a resource policy on the log group.      For an Amazon S3 bucket, AWS WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, AWS WAF creates a service-linked role.
 ///
 /// For additional information about web ACL logging, see       Logging web ACL traffic information         in the         AWS WAF Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggingConfiguration {
     ///
     /// The logging destination configuration that you want to associate with the web     ACL.
@@ -127,7 +127,7 @@ impl cfn_resources::CfnResource for CfnLoggingConfiguration {
 }
 
 /// A single action condition for a condition in a logging filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionCondition {
     ///
     /// The action setting that a log record must contain in order to meet the condition. This is the action that AWS WAF applied to the web request.
@@ -145,7 +145,7 @@ pub struct ActionCondition {
     pub action: ActionConditionActionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ActionConditionActionEnum {
     /// ALLOW
     #[serde(rename = "ALLOW")]
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for ActionCondition {
 }
 
 /// A single match condition for a log filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Condition {
     ///
     /// A single action condition. This is the action setting that a log record must contain in order to meet the condition.
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for Condition {
 /// Example JSON for a Method field to match specification:
 ///
 /// "FieldToMatch": { "Method": { "Name": "DELETE" } }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldToMatch {
     ///
     /// Redact the request body JSON.
@@ -339,7 +339,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 }
 
 /// A single logging filter, used in LoggingFilter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     ///
     /// How to handle logs that satisfy the filter's conditions and requirement.
@@ -379,7 +379,7 @@ pub struct Filter {
     pub requirement: FilterRequirementEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterBehaviorEnum {
     /// DROP
     #[serde(rename = "DROP")]
@@ -396,7 +396,7 @@ impl Default for FilterBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterRequirementEnum {
     /// MEETS_ALL
     #[serde(rename = "MEETS_ALL")]
@@ -434,7 +434,7 @@ impl cfn_resources::CfnResource for Filter {
 /// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
 ///
 /// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonBody {
     ///
     /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
@@ -485,7 +485,7 @@ pub struct JsonBody {
     pub match_scope: JsonBodyMatchScopeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JsonBodyInvalidFallbackBehaviorEnum {
     /// EVALUATE_AS_STRING
     #[serde(rename = "EVALUATE_AS_STRING")]
@@ -506,7 +506,7 @@ impl Default for JsonBodyInvalidFallbackBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JsonBodyMatchScopeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -544,7 +544,7 @@ impl cfn_resources::CfnResource for JsonBody {
 }
 
 /// A single label name condition for a condition in a logging     filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LabelNameCondition {
     ///
     /// The label name that a log record must contain in order to meet the condition. This must     be a fully qualified label name. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label.
@@ -603,7 +603,7 @@ impl cfn_resources::CfnResource for LabelNameCondition {
 /// Filtering that specifies which web requests are kept in the logs and which are dropped,       defined for a web ACL's LoggingConfiguration.
 ///
 /// You can filter on the rule action and on the web request labels that were applied by     matching rules during web ACL evaluation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingFilter {
     ///
     /// Default handling for logs that don't match any of the specified filtering conditions.
@@ -630,7 +630,7 @@ pub struct LoggingFilter {
     pub filters: Vec<Filter>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoggingFilterDefaultBehaviorEnum {
     /// DROP
     #[serde(rename = "DROP")]
@@ -662,7 +662,7 @@ impl cfn_resources::CfnResource for LoggingFilter {
 }
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MatchPattern {
     ///
     /// Match all of the elements.
@@ -718,7 +718,7 @@ impl cfn_resources::CfnResource for MatchPattern {
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 ///
 /// Example JSON: "SingleHeader": { "Name": "haystack" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleHeader {
     ///
     /// The name of the query header to inspect.

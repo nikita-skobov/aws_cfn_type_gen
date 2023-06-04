@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::AccountAuditConfiguration resource to configure or     reconfigure the Device Defender audit settings for your account. Settings include how audit     notifications are sent and which audit checks are enabled or disabled. For API reference,     see UpdateAccountAuditConfiguration and for detailed information on all available audit checks, see Audit checks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccountAuditConfiguration {
     ///
     /// The ID of the account. You can use the expression !Sub "${AWS::AccountId}" to use your account ID.
@@ -76,7 +76,7 @@ impl cfn_resources::CfnResource for CfnAccountAuditConfiguration {
 }
 
 /// Which audit checks are enabled and disabled for this account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuditCheckConfiguration {
     ///
     /// True if this audit check is enabled for this account.
@@ -106,7 +106,7 @@ impl cfn_resources::CfnResource for AuditCheckConfiguration {
 }
 
 /// The types of audit checks that can be performed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuditCheckConfigurations {
     ///
     /// Checks the permissiveness of an authenticated Amazon Cognito identity pool role. For     this check, AWS IoT Device Defender audits all Amazon Cognito identity pools that have been     used to connect to the AWS IoT message broker during the 31 days before the audit is     performed.
@@ -379,7 +379,7 @@ impl cfn_resources::CfnResource for AuditCheckConfigurations {
 }
 
 /// Information about the targets to which audit notifications are sent.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuditNotificationTarget {
     ///
     /// True if notifications to the target are enabled.
@@ -433,7 +433,7 @@ impl cfn_resources::CfnResource for AuditNotificationTarget {
 }
 
 /// The configuration of the audit notification target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuditNotificationTargetConfigurations {
     ///
     /// The Sns notification target.

@@ -1,7 +1,7 @@
 /// Creates a core network Connect attachment from a specified core network attachment.
 ///
 /// A core network Connect attachment is a GRE-based tunnel attachment that you can use to     establish a connection between a core network and an appliance. A core network Connect     attachment uses an existing VPC attachment as the underlying transport mechanism.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachment {
     ///
     /// The ID of the core network where the Connect attachment is located.
@@ -102,7 +102,7 @@ pub struct CfnConnectAttachment {
     pub att_updated_at: CfnConnectAttachmentupdatedat,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentattachmentid;
 impl CfnConnectAttachmentattachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl CfnConnectAttachmentattachmentid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentattachmenttype;
 impl CfnConnectAttachmentattachmenttype {
     pub fn att_name(&self) -> &'static str {
@@ -118,7 +118,7 @@ impl CfnConnectAttachmentattachmenttype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentcorenetworkarn;
 impl CfnConnectAttachmentcorenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -126,7 +126,7 @@ impl CfnConnectAttachmentcorenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentcreatedat;
 impl CfnConnectAttachmentcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -134,7 +134,7 @@ impl CfnConnectAttachmentcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentowneraccountid;
 impl CfnConnectAttachmentowneraccountid {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl CfnConnectAttachmentowneraccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentproposedsegmentchangesegmentname;
 impl CfnConnectAttachmentproposedsegmentchangesegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnConnectAttachmentproposedsegmentchangesegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentresourcearn;
 impl CfnConnectAttachmentresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnConnectAttachmentresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentsegmentname;
 impl CfnConnectAttachmentsegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnConnectAttachmentsegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentstate;
 impl CfnConnectAttachmentstate {
     pub fn att_name(&self) -> &'static str {
@@ -174,7 +174,7 @@ impl CfnConnectAttachmentstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectAttachmentupdatedat;
 impl CfnConnectAttachmentupdatedat {
     pub fn att_name(&self) -> &'static str {
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for CfnConnectAttachment {
 }
 
 /// Describes a core network Connect attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectAttachmentOptions {
     ///
     /// The protocol used for the attachment connection.
@@ -257,7 +257,7 @@ pub struct ConnectAttachmentOptions {
     pub protocol: Option<ConnectAttachmentOptionsProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectAttachmentOptionsProtocolEnum {
     /// GRE
     #[serde(rename = "GRE")]
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for ConnectAttachmentOptions {
 }
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProposedSegmentChange {
     ///
     /// The rule number in the policy document that applies to this change.
@@ -373,7 +373,7 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

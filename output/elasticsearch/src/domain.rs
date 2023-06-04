@@ -1,5 +1,5 @@
 /// The AWS::Elasticsearch::Domain resource creates an Amazon OpenSearch Service    domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// An AWS Identity and Access Management (IAM) policy document that specifies who can    access the OpenSearch Service domain and their permissions. For more information, see Configuring access policies in the Amazon OpenSearch Service Developer     Guide.
@@ -193,7 +193,7 @@ pub struct CfnDomain {
     pub att_domain_endpoint: CfnDomaindomainendpoint,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainarn;
 impl CfnDomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -201,7 +201,7 @@ impl CfnDomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainarn;
 impl CfnDomaindomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -209,7 +209,7 @@ impl CfnDomaindomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainendpoint;
 impl CfnDomaindomainendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 }
 
 /// Specifies options for fine-grained access control.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedSecurityOptionsInput {
     /// Property description not available.
     ///
@@ -334,7 +334,7 @@ impl cfn_resources::CfnResource for AdvancedSecurityOptionsInput {
 }
 
 /// Configures OpenSearch Service to use Amazon Cognito authentication for OpenSearch Dashboards.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CognitoOptions {
     ///
     /// Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards. See Amazon     Cognito authentication for OpenSearch Dashboards.
@@ -400,7 +400,7 @@ impl cfn_resources::CfnResource for CognitoOptions {
 }
 
 /// Specifies options for cold storage. For more information, see Cold storage for Amazon     Elasticsearch Service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColdStorageOptions {
     ///
     /// Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage in order to enable cold storage.
@@ -430,7 +430,7 @@ impl cfn_resources::CfnResource for ColdStorageOptions {
 }
 
 /// Specifies additional options for the domain endpoint, such as whether to require HTTPS for all traffic or whether to use a custom endpoint rather than the default endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainEndpointOptions {
     /// The fully qualified URL for your custom endpoint. Required if you enabled a custom endpoint    for the domain.
     ///
@@ -505,7 +505,7 @@ impl cfn_resources::CfnResource for DomainEndpointOptions {
 }
 
 /// The configurations of Amazon Elastic Block Store (Amazon EBS) volumes that are attached to    data nodes in the OpenSearch Service domain. For more information, see EBS volume size limits in the Amazon OpenSearch Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EBSOptions {
     ///
     /// Specifies whether Amazon EBS volumes are attached to data nodes in the OpenSearch Service    domain.
@@ -571,7 +571,7 @@ impl cfn_resources::CfnResource for EBSOptions {
 }
 
 /// The cluster configuration for the OpenSearch Service domain. You can specify options such    as the instance type and the number of instances. For more information, see Creating and managing Amazon OpenSearch Service domains in the Amazon     OpenSearch Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchClusterConfig {
     ///
     /// Specifies cold storage options for the domain.
@@ -729,7 +729,7 @@ impl cfn_resources::CfnResource for ElasticsearchClusterConfig {
 }
 
 /// Whether the domain should encrypt data at rest, and if so, the AWS Key Management Service key to use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionAtRestOptions {
     ///
     /// Specify true to enable encryption at rest.
@@ -773,7 +773,7 @@ impl cfn_resources::CfnResource for EncryptionAtRestOptions {
 /// Specifies whether the OpenSearch Service domain publishes the Elasticsearch application,    search slow logs, or index slow logs to Amazon CloudWatch. Each option must be an object of    name SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS,     INDEX_SLOW_LOGS, or AUDIT_LOGS depending on the type of logs you    want to publish.
 ///
 /// If you enable a slow log, you still have to enable the collection of    slow logs using the Configuration API. To learn more, see Enabling log publishing (AWS CLI).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogPublishingOption {
     ///
     /// Specifies the CloudWatch log group to publish to. Required if you enable log publishing    for the domain.
@@ -817,7 +817,7 @@ impl cfn_resources::CfnResource for LogPublishingOption {
 }
 
 /// Specifies information about the master user. Required if you enabled the internal user    database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MasterUserOptions {
     /// ARN for the master user. Only specify if InternalUserDatabaseEnabled is false in AdvancedSecurityOptions.
     ///
@@ -868,7 +868,7 @@ impl cfn_resources::CfnResource for MasterUserOptions {
 }
 
 /// Specifies whether node-to-node encryption is enabled.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeToNodeEncryptionOptions {
     ///
     /// Specifies whether node-to-node encryption is enabled, as a Boolean.
@@ -900,7 +900,7 @@ impl cfn_resources::CfnResource for NodeToNodeEncryptionOptions {
 /// DEPRECATED. For domains running Elasticsearch 5.3 and    later, OpenSearch Service takes hourly automated snapshots, making this setting irrelevant. For domains    running earlier versions of Elasticsearch, OpenSearch Service takes daily automated snapshots.
 ///
 /// The automated snapshot configuration for the OpenSearch Service domain indices.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnapshotOptions {
     ///
     /// The hour in UTC during which the service takes an automated daily snapshot of the indices    in the OpenSearch Service domain. For example, if you specify 0, OpenSearch Service takes an automated snapshot    everyday between midnight and 1 am. You can specify a value between 0 and 23.
@@ -936,7 +936,7 @@ impl cfn_resources::CfnResource for SnapshotOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -974,7 +974,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The virtual private cloud (VPC) configuration for the OpenSearch Service domain. For more    information, see Launching your Amazon OpenSearch     Service domains using a VPC in the Amazon OpenSearch Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VPCOptions {
     ///
     /// The list of security group IDs that are associated with the VPC endpoints for the domain.    If you don't provide a security group ID, OpenSearch Service uses the default security group    for the VPC. To learn more, see Security groups for your VPC in    the Amazon VPC User Guide.
@@ -1018,7 +1018,7 @@ impl cfn_resources::CfnResource for VPCOptions {
 }
 
 /// Specifies zone awareness configuration options. Only use if     ZoneAwarenessEnabled is true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZoneAwarenessConfig {
     ///
     /// If you enabled multiple Availability Zones (AZs), the number of AZs that you want the    domain to use.

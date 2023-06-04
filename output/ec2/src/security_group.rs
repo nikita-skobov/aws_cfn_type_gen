@@ -3,7 +3,7 @@
 /// If you do not specify an egress rule, we add egress rules that allow IPv4      and IPv6 traffic on all ports and protocols to any destination. We do not add     these rules if you specify your own egress rules. If you later remove your      egress rules, we restore the default egress rules.
 ///
 /// This type supports updates. For more information about updating stacks, see AWS CloudFormation Stacks Updates.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroup {
     ///
     /// A description for the security group.
@@ -91,7 +91,7 @@ pub struct CfnSecurityGroup {
     pub att_vpc_id: CfnSecurityGroupvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroupgroupid;
 impl CfnSecurityGroupgroupid {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnSecurityGroupgroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroupvpcid;
 impl CfnSecurityGroupvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl cfn_resources::CfnResource for CfnSecurityGroup {
 /// Use SecurityGroup.Ingress and SecurityGroup.Egress only when     necessary, typically to allow security groups to reference each other in ingress and egress     rules. Otherwise, use the embedded ingress and egress rules of the security group. For more     information, see Amazon EC2 Security       Groups.
 ///
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Egress {
     ///
     /// The IPv4 address range, in CIDR format.
@@ -283,7 +283,7 @@ impl cfn_resources::CfnResource for Egress {
 /// Use SecurityGroup.Ingress and SecurityGroup.Egress only when     necessary, typically to allow security groups to reference each other in ingress and egress     rules. Otherwise, use the embedded ingress and egress rules of the security group. For more     information, see Amazon EC2 Security       Groups.
 ///
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ingress {
     ///
     /// The IPv4 address range, in CIDR format.
@@ -417,7 +417,7 @@ impl cfn_resources::CfnResource for Ingress {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

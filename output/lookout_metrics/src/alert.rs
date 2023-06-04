@@ -1,5 +1,5 @@
 /// The AWS::LookoutMetrics::Alert type creates an alert for an anomaly detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlert {
     ///
     /// Action that will be triggered when there is an alert.
@@ -62,7 +62,7 @@ pub struct CfnAlert {
     pub att_arn: CfnAlertarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlertarn;
 impl CfnAlertarn {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl cfn_resources::CfnResource for CfnAlert {
 }
 
 /// A configuration that specifies the action to perform when anomalies are detected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// A configuration for an AWS Lambda channel.
@@ -137,7 +137,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// Contains information about a Lambda configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConfiguration {
     ///
     /// The ARN of the Lambda function.
@@ -177,7 +177,7 @@ impl cfn_resources::CfnResource for LambdaConfiguration {
 }
 
 /// Contains information about the SNS topic to which you want to send your alerts and the IAM role that has    access to that topic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SNSConfiguration {
     ///
     /// The ARN of the IAM role that has access to the target SNS topic.

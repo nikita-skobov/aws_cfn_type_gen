@@ -1,7 +1,7 @@
 /// Creates a layer. For more information, see How to     Create a Layer.
 ///
 /// Required Permissions: To use this action, an IAM user must      have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLayer {
     ///
     /// One or more user-defined key-value pairs to be added to the stack attributes.
@@ -233,7 +233,7 @@ pub struct CfnLayer {
     pub volume_configurations: Option<Vec<VolumeConfiguration>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LayerTypeEnum {
     /// aws-flow-ruby
     #[serde(rename = "aws-flow-ruby")]
@@ -317,7 +317,7 @@ impl cfn_resources::CfnResource for CfnLayer {
 }
 
 /// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoScalingThresholds {
     ///
     /// The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.
@@ -451,7 +451,7 @@ impl cfn_resources::CfnResource for AutoScalingThresholds {
 }
 
 /// Specifies the lifecycle event configuration
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecycleEventConfiguration {
     ///
     /// The Shutdown event configuration.
@@ -485,7 +485,7 @@ impl cfn_resources::CfnResource for LifecycleEventConfiguration {
 }
 
 /// Describes a layer's load-based auto scaling configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBasedAutoScaling {
     ///
     /// An AutoScalingThresholds object that describes the downscaling configuration,      which defines how and when AWS OpsWorks Stacks reduces the number of instances.
@@ -549,7 +549,7 @@ impl cfn_resources::CfnResource for LoadBasedAutoScaling {
 /// AWS OpsWorks Stacks supports five    lifecycle events:     setup, configuration, deploy, undeploy, and shutdown. For      each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide      custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the    standard recipes. LayerCustomRecipes specifies the custom recipes for a    particular layer to be run in response to each of the five events.
 ///
 /// To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name,      which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in      the repository's phpapp2 folder.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Recipes {
     ///
     /// An array of custom recipe names to be run following a configure event.
@@ -627,7 +627,7 @@ impl cfn_resources::CfnResource for Recipes {
 }
 
 /// The Shutdown event configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShutdownEventConfiguration {
     ///
     /// Whether to enable Elastic Load Balancing connection draining. For more information, see Connection Draining
@@ -675,7 +675,7 @@ impl cfn_resources::CfnResource for ShutdownEventConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -713,7 +713,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes an Amazon EBS volume configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VolumeConfiguration {
     ///
     /// Specifies whether an Amazon EBS volume is encrypted. For more information,       see Amazon EBS Encryption.

@@ -1,5 +1,5 @@
 /// The AWS::AppFlow::Flow resource is an Amazon AppFlow resource type that    specifies a new flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlow {
     ///
     /// A user-entered description of the flow.
@@ -135,7 +135,7 @@ pub struct CfnFlow {
     pub att_flow_arn: CfnFlowflowarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FlowFlowStatusEnum {
     /// Active
     #[serde(rename = "Active")]
@@ -168,7 +168,7 @@ impl Default for FlowFlowStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowflowarn;
 impl CfnFlowflowarn {
     pub fn att_name(&self) -> &'static str {
@@ -243,7 +243,7 @@ impl cfn_resources::CfnResource for CfnFlow {
 }
 
 /// The aggregation settings that you can use to customize the output format of your flow    data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AggregationConfig {
     ///
     /// Specifies whether Amazon AppFlow aggregates the flow records into a single file, or    leave them unaggregated.
@@ -271,7 +271,7 @@ pub struct AggregationConfig {
     pub target_file_size: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AggregationConfigAggregationTypeEnum {
     /// None
     #[serde(rename = "None")]
@@ -303,7 +303,7 @@ impl cfn_resources::CfnResource for AggregationConfig {
 }
 
 /// The properties that are applied when Amplitude is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmplitudeSourceProperties {
     ///
     /// The object specified in the Amplitude flow source.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for AmplitudeSourceProperties {
 }
 
 /// The operation to be performed on the provided source fields.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectorOperator {
     ///
     /// The operation to be performed on the provided Amplitude source fields.
@@ -585,7 +585,7 @@ pub struct ConnectorOperator {
     pub zendesk: Option<ConnectorOperatorZendeskEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorAmplitudeEnum {
     /// BETWEEN
     #[serde(rename = "BETWEEN")]
@@ -598,7 +598,7 @@ impl Default for ConnectorOperatorAmplitudeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorCustomConnectorEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -691,7 +691,7 @@ impl Default for ConnectorOperatorCustomConnectorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorDatadogEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -760,7 +760,7 @@ impl Default for ConnectorOperatorDatadogEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorDynatraceEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -829,7 +829,7 @@ impl Default for ConnectorOperatorDynatraceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorGoogleAnalyticsEnum {
     /// BETWEEN
     #[serde(rename = "BETWEEN")]
@@ -846,7 +846,7 @@ impl Default for ConnectorOperatorGoogleAnalyticsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorInforNexusEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -915,7 +915,7 @@ impl Default for ConnectorOperatorInforNexusEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorMarketoEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -988,7 +988,7 @@ impl Default for ConnectorOperatorMarketoEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorS3Enum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1077,7 +1077,7 @@ impl Default for ConnectorOperatorS3Enum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorSAPODataEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1170,7 +1170,7 @@ impl Default for ConnectorOperatorSAPODataEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorSalesforceEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1263,7 +1263,7 @@ impl Default for ConnectorOperatorSalesforceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorServiceNowEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1356,7 +1356,7 @@ impl Default for ConnectorOperatorServiceNowEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorSingularEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1421,7 +1421,7 @@ impl Default for ConnectorOperatorSingularEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorSlackEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1506,7 +1506,7 @@ impl Default for ConnectorOperatorSlackEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorTrendmicroEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1571,7 +1571,7 @@ impl Default for ConnectorOperatorTrendmicroEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorVeevaEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1664,7 +1664,7 @@ impl Default for ConnectorOperatorVeevaEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorOperatorZendeskEnum {
     /// ADDITION
     #[serde(rename = "ADDITION")]
@@ -1744,7 +1744,7 @@ impl cfn_resources::CfnResource for ConnectorOperator {
 }
 
 /// The properties that are applied when the custom connector is being used as a    destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomConnectorDestinationProperties {
     ///
     /// The custom properties that are specific to the connector when it's used as a destination    in the flow.
@@ -1812,7 +1812,7 @@ pub struct CustomConnectorDestinationProperties {
     pub write_operation_type: Option<CustomConnectorDestinationPropertiesWriteOperationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomConnectorDestinationPropertiesWriteOperationTypeEnum {
     /// DELETE
     #[serde(rename = "DELETE")]
@@ -1867,7 +1867,7 @@ impl cfn_resources::CfnResource for CustomConnectorDestinationProperties {
 }
 
 /// The properties that are applied when the custom connector is being used as a    source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomConnectorSourceProperties {
     ///
     /// Custom properties that are required to use the custom connector as a source.
@@ -1923,7 +1923,7 @@ impl cfn_resources::CfnResource for CustomConnectorSourceProperties {
 }
 
 /// The properties that are applied when Datadog is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatadogSourceProperties {
     ///
     /// The object specified in the Datadog flow source.
@@ -1967,7 +1967,7 @@ impl cfn_resources::CfnResource for DatadogSourceProperties {
 }
 
 /// This stores the information that is required to query a particular connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationConnectorProperties {
     ///
     /// The properties that are required to query the custom Connector.
@@ -2155,7 +2155,7 @@ impl cfn_resources::CfnResource for DestinationConnectorProperties {
 }
 
 /// Contains information about the configuration of destination connectors present in the    flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationFlowConfig {
     ///
     /// The API version that the destination connector uses.
@@ -2214,7 +2214,7 @@ pub struct DestinationFlowConfig {
     pub destination_connector_properties: DestinationConnectorProperties,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DestinationFlowConfigConnectorTypeEnum {
     /// EventBridge
     #[serde(rename = "EventBridge")]
@@ -2279,7 +2279,7 @@ impl cfn_resources::CfnResource for DestinationFlowConfig {
 }
 
 /// The properties that are applied when Dynatrace is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynatraceSourceProperties {
     ///
     /// The object specified in the Dynatrace flow source.
@@ -2323,7 +2323,7 @@ impl cfn_resources::CfnResource for DynatraceSourceProperties {
 }
 
 /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ErrorHandlingConfig {
     ///
     /// Specifies the name of the Amazon S3 bucket.
@@ -2420,7 +2420,7 @@ impl cfn_resources::CfnResource for ErrorHandlingConfig {
 }
 
 /// The properties that are applied when Amazon EventBridge is being used as a    destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventBridgeDestinationProperties {
     ///
     /// The object specified in the Amplitude flow source.
@@ -2484,7 +2484,7 @@ impl cfn_resources::CfnResource for EventBridgeDestinationProperties {
 }
 
 /// The GlueDataCatalog property type specifies Property description not available. for an AWS::AppFlow::Flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlueDataCatalog {
     /// Property description not available.
     ///
@@ -2532,7 +2532,7 @@ impl cfn_resources::CfnResource for GlueDataCatalog {
 }
 
 /// The properties that are applied when Google Analytics is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GoogleAnalyticsSourceProperties {
     ///
     /// The object specified in the Google Analytics flow source.
@@ -2576,7 +2576,7 @@ impl cfn_resources::CfnResource for GoogleAnalyticsSourceProperties {
 }
 
 /// Specifies the configuration used when importing incremental records from the source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IncrementalPullConfig {
     ///
     /// A field that specifies the date time or timestamp field as the criteria to use when    importing incremental records from the source.
@@ -2618,7 +2618,7 @@ impl cfn_resources::CfnResource for IncrementalPullConfig {
 }
 
 /// The properties that are applied when Infor Nexus is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InforNexusSourceProperties {
     ///
     /// The object specified in the Infor Nexus flow source.
@@ -2662,7 +2662,7 @@ impl cfn_resources::CfnResource for InforNexusSourceProperties {
 }
 
 /// The properties that are applied when Amazon Lookout for Metrics is used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LookoutMetricsDestinationProperties {
     ///
     /// The object specified in the Amazon Lookout for Metrics flow destination.
@@ -2692,7 +2692,7 @@ impl cfn_resources::CfnResource for LookoutMetricsDestinationProperties {
 }
 
 /// The properties that Amazon AppFlow applies when you use Marketo as a flow    destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MarketoDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -2752,7 +2752,7 @@ impl cfn_resources::CfnResource for MarketoDestinationProperties {
 }
 
 /// The properties that are applied when Marketo is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MarketoSourceProperties {
     ///
     /// The object specified in the Marketo flow source.
@@ -2796,7 +2796,7 @@ impl cfn_resources::CfnResource for MarketoSourceProperties {
 }
 
 /// The MetadataCatalogConfig property type specifies Property description not available. for an AWS::AppFlow::Flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetadataCatalogConfig {
     /// Property description not available.
     ///
@@ -2829,7 +2829,7 @@ impl cfn_resources::CfnResource for MetadataCatalogConfig {
 }
 
 /// The PardotSourceProperties property type specifies Property description not available. for an AWS::AppFlow::Flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PardotSourceProperties {
     /// Property description not available.
     ///
@@ -2857,7 +2857,7 @@ impl cfn_resources::CfnResource for PardotSourceProperties {
 }
 
 /// Specifies elements that Amazon AppFlow includes in the file and folder names in the flow    destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrefixConfig {
     /// Property description not available.
     ///
@@ -2899,7 +2899,7 @@ pub struct PrefixConfig {
     pub prefix_type: Option<PrefixConfigPrefixTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PrefixConfigPrefixFormatEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -2928,7 +2928,7 @@ impl Default for PrefixConfigPrefixFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PrefixConfigPrefixTypeEnum {
     /// FILENAME
     #[serde(rename = "FILENAME")]
@@ -2964,7 +2964,7 @@ impl cfn_resources::CfnResource for PrefixConfig {
 }
 
 /// The properties that are applied when Amazon Redshift is being used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftDestinationProperties {
     ///
     /// The object key for the bucket in which Amazon AppFlow places the destination files.
@@ -3087,7 +3087,7 @@ impl cfn_resources::CfnResource for RedshiftDestinationProperties {
 }
 
 /// The properties that are applied when Amazon S3 is used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3DestinationProperties {
     ///
     /// The Amazon S3 bucket name in which Amazon AppFlow places the transferred    data.
@@ -3187,7 +3187,7 @@ impl cfn_resources::CfnResource for S3DestinationProperties {
 }
 
 /// When you use Amazon S3 as the source, the configuration format that you provide    the flow input data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3InputFormatConfig {
     ///
     /// The file type that Amazon AppFlow gets from your Amazon S3 bucket.
@@ -3204,7 +3204,7 @@ pub struct S3InputFormatConfig {
     pub s3_input_file_type: Option<S3InputFormatConfigS3InputFileTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3InputFormatConfigS3InputFileTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -3236,7 +3236,7 @@ impl cfn_resources::CfnResource for S3InputFormatConfig {
 }
 
 /// The configuration that determines how Amazon AppFlow should format the flow output    data when Amazon S3 is used as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3OutputFormatConfig {
     ///
     /// The aggregation settings that you can use to customize the output format of your flow    data.
@@ -3288,7 +3288,7 @@ pub struct S3OutputFormatConfig {
     pub preserve_source_data_typing: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3OutputFormatConfigFileTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -3332,7 +3332,7 @@ impl cfn_resources::CfnResource for S3OutputFormatConfig {
 }
 
 /// The properties that are applied when Amazon S3 is being used as the flow source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3SourceProperties {
     ///
     /// The Amazon S3 bucket name where the source files are stored.
@@ -3431,7 +3431,7 @@ impl cfn_resources::CfnResource for S3SourceProperties {
 }
 
 /// The properties that are applied when using SAPOData as a flow destination
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SAPODataDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -3533,7 +3533,7 @@ impl cfn_resources::CfnResource for SAPODataDestinationProperties {
 }
 
 /// The properties that are applied when using SAPOData as a flow source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SAPODataSourceProperties {
     ///
     /// The object path specified in the SAPOData flow source.
@@ -3577,7 +3577,7 @@ impl cfn_resources::CfnResource for SAPODataSourceProperties {
 }
 
 /// The properties that are applied when Salesforce is being used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceDestinationProperties {
     ///
     /// Specifies which Salesforce API is used by Amazon AppFlow when your flow transfers    data to Salesforce.
@@ -3649,7 +3649,7 @@ pub struct SalesforceDestinationProperties {
     pub write_operation_type: Option<SalesforceDestinationPropertiesWriteOperationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SalesforceDestinationPropertiesDataTransferApiEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -3670,7 +3670,7 @@ impl Default for SalesforceDestinationPropertiesDataTransferApiEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SalesforceDestinationPropertiesWriteOperationTypeEnum {
     /// DELETE
     #[serde(rename = "DELETE")]
@@ -3725,7 +3725,7 @@ impl cfn_resources::CfnResource for SalesforceDestinationProperties {
 }
 
 /// The properties that are applied when Salesforce is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceSourceProperties {
     ///
     /// Specifies which Salesforce API is used by Amazon AppFlow when your flow transfers    data from Salesforce.
@@ -3783,7 +3783,7 @@ pub struct SalesforceSourceProperties {
     pub object: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SalesforceSourcePropertiesDataTransferApiEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -3830,7 +3830,7 @@ impl cfn_resources::CfnResource for SalesforceSourceProperties {
 }
 
 /// Specifies the configuration details of a schedule-triggered flow as defined by the user.    Currently, these settings only apply to the Scheduled trigger type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduledTriggerProperties {
     ///
     /// Specifies whether a scheduled flow has an incremental data transfer or a complete data    transfer for each flow run.
@@ -3939,7 +3939,7 @@ pub struct ScheduledTriggerProperties {
     pub time_zone: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScheduledTriggerPropertiesDataPullModeEnum {
     /// Complete
     #[serde(rename = "Complete")]
@@ -3993,7 +3993,7 @@ impl cfn_resources::CfnResource for ScheduledTriggerProperties {
 }
 
 /// The properties that are applied when ServiceNow is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowSourceProperties {
     ///
     /// The object specified in the ServiceNow flow source.
@@ -4037,7 +4037,7 @@ impl cfn_resources::CfnResource for ServiceNowSourceProperties {
 }
 
 /// The properties that are applied when Singular is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingularSourceProperties {
     ///
     /// The object specified in the Singular flow source.
@@ -4081,7 +4081,7 @@ impl cfn_resources::CfnResource for SingularSourceProperties {
 }
 
 /// The properties that are applied when Slack is being used as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SlackSourceProperties {
     ///
     /// The object specified in the Slack flow source.
@@ -4125,7 +4125,7 @@ impl cfn_resources::CfnResource for SlackSourceProperties {
 }
 
 /// The properties that are applied when Snowflake is being used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnowflakeDestinationProperties {
     ///
     /// The object key for the destination bucket in which Amazon AppFlow places the files.
@@ -4248,7 +4248,7 @@ impl cfn_resources::CfnResource for SnowflakeDestinationProperties {
 }
 
 /// Specifies the information that is required to query a particular connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConnectorProperties {
     ///
     /// Specifies the information that is required for querying Amplitude.
@@ -4523,7 +4523,7 @@ impl cfn_resources::CfnResource for SourceConnectorProperties {
 }
 
 /// Contains information about the configuration of the source connector used in the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceFlowConfig {
     ///
     /// The API version of the connector when it's used as a source in the flow.
@@ -4594,7 +4594,7 @@ pub struct SourceFlowConfig {
     pub source_connector_properties: SourceConnectorProperties,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceFlowConfigConnectorTypeEnum {
     /// Amplitude
     #[serde(rename = "Amplitude")]
@@ -4741,7 +4741,7 @@ impl cfn_resources::CfnResource for SourceFlowConfig {
 /// Determines how Amazon AppFlow handles the success response that it gets from the    connector after placing data.
 ///
 /// For example, this setting would determine where to write the response from the destination    connector upon a successful insert operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SuccessResponseHandlingConfig {
     ///
     /// The name of the Amazon S3 bucket.
@@ -4832,7 +4832,7 @@ impl cfn_resources::CfnResource for SuccessResponseHandlingConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -4870,7 +4870,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// A class for modeling different type of tasks. Task implementation varies based on the     TaskType.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Task {
     ///
     /// The operation to be performed on the provided source fields.
@@ -4937,7 +4937,7 @@ pub struct Task {
     pub task_type: TaskTaskTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskTaskTypeEnum {
     /// Arithmetic
     #[serde(rename = "Arithmetic")]
@@ -5005,7 +5005,7 @@ impl cfn_resources::CfnResource for Task {
 }
 
 /// A map used to store task-related information. The execution service looks for particular    information based on the TaskType.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TaskPropertiesObject {
     ///
     /// The task property key.
@@ -5032,7 +5032,7 @@ pub struct TaskPropertiesObject {
     pub value: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskPropertiesObjectKeyEnum {
     /// VALUE
     #[serde(rename = "VALUE")]
@@ -5116,7 +5116,7 @@ impl cfn_resources::CfnResource for TaskPropertiesObject {
 }
 
 /// The properties that are applied when using Trend Micro as a flow source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrendmicroSourceProperties {
     ///
     /// The object specified in the Trend Micro flow source.
@@ -5160,7 +5160,7 @@ impl cfn_resources::CfnResource for TrendmicroSourceProperties {
 }
 
 /// The trigger settings that determine how and when Amazon AppFlow runs the specified    flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TriggerConfig {
     ///
     /// Specifies the configuration details of a schedule-triggered flow as defined by the user.    Currently, these settings only apply to the Scheduled trigger type.
@@ -5188,7 +5188,7 @@ pub struct TriggerConfig {
     pub trigger_type: TriggerConfigTriggerTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TriggerConfigTriggerTypeEnum {
     /// Event
     #[serde(rename = "Event")]
@@ -5228,7 +5228,7 @@ impl cfn_resources::CfnResource for TriggerConfig {
 }
 
 /// The properties that are applied when Upsolver is used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpsolverDestinationProperties {
     ///
     /// The Upsolver Amazon S3 bucket name in which Amazon AppFlow places the    transferred data.
@@ -5325,7 +5325,7 @@ impl cfn_resources::CfnResource for UpsolverDestinationProperties {
 }
 
 /// The configuration that determines how Amazon AppFlow formats the flow output data    when Upsolver is used as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpsolverS3OutputFormatConfig {
     ///
     /// The aggregation settings that you can use to customize the output format of your flow    data.
@@ -5365,7 +5365,7 @@ pub struct UpsolverS3OutputFormatConfig {
     pub prefix_config: PrefixConfig,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UpsolverS3OutputFormatConfigFileTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -5407,7 +5407,7 @@ impl cfn_resources::CfnResource for UpsolverS3OutputFormatConfig {
 }
 
 /// The properties that are applied when using Veeva as a flow source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VeevaSourceProperties {
     ///
     /// The document type specified in the Veeva document extract flow.
@@ -5514,7 +5514,7 @@ impl cfn_resources::CfnResource for VeevaSourceProperties {
 }
 
 /// The properties that are applied when Zendesk is used as a destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZendeskDestinationProperties {
     ///
     /// The settings that determine how Amazon AppFlow handles an error when placing data in    the destination. For example, this setting would determine if the flow should fail after one    insertion error, or continue and attempt to insert every record regardless of the initial    failure. ErrorHandlingConfig is a part of the destination connector details.
@@ -5598,7 +5598,7 @@ impl cfn_resources::CfnResource for ZendeskDestinationProperties {
 }
 
 /// The properties that are applied when using Zendesk as a flow source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZendeskSourceProperties {
     ///
     /// The object specified in the Zendesk flow source.

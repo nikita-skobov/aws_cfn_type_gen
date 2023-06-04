@@ -1,7 +1,7 @@
 /// The AWS::DynamoDB::Table resource creates a DynamoDB table.       For more information, see CreateTable in       the Amazon DynamoDB API Reference.
 ///
 /// You should be aware of the following behaviors when working with DynamoDB       tables:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTable {
     ///
     /// A list of attributes that describe the key schema for the table and indexes.
@@ -245,7 +245,7 @@ pub struct CfnTable {
     pub att_stream_arn: CfnTablestreamarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableBillingModeEnum {
     /// PAY_PER_REQUEST
     #[serde(rename = "PAY_PER_REQUEST")]
@@ -262,7 +262,7 @@ impl Default for TableBillingModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TableTableClassEnum {
     /// STANDARD
     #[serde(rename = "STANDARD")]
@@ -279,7 +279,7 @@ impl Default for TableTableClassEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTablearn;
 impl CfnTablearn {
     pub fn att_name(&self) -> &'static str {
@@ -287,7 +287,7 @@ impl CfnTablearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTablestreamarn;
 impl CfnTablestreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -364,7 +364,7 @@ impl cfn_resources::CfnResource for CfnTable {
 }
 
 /// Represents an attribute for describing the key schema for the table and       indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributeDefinition {
     ///
     /// A name for the attribute.
@@ -397,7 +397,7 @@ pub struct AttributeDefinition {
     pub attribute_type: AttributeDefinitionAttributeTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AttributeDefinitionAttributeTypeEnum {
     /// B
     #[serde(rename = "B")]
@@ -455,7 +455,7 @@ impl cfn_resources::CfnResource for AttributeDefinition {
 }
 
 /// The settings used to enable or disable CloudWatch Contributor Insights.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContributorInsightsSpecification {
     ///
     /// Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled       (false).
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for ContributorInsightsSpecification {
 }
 
 /// The options for imported source files in CSV format. The values are Delimiter and       HeaderList.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Csv {
     ///
     /// The delimiter used for separating items in the CSV file being imported.
@@ -567,7 +567,7 @@ impl cfn_resources::CfnResource for Csv {
 }
 
 /// Represents the properties of a global secondary index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlobalSecondaryIndex {
     ///
     /// The settings used to enable or disable CloudWatch Contributor Insights for the       specified global secondary index.
@@ -697,7 +697,7 @@ impl cfn_resources::CfnResource for GlobalSecondaryIndex {
 }
 
 /// Specifies the properties of data being imported from the S3 bucket source to the       table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImportSourceSpecification {
     ///
     /// Type of compression to be used on the input coming from the imported table.
@@ -750,7 +750,7 @@ pub struct ImportSourceSpecification {
     pub s3_bucket_source: S3BucketSource,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ImportSourceSpecificationInputCompressionTypeEnum {
     /// GZIP
     #[serde(rename = "GZIP")]
@@ -771,7 +771,7 @@ impl Default for ImportSourceSpecificationInputCompressionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ImportSourceSpecificationInputFormatEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -813,7 +813,7 @@ impl cfn_resources::CfnResource for ImportSourceSpecification {
 }
 
 /// The format options for the data that was imported into the target table. There is one       value, CsvOption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputFormatOptions {
     ///
     /// The options for imported source files in CSV format. The values are Delimiter and       HeaderList.
@@ -849,7 +849,7 @@ impl cfn_resources::CfnResource for InputFormatOptions {
 /// A KeySchemaElement represents exactly one attribute of the primary key.       For example, a simple primary key would be represented by one         KeySchemaElement (for the partition key). A composite primary key would       require one KeySchemaElement for the partition key, and another         KeySchemaElement for the sort key.
 ///
 /// A KeySchemaElement must be a scalar, top-level attribute (not a nested       attribute). The data type must be one of String, Number, or Binary. The attribute cannot       be nested within a List or a Map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeySchema {
     ///
     /// The name of a key attribute.
@@ -884,7 +884,7 @@ pub struct KeySchema {
     pub key_type: KeySchemaKeyTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KeySchemaKeyTypeEnum {
     /// HASH
     #[serde(rename = "HASH")]
@@ -938,7 +938,7 @@ impl cfn_resources::CfnResource for KeySchema {
 }
 
 /// The Kinesis Data Streams configuration for the specified table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamSpecification {
     ///
     /// The ARN for a specific Kinesis data stream.
@@ -995,7 +995,7 @@ impl cfn_resources::CfnResource for KinesisStreamSpecification {
 }
 
 /// Represents the properties of a local secondary index. A local secondary index can only       be created when its parent table is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocalSecondaryIndex {
     ///
     /// The name of the local secondary index. The name must be unique among all other indexes       on this table.
@@ -1091,7 +1091,7 @@ impl cfn_resources::CfnResource for LocalSecondaryIndex {
 }
 
 /// The settings used to enable point in time recovery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PointInTimeRecoverySpecification {
     ///
     /// Indicates whether point in time recovery is enabled (true) or disabled (false) on the       table.
@@ -1121,7 +1121,7 @@ impl cfn_resources::CfnResource for PointInTimeRecoverySpecification {
 }
 
 /// Represents attributes that are copied (projected) from the table into an index. These       are in addition to the primary key attributes and index key attributes, which are       automatically projected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Projection {
     ///
     /// Represents the non-key attribute names which will be projected into the index.
@@ -1156,7 +1156,7 @@ pub struct Projection {
     pub projection_type: Option<ProjectionProjectionTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProjectionProjectionTypeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -1201,7 +1201,7 @@ impl cfn_resources::CfnResource for Projection {
 }
 
 /// Throughput for the specified table, which consists of values for         ReadCapacityUnits and WriteCapacityUnits. For more       information about the contents of a provisioned throughput structure, see Amazon DynamoDB Table ProvisionedThroughput.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedThroughput {
     ///
     /// The maximum number of strongly consistent reads consumed per second before DynamoDB       returns a ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB         Developer Guide.
@@ -1245,7 +1245,7 @@ impl cfn_resources::CfnResource for ProvisionedThroughput {
 }
 
 /// The S3 bucket that is being imported from.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3BucketSource {
     ///
     /// The S3 bucket that is being imported from.
@@ -1328,7 +1328,7 @@ impl cfn_resources::CfnResource for S3BucketSource {
 }
 
 /// Represents the settings used to enable server-side encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SSESpecification {
     ///
     /// The AWS KMS key that should be used for the AWS KMS encryption.       To specify a key, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN.       Note that you should only provide this parameter if the key is different from the       default DynamoDB key alias/aws/dynamodb.
@@ -1383,7 +1383,7 @@ impl cfn_resources::CfnResource for SSESpecification {
 }
 
 /// Represents the DynamoDB Streams configuration for a table in DynamoDB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamSpecification {
     ///
     /// When an item in the table is modified, StreamViewType determines what       information is written to the stream for this table. Valid values for         StreamViewType are:
@@ -1401,7 +1401,7 @@ pub struct StreamSpecification {
     pub stream_view_type: StreamSpecificationStreamViewTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StreamSpecificationStreamViewTypeEnum {
     /// KEYS_ONLY
     #[serde(rename = "KEYS_ONLY")]
@@ -1447,7 +1447,7 @@ impl cfn_resources::CfnResource for StreamSpecification {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1485,7 +1485,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Represents the settings used to enable or disable Time to Live (TTL) for the specified       table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeToLiveSpecification {
     ///
     /// The name of the TTL attribute used to store the expiration time for items in the       table.

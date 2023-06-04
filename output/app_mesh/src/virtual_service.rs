@@ -3,7 +3,7 @@
 /// A virtual service is an abstraction of a real service that is provided by a virtual node     directly or indirectly by means of a virtual router. Dependent services call your virtual     service by its virtualServiceName, and those requests are routed to the     virtual node or virtual router that is specified as the provider for the virtual     service.
 ///
 /// For more information about virtual services, see Virtual services.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualService {
     ///
     /// The name of the service mesh to create the virtual service in.
@@ -91,7 +91,7 @@ pub struct CfnVirtualService {
     pub att_virtual_service_name: CfnVirtualServicevirtualservicename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServicearn;
 impl CfnVirtualServicearn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnVirtualServicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServicemeshname;
 impl CfnVirtualServicemeshname {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnVirtualServicemeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServicemeshowner;
 impl CfnVirtualServicemeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnVirtualServicemeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServiceresourceowner;
 impl CfnVirtualServiceresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnVirtualServiceresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServiceuid;
 impl CfnVirtualServiceuid {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl CfnVirtualServiceuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualServicevirtualservicename;
 impl CfnVirtualServicevirtualservicename {
     pub fn att_name(&self) -> &'static str {
@@ -215,7 +215,7 @@ impl cfn_resources::CfnResource for CfnVirtualService {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -253,7 +253,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// An object that represents a virtual node service provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeServiceProvider {
     ///
     /// The name of the virtual node that is acting as a service provider.
@@ -308,7 +308,7 @@ impl cfn_resources::CfnResource for VirtualNodeServiceProvider {
 }
 
 /// An object that represents a virtual node service provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualRouterServiceProvider {
     ///
     /// The name of the virtual router that is acting as a service provider.
@@ -363,7 +363,7 @@ impl cfn_resources::CfnResource for VirtualRouterServiceProvider {
 }
 
 /// An object that represents the provider for a virtual service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualServiceProvider {
     ///
     /// The virtual node associated with a virtual service.
@@ -413,7 +413,7 @@ impl cfn_resources::CfnResource for VirtualServiceProvider {
 }
 
 /// An object that represents the specification of a virtual service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualServiceSpec {
     ///
     /// The App Mesh object that is acting as the provider for a virtual service. You     can specify a single virtual node or virtual router.

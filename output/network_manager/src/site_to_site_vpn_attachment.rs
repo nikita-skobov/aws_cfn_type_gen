@@ -1,5 +1,5 @@
 /// Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachment {
     /// Property description not available.
     ///
@@ -74,7 +74,7 @@ pub struct CfnSiteToSiteVpnAttachment {
     pub att_updated_at: CfnSiteToSiteVpnAttachmentupdatedat,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentattachmentid;
 impl CfnSiteToSiteVpnAttachmentattachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -82,7 +82,7 @@ impl CfnSiteToSiteVpnAttachmentattachmentid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentattachmenttype;
 impl CfnSiteToSiteVpnAttachmentattachmenttype {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnSiteToSiteVpnAttachmentattachmenttype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentcorenetworkarn;
 impl CfnSiteToSiteVpnAttachmentcorenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl CfnSiteToSiteVpnAttachmentcorenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentcreatedat;
 impl CfnSiteToSiteVpnAttachmentcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -106,7 +106,7 @@ impl CfnSiteToSiteVpnAttachmentcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentedgelocation;
 impl CfnSiteToSiteVpnAttachmentedgelocation {
     pub fn att_name(&self) -> &'static str {
@@ -114,7 +114,7 @@ impl CfnSiteToSiteVpnAttachmentedgelocation {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentowneraccountid;
 impl CfnSiteToSiteVpnAttachmentowneraccountid {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl CfnSiteToSiteVpnAttachmentowneraccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname;
 impl CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentresourcearn;
 impl CfnSiteToSiteVpnAttachmentresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnSiteToSiteVpnAttachmentresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentsegmentname;
 impl CfnSiteToSiteVpnAttachmentsegmentname {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnSiteToSiteVpnAttachmentsegmentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentstate;
 impl CfnSiteToSiteVpnAttachmentstate {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnSiteToSiteVpnAttachmentstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSiteToSiteVpnAttachmentupdatedat;
 impl CfnSiteToSiteVpnAttachmentupdatedat {
     pub fn att_name(&self) -> &'static str {
@@ -199,7 +199,7 @@ impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
 }
 
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProposedSegmentChange {
     ///
     /// The rule number in the policy document that applies to this change.
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// The AWS::ElastiCache::CacheCluster type creates an Amazon ElastiCache cache cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCacheCluster {
     ///
     /// Specifies whether the nodes in this Memcached cluster are created in a single Availability Zone or       created across multiple Availability Zones in the cluster's region.
@@ -384,7 +384,7 @@ pub struct CfnCacheCluster {
     pub att_redis_endpoint_port: CfnCacheClusterredisendpointport,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CacheClusterAZModeEnum {
     /// cross-az
     #[serde(rename = "cross-az")]
@@ -401,7 +401,7 @@ impl Default for CacheClusterAZModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CacheClusterIpDiscoveryEnum {
     /// ipv4
     #[serde(rename = "ipv4")]
@@ -418,7 +418,7 @@ impl Default for CacheClusterIpDiscoveryEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CacheClusterNetworkTypeEnum {
     /// dual_stack
     #[serde(rename = "dual_stack")]
@@ -439,7 +439,7 @@ impl Default for CacheClusterNetworkTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCacheClusterconfigurationendpointaddress;
 impl CfnCacheClusterconfigurationendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -447,7 +447,7 @@ impl CfnCacheClusterconfigurationendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCacheClusterconfigurationendpointport;
 impl CfnCacheClusterconfigurationendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -455,7 +455,7 @@ impl CfnCacheClusterconfigurationendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCacheClusterredisendpointaddress;
 impl CfnCacheClusterredisendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -463,7 +463,7 @@ impl CfnCacheClusterredisendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCacheClusterredisendpointport;
 impl CfnCacheClusterredisendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for CfnCacheCluster {
 }
 
 /// Configuration details of a CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogsDestinationDetails {
     /// The name of the CloudWatch Logs log group.
     ///
@@ -514,7 +514,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
 }
 
 /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationDetails {
     /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
     ///
@@ -562,7 +562,7 @@ impl cfn_resources::CfnResource for DestinationDetails {
 }
 
 /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked   as required but only if Kinesis Data Firehose was chosen as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisFirehoseDestinationDetails {
     /// The name of the Kinesis Data Firehose delivery stream.
     ///
@@ -590,7 +590,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
 }
 
 /// Specifies the destination, format and type of the logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogDeliveryConfigurationRequest {
     /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
     ///
@@ -656,7 +656,7 @@ impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

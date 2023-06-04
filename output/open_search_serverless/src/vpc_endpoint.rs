@@ -1,5 +1,5 @@
 /// Creates an OpenSearch Serverless-managed interface VPC endpoint. For more information, see Access         Amazon OpenSearch Serverless using an interface endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcEndpoint {
     ///
     /// The name of the endpoint.
@@ -50,7 +50,7 @@ pub struct CfnVpcEndpoint {
     pub att_id: CfnVpcEndpointid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcEndpointid;
 impl CfnVpcEndpointid {
     pub fn att_name(&self) -> &'static str {

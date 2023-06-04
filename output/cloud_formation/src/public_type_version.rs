@@ -9,7 +9,7 @@
 /// To perform testing, CloudFormation assumes the execution role specified when the type was  registered.
 ///
 /// An extension must have a test status of PASSED before it can be published. For more information,  see Publishing   extensions to make them available for public use in the CloudFormation CLI User   Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicTypeVersion {
     ///
     /// The Amazon Resource Number (ARN) of the extension.
@@ -127,7 +127,7 @@ pub struct CfnPublicTypeVersion {
     pub att_type_version_arn: CfnPublicTypeVersiontypeversionarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PublicTypeVersionTypeEnum {
     /// HOOK
     #[serde(rename = "HOOK")]
@@ -148,7 +148,7 @@ impl Default for PublicTypeVersionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicTypeVersionpublictypearn;
 impl CfnPublicTypeVersionpublictypearn {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl CfnPublicTypeVersionpublictypearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicTypeVersionpublisherid;
 impl CfnPublicTypeVersionpublisherid {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnPublicTypeVersionpublisherid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPublicTypeVersiontypeversionarn;
 impl CfnPublicTypeVersiontypeversionarn {
     pub fn att_name(&self) -> &'static str {

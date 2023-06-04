@@ -1,5 +1,5 @@
 /// The AWS::Cloud9::EnvironmentEC2 resource creates an Amazon EC2 development environment in AWS Cloud9. For more information, see Creating an Environment in the AWS Cloud9 User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentEC2 {
     ///
     /// The number of minutes until the running instance is shut down after the environment was last used.
@@ -163,7 +163,7 @@ pub struct CfnEnvironmentEC2 {
     pub att_name: CfnEnvironmentEC2name,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EnvironmentEC2ConnectionTypeEnum {
     /// CONNECT_SSH
     #[serde(rename = "CONNECT_SSH")]
@@ -180,7 +180,7 @@ impl Default for EnvironmentEC2ConnectionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentEC2arn;
 impl CfnEnvironmentEC2arn {
     pub fn att_name(&self) -> &'static str {
@@ -188,7 +188,7 @@ impl CfnEnvironmentEC2arn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentEC2name;
 impl CfnEnvironmentEC2name {
     pub fn att_name(&self) -> &'static str {
@@ -298,7 +298,7 @@ impl cfn_resources::CfnResource for CfnEnvironmentEC2 {
 }
 
 /// The Repository property type specifies an AWS CodeCommit source code repository to be cloned into an AWS Cloud9 development environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Repository {
     ///
     /// The path within the development environment's default file system location to clone the AWS CodeCommit repository into. For example, /REPOSITORY_NAME would clone the repository into the /home/USER_NAME/environment/REPOSITORY_NAME directory in the environment.
@@ -344,7 +344,7 @@ impl cfn_resources::CfnResource for Repository {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

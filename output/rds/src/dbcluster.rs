@@ -15,7 +15,7 @@
 /// Deleting DB clusters
 ///
 /// The default DeletionPolicy for AWS::RDS::DBCluster resources       is Snapshot. For more information about how AWS CloudFormation deletes       resources, see         DeletionPolicy Attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBCluster {
     ///
     /// The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster.
@@ -1000,7 +1000,7 @@ pub struct CfnDBCluster {
     pub att_read_endpoint_address: CfnDBClusterreadendpointaddress,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DBClusterRestoreToTimeEnum {
     /// Value must be a time in Universal Coordinated Time (UTC) format
     #[serde(rename = "Value must be a time in Universal Coordinated Time (UTC) format")]
@@ -1013,7 +1013,7 @@ impl Default for DBClusterRestoreToTimeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterdbclusterarn;
 impl CfnDBClusterdbclusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -1021,7 +1021,7 @@ impl CfnDBClusterdbclusterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterdbclusterresourceid;
 impl CfnDBClusterdbclusterresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -1029,7 +1029,7 @@ impl CfnDBClusterdbclusterresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterendpointaddress;
 impl CfnDBClusterendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -1037,7 +1037,7 @@ impl CfnDBClusterendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterendpointport;
 impl CfnDBClusterendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -1045,7 +1045,7 @@ impl CfnDBClusterendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClustermasterusersecretsecretarn;
 impl CfnDBClustermasterusersecretsecretarn {
     pub fn att_name(&self) -> &'static str {
@@ -1053,7 +1053,7 @@ impl CfnDBClustermasterusersecretsecretarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDBClusterreadendpointaddress;
 impl CfnDBClusterreadendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -1088,7 +1088,7 @@ impl cfn_resources::CfnResource for CfnDBCluster {
 }
 
 /// Describes an AWS Identity and Access Management (IAM) role that is associated with a DB cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DBClusterRole {
     ///
     /// The name of the feature associated with the AWS Identity and Access Management (IAM)       role. IAM roles that are associated with a DB cluster grant permission for the DB       cluster to access other AWS services on your behalf. For the list of supported feature       names, see the SupportedFeatureNames description in DBEngineVersion       in the Amazon RDS API Reference.
@@ -1129,7 +1129,7 @@ impl cfn_resources::CfnResource for DBClusterRole {
 }
 
 /// Specifies the connection endpoint for the primary instance of the DB cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoint {
     ///
     /// Specifies the connection endpoint for the primary instance of the DB cluster.
@@ -1173,7 +1173,7 @@ impl cfn_resources::CfnResource for Endpoint {
 /// The MasterUserSecret return value specifies the secret managed by RDS in AWS Secrets Manager for the master user password.
 ///
 /// For more information, see Password management with AWS Secrets Manager       in the Amazon RDS User Guide and Password management with AWS Secrets Manager       in the Amazon Aurora User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MasterUserSecret {
     ///
     /// The AWS KMS key identifier that is used to encrypt the secret.
@@ -1221,7 +1221,7 @@ impl cfn_resources::CfnResource for MasterUserSecret {
 /// If a failover occurs, and the Aurora Replica that you are connected to is promoted to be the primary instance, your connection          is dropped. To continue sending your read workload to other Aurora Replicas in the cluster, you can then reconnect to the          reader endpoint.
 ///
 /// For more information about Aurora endpoints, see Amazon Aurora connection management          in the Amazon Aurora User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReadEndpoint {
     ///
     /// The host address of the reader endpoint.
@@ -1257,7 +1257,7 @@ impl cfn_resources::CfnResource for ReadEndpoint {
 /// This property is only supported for Aurora Serverless v1. For Aurora Serverless v2, use ServerlessV2ScalingConfiguration property.
 ///
 /// Valid for: Aurora DB clusters only
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingConfiguration {
     ///
     /// A value that indicates whether to allow or disallow automatic pause for an Aurora DB cluster in serverless DB engine mode.       A DB cluster can be paused only when it's idle (it has no connections).
@@ -1379,7 +1379,7 @@ impl cfn_resources::CfnResource for ScalingConfiguration {
 /// If you have an Aurora cluster, you must set the ScalingConfigurationInfo attribute before you add a DB instance that uses the        db.serverless DB instance class. For more information, see        Clusters that use Aurora Serverless v2 must have a capacity range specified in the        Amazon Aurora User Guide.
 ///
 /// This property is only supported for Aurora Serverless v2. For Aurora Serverless v1, use ScalingConfiguration property.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServerlessV2ScalingConfiguration {
     ///
     /// The maximum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster.       You can specify ACU values in half-step increments, such as 40, 40.5, 41, and so on. The largest value       that you can use is 128.
@@ -1429,7 +1429,7 @@ impl cfn_resources::CfnResource for ServerlessV2ScalingConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

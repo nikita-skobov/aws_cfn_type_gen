@@ -1,5 +1,5 @@
 /// The AWS::GameLift::MatchmakingConfiguration resource defines a new    matchmaking configuration for use with FlexMatch. Whether you're using FlexMatch with GameLift hosting or as a    standalone matchmaking service, the matchmaking configuration sets out rules for matching players and forming teams.    If you're using GameLift hosting, it also defines how to start game sessions for each match. Your matchmaking system    can use multiple configurations to handle different game scenarios. All matchmaking requests identify the    matchmaking configuration to use and provide player attributes that are consistent with that configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMatchmakingConfiguration {
     ///
     /// A flag that determines whether a match that was created with this configuration must       be accepted by the matched players. To require acceptance, set to TRUE.       With this option enabled, matchmaking tickets use the status         REQUIRES_ACCEPTANCE to indicate when a completed potential match is       waiting for player acceptance.
@@ -232,7 +232,7 @@ pub struct CfnMatchmakingConfiguration {
     pub att_name: CfnMatchmakingConfigurationname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MatchmakingConfigurationBackfillModeEnum {
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
@@ -249,7 +249,7 @@ impl Default for MatchmakingConfigurationBackfillModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MatchmakingConfigurationFlexMatchModeEnum {
     /// STANDALONE
     #[serde(rename = "STANDALONE")]
@@ -266,7 +266,7 @@ impl Default for MatchmakingConfigurationFlexMatchModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMatchmakingConfigurationarn;
 impl CfnMatchmakingConfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -274,7 +274,7 @@ impl CfnMatchmakingConfigurationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMatchmakingConfigurationname;
 impl CfnMatchmakingConfigurationname {
     pub fn att_name(&self) -> &'static str {
@@ -463,7 +463,7 @@ impl cfn_resources::CfnResource for CfnMatchmakingConfiguration {
 }
 
 /// Set of key-value pairs that contain information about a game session. When included in       a game session request, these properties communicate details to be used when setting up       the new game session. For example, a game property might specify a game mode, level, or       map. Game properties are passed to the game server process when initiating a new game       session. For more information, see the Amazon GameLift Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GameProperty {
     ///
     /// The game property identifier.
@@ -535,7 +535,7 @@ impl cfn_resources::CfnResource for GameProperty {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

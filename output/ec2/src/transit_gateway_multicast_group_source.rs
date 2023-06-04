@@ -1,7 +1,7 @@
 /// Registers sources (network interfaces) with the specified transit gateway multicast     domain.
 ///
 /// A multicast source is a network interface attached to a supported instance that sends     multicast traffic. For information about supported instances, see Multicast Considerations in Amazon VPC Transit       Gateways.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSource {
     ///
     /// The IP address assigned to the transit gateway multicast group.
@@ -56,7 +56,7 @@ pub struct CfnTransitGatewayMulticastGroupSource {
         CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourcemembertype;
 impl CfnTransitGatewayMulticastGroupSourcemembertype {
     pub fn att_name(&self) -> &'static str {
@@ -64,7 +64,7 @@ impl CfnTransitGatewayMulticastGroupSourcemembertype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourceresourceid;
 impl CfnTransitGatewayMulticastGroupSourceresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -72,7 +72,7 @@ impl CfnTransitGatewayMulticastGroupSourceresourceid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourceresourcetype;
 impl CfnTransitGatewayMulticastGroupSourceresourcetype {
     pub fn att_name(&self) -> &'static str {
@@ -80,7 +80,7 @@ impl CfnTransitGatewayMulticastGroupSourceresourcetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourcesourcetype;
 impl CfnTransitGatewayMulticastGroupSourcesourcetype {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl CfnTransitGatewayMulticastGroupSourcesourcetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourcesubnetid;
 impl CfnTransitGatewayMulticastGroupSourcesubnetid {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnTransitGatewayMulticastGroupSourcesubnetid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid;
 impl CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid {
     pub fn att_name(&self) -> &'static str {

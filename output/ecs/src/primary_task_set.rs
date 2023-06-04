@@ -1,5 +1,5 @@
 /// Modifies which task set in a service is the primary task set. Any parameters that are 			updated on the primary task set in a service will transition to the service. This is 			used when a service uses the EXTERNAL deployment controller type. For more 			information, see Amazon ECS Deployment 				Types in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrimaryTaskSet {
     ///
     /// The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service that the task 			set exists in.

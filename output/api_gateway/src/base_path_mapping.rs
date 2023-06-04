@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::BasePathMapping resource creates a base path that clients who call your API must use in the invocation URL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBasePathMapping {
     ///
     /// The base path name that callers of the API must provide as part of the URL after the domain name.

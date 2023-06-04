@@ -1,7 +1,7 @@
 /// Creates a new IAM user for your AWS account.
 ///
 /// For information about quotas for the number of IAM users you can create, see IAM and AWS STS         quotas in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUser {
     ///
     /// A list of group names to which you want to add the user.
@@ -139,7 +139,7 @@ pub struct CfnUser {
     pub att_arn: CfnUserarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserarn;
 impl CfnUserarn {
     pub fn att_name(&self) -> &'static str {
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for CfnUser {
 }
 
 /// Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console. For more information about     managing passwords, see Managing Passwords in the        IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoginProfile {
     ///
     /// The user's password.
@@ -242,7 +242,7 @@ impl cfn_resources::CfnResource for LoginProfile {
 /// An attached policy is a managed policy that has been attached to a user, group, or     role.
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Policy {
     ///
     /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.
@@ -316,7 +316,7 @@ impl cfn_resources::CfnResource for Policy {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

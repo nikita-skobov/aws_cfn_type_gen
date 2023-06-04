@@ -1,5 +1,5 @@
 /// Specifies an ingress authorization rule to add to a Client VPN endpoint. Ingress     authorization rules act as firewall rules that grant access to networks. You must configure     ingress authorization rules to enable clients to access resources in AWS     or on-premises networks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClientVpnAuthorizationRule {
     ///
     /// The ID of the group to grant access to, for example, the Active Directory group or identity provider (IdP) group. Required if AuthorizeAllGroups is false or not specified.

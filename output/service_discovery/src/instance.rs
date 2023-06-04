@@ -1,5 +1,5 @@
 /// A complex type that contains information about an instance that AWS Cloud Map creates when you  submit a RegisterInstance request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstance {
     ///
     /// A string map that contains the following information for the service that you specify in  ServiceId:

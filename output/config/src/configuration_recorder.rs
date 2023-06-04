@@ -5,7 +5,7 @@
 /// To stop the recorder and delete it, delete the configuration recorder from your stack. To stop the recorder without deleting it,       call the StopConfigurationRecorder action of the AWS Config API directly.
 ///
 /// For more information, see Configuration Recorder in the AWS Config Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationRecorder {
     ///
     /// A name for the configuration recorder. If you don't specify a name, AWS CloudFormation CloudFormation generates a unique physical ID and uses that ID for the configuration recorder name.       For more information, see Name Type.
@@ -102,7 +102,7 @@ impl cfn_resources::CfnResource for CfnConfigurationRecorder {
 /// For a list of supported resource types, see Supported Resource Types.
 ///
 /// For more information and a table of the Home Regions for Global Resource Types Onboarded after February 2022, see Selecting Which Resources AWS Config Records.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordingGroup {
     ///
     /// Specifies whether AWS Config records configuration changes for 			every supported type of regional resource.

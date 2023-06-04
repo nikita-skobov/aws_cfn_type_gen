@@ -1,7 +1,7 @@
 /// An activity is a task that you write in any programming language and host on any machine     that has access to AWS Step Functions. Activities must poll Step Functions using the       GetActivityTask API action and respond using SendTask* API     actions. This function lets Step Functions know the existence of your activity and returns     an identifier for use in a state machine and when polling from the activity.
 ///
 /// For information about creating an activity, see Creating an     Activity State Machine in the AWS Step Functions Developer       Guide and CreateActivity     in the AWS Step Functions API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnActivity {
     ///
     /// The name of the activity.
@@ -41,7 +41,7 @@ pub struct CfnActivity {
     pub att_name: CfnActivityname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnActivityarn;
 impl CfnActivityarn {
     pub fn att_name(&self) -> &'static str {
@@ -49,7 +49,7 @@ impl CfnActivityarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnActivityname;
 impl CfnActivityname {
     pub fn att_name(&self) -> &'static str {
@@ -72,7 +72,7 @@ impl cfn_resources::CfnResource for CfnActivity {
 }
 
 /// The TagsEntry property specifies tags to identify an     activity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// The key for a key-value pair in a tag entry.

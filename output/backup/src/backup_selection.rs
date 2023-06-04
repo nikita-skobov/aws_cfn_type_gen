@@ -1,7 +1,7 @@
 /// Specifies a set of resources to assign to a backup plan.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupSelection {
     ///
     /// Uniquely identifies a backup plan.
@@ -37,7 +37,7 @@ pub struct CfnBackupSelection {
     pub att_selection_id: CfnBackupSelectionselectionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupSelectionbackupplanid;
 impl CfnBackupSelectionbackupplanid {
     pub fn att_name(&self) -> &'static str {
@@ -45,7 +45,7 @@ impl CfnBackupSelectionbackupplanid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupSelectionid;
 impl CfnBackupSelectionid {
     pub fn att_name(&self) -> &'static str {
@@ -53,7 +53,7 @@ impl CfnBackupSelectionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupSelectionselectionid;
 impl CfnBackupSelectionselectionid {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl cfn_resources::CfnResource for CfnBackupSelection {
 }
 
 /// Specifies an object containing properties used to assign a set of resources to a backup     plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BackupSelectionResourceType {
     ///
     /// A list of conditions that you define to assign resources to your backup plans using     tags. For example, "StringEquals": { "ConditionKey": "aws:ResourceTag/CreatedByCryo",       "ConditionValue": "true" },. Condition operators are case sensitive.
@@ -180,7 +180,7 @@ impl cfn_resources::CfnResource for BackupSelectionResourceType {
 }
 
 /// Includes information about tags you define to assign tagged resources to a backup     plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionParameter {
     ///
     /// The key in a key-value pair. For example, in the tag Department:     Accounting, Department is the key.
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for ConditionParameter {
 }
 
 /// Specifies an object that contains an array of triplets made up of a condition type (such     as STRINGEQUALS), a key, and a value. Conditions are used to filter resources     in a selection that is assigned to a backup plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConditionResourceType {
     ///
     /// The key in a key-value pair. For example, in "Department": "accounting",       "Department" is the key.
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for ConditionResourceType {
 }
 
 /// Contains information about which resources to include or exclude from a backup plan     using their tags. Conditions are case sensitive.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Conditions {
     ///
     /// Filters the values of your tagged resources for only those resources that you tagged     with the same value. Also called "exact matching."

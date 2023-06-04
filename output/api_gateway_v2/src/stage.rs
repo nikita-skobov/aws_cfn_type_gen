@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Stage resource specifies a stage for an API. Each stage is a named     reference to a deployment of the API and is made available for client applications to call. To learn more, see      Working with stages for      HTTP APIs and Deploy a WebSocket API in API Gateway.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStage {
     ///
     /// Settings for logging access in this stage.
@@ -167,7 +167,7 @@ impl cfn_resources::CfnResource for CfnStage {
 }
 
 /// Settings for logging access in a stage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLogSettings {
     ///
     /// The ARN of the CloudWatch Logs log group to receive access logs. This parameter is required to enable access logging.
@@ -209,7 +209,7 @@ impl cfn_resources::CfnResource for AccessLogSettings {
 }
 
 /// Represents a collection of route settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RouteSettings {
     ///
     /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.

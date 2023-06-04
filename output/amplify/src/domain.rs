@@ -1,5 +1,5 @@
 /// The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// The unique ID for an Amplify app.
@@ -101,7 +101,7 @@ pub struct CfnDomain {
     pub att_status_reason: CfnDomainstatusreason,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainarn;
 impl CfnDomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnDomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainautosubdomainiamrole;
 impl CfnDomainautosubdomainiamrole {
     pub fn att_name(&self) -> &'static str {
@@ -117,7 +117,7 @@ impl CfnDomainautosubdomainiamrole {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaincertificaterecord;
 impl CfnDomaincertificaterecord {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl CfnDomaincertificaterecord {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainname;
 impl CfnDomaindomainname {
     pub fn att_name(&self) -> &'static str {
@@ -133,7 +133,7 @@ impl CfnDomaindomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomaindomainstatus;
 impl CfnDomaindomainstatus {
     pub fn att_name(&self) -> &'static str {
@@ -141,7 +141,7 @@ impl CfnDomaindomainstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainstatusreason;
 impl CfnDomainstatusreason {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 }
 
 /// The SubDomainSetting property type enables you to connect a subdomain (for example,    example.exampledomain.com) to a specific branch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubDomainSetting {
     ///
     /// The branch name setting for the subdomain.

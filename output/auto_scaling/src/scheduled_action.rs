@@ -3,7 +3,7 @@
 /// When you update a stack with an Auto Scaling group and scheduled action, CloudFormation    always sets the min size, max size, and desired capacity properties of your group to the    values that are defined in the AWS::AutoScaling::AutoScalingGroup section of your    template. However, you might not want CloudFormation to do that when you have a scheduled    action in effect. You can use an UpdatePolicy     attribute to prevent CloudFormation from changing the min size, max size, or desired    capacity property values during a stack update unless you modified the individual values in    your template. If you have rolling updates enabled, before you can update the Auto Scaling    group, you must suspend scheduled actions by specifying an UpdatePolicy     attribute for the Auto Scaling group. You can find a sample update policy for    rolling updates in Auto scaling template     snippets.
 ///
 /// For more information, see Scheduled scaling and Suspending and resuming scaling processes in the Amazon EC2 Auto Scaling     User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledAction {
     ///
     /// The name of the Auto Scaling group.
@@ -120,7 +120,7 @@ pub struct CfnScheduledAction {
     pub att_scheduled_action_name: CfnScheduledActionscheduledactionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledActionscheduledactionname;
 impl CfnScheduledActionscheduledactionname {
     pub fn att_name(&self) -> &'static str {

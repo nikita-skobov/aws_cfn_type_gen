@@ -5,7 +5,7 @@
 /// Requests that meet both of these conditions and exceed 15,000 requests every five     minutes trigger the rule's action (block or count), which is defined in the web     ACL.
 ///
 /// Note you can only create rate-based rules using an AWS CloudFormation template. To add the rate-based rules created through AWS CloudFormation to a web ACL, use the AWS WAF console, API, or command line interface (CLI). For more information, see    UpdateWebACL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRateBasedRule {
     ///
     /// The Predicates object contains one Predicate element for      each ByteMatchSet, IPSet, or SqlInjectionMatchSet> object that you want to include in a       RateBasedRule.
@@ -78,7 +78,7 @@ pub struct CfnRateBasedRule {
     pub rate_limit: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RateBasedRuleRateKeyEnum {
     /// IP
     #[serde(rename = "IP")]
@@ -150,7 +150,7 @@ impl cfn_resources::CfnResource for CfnRateBasedRule {
 }
 
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects 			that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do 			NOT originate from the IP address 192.0.2.44.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Predicate {
     ///
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
@@ -196,7 +196,7 @@ pub struct Predicate {
     pub cfn_type: PredicateTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PredicateTypeEnum {
     /// ByteMatch
     #[serde(rename = "ByteMatch")]

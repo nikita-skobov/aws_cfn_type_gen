@@ -1,5 +1,5 @@
 /// Creates a connection. A connection defines the authorization type and credentials to use    for authorization with an API destination HTTP endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnection {
     ///
     /// A CreateConnectionAuthRequestParameters object that contains the    authorization parameters to use to authorize with the endpoint.
@@ -68,7 +68,7 @@ pub struct CfnConnection {
     pub att_secret_arn: CfnConnectionsecretarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectionAuthorizationTypeEnum {
     /// API_KEY
     #[serde(rename = "API_KEY")]
@@ -89,7 +89,7 @@ impl Default for ConnectionAuthorizationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectionarn;
 impl CfnConnectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl CfnConnectionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectionsecretarn;
 impl CfnConnectionsecretarn {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for CfnConnection {
 }
 
 /// Contains the API key authorization parameters for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApiKeyAuthParameters {
     ///
     /// The name of the API key to use for authorization.
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for ApiKeyAuthParameters {
 }
 
 /// Contains the authorization parameters to use for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthParameters {
     ///
     /// The API Key parameters to use for authorization.
@@ -333,7 +333,7 @@ impl cfn_resources::CfnResource for AuthParameters {
 }
 
 /// Contains the Basic authorization parameters for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BasicAuthParameters {
     ///
     /// The password associated with the user name to use for Basic authorization.
@@ -429,7 +429,7 @@ impl cfn_resources::CfnResource for BasicAuthParameters {
 }
 
 /// Contains the OAuth authorization parameters to use for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientParameters {
     ///
     /// The client ID to use for OAuth authorization.
@@ -525,7 +525,7 @@ impl cfn_resources::CfnResource for ClientParameters {
 }
 
 /// Contains additional parameters for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionHttpParameters {
     ///
     /// Contains additional body string parameters for the connection.
@@ -609,7 +609,7 @@ impl cfn_resources::CfnResource for ConnectionHttpParameters {
 }
 
 /// Contains the OAuth authorization parameters to use for the connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OAuthParameters {
     ///
     /// The URL to the authorization endpoint when OAuth is specified as the authorization    type.
@@ -665,7 +665,7 @@ pub struct OAuthParameters {
     pub oauth_http_parameters: Option<ConnectionHttpParameters>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OAuthParametersHttpMethodEnum {
     /// GET
     #[serde(rename = "GET")]
@@ -726,7 +726,7 @@ impl cfn_resources::CfnResource for OAuthParameters {
 }
 
 /// Additional query string parameter for the connection. You can include up to 100 additional    query string parameters per request. Each additional parameter counts towards the event    payload size, which cannot exceed 64 KB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Parameter {
     ///
     /// Specifies whether the value is secret.

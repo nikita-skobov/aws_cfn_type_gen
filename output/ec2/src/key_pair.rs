@@ -5,7 +5,7 @@
 /// When you create a new key pair, the private key is saved to AWS Systems Manager      Parameter Store, using a parameter with the following name: /ec2/keypair/{key_pair_id}.      For more information about retrieving private key, and the required permissions, see Create a key pair using AWS CloudFormation in the Amazon EC2 User Guide.
 ///
 /// When AWS CloudFormation deletes a key pair that was created or imported by a stack,      it also deletes the parameter that was used to store the private key material in     Parameter Store.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyPair {
     ///
     /// A unique name for the key pair.
@@ -69,7 +69,7 @@ pub struct CfnKeyPair {
     pub att_key_pair_id: CfnKeyPairkeypairid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KeyPairKeyTypeEnum {
     /// ed25519
     #[serde(rename = "ed25519")]
@@ -86,7 +86,7 @@ impl Default for KeyPairKeyTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyPairkeyfingerprint;
 impl CfnKeyPairkeyfingerprint {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl CfnKeyPairkeyfingerprint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyPairkeypairid;
 impl CfnKeyPairkeypairid {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl cfn_resources::CfnResource for CfnKeyPair {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

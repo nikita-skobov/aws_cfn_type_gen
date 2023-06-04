@@ -1,5 +1,5 @@
 /// Manages a detector and associated detector versions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetector {
     ///
     /// The models to associate with this detector. You must provide the ARNs of all the models you want to associate.
@@ -138,7 +138,7 @@ pub struct CfnDetector {
     pub att_last_updated_time: CfnDetectorlastupdatedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectorarn;
 impl CfnDetectorarn {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnDetectorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectorcreatedtime;
 impl CfnDetectorcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnDetectorcreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectordetectorversionid;
 impl CfnDetectordetectorversionid {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl CfnDetectordetectorversionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectoreventtypearn;
 impl CfnDetectoreventtypearn {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl CfnDetectoreventtypearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectoreventtypecreatedtime;
 impl CfnDetectoreventtypecreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl CfnDetectoreventtypecreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectoreventtypelastupdatedtime;
 impl CfnDetectoreventtypelastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -186,7 +186,7 @@ impl CfnDetectoreventtypelastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectorlastupdatedtime;
 impl CfnDetectorlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -255,7 +255,7 @@ impl cfn_resources::CfnResource for CfnDetector {
 }
 
 /// The entity type details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EntityType {
     ///
     /// The entity type ARN.
@@ -467,7 +467,7 @@ impl cfn_resources::CfnResource for EntityType {
 }
 
 /// The event type details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventType {
     ///
     /// The entity type ARN.
@@ -715,7 +715,7 @@ impl cfn_resources::CfnResource for EventType {
 }
 
 /// The event type variable for the detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EventVariable {
     ///
     /// The event variable ARN.
@@ -875,7 +875,7 @@ impl cfn_resources::CfnResource for EventVariable {
 }
 
 /// The label details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Label {
     ///
     /// The label ARN.
@@ -1087,7 +1087,7 @@ impl cfn_resources::CfnResource for Label {
 }
 
 /// The Model property type specifies Property description not available. for an AWS::FraudDetector::Detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Model {
     /// Property description not available.
     ///
@@ -1116,7 +1116,7 @@ impl cfn_resources::CfnResource for Model {
 }
 
 /// The outcome.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Outcome {
     ///
     /// The outcome ARN.
@@ -1356,7 +1356,7 @@ impl cfn_resources::CfnResource for Outcome {
 }
 
 /// A rule. Rule is a condition that tells Amazon Fraud Detector how to interpret variables values during a fraud prediction.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// The rule ARN.
@@ -1598,7 +1598,7 @@ impl cfn_resources::CfnResource for Rule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

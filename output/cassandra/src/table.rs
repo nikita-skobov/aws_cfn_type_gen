@@ -1,5 +1,5 @@
 /// You can use the AWS::Cassandra::Table resource to create a new table in       Amazon Keyspaces (for Apache Cassandra). For more information, see Create a         keyspace and a table in the Amazon Keyspaces Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTable {
     ///
     /// The billing mode for the table, which determines how you'll be charged for reads and writes:
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for CfnTable {
 }
 
 /// Determines the billing mode for the table - on-demand or provisioned.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BillingMode {
     ///
     /// The billing mode for the table:
@@ -225,7 +225,7 @@ impl cfn_resources::CfnResource for BillingMode {
 }
 
 /// Defines an individual column within the clustering key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusteringKeyColumn {
     ///
     /// The name and data type of this clustering key column.
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for ClusteringKeyColumn {
 }
 
 /// The name and data type of an individual column in a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Column {
     ///
     /// The name of the column. For more information, see Identifiers in the       Amazon Keyspaces Developer Guide.
@@ -310,7 +310,7 @@ impl cfn_resources::CfnResource for Column {
 }
 
 /// Specifies the encryption at rest option selected for the table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionSpecification {
     ///
     /// The encryption at rest options for the table.
@@ -354,7 +354,7 @@ impl cfn_resources::CfnResource for EncryptionSpecification {
 }
 
 /// The provisioned throughput for the table, which consists of         ReadCapacityUnits and WriteCapacityUnits.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedThroughput {
     ///
     /// The amount of read capacity that's provisioned for the table. For more information,       see Read/write capacity         mode in the Amazon Keyspaces Developer Guide.
@@ -400,7 +400,7 @@ impl cfn_resources::CfnResource for ProvisionedThroughput {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// The AWS::DataSync::Task resource specifies a task. A task is a set of two     locations (source and destination) and a set of Options that you use to     control the behavior of a task. If you don't specify Options when you create a     task, AWS DataSync populates them with service defaults.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTask {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that is used to    monitor and log events in the task.
@@ -142,7 +142,7 @@ pub struct CfnTask {
     pub att_task_arn: CfnTasktaskarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTaskstatus;
 impl CfnTaskstatus {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnTaskstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTasktaskarn;
 impl CfnTasktaskarn {
     pub fn att_name(&self) -> &'static str {
@@ -247,7 +247,7 @@ impl cfn_resources::CfnResource for CfnTask {
 }
 
 /// Specifies which files, folders, and objects to include or exclude when transferring files    from source to destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterRule {
     ///
     /// The type of filter rule to apply. AWS DataSync only supports the SIMPLE_PATTERN    rule type.
@@ -282,7 +282,7 @@ pub struct FilterRule {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FilterRuleFilterTypeEnum {
     /// SIMPLE_PATTERN
     #[serde(rename = "SIMPLE_PATTERN")]
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for FilterRule {
 /// Represents the options that are available to control the behavior of a StartTaskExecution operation. This behavior includes preserving metadata, such     as user ID (UID), group ID (GID), and file permissions; overwriting files in the     destination; data integrity verification; and so on.
 ///
 /// A task has a set of default options associated with it. If you don't specify an     option in StartTaskExecution,     the default value is used. You can override the default options on each task execution by     specifying an overriding Options value to StartTaskExecution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Options {
     ///
     /// A file metadata value that shows the last time that a file was accessed (that is,     when the file was read or written to). If you set Atime to       BEST_EFFORT, AWS DataSync attempts to preserve the original       Atime attribute on all source files (that is, the version before the     PREPARING phase). However, Atime's behavior is not fully standard across     platforms, so AWS DataSync can only do this on a best-effort basis.
@@ -626,7 +626,7 @@ pub struct Options {
     pub verify_mode: Option<OptionsVerifyModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsAtimeEnum {
     /// BEST_EFFORT
     #[serde(rename = "BEST_EFFORT")]
@@ -643,7 +643,7 @@ impl Default for OptionsAtimeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsGidEnum {
     /// BOTH
     #[serde(rename = "BOTH")]
@@ -668,7 +668,7 @@ impl Default for OptionsGidEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsLogLevelEnum {
     /// BASIC
     #[serde(rename = "BASIC")]
@@ -689,7 +689,7 @@ impl Default for OptionsLogLevelEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsMtimeEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -706,7 +706,7 @@ impl Default for OptionsMtimeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsObjectTagsEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -723,7 +723,7 @@ impl Default for OptionsObjectTagsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsOverwriteModeEnum {
     /// ALWAYS
     #[serde(rename = "ALWAYS")]
@@ -740,7 +740,7 @@ impl Default for OptionsOverwriteModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsPosixPermissionsEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -757,7 +757,7 @@ impl Default for OptionsPosixPermissionsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsPreserveDeletedFilesEnum {
     /// PRESERVE
     #[serde(rename = "PRESERVE")]
@@ -774,7 +774,7 @@ impl Default for OptionsPreserveDeletedFilesEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsPreserveDevicesEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -791,7 +791,7 @@ impl Default for OptionsPreserveDevicesEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsSecurityDescriptorCopyFlagsEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -812,7 +812,7 @@ impl Default for OptionsSecurityDescriptorCopyFlagsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsTaskQueueingEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -829,7 +829,7 @@ impl Default for OptionsTaskQueueingEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsTransferModeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -846,7 +846,7 @@ impl Default for OptionsTransferModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsUidEnum {
     /// BOTH
     #[serde(rename = "BOTH")]
@@ -871,7 +871,7 @@ impl Default for OptionsUidEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsVerifyModeEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -913,7 +913,7 @@ impl cfn_resources::CfnResource for Options {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -951,7 +951,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies the schedule you want your task to use for repeated executions. For more    information, see Schedule Expressions for     Rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TaskSchedule {
     ///
     /// A cron expression that specifies when AWS DataSync initiates a scheduled    transfer from a source to a destination location.

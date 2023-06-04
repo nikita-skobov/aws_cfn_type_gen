@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::DocumentationPart resource creates a documentation part for an API. For more information, see Representation of API Documentation in API Gateway in the API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDocumentationPart {
     ///
     /// The location of the targeted API entity of the to-be-created documentation part.
@@ -38,7 +38,7 @@ pub struct CfnDocumentationPart {
     pub att_documentation_part_id: CfnDocumentationPartdocumentationpartid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDocumentationPartdocumentationpartid;
 impl CfnDocumentationPartdocumentationpartid {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl cfn_resources::CfnResource for CfnDocumentationPart {
 }
 
 /// The Location property specifies the location of the Amazon API Gateway API entity that the documentation applies to. Location is a property of the AWS::ApiGateway::DocumentationPart resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Location {
     ///
     /// The HTTP verb of a method. It is a valid field for the API entity types of METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, and RESPONSE_BODY. The default value is * for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other location attributes, the child entity's method attribute must match that of the parent entity exactly.
@@ -130,7 +130,7 @@ pub struct Location {
     pub cfn_type: Option<LocationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LocationTypeEnum {
     /// API
     #[serde(rename = "API")]

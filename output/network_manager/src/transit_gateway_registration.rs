@@ -1,5 +1,5 @@
 /// Registers a transit gateway in your global network. Not all Regions support transit       gateways for global networks. For a list of the supported Regions, see Region Availability in the         AWS Transit Gateways for Global         Networks User Guide. The transit gateway can be in any of the supported       AWS Regions, but it must be owned by the same AWS account that owns the global       network. You cannot register a transit gateway in more than one global network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayRegistration {
     ///
     /// The ID of the global network.

@@ -1,5 +1,5 @@
 /// Creates a data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSource {
     ///
     /// A set of alternate data source parameters that you want to share for the credentials       stored with this data source. The credentials are applied in tandem with the data source       parameters when you copy a data source by using a create or update request. The API       operation compares the DataSourceParameters structure that's in the request       with the structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the credentials from this       existing data source. If the AlternateDataSourceParameters list is null,       the Credentials originally used with this DataSourceParameters       are automatically allowed.
@@ -178,7 +178,7 @@ pub struct CfnDataSource {
     pub att_status: CfnDataSourcestatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataSourceTypeEnum {
     /// ADOBE_ANALYTICS
     #[serde(rename = "ADOBE_ANALYTICS")]
@@ -291,7 +291,7 @@ impl Default for DataSourceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcearn;
 impl CfnDataSourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -299,7 +299,7 @@ impl CfnDataSourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcecreatedtime;
 impl CfnDataSourcecreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -307,7 +307,7 @@ impl CfnDataSourcecreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcelastupdatedtime;
 impl CfnDataSourcelastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -315,7 +315,7 @@ impl CfnDataSourcelastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcestatus;
 impl CfnDataSourcestatus {
     pub fn att_name(&self) -> &'static str {
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 }
 
 /// The parameters for OpenSearch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonElasticsearchParameters {
     ///
     /// The OpenSearch domain.
@@ -481,7 +481,7 @@ impl cfn_resources::CfnResource for AmazonElasticsearchParameters {
 }
 
 /// The parameters for OpenSearch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonOpenSearchParameters {
     ///
     /// The OpenSearch domain.
@@ -536,7 +536,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchParameters {
 }
 
 /// Parameters for Amazon Athena.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AthenaParameters {
     ///
     /// The workgroup that Amazon Athena uses.
@@ -592,7 +592,7 @@ impl cfn_resources::CfnResource for AthenaParameters {
 }
 
 /// Parameters for Amazon Aurora.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuroraParameters {
     ///
     /// Database.
@@ -717,7 +717,7 @@ impl cfn_resources::CfnResource for AuroraParameters {
 }
 
 /// Parameters for Amazon Aurora PostgreSQL-Compatible Edition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuroraPostgreSqlParameters {
     ///
     /// The Amazon Aurora PostgreSQL database to connect to.
@@ -842,7 +842,7 @@ impl cfn_resources::CfnResource for AuroraPostgreSqlParameters {
 }
 
 /// The combination of user name and password that are used as credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CredentialPair {
     ///
     /// A set of alternate data source parameters that you want to share for these       credentials. The credentials are applied in tandem with the data source parameters when       you copy a data source by using a create or update request. The API operation compares       the DataSourceParameters structure that's in the request with the       structures in the AlternateDataSourceParameters allow list. If the       structures are an exact match, the request is allowed to use the new data source with       the existing credentials. If the AlternateDataSourceParameters list is       null, the DataSourceParameters originally used with these         Credentials is automatically allowed.
@@ -954,7 +954,7 @@ impl cfn_resources::CfnResource for CredentialPair {
 }
 
 /// Data source credentials. This is a variant type structure. For this structure to be       valid, only one of the attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceCredentials {
     ///
     /// The Amazon Resource Name (ARN) of a data source that has the credential pair that you       want to use. When CopySourceArn is not null, the credential pair from the       data source in the ARN is used as the credentials for the       DataSourceCredentials structure.
@@ -1014,7 +1014,7 @@ impl cfn_resources::CfnResource for DataSourceCredentials {
 }
 
 /// Error information for the data source creation or update.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceErrorInfo {
     ///
     /// Error message.
@@ -1043,7 +1043,7 @@ pub struct DataSourceErrorInfo {
     pub cfn_type: Option<DataSourceErrorInfoTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataSourceErrorInfoTypeEnum {
     /// ACCESS_DENIED
     #[serde(rename = "ACCESS_DENIED")]
@@ -1099,7 +1099,7 @@ impl cfn_resources::CfnResource for DataSourceErrorInfo {
 }
 
 /// The parameters that Amazon QuickSight uses to connect to your underlying data source.       This is a variant type structure. For this structure to be valid, only one of the       attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceParameters {
     ///
     /// The parameters for OpenSearch.
@@ -1405,7 +1405,7 @@ impl cfn_resources::CfnResource for DataSourceParameters {
 }
 
 /// The required parameters that are needed to connect to a Databricks data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabricksParameters {
     ///
     /// The host name of the Databricks data source.
@@ -1456,7 +1456,7 @@ impl cfn_resources::CfnResource for DatabricksParameters {
 }
 
 /// Amazon S3 manifest file location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManifestFileLocation {
     ///
     /// Amazon S3 bucket.
@@ -1548,7 +1548,7 @@ impl cfn_resources::CfnResource for ManifestFileLocation {
 }
 
 /// The parameters for MariaDB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MariaDbParameters {
     ///
     /// Database.
@@ -1673,7 +1673,7 @@ impl cfn_resources::CfnResource for MariaDbParameters {
 }
 
 /// The parameters for MySQL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MySqlParameters {
     ///
     /// Database.
@@ -1798,7 +1798,7 @@ impl cfn_resources::CfnResource for MySqlParameters {
 }
 
 /// Oracle parameters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OracleParameters {
     ///
     /// Database.
@@ -1849,7 +1849,7 @@ impl cfn_resources::CfnResource for OracleParameters {
 }
 
 /// The parameters for PostgreSQL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PostgreSqlParameters {
     ///
     /// Database.
@@ -1974,7 +1974,7 @@ impl cfn_resources::CfnResource for PostgreSqlParameters {
 }
 
 /// The parameters for Presto.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrestoParameters {
     ///
     /// Catalog.
@@ -2086,7 +2086,7 @@ impl cfn_resources::CfnResource for PrestoParameters {
 }
 
 /// The parameters for Amazon RDS.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RdsParameters {
     ///
     /// Database.
@@ -2178,7 +2178,7 @@ impl cfn_resources::CfnResource for RdsParameters {
 }
 
 /// The parameters for Amazon Redshift. The ClusterId field can be blank if       Host and Port are both set. The Host and       Port fields can be blank if the ClusterId field is set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftParameters {
     ///
     /// Cluster ID. This field can be blank if the Host and Port are       provided.
@@ -2343,7 +2343,7 @@ impl cfn_resources::CfnResource for RedshiftParameters {
 }
 
 /// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -2385,7 +2385,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 }
 
 /// The parameters for S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Parameters {
     ///
     /// Location of the Amazon S3 manifest file. This is NULL if the manifest file was       uploaded into Amazon QuickSight.
@@ -2416,7 +2416,7 @@ impl cfn_resources::CfnResource for S3Parameters {
 }
 
 /// The parameters for Snowflake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnowflakeParameters {
     ///
     /// Database.
@@ -2532,7 +2532,7 @@ impl cfn_resources::CfnResource for SnowflakeParameters {
 }
 
 /// The parameters for Spark.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SparkParameters {
     ///
     /// Host.
@@ -2620,7 +2620,7 @@ impl cfn_resources::CfnResource for SparkParameters {
 }
 
 /// The parameters for SQL Server.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqlServerParameters {
     ///
     /// Database.
@@ -2745,7 +2745,7 @@ impl cfn_resources::CfnResource for SqlServerParameters {
 }
 
 /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your       underlying data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SslProperties {
     ///
     /// A Boolean option to control whether SSL should be disabled.
@@ -2781,7 +2781,7 @@ impl cfn_resources::CfnResource for SslProperties {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2819,7 +2819,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The parameters for Teradata.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TeradataParameters {
     ///
     /// Database.
@@ -2944,7 +2944,7 @@ impl cfn_resources::CfnResource for TeradataParameters {
 }
 
 /// VPC connection properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectionProperties {
     ///
     /// The Amazon Resource Name (ARN) for the VPC connection.

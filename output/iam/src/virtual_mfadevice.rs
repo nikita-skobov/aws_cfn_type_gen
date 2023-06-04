@@ -1,7 +1,7 @@
 /// Creates a new virtual MFA device for the AWS account. After creating     the virtual MFA, use EnableMFADevice to attach     the MFA device to an IAM user. For more information about creating and     working with virtual MFA devices, see Using a virtual MFA device in     the IAM User Guide.
 ///
 /// For information about the maximum number of MFA devices you can create, see IAM and AWS STS quotas in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualMFADevice {
     ///
     /// The path for the virtual MFA device. For more information about paths, see IAM         identifiers in the IAM User Guide.
@@ -74,7 +74,7 @@ pub struct CfnVirtualMFADevice {
     pub att_serial_number: CfnVirtualMFADeviceserialnumber,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualMFADeviceserialnumber;
 impl CfnVirtualMFADeviceserialnumber {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl cfn_resources::CfnResource for CfnVirtualMFADevice {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

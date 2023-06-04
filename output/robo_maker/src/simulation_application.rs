@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::SimulationApplication resource creates an AWS RoboMaker simulation application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplication {
     ///
     /// The current revision id.
@@ -108,7 +108,7 @@ pub struct CfnSimulationApplication {
     pub att_current_revision_id: CfnSimulationApplicationcurrentrevisionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplicationarn;
 impl CfnSimulationApplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnSimulationApplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimulationApplicationcurrentrevisionid;
 impl CfnSimulationApplicationcurrentrevisionid {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl cfn_resources::CfnResource for CfnSimulationApplication {
 }
 
 /// Information about a rendering engine.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RenderingEngine {
     ///
     /// The name of the rendering engine.
@@ -202,7 +202,7 @@ pub struct RenderingEngine {
     pub version: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RenderingEngineNameEnum {
     /// OGRE
     #[serde(rename = "OGRE")]
@@ -252,7 +252,7 @@ impl cfn_resources::CfnResource for RenderingEngine {
 }
 
 /// Information about a robot software suite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RobotSoftwareSuite {
     ///
     /// The name of the robot software suite. General is the only supported value.
@@ -282,7 +282,7 @@ pub struct RobotSoftwareSuite {
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RobotSoftwareSuiteNameEnum {
     /// General
     #[serde(rename = "General")]
@@ -303,7 +303,7 @@ impl Default for RobotSoftwareSuiteNameEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RobotSoftwareSuiteVersionEnum {
     /// Dashing
     #[serde(rename = "Dashing")]
@@ -343,7 +343,7 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
 }
 
 /// Information about a simulation software suite.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SimulationSoftwareSuite {
     ///
     /// The name of the simulation software suite. SimulationRuntime is the only supported value.
@@ -377,7 +377,7 @@ pub struct SimulationSoftwareSuite {
     pub version: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SimulationSoftwareSuiteNameEnum {
     /// Gazebo
     #[serde(rename = "Gazebo")]
@@ -435,7 +435,7 @@ impl cfn_resources::CfnResource for SimulationSoftwareSuite {
 }
 
 /// Information about a source configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConfig {
     ///
     /// The target processor architecture for the application.
@@ -485,7 +485,7 @@ pub struct SourceConfig {
     pub s3_key: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceConfigArchitectureEnum {
     /// ARM64
     #[serde(rename = "ARM64")]

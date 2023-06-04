@@ -1,5 +1,5 @@
 /// The AWS::CloudFormation::StackSet enables you to provision stacks into AWS accounts and across Regions by using a single CloudFormation template. In the stack set, you specify the template  to use, in addition to any parameters and capabilities that the template requires.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStackSet {
     ///
     /// The Amazon Resource Number (ARN) of the IAM role to use to create this stack set. Specify an   IAM role only if you are using customized administrator roles to control which users or groups can  manage specific stack sets within the same administrator account.
@@ -235,7 +235,7 @@ pub struct CfnStackSet {
     pub att_stack_set_id: CfnStackSetstacksetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StackSetCallAsEnum {
     /// SELF
     #[serde(rename = "SELF")]
@@ -252,7 +252,7 @@ impl Default for StackSetCallAsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StackSetPermissionModelEnum {
     /// SELF_MANAGED
     #[serde(rename = "SELF_MANAGED")]
@@ -269,7 +269,7 @@ impl Default for StackSetPermissionModelEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStackSetstacksetid;
 impl CfnStackSetstacksetid {
     pub fn att_name(&self) -> &'static str {
@@ -416,7 +416,7 @@ impl cfn_resources::CfnResource for CfnStackSet {
 }
 
 /// [Service-managed permissions] Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organizational unit (OU).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoDeployment {
     ///
     /// If set to true, StackSets automatically deploys additional stack instances to AWS Organizations accounts that are added to a target organization or organizational unit (OU) in the specified Regions. If an  account is removed from a target organization or OU, StackSets deletes stack instances from the account in the  specified Regions.
@@ -458,7 +458,7 @@ impl cfn_resources::CfnResource for AutoDeployment {
 }
 
 /// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified  Regions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeploymentTargets {
     ///
     /// Limit deployment targets to individual accounts or include additional accounts with provided OUs.
@@ -507,7 +507,7 @@ pub struct DeploymentTargets {
     pub organizational_unit_ids: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeploymentTargetsAccountFilterTypeEnum {
     /// DIFFERENCE
     #[serde(rename = "DIFFERENCE")]
@@ -547,7 +547,7 @@ impl cfn_resources::CfnResource for DeploymentTargets {
 }
 
 /// Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting  operations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManagedExecution {
     ///
     /// When true, StackSets performs non-conflicting operations concurrently and queues conflicting  operations. After conflicting operations finish, StackSets starts queued operations in request order.
@@ -581,7 +581,7 @@ impl cfn_resources::CfnResource for ManagedExecution {
 }
 
 /// The user-specified preferences for how AWS CloudFormation performs a stack set operation. For more  information on maximum concurrent accounts and failure tolerance, see Stack set operation   options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OperationPreferences {
     ///
     /// The number of accounts, per Region, for which this operation can fail before AWS CloudFormation stops the  operation in that Region. If the operation is stopped in a Region, AWS CloudFormation doesn't attempt the  operation in any subsequent Regions.
@@ -688,7 +688,7 @@ pub struct OperationPreferences {
     pub region_order: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OperationPreferencesRegionConcurrencyTypeEnum {
     /// SEQUENTIAL
     #[serde(rename = "SEQUENTIAL")]
@@ -765,7 +765,7 @@ impl cfn_resources::CfnResource for OperationPreferences {
 }
 
 /// The Parameter data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Parameter {
     ///
     /// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that's specified in your template.
@@ -805,7 +805,7 @@ impl cfn_resources::CfnResource for Parameter {
 }
 
 /// Stack instances in some specific accounts and Regions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StackInstances {
     ///
     /// The AWS  OrganizationalUnitIds or Accounts for which to create stack instances in the specified  Regions.
@@ -865,7 +865,7 @@ impl cfn_resources::CfnResource for StackInstances {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

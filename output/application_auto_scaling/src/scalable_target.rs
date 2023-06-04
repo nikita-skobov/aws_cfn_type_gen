@@ -1,7 +1,7 @@
 /// The AWS::ApplicationAutoScaling::ScalableTarget resource specifies a resource    that Application Auto Scaling can scale, such as an AWS::DynamoDB::Table or AWS::ECS::Service    resource.
 ///
 /// For more information, see Getting started in the     Application Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScalableTarget {
     ///
     /// The maximum value that you plan to scale out to. When a scaling policy is in effect,    Application Auto Scaling can scale out (expand) as needed to the maximum capacity limit in    response to changing demand.
@@ -114,7 +114,7 @@ pub struct CfnScalableTarget {
     pub suspended_state: Option<SuspendedState>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalableTargetScalableDimensionEnum {
     /// appstream:fleet:DesiredCapacity
     #[serde(rename = "appstream:fleet:DesiredCapacity")]
@@ -207,7 +207,7 @@ impl Default for ScalableTargetScalableDimensionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScalableTargetServiceNamespaceEnum {
     /// appstream
     #[serde(rename = "appstream")]
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for CfnScalableTarget {
 }
 
 /// ScalableTargetAction specifies the minimum and maximum capacity for the     ScalableTargetAction property of the AWS::ApplicationAutoScaling::ScalableTarget ScheduledAction property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalableTargetAction {
     ///
     /// The maximum capacity.
@@ -357,7 +357,7 @@ impl cfn_resources::CfnResource for ScalableTargetAction {
 /// ScheduledAction is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies a scheduled    action for a scalable target.
 ///
 /// For more information, see Scheduled scaling in the Application Auto Scaling User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduledAction {
     ///
     /// The date and time that the action is scheduled to end, in UTC.
@@ -542,7 +542,7 @@ impl cfn_resources::CfnResource for ScheduledAction {
 /// SuspendedState is a property of the AWS::ApplicationAutoScaling::ScalableTarget resource that specifies whether the    scaling activities for a scalable target are in a suspended state.
 ///
 /// For more information, see Suspending and resuming scaling in the Application Auto Scaling User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SuspendedState {
     ///
     /// Whether scale in by a target tracking scaling policy or a step scaling policy is    suspended. Set the value to true if you don't want Application Auto Scaling to    remove capacity when a scaling policy is triggered. The default is false.

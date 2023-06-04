@@ -1,5 +1,5 @@
 /// Describes a Verified Access instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessInstance {
     ///
     /// A description for the AWS Verified Access instance.
@@ -71,7 +71,7 @@ pub struct CfnVerifiedAccessInstance {
     pub att_verified_access_instance_id: CfnVerifiedAccessInstanceverifiedaccessinstanceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessInstancecreationtime;
 impl CfnVerifiedAccessInstancecreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnVerifiedAccessInstancecreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessInstancelastupdatedtime;
 impl CfnVerifiedAccessInstancelastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnVerifiedAccessInstancelastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessInstanceverifiedaccessinstanceid;
 impl CfnVerifiedAccessInstanceverifiedaccessinstanceid {
     pub fn att_name(&self) -> &'static str {
@@ -114,7 +114,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
 }
 
 /// Options for CloudWatch Logs as a logging destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogs {
     ///
     /// Indicates whether logging is enabled.
@@ -156,7 +156,7 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
 }
 
 /// Options for Kinesis as a logging destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisDataFirehose {
     ///
     /// The ID of the delivery stream.
@@ -198,7 +198,7 @@ impl cfn_resources::CfnResource for KinesisDataFirehose {
 }
 
 /// Options for Amazon S3 as a logging destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3 {
     ///
     /// The bucket name.
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for S3 {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -308,7 +308,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the destinations for Verified Access logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VerifiedAccessLogs {
     ///
     /// CloudWatch Logs logging destination.
@@ -372,7 +372,7 @@ impl cfn_resources::CfnResource for VerifiedAccessLogs {
 }
 
 /// Describes a Verified Access trust provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VerifiedAccessTrustProvider {
     ///
     /// A description for the AWS Verified Access trust provider.
@@ -441,7 +441,7 @@ pub struct VerifiedAccessTrustProvider {
     pub verified_access_trust_provider_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     /// crowdstrike
     #[serde(rename = "crowdstrike")]
@@ -458,7 +458,7 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
     /// device
     #[serde(rename = "device")]
@@ -475,7 +475,7 @@ impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     /// iam-identity-center
     #[serde(rename = "iam-identity-center")]

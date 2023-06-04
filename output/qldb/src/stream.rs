@@ -1,7 +1,7 @@
 /// The AWS::QLDB::Stream resource specifies a journal stream for a given Amazon     Quantum Ledger Database (Amazon QLDB) ledger. The stream captures every document revision     that is committed to the ledger's journal and delivers the data to a specified Amazon     Kinesis Data Streams resource.
 ///
 /// For more information, see StreamJournalToKinesis in the Amazon QLDB API     Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStream {
     ///
     /// The exclusive date and time that specifies when the stream ends. If you don't define     this parameter, the stream runs indefinitely until you cancel it.
@@ -117,7 +117,7 @@ pub struct CfnStream {
     pub att_id: CfnStreamid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamarn;
 impl CfnStreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl CfnStreamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamid;
 impl CfnStreamid {
     pub fn att_name(&self) -> &'static str {
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for CfnStream {
 }
 
 /// The configuration settings of the Amazon Kinesis Data Streams destination for an Amazon QLDB journal     stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisConfiguration {
     ///
     /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the     number of records sent per API call.
@@ -294,7 +294,7 @@ impl cfn_resources::CfnResource for KinesisConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

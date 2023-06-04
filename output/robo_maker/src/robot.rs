@@ -1,5 +1,5 @@
 /// The AWS::RoboMaker::RobotApplication resource creates an AWS     RoboMaker robot.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobot {
     ///
     /// The architecture of the robot.
@@ -77,7 +77,7 @@ pub struct CfnRobot {
     pub att_arn: CfnRobotarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RobotArchitectureEnum {
     /// ARM64
     #[serde(rename = "ARM64")]
@@ -98,7 +98,7 @@ impl Default for RobotArchitectureEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRobotarn;
 impl CfnRobotarn {
     pub fn att_name(&self) -> &'static str {

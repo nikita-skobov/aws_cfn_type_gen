@@ -1,5 +1,5 @@
 /// The AWS::KinesisFirehose::DeliveryStream resource specifies an Amazon     Kinesis Data Firehose (Kinesis Data Firehose) delivery stream that delivers real-time     streaming data to an Amazon Simple Storage Service (Amazon S3), Amazon Redshift, or Amazon     Elasticsearch Service (Amazon ES) destination. For more information, see Creating an Amazon       Kinesis Data Firehose Delivery Stream in the Amazon Kinesis Data       Firehose Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeliveryStream {
     /// Property description not available.
     ///
@@ -193,7 +193,7 @@ pub struct CfnDeliveryStream {
     pub att_arn: CfnDeliveryStreamarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeliveryStreamDeliveryStreamTypeEnum {
     /// DirectPut
     #[serde(rename = "DirectPut")]
@@ -210,7 +210,7 @@ impl Default for DeliveryStreamDeliveryStreamTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeliveryStreamarn;
 impl CfnDeliveryStreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -301,7 +301,7 @@ impl cfn_resources::CfnResource for CfnDeliveryStream {
 }
 
 /// The AmazonOpenSearchServerlessBufferingHints property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonOpenSearchServerlessBufferingHints {
     /// Property description not available.
     ///
@@ -341,7 +341,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessBufferingHints {
 }
 
 /// The AmazonOpenSearchServerlessDestinationConfiguration property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     /// Property description not available.
     ///
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessDestinationConfigu
 }
 
 /// The AmazonOpenSearchServerlessRetryOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonOpenSearchServerlessRetryOptions {
     /// Property description not available.
     ///
@@ -517,7 +517,7 @@ impl cfn_resources::CfnResource for AmazonOpenSearchServerlessRetryOptions {
 }
 
 /// Describes the buffering to perform before delivering data to the Amazon OpenSearch     Service destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Buffer incoming data for the specified period of time, in seconds, before delivering it     to the destination. The default value is 300 (5 minutes).
@@ -603,7 +603,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceBufferingHints {
 }
 
 /// Describes the configuration of a destination in Amazon OpenSearch Service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// The buffering options. If no value is specified, the default values for     AmazonopensearchserviceBufferingHints are used.
@@ -805,7 +805,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum {
     /// NoRotation
     #[serde(rename = "NoRotation")]
@@ -834,7 +834,7 @@ impl Default for AmazonopensearchserviceDestinationConfigurationIndexRotationPer
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum {
     /// AllDocuments
     #[serde(rename = "AllDocuments")]
@@ -1002,7 +1002,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceDestinationConfigurat
 }
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver documents     to Amazon OpenSearch Service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonopensearchserviceRetryOptions {
     ///
     /// After an initial failure to deliver to Amazon OpenSearch Service, the total amount of     time during which Kinesis Data Firehose retries delivery (including the first attempt).     After this time has elapsed, the failed documents are written to Amazon S3. Default value     is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.
@@ -1054,7 +1054,7 @@ impl cfn_resources::CfnResource for AmazonopensearchserviceRetryOptions {
 }
 
 /// The BufferingHints property type specifies how Amazon Kinesis Data     Firehose (Kinesis Data Firehose) buffers incoming data before delivering it to the     destination. The first buffer condition that is satisfied triggers Kinesis Data Firehose to     deliver the data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BufferingHints {
     ///
     /// The length of time, in seconds, that Kinesis Data Firehose buffers incoming data     before delivering it to the destination. For valid values, see the       IntervalInSeconds content for the BufferingHints data     type in the Amazon Kinesis Data Firehose API Reference.
@@ -1140,7 +1140,7 @@ impl cfn_resources::CfnResource for BufferingHints {
 }
 
 /// The CloudWatchLoggingOptions property type specifies Amazon CloudWatch     Logs (CloudWatch Logs) logging options that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) uses for the delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLoggingOptions {
     ///
     /// Indicates whether CloudWatch Logs logging is enabled.
@@ -1254,7 +1254,7 @@ impl cfn_resources::CfnResource for CloudWatchLoggingOptions {
 }
 
 /// The CopyCommand property type configures the Amazon Redshift       COPY command that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses     to load data into an Amazon Redshift cluster from an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CopyCommand {
     ///
     /// Parameters to use with the Amazon Redshift COPY command. For examples, see     the CopyOptions content for the CopyCommand data type in     the Amazon Kinesis Data Firehose API Reference.
@@ -1388,7 +1388,7 @@ impl cfn_resources::CfnResource for CopyCommand {
 }
 
 /// Specifies that you want Kinesis Data Firehose to convert data from the JSON format to     the Parquet or ORC format before writing it to Amazon S3. Kinesis Data Firehose uses the     serializer and deserializer that you specify, in addition to the column information from     the AWS Glue table, to deserialize your input data from JSON and then     serialize it to the Parquet or ORC format. For more information, see Kinesis       Data Firehose Record Format Conversion.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataFormatConversionConfiguration {
     ///
     /// Defaults to true. Set it to false if you want to disable     format conversion while preserving the configuration details.
@@ -1466,7 +1466,7 @@ impl cfn_resources::CfnResource for DataFormatConversionConfiguration {
 }
 
 /// Specifies the type and Amazon Resource Name (ARN) of the CMK to use for Server-Side     Encryption (SSE).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeliveryStreamEncryptionConfigurationInput {
     ///
     /// If you set KeyType to CUSTOMER_MANAGED_CMK, you must specify     the Amazon Resource Name (ARN) of the CMK. If you set KeyType to         AWS_OWNED_CMK, Kinesis Data Firehose uses a service-account CMK.
@@ -1504,7 +1504,7 @@ pub struct DeliveryStreamEncryptionConfigurationInput {
     pub key_type: DeliveryStreamEncryptionConfigurationInputKeyTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DeliveryStreamEncryptionConfigurationInputKeyTypeEnum {
     /// AWS_OWNED_CMK
     #[serde(rename = "AWS_OWNED_CMK")]
@@ -1558,7 +1558,7 @@ impl cfn_resources::CfnResource for DeliveryStreamEncryptionConfigurationInput {
 }
 
 /// The deserializer you want Kinesis Data Firehose to use for converting the input data     from JSON. Kinesis Data Firehose then serializes the data to its final format using the       Serializer. Kinesis Data Firehose supports two types of deserializers: the       Apache Hive JSON SerDe and the OpenX JSON SerDe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Deserializer {
     ///
     /// The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing     data, which means converting it from the JSON format in preparation for serializing it to     the Parquet or ORC format. This is one of two deserializers you can choose, depending on     which one offers the functionality you need. The other option is the OpenX SerDe.
@@ -1608,7 +1608,7 @@ impl cfn_resources::CfnResource for Deserializer {
 }
 
 /// The DocumentIdOptions property type specifies Property description not available. for an AWS::KinesisFirehose::DeliveryStream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentIdOptions {
     /// Property description not available.
     ///
@@ -1636,7 +1636,7 @@ impl cfn_resources::CfnResource for DocumentIdOptions {
 }
 
 /// The DynamicPartitioningConfiguration property type specifies the     configuration of the dynamic partitioning mechanism that creates targeted data sets from     the streaming data by partitioning it based on partition keys.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamicPartitioningConfiguration {
     ///
     /// Specifies whether dynamic partitioning is enabled for this Kinesis Data Firehose     delivery stream.
@@ -1684,7 +1684,7 @@ impl cfn_resources::CfnResource for DynamicPartitioningConfiguration {
 /// The ElasticsearchBufferingHints property type specifies how Amazon     Kinesis Data Firehose (Kinesis Data Firehose) buffers incoming data while delivering it to     the destination. The first buffer condition that is satisfied triggers Kinesis Data     Firehose to deliver the data.
 ///
 /// ElasticsearchBufferingHints is the property type for the BufferingHints     property of the Amazon Kinesis Data Firehose DeliveryStream       ElasticsearchDestinationConfiguration property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchBufferingHints {
     ///
     /// The length of time, in seconds, that Kinesis Data Firehose buffers incoming data     before delivering it to the destination. For valid values, see the       IntervalInSeconds content for the BufferingHints data     type in the Amazon Kinesis Data Firehose API Reference.
@@ -1770,7 +1770,7 @@ impl cfn_resources::CfnResource for ElasticsearchBufferingHints {
 }
 
 /// The ElasticsearchDestinationConfiguration property type specifies an Amazon     Elasticsearch Service (Amazon ES) domain that Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Configures how Kinesis Data Firehose buffers incoming data while delivering it to the     Amazon ES domain.
@@ -1967,7 +1967,7 @@ pub struct ElasticsearchDestinationConfiguration {
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ElasticsearchDestinationConfigurationIndexRotationPeriodEnum {
     /// NoRotation
     #[serde(rename = "NoRotation")]
@@ -1996,7 +1996,7 @@ impl Default for ElasticsearchDestinationConfigurationIndexRotationPeriodEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ElasticsearchDestinationConfigurationS3BackupModeEnum {
     /// AllDocuments
     #[serde(rename = "AllDocuments")]
@@ -2142,7 +2142,7 @@ impl cfn_resources::CfnResource for ElasticsearchDestinationConfiguration {
 }
 
 /// The ElasticsearchRetryOptions property type configures the retry behavior     for when Amazon Kinesis Data Firehose (Kinesis Data Firehose) can't deliver data to Amazon     Elasticsearch Service (Amazon ES).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticsearchRetryOptions {
     ///
     /// After an initial failure to deliver to Amazon ES, the total amount of time during which     Kinesis Data Firehose re-attempts delivery (including the first attempt). If Kinesis Data     Firehose can't deliver the data within the specified time, it writes the data to the backup     S3 bucket. For valid values, see the DurationInSeconds content for the ElasticsearchRetryOptions data type in the Amazon Kinesis Data       Firehose API Reference.
@@ -2194,7 +2194,7 @@ impl cfn_resources::CfnResource for ElasticsearchRetryOptions {
 }
 
 /// The EncryptionConfiguration property type specifies the encryption     settings that Amazon Kinesis Data Firehose (Kinesis Data Firehose) uses when delivering     data to Amazon Simple Storage Service (Amazon S3).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfiguration {
     ///
     /// The AWS Key Management Service (AWS KMS) encryption     key that Amazon S3 uses to encrypt your data.
@@ -2223,7 +2223,7 @@ pub struct EncryptionConfiguration {
     pub no_encryption_config: Option<EncryptionConfigurationNoEncryptionConfigEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EncryptionConfigurationNoEncryptionConfigEnum {
     /// NoEncryption
     #[serde(rename = "NoEncryption")]
@@ -2255,7 +2255,7 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 }
 
 /// The ExtendedS3DestinationConfiguration property type configures an     Amazon S3 destination for an Amazon Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExtendedS3DestinationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon S3 bucket. For constraints, see ExtendedS3DestinationConfiguration in the Amazon Kinesis Data       Firehose API Reference.
@@ -2440,7 +2440,7 @@ pub struct ExtendedS3DestinationConfiguration {
     pub s3_backup_mode: Option<ExtendedS3DestinationConfigurationS3BackupModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExtendedS3DestinationConfigurationCompressionFormatEnum {
     /// GZIP
     #[serde(rename = "GZIP")]
@@ -2469,7 +2469,7 @@ impl Default for ExtendedS3DestinationConfigurationCompressionFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExtendedS3DestinationConfigurationS3BackupModeEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -2614,7 +2614,7 @@ impl cfn_resources::CfnResource for ExtendedS3DestinationConfiguration {
 }
 
 /// The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing     data, which means converting it from the JSON format in preparation for serializing it to     the Parquet or ORC format. This is one of two deserializers you can choose, depending on     which one offers the functionality you need. The other option is the OpenX SerDe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HiveJsonSerDe {
     ///
     /// Indicates how you want Kinesis Data Firehose to parse the date and timestamps that     may be present in your input data JSON. To specify these format strings, follow the pattern     syntax of JodaTime's DateTimeFormat format strings. For more information, see Class DateTimeFormat. You can also use the special value millis to     parse timestamps in epoch milliseconds. If you don't specify a format, Kinesis Data     Firehose uses java.sql.Timestamp::valueOf by default.
@@ -2644,7 +2644,7 @@ impl cfn_resources::CfnResource for HiveJsonSerDe {
 }
 
 /// Describes the metadata that's delivered to the specified HTTP endpoint destination.     Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by supported     third-party service providers, including Datadog, MongoDB, and New Relic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpEndpointCommonAttribute {
     ///
     /// The name of the HTTP endpoint common attribute.
@@ -2740,7 +2740,7 @@ impl cfn_resources::CfnResource for HttpEndpointCommonAttribute {
 }
 
 /// Describes the configuration of the HTTP endpoint to which Kinesis Firehose delivers     data. Kinesis Firehose supports any custom HTTP endpoint or HTTP endpoints owned by     supported third-party service providers, including Datadog, MongoDB, and New Relic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpEndpointConfiguration {
     ///
     /// The access key required for Kinesis Firehose to authenticate with the HTTP endpoint     selected as the destination.
@@ -2877,7 +2877,7 @@ impl cfn_resources::CfnResource for HttpEndpointConfiguration {
 }
 
 /// Describes the configuration of the HTTP endpoint destination. Kinesis Firehose     supports any custom HTTP endpoint or HTTP endpoints owned by supported third-party service     providers, including Datadog, MongoDB, and New Relic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpEndpointDestinationConfiguration {
     ///
     /// The buffering options that can be used before data is delivered to the specified     destination. Kinesis Data Firehose treats these options as hints, and it might choose to     use more optimal values. The SizeInMBs and IntervalInSeconds parameters are optional.     However, if you specify a value for one of them, you must also provide a value for the     other.
@@ -2994,7 +2994,7 @@ pub struct HttpEndpointDestinationConfiguration {
     pub s3_configuration: S3DestinationConfiguration,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpEndpointDestinationConfigurationS3BackupModeEnum {
     /// AllData
     #[serde(rename = "AllData")]
@@ -3072,7 +3072,7 @@ impl cfn_resources::CfnResource for HttpEndpointDestinationConfiguration {
 }
 
 /// The configuration of the HTTP endpoint request. Kinesis Firehose supports any custom     HTTP endpoint or HTTP endpoints owned by supported third-party service providers, including     Datadog, MongoDB, and New Relic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpEndpointRequestConfiguration {
     ///
     /// Describes the metadata sent to the HTTP endpoint destination.
@@ -3103,7 +3103,7 @@ pub struct HttpEndpointRequestConfiguration {
     pub content_encoding: Option<HttpEndpointRequestConfigurationContentEncodingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HttpEndpointRequestConfigurationContentEncodingEnum {
     /// GZIP
     #[serde(rename = "GZIP")]
@@ -3144,7 +3144,7 @@ impl cfn_resources::CfnResource for HttpEndpointRequestConfiguration {
 }
 
 /// Specifies the deserializer you want to use to convert the format of the input data.     This parameter is required if Enabled is set to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputFormatConfiguration {
     ///
     /// Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe     or the OpenX JSON SerDe. If both are non-null, the server rejects the request.
@@ -3178,7 +3178,7 @@ impl cfn_resources::CfnResource for InputFormatConfiguration {
 }
 
 /// The KMSEncryptionConfig property type specifies the AWS     Key Management Service (AWS KMS) encryption key that Amazon Simple Storage     Service (Amazon S3) uses to encrypt data delivered by the Amazon Kinesis Data Firehose     (Kinesis Data Firehose) stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KMSEncryptionConfig {
     ///
     /// The Amazon Resource Name (ARN) of the AWS KMS encryption key that     Amazon S3 uses to encrypt data delivered by the Kinesis Data Firehose stream. The key must     belong to the same region as the destination S3 bucket.
@@ -3235,7 +3235,7 @@ impl cfn_resources::CfnResource for KMSEncryptionConfig {
 }
 
 /// The KinesisStreamSourceConfiguration property type specifies the stream and     role Amazon Resource Names (ARNs) for a Kinesis stream used as the source for a delivery     stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamSourceConfiguration {
     ///
     /// The ARN of the source Kinesis data stream.
@@ -3331,7 +3331,7 @@ impl cfn_resources::CfnResource for KinesisStreamSourceConfiguration {
 }
 
 /// The OpenX SerDe. Used by Kinesis Data Firehose for deserializing data, which means     converting it from the JSON format in preparation for serializing it to the Parquet or ORC     format. This is one of two deserializers you can choose, depending on which one offers the     functionality you need. The other option is the native Hive / HCatalog JsonSerDe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenXJsonSerDe {
     ///
     /// When set to true, which is the default, Kinesis Data Firehose converts     JSON keys to lowercase before deserializing them.
@@ -3387,7 +3387,7 @@ impl cfn_resources::CfnResource for OpenXJsonSerDe {
 }
 
 /// A serializer to use for converting data to the ORC format before storing it in Amazon     S3. For more information, see Apache     ORC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrcSerDe {
     ///
     /// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to     copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the     minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
@@ -3524,7 +3524,7 @@ pub struct OrcSerDe {
     pub stripe_size_bytes: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OrcSerDeCompressionEnum {
     /// NONE
     #[serde(rename = "NONE")]
@@ -3545,7 +3545,7 @@ impl Default for OrcSerDeCompressionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OrcSerDeFormatVersionEnum {
     /// V0_11
     #[serde(rename = "V0_11")]
@@ -3604,7 +3604,7 @@ impl cfn_resources::CfnResource for OrcSerDe {
 }
 
 /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the     format of your data before it writes it to Amazon S3. This parameter is required if       Enabled is set to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputFormatConfiguration {
     ///
     /// Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet     SerDe. If both are non-null, the server rejects the request.
@@ -3638,7 +3638,7 @@ impl cfn_resources::CfnResource for OutputFormatConfiguration {
 }
 
 /// A serializer to use for converting data to the Parquet format before storing it in     Amazon S3. For more information, see Apache Parquet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ParquetSerDe {
     ///
     /// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to     copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the     minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
@@ -3723,7 +3723,7 @@ pub struct ParquetSerDe {
     pub writer_version: Option<ParquetSerDeWriterVersionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParquetSerDeCompressionEnum {
     /// GZIP
     #[serde(rename = "GZIP")]
@@ -3744,7 +3744,7 @@ impl Default for ParquetSerDeCompressionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParquetSerDeWriterVersionEnum {
     /// V1
     #[serde(rename = "V1")]
@@ -3803,7 +3803,7 @@ impl cfn_resources::CfnResource for ParquetSerDe {
 }
 
 /// The ProcessingConfiguration property configures data processing for an     Amazon Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProcessingConfiguration {
     ///
     /// Indicates whether data processing is enabled (true) or disabled (false).
@@ -3845,7 +3845,7 @@ impl cfn_resources::CfnResource for ProcessingConfiguration {
 }
 
 /// The Processor property specifies a data processor for an Amazon Kinesis     Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Processor {
     ///
     /// The processor parameters.
@@ -3873,7 +3873,7 @@ pub struct Processor {
     pub cfn_type: ProcessorTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProcessorTypeEnum {
     /// AppendDelimiterToRecord
     #[serde(rename = "AppendDelimiterToRecord")]
@@ -3913,7 +3913,7 @@ impl cfn_resources::CfnResource for Processor {
 }
 
 /// The ProcessorParameter property specifies a processor parameter in a data     processor for an Amazon Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProcessorParameter {
     ///
     /// The name of the parameter. Currently the following default values are supported: 3     for NumberOfRetries and 60 for the BufferIntervalInSeconds. The       BufferSizeInMBs ranges between 0.2 MB and up to 3MB. The default buffering     hint is 1MB for all destinations, except Splunk. For Splunk, the default buffering hint is     256 KB.
@@ -3946,7 +3946,7 @@ pub struct ProcessorParameter {
     pub parameter_value: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProcessorParameterParameterNameEnum {
     /// BufferIntervalInSeconds
     #[serde(rename = "BufferIntervalInSeconds")]
@@ -4028,7 +4028,7 @@ impl cfn_resources::CfnResource for ProcessorParameter {
 }
 
 /// The RedshiftDestinationConfiguration property type specifies an Amazon     Redshift cluster to which Amazon Kinesis Data Firehose (Kinesis Data Firehose) delivers     data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftDestinationConfiguration {
     ///
     /// The CloudWatch logging options for your delivery stream.
@@ -4183,7 +4183,7 @@ pub struct RedshiftDestinationConfiguration {
     pub username: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RedshiftDestinationConfigurationS3BackupModeEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
@@ -4323,7 +4323,7 @@ impl cfn_resources::CfnResource for RedshiftDestinationConfiguration {
 }
 
 /// Configures retry behavior in case Kinesis Data Firehose is unable to deliver     documents to Amazon Redshift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftRetryOptions {
     ///
     /// The length of time during which Kinesis Data Firehose retries delivery after a     failure, starting from the initial request and including the first attempt. The default     value is 3600 seconds (60 minutes). Kinesis Data Firehose does not retry if the value of       DurationInSeconds is 0 (zero) or if the first delivery attempt takes longer     than the current value.
@@ -4375,7 +4375,7 @@ impl cfn_resources::CfnResource for RedshiftRetryOptions {
 }
 
 /// Describes the retry behavior in case Kinesis Data Firehose is unable to deliver data     to the specified HTTP endpoint destination, or if it doesn't receive a valid acknowledgment     of receipt from the specified HTTP endpoint destination. Kinesis Firehose supports any     custom HTTP endpoint or HTTP endpoints owned by supported third-party service providers,     including Datadog, MongoDB, and New Relic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetryOptions {
     ///
     /// The total amount of time that Kinesis Data Firehose spends on retries. This duration     starts after the initial attempt to send data to the custom destination via HTTPS endpoint     fails. It doesn't include the periods during which Kinesis Data Firehose waits for     acknowledgment from the specified destination after each attempt.
@@ -4427,7 +4427,7 @@ impl cfn_resources::CfnResource for RetryOptions {
 }
 
 /// The S3DestinationConfiguration property type specifies an Amazon Simple     Storage Service (Amazon S3) destination to which Amazon Kinesis Data Firehose (Kinesis Data     Firehose) delivers data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3DestinationConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon S3 bucket to send data to.
@@ -4550,7 +4550,7 @@ pub struct S3DestinationConfiguration {
     pub role_arn: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum S3DestinationConfigurationCompressionFormatEnum {
     /// GZIP
     #[serde(rename = "GZIP")]
@@ -4691,7 +4691,7 @@ impl cfn_resources::CfnResource for S3DestinationConfiguration {
 }
 
 /// Specifies the schema to which you want Kinesis Data Firehose to configure your data     before it writes it to Amazon S3. This parameter is required if Enabled is set     to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaConfiguration {
     ///
     /// The ID of the AWS Glue Data Catalog. If you don't supply this, the       AWS account ID is used by default.
@@ -4955,7 +4955,7 @@ impl cfn_resources::CfnResource for SchemaConfiguration {
 }
 
 /// The serializer that you want Kinesis Data Firehose to use to convert data to the target     format before writing it to Amazon S3. Kinesis Data Firehose supports two types of     serializers: the ORC SerDe and the Parquet SerDe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Serializer {
     ///
     /// A serializer to use for converting data to the ORC format before storing it in Amazon     S3. For more information, see Apache     ORC.
@@ -5005,7 +5005,7 @@ impl cfn_resources::CfnResource for Serializer {
 }
 
 /// The SplunkDestinationConfiguration property type specifies the     configuration of a destination in Splunk for a Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SplunkDestinationConfiguration {
     ///
     /// The Amazon CloudWatch logging options for your delivery stream.
@@ -5134,7 +5134,7 @@ pub struct SplunkDestinationConfiguration {
     pub s3_configuration: S3DestinationConfiguration,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SplunkDestinationConfigurationHECEndpointTypeEnum {
     /// Event
     #[serde(rename = "Event")]
@@ -5151,7 +5151,7 @@ impl Default for SplunkDestinationConfigurationHECEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SplunkDestinationConfigurationS3BackupModeEnum {
     /// AllEvents
     #[serde(rename = "AllEvents")]
@@ -5253,7 +5253,7 @@ impl cfn_resources::CfnResource for SplunkDestinationConfiguration {
 }
 
 /// The SplunkRetryOptions property type specifies retry behavior in case     Kinesis Data Firehose is unable to deliver documents to Splunk or if it doesn't receive an     acknowledgment from Splunk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SplunkRetryOptions {
     ///
     /// The total amount of time that Kinesis Data Firehose spends on retries. This duration     starts after the initial attempt to send data to Splunk fails. It doesn't include the     periods during which Kinesis Data Firehose waits for acknowledgment from Splunk after each     attempt.
@@ -5311,7 +5311,7 @@ impl cfn_resources::CfnResource for SplunkRetryOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -5349,7 +5349,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The details of the VPC of the Amazon ES destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// The ARN of the IAM role that you want the delivery stream to use to create endpoints     in the destination VPC. You can use your existing Kinesis Data Firehose delivery role or     you can specify a new role. In either case, make sure that the role trusts the Kinesis Data     Firehose service principal and that it grants the following permissions:

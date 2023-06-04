@@ -1,5 +1,5 @@
 /// The AWS::Inspector::ResourceGroup resource is used to create Amazon     Inspector resource groups. A resource group defines a set of tags that, when queried,     identify the AWS resources that make up the assessment target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceGroup {
     ///
     /// The tags (key and value pairs) that will be associated with the resource     group.
@@ -20,7 +20,7 @@ pub struct CfnResourceGroup {
     pub att_arn: CfnResourceGrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceGrouparn;
 impl CfnResourceGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -58,7 +58,7 @@ impl cfn_resources::CfnResource for CfnResourceGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

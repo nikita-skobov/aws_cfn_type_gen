@@ -1,5 +1,5 @@
 /// The AWS::Glue::Database resource specifies a logical grouping of tables       in AWS Glue. For more information, see Defining a Database in Your Data         Catalog and Database Structure in the AWS Glue Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatabase {
     ///
     /// The AWS account ID for the account in which to create the catalog object.
@@ -71,7 +71,7 @@ impl cfn_resources::CfnResource for CfnDatabase {
 }
 
 /// The AWS Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the AWS Lake Formation principal.
@@ -121,7 +121,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 }
 
 /// A structure that describes a target database for resource linking.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseIdentifier {
     ///
     /// The ID of the Data Catalog in which the database resides.
@@ -163,7 +163,7 @@ impl cfn_resources::CfnResource for DatabaseIdentifier {
 }
 
 /// The structure used to create or update a database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseInput {
     ///
     /// Creates a set of default permissions on the table for principals. Used by AWS Lake Formation. Not used in the normal course of AWS Glue operations.
@@ -356,7 +356,7 @@ impl cfn_resources::CfnResource for DatabaseInput {
 }
 
 /// The FederatedDatabase property type specifies Property description not available. for an AWS::Glue::Database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FederatedDatabase {
     /// Property description not available.
     ///
@@ -396,7 +396,7 @@ impl cfn_resources::CfnResource for FederatedDatabase {
 }
 
 /// the permissions granted to a principal
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PrincipalPrivileges {
     ///
     /// The permissions that are granted to the principal.

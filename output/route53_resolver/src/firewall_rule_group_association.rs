@@ -1,5 +1,5 @@
 /// An association between a firewall rule group and a VPC, which enables DNS filtering for 			the VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// The unique identifier of the firewall rule group.
@@ -115,7 +115,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     pub att_status_message: CfnFirewallRuleGroupAssociationstatusmessage,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FirewallRuleGroupAssociationMutationProtectionEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -132,7 +132,7 @@ impl Default for FirewallRuleGroupAssociationMutationProtectionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationarn;
 impl CfnFirewallRuleGroupAssociationarn {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl CfnFirewallRuleGroupAssociationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationcreationtime;
 impl CfnFirewallRuleGroupAssociationcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnFirewallRuleGroupAssociationcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationcreatorrequestid;
 impl CfnFirewallRuleGroupAssociationcreatorrequestid {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl CfnFirewallRuleGroupAssociationcreatorrequestid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationid;
 impl CfnFirewallRuleGroupAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnFirewallRuleGroupAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationmanagedownername;
 impl CfnFirewallRuleGroupAssociationmanagedownername {
     pub fn att_name(&self) -> &'static str {
@@ -172,7 +172,7 @@ impl CfnFirewallRuleGroupAssociationmanagedownername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationmodificationtime;
 impl CfnFirewallRuleGroupAssociationmodificationtime {
     pub fn att_name(&self) -> &'static str {
@@ -180,7 +180,7 @@ impl CfnFirewallRuleGroupAssociationmodificationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationstatus;
 impl CfnFirewallRuleGroupAssociationstatus {
     pub fn att_name(&self) -> &'static str {
@@ -188,7 +188,7 @@ impl CfnFirewallRuleGroupAssociationstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallRuleGroupAssociationstatusmessage;
 impl CfnFirewallRuleGroupAssociationstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -278,7 +278,7 @@ impl cfn_resources::CfnResource for CfnFirewallRuleGroupAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

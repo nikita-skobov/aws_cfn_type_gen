@@ -1,5 +1,5 @@
 /// The AWS::CodeArtifact::Domain resource creates an AWS CodeArtifact domain.      CodeArtifact domains make it easier to manage multiple repositories across an       organization. You can use a domain to apply permissions across many repositories owned by different      AWS accounts. For more information about domains, see the       Domain concepts information      in the CodeArtifact User Guide. For more information about the CreateDomain API, see       CreateDomain      in the CodeArtifact API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomain {
     ///
     /// A string that specifies the name of the requested domain.
@@ -73,7 +73,7 @@ pub struct CfnDomain {
     pub att_owner: CfnDomainowner,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainarn;
 impl CfnDomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnDomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainencryptionkey;
 impl CfnDomainencryptionkey {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnDomainencryptionkey {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainname;
 impl CfnDomainname {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl CfnDomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDomainowner;
 impl CfnDomainowner {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for CfnDomain {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

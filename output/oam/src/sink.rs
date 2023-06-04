@@ -3,7 +3,7 @@
 /// After you create a sink, you must create a sink policy that allows source accounts to attach to it.     For more information, see PutSinkPolicy.
 ///
 /// An account can have one sink.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSink {
     ///
     /// A name for the sink.
@@ -48,7 +48,7 @@ pub struct CfnSink {
     pub att_arn: CfnSinkarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSinkarn;
 impl CfnSinkarn {
     pub fn att_name(&self) -> &'static str {

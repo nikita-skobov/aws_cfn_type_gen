@@ -1,5 +1,5 @@
 /// The AWS::SSMContacts::ContactChannel resource specifies a contact channel       as the method that Incident Manager uses to engage your contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContactChannel {
     ///
     /// The details that Incident Manager uses when trying to engage the contact channel.
@@ -77,7 +77,7 @@ pub struct CfnContactChannel {
     pub att_arn: CfnContactChannelarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ContactChannelChannelTypeEnum {
     /// EMAIL
     #[serde(rename = "EMAIL")]
@@ -98,7 +98,7 @@ impl Default for ContactChannelChannelTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContactChannelarn;
 impl CfnContactChannelarn {
     pub fn att_name(&self) -> &'static str {

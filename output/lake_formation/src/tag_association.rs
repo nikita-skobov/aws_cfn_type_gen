@@ -1,5 +1,5 @@
 /// The AWS::LakeFormation::TagAssociation resource represents an assignment of an LF-tag to a Data Catalog resource (database, table, or column).     During a stack operation, CloudFormation calls AWS Lake Formation AddLFTagsToResource API to create a TagAssociation resource and calls the RemoveLFTagsToResource API to delete it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTagAssociation {
     ///
     /// A structure containing an LF-tag key-value pair.
@@ -32,7 +32,7 @@ pub struct CfnTagAssociation {
     pub att_tags_identifier: CfnTagAssociationtagsidentifier,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTagAssociationresourceidentifier;
 impl CfnTagAssociationresourceidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -40,7 +40,7 @@ impl CfnTagAssociationresourceidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTagAssociationtagsidentifier;
 impl CfnTagAssociationtagsidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl cfn_resources::CfnResource for CfnTagAssociation {
 }
 
 /// A structure for the database object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseResource {
     ///
     /// The identifier for the Data Catalog. By default, it should be the account ID of the caller.
@@ -105,7 +105,7 @@ impl cfn_resources::CfnResource for DatabaseResource {
 }
 
 /// A structure containing the catalog ID, tag key, and tag values of an LF-tag key-value pair.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LFTagPair {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -156,7 +156,7 @@ impl cfn_resources::CfnResource for LFTagPair {
 }
 
 /// A structure for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Resource {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -232,7 +232,7 @@ impl cfn_resources::CfnResource for Resource {
 }
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -300,7 +300,7 @@ impl cfn_resources::CfnResource for TableResource {
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableWithColumnsResource {
     ///
     /// A wildcard object representing every table under a database.

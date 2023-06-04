@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Model resource updates data model for a          WebSocket API. For more information, see Model Selection Expressions in the API Gateway Developer             Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModel {
     ///
     /// The API identifier.
@@ -62,7 +62,7 @@ pub struct CfnModel {
     pub att_model_id: CfnModelmodelid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModelmodelid;
 impl CfnModelmodelid {
     pub fn att_name(&self) -> &'static str {

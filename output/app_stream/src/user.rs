@@ -1,5 +1,5 @@
 /// The AWS::AppStream::User resource creates a new user in the AppStream 2.0 user pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUser {
     ///
     /// The authentication type for the user. You must specify USERPOOL.
@@ -82,7 +82,7 @@ pub struct CfnUser {
     pub user_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserAuthenticationTypeEnum {
     /// API
     #[serde(rename = "API")]
@@ -107,7 +107,7 @@ impl Default for UserAuthenticationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserMessageActionEnum {
     /// RESEND
     #[serde(rename = "RESEND")]

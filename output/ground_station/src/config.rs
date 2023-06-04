@@ -1,7 +1,7 @@
 /// Creates a Config with the specified parameters.
 ///
 /// Config objects provide Ground Station with the details necessary in order to schedule and execute satellite contacts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfig {
     ///
     /// Object containing the parameters of a config.       Only one subtype may be specified per config.       See the subtype definitions for a description of each config subtype.
@@ -47,7 +47,7 @@ pub struct CfnConfig {
     pub att_cfn_type: CfnConfigcfntype,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigarn;
 impl CfnConfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -55,7 +55,7 @@ impl CfnConfigarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigid;
 impl CfnConfigid {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnConfigid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigcfntype;
 impl CfnConfigcfntype {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl cfn_resources::CfnResource for CfnConfig {
 }
 
 /// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink config in a mission profile to receive the downlink data in raw DigIF format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AntennaDownlinkConfig {
     ///
     /// Defines the spectrum configuration.
@@ -122,7 +122,7 @@ impl cfn_resources::CfnResource for AntennaDownlinkConfig {
 }
 
 /// Provides information about how AWS Ground Station should configure an antenna for downlink during a contact.       Use an antenna downlink demod decode config in a mission profile to receive the downlink data that has been demodulated and decoded.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AntennaDownlinkDemodDecodeConfig {
     ///
     /// Defines how the RF signal will be decoded.
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for AntennaDownlinkDemodDecodeConfig {
 }
 
 /// Provides information about how AWS Ground Station should configure an antenna for uplink during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AntennaUplinkConfig {
     ///
     /// Defines the spectrum configuration.
@@ -250,7 +250,7 @@ impl cfn_resources::CfnResource for AntennaUplinkConfig {
 }
 
 /// Config objects provide information to Ground Station about how to configure the antenna and how data flows during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigData {
     ///
     /// Provides information for an antenna downlink config object.       Antenna downlink config objects are used to provide parameters for downlinks where no demodulation or decoding is performed by Ground Station (RF over IP downlinks).
@@ -380,7 +380,7 @@ impl cfn_resources::CfnResource for ConfigData {
 }
 
 /// Provides information to AWS Ground Station about which IP endpoints to use during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataflowEndpointConfig {
     ///
     /// The name of the dataflow endpoint to use during contacts.
@@ -422,7 +422,7 @@ impl cfn_resources::CfnResource for DataflowEndpointConfig {
 }
 
 /// Defines decoding settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DecodeConfig {
     ///
     /// The decoding settings are in JSON format and define a set of steps to perform to decode the data.
@@ -452,7 +452,7 @@ impl cfn_resources::CfnResource for DecodeConfig {
 }
 
 /// Defines demodulation settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DemodulationConfig {
     ///
     /// The demodulation settings are in JSON format and define parameters for demodulation, for example which modulation scheme (e.g. PSK, QPSK, etc.) and matched filter to use.
@@ -482,7 +482,7 @@ impl cfn_resources::CfnResource for DemodulationConfig {
 }
 
 /// Defines an equivalent isotropically radiated power (EIRP).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Eirp {
     ///
     /// The units of the EIRP.
@@ -524,7 +524,7 @@ impl cfn_resources::CfnResource for Eirp {
 }
 
 /// Defines a frequency.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Frequency {
     ///
     /// The units of the frequency.
@@ -566,7 +566,7 @@ impl cfn_resources::CfnResource for Frequency {
 }
 
 /// Defines a bandwidth.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrequencyBandwidth {
     ///
     /// The units of the bandwidth.
@@ -610,7 +610,7 @@ impl cfn_resources::CfnResource for FrequencyBandwidth {
 }
 
 /// Provides information about how AWS Ground Station should save downlink data to S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3RecordingConfig {
     ///
     /// S3 Bucket where the data is written. The name of the S3 Bucket provided must begin with aws-groundstation.
@@ -666,7 +666,7 @@ impl cfn_resources::CfnResource for S3RecordingConfig {
 }
 
 /// Defines a spectrum.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpectrumConfig {
     ///
     /// The bandwidth of the spectrum. AWS Ground Station currently has the following bandwidth limitations:
@@ -736,7 +736,7 @@ impl cfn_resources::CfnResource for SpectrumConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -774,7 +774,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Provides information about how AWS Ground Station should track the satellite through the sky during a contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrackingConfig {
     ///
     /// Specifies whether or not to use autotrack.       REMOVED specifies that program track should only be used during the contact.       PREFERRED specifies that autotracking is preferred during the contact but fallback to program track if the signal is lost.       REQUIRED specifies that autotracking is required during the contact and not to use program track if the signal is lost.
@@ -804,7 +804,7 @@ impl cfn_resources::CfnResource for TrackingConfig {
 }
 
 /// Provides information about how AWS Ground Station should echo back uplink transmissions to a dataflow endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UplinkEchoConfig {
     ///
     /// Defines the ARN of the uplink config to echo back to a dataflow endpoint.
@@ -846,7 +846,7 @@ impl cfn_resources::CfnResource for UplinkEchoConfig {
 }
 
 /// Defines a uplink spectrum.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UplinkSpectrumConfig {
     ///
     /// The center frequency of the spectrum. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.

@@ -1,5 +1,5 @@
 /// Creates a project, which is the logical object in Evidently that can contain features, launches, and       experiments. Use projects to group similar features together.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProject {
     ///
     /// Use this parameter if the project will use client-side evaluation powered by AWS AppConfig. Client-side       evaluation allows your application to assign variations to user       sessions locally instead of by calling the EvaluateFeature operation. This       mitigates the latency and availability risks that come with an API call. For more information,       see         Use client-side evaluation - powered by AWS AppConfig.
@@ -78,7 +78,7 @@ pub struct CfnProject {
     pub att_arn: CfnProjectarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectarn;
 impl CfnProjectarn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl cfn_resources::CfnResource for CfnProject {
 }
 
 /// This is a structure that defines the configuration of how your application       integrates with AWS AppConfig to run client-side evaluation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppConfigResourceObject {
     ///
     /// The ID of the AWS AppConfig application to use for client-side evaluation.
@@ -149,7 +149,7 @@ impl cfn_resources::CfnResource for AppConfigResourceObject {
 }
 
 /// A structure that contains information about where Evidently is to store       evaluation events for longer term storage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataDeliveryObject {
     ///
     /// If the project stores evaluation events in CloudWatch Logs, this structure       stores the log group name.
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for DataDeliveryObject {
 }
 
 /// If the project stores evaluation events in an Amazon S3 bucket, this structure       stores the bucket name and bucket prefix.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Destination {
     ///
     /// The name of the bucket in which Evidently stores evaluation events.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for S3Destination {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

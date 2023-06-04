@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::LoggerDefinition resource represents a logger definition for AWS IoT Greengrass.   Logger definitions are used to organize your logger definition versions.
 ///
 /// Logger definitions can reference multiple logger definition versions. All logger definition versions      must be associated with a logger definition. Each logger definition version can contain one or more loggers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggerDefinition {
     ///
     /// The logger definition version to include when the logger definition is created.          A logger definition version contains a list of          logger property types.
@@ -57,7 +57,7 @@ pub struct CfnLoggerDefinition {
     pub att_name: CfnLoggerDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggerDefinitionarn;
 impl CfnLoggerDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnLoggerDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggerDefinitionid;
 impl CfnLoggerDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnLoggerDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggerDefinitionlatestversionarn;
 impl CfnLoggerDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnLoggerDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoggerDefinitionname;
 impl CfnLoggerDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnLoggerDefinition {
 /// A logger represents logging settings for the AWS IoT Greengrass group, which can be stored in CloudWatch and the local file system of your core device. All log   entries include a timestamp, log level, and information about the event. For more information, see Monitoring with AWS IoT Greengrass Logs in the    AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Loggers 		 property of the LoggerDefinitionVersion property type contains a list       of Logger property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logger {
     ///
     /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
@@ -186,7 +186,7 @@ impl cfn_resources::CfnResource for Logger {
 /// A logger definition version contains a list of loggers.
 ///
 /// In an AWS CloudFormation template, LoggerDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::LoggerDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggerDefinitionVersion {
     ///
     /// The loggers in this version.

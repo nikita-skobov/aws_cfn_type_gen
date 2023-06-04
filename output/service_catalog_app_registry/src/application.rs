@@ -1,5 +1,5 @@
 /// Represents a AWS Service Catalog AppRegistry application that is the top-level node in a hierarchy of related    cloud resource abstractions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// The description of the application.
@@ -51,7 +51,7 @@ pub struct CfnApplication {
     pub att_id: CfnApplicationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationarn;
 impl CfnApplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -59,7 +59,7 @@ impl CfnApplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationid;
 impl CfnApplicationid {
     pub fn att_name(&self) -> &'static str {

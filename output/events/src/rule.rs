@@ -15,7 +15,7 @@
 /// To prevent this, write the rules so that the triggered actions do not re-fire the same    rule. For example, your rule could fire only if ACLs are found to be in a bad state, instead    of after any change.
 ///
 /// An infinite loop can quickly cause higher than expected charges. We recommend that you use    budgeting, which alerts you when charges exceed your specified limit. For more information,    see Managing Your Costs with     Budgets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRule {
     ///
     /// The description of the rule.
@@ -183,7 +183,7 @@ pub struct CfnRule {
     pub att_arn: CfnRulearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuleStateEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -200,7 +200,7 @@ impl Default for RuleStateEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRulearn;
 impl CfnRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -308,7 +308,7 @@ impl cfn_resources::CfnResource for CfnRule {
 }
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a    public IP address is to be used. This structure is relevant only for ECS tasks that use the     awsvpc network mode.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsVpcConfiguration {
     ///
     /// Specifies whether the task's elastic network interface receives a public IP address. You    can specify ENABLED only when LaunchType in     EcsParameters is set to FARGATE.
@@ -348,7 +348,7 @@ pub struct AwsVpcConfiguration {
     pub subnets: Vec<String>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AwsVpcConfigurationAssignPublicIpEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -380,7 +380,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 }
 
 /// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchArrayProperties {
     ///
     /// The size of the array, if this is an array batch job. Valid values are integers between 2    and 10,000.
@@ -410,7 +410,7 @@ impl cfn_resources::CfnResource for BatchArrayProperties {
 }
 
 /// The custom parameters to be used when the target is an AWS Batch job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchParameters {
     ///
     /// The array properties for the submitted job, such as the size of the array. The array size    can be between 2 and 10,000. If you specify array properties for a job, it becomes an array    job. This parameter is used only if the target is an AWS Batch job.
@@ -482,7 +482,7 @@ impl cfn_resources::CfnResource for BatchParameters {
 }
 
 /// The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you    specify a retry strategy here, it overrides the retry strategy defined in the job    definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchRetryStrategy {
     ///
     /// The number of times to attempt to retry, if the job fails. Valid values are 1–10.
@@ -512,7 +512,7 @@ impl cfn_resources::CfnResource for BatchRetryStrategy {
 }
 
 /// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on the specified capacity    provider. Only one capacity provider in a capacity provider strategy can have a base defined.    If no value is specified, the default value of 0 is used.
@@ -635,7 +635,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 }
 
 /// A DeadLetterConfig object that contains information about a dead-letter queue    configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeadLetterConfig {
     ///
     /// The ARN of the SQS queue specified as the target for the dead-letter queue.
@@ -691,7 +691,7 @@ impl cfn_resources::CfnResource for DeadLetterConfig {
 }
 
 /// The custom parameters to be used when the target is an Amazon ECS task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsParameters {
     ///
     /// The capacity provider strategy to use for the task.
@@ -885,7 +885,7 @@ pub struct EcsParameters {
     pub task_definition_arn: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EcsParametersLaunchTypeEnum {
     /// EC2
     #[serde(rename = "EC2")]
@@ -906,7 +906,7 @@ impl Default for EcsParametersLaunchTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EcsParametersPropagateTagsEnum {
     /// TASK_DEFINITION
     #[serde(rename = "TASK_DEFINITION")]
@@ -1004,7 +1004,7 @@ impl cfn_resources::CfnResource for EcsParameters {
 }
 
 /// These are custom parameter to be used when the target is an API Gateway APIs or    EventBridge ApiDestinations. In the latter case, these are merged with any    InvocationParameters specified on the Connection, with any values from the Connection taking    precedence.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpParameters {
     ///
     /// The headers that need to be sent as part of request invoking the API Gateway API or    EventBridge ApiDestination.
@@ -1058,7 +1058,7 @@ impl cfn_resources::CfnResource for HttpParameters {
 }
 
 /// Contains the parameters needed for you to provide custom input to a target based on one or    more pieces of data extracted from the event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputTransformer {
     ///
     /// Map of JSON paths to be extracted from the event. You can then insert these in the    template in InputTemplate to produce the output you want to be sent to the    target.
@@ -1169,7 +1169,7 @@ impl cfn_resources::CfnResource for InputTransformer {
 }
 
 /// This object enables you to specify a JSON path to extract from the event and use as the    partition key for the Amazon Kinesis data stream, so that you can control the shard to which    the event goes. If you do not include this parameter, the default is to use the     eventId as the partition key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisParameters {
     ///
     /// The JSON path to be extracted from the event and used as the partition key. For more    information, see Amazon Kinesis Streams Key     Concepts in the Amazon Kinesis Streams Developer Guide.
@@ -1211,7 +1211,7 @@ impl cfn_resources::CfnResource for KinesisParameters {
 }
 
 /// This structure specifies the network configuration for an ECS task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// Use this structure to specify the VPC subnets and security groups for the task, and    whether a public IP address is to be used. This structure is relevant only for ECS tasks that    use the awsvpc network mode.
@@ -1245,7 +1245,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. You cannot specify an    expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide.
@@ -1276,7 +1276,7 @@ pub struct PlacementConstraint {
     pub cfn_type: Option<PlacementConstraintTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementConstraintTypeEnum {
     /// distinctInstance
     #[serde(rename = "distinctInstance")]
@@ -1319,7 +1319,7 @@ impl cfn_resources::CfnResource for PlacementConstraint {
 }
 
 /// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementStrategy {
     ///
     /// The field to apply the placement strategy against. For the spread placement strategy,    valid values are instanceId (or host, which has the same effect), or any platform or custom    attribute that is applied to a container instance, such as attribute:ecs.availability-zone.    For the binpack placement strategy, valid values are cpu and memory. For the random placement    strategy, this field is not used.
@@ -1350,7 +1350,7 @@ pub struct PlacementStrategy {
     pub cfn_type: Option<PlacementStrategyTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PlacementStrategyTypeEnum {
     /// binpack
     #[serde(rename = "binpack")]
@@ -1397,7 +1397,7 @@ impl cfn_resources::CfnResource for PlacementStrategy {
 }
 
 /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API ExecuteStatement based on EventBridge events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftDataParameters {
     ///
     /// The name of the database. Required when authenticating using temporary credentials.
@@ -1614,7 +1614,7 @@ impl cfn_resources::CfnResource for RedshiftDataParameters {
 }
 
 /// A RetryPolicy object that includes information about the retry policy    settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RetryPolicy {
     ///
     /// The maximum amount of time, in seconds, to continue to make retry attempts.
@@ -1691,7 +1691,7 @@ impl cfn_resources::CfnResource for RetryPolicy {
 }
 
 /// This parameter contains the criteria (either InstanceIds or a tag) used to specify which    EC2 instances are to be sent the command.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunCommandParameters {
     ///
     /// Currently, we support including only one RunCommandTarget block, which specifies either an    array of InstanceIds or a tag.
@@ -1731,7 +1731,7 @@ impl cfn_resources::CfnResource for RunCommandParameters {
 }
 
 /// Information about the EC2 instances that are to be sent the command, specified as    key-value pairs. Each RunCommandTarget block can include only one key, but this    key may specify multiple values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RunCommandTarget {
     ///
     /// Can be either tag:       tag-key or    InstanceIds.
@@ -1810,7 +1810,7 @@ impl cfn_resources::CfnResource for RunCommandTarget {
 }
 
 /// Name/Value pair of a parameter to start execution of a SageMaker Model Building    Pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SageMakerPipelineParameter {
     ///
     /// Name of parameter to start execution of a SageMaker Model Building Pipeline.
@@ -1891,7 +1891,7 @@ impl cfn_resources::CfnResource for SageMakerPipelineParameter {
 }
 
 /// These are custom parameters to use when the target is a SageMaker Model Building Pipeline    that starts based on EventBridge events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SageMakerPipelineParameters {
     ///
     /// List of Parameter names and values for SageMaker Model Building Pipeline execution.
@@ -1929,7 +1929,7 @@ impl cfn_resources::CfnResource for SageMakerPipelineParameters {
 }
 
 /// This structure includes the custom parameter to be used when the target is an SQS FIFO    queue.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqsParameters {
     ///
     /// The FIFO message group ID to use as the target.
@@ -1971,7 +1971,7 @@ impl cfn_resources::CfnResource for SqsParameters {
 }
 
 /// A key-value pair associated with an ECS Target of an EventBridge rule. The tag will be propagated to ECS by EventBridge when starting    an ECS task based on a matched event.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// A string you can use to assign a value. The combination of tag keys and values can help    you organize and categorize your resources.
@@ -2067,7 +2067,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Targets are the resources to be invoked when a rule is triggered. For a complete list of    services and resources that can be set as a target, see PutTargets.
 ///
 /// If you are setting the event bus of another account as the target, and that account    granted permission to your account through an organization instead of directly by the account    ID, then you must specify a RoleArn with proper permissions in the     Target structure. For more information, see Sending and      Receiving Events Between AWS Accounts in the Amazon EventBridge User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Target {
     ///
     /// The Amazon Resource Name (ARN) of the target.

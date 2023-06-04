@@ -1,5 +1,5 @@
 /// For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, 			one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRule {
     ///
     /// DNS queries for this domain name are forwarded to the IP addresses that are specified in TargetIps. If a query matches 			multiple Resolver rules (example.com and www.example.com), the query is routed using the Resolver rule that contains the most specific domain name 			(www.example.com).
@@ -109,7 +109,7 @@ pub struct CfnResolverRule {
     pub att_resolver_rule_id: CfnResolverRuleresolverruleid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResolverRuleRuleTypeEnum {
     /// FORWARD
     #[serde(rename = "FORWARD")]
@@ -130,7 +130,7 @@ impl Default for ResolverRuleRuleTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRulearn;
 impl CfnResolverRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -138,7 +138,7 @@ impl CfnResolverRulearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuledomainname;
 impl CfnResolverRuledomainname {
     pub fn att_name(&self) -> &'static str {
@@ -146,7 +146,7 @@ impl CfnResolverRuledomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRulename;
 impl CfnResolverRulename {
     pub fn att_name(&self) -> &'static str {
@@ -154,7 +154,7 @@ impl CfnResolverRulename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleresolverendpointid;
 impl CfnResolverRuleresolverendpointid {
     pub fn att_name(&self) -> &'static str {
@@ -162,7 +162,7 @@ impl CfnResolverRuleresolverendpointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverRuleresolverruleid;
 impl CfnResolverRuleresolverruleid {
     pub fn att_name(&self) -> &'static str {
@@ -252,7 +252,7 @@ impl cfn_resources::CfnResource for CfnResolverRule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -290,7 +290,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// In a 			CreateResolverRule 			request, an array of the IPs that you want to forward DNS queries to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetAddress {
     ///
     /// One IPv4 address that you want to forward DNS queries to.

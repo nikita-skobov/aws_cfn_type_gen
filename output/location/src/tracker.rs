@@ -1,5 +1,5 @@
 /// Specifies a tracker resource in your AWS account, which lets you       receive current and historical location of devices.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTracker {
     ///
     /// An optional description for the tracker resource.
@@ -87,7 +87,7 @@ pub struct CfnTracker {
     pub att_update_time: CfnTrackerupdatetime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrackerPositionFilteringEnum {
     /// AccuracyBased
     #[serde(rename = "AccuracyBased")]
@@ -108,7 +108,7 @@ impl Default for TrackerPositionFilteringEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrackerarn;
 impl CfnTrackerarn {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnTrackerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrackercreatetime;
 impl CfnTrackercreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl CfnTrackercreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrackertrackerarn;
 impl CfnTrackertrackerarn {
     pub fn att_name(&self) -> &'static str {
@@ -132,7 +132,7 @@ impl CfnTrackertrackerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrackerupdatetime;
 impl CfnTrackerupdatetime {
     pub fn att_name(&self) -> &'static str {

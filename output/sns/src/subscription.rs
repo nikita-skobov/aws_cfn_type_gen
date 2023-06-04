@@ -1,5 +1,5 @@
 /// The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon SNS topic. For a subscription to be created, the owner of the endpoint must     confirm the subscription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSubscription {
     ///
     /// The delivery policy JSON assigned to the subscription. Enables the subscriber to define     the message delivery retry strategy in the case of an HTTP/S endpoint subscribed to the     topic. For more information, see       GetSubscriptionAttributes      in the Amazon SNS API Reference and Message       delivery retries in the Amazon SNS Developer     Guide.

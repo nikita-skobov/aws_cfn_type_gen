@@ -1,5 +1,5 @@
 /// Creates a configuration for running a SageMaker image as a KernelGateway app. The     configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the     kernels in the image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppImageConfig {
     ///
     /// The name of the AppImageConfig. Must be unique to your account.
@@ -46,7 +46,7 @@ pub struct CfnAppImageConfig {
     pub att_app_image_config_arn: CfnAppImageConfigappimageconfigarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppImageConfigappimageconfigarn;
 impl CfnAppImageConfigappimageconfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -84,7 +84,7 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
 }
 
 /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileSystemConfig {
     ///
     /// The default POSIX group ID (GID). If not specified, defaults to 100.
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for FileSystemConfig {
 }
 
 /// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KernelGatewayImageConfig {
     ///
     /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
@@ -253,7 +253,7 @@ impl cfn_resources::CfnResource for KernelGatewayImageConfig {
 }
 
 /// The specification of a Jupyter kernel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KernelSpec {
     ///
     /// The display name of the kernel.
@@ -326,7 +326,7 @@ impl cfn_resources::CfnResource for KernelSpec {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

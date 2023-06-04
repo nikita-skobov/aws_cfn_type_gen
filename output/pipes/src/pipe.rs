@@ -1,5 +1,5 @@
 /// Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces the need for specialized knowledge and integration code.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipe {
     /// A description of the pipe.
     ///
@@ -137,7 +137,7 @@ pub struct CfnPipe {
     pub att_state_reason: CfnPipestatereason,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipearn;
 impl CfnPipearn {
     pub fn att_name(&self) -> &'static str {
@@ -145,7 +145,7 @@ impl CfnPipearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipecreationtime;
 impl CfnPipecreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -153,7 +153,7 @@ impl CfnPipecreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipecurrentstate;
 impl CfnPipecurrentstate {
     pub fn att_name(&self) -> &'static str {
@@ -161,7 +161,7 @@ impl CfnPipecurrentstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipelastmodifiedtime;
 impl CfnPipelastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -169,7 +169,7 @@ impl CfnPipelastmodifiedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipestatereason;
 impl CfnPipestatereason {
     pub fn att_name(&self) -> &'static str {
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for CfnPipe {
 }
 
 /// This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used.      This structure is relevant only for ECS tasks that use the awsvpc network mode.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsVpcConfiguration {
     ///
     /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when      LaunchType in EcsParameters is set to FARGATE.
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 }
 
 /// The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000.      If you specify array properties for a job, it becomes an array job. This parameter is used only if the target is an AWS Batch job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchArrayProperties {
     ///
     /// The size of the array, if this is an array batch job.
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for BatchArrayProperties {
 }
 
 /// The overrides that are sent to a container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchContainerOverrides {
     ///
     /// The command to send to the container that overrides the default command from the Docker image or the task definition.
@@ -357,7 +357,7 @@ impl cfn_resources::CfnResource for BatchContainerOverrides {
 }
 
 /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing      environment variables from the Docker image or the task definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchEnvironmentVariable {
     ///
     /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
@@ -399,7 +399,7 @@ impl cfn_resources::CfnResource for BatchEnvironmentVariable {
 }
 
 /// An object that represents an AWS Batch job dependency.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchJobDependency {
     ///
     /// The job ID of the AWS Batch job that's associated with this dependency.
@@ -441,7 +441,7 @@ impl cfn_resources::CfnResource for BatchJobDependency {
 }
 
 /// The type and amount of a resource to assign to a container. The supported resources include GPU, MEMORY, and VCPU.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported resources include GPU, MEMORY, and VCPU.
@@ -483,7 +483,7 @@ impl cfn_resources::CfnResource for BatchResourceRequirement {
 }
 
 /// The retry strategy that's associated with a job. For more information, see      Automated job retries in the AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchRetryStrategy {
     ///
     /// The number of times to move a job to the RUNNABLE status. If the value of attempts is greater than one, the job is retried on      failure the same number of attempts as the value.
@@ -513,7 +513,7 @@ impl cfn_resources::CfnResource for BatchRetryStrategy {
 }
 
 /// The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the Amazon ECS API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on the specified capacity     provider. Only one capacity provider in a capacity provider strategy can have a base defined.     If no value is specified, the default value of 0 is used.
@@ -566,7 +566,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 }
 
 /// A DeadLetterConfig object that contains information about a dead-letter queue configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeadLetterConfig {
     ///
     /// The ARN of the Amazon SQS queue specified as the target for the dead-letter queue.
@@ -596,7 +596,7 @@ impl cfn_resources::CfnResource for DeadLetterConfig {
 }
 
 /// The overrides that are sent to a container. An empty container override can be passed in. An example of an empty      container override is {"containerOverrides": [ ] }. If a non-empty container override is specified, the name parameter must be included.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsContainerOverride {
     ///
     /// The command to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.
@@ -714,7 +714,7 @@ impl cfn_resources::CfnResource for EcsContainerOverride {
 /// If there are environment variables specified using the environment       parameter in a container definition, they take precedence over the variables contained       within an environment file. If multiple environment files are specified that contain the       same variable, they're processed from the top down. We recommend that you use unique       variable names. For more information, see Specifying environment        variables in the Amazon Elastic Container Service Developer Guide.
 ///
 /// This parameter is only supported for tasks hosted on Fargate using the       following platform versions:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsEnvironmentFile {
     ///
     /// The file type to use. The only supported value is s3.
@@ -754,7 +754,7 @@ impl cfn_resources::CfnResource for EcsEnvironmentFile {
 }
 
 /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can      override the existing environment variables from the Docker image or the task definition. You must also specify a container name.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsEnvironmentVariable {
     ///
     /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
@@ -796,7 +796,7 @@ impl cfn_resources::CfnResource for EcsEnvironmentVariable {
 }
 
 /// The amount of ephemeral storage to allocate for the task. This parameter is used to     expand the total amount of ephemeral storage available, beyond the default amount, for     tasks hosted on Fargate. For more information, see Fargate task       storage in the Amazon ECS User Guide for Fargate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsEphemeralStorage {
     ///
     /// The total amount, in GiB, of ephemeral storage to set for the task. The minimum     supported value is 21 GiB and the maximum supported value is     200 GiB.
@@ -825,7 +825,7 @@ impl cfn_resources::CfnResource for EcsEphemeralStorage {
 }
 
 /// Details on an Elastic Inference accelerator task override. This parameter is used to     override the Elastic Inference accelerator specified in the task definition. For more     information, see Working with Amazon       Elastic Inference on Amazon ECS in the     Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsInferenceAcceleratorOverride {
     ///
     /// The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
@@ -867,7 +867,7 @@ impl cfn_resources::CfnResource for EcsInferenceAcceleratorOverride {
 }
 
 /// The type and amount of a resource to assign to a container. The supported resource     types are GPUs and Elastic Inference accelerators. For more information, see Working with       GPUs on Amazon ECS or Working with        Amazon Elastic Inference on Amazon ECS in the     Amazon Elastic Container Service Developer Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported values are     GPU or InferenceAccelerator.
@@ -911,7 +911,7 @@ impl cfn_resources::CfnResource for EcsResourceRequirement {
 }
 
 /// The overrides that are associated with a task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcsTaskOverride {
     ///
     /// One or more container overrides that are sent to a task.
@@ -1019,7 +1019,7 @@ impl cfn_resources::CfnResource for EcsTaskOverride {
 }
 
 /// Filter events using an event pattern. For more information, see Events and Event     Patterns in the Amazon EventBridge User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     ///
     /// The event pattern.
@@ -1053,7 +1053,7 @@ impl cfn_resources::CfnResource for Filter {
 /// To remove a filter, specify a FilterCriteria object with an empty array of Filter objects.
 ///
 /// For more information, see Events and Event     Patterns in the Amazon EventBridge User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterCriteria {
     ///
     /// The event patterns.
@@ -1083,7 +1083,7 @@ impl cfn_resources::CfnResource for FilterCriteria {
 }
 
 /// The AWS Secrets Manager secret that stores your broker credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MQBrokerAccessCredentials {
     ///
     /// The ARN of the Secrets Manager secret.
@@ -1112,7 +1112,7 @@ impl cfn_resources::CfnResource for MQBrokerAccessCredentials {
 }
 
 /// The AWS Secrets Manager secret that stores your stream credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MSKAccessCredentials {
     ///
     /// The ARN of the Secrets Manager secret.
@@ -1154,7 +1154,7 @@ impl cfn_resources::CfnResource for MSKAccessCredentials {
 }
 
 /// This structure specifies the network configuration for an Amazon ECS task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// Use this structure to specify the VPC subnets and security groups for the task, and     whether a public IP address is to be used. This structure is relevant only for ECS tasks that     use the awsvpc network mode.
@@ -1188,7 +1188,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// These are custom parameter to be used when the target is an API Gateway REST APIs or     EventBridge ApiDestinations. In the latter case, these are merged with any     InvocationParameters specified on the Connection, with any values from the Connection taking     precedence.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeEnrichmentHttpParameters {
     ///
     /// The headers that need to be sent as part of request invoking the API Gateway REST API or     EventBridge ApiDestination.
@@ -1242,7 +1242,7 @@ impl cfn_resources::CfnResource for PipeEnrichmentHttpParameters {
 }
 
 /// The parameters required to set up enrichment on your pipe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeEnrichmentParameters {
     ///
     /// Contains the HTTP parameters to use when the target is a API Gateway REST endpoint or     EventBridge ApiDestination.
@@ -1292,7 +1292,7 @@ impl cfn_resources::CfnResource for PipeEnrichmentParameters {
 }
 
 /// The parameters for using an Active MQ broker as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceActiveMQBrokerParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -1354,7 +1354,7 @@ impl cfn_resources::CfnResource for PipeSourceActiveMQBrokerParameters {
 }
 
 /// The parameters for using a DynamoDB stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceDynamoDBStreamParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -1465,7 +1465,7 @@ impl cfn_resources::CfnResource for PipeSourceDynamoDBStreamParameters {
 }
 
 /// The parameters for using a Kinesis stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceKinesisStreamParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -1586,7 +1586,7 @@ impl cfn_resources::CfnResource for PipeSourceKinesisStreamParameters {
 }
 
 /// The parameters for using an MSK stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceManagedStreamingKafkaParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -1673,7 +1673,7 @@ impl cfn_resources::CfnResource for PipeSourceManagedStreamingKafkaParameters {
 }
 
 /// The parameters required to set up a source for your pipe.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceParameters {
     /// The parameters for using an Active MQ broker as a source.
     ///
@@ -1815,7 +1815,7 @@ impl cfn_resources::CfnResource for PipeSourceParameters {
 }
 
 /// The parameters for using a Rabbit MQ broker as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceRabbitMQBrokerParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -1889,7 +1889,7 @@ impl cfn_resources::CfnResource for PipeSourceRabbitMQBrokerParameters {
 }
 
 /// The parameters for using a self-managed Apache Kafka stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// An array of server URLs.
@@ -2012,7 +2012,7 @@ impl cfn_resources::CfnResource for PipeSourceSelfManagedKafkaParameters {
 }
 
 /// The parameters for using a Amazon SQS stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeSourceSqsQueueParameters {
     /// The maximum number of records to include in each batch.
     ///
@@ -2052,7 +2052,7 @@ impl cfn_resources::CfnResource for PipeSourceSqsQueueParameters {
 }
 
 /// The parameters for using an AWS Batch job as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetBatchJobParameters {
     /// The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000.      If you specify array properties for a job, it becomes an array job. This parameter is used only if the target is an AWS Batch job.
     ///
@@ -2162,7 +2162,7 @@ impl cfn_resources::CfnResource for PipeTargetBatchJobParameters {
 }
 
 /// The parameters for using an CloudWatch Logs log stream as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetCloudWatchLogsParameters {
     ///
     /// The name of the log stream.
@@ -2204,7 +2204,7 @@ impl cfn_resources::CfnResource for PipeTargetCloudWatchLogsParameters {
 }
 
 /// The parameters for using an Amazon ECS task as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetEcsTaskParameters {
     ///
     /// The capacity provider strategy to use for the task.
@@ -2414,7 +2414,7 @@ impl cfn_resources::CfnResource for PipeTargetEcsTaskParameters {
 }
 
 /// The parameters for using an EventBridge event bus as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// A free-form string, with a maximum of 128 characters, used to decide what fields to expect in the event detail.
@@ -2492,7 +2492,7 @@ impl cfn_resources::CfnResource for PipeTargetEventBridgeEventBusParameters {
 }
 
 /// These are custom parameter to be used when the target is an API Gateway REST APIs or    EventBridge ApiDestinations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetHttpParameters {
     ///
     /// The headers that need to be sent as part of request invoking the API Gateway REST API or     EventBridge ApiDestination.
@@ -2546,7 +2546,7 @@ impl cfn_resources::CfnResource for PipeTargetHttpParameters {
 }
 
 /// The parameters for using a Kinesis stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetKinesisStreamParameters {
     ///
     /// Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters      for each key. Amazon Kinesis Data Streams uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard.      Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this      hashing mechanism, all data records with the same partition key map to the same shard within the stream.
@@ -2575,7 +2575,7 @@ impl cfn_resources::CfnResource for PipeTargetKinesisStreamParameters {
 }
 
 /// The parameters for using a Lambda function as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetLambdaFunctionParameters {
     ///
     /// Specify whether to invoke the function synchronously or asynchronously.
@@ -2611,7 +2611,7 @@ impl cfn_resources::CfnResource for PipeTargetLambdaFunctionParameters {
 /// The parameters required to set up a target for your pipe.
 ///
 /// For more information about pipe target parameters, including how to use dynamic path parameters, see Target parameters in the Amazon EventBridge User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetParameters {
     /// The parameters for using an AWS Batch job as a target.
     ///
@@ -2808,7 +2808,7 @@ impl cfn_resources::CfnResource for PipeTargetParameters {
 }
 
 /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API BatchExecuteStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetRedshiftDataParameters {
     ///
     /// The name of the database. Required when authenticating using temporary credentials.
@@ -2896,7 +2896,7 @@ impl cfn_resources::CfnResource for PipeTargetRedshiftDataParameters {
 }
 
 /// The parameters for using a SageMaker pipeline as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetSageMakerPipelineParameters {
     ///
     /// List of Parameter names and values for SageMaker Model Building Pipeline execution.
@@ -2926,7 +2926,7 @@ impl cfn_resources::CfnResource for PipeTargetSageMakerPipelineParameters {
 }
 
 /// The parameters for using a Amazon SQS stream as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetSqsQueueParameters {
     ///
     /// This parameter applies only to FIFO (first-in-first-out) queues.
@@ -2970,7 +2970,7 @@ impl cfn_resources::CfnResource for PipeTargetSqsQueueParameters {
 }
 
 /// The parameters for using a Step Functions state machine as a target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipeTargetStateMachineParameters {
     ///
     /// Specify whether to invoke the Step Functions state machine synchronously or asynchronously.
@@ -3004,7 +3004,7 @@ impl cfn_resources::CfnResource for PipeTargetStateMachineParameters {
 }
 
 /// An object representing a constraint on task placement. To learn more, see Task Placement Constraints in the Amazon Elastic Container Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. You cannot specify an     expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide.
@@ -3046,7 +3046,7 @@ impl cfn_resources::CfnResource for PlacementConstraint {
 }
 
 /// The task placement strategy for a task or service. To learn more, see Task Placement Strategies in the Amazon Elastic Container Service Service Developer     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementStrategy {
     ///
     /// The field to apply the placement strategy against. For the spread placement strategy,     valid values are instanceId (or host, which has the same effect), or any platform or custom     attribute that is applied to a container instance, such as attribute:ecs.availability-zone.     For the binpack placement strategy, valid values are cpu and memory. For the random placement     strategy, this field is not used.
@@ -3088,7 +3088,7 @@ impl cfn_resources::CfnResource for PlacementStrategy {
 }
 
 /// Name/Value pair of a parameter to start execution of a SageMaker Model Building     Pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SageMakerPipelineParameter {
     ///
     /// Name of parameter to start execution of a SageMaker Model Building Pipeline.
@@ -3128,7 +3128,7 @@ impl cfn_resources::CfnResource for SageMakerPipelineParameter {
 }
 
 /// The AWS Secrets Manager secret that stores your stream credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedKafkaAccessConfigurationCredentials {
     ///
     /// The ARN of the Secrets Manager secret.
@@ -3194,7 +3194,7 @@ impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationCredentia
 }
 
 /// This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedKafkaAccessConfigurationVpc {
     ///
     /// Specifies the security groups associated with the stream. These security groups must all be in the same VPC. You can specify as many      as five security groups. If you do not specify a security group, the default security group for the VPC is used.
@@ -3242,7 +3242,7 @@ impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationVpc {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

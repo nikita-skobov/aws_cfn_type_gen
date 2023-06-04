@@ -1,5 +1,5 @@
 /// The AWS::GameLift::Alias resource creates an alias for an Amazon GameLift    (GameLift) fleet destination. There are two types of routing strategies for aliases: simple    and terminal. A simple alias points to an active fleet. A terminal alias displays a message    instead of routing players to an active fleet. For example, a terminal alias might display a    URL link that directs players to an upgrade site. You can use aliases to define destinations    in a game session queue or when requesting new game sessions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlias {
     ///
     /// A human-readable description of the alias.
@@ -49,7 +49,7 @@ pub struct CfnAlias {
     pub att_alias_id: CfnAliasaliasid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAliasaliasid;
 impl CfnAliasaliasid {
     pub fn att_name(&self) -> &'static str {
@@ -118,7 +118,7 @@ impl cfn_resources::CfnResource for CfnAlias {
 }
 
 /// The routing configuration for a fleet alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RoutingStrategy {
     ///
     /// A unique identifier for a fleet that the alias points to. If you specify    SIMPLE for the Type property, you must specify this    property.
@@ -164,7 +164,7 @@ pub struct RoutingStrategy {
     pub cfn_type: RoutingStrategyTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RoutingStrategyTypeEnum {
     /// SIMPLE
     #[serde(rename = "SIMPLE")]

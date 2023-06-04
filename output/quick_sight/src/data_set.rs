@@ -1,5 +1,5 @@
 /// Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSet {
     ///
     /// The AWS account ID.
@@ -197,7 +197,7 @@ pub struct CfnDataSet {
     pub att_last_updated_time: CfnDataSetlastupdatedtime,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataSetImportModeEnum {
     /// DIRECT_QUERY
     #[serde(rename = "DIRECT_QUERY")]
@@ -214,7 +214,7 @@ impl Default for DataSetImportModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSetarn;
 impl CfnDataSetarn {
     pub fn att_name(&self) -> &'static str {
@@ -222,7 +222,7 @@ impl CfnDataSetarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSetcreatedtime;
 impl CfnDataSetcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -230,7 +230,7 @@ impl CfnDataSetcreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSetlastupdatedtime;
 impl CfnDataSetlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -336,7 +336,7 @@ impl cfn_resources::CfnResource for CfnDataSet {
 }
 
 /// A calculated column for a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CalculatedColumn {
     ///
     /// A unique ID to identify a calculated column. During a dataset update, if the column ID       of a calculated column matches that of an existing calculated column, Amazon QuickSight       preserves the existing calculated column.
@@ -465,7 +465,7 @@ impl cfn_resources::CfnResource for CalculatedColumn {
 }
 
 /// A transform operation that casts a column to a different type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CastColumnTypeOperation {
     ///
     /// Column name.
@@ -510,7 +510,7 @@ pub struct CastColumnTypeOperation {
     pub new_column_type: CastColumnTypeOperationNewColumnTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CastColumnTypeOperationNewColumnTypeEnum {
     /// DATETIME
     #[serde(rename = "DATETIME")]
@@ -583,7 +583,7 @@ impl cfn_resources::CfnResource for CastColumnTypeOperation {
 }
 
 /// Metadata that contains a description for a column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnDescription {
     ///
     /// The text of a description for a column.
@@ -639,7 +639,7 @@ impl cfn_resources::CfnResource for ColumnDescription {
 }
 
 /// Groupings of columns that work together in certain Amazon QuickSight features. This is       a variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnGroup {
     ///
     /// Geospatial column group that denotes a hierarchy.
@@ -673,7 +673,7 @@ impl cfn_resources::CfnResource for ColumnGroup {
 }
 
 /// A rule defined to grant access on one or more restricted columns. Each dataset can have multiple rules. To  create a restricted column, you add it to one or more rules. Each rule must contain at least one column and at least  one user or group. To be able to see a restricted column, a user or group needs to be added to a rule for that  column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnLevelPermissionRule {
     ///
     /// An array of column names.
@@ -715,7 +715,7 @@ impl cfn_resources::CfnResource for ColumnLevelPermissionRule {
 }
 
 /// A tag for a column in a               TagColumnOperation             structure. This is a       variant type structure. For this structure to be valid, only one of the attributes can       be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnTag {
     ///
     /// A description for a column.
@@ -744,7 +744,7 @@ pub struct ColumnTag {
     pub column_geographic_role: Option<ColumnTagColumnGeographicRoleEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ColumnTagColumnGeographicRoleEnum {
     /// CITY
     #[serde(rename = "CITY")]
@@ -800,7 +800,7 @@ impl cfn_resources::CfnResource for ColumnTag {
 }
 
 /// A transform operation that creates calculated columns. Columns created in one such       operation form a lexical closure.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CreateColumnsOperation {
     ///
     /// Calculated columns to create.
@@ -840,7 +840,7 @@ impl cfn_resources::CfnResource for CreateColumnsOperation {
 }
 
 /// A physical table type built from the results of the custom SQL query.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomSql {
     ///
     /// The column schema from the SQL query result set.
@@ -965,7 +965,7 @@ impl cfn_resources::CfnResource for CustomSql {
 }
 
 /// The usage configuration to apply to child datasets that reference this dataset as a source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSetUsageConfiguration {
     ///
     /// An option that controls whether a child dataset of a direct query can use this dataset as a source.
@@ -1007,7 +1007,7 @@ impl cfn_resources::CfnResource for DataSetUsageConfiguration {
 }
 
 /// A FieldFolder element is a folder that contains fields and nested subfolders.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldFolder {
     ///
     /// A folder has a list of columns. A column can only be in one folder.
@@ -1049,7 +1049,7 @@ impl cfn_resources::CfnResource for FieldFolder {
 }
 
 /// A transform operation that filters rows based on a condition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterOperation {
     ///
     /// An expression that must evaluate to a Boolean value. Rows for which the expression       evaluates to true are kept in the dataset.
@@ -1101,7 +1101,7 @@ impl cfn_resources::CfnResource for FilterOperation {
 }
 
 /// Geospatial column group that denotes a hierarchy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeoSpatialColumnGroup {
     ///
     /// Columns in this hierarchy.
@@ -1146,7 +1146,7 @@ pub struct GeoSpatialColumnGroup {
     pub name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GeoSpatialColumnGroupCountryCodeEnum {
     /// US
     #[serde(rename = "US")]
@@ -1205,7 +1205,7 @@ impl cfn_resources::CfnResource for GeoSpatialColumnGroup {
 }
 
 /// The wait policy to use when creating or updating a Dataset. The default is to wait for SPICE ingestion to finish  with timeout of 36 hours.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IngestionWaitPolicy {
     ///
     /// The maximum time (in hours) to wait for Ingestion to complete. Default timeout is 36 hours. Applicable only when  DataSetImportMode mode is set to SPICE and WaitForSpiceIngestion is set to true.
@@ -1247,7 +1247,7 @@ impl cfn_resources::CfnResource for IngestionWaitPolicy {
 }
 
 /// Metadata for a column that is used as the input of a transform operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputColumn {
     ///
     /// The name of this column in the underlying data source.
@@ -1278,7 +1278,7 @@ pub struct InputColumn {
     pub cfn_type: InputColumnTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InputColumnTypeEnum {
     /// BIT
     #[serde(rename = "BIT")]
@@ -1352,7 +1352,7 @@ impl cfn_resources::CfnResource for InputColumn {
 }
 
 /// The instructions associated with a join.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JoinInstruction {
     ///
     /// Join key properties of the left operand.
@@ -1429,7 +1429,7 @@ pub struct JoinInstruction {
     pub cfn_type: JoinInstructionTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JoinInstructionTypeEnum {
     /// INNER
     #[serde(rename = "INNER")]
@@ -1499,7 +1499,7 @@ impl cfn_resources::CfnResource for JoinInstruction {
 }
 
 /// Properties associated with the columns participating in a join.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JoinKeyProperties {
     ///
     /// A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used  by Amazon QuickSight to optimize query performance.
@@ -1529,7 +1529,7 @@ impl cfn_resources::CfnResource for JoinKeyProperties {
 }
 
 /// A logical table is a unit that joins and that data       transformations operate on. A logical table has a source, which can be either a physical       table or result of a join. When a logical table points to a physical table, the logical       table acts as a mutable copy of that physical table through transform operations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogicalTable {
     ///
     /// A display name for the logical table.
@@ -1620,7 +1620,7 @@ impl cfn_resources::CfnResource for LogicalTable {
 }
 
 /// Information about the source of a logical table. This is a variant type structure. For       this structure to be valid, only one of the attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogicalTableSource {
     ///
     /// The Amazon Resource Number (ARN) of the parent dataset.
@@ -1706,7 +1706,7 @@ impl cfn_resources::CfnResource for LogicalTableSource {
 }
 
 /// Output column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputColumn {
     ///
     /// A description for a column.
@@ -1755,7 +1755,7 @@ pub struct OutputColumn {
     pub cfn_type: Option<OutputColumnTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OutputColumnTypeEnum {
     /// DATETIME
     #[serde(rename = "DATETIME")]
@@ -1839,7 +1839,7 @@ impl cfn_resources::CfnResource for OutputColumn {
 }
 
 /// A view of a data source that contains information about the shape of the data in the       underlying source. This is a variant type structure. For this structure to be valid,       only one of the attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PhysicalTable {
     ///
     /// A physical table type built from the results of the custom SQL query.
@@ -1905,7 +1905,7 @@ impl cfn_resources::CfnResource for PhysicalTable {
 }
 
 /// A transform operation that projects columns. Operations that come after a projection       can only refer to projected columns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProjectOperation {
     ///
     /// Projected columns.
@@ -1945,7 +1945,7 @@ impl cfn_resources::CfnResource for ProjectOperation {
 }
 
 /// A physical table type for relational data sources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RelationalTable {
     /// Property description not available.
     ///
@@ -2069,7 +2069,7 @@ impl cfn_resources::CfnResource for RelationalTable {
 }
 
 /// A transform operation that renames a column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RenameColumnOperation {
     ///
     /// The name of the column to be renamed.
@@ -2161,7 +2161,7 @@ impl cfn_resources::CfnResource for RenameColumnOperation {
 }
 
 /// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permisions on
@@ -2205,7 +2205,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 /// Information about a dataset that contains permissions for row-level security (RLS).       The permissions dataset maps fields to users or groups. For more information, see       Using Row-Level Security (RLS) to Restrict Access to a Dataset in the Amazon QuickSight User         Guide.
 ///
 /// The option to deny permissions by setting PermissionPolicy to DENY_ACCESS is       not supported for new RLS datasets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RowLevelPermissionDataSet {
     ///
     /// The Amazon Resource Name (ARN) of the dataset that contains permissions for RLS.
@@ -2264,7 +2264,7 @@ pub struct RowLevelPermissionDataSet {
     pub permission_policy: RowLevelPermissionDataSetPermissionPolicyEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RowLevelPermissionDataSetFormatVersionEnum {
     /// VERSION_1
     #[serde(rename = "VERSION_1")]
@@ -2281,7 +2281,7 @@ impl Default for RowLevelPermissionDataSetFormatVersionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RowLevelPermissionDataSetPermissionPolicyEnum {
     /// DENY_ACCESS
     #[serde(rename = "DENY_ACCESS")]
@@ -2324,7 +2324,7 @@ impl cfn_resources::CfnResource for RowLevelPermissionDataSet {
 }
 
 /// A physical table type for an S3 data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Source {
     ///
     /// The Amazon Resource Name (ARN) for the data source.
@@ -2399,7 +2399,7 @@ impl cfn_resources::CfnResource for S3Source {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2437,7 +2437,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// A transform operation that tags a column with additional information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagColumnOperation {
     ///
     /// The column that this operation acts on.
@@ -2516,7 +2516,7 @@ impl cfn_resources::CfnResource for TagColumnOperation {
 }
 
 /// A data transformation on a logical table. This is a variant type structure. For this       structure to be valid, only one of the attributes can be non-null.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformOperation {
     ///
     /// A transform operation that casts a column to a different type.
@@ -2630,7 +2630,7 @@ impl cfn_resources::CfnResource for TransformOperation {
 }
 
 /// Information about the format for a source file or files.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UploadSettings {
     ///
     /// Whether the file has a header row, or the files each have a header row.
@@ -2703,7 +2703,7 @@ pub struct UploadSettings {
     pub text_qualifier: Option<UploadSettingsTextQualifierEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UploadSettingsFormatEnum {
     /// CLF
     #[serde(rename = "CLF")]
@@ -2736,7 +2736,7 @@ impl Default for UploadSettingsFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UploadSettingsTextQualifierEnum {
     /// DOUBLE_QUOTE
     #[serde(rename = "DOUBLE_QUOTE")]

@@ -3,7 +3,7 @@
 /// In a managed compute environment, AWS Batch manages the capacity and instance types of the compute  resources within the environment. This is based on the compute resource specification that you define or the launch template that you  specify when you create the compute environment. You can choose either to use EC2 On-Demand Instances and EC2 Spot  Instances, or to use Fargate and Fargate Spot capacity in your managed compute environment. You can optionally set a  maximum price so that Spot Instances only launch when the Spot Instance price is below a specified percentage of the  On-Demand price.
 ///
 /// In an unmanaged compute environment, you can manage your own EC2 compute resources and have a lot of flexibility  with how you configure your compute resources. For example, you can use custom AMI. However, you need to verify that  your AMI meets the Amazon ECS container instance AMI specification. For more information, see container instance   AMIs in the Amazon Elastic Container Service Developer Guide. After you have created  your unmanaged compute environment, you can use the DescribeComputeEnvironments operation  to find the Amazon ECS cluster that is associated with it. Then, manually launch your container instances into that  Amazon ECS cluster. For more information, see Launching an Amazon ECS container   instance in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComputeEnvironment {
     ///
     /// The name for your compute environment. It can be up to 128 characters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
@@ -150,7 +150,7 @@ pub struct CfnComputeEnvironment {
     pub att_compute_environment_arn: CfnComputeEnvironmentcomputeenvironmentarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComputeEnvironmentStateEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -167,7 +167,7 @@ impl Default for ComputeEnvironmentStateEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComputeEnvironmentTypeEnum {
     /// MANAGED
     #[serde(rename = "MANAGED")]
@@ -184,7 +184,7 @@ impl Default for ComputeEnvironmentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComputeEnvironmentcomputeenvironmentarn;
 impl CfnComputeEnvironmentcomputeenvironmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -219,7 +219,7 @@ impl cfn_resources::CfnResource for CfnComputeEnvironment {
 }
 
 /// Details about the compute resources managed by the compute environment. This parameter is required for managed  compute environments. For more information, see Compute Environments in the         AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComputeResources {
     ///
     /// The allocation strategy to use for the compute resource if not enough instances of the best fitting instance  type can be allocated. This might be because of availability of the instance type in the Region or Amazon EC2 service limits. For  more information, see Allocation   strategies in the   AWS Batch User Guide.
@@ -521,7 +521,7 @@ pub struct ComputeResources {
     pub update_to_latest_image_version: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComputeResourcesAllocationStrategyEnum {
     /// BEST_FIT_PROGRESSIVE
     #[serde(rename = "BEST_FIT_PROGRESSIVE")]
@@ -538,7 +538,7 @@ impl Default for ComputeResourcesAllocationStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComputeResourcesTypeEnum {
     /// EC2
     #[serde(rename = "EC2")]
@@ -582,7 +582,7 @@ impl cfn_resources::CfnResource for ComputeResources {
 }
 
 /// Provides information used to select Amazon Machine Images (AMIs) for instances in the  compute environment. If Ec2Configuration isn't specified, the default is   ECS_AL2 (Amazon Linux 2).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ec2ConfigurationObject {
     ///
     /// The AMI ID used for instances launched in the compute environment that match the image type.  This setting overrides the imageId set in the computeResource  object.
@@ -708,7 +708,7 @@ impl cfn_resources::CfnResource for Ec2ConfigurationObject {
 }
 
 /// Configuration for the Amazon EKS cluster that supports the AWS Batch compute environment. The  cluster must exist before the compute environment can be created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EksConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon EKS cluster. An example is   arn:aws:eks:us-east-1:123456789012:cluster/ClusterForBatch       .
@@ -750,7 +750,7 @@ impl cfn_resources::CfnResource for EksConfiguration {
 /// An object that represents a launch template that's associated with a compute resource. You  must specify either the launch template ID or launch template name in the request, but not  both.
 ///
 /// If security groups are specified using both the securityGroupIds parameter of   CreateComputeEnvironment and the launch template, the values in the   securityGroupIds parameter of CreateComputeEnvironment will be  used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateSpecification {
     ///
     /// The ID of the launch template.
@@ -810,7 +810,7 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 }
 
 /// Specifies the infrastructure update policy for the compute environment. For more information  about infrastructure updates, see Updating compute environments in the           AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UpdatePolicy {
     ///
     /// Specifies the job timeout (in minutes) when the compute environment infrastructure is  updated. The default value is 30.

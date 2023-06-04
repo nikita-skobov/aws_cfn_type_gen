@@ -5,7 +5,7 @@
 /// If you authorize access to a CIDR/IP address range, specify         CIDRIP. For an overview of CIDR blocks, see the Wikipedia       article on Classless Inter-Domain Routing.
 ///
 /// You must also associate the security group with a cluster so that clients running       on these IP addresses or the EC2 instance are authorized to connect to the cluster. For       information about managing security groups, go to Working with Security         Groups in the Amazon Redshift Cluster Management Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterSecurityGroupIngress {
     ///
     /// The IP range to be added the Amazon Redshift security group.

@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::ScheduledAudit resource to create a scheduled audit that     is run at a specified time interval. For API reference, see CreateScheduleAudit     and for general information, see Audit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledAudit {
     ///
     /// The day of the month on which the scheduled audit is run (if the      frequency is "MONTHLY").     If days 29-31 are specified, and the month does not have that many     days, the audit takes place on the "LAST" day of the month.
@@ -79,7 +79,7 @@ pub struct CfnScheduledAudit {
     pub att_scheduled_audit_arn: CfnScheduledAuditscheduledauditarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduledAuditscheduledauditarn;
 impl CfnScheduledAuditscheduledauditarn {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl cfn_resources::CfnResource for CfnScheduledAudit {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

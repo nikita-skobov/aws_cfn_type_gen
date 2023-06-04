@@ -1,7 +1,7 @@
 /// Creates a new group.
 ///
 /// For information about the number of groups you can create, see Limitations       on IAM Entities in the IAM User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroup {
     ///
     /// The name of the group to create. Do not include the path in this value.
@@ -79,7 +79,7 @@ pub struct CfnGroup {
     pub att_arn: CfnGrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouparn;
 impl CfnGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 /// An attached policy is a managed policy that has been attached to a user, group, or     role.
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Policy {
     ///
     /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.

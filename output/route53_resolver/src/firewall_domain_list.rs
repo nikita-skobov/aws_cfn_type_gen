@@ -1,7 +1,7 @@
 /// High-level information about a list of firewall domains for use in a AWS::Route53Resolver::FirewallRule. This is returned by GetFirewallDomainList.
 ///
 /// To retrieve the domains that are defined for this domain list, call        ListFirewallDomains.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainList {
     ///
     /// The fully qualified URL or URI of the file stored in Amazon Simple Storage Service 			(Amazon S3) that contains the list of domains to import.
@@ -88,7 +88,7 @@ pub struct CfnFirewallDomainList {
     pub att_status_message: CfnFirewallDomainListstatusmessage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListarn;
 impl CfnFirewallDomainListarn {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnFirewallDomainListarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListcreationtime;
 impl CfnFirewallDomainListcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl CfnFirewallDomainListcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListcreatorrequestid;
 impl CfnFirewallDomainListcreatorrequestid {
     pub fn att_name(&self) -> &'static str {
@@ -112,7 +112,7 @@ impl CfnFirewallDomainListcreatorrequestid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListid;
 impl CfnFirewallDomainListid {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnFirewallDomainListid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListmanagedownername;
 impl CfnFirewallDomainListmanagedownername {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnFirewallDomainListmanagedownername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListmodificationtime;
 impl CfnFirewallDomainListmodificationtime {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnFirewallDomainListmodificationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListstatus;
 impl CfnFirewallDomainListstatus {
     pub fn att_name(&self) -> &'static str {
@@ -144,7 +144,7 @@ impl CfnFirewallDomainListstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFirewallDomainListstatusmessage;
 impl CfnFirewallDomainListstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -215,7 +215,7 @@ impl cfn_resources::CfnResource for CfnFirewallDomainList {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

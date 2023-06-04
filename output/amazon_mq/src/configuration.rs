@@ -1,5 +1,5 @@
 /// Creates a new configuration for the specified configuration name. Amazon MQ uses        the default configuration (the engine type and version).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfiguration {
     ///
     /// Optional. The authentication strategy associated with the configuration. The        default is SIMPLE.
@@ -88,7 +88,7 @@ pub struct CfnConfiguration {
     pub att_id: CfnConfigurationid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationarn;
 impl CfnConfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnConfigurationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationid;
 impl CfnConfigurationid {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for CfnConfiguration {
 }
 
 /// A key-value pair to associate with the configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// The key in a key-value pair.

@@ -1,5 +1,5 @@
 /// The AWS::MediaConnect::Flow resource defines a connection between one or more video       sources and one or more outputs. For each flow, you specify the transport protocol to       use, encryption information, and details for any outputs or entitlements that you want.         AWS Elemental MediaConnect returns an ingest endpoint where you can       send your live video as a single unicast stream. The service replicates and distributes       the video to every output that you specify, whether inside or outside the AWS Cloud. You can also set up entitlements on a flow to allow other         AWS accounts to access your content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlow {
     ///
     /// The Availability Zone that you want to create the flow in. These options are        limited to the Availability Zones within the current AWS Region.
@@ -63,7 +63,7 @@ pub struct CfnFlow {
     pub att_source_source_ingest_port: CfnFlowsourcesourceingestport,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowflowarn;
 impl CfnFlowflowarn {
     pub fn att_name(&self) -> &'static str {
@@ -71,7 +71,7 @@ impl CfnFlowflowarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowflowavailabilityzone;
 impl CfnFlowflowavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnFlowflowavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowsourceingestip;
 impl CfnFlowsourceingestip {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnFlowsourceingestip {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowsourcesourcearn;
 impl CfnFlowsourcesourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl CfnFlowsourcesourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowsourcesourceingestport;
 impl CfnFlowsourcesourceingestport {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl cfn_resources::CfnResource for CfnFlow {
 }
 
 /// Information about the encryption of the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or        aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for Encryption {
 }
 
 /// The settings for source failover.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FailoverConfig {
     ///
     /// The type of failover you choose for this flow. MERGE combines the source streams        into a single stream, allowing graceful recovery from any single-source loss.        FAILOVER allows switching between different streams. The string for this property must be entered as MERGE or FAILOVER. No other string entry is valid.
@@ -321,7 +321,7 @@ impl cfn_resources::CfnResource for FailoverConfig {
 /// The details of the sources of the flow.
 ///
 /// If you are creating a flow with a VPC source, you must first create the flow with a       temporary standard source by doing the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Source {
     ///
     /// The type of encryption that is used on the content ingested from the        source.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for Source {
 }
 
 /// The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams. This setting only applies when Failover Mode is set to FAILOVER.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourcePriority {
     ///
     /// The name of the source you choose as the primary source for this flow.

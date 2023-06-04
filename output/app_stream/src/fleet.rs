@@ -1,5 +1,5 @@
 /// The AWS::AppStream::Fleet resource creates a fleet for Amazon AppStream 2.0. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFleet {
     ///
     /// The desired capacity for the fleet. This is not allowed for Elastic fleets.
@@ -290,7 +290,7 @@ pub struct CfnFleet {
     pub vpc_config: Option<VpcConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetFleetTypeEnum {
     /// ALWAYS_ON
     #[serde(rename = "ALWAYS_ON")]
@@ -311,7 +311,7 @@ impl Default for FleetFleetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetPlatformEnum {
     /// AMAZON_LINUX2
     #[serde(rename = "AMAZON_LINUX2")]
@@ -336,7 +336,7 @@ impl Default for FleetPlatformEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FleetStreamViewEnum {
     /// APP
     #[serde(rename = "APP")]
@@ -428,7 +428,7 @@ impl cfn_resources::CfnResource for CfnFleet {
 }
 
 /// The desired capacity for a fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComputeCapacity {
     ///
     /// The desired number of streaming instances.
@@ -457,7 +457,7 @@ impl cfn_resources::CfnResource for ComputeCapacity {
 }
 
 /// The name of the directory and organizational unit (OU) to use to join a fleet to a Microsoft Active Directory domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainJoinInfo {
     ///
     /// The fully qualified name of the directory (for example, corp.example.com).
@@ -509,7 +509,7 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 }
 
 /// Describes the S3 location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     /// The S3 bucket of the S3 object.
     ///
@@ -607,7 +607,7 @@ impl cfn_resources::CfnResource for S3Location {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -645,7 +645,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The VPC configuration information for the fleet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// The identifiers of the security groups for the fleet.

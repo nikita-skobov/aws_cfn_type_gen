@@ -1,5 +1,5 @@
 /// Create a task set in the specified cluster and service. This is used when a service 			uses the EXTERNAL deployment controller type. For more information, see 				Amazon ECS deployment 				types in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTaskSet {
     ///
     /// The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the 			task set in.
@@ -126,7 +126,7 @@ pub struct CfnTaskSet {
     pub att_id: CfnTaskSetid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskSetLaunchTypeEnum {
     /// EC2
     #[serde(rename = "EC2")]
@@ -147,7 +147,7 @@ impl Default for TaskSetLaunchTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTaskSetid;
 impl CfnTaskSetid {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for CfnTaskSet {
 }
 
 /// An object representing the networking details for a task or service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsVpcConfiguration {
     ///
     /// Whether the task's elastic network interface receives a public IP address. The default 			value is DISABLED.
@@ -220,7 +220,7 @@ pub struct AwsVpcConfiguration {
     pub subnets: Vec<String>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AwsVpcConfigurationAssignPublicIpEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for AwsVpcConfiguration {
 /// We recommend that you verify this on a test environment before you update the Elastic Load Balancing 			configuration.
 ///
 /// A service-linked role is required for services that use multiple target groups. For 			more information, see Using 				service-linked roles in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancer {
     ///
     /// The name of the container (as it appears in a container definition) to associate with 			the load balancer.
@@ -334,7 +334,7 @@ impl cfn_resources::CfnResource for LoadBalancer {
 }
 
 /// The network configuration for a task or service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// The VPC subnets and security groups that are associated with a task.
@@ -370,7 +370,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// A floating-point percentage of the desired number of tasks to place and keep running 			in the task set.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scale {
     ///
     /// The unit of measure for the scale value.
@@ -399,7 +399,7 @@ pub struct Scale {
     pub value: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ScaleUnitEnum {
     /// PERCENT
     #[serde(rename = "PERCENT")]
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for Scale {
 /// Each service may be associated with one service registry. Multiple service registries 			for each service are not supported.
 ///
 /// When you add, update, or remove the service registries configuration, Amazon ECS starts a 			new deployment. New tasks are registered and deregistered to the updated service 			registry configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceRegistry {
     ///
     /// The container name value to be used for your service discovery service. It's already 			specified in the task definition. If the task definition that your service task 			specifies uses the bridge or host network mode, you must 			specify a containerName and containerPort combination from the 			task definition. If the task definition that your service task specifies uses the 				awsvpc network mode and a type SRV DNS record is used, you must specify 			either a containerName and containerPort combination or a 				port value. However, you can't specify both.

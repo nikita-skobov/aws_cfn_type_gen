@@ -1,5 +1,5 @@
 /// The AWS::Route53::KeySigningKey resource creates a new key-signing key (KSK) in a hosted zone. The hosted zone ID is passed as a       parameter in the KSK properties. You can specify the properties of this KSK using the Name, Status, and         KeyManagementServiceArn properties of the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeySigningKey {
     ///
     /// The unique string (ID) that is used to identify a hosted zone. For example: Z00001111A1ABCaaABC11.

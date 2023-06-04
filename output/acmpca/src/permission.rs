@@ -1,5 +1,5 @@
 /// Grants permissions to the AWS Certificate Manager (ACM) service       principal (acm.amazonaws.com) to perform IssueCertificate, GetCertificate, and ListPermissions       actions on a CA. These actions are needed for the ACM principal to renew private PKI       certificates requested through ACM and residing in the same AWS account       as the CA.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPermission {
     ///
     /// The private CA actions that can be performed by the designated AWS       service. Supported actions are IssueCertificate,         GetCertificate, and ListPermissions.

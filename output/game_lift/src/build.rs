@@ -1,5 +1,5 @@
 /// The AWS::GameLift::Build resource creates a game server build that is    installed and run on instances in an Amazon GameLift fleet. This resource points to an Amazon    S3 location that contains a zip file with all of the components of the game server    build.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBuild {
     ///
     /// A descriptive label that is associated with a build. Build names do not need to be    unique.
@@ -83,7 +83,7 @@ pub struct CfnBuild {
     pub att_build_id: CfnBuildbuildid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BuildOperatingSystemEnum {
     /// AMAZON_LINUX
     #[serde(rename = "AMAZON_LINUX")]
@@ -108,7 +108,7 @@ impl Default for BuildOperatingSystemEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBuildbuildid;
 impl CfnBuildbuildid {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl cfn_resources::CfnResource for CfnBuild {
 }
 
 /// The location in Amazon S3 where build or script files are stored for access by Amazon    GameLift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageLocation {
     ///
     /// An Amazon S3 bucket identifier. Thename of the S3 bucket.

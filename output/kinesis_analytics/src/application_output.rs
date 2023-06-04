@@ -9,7 +9,7 @@
 /// For the limits on the number of application inputs and outputs       you can configure, see Limits.
 ///
 /// This operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationOutput {
     ///
     /// Name of the application to which you want to add the output configuration.
@@ -79,7 +79,7 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
 }
 
 /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationSchema {
     ///
     /// Specifies the format of the records on the output stream.
@@ -96,7 +96,7 @@ pub struct DestinationSchema {
     pub record_format_type: Option<DestinationSchemaRecordFormatTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DestinationSchemaRecordFormatTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for DestinationSchema {
 }
 
 /// When configuring application output, identifies an Amazon Kinesis Firehose delivery       stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM       role that enables Amazon Kinesis Analytics to write to the stream on your behalf.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisFirehoseOutput {
     ///
     /// ARN of the destination Amazon Kinesis Firehose delivery stream to write to.
@@ -224,7 +224,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
 }
 
 /// When configuring application output, identifies an Amazon Kinesis stream as the       destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN       that Amazon Kinesis Analytics can use to write to the stream on your behalf.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamsOutput {
     ///
     /// ARN of the destination Amazon Kinesis stream to write to.
@@ -320,7 +320,7 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
 }
 
 /// When configuring application output, identifies an AWS Lambda function       as the destination. You provide the function Amazon Resource Name (ARN) and also an IAM       role ARN that Amazon Kinesis Analytics can use to write to the function on your behalf.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaOutput {
     ///
     /// Amazon Resource Name (ARN) of the destination Lambda function to write to.
@@ -420,7 +420,7 @@ impl cfn_resources::CfnResource for LambdaOutput {
 /// Describes application output configuration in which you identify an in-application       stream and a destination where you want the in-application stream data to be written.       The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery       stream.
 ///
 /// For limits on how many destinations an application can write and other limitations,       see Limits.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Output {
     ///
     /// Describes the data format when records are written to the destination. For more       information, see Configuring Application         Output.

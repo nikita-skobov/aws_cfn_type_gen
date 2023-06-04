@@ -3,7 +3,7 @@
 /// After you create and update a staging distribution, you can use a continuous     deployment policy to incrementally move traffic to the staging distribution. This enables 			you to test changes to a distribution's configuration before moving all of your 			production traffic to the new configuration.
 ///
 /// For more information, see Using       CloudFront continuous deployment to safely test CDN configuration changes       in the Amazon CloudFront Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContinuousDeploymentPolicy {
     ///
     /// Contains the configuration for a continuous deployment policy.
@@ -23,7 +23,7 @@ pub struct CfnContinuousDeploymentPolicy {
     pub att_last_modified_time: CfnContinuousDeploymentPolicylastmodifiedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContinuousDeploymentPolicyid;
 impl CfnContinuousDeploymentPolicyid {
     pub fn att_name(&self) -> &'static str {
@@ -31,7 +31,7 @@ impl CfnContinuousDeploymentPolicyid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnContinuousDeploymentPolicylastmodifiedtime;
 impl CfnContinuousDeploymentPolicylastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -56,7 +56,7 @@ impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {
 }
 
 /// Contains the configuration for a continuous deployment policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContinuousDeploymentPolicyConfig {
     ///
     /// A Boolean that indicates whether this continuous deployment policy is enabled (in 			effect). When this value is true, this policy is enabled and in effect. 			When this value is false, this policy is not enabled and has no 			effect.
@@ -112,7 +112,7 @@ impl cfn_resources::CfnResource for ContinuousDeploymentPolicyConfig {
 }
 
 /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SessionStickinessConfig {
     ///
     /// The amount of time after which you want sessions to cease if no requests are 			received. Allowed values are 300–3600 seconds (5–60 minutes).
@@ -152,7 +152,7 @@ impl cfn_resources::CfnResource for SessionStickinessConfig {
 }
 
 /// Determines which HTTP requests are sent to the staging distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleHeaderConfig {
     ///
     /// The request header name that you want CloudFront to send to your staging 			distribution. The header must contain the prefix aws-cf-cd-.
@@ -192,7 +192,7 @@ impl cfn_resources::CfnResource for SingleHeaderConfig {
 }
 
 /// This configuration determines the percentage of HTTP requests that are sent to the       staging distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleWeightConfig {
     ///
     /// Session stickiness provides the ability to define multiple requests from a single 			viewer as a single session. This prevents the potentially inconsistent experience of 			sending some of a given user's requests to your staging distribution, while others are 			sent to your primary distribution. Define the session duration using TTL values.
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for SingleWeightConfig {
 }
 
 /// The traffic configuration of your continuous deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrafficConfig {
     ///
     /// Determines which HTTP requests are sent to the staging distribution.
@@ -277,7 +277,7 @@ pub struct TrafficConfig {
     pub cfn_type: TrafficConfigTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TrafficConfigTypeEnum {
     /// SingleHeader
     #[serde(rename = "SingleHeader")]

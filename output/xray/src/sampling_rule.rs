@@ -1,7 +1,7 @@
 /// Use the AWS::XRay::SamplingRule resource to specify a sampling rule, which controls sampling behavior for instrumented applications.    Include a SamplingRule entity to create or update a sampling rule.
 ///
 /// Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending    order of priority for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service    reports back to X-Ray with GetSamplingTargets to get updated versions of    each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSamplingRule {
     ///
     /// The sampling rule to be created or updated.
@@ -31,7 +31,7 @@ pub struct CfnSamplingRule {
     pub att_rule_arn: CfnSamplingRulerulearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSamplingRulerulearn;
 impl CfnSamplingRulerulearn {
     pub fn att_name(&self) -> &'static str {
@@ -58,7 +58,7 @@ impl cfn_resources::CfnResource for CfnSamplingRule {
 }
 
 /// A sampling rule that services use to decide whether to instrument a request. Rule    fields can match properties of the service, or properties of a request. The service can ignore    rules that don't match its properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SamplingRule {
     ///
     /// Matches attributes derived from the request.
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for SamplingRule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

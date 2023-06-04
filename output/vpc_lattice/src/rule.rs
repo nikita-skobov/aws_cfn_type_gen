@@ -1,5 +1,5 @@
 /// Creates a listener rule. Each listener has a default rule for checking connection requests,  but you can define additional rules. Each rule consists of a priority, one or more actions, and  one or more conditions. For more information, see Listener rules in the   Amazon VPC Lattice User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRule {
     ///
     /// Describes the action for a rule. Each rule must include exactly one of the following types  of actions: forward or fixed-response, and it must be the last action  to be performed.
@@ -91,7 +91,7 @@ pub struct CfnRule {
     pub att_id: CfnRuleid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRulearn;
 impl CfnRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnRulearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRuleid;
 impl CfnRuleid {
     pub fn att_name(&self) -> &'static str {
@@ -126,7 +126,7 @@ impl cfn_resources::CfnResource for CfnRule {
 }
 
 /// Describes the action for a rule. Each rule must include exactly one of the following types  of actions: forward or fixed-response, and it must be the last action  to be performed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// Describes the rule action that returns a custom HTTP response.
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// Information about an action that returns a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FixedResponse {
     ///
     /// The HTTP response code.
@@ -203,7 +203,7 @@ impl cfn_resources::CfnResource for FixedResponse {
 }
 
 /// The forward action. Traffic that matches the rule is forwarded to the specified target  groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Forward {
     ///
     /// The target groups. Traffic matching the rule is forwarded to the specified target groups.  With forward actions, you can assign a weight that controls the prioritization and selection of  each target group. This means that requests are distributed to individual target groups based on  their weights. For example, if two target groups have the same weight, each target group receives  half of the traffic.
@@ -234,7 +234,7 @@ impl cfn_resources::CfnResource for Forward {
 }
 
 /// Describes the constraints for a header match. Matches incoming requests with rule based on  request header value before applying rule action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderMatch {
     ///
     /// Indicates whether the match is case sensitive. Defaults to false.
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for HeaderMatch {
 }
 
 /// Describes a header match type. Only one can be provided.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderMatchType {
     ///
     /// Specifies a contains type match.
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for HeaderMatchType {
 }
 
 /// Describes criteria that can be applied to incoming requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpMatch {
     ///
     /// The header matches. Matches incoming requests with rule based on request header value before  applying rule action.
@@ -400,7 +400,7 @@ impl cfn_resources::CfnResource for HttpMatch {
 }
 
 /// Describes a rule match.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Match {
     ///
     /// The HTTP criteria that a rule must match.
@@ -431,7 +431,7 @@ impl cfn_resources::CfnResource for Match {
 }
 
 /// Describes the conditions that can be applied when matching a path for incoming  requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathMatch {
     ///
     /// Indicates whether the match is case sensitive. Defaults to false.
@@ -474,7 +474,7 @@ impl cfn_resources::CfnResource for PathMatch {
 }
 
 /// Describes a path match type. Each rule can include only one of the following types of  paths.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathMatchType {
     ///
     /// An exact match of the path.
@@ -522,7 +522,7 @@ impl cfn_resources::CfnResource for PathMatchType {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -560,7 +560,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the weight of a target group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WeightedTargetGroup {
     ///
     /// The ID of the target group.

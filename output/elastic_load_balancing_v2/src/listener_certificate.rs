@@ -1,5 +1,5 @@
 /// Specifies an SSL server certificate to add to the certificate list for an HTTPS or TLS     listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerCertificate {
     ///
     /// The certificate. You can specify one certificate per resource.
@@ -39,7 +39,7 @@ impl cfn_resources::CfnResource for CfnListenerCertificate {
 }
 
 /// Specifies an SSL server certificate for the certificate list of a secure     listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Certificate {
     ///
     /// The Amazon Resource Name (ARN) of the certificate.

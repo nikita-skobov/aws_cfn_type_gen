@@ -1,5 +1,5 @@
 /// Creates a profiling group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfilingGroup {
     ///
     /// The agent permissions attached to this profiling group. This action group grants       ConfigureAgent and PostAgentProfile permissions to perform     actions required by the profiling agent. The Json consists of key     Principals.
@@ -68,7 +68,7 @@ pub struct CfnProfilingGroup {
     pub att_arn: CfnProfilingGrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProfilingGrouparn;
 impl CfnProfilingGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl cfn_resources::CfnResource for CfnProfilingGroup {
 }
 
 /// The AgentPermissions property type specifies Property description not available. for an AWS::CodeGuruProfiler::ProfilingGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AgentPermissions {
     /// Property description not available.
     ///
@@ -123,7 +123,7 @@ impl cfn_resources::CfnResource for AgentPermissions {
 }
 
 /// Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Channel {
     ///
     /// The channel ID.
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for Channel {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

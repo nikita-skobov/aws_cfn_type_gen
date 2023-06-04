@@ -11,7 +11,7 @@
 /// Learn more
 ///
 /// GameLift FleetIQ Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameServerGroup {
     ///
     /// Configuration settings to define a scaling policy for the Auto Scaling group that is       optimized for game hosting. The scaling policy uses the metric         "PercentUtilizedGameServers" to maintain a buffer of idle game servers       that can immediately accommodate new games and players. After the Auto Scaling group is       created, update this value directly in the Auto Scaling group using the AWS console or       APIs.
@@ -195,7 +195,7 @@ pub struct CfnGameServerGroup {
     pub att_game_server_group_arn: CfnGameServerGroupgameservergrouparn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GameServerGroupBalancingStrategyEnum {
     /// ON_DEMAND_ONLY
     #[serde(rename = "ON_DEMAND_ONLY")]
@@ -216,7 +216,7 @@ impl Default for GameServerGroupBalancingStrategyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GameServerGroupDeleteOptionEnum {
     /// FORCE_DELETE
     #[serde(rename = "FORCE_DELETE")]
@@ -237,7 +237,7 @@ impl Default for GameServerGroupDeleteOptionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GameServerGroupGameServerProtectionPolicyEnum {
     /// FULL_PROTECTION
     #[serde(rename = "FULL_PROTECTION")]
@@ -254,7 +254,7 @@ impl Default for GameServerGroupGameServerProtectionPolicyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameServerGroupautoscalinggrouparn;
 impl CfnGameServerGroupautoscalinggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -262,7 +262,7 @@ impl CfnGameServerGroupautoscalinggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGameServerGroupgameservergrouparn;
 impl CfnGameServerGroupgameservergrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -381,7 +381,7 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
 /// This data type is used with the GameLift FleetIQ and game server groups.
 ///
 /// Configuration settings for intelligent automatic scaling that uses target tracking.    After the Auto Scaling group is created, all updates to Auto Scaling policies, including    changing this policy and adding or removing other policies, is done directly on the Auto    Scaling group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoScalingPolicy {
     ///
     /// Length of time, in seconds, it takes for a new instance to start new game server       processes and register with Amazon GameLift FleetIQ. Specifying a warm-up time can be useful, particularly       with game servers that take a long time to start up, because it avoids prematurely       starting new instances.
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for AutoScalingPolicy {
 /// This data type is used with the Amazon GameLift FleetIQ and game server groups.
 ///
 /// An allowed instance type for a GameServerGroup. All game server groups must have at least two    instance types defined for it. GameLift FleetIQ periodically evaluates each defined instance type    for viability. It then updates the Auto Scaling group with the list of viable instance    types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceDefinition {
     ///
     /// An Amazon EC2 instance type designation.
@@ -471,7 +471,7 @@ pub struct InstanceDefinition {
     pub weighted_capacity: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceDefinitionInstanceTypeEnum {
     /// c4.2xlarge
     #[serde(rename = "c4.2xlarge")]
@@ -871,7 +871,7 @@ impl cfn_resources::CfnResource for InstanceDefinition {
 /// This data type is used with the GameLift FleetIQ and game server groups.
 ///
 /// An Amazon EC2 launch template that contains configuration settings and game server code to    be deployed to all instances in a game server group. The launch template is specified    when creating a new game server group with GameServerGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplate {
     ///
     /// A unique identifier for an existing Amazon EC2 launch template.
@@ -1009,7 +1009,7 @@ impl cfn_resources::CfnResource for LaunchTemplate {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1049,7 +1049,7 @@ impl cfn_resources::CfnResource for Tag {
 /// This data type is used with the Amazon GameLift FleetIQ and game server groups.
 ///
 /// Settings for a target-based scaling policy as part of a GameServerGroupAutoScalingPolicy.    These settings are used to    create a target-based policy that tracks the GameLift FleetIQ metric    "PercentUtilizedGameServers" and specifies a target value for the    metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetTrackingConfiguration {
     ///
     /// Desired value to use with a game server group target-based scaling policy.

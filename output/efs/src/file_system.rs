@@ -1,5 +1,5 @@
 /// The AWS::EFS::FileSystem resource creates a new, empty file system in     Amazon Elastic File System (Amazon EFS). You must create a mount target      (AWS::EFS::MountTarget) to mount your EFS file system on an      Amazon EC2 or other AWS cloud compute resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystem {
     ///
     /// Used to create a file system that uses One Zone storage classes. It specifies the AWS    Availability Zone in which to create the file system. Use the format us-east-1a    to specify the Availability Zone. For    more information about One Zone storage classes, see Using EFS storage classes in the Amazon EFS User Guide.
@@ -176,7 +176,7 @@ pub struct CfnFileSystem {
     pub att_file_system_id: CfnFileSystemfilesystemid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FileSystemPerformanceModeEnum {
     /// generalPurpose
     #[serde(rename = "generalPurpose")]
@@ -193,7 +193,7 @@ impl Default for FileSystemPerformanceModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FileSystemThroughputModeEnum {
     /// bursting
     #[serde(rename = "bursting")]
@@ -214,7 +214,7 @@ impl Default for FileSystemThroughputModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemarn;
 impl CfnFileSystemarn {
     pub fn att_name(&self) -> &'static str {
@@ -222,7 +222,7 @@ impl CfnFileSystemarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFileSystemfilesystemid;
 impl CfnFileSystemfilesystemid {
     pub fn att_name(&self) -> &'static str {
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for CfnFileSystem {
 }
 
 /// The backup policy turns automatic backups for the file system on or off.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BackupPolicy {
     ///
     /// Set the backup policy status for the file system.
@@ -303,7 +303,7 @@ pub struct BackupPolicy {
     pub status: BackupPolicyStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BackupPolicyStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -343,7 +343,7 @@ impl cfn_resources::CfnResource for BackupPolicy {
 }
 
 /// A tag is a key-value pair attached to a file system. Allowed characters in the Key and Value properties        are letters, white space, and numbers that    can be represented in UTF-8, and the following characters: + - = . _ : /
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ElasticFileSystemTag {
     ///
     /// The tag key (String). The key can't start with aws:.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for ElasticFileSystemTag {
 }
 
 /// Describes a policy used by EFS lifecycle management and EFS Intelligent-Tiering that    specifies when to transition files into and out of the file system's Infrequent Access (IA)    storage class. For more information, see EFS Intelligent‐Tiering and EFS Lifecycle     Management.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecyclePolicy {
     ///
     /// Describes the period of time that a file is not accessed, after which it transitions to IA storage. Metadata    operations such as listing the contents of a directory don't count as file access    events.
@@ -458,7 +458,7 @@ pub struct LifecyclePolicy {
         Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LifecyclePolicyTransitionToIAEnum {
     /// AFTER_14_DAYS
     #[serde(rename = "AFTER_14_DAYS")]
@@ -491,7 +491,7 @@ impl Default for LifecyclePolicyTransitionToIAEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LifecyclePolicyTransitionToPrimaryStorageClassEnum {
     /// AFTER_1_ACCESS
     #[serde(rename = "AFTER_1_ACCESS")]

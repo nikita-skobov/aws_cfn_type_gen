@@ -1,7 +1,7 @@
 /// Adds the specified user to the specified group.
 ///
 /// Calling this action requires developer credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolUserToGroupAttachment {
     ///
     /// The group name.

@@ -1,7 +1,7 @@
 /// Creates a new instance profile. For information about instance profiles, see Using       instance profiles.
 ///
 /// For information about the number of instance profiles you can create, see IAM object quotas in the IAM User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceProfile {
     ///
     /// The name of the instance profile to create.
@@ -60,7 +60,7 @@ pub struct CfnInstanceProfile {
     pub att_arn: CfnInstanceProfilearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceProfilearn;
 impl CfnInstanceProfilearn {
     pub fn att_name(&self) -> &'static str {

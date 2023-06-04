@@ -1,7 +1,7 @@
 /// You can use the AWS::SupportApp::SlackChannelConfiguration resource to       specify your AWS account when you configure the AWS Support App. This resource includes the following information:
 ///
 /// For more information, see the following topics in the AWS Support User Guide:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSlackChannelConfiguration {
     ///
     /// The channel ID in Slack. This ID identifies a channel within a Slack workspace.

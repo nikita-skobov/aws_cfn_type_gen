@@ -1,5 +1,5 @@
 /// Use Step to specify a cluster (job flow) step, which runs only on the master node. Steps are used to submit data processing jobs to a cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStep {
     ///
     /// This specifies what action to take when the cluster step fails. Possible values are CANCEL_AND_WAIT and CONTINUE.
@@ -91,7 +91,7 @@ impl cfn_resources::CfnResource for CfnStep {
 }
 
 /// A job flow step consisting of a JAR file whose main function will be executed. The main     function submits a job for Hadoop to execute and waits for the job to finish or     fail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HadoopJarStepConfig {
     ///
     /// A list of command line arguments passed to the JAR file's main function when     executed.
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for HadoopJarStepConfig {
 }
 
 /// KeyValue is a subproperty of the HadoopJarStepConfig property type. KeyValue is used to pass parameters to a step.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyValue {
     ///
     /// The unique identifier of a key-value pair.

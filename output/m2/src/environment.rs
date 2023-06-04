@@ -1,5 +1,5 @@
 /// Specifies a runtime environment for a given runtime engine.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// The description of the runtime environment.
@@ -177,7 +177,7 @@ pub struct CfnEnvironment {
     pub att_environment_id: CfnEnvironmentenvironmentid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EnvironmentEngineTypeEnum {
     /// bluage
     #[serde(rename = "bluage")]
@@ -194,7 +194,7 @@ impl Default for EnvironmentEngineTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmentarn;
 impl CfnEnvironmentenvironmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl CfnEnvironmentenvironmentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmentid;
 impl CfnEnvironmentenvironmentid {
     pub fn att_name(&self) -> &'static str {
@@ -251,7 +251,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 }
 
 /// Defines the storage configuration for an Amazon EFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EfsStorageConfiguration {
     ///
     /// The file system identifier.
@@ -295,7 +295,7 @@ impl cfn_resources::CfnResource for EfsStorageConfiguration {
 }
 
 /// Defines the storage configuration for an Amazon FSx file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FsxStorageConfiguration {
     ///
     /// The file system identifier.
@@ -339,7 +339,7 @@ impl cfn_resources::CfnResource for FsxStorageConfiguration {
 }
 
 /// Defines the details of a high availability configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HighAvailabilityConfig {
     ///
     /// The number of instances in a high availability configuration.
@@ -390,7 +390,7 @@ impl cfn_resources::CfnResource for HighAvailabilityConfig {
 }
 
 /// Defines the storage configuration for a runtime environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageConfiguration {
     ///
     /// Defines the storage configuration for an Amazon EFS file system.

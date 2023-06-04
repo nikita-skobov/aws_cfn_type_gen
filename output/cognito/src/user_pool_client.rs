@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPoolClient resource specifies an Amazon Cognito user    pool client.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolClient {
     ///
     /// The access token time limit. After this limit expires, your user can't use their access    token. To specify the time unit for AccessTokenValidity as seconds,     minutes, hours, or days, set a     TokenValidityUnits value in your API request.
@@ -351,7 +351,7 @@ pub struct CfnUserPoolClient {
     pub att_name: CfnUserPoolClientname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolClientPreventUserExistenceErrorsEnum {
     /// ENABLED
     #[serde(rename = "ENABLED")]
@@ -368,7 +368,7 @@ impl Default for UserPoolClientPreventUserExistenceErrorsEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolClientclientsecret;
 impl CfnUserPoolClientclientsecret {
     pub fn att_name(&self) -> &'static str {
@@ -376,7 +376,7 @@ impl CfnUserPoolClientclientsecret {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolClientname;
 impl CfnUserPoolClientname {
     pub fn att_name(&self) -> &'static str {
@@ -524,7 +524,7 @@ impl cfn_resources::CfnResource for CfnUserPoolClient {
 }
 
 /// The Amazon Pinpoint analytics configuration necessary to collect metrics for a user       pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalyticsConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of an Amazon Pinpoint project. You can use the     Amazon Pinpoint project for integration with the chosen user pool client. Amazon Cognito publishes events to the Amazon Pinpoint project that the app ARN    declares.
@@ -632,7 +632,7 @@ impl cfn_resources::CfnResource for AnalyticsConfiguration {
 }
 
 /// The time units you use when you set the duration of ID, access, and refresh tokens.       The default unit for RefreshToken is days, and the default for ID and access tokens is       hours.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TokenValidityUnits {
     ///
     /// A time unit of seconds, minutes, hours, or         days for the value that you set in the AccessTokenValidity       parameter. The default AccessTokenValidity time unit is hours.         AccessTokenValidity duration can range from five minutes to one       day.
@@ -677,7 +677,7 @@ pub struct TokenValidityUnits {
     pub refresh_token: Option<TokenValidityUnitsRefreshTokenEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TokenValidityUnitsAccessTokenEnum {
     /// days
     #[serde(rename = "days")]
@@ -702,7 +702,7 @@ impl Default for TokenValidityUnitsAccessTokenEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TokenValidityUnitsIdTokenEnum {
     /// days
     #[serde(rename = "days")]
@@ -727,7 +727,7 @@ impl Default for TokenValidityUnitsIdTokenEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TokenValidityUnitsRefreshTokenEnum {
     /// days
     #[serde(rename = "days")]

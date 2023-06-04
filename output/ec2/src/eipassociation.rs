@@ -1,7 +1,7 @@
 /// Associates an Elastic IP address with an instance or a network interface. Before you can       use an Elastic IP address, you must allocate it to your account. For more information about       working with Elastic IP addresses, see         Elastic IP address concepts and rules.
 ///
 /// You must specify AllocationId and either InstanceId,       NetworkInterfaceId, or PrivateIpAddress.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEIPAssociation {
     ///
     /// The allocation ID. This is required.

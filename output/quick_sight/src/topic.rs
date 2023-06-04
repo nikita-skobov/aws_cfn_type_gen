@@ -1,5 +1,5 @@
 /// Creates a new Q topic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopic {
     ///
     /// The ID of the AWS account that you want to create a topic in.
@@ -81,7 +81,7 @@ pub struct CfnTopic {
     pub att_arn: CfnTopicarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicarn;
 impl CfnTopicarn {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for CfnTopic {
 }
 
 /// A structure that represents the cell value synonym.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CellValueSynonym {
     ///
     /// The cell value.
@@ -225,7 +225,7 @@ impl cfn_resources::CfnResource for CellValueSynonym {
 }
 
 /// A structure that represents a collective constant.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CollectiveConstant {
     ///
     /// A list of values for the collective constant.
@@ -255,7 +255,7 @@ impl cfn_resources::CfnResource for CollectiveConstant {
 }
 
 /// The order in which data is displayed for the column when     it's used in a comparative context.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComparativeOrder {
     ///
     /// The list of columns to be used in the ordering.
@@ -298,7 +298,7 @@ pub struct ComparativeOrder {
     pub use_ordering: Option<ComparativeOrderUseOrderingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComparativeOrderTreatUndefinedSpecifiedValuesEnum {
     /// LEAST
     #[serde(rename = "LEAST")]
@@ -315,7 +315,7 @@ impl Default for ComparativeOrderTreatUndefinedSpecifiedValuesEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ComparativeOrderUseOrderingEnum {
     /// GREATER_IS_BETTER
     #[serde(rename = "GREATER_IS_BETTER")]
@@ -351,7 +351,7 @@ impl cfn_resources::CfnResource for ComparativeOrder {
 }
 
 /// The definition of a data aggregation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataAggregation {
     ///
     /// The level of time precision that is used to aggregate DateTime values.
@@ -382,7 +382,7 @@ pub struct DataAggregation {
     pub default_date_column_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataAggregationDatasetRowDateGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -446,7 +446,7 @@ impl cfn_resources::CfnResource for DataAggregation {
 }
 
 /// A structure that represents a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatasetMetadata {
     ///
     /// The list of calculated field definitions.
@@ -586,7 +586,7 @@ impl cfn_resources::CfnResource for DatasetMetadata {
 }
 
 /// A structure that represents a default formatting definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultFormatting {
     ///
     /// The display format. Valid values for this structure are AUTO,       PERCENT, CURRENCY, NUMBER, DATE, and       STRING.
@@ -615,7 +615,7 @@ pub struct DefaultFormatting {
     pub display_format_options: Option<DisplayFormatOptions>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DefaultFormattingDisplayFormatEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -667,7 +667,7 @@ impl cfn_resources::CfnResource for DefaultFormatting {
 }
 
 /// A structure that represents additional options for display formatting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DisplayFormatOptions {
     ///
     /// Determines the blank cell format.
@@ -830,7 +830,7 @@ pub struct DisplayFormatOptions {
     pub use_grouping: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DisplayFormatOptionsDecimalSeparatorEnum {
     /// COMMA
     #[serde(rename = "COMMA")]
@@ -847,7 +847,7 @@ impl Default for DisplayFormatOptionsDecimalSeparatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DisplayFormatOptionsUnitScalerEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -959,7 +959,7 @@ impl cfn_resources::CfnResource for DisplayFormatOptions {
 }
 
 /// A structure that represents a named entity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NamedEntityDefinition {
     ///
     /// The name of the entity.
@@ -1030,7 +1030,7 @@ pub struct NamedEntityDefinition {
     pub property_usage: Option<NamedEntityDefinitionPropertyUsageEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NamedEntityDefinitionPropertyRoleEnum {
     /// ID
     #[serde(rename = "ID")]
@@ -1047,7 +1047,7 @@ impl Default for NamedEntityDefinitionPropertyRoleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NamedEntityDefinitionPropertyUsageEnum {
     /// DIMENSION
     #[serde(rename = "DIMENSION")]
@@ -1107,7 +1107,7 @@ impl cfn_resources::CfnResource for NamedEntityDefinition {
 }
 
 /// A structure that represents a metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NamedEntityDefinitionMetric {
     ///
     /// The aggregation of a named entity. Valid values for this structure are SUM,       MIN, MAX, COUNT, AVERAGE,       DISTINCT_COUNT, STDEV, STDEVP, VAR,       VARP, PERCENTILE,     MEDIAN,     and CUSTOM.
@@ -1136,7 +1136,7 @@ pub struct NamedEntityDefinitionMetric {
     pub aggregation_function_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NamedEntityDefinitionMetricAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -1212,7 +1212,7 @@ impl cfn_resources::CfnResource for NamedEntityDefinitionMetric {
 }
 
 /// A structure that represents a negative format.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NegativeFormat {
     ///
     /// The prefix for a negative format.
@@ -1280,7 +1280,7 @@ impl cfn_resources::CfnResource for NegativeFormat {
 }
 
 /// The value of the constant that is used to specify the endpoints of a range filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RangeConstant {
     ///
     /// The maximum value for a range constant.
@@ -1348,7 +1348,7 @@ impl cfn_resources::CfnResource for RangeConstant {
 }
 
 /// A structure that represents a semantic entity type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SemanticEntityType {
     ///
     /// The semantic entity sub type name.
@@ -1428,7 +1428,7 @@ impl cfn_resources::CfnResource for SemanticEntityType {
 }
 
 /// A structure that represents a semantic type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SemanticType {
     ///
     /// The semantic type falsey cell value.
@@ -1556,7 +1556,7 @@ impl cfn_resources::CfnResource for SemanticType {
 }
 
 /// A structure that represents a calculated field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicCalculatedField {
     ///
     /// The default aggregation. Valid values for this structure are SUM,       MAX, MIN, COUNT,     DISTINCT_COUNT,     and AVERAGE.
@@ -1751,7 +1751,7 @@ pub struct TopicCalculatedField {
     pub time_granularity: Option<TopicCalculatedFieldTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCalculatedFieldAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -1784,7 +1784,7 @@ impl Default for TopicCalculatedFieldAggregationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCalculatedFieldColumnDataRoleEnum {
     /// DIMENSION
     #[serde(rename = "DIMENSION")]
@@ -1801,7 +1801,7 @@ impl Default for TopicCalculatedFieldColumnDataRoleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCalculatedFieldTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -1907,7 +1907,7 @@ impl cfn_resources::CfnResource for TopicCalculatedField {
 }
 
 /// A structure that represents a category filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicCategoryFilter {
     ///
     /// The category filter function. Valid values for this structure are EXACT and CONTAINS.
@@ -1962,7 +1962,7 @@ pub struct TopicCategoryFilter {
     pub inverse: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCategoryFilterCategoryFilterFunctionEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -1979,7 +1979,7 @@ impl Default for TopicCategoryFilterCategoryFilterFunctionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCategoryFilterCategoryFilterTypeEnum {
     /// CUSTOM_FILTER
     #[serde(rename = "CUSTOM_FILTER")]
@@ -2019,7 +2019,7 @@ impl cfn_resources::CfnResource for TopicCategoryFilter {
 }
 
 /// A constant used in a category filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicCategoryFilterConstant {
     ///
     /// A collective constant used in a category filter. This element is used to specify a list of values for the constant.
@@ -2062,7 +2062,7 @@ pub struct TopicCategoryFilterConstant {
     pub singular_constant: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicCategoryFilterConstantConstantTypeEnum {
     /// COLLECTIVE
     #[serde(rename = "COLLECTIVE")]
@@ -2110,7 +2110,7 @@ impl cfn_resources::CfnResource for TopicCategoryFilterConstant {
 }
 
 /// Represents a column in a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicColumn {
     ///
     /// The type of aggregation that is performed on the column data when     it's queried. Valid values for this structure are SUM, MAX,       MIN, COUNT,     DISTINCT_COUNT, and AVERAGE.
@@ -2304,7 +2304,7 @@ pub struct TopicColumn {
     pub time_granularity: Option<TopicColumnTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicColumnAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -2337,7 +2337,7 @@ impl Default for TopicColumnAggregationEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicColumnColumnDataRoleEnum {
     /// DIMENSION
     #[serde(rename = "DIMENSION")]
@@ -2354,7 +2354,7 @@ impl Default for TopicColumnColumnDataRoleEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicColumnTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -2449,7 +2449,7 @@ impl cfn_resources::CfnResource for TopicColumn {
 }
 
 /// A filter used to restrict data based on a range of dates or times.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicDateRangeFilter {
     ///
     /// The constant used in a date range filter.
@@ -2495,7 +2495,7 @@ impl cfn_resources::CfnResource for TopicDateRangeFilter {
 }
 
 /// A structure that represents a filter used to select items for a topic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicFilter {
     ///
     /// The category filter that is associated with this filter.
@@ -2638,7 +2638,7 @@ pub struct TopicFilter {
     pub relative_date_filter: Option<TopicRelativeDateFilter>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicFilterFilterClassEnum {
     /// CONDITIONAL_VALUE_FILTER
     #[serde(rename = "CONDITIONAL_VALUE_FILTER")]
@@ -2659,7 +2659,7 @@ impl Default for TopicFilterFilterClassEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicFilterFilterTypeEnum {
     /// CATEGORY_FILTER
     #[serde(rename = "CATEGORY_FILTER")]
@@ -2753,7 +2753,7 @@ impl cfn_resources::CfnResource for TopicFilter {
 }
 
 /// A structure that represents a named entity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicNamedEntity {
     ///
     /// The definition of a named entity.
@@ -2857,7 +2857,7 @@ impl cfn_resources::CfnResource for TopicNamedEntity {
 }
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value matches the specified value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicNumericEqualityFilter {
     ///
     /// An aggregation function that specifies how to calculate the value of a numeric field for     a topic. Valid values for this structure are NO_AGGREGATION, SUM,       AVERAGE, COUNT, DISTINCT_COUNT, MAX,       MEDIAN, MIN, STDEV, STDEVP,       VAR,     and VARP.
@@ -2886,7 +2886,7 @@ pub struct TopicNumericEqualityFilter {
     pub constant: Option<TopicSingularFilterConstant>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicNumericEqualityFilterAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -2962,7 +2962,7 @@ impl cfn_resources::CfnResource for TopicNumericEqualityFilter {
 }
 
 /// A filter that filters topics based on the value of a numeric field. The filter includes only topics whose numeric field value falls within the specified range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicNumericRangeFilter {
     ///
     /// An aggregation function that specifies how to calculate the value of a numeric field for     a topic, Valid values for this structure are NO_AGGREGATION, SUM,       AVERAGE, COUNT, DISTINCT_COUNT, MAX,       MEDIAN, MIN, STDEV, STDEVP,       VAR,     and VARP.
@@ -3003,7 +3003,7 @@ pub struct TopicNumericRangeFilter {
     pub inclusive: Option<bool>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicNumericRangeFilterAggregationEnum {
     /// AVERAGE
     #[serde(rename = "AVERAGE")]
@@ -3079,7 +3079,7 @@ impl cfn_resources::CfnResource for TopicNumericRangeFilter {
 }
 
 /// A constant value that is used in a range filter to specify the endpoints of the range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicRangeFilterConstant {
     ///
     /// The data type of the constant value that is used in a range filter. Valid values for this structure are RANGE.
@@ -3108,7 +3108,7 @@ pub struct TopicRangeFilterConstant {
     pub range_constant: Option<RangeConstant>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicRangeFilterConstantConstantTypeEnum {
     /// COLLECTIVE
     #[serde(rename = "COLLECTIVE")]
@@ -3148,7 +3148,7 @@ impl cfn_resources::CfnResource for TopicRangeFilterConstant {
 }
 
 /// A structure that represents a relative date filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicRelativeDateFilter {
     ///
     /// The constant used in a     relative date filter.
@@ -3192,7 +3192,7 @@ pub struct TopicRelativeDateFilter {
     pub time_granularity: Option<TopicRelativeDateFilterTimeGranularityEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicRelativeDateFilterRelativeDateFilterFunctionEnum {
     /// LAST
     #[serde(rename = "LAST")]
@@ -3221,7 +3221,7 @@ impl Default for TopicRelativeDateFilterRelativeDateFilterFunctionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicRelativeDateFilterTimeGranularityEnum {
     /// DAY
     #[serde(rename = "DAY")]
@@ -3281,7 +3281,7 @@ impl cfn_resources::CfnResource for TopicRelativeDateFilter {
 }
 
 /// A structure that represents a singular filter constant, used in filters to specify a single value to match against.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TopicSingularFilterConstant {
     ///
     /// The type of the singular filter constant. Valid values for this structure are SINGULAR.
@@ -3312,7 +3312,7 @@ pub struct TopicSingularFilterConstant {
     pub singular_constant: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TopicSingularFilterConstantConstantTypeEnum {
     /// COLLECTIVE
     #[serde(rename = "COLLECTIVE")]

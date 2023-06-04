@@ -1,7 +1,7 @@
 /// Creates a CloudWatch RUM app monitor, which you can use to collect telemetry data from your application       and send it to CloudWatch RUM. The data includes performance and reliability information such as       page load time, client-side errors,       and user behavior.
 ///
 /// After you create an app monitor, sign in to the CloudWatch RUM console to get       the JavaScript code snippet to add to your web application. For more information, see       How do I find a code snippet         that I've already generated?
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppMonitor {
     ///
     /// A structure that contains much of the configuration data for the app monitor. If you are using       Amazon Cognito for authorization, you must include this structure in your request, and it       must include the ID of the       Amazon Cognito identity pool to use for authorization. If you don't       include AppMonitorConfiguration, you must set up your own       authorization method. For more information, see       Authorize your application         to send data to AWS.
@@ -89,7 +89,7 @@ pub struct CfnAppMonitor {
     pub att_id: CfnAppMonitorid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppMonitorid;
 impl CfnAppMonitorid {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl cfn_resources::CfnResource for CfnAppMonitor {
 }
 
 /// This structure contains much of the configuration data for the app monitor.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppMonitorConfiguration {
     ///
     /// If you set this to true, the CloudWatch RUM web client sets two cookies, a session       cookie and a user cookie. The cookies allow the CloudWatch RUM web client to collect data relating to       the number of users an application has and the behavior of the application across a       sequence of events. Cookies are stored in the top-level domain of the current page.
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for AppMonitorConfiguration {
 }
 
 /// This structure specifies whether this app monitor allows the web client to define and send custom events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomEvents {
     ///
     /// Set this to ENABLED to allow the web client to send custom events for this app monitor.
@@ -312,7 +312,7 @@ impl cfn_resources::CfnResource for CustomEvents {
 /// Extended metrics sent to CloudWatch and RUM custom metrics are charged as CloudWatch custom metrics. Each combination of additional dimension name and dimension       value counts as a custom metric.
 ///
 /// If some metric definitions that you specify are not valid,      then the operation will not modify any metric definitions even if other metric definitions specified are valid.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDefinition {
     ///
     /// This field is a map of field paths to dimension names. It defines the dimensions to associate with this       metric in CloudWatch. The value of this field is used only if the metric destination is CloudWatch.       If the metric destination is Evidently, the value of DimensionKeys is ignored.
@@ -407,7 +407,7 @@ impl cfn_resources::CfnResource for MetricDefinition {
 /// Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send       extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
 ///
 /// For more information about extended metrics, see             Extended metrics that you can send to CloudWatch and CloudWatch Evidently.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDestination {
     ///
     /// Defines the destination to send the metrics to. Valid values are CloudWatch and       Evidently. If       you specify Evidently, you must also specify the ARN of the       CloudWatchEvidently experiment that is to       be the destination and an IAM role that has permission to write to the experiment.
@@ -480,7 +480,7 @@ impl cfn_resources::CfnResource for MetricDestination {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

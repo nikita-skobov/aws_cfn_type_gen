@@ -1,5 +1,5 @@
 /// Creates a listener for a service. Before you start using your Amazon VPC Lattice service, you must  add one or more listeners. A listener is a process that checks for connection requests to your  services. For more information, see Listeners in the  Amazon VPC Lattice User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListener {
     ///
     /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
@@ -86,7 +86,7 @@ pub struct CfnListener {
     pub att_service_id: CfnListenerserviceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerarn;
 impl CfnListenerarn {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl CfnListenerarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerid;
 impl CfnListenerid {
     pub fn att_name(&self) -> &'static str {
@@ -102,7 +102,7 @@ impl CfnListenerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerservicearn;
 impl CfnListenerservicearn {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl CfnListenerservicearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnListenerserviceid;
 impl CfnListenerserviceid {
     pub fn att_name(&self) -> &'static str {
@@ -135,7 +135,7 @@ impl cfn_resources::CfnResource for CfnListener {
 }
 
 /// The action for the default rule. Each listener has a default rule. Each rule consists of a  priority, one or more actions, and one or more conditions. The default rule is the rule that's  used if no other rules match. Each rule must include exactly one of the following types of  actions: forward or fixed-response, and it must be the last action to  be performed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultAction {
     ///
     /// Information about an action that returns a custom HTTP response.
@@ -183,7 +183,7 @@ impl cfn_resources::CfnResource for DefaultAction {
 }
 
 /// Information about an action that returns a custom HTTP response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FixedResponse {
     ///
     /// The HTTP response code.
@@ -212,7 +212,7 @@ impl cfn_resources::CfnResource for FixedResponse {
 }
 
 /// The forward action. Traffic that matches the rule is forwarded to the specified target  groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Forward {
     ///
     /// The target groups. Traffic matching the rule is forwarded to the specified target groups.  With forward actions, you can assign a weight that controls the prioritization and selection of  each target group. This means that requests are distributed to individual target groups based on  their weights. For example, if two target groups have the same weight, each target group receives  half of the traffic.
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for Forward {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the weight of a target group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WeightedTargetGroup {
     ///
     /// The ID of the target group.

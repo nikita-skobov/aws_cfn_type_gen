@@ -3,7 +3,7 @@
 /// An endpoint represents a single delivery point of a channel, and defines content output handling through various components, such as packaging protocols, DRM and encryption integration, and more.
 ///
 /// After it's created, an endpoint provides a fixed public URL. This URL remains the same     throughout the lifetime of the endpoint, regardless of any failures or upgrades that might occur. Integrate the URL with a downstream CDN (such as Amazon CloudFront) or playback     device.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOriginEndpoint {
     ///
     /// Parameters for CDN authorization.
@@ -182,7 +182,7 @@ pub struct CfnOriginEndpoint {
     pub att_url: CfnOriginEndpointurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOriginEndpointarn;
 impl CfnOriginEndpointarn {
     pub fn att_name(&self) -> &'static str {
@@ -190,7 +190,7 @@ impl CfnOriginEndpointarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOriginEndpointurl;
 impl CfnOriginEndpointurl {
     pub fn att_name(&self) -> &'static str {
@@ -233,7 +233,7 @@ impl cfn_resources::CfnResource for CfnOriginEndpoint {
 }
 
 /// Parameters for enabling CDN authorization on the endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Authorization {
     ///
     /// The Amazon Resource Name (ARN) for the secret in AWS Secrets Manager that your Content Delivery Network (CDN) uses for authorization to access your endpoint.
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for Authorization {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CmafEncryption {
     ///
     /// An optional 128-bit, 16-byte hex value represented by a 32-character string, used in conjunction with the key for encrypting blocks. If you don't specify a value, then AWS Elemental MediaPackage creates the constant initialization vector (IV).
@@ -340,7 +340,7 @@ impl cfn_resources::CfnResource for CmafEncryption {
 }
 
 /// Parameters for Common Media Application Format (CMAF) packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CmafPackage {
     ///
     /// Parameters for encrypting content.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for CmafPackage {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashEncryption {
     ///
     /// Number of seconds before AWS Elemental MediaPackage rotates to a new key. By default, rotation is set to 60 seconds. Set to 0 to disable key rotation.
@@ -469,7 +469,7 @@ impl cfn_resources::CfnResource for DashEncryption {
 }
 
 /// Parameters for DASH packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashPackage {
     ///
     /// Specifies the SCTE-35 message types that AWS Elemental MediaPackage treats as ad markers in the output manifest.
@@ -709,7 +709,7 @@ impl cfn_resources::CfnResource for DashPackage {
 /// Use encryptionContractConfiguration to configure one or more content        encryption keys for your endpoints that use SPEKE Version 2.0. The encryption contract        defines the content keys used to encrypt the audio and video tracks in your stream.        To configure the encryption contract, specify which audio and video encryption        presets to use. For more information about these presets, see SPEKE Version 2.0 Presets.
 ///
 /// Note the following considerations when using        encryptionContractConfiguration:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionContractConfiguration {}
 
 impl cfn_resources::CfnResource for EncryptionContractConfiguration {
@@ -727,7 +727,7 @@ impl cfn_resources::CfnResource for EncryptionContractConfiguration {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsEncryption {
     ///
     /// A 128-bit, 16-byte hex value represented by a 32-character string, used with the key for encrypting blocks.
@@ -806,7 +806,7 @@ impl cfn_resources::CfnResource for HlsEncryption {
 }
 
 /// An HTTP Live Streaming (HLS) manifest configuration on a CMAF endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsManifest {
     ///
     /// Controls how ad markers are included in the packaged endpoint.
@@ -955,7 +955,7 @@ impl cfn_resources::CfnResource for HlsManifest {
 }
 
 /// Parameters for Apple HLS packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsPackage {
     ///
     /// Controls how ad markers are included in the packaged endpoint.
@@ -1137,7 +1137,7 @@ impl cfn_resources::CfnResource for HlsPackage {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MssEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -1168,7 +1168,7 @@ impl cfn_resources::CfnResource for MssEncryption {
 }
 
 /// Parameters for Microsoft Smooth Streaming packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MssPackage {
     ///
     /// Parameters for encrypting content.
@@ -1242,7 +1242,7 @@ impl cfn_resources::CfnResource for MssPackage {
 }
 
 /// Key provider settings for DRM.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpekeKeyProvider {
     ///
     /// The Amazon Resource Name (ARN) for the certificate that you imported to AWS Certificate Manager to add content key encryption to this endpoint. For this feature to work, your DRM key provider must support content key encryption.
@@ -1332,7 +1332,7 @@ impl cfn_resources::CfnResource for SpekeKeyProvider {
 }
 
 /// Limitations for outputs from the endpoint, based on the video bitrate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamSelection {
     ///
     /// The upper limit of the bitrates that this endpoint serves. If the video track exceeds this threshold, then AWS Elemental MediaPackage excludes it from output. If you don't specify a value, it defaults to 2147483647 bits per second.
@@ -1394,7 +1394,7 @@ impl cfn_resources::CfnResource for StreamSelection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

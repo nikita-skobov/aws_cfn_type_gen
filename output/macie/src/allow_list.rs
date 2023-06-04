@@ -5,7 +5,7 @@
 /// For more information, see Defining sensitive data exceptions with         allow lists in the Amazon Macie User       Guide.
 ///
 /// An AWS::Macie::Session resource must exist for an AWS account before you can create an AWS::Macie::AllowList       resource for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAllowList {
     ///
     /// The criteria that specify the text or text pattern to ignore. The criteria can be the       location and name of an Amazon S3 object that lists specific text to ignore         (S3WordsList), or a regular expression (Regex) that       defines a text pattern to ignore.
@@ -65,7 +65,7 @@ pub struct CfnAllowList {
     pub att_status: CfnAllowListstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAllowListarn;
 impl CfnAllowListarn {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnAllowListarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAllowListid;
 impl CfnAllowListid {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnAllowListid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAllowListstatus;
 impl CfnAllowListstatus {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl cfn_resources::CfnResource for CfnAllowList {
 /// Specifies the criteria for an allow list, which is a list that defines specific text       or a text pattern to ignore when inspecting data sources for sensitive data. The       criteria can be:
 ///
 /// The criteria must specify either an S3 object or a regular expression. It can't       specify both.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Criteria {
     ///
     /// The regular expression (regex) that defines the text pattern to       ignore. The expression can contain 1-512 characters.
@@ -154,7 +154,7 @@ impl cfn_resources::CfnResource for Criteria {
 }
 
 /// Specifies the location and name of an Amazon Simple Storage Service (Amazon S3)       object that lists specific, predefined text to ignore when inspecting data sources for sensitive       data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3WordsList {
     ///
     /// The full name of the S3 bucket that contains the object. This value correlates to the         Name field of a bucket's properties in Amazon S3.
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for S3WordsList {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

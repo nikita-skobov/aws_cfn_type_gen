@@ -5,7 +5,7 @@
 /// If your function has a function URL, you can specify the FunctionUrlAuthType parameter. This adds a condition to your    permission that only applies when your function URL's AuthType matches the specified FunctionUrlAuthType. For    more information about the AuthType parameter, see     Security and auth model for Lambda function URLs.
 ///
 /// This resource adds a statement to a resource-based permission policy for the function. For more information    about function policies, see Lambda Function Policies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPermission {
     ///
     /// The action that the principal can use on the function. For example, lambda:InvokeFunction or     lambda:GetFunction.
@@ -137,7 +137,7 @@ pub struct CfnPermission {
     pub source_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PermissionFunctionUrlAuthTypeEnum {
     /// AWS_IAM
     #[serde(rename = "AWS_IAM")]

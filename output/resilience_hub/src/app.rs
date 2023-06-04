@@ -1,7 +1,7 @@
 /// Creates an AWS Resilience Hub application. An AWS Resilience Hub application is a    collection of AWS resources structured to prevent and recover AWS application disruptions. To describe a AWS Resilience Hub application,    you provide an    application name, resources from one or more AWS CloudFormation stacks, AWS Resource Groups, Terraform state files, AppRegistry applications, and an appropriate    resiliency policy. In addition, you can also add resources that are located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as optional resources. For more information    about the number of resources supported per application, see Service    quotas.
 ///
 /// After you create an AWS Resilience Hub application, you publish it so that you can run a resiliency    assessment on it. You can then use recommendations from the assessment to improve resiliency    by running another assessment, comparing results, and then iterating the process until you    achieve your goals for recovery time objective (RTO) and recovery point objective    (RPO).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApp {
     ///
     /// Assessment execution schedule with 'Daily' or 'Disabled' values.
@@ -92,7 +92,7 @@ pub struct CfnApp {
     pub att_app_arn: CfnAppapparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppapparn;
 impl CfnAppapparn {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl cfn_resources::CfnResource for CfnApp {
 }
 
 /// Defines a physical resource identifier.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PhysicalResourceId {
     ///
     /// The AWS account that owns the physical resource.
@@ -181,7 +181,7 @@ impl cfn_resources::CfnResource for PhysicalResourceId {
 }
 
 /// Defines a resource mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceMapping {
     ///
     /// The name of the CloudFormation stack this resource is mapped to.
@@ -246,7 +246,7 @@ pub struct ResourceMapping {
     pub terraform_source_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceMappingMappingTypeEnum {
     /// CfnStack
     #[serde(rename = "CfnStack")]

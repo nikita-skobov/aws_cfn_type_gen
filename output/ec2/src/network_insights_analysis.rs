@@ -1,5 +1,5 @@
 /// Specifies a network insights analysis.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysis {
     ///
     /// The member accounts that contain resources that the path can traverse.
@@ -64,7 +64,7 @@ pub struct CfnNetworkInsightsAnalysis {
     pub att_status_message: CfnNetworkInsightsAnalysisstatusmessage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn;
 impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn {
     pub fn att_name(&self) -> &'static str {
@@ -72,7 +72,7 @@ impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysisnetworkinsightsanalysisid;
 impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisid {
     pub fn att_name(&self) -> &'static str {
@@ -80,7 +80,7 @@ impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysisstartdate;
 impl CfnNetworkInsightsAnalysisstartdate {
     pub fn att_name(&self) -> &'static str {
@@ -88,7 +88,7 @@ impl CfnNetworkInsightsAnalysisstartdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysisstatus;
 impl CfnNetworkInsightsAnalysisstatus {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl CfnNetworkInsightsAnalysisstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsAnalysisstatusmessage;
 impl CfnNetworkInsightsAnalysisstatusmessage {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
 }
 
 /// Describes an additional detail for a path analysis. For more information, see Reachability Analyzer additional detail codes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdditionalDetail {
     ///
     /// The additional detail code.
@@ -189,7 +189,7 @@ impl cfn_resources::CfnResource for AdditionalDetail {
 }
 
 /// Describes an potential intermediate component of a feasible path.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AlternatePathHint {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -231,7 +231,7 @@ impl cfn_resources::CfnResource for AlternatePathHint {
 }
 
 /// Describes a network access control (ACL) rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisAclRule {
     ///
     /// The IPv4 address range, in CIDR notation.
@@ -325,7 +325,7 @@ impl cfn_resources::CfnResource for AnalysisAclRule {
 }
 
 /// Describes a path component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisComponent {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -367,7 +367,7 @@ impl cfn_resources::CfnResource for AnalysisComponent {
 }
 
 /// Describes a load balancer listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisLoadBalancerListener {
     ///
     /// [Classic Load Balancers] The back-end port for the listener.
@@ -453,7 +453,7 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
 }
 
 /// Describes a load balancer target.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisLoadBalancerTarget {
     ///
     /// The IP address.
@@ -573,7 +573,7 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
 }
 
 /// Describes a header. Reflects any changes made by a component as traffic passes through.     The fields of an inbound header are null except for the first component of a path.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisPacketHeader {
     ///
     /// The destination addresses.
@@ -651,7 +651,7 @@ impl cfn_resources::CfnResource for AnalysisPacketHeader {
 }
 
 /// Describes a route table route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisRouteTableRoute {
     ///
     /// The ID of a NAT gateway.
@@ -805,7 +805,7 @@ impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
 }
 
 /// Describes a security group rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AnalysisSecurityGroupRule {
     ///
     /// The IPv4 address range, in CIDR notation.
@@ -901,7 +901,7 @@ impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
 }
 
 /// Describes an explanation code for an unreachable path. For more information, see Reachability Analyzer explanation codes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Explanation {
     ///
     /// The network ACL.
@@ -1767,7 +1767,7 @@ impl cfn_resources::CfnResource for Explanation {
 }
 
 /// Describes a path component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathComponent {
     ///
     /// The network ACL rule.
@@ -2037,7 +2037,7 @@ impl cfn_resources::CfnResource for PathComponent {
 }
 
 /// Describes a range of ports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortRange {
     ///
     /// The first port in the range.
@@ -2085,7 +2085,7 @@ impl cfn_resources::CfnResource for PortRange {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2123,7 +2123,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes a route in a transit gateway route table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransitGatewayRouteTableRoute {
     ///
     /// The ID of the route attachment.

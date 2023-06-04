@@ -7,7 +7,7 @@
 /// When you submit a CreateHostedZone request, the initial status of the 			hosted zone is PENDING. For public hosted zones, this means that the NS and 			SOA records are not yet available on all Route 53 DNS servers. When the NS and 			SOA records are available, the status of the zone changes to INSYNC.
 ///
 /// The CreateHostedZone request requires the caller to have an 				ec2:DescribeVpcs permission.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHostedZone {
     ///
     /// A complex type that contains an optional comment.
@@ -89,7 +89,7 @@ pub struct CfnHostedZone {
     pub att_id: CfnHostedZoneid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHostedZoneid;
 impl CfnHostedZoneid {
     pub fn att_name(&self) -> &'static str {
@@ -131,7 +131,7 @@ impl cfn_resources::CfnResource for CfnHostedZone {
 }
 
 /// A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the 			HostedZoneConfig and Comment elements.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostedZoneConfig {
     ///
     /// Any comments that you want to include about the hosted zone.
@@ -174,7 +174,7 @@ impl cfn_resources::CfnResource for HostedZoneConfig {
 }
 
 /// A complex type that contains information about a tag that you want to add or edit for 			the specified health check or hosted zone.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostedZoneTag {
     ///
     /// The value of Key depends on the operation that you want to 			perform:
@@ -244,7 +244,7 @@ impl cfn_resources::CfnResource for HostedZoneTag {
 }
 
 /// A complex type that contains information about a configuration for DNS query 			logging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QueryLoggingConfig {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 			is publishing logs to.
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for QueryLoggingConfig {
 }
 
 /// Private hosted zones only: A complex type that contains information about an Amazon VPC. Route 53 Resolver 			uses the records in the private hosted zone to route traffic in that VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VPC {
     ///
     /// Private hosted zones only: The ID of an Amazon VPC.
@@ -304,7 +304,7 @@ pub struct VPC {
     pub vpcregion: VPCVPCRegionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VPCVPCRegionEnum {
     /// af-south-1
     #[serde(rename = "af-south-1")]

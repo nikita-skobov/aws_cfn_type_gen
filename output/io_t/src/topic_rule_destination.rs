@@ -1,5 +1,5 @@
 /// A topic rule destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicRuleDestination {
     ///
     /// Properties of the HTTP URL.
@@ -44,7 +44,7 @@ pub struct CfnTopicRuleDestination {
     pub att_status_reason: CfnTopicRuleDestinationstatusreason,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicRuleDestinationarn;
 impl CfnTopicRuleDestinationarn {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl CfnTopicRuleDestinationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTopicRuleDestinationstatusreason;
 impl CfnTopicRuleDestinationstatusreason {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl cfn_resources::CfnResource for CfnTopicRuleDestination {
 }
 
 /// HTTP URL destination properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpUrlDestinationSummary {
     ///
     /// The URL used to confirm the HTTP topic rule destination URL.
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for HttpUrlDestinationSummary {
 }
 
 /// The properties of a virtual private cloud (VPC) destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcDestinationProperties {
     ///
     /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).

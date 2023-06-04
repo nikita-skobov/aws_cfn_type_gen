@@ -1,7 +1,7 @@
 /// The AWS::CodePipeline::Webhook resource creates and registers your    webhook. After the webhook is created and registered, it triggers your pipeline to start every    time an external event occurs. For more information, see Migrate polling pipelines to use event-based change detection in the AWS CodePipeline     User Guide.
 ///
 /// We strongly recommend that you use AWS Secrets Manager to store your credentials. If you    use Secrets Manager, you must have already configured and stored your secret parameters in    Secrets Manager. For more information, see Using Dynamic References to Specify Template Values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebhook {
     ///
     /// Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
@@ -127,7 +127,7 @@ pub struct CfnWebhook {
     pub att_url: CfnWebhookurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WebhookAuthenticationEnum {
     /// GITHUB_HMAC
     #[serde(rename = "GITHUB_HMAC")]
@@ -148,7 +148,7 @@ impl Default for WebhookAuthenticationEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebhookurl;
 impl CfnWebhookurl {
     pub fn att_name(&self) -> &'static str {
@@ -248,7 +248,7 @@ impl cfn_resources::CfnResource for CfnWebhook {
 }
 
 /// The authentication applied to incoming webhook trigger requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebhookAuthConfiguration {
     ///
     /// The property used to configure acceptance of webhooks in an IP address range. For       IP, only the AllowedIPRange property must be set. This property must be set       to a valid CIDR range.
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for WebhookAuthConfiguration {
 }
 
 /// The event criteria that specify when a webhook notification is sent to your       URL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebhookFilterRule {
     ///
     /// A JsonPath expression that is applied to the body/payload of the webhook. The value       selected by the JsonPath expression must match the value specified in the         MatchEquals field. Otherwise, the request is ignored. For more       information, see Java JsonPath         implementation in GitHub.

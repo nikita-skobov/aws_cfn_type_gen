@@ -5,7 +5,7 @@
 /// As a best practice, you can validate your IAM policies.    To learn more, see Validating IAM policies       in the IAM User Guide.
 ///
 /// For more information about managed policies in general, see Managed         policies and inline policies in the       IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnManagedPolicy {
     ///
     /// A friendly description of the policy.

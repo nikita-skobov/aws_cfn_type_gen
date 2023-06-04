@@ -5,7 +5,7 @@
 /// To get a list of all your datasets, use the ListDatasets operation.
 ///
 /// For example Forecast datasets, see the Amazon Forecast Sample GitHub     repository.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataset {
     ///
     /// The frequency of data collection. This parameter is required for RELATED_TIME_SERIES    datasets.
@@ -115,7 +115,7 @@ pub struct CfnDataset {
     pub att_arn: CfnDatasetarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DatasetDatasetTypeEnum {
     /// ITEM_METADATA
     #[serde(rename = "ITEM_METADATA")]
@@ -136,7 +136,7 @@ impl Default for DatasetDatasetTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DatasetDomainEnum {
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
@@ -173,7 +173,7 @@ impl Default for DatasetDomainEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatasetarn;
 impl CfnDatasetarn {
     pub fn att_name(&self) -> &'static str {
@@ -246,7 +246,7 @@ impl cfn_resources::CfnResource for CfnDataset {
 }
 
 /// The AttributesItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributesItems {
     /// Property description not available.
     ///
@@ -286,7 +286,7 @@ impl cfn_resources::CfnResource for AttributesItems {
 }
 
 /// An AWS Key Management Service (KMS) key and an AWS Identity and Access Management (IAM) role that Amazon Forecast can assume to    access the key. You can specify this optional object in the    CreateDataset and CreatePredictor requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfig {
     ///
     /// The Amazon Resource Name (ARN) of the KMS key.
@@ -360,7 +360,7 @@ impl cfn_resources::CfnResource for EncryptionConfig {
 }
 
 /// Defines the fields of a dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schema {
     ///
     /// An array of attributes specifying the name and type of each field in a dataset.
@@ -401,7 +401,7 @@ impl cfn_resources::CfnResource for Schema {
 }
 
 /// The TagsItems property type specifies Property description not available. for an AWS::Forecast::Dataset.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsItems {
     /// Property description not available.
     ///

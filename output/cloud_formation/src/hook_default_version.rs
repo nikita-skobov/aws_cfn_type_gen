@@ -1,5 +1,5 @@
 /// The HookDefaultVersion resource specifies the default version of the hook. The default version of  the hook is used in CloudFormation operations for this AWS account and AWS Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookDefaultVersion {
     ///
     /// The name of the hook.
@@ -63,7 +63,7 @@ pub struct CfnHookDefaultVersion {
     pub att_arn: CfnHookDefaultVersionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookDefaultVersionarn;
 impl CfnHookDefaultVersionarn {
     pub fn att_name(&self) -> &'static str {

@@ -1,5 +1,5 @@
 /// Specifies a static route for a transit gateway route table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayRoute {
     ///
     /// Indicates whether to drop traffic that matches this route.

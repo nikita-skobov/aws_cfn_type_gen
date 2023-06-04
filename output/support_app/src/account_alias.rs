@@ -1,7 +1,7 @@
 /// You can use the AWS::SupportApp::AccountAlias resource to specify your         AWS account when you configure the AWS Support App in       Slack. Your alias name appears on the AWS Support App page in the Support Center Console and in messages from the AWS Support App. You       can use this alias to identify the account you've configured with the AWS Support App.
 ///
 /// For more information, see AWS Support App in Slack in the AWS Support User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccountAlias {
     ///
     /// An alias or short name for an AWS account.
@@ -18,7 +18,7 @@ pub struct CfnAccountAlias {
     pub att_account_alias_resource_id: CfnAccountAliasaccountaliasresourceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccountAliasaccountaliasresourceid;
 impl CfnAccountAliasaccountaliasresourceid {
     pub fn att_name(&self) -> &'static str {

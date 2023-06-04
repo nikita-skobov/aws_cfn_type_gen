@@ -1,7 +1,7 @@
 /// Creates or updates a launch of a given feature. Before you create a launch, you       must create the feature to use for the launch.
 ///
 /// You can use a launch to safely validate new features by serving them to a specified       percentage of your users while you roll out the feature. You can monitor the performance of       the new feature to help you decide when to ramp up traffic to more users. This helps you       reduce risk and identify unintended consequences before you fully launch the feature.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLaunch {
     ///
     /// An optional description for the launch.
@@ -118,7 +118,7 @@ pub struct CfnLaunch {
     pub att_arn: CfnLauncharn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLauncharn;
 impl CfnLauncharn {
     pub fn att_name(&self) -> &'static str {
@@ -145,7 +145,7 @@ impl cfn_resources::CfnResource for CfnLaunch {
 }
 
 /// Use this structure to start and stop     the launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExecutionStatusObject {
     ///
     /// If you are using AWS CloudFormation to stop this       launch, specify either COMPLETED or CANCELLED here to indicate how to classify this       experiment. If you omit this parameter, the default of COMPLETED is used.
@@ -196,7 +196,7 @@ impl cfn_resources::CfnResource for ExecutionStatusObject {
 }
 
 /// A structure containing the percentage of launch traffic to allocate to one launch group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GroupToWeight {
     ///
     /// The name of the launch group. It can include up to 127 characters.
@@ -238,7 +238,7 @@ impl cfn_resources::CfnResource for GroupToWeight {
 }
 
 /// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchGroupObject {
     ///
     /// A description of the launch group.
@@ -301,7 +301,7 @@ impl cfn_resources::CfnResource for LaunchGroupObject {
 }
 
 /// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricDefinitionObject {
     ///
     /// The entity, such as a user or session, that does an action that causes a metric       value to be recorded. An example is userDetails.userID.
@@ -382,7 +382,7 @@ impl cfn_resources::CfnResource for MetricDefinitionObject {
 /// For more information,       see         Use segments to focus your audience.
 ///
 /// This sructure is an array of up to six segment override objects. Each of these objects specifies a       segment that you have already created, and defines the traffic split for that segment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SegmentOverride {
     ///
     /// A number indicating the order to use to evaluate segment overrides, if there are more than       one. Segment overrides with lower numbers are evaluated first.
@@ -433,7 +433,7 @@ impl cfn_resources::CfnResource for SegmentOverride {
 }
 
 /// A structure that defines when each step of the launch is to start, and how much launch traffic     is to be allocated to each variation during each step.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StepConfig {
     ///
     /// An array of structures that define how much launch traffic to allocate to each launch group     during this step of the launch.
@@ -493,7 +493,7 @@ impl cfn_resources::CfnResource for StepConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

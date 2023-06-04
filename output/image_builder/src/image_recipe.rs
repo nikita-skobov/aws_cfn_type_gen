@@ -1,5 +1,5 @@
 /// An Image Builder image recipe is a document that defines the base image and the     components to be applied to the base image to produce the desired configuration for the     output image. You can use an image recipe to duplicate builds. Image Builder image recipes     can be shared, branched, and edited using the console wizard, the AWS CLI, or the API. You     can use image recipes with your version control software to maintain shareable versioned     image recipes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageRecipe {
     ///
     /// Before you create a new AMI, Image Builder launches temporary Amazon EC2 instances to build and test 			your image configuration. Instance configuration adds a layer of control over those 			instances. You can define settings and add scripts to run when an instance is launched 			from your AMI.
@@ -128,7 +128,7 @@ pub struct CfnImageRecipe {
     pub att_name: CfnImageRecipename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageRecipearn;
 impl CfnImageRecipearn {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnImageRecipearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageRecipename;
 impl CfnImageRecipename {
     pub fn att_name(&self) -> &'static str {
@@ -228,7 +228,7 @@ impl cfn_resources::CfnResource for CfnImageRecipe {
 /// In addition to your infrastructure configuration, these settings provide an extra 			layer of control over your build instances. You can also specify commands to run on 			launch for all of your build instances.
 ///
 /// Image Builder does not automatically install the Systems Manager agent on Windows instances. If your base 			image includes the Systems Manager agent, then the AMI that you create will also include the 			agent. For Linux instances, if the base image does not already include the Systems Manager agent, 			Image Builder installs it. For Linux instances where Image Builder installs the Systems Manager agent, you can 			choose whether to keep it for the AMI that you create.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdditionalInstanceConfiguration {
     ///
     /// Contains settings for the Systems Manager agent on your build instance.
@@ -303,7 +303,7 @@ impl cfn_resources::CfnResource for AdditionalInstanceConfiguration {
 }
 
 /// Configuration details of the component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentConfiguration {
     ///
     /// The Amazon Resource Name (ARN) of the component.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 }
 
 /// Contains a key/value pair that sets the named component parameter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentParameter {
     ///
     /// The name of the component parameter to set.
@@ -415,7 +415,7 @@ impl cfn_resources::CfnResource for ComponentParameter {
 }
 
 /// The image recipe EBS instance block device specification includes the Amazon     EBS-specific block device mapping specifications for the image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsInstanceBlockDeviceSpecification {
     ///
     /// Configures delete on termination of the associated device.
@@ -536,7 +536,7 @@ pub struct EbsInstanceBlockDeviceSpecification {
     pub volume_type: Option<EbsInstanceBlockDeviceSpecificationVolumeTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
     /// gp2
     #[serde(rename = "gp2")]
@@ -686,7 +686,7 @@ impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
 }
 
 /// Defines block device mappings for the instance used to configure your image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceBlockDeviceMapping {
     ///
     /// The device to which these mappings apply.
@@ -810,7 +810,7 @@ impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
 }
 
 /// Contains settings for the Systems Manager agent on your build instance.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SystemsManagerAgent {
     ///
     /// Controls whether the Systems Manager agent is removed from your final build image, prior to 			creating the new AMI. If this is set to true, then the agent is removed from the final 			image. If it's set to false, then the agent is left in, so that it is included in the 			new AMI. The default value is false.

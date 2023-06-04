@@ -1,5 +1,5 @@
 /// Use the AWS::XRay::Group resource to specify a group with a name and a filter expression.      Groups enable the collection of traces that match the filter expression, can be used to filter service graphs and traces, and to supply Amazon CloudWatch metrics.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroup {
     ///
     /// The filter expression defining the parameters to include traces.
@@ -54,7 +54,7 @@ pub struct CfnGroup {
     pub att_group_arn: CfnGroupgrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroupgrouparn;
 impl CfnGroupgrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 }
 
 /// The structure containing configurations related to insights.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InsightsConfiguration {
     ///
     /// Set the InsightsEnabled value to true to enable insights or false to disable       insights.
@@ -129,7 +129,7 @@ impl cfn_resources::CfnResource for InsightsConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

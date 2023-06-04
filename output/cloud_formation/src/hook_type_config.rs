@@ -1,5 +1,5 @@
 /// The HookTypeConfig resource specifies the configuration of a hook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookTypeConfig {
     ///
     /// Specifies the activated hook type configuration, in this AWS account and AWS Region.
@@ -64,7 +64,7 @@ pub struct CfnHookTypeConfig {
     pub att_configuration_arn: CfnHookTypeConfigconfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHookTypeConfigconfigurationarn;
 impl CfnHookTypeConfigconfigurationarn {
     pub fn att_name(&self) -> &'static str {

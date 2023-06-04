@@ -1,5 +1,5 @@
 /// The AWS::Lightsail::Alarm resource specifies an alarm that can be used to     monitor a single metric for one of your Lightsail resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlarm {
     ///
     /// The name of the alarm.
@@ -150,7 +150,7 @@ pub struct CfnAlarm {
     pub att_state: CfnAlarmstate,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmComparisonOperatorEnum {
     /// GreaterThanOrEqualToThreshold
     #[serde(rename = "GreaterThanOrEqualToThreshold")]
@@ -175,7 +175,7 @@ impl Default for AlarmComparisonOperatorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmMetricNameEnum {
     /// BurstCapacityPercentage
     #[serde(rename = "BurstCapacityPercentage")]
@@ -284,7 +284,7 @@ impl Default for AlarmMetricNameEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AlarmTreatMissingDataEnum {
     /// breaching
     #[serde(rename = "breaching")]
@@ -309,7 +309,7 @@ impl Default for AlarmTreatMissingDataEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlarmalarmarn;
 impl CfnAlarmalarmarn {
     pub fn att_name(&self) -> &'static str {
@@ -317,7 +317,7 @@ impl CfnAlarmalarmarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlarmstate;
 impl CfnAlarmstate {
     pub fn att_name(&self) -> &'static str {

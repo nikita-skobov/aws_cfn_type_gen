@@ -1,5 +1,5 @@
 /// Specifies a managed prefix list. You can add one or more entries to the prefix list.     Each entry consists of a CIDR block and an optional description.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrefixList {
     ///
     /// The IP address type.
@@ -74,7 +74,7 @@ pub struct CfnPrefixList {
     pub att_prefix_list_id: CfnPrefixListprefixlistid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PrefixListAddressFamilyEnum {
     /// IPv4
     #[serde(rename = "IPv4")]
@@ -91,7 +91,7 @@ impl Default for PrefixListAddressFamilyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrefixListarn;
 impl CfnPrefixListarn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnPrefixListarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrefixListownerid;
 impl CfnPrefixListownerid {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnPrefixListownerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrefixListprefixlistid;
 impl CfnPrefixListprefixlistid {
     pub fn att_name(&self) -> &'static str {
@@ -139,7 +139,7 @@ impl cfn_resources::CfnResource for CfnPrefixList {
 }
 
 /// An entry for a prefix list.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Entry {
     ///
     /// The CIDR block.
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for Entry {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

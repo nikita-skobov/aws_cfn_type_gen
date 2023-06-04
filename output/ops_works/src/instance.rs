@@ -1,7 +1,7 @@
 /// Creates an instance in a specified stack. For more information, see Adding an     Instance to a Layer.
 ///
 /// Required Permissions: To use this action, an IAM user must have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstance {
     ///
     /// The default AWS OpsWorks Stacks agent version. You have the following options:
@@ -292,7 +292,7 @@ pub struct CfnInstance {
     pub att_public_ip: CfnInstancepublicip,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceArchitectureEnum {
     /// i386
     #[serde(rename = "i386")]
@@ -309,7 +309,7 @@ impl Default for InstanceArchitectureEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceAutoScalingTypeEnum {
     /// load
     #[serde(rename = "load")]
@@ -326,7 +326,7 @@ impl Default for InstanceAutoScalingTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum InstanceRootDeviceTypeEnum {
     /// ebs
     #[serde(rename = "ebs")]
@@ -343,7 +343,7 @@ impl Default for InstanceRootDeviceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceavailabilityzone;
 impl CfnInstanceavailabilityzone {
     pub fn att_name(&self) -> &'static str {
@@ -351,7 +351,7 @@ impl CfnInstanceavailabilityzone {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceprivatednsname;
 impl CfnInstanceprivatednsname {
     pub fn att_name(&self) -> &'static str {
@@ -359,7 +359,7 @@ impl CfnInstanceprivatednsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstanceprivateip;
 impl CfnInstanceprivateip {
     pub fn att_name(&self) -> &'static str {
@@ -367,7 +367,7 @@ impl CfnInstanceprivateip {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancepublicdnsname;
 impl CfnInstancepublicdnsname {
     pub fn att_name(&self) -> &'static str {
@@ -375,7 +375,7 @@ impl CfnInstancepublicdnsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInstancepublicip;
 impl CfnInstancepublicip {
     pub fn att_name(&self) -> &'static str {
@@ -398,7 +398,7 @@ impl cfn_resources::CfnResource for CfnInstance {
 }
 
 /// Describes a block device mapping. This data type maps directly to the Amazon EC2 BlockDeviceMapping data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockDeviceMapping {
     ///
     /// The device name that is exposed to the instance, such as /dev/sdh. For the root    device, you can use the explicit device name or you can set this parameter to      ROOT_DEVICE and AWS OpsWorks Stacks will provide the correct device name.
@@ -466,7 +466,7 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 }
 
 /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbsBlockDevice {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-instance-ebsblockdevice.html#cfn-opsworks-instance-ebsblockdevice-deleteontermination
     #[serde(rename = "DeleteOnTermination")]
@@ -509,7 +509,7 @@ impl cfn_resources::CfnResource for EbsBlockDevice {
 }
 
 /// Describes an instance's time-based auto scaling configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeBasedAutoScaling {
     ///
     /// The schedule for Friday.

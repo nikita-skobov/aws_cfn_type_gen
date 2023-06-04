@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Deployment resource creates a deployment for          an API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeployment {
     ///
     /// The API identifier.
@@ -40,7 +40,7 @@ pub struct CfnDeployment {
     pub att_deployment_id: CfnDeploymentdeploymentid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeploymentdeploymentid;
 impl CfnDeploymentdeploymentid {
     pub fn att_name(&self) -> &'static str {

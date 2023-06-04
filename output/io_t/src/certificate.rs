@@ -1,5 +1,5 @@
 /// Use the AWS::IoT::Certificate resource to declare an AWS IoT X.509     certificate. For information about working with X.509 certificates, see X.509 Client       Certificates in the AWS IoT Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificate {
     ///
     /// The CA certificate used to sign the device certificate being registered, not available when CertificateMode is SNI_ONLY.
@@ -75,7 +75,7 @@ pub struct CfnCertificate {
     pub att_id: CfnCertificateid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatearn;
 impl CfnCertificatearn {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnCertificatearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificateid;
 impl CfnCertificateid {
     pub fn att_name(&self) -> &'static str {

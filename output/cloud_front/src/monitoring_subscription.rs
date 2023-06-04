@@ -1,5 +1,5 @@
 /// A monitoring subscription. This structure contains information about whether 			additional CloudWatch metrics are enabled for a given CloudFront distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitoringSubscription {
     ///
     /// The ID of the distribution that you are enabling metrics for.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnMonitoringSubscription {
 }
 
 /// A monitoring subscription. This structure contains information about whether 			additional CloudWatch metrics are enabled for a given CloudFront distribution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringSubscription {
     ///
     /// A subscription configuration for additional CloudWatch metrics.
@@ -75,7 +75,7 @@ impl cfn_resources::CfnResource for MonitoringSubscription {
 }
 
 /// A subscription configuration for additional CloudWatch metrics.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RealtimeMetricsSubscriptionConfig {
     ///
     /// A flag that indicates whether additional CloudWatch metrics are enabled for a given 			CloudFront distribution.
@@ -92,7 +92,7 @@ pub struct RealtimeMetricsSubscriptionConfig {
         RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RealtimeMetricsSubscriptionConfigRealtimeMetricsSubscriptionStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]

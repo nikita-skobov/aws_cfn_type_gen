@@ -1,5 +1,5 @@
 /// The AWS::Glue::MLTransform is an AWS Glue resource type that manages machine learning transforms.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMLTransform {
     ///
     /// A user-defined, long-form description text for the machine learning transform.
@@ -193,7 +193,7 @@ pub struct CfnMLTransform {
     pub worker_type: Option<MLTransformWorkerTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MLTransformWorkerTypeEnum {
     /// G.025X
     #[serde(rename = "G.025X")]
@@ -294,7 +294,7 @@ impl cfn_resources::CfnResource for CfnMLTransform {
 }
 
 /// The parameters to configure the find matches transform.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FindMatchesParameters {
     ///
     /// The value that is selected when tuning your transform for a balance between accuracy and    cost. A value of 0.5 means that the system balances accuracy and cost concerns. A value of 1.0    means a bias purely for accuracy, which typically results in a higher cost, sometimes    substantially higher. A value of 0.0 means a bias purely for cost, which results in a less    accurate FindMatches transform, sometimes with unacceptable accuracy.
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for FindMatchesParameters {
 }
 
 /// The database and table in the AWS Glue Data Catalog that is used for input or output data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlueTables {
     /// A unique identifier for the AWS Glue Data Catalog.
     ///
@@ -454,7 +454,7 @@ impl cfn_resources::CfnResource for GlueTables {
 }
 
 /// A list of AWS Glue table definitions used by the transform.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputRecordTables {
     /// The database and table in the AWS Glue Data Catalog that is used for input or output data.
     ///
@@ -483,7 +483,7 @@ impl cfn_resources::CfnResource for InputRecordTables {
 }
 
 /// The encryption-at-rest settings of the transform that apply to accessing user data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MLUserDataEncryption {
     ///
     /// The ID for the customer-provided KMS key.
@@ -528,7 +528,7 @@ impl cfn_resources::CfnResource for MLUserDataEncryption {
 /// The encryption-at-rest settings of the transform that apply to accessing user data. Machine learning transforms can access user data encrypted in Amazon S3 using KMS.
 ///
 /// Additionally, imported labels and trained transforms can now be encrypted using a customer provided KMS key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformEncryption {
     ///
     /// The encryption-at-rest settings of the transform that apply to accessing user data.
@@ -574,7 +574,7 @@ impl cfn_resources::CfnResource for TransformEncryption {
 }
 
 /// The algorithm-specific parameters that are associated with the machine learning    transform.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransformParameters {
     ///
     /// The parameters for the find matches algorithm.
@@ -604,7 +604,7 @@ pub struct TransformParameters {
     pub transform_type: TransformParametersTransformTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransformParametersTransformTypeEnum {
     /// FIND_MATCHES
     #[serde(rename = "FIND_MATCHES")]

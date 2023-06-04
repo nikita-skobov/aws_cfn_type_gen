@@ -1,7 +1,7 @@
 /// Creates a packaging configuration in a packaging group.
 ///
 /// The packaging configuration represents a single delivery point for an asset. It determines the format and setting for the egressing content. Specify only one package format per configuration, such as HlsPackage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPackagingConfiguration {
     ///
     /// Parameters for CMAF packaging.
@@ -89,7 +89,7 @@ pub struct CfnPackagingConfiguration {
     pub att_arn: CfnPackagingConfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPackagingConfigurationarn;
 impl CfnPackagingConfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl cfn_resources::CfnResource for CfnPackagingConfiguration {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CmafEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -159,7 +159,7 @@ impl cfn_resources::CfnResource for CmafEncryption {
 }
 
 /// Parameters for a packaging configuration that uses Common Media Application Format (CMAF) packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CmafPackage {
     ///
     /// Parameters for encrypting content.
@@ -228,7 +228,7 @@ impl cfn_resources::CfnResource for CmafPackage {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for DashEncryption {
 }
 
 /// Parameters for a DASH manifest.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashManifest {
     ///
     /// Determines the position of some tags in the Media Presentation Description (MPD). When set to FULL, elements like SegmentTemplate and       ContentProtection are included in each Representation. When set to COMPACT, duplicate elements are combined and presented at the     AdaptationSet level.
@@ -357,7 +357,7 @@ impl cfn_resources::CfnResource for DashManifest {
 }
 
 /// Parameters for a packaging configuration that uses Dynamic Adaptive Streaming over HTTP (DASH) packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashPackage {
     ///
     /// A list of DASH manifest configurations that are available from this endpoint.
@@ -468,7 +468,7 @@ impl cfn_resources::CfnResource for DashPackage {
 /// Use encryptionContractConfiguration to configure one or more content        encryption keys for your endpoints that use SPEKE Version 2.0. The encryption contract        defines the content keys used to encrypt the audio and video tracks in your stream.        To configure the encryption contract, specify which audio and video encryption        presets to use. For more information about these presets, see SPEKE Version 2.0 Presets.
 ///
 /// Note the following considerations when using        encryptionContractConfiguration:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionContractConfiguration {}
 
 impl cfn_resources::CfnResource for EncryptionContractConfiguration {
@@ -486,7 +486,7 @@ impl cfn_resources::CfnResource for EncryptionContractConfiguration {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsEncryption {
     ///
     /// A 128-bit, 16-byte hex value represented by a 32-character string, used with the key for encrypting blocks. If you don't specify a constant initialization vector (IV),       AWS Elemental MediaPackage periodically rotates the IV.
@@ -541,7 +541,7 @@ impl cfn_resources::CfnResource for HlsEncryption {
 }
 
 /// Parameters for an HLS manifest.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsManifest {
     ///
     /// This setting controls ad markers in the packaged content.
@@ -643,7 +643,7 @@ impl cfn_resources::CfnResource for HlsManifest {
 }
 
 /// Parameters for a packaging configuration that uses HTTP Live Streaming (HLS) packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsPackage {
     ///
     /// Parameters for encrypting content.
@@ -724,7 +724,7 @@ impl cfn_resources::CfnResource for HlsPackage {
 }
 
 /// Holds encryption information so that access to the content can be controlled by a DRM solution.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MssEncryption {
     ///
     /// Parameters for the SPEKE key provider.
@@ -755,7 +755,7 @@ impl cfn_resources::CfnResource for MssEncryption {
 }
 
 /// Parameters for a Microsoft Smooth manifest.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MssManifest {
     ///
     /// A short string that's appended to the end of the endpoint URL to create a unique path to this packaging configuration.
@@ -801,7 +801,7 @@ impl cfn_resources::CfnResource for MssManifest {
 }
 
 /// Parameters for a packaging configuration that uses Microsoft Smooth Streaming (MSS) packaging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MssPackage {
     ///
     /// Parameters for encrypting content.
@@ -858,7 +858,7 @@ impl cfn_resources::CfnResource for MssPackage {
 }
 
 /// A configuration for accessing an external Secure Packager and Encoder Key Exchange     (SPEKE) service that provides encryption keys.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpekeKeyProvider {
     ///
     /// Use encryptionContractConfiguration to configure one or more content encryption keys for your         endpoints that use SPEKE Version 2.0. The encryption contract defines which content keys are used to encrypt the         audio and video tracks in your stream. To configure the encryption contract, specify which audio and video encryption presets to use.
@@ -925,7 +925,7 @@ impl cfn_resources::CfnResource for SpekeKeyProvider {
 }
 
 /// Limitations for outputs from the endpoint, based on the video bitrate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamSelection {
     ///
     /// The upper limit of the bitrates that this endpoint serves. If the video track exceeds this threshold, then AWS Elemental MediaPackage excludes it from output. If you don't specify a value, it defaults to 2147483647 bits per second.
@@ -987,7 +987,7 @@ impl cfn_resources::CfnResource for StreamSelection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

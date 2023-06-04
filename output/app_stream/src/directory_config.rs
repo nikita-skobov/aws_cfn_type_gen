@@ -1,5 +1,5 @@
 /// The AWS::AppStream::DirectoryConfig resource specifies the configuration information required to join Amazon AppStream 2.0 fleets    and image builders to Microsoft Active Directory domains.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDirectoryConfig {
     ///
     /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
@@ -68,7 +68,7 @@ impl cfn_resources::CfnResource for CfnDirectoryConfig {
 }
 
 /// The certificate-based authentication properties used to authenticate SAML 2.0 Identity       Provider (IdP) user identities to Active Directory domain-joined streaming instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CertificateBasedAuthProperties {
     ///
     /// The ARN of the AWS Certificate Manager Private CA resource.
@@ -99,7 +99,7 @@ pub struct CertificateBasedAuthProperties {
     pub status: Option<CertificateBasedAuthPropertiesStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateBasedAuthPropertiesStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -135,7 +135,7 @@ impl cfn_resources::CfnResource for CertificateBasedAuthProperties {
 }
 
 /// The credentials for the service account used by the streaming instance to connect to the directory.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceAccountCredentials {
     ///
     /// The user name of the account. This account must have the following privileges: create computer objects,       join computers to the domain, and change/reset the password on descendant computer objects for the       organizational units specified.

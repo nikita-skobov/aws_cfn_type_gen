@@ -1,7 +1,7 @@
 /// Creates a new capacity provider. Capacity providers are associated with an Amazon ECS 			cluster and are used in capacity provider strategies to facilitate cluster auto 			scaling.
 ///
 /// Only capacity providers that use an Auto Scaling group can be created. Amazon ECS tasks on 			AWS Fargate use the FARGATE and FARGATE_SPOT capacity providers. 			These providers are available to all accounts in the AWS Regions that AWS Fargate 			supports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCapacityProvider {
     ///
     /// The Auto Scaling group settings for the capacity provider.
@@ -71,7 +71,7 @@ impl cfn_resources::CfnResource for CfnCapacityProvider {
 }
 
 /// The details of the Auto Scaling group for the capacity provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutoScalingGroupProvider {
     ///
     /// The Amazon Resource Name (ARN) that identifies the Auto Scaling group.
@@ -118,7 +118,7 @@ pub struct AutoScalingGroupProvider {
         Option<AutoScalingGroupProviderManagedTerminationProtectionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AutoScalingGroupProviderManagedTerminationProtectionEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -158,7 +158,7 @@ impl cfn_resources::CfnResource for AutoScalingGroupProvider {
 /// When managed scaling is turned on, Amazon ECS manages the scale-in and scale-out actions of 			the Auto Scaling group. Amazon ECS manages a target tracking scaling policy using an Amazon ECS 			managed CloudWatch metric with the specified targetCapacity value as the target 			value for the metric. For more information, see Using managed scaling in the Amazon Elastic Container Service Developer Guide.
 ///
 /// If managed scaling is off, the user must manage the scaling of the Auto Scaling 			group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManagedScaling {
     ///
     /// The period of time, in seconds, after a newly launched Amazon EC2 instance can contribute 			to CloudWatch metrics for Auto Scaling group. If this parameter is omitted, the default value 			of 300 seconds is used.
@@ -243,7 +243,7 @@ pub struct ManagedScaling {
     pub target_capacity: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ManagedScalingStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -344,7 +344,7 @@ impl cfn_resources::CfnResource for ManagedScaling {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

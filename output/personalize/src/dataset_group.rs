@@ -1,7 +1,7 @@
 /// A dataset group is a collection of related datasets (Interactions,    User, and Item). You create a dataset group by calling CreateDatasetGroup. You then create a dataset and add it to a    dataset group by calling CreateDataset. The dataset group is used to create and train a    solution by calling CreateSolution. A dataset group can contain only one of each    type of dataset.
 ///
 /// You can specify an AWS Key Management Service (KMS) key to encrypt the datasets in    the group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatasetGroup {
     ///
     /// The domain of a Domain dataset group.
@@ -70,7 +70,7 @@ pub struct CfnDatasetGroup {
     pub att_dataset_group_arn: CfnDatasetGroupdatasetgrouparn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DatasetGroupDomainEnum {
     /// ECOMMERCE
     #[serde(rename = "ECOMMERCE")]
@@ -87,7 +87,7 @@ impl Default for DatasetGroupDomainEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatasetGroupdatasetgrouparn;
 impl CfnDatasetGroupdatasetgrouparn {
     pub fn att_name(&self) -> &'static str {

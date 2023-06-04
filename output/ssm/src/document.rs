@@ -1,5 +1,5 @@
 /// The AWS::SSM::Document resource creates a Systems Manager (SSM) document in AWS Systems Manager. This document defines the actions that Systems Manager performs on your AWS     resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDocument {
     ///
     /// A list of key-value pairs that describe attachments to a version of a document.
@@ -143,7 +143,7 @@ pub struct CfnDocument {
     pub version_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentDocumentFormatEnum {
     /// JSON
     #[serde(rename = "JSON")]
@@ -164,7 +164,7 @@ impl Default for DocumentDocumentFormatEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentDocumentTypeEnum {
     /// ApplicationConfigurationSchema
     #[serde(rename = "ApplicationConfigurationSchema")]
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for CfnDocument {
 }
 
 /// Identifying information about a document attachment, including the file name and a key-value  pair that identifies the location of an attachment to a document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttachmentsSource {
     ///
     /// The key of a key-value pair that identifies the location of an attachment to a  document.
@@ -296,7 +296,7 @@ pub struct AttachmentsSource {
     pub values: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AttachmentsSourceKeyEnum {
     /// AttachmentReference
     #[serde(rename = "AttachmentReference")]
@@ -341,7 +341,7 @@ impl cfn_resources::CfnResource for AttachmentsSource {
 }
 
 /// An SSM document required by the current document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentRequires {
     ///
     /// The name of the required SSM document. The name can be an Amazon Resource Name (ARN).
@@ -393,7 +393,7 @@ impl cfn_resources::CfnResource for DocumentRequires {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

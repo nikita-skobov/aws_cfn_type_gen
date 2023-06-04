@@ -1,5 +1,5 @@
 /// Specifies a Client VPN endpoint. A Client VPN endpoint is the resource you create and     configure to enable and manage client VPN sessions. It is the destination endpoint at which     all client VPN sessions are terminated.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClientVpnEndpoint {
     ///
     /// Information about the authentication method to be used to authenticate clients.
@@ -214,7 +214,7 @@ pub struct CfnClientVpnEndpoint {
     pub vpn_port: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClientVpnEndpointSelfServicePortalEnum {
     /// disabled
     #[serde(rename = "disabled")]
@@ -231,7 +231,7 @@ impl Default for ClientVpnEndpointSelfServicePortalEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClientVpnEndpointTransportProtocolEnum {
     /// tcp
     #[serde(rename = "tcp")]
@@ -273,7 +273,7 @@ impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
 }
 
 /// Information about the client certificate to be used for authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CertificateAuthenticationRequest {
     ///
     /// The ARN of the client certificate. The certificate must be signed by a certificate 			authority (CA) and it must be provisioned in AWS Certificate Manager (ACM).
@@ -302,7 +302,7 @@ impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
 }
 
 /// Describes the authentication method to be used by a Client VPN endpoint. For more information, see Authentication 			in the         AWS Client VPN Administrator Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientAuthenticationRequest {
     ///
     /// Information about the Active Directory to be used, if applicable. You must provide this information if Type is directory-service-authentication.
@@ -354,7 +354,7 @@ pub struct ClientAuthenticationRequest {
     pub cfn_type: ClientAuthenticationRequestTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClientAuthenticationRequestTypeEnum {
     /// certificate-authentication
     #[serde(rename = "certificate-authentication")]
@@ -402,7 +402,7 @@ impl cfn_resources::CfnResource for ClientAuthenticationRequest {
 }
 
 /// Indicates whether client connect options are enabled. The default is false     (not enabled).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientConnectOptions {
     ///
     /// Indicates whether client connect options are enabled. The default is false     (not enabled).
@@ -443,7 +443,7 @@ impl cfn_resources::CfnResource for ClientConnectOptions {
 }
 
 /// Options for enabling a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientLoginBannerOptions {
     ///
     /// Customizable text that will be displayed in a banner on AWS provided 			clients when a VPN session is established. UTF-8 encoded characters only. Maximum of 			1400 characters.
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for ClientLoginBannerOptions {
 }
 
 /// Describes the client connection logging options for the Client VPN endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionLogOptions {
     ///
     /// The name of the CloudWatch Logs log group. Required if connection logging is enabled.
@@ -541,7 +541,7 @@ impl cfn_resources::CfnResource for ConnectionLogOptions {
 }
 
 /// Describes the Active Directory to be used for client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DirectoryServiceAuthenticationRequest {
     ///
     /// The ID of the Active Directory to be used for authentication.
@@ -570,7 +570,7 @@ impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
 }
 
 /// The IAM SAML identity provider used for federated authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FederatedAuthenticationRequest {
     ///
     /// The Amazon Resource Name (ARN) of the IAM SAML identity provider.
@@ -617,7 +617,7 @@ impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -655,7 +655,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagSpecification {
     ///
     /// The type of resource to tag.
@@ -682,7 +682,7 @@ pub struct TagSpecification {
     pub tags: Vec<Tag>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TagSpecificationResourceTypeEnum {
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]

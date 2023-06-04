@@ -1,5 +1,5 @@
 /// The AWS::CertificateManager::Certificate resource requests an AWS Certificate Manager (ACM) certificate that you can use to enable secure     connections. For example, you can deploy an ACM certificate to an Elastic Load Balancer to     enable HTTPS support. For more information, see RequestCertificate in     the AWS Certificate Manager API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificate {
     ///
     /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
@@ -118,7 +118,7 @@ pub struct CfnCertificate {
     pub validation_method: Option<CertificateValidationMethodEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateCertificateTransparencyLoggingPreferenceEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -135,7 +135,7 @@ impl Default for CertificateCertificateTransparencyLoggingPreferenceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateValidationMethodEnum {
     /// DNS
     #[serde(rename = "DNS")]
@@ -226,7 +226,7 @@ impl cfn_resources::CfnResource for CfnCertificate {
 }
 
 /// DomainValidationOption is a property of the AWS::CertificateManager::Certificate resource that specifies the AWS Certificate Manager (ACM) certificate domain to validate. Depending on the     chosen validation method, ACM checks the domain's DNS record for a validation CNAME, or it     attempts to send a validation email message to the domain owner.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainValidationOption {
     ///
     /// A fully qualified domain name (FQDN) in the certificate request.
@@ -348,7 +348,7 @@ impl cfn_resources::CfnResource for DomainValidationOption {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

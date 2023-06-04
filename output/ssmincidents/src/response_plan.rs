@@ -1,5 +1,5 @@
 /// The AWS::SSMIncidents::ResponsePlan resource specifies the details of the       response plan that are used when creating an incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResponsePlan {
     ///
     /// The actions that the response plan starts at the beginning of an incident.
@@ -115,7 +115,7 @@ pub struct CfnResponsePlan {
     pub att_arn: CfnResponsePlanarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResponsePlanarn;
 impl CfnResponsePlanarn {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl cfn_resources::CfnResource for CfnResponsePlan {
 }
 
 /// The Action property type specifies the configuration to launch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// Details about the Systems Manager automation document that will be used as a       runbook during an incident.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for Action {
 }
 
 /// The AWS Chatbot chat channel used for collaboration during an       incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChatChannel {
     ///
     /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates       to an incident. You can also make updates to the incident through the chat channel by       using the SNS topics
@@ -289,7 +289,7 @@ impl cfn_resources::CfnResource for ChatChannel {
 /// Involved resources
 ///
 /// When Incident Manager creates an incident, the system captures the ARNs of       the resources involved in the incident. These resource ARNs are then assigned to this       parameter in the runbook.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamicSsmParameter {
     ///
     /// The key parameter to use when running the Systems Manager Automation       runbook.
@@ -331,7 +331,7 @@ impl cfn_resources::CfnResource for DynamicSsmParameter {
 }
 
 /// The dynamic parameter value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamicSsmParameterValue {
     ///
     /// Variable dynamic parameters. A parameter value is determined when an incident is       created.
@@ -348,7 +348,7 @@ pub struct DynamicSsmParameterValue {
     pub variable: Option<DynamicSsmParameterValueVariableEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DynamicSsmParameterValueVariableEnum {
     /// INCIDENT_RECORD_ARN
     #[serde(rename = "INCIDENT_RECORD_ARN")]
@@ -380,7 +380,7 @@ impl cfn_resources::CfnResource for DynamicSsmParameterValue {
 }
 
 /// The IncidentTemplate property type specifies details used to create an       incident when using this response plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IncidentTemplate {
     ///
     /// Used to create only one incident record for an incident.
@@ -581,7 +581,7 @@ impl cfn_resources::CfnResource for IncidentTemplate {
 }
 
 /// Information about third-party services integrated into a response plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Integration {
     ///
     /// Information about the PagerDuty service where the response plan creates an       incident.
@@ -612,7 +612,7 @@ impl cfn_resources::CfnResource for Integration {
 }
 
 /// The SNS topic that's used by AWS Chatbot to notify the incidents chat       channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationTargetItem {
     ///
     /// The Amazon Resource Name (ARN) of the SNS topic.
@@ -670,7 +670,7 @@ impl cfn_resources::CfnResource for NotificationTargetItem {
 }
 
 /// Details about the PagerDuty configuration for a response plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PagerDutyConfiguration {
     ///
     /// The name of the PagerDuty configuration.
@@ -723,7 +723,7 @@ impl cfn_resources::CfnResource for PagerDutyConfiguration {
 }
 
 /// Details about the PagerDuty service where the response plan creates an       incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PagerDutyIncidentConfiguration {
     ///
     /// The ID of the PagerDuty service that the response plan associates with an incident       when it launches.
@@ -752,7 +752,7 @@ impl cfn_resources::CfnResource for PagerDutyIncidentConfiguration {
 }
 
 /// The SsmAutomation property type specifies details about the Systems       Manager automation document that will be used as a runbook during an incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SsmAutomation {
     ///
     /// The automation document's name.
@@ -839,7 +839,7 @@ pub struct SsmAutomation {
     pub target_account: Option<SsmAutomationTargetAccountEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SsmAutomationTargetAccountEnum {
     /// IMPACTED_ACCOUNT
     #[serde(rename = "IMPACTED_ACCOUNT")]
@@ -915,7 +915,7 @@ impl cfn_resources::CfnResource for SsmAutomation {
 }
 
 /// The key-value pair parameters to use when running the automation document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SsmParameter {
     ///
     /// The key parameter to use when running the automation document.
@@ -961,7 +961,7 @@ impl cfn_resources::CfnResource for SsmParameter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

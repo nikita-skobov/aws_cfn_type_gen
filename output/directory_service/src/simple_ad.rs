@@ -1,5 +1,5 @@
 /// The AWS::DirectoryService::SimpleAD resource specifies an AWS Directory Service Simple Active Directory (Simple AD) in AWS so that your directory users and groups can    access the AWS Management Console and AWS applications using their existing credentials.    Simple AD is a Microsoft Active Directory–compatible directory. For more information, see     Simple Active     Directory in the AWS Directory Service Admin Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimpleAD {
     ///
     /// If set to true, specifies an alias for a directory and assigns the alias to    the directory. The alias is used to construct the access URL for the directory, such as     http://<alias>.awsapps.com. By default, this property is set to     false.
@@ -115,7 +115,7 @@ pub struct CfnSimpleAD {
     pub att_alias: CfnSimpleADalias,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SimpleADSizeEnum {
     /// Large
     #[serde(rename = "Large")]
@@ -132,7 +132,7 @@ impl Default for SimpleADSizeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSimpleADalias;
 impl CfnSimpleADalias {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnSimpleAD {
 }
 
 /// Contains VPC information for the CreateDirectory or     CreateMicrosoftAD    operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcSettings {
     ///
     /// The identifiers of the subnets for the directory servers. The two subnets must be in    different Availability Zones. AWS Directory Service specifies a directory server and a DNS    server in each of these subnets.

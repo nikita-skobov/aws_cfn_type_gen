@@ -1,5 +1,5 @@
 /// The AWS::SQS::QueuePolicy type applies a policy to Amazon SQS queues.    For an example snippet, see Declaring an      Amazon SQS policy in the AWS CloudFormation User     Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnQueuePolicy {
     ///
     /// A policy document that contains the permissions for the specified Amazon SQS    queues. For more information about Amazon SQS policies, see Using     custom policies with the Amazon SQS access policy language in the      Amazon SQS Developer Guide.

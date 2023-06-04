@@ -1,5 +1,5 @@
 /// Specifies a StackSet constraint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStackSetConstraint {
     ///
     /// The language code.

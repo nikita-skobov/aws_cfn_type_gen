@@ -1,5 +1,5 @@
 /// Creates a new Timestream database. If the AWS KMS key is not    specified, the database will be encrypted with a Timestream managed AWS KMS key located in your account. Refer to AWS managed      AWS KMS keys for more info. Service quotas apply. See     code sample for    details.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatabase {
     ///
     /// The name of the Timestream database.
@@ -47,7 +47,7 @@ pub struct CfnDatabase {
     pub att_arn: CfnDatabasearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDatabasearn;
 impl CfnDatabasearn {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl cfn_resources::CfnResource for CfnDatabase {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

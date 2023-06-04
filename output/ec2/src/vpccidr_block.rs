@@ -1,7 +1,7 @@
 /// Associates a CIDR block with your VPC. You can only associate a single IPv6 CIDR block     with your VPC. The IPv6 CIDR block size is fixed at /56.
 ///
 /// For more information about associating CIDR blocks with your VPC and applicable     restrictions, see VPC and Subnet Sizing in     the Amazon VPC User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCCidrBlock {
     ///
     /// Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IPv6 addresses, or the size of the CIDR block.

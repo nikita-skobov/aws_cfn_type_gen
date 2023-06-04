@@ -1,5 +1,5 @@
 /// The AWS::OSIS::Pipeline resource creates an Amazon OpenSearch Ingestion pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipeline {
     ///
     /// Key-value pairs that represent log publishing settings.
@@ -85,7 +85,7 @@ pub struct CfnPipeline {
     pub att_pipeline_arn: CfnPipelinepipelinearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipelinepipelinearn;
 impl CfnPipelinepipelinearn {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 /// The CloudWatchLogDestination property type specifies Property description not available. for an AWS::OSIS::Pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogDestination {
     /// Property description not available.
     ///
@@ -145,7 +145,7 @@ impl cfn_resources::CfnResource for CloudWatchLogDestination {
 }
 
 /// Container for the values required to configure logging for the pipeline. If you don't  specify these values, OpenSearch Ingestion will not publish logs from your application to  CloudWatch Logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogPublishingOptions {
     ///
     /// The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This  parameter is required if IsLoggingEnabled is set to true.
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for LogPublishingOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -235,7 +235,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// An OpenSearch Ingestion-managed VPC endpoint that will access one or more  pipelines.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcEndpoint {
     ///
     /// The unique identifier of the endpoint.
@@ -293,7 +293,7 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 }
 
 /// Options that specify the subnets and security groups for an OpenSearch Ingestion  VPC endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcOptions {
     ///
     /// A list of security groups associated with the VPC endpoint.

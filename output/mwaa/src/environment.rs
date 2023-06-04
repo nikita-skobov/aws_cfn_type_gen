@@ -1,5 +1,5 @@
 /// The AWS::MWAA::Environment resource creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// A list of key-value pairs containing the Airflow configuration options for your environment. For example, core.default_timezone: utc. To learn more, see Apache Airflow configuration options.
@@ -305,7 +305,7 @@ pub struct CfnEnvironment {
     pub att_webserver_url: CfnEnvironmentwebserverurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EnvironmentAirflowVersionEnum {
     /// 2.0.2
     #[serde(rename = "2.0.2")]
@@ -334,7 +334,7 @@ impl Default for EnvironmentAirflowVersionEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentarn;
 impl CfnEnvironmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -342,7 +342,7 @@ impl CfnEnvironmentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn;
 impl CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -350,7 +350,7 @@ impl CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn;
 impl CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -358,7 +358,7 @@ impl CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn;
 impl CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -366,7 +366,7 @@ impl CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn;
 impl CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -374,7 +374,7 @@ impl CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn;
 impl CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -382,7 +382,7 @@ impl CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentwebserverurl;
 impl CfnEnvironmentwebserverurl {
     pub fn att_name(&self) -> &'static str {
@@ -413,7 +413,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 }
 
 /// The type of Apache Airflow logs to send to CloudWatch Logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfiguration {
     ///
     /// Defines the processing logs sent to CloudWatch Logs and the logging level to send.
@@ -511,7 +511,7 @@ impl cfn_resources::CfnResource for LoggingConfiguration {
 }
 
 /// Defines the type of logs to send for the Apache Airflow log type (e.g. DagProcessingLogs).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ModuleLoggingConfiguration {
     ///
     /// The ARN of the CloudWatch Logs log group for each type of Apache Airflow log type that you have enabled.
@@ -567,7 +567,7 @@ impl cfn_resources::CfnResource for ModuleLoggingConfiguration {
 }
 
 /// The VPC networking components used to secure and enable network traffic between the AWS resources for your environment. To learn more, see About networking on Amazon MWAA.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// A list of one or more security group IDs. Accepts up to 5 security group IDs. A security group must be attached to the same VPC as the subnets. To learn more, see Security in your VPC on Amazon MWAA.

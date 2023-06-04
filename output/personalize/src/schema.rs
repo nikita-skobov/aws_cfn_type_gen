@@ -3,7 +3,7 @@
 /// Amazon Personalize recognizes three schema variants. Each schema is associated with a dataset    type and has a set of required field and keywords. If you are creating a schema for a dataset in a Domain dataset group, you   provide the domain of the Domain dataset group.   You specify a schema when you call CreateDataset.
 ///
 /// For more information on schemas, see    Datasets and schemas.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchema {
     ///
     /// The domain of a schema that you created for a dataset in a Domain dataset group.
@@ -53,7 +53,7 @@ pub struct CfnSchema {
     pub att_schema_arn: CfnSchemaschemaarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SchemaDomainEnum {
     /// ECOMMERCE
     #[serde(rename = "ECOMMERCE")]
@@ -70,7 +70,7 @@ impl Default for SchemaDomainEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaschemaarn;
 impl CfnSchemaschemaarn {
     pub fn att_name(&self) -> &'static str {

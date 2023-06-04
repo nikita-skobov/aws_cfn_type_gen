@@ -9,7 +9,7 @@
 /// Note that you configure provisioned concurrency     on a AWS::Lambda::Version or a AWS::Lambda::Alias.
 ///
 /// For a complete introduction to Lambda functions, see    What is Lambda?   in the Lambda developer guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunction {
     ///
     /// The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64).   The default value is x86_64.
@@ -345,7 +345,7 @@ pub struct CfnFunction {
     pub att_snap_start_response_optimization_status: CfnFunctionsnapstartresponseoptimizationstatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunctionPackageTypeEnum {
     /// Image
     #[serde(rename = "Image")]
@@ -362,7 +362,7 @@ impl Default for FunctionPackageTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunctionRuntimeEnum {
     /// dotnet6
     #[serde(rename = "dotnet6")]
@@ -491,7 +491,7 @@ impl Default for FunctionRuntimeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionarn;
 impl CfnFunctionarn {
     pub fn att_name(&self) -> &'static str {
@@ -499,7 +499,7 @@ impl CfnFunctionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionsnapstartresponseapplyon;
 impl CfnFunctionsnapstartresponseapplyon {
     pub fn att_name(&self) -> &'static str {
@@ -507,7 +507,7 @@ impl CfnFunctionsnapstartresponseapplyon {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionsnapstartresponseoptimizationstatus;
 impl CfnFunctionsnapstartresponseoptimizationstatus {
     pub fn att_name(&self) -> &'static str {
@@ -658,7 +658,7 @@ impl cfn_resources::CfnResource for CfnFunction {
 /// The deployment package    for a Lambda function. To deploy a function defined as a container image,    you specify the location of a container image in the Amazon ECR registry.    For a .zip file deployment package, you can specify the location of an object in    Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template.
 ///
 /// Changes to a deployment package in Amazon S3 are not detected automatically during stack updates. To update    the function code, change the object key or version in the template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Code {
     ///
     /// URI of a container image in the     Amazon ECR registry.
@@ -817,7 +817,7 @@ impl cfn_resources::CfnResource for Code {
 }
 
 /// The dead-letter queue for    failed asynchronous invocations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeadLetterConfig {
     ///
     /// The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
@@ -849,7 +849,7 @@ impl cfn_resources::CfnResource for DeadLetterConfig {
 }
 
 /// A function's environment variable settings. You can use environment variables to adjust your function's    behavior without updating code. An environment variable is a pair of strings that are stored in a function's    version-specific configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Environment {
     ///
     /// Environment variable key-value pairs. For more information, see Using Lambda environment variables.
@@ -879,7 +879,7 @@ impl cfn_resources::CfnResource for Environment {
 }
 
 /// The size of the function's /tmp directory in MB. The default value is 512,      but it can be any whole number between 512 and 10,240 MB.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EphemeralStorage {
     ///
     /// The size of the function's /tmp directory.
@@ -930,7 +930,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 }
 
 /// Details about the connection between a Lambda function and an Amazon EFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileSystemConfig {
     ///
     /// The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file    system.
@@ -1000,7 +1000,7 @@ impl cfn_resources::CfnResource for FileSystemConfig {
 }
 
 /// Configuration values that override the container image Dockerfile settings. For more information, see Container image    settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageConfig {
     ///
     /// Specifies parameters that you want to pass in with ENTRYPOINT. You can specify a maximum of 1,500 parameters      in the list.
@@ -1086,7 +1086,7 @@ impl cfn_resources::CfnResource for ImageConfig {
 }
 
 /// Sets the runtime management configuration for a function's version. For more information,    see Runtime updates.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuntimeManagementConfig {
     ///
     /// The ARN of the runtime version you want the function to use.
@@ -1124,7 +1124,7 @@ pub struct RuntimeManagementConfig {
     pub update_runtime_on: RuntimeManagementConfigUpdateRuntimeOnEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuntimeManagementConfigUpdateRuntimeOnEnum {
     /// Auto
     #[serde(rename = "Auto")]
@@ -1179,7 +1179,7 @@ impl cfn_resources::CfnResource for RuntimeManagementConfig {
 }
 
 /// The function's AWS Lambda SnapStart setting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnapStart {
     ///
     /// Set ApplyOn to PublishedVersions to create a snapshot of the initialized execution environment when you publish a function version.
@@ -1195,7 +1195,7 @@ pub struct SnapStart {
     pub apply_on: SnapStartApplyOnEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SnapStartApplyOnEnum {
     /// None
     #[serde(rename = "None")]
@@ -1227,7 +1227,7 @@ impl cfn_resources::CfnResource for SnapStart {
 }
 
 /// The function's SnapStart setting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnapStartResponse {
     ///
     /// When set to PublishedVersions, Lambda creates a snapshot of the execution environment when you publish a function version.
@@ -1258,7 +1258,7 @@ pub struct SnapStartResponse {
     pub optimization_status: Option<SnapStartResponseOptimizationStatusEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SnapStartResponseApplyOnEnum {
     /// None
     #[serde(rename = "None")]
@@ -1275,7 +1275,7 @@ impl Default for SnapStartResponseApplyOnEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SnapStartResponseOptimizationStatusEnum {
     /// Off
     #[serde(rename = "Off")]
@@ -1313,7 +1313,7 @@ impl cfn_resources::CfnResource for SnapStartResponse {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1351,7 +1351,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The function's AWS X-Ray tracing configuration.    To sample and record incoming requests, set Mode to Active.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TracingConfig {
     ///
     /// The tracing mode.
@@ -1368,7 +1368,7 @@ pub struct TracingConfig {
     pub mode: Option<TracingConfigModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TracingConfigModeEnum {
     /// Active
     #[serde(rename = "Active")]
@@ -1400,7 +1400,7 @@ impl cfn_resources::CfnResource for TracingConfig {
 }
 
 /// The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a    VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the    function's VPC configuration. The function can only access resources and the internet through that VPC. For more    information, see VPC    Settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// A list of VPC security group IDs.

@@ -3,7 +3,7 @@
 /// To create an endpoint service configuration, you must first create one of the following     for your service:
 ///
 /// For more information, see the AWS PrivateLink User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpointService {
     ///
     /// Indicates whether requests from service consumers to create an endpoint to your service     must be accepted.
@@ -71,7 +71,7 @@ pub struct CfnVPCEndpointService {
     pub att_service_id: CfnVPCEndpointServiceserviceid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VPCEndpointServicePayerResponsibilityEnum {
     /// ServiceOwner
     #[serde(rename = "ServiceOwner")]
@@ -84,7 +84,7 @@ impl Default for VPCEndpointServicePayerResponsibilityEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCEndpointServiceserviceid;
 impl CfnVPCEndpointServiceserviceid {
     pub fn att_name(&self) -> &'static str {

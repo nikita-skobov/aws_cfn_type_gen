@@ -1,5 +1,5 @@
 /// The AWS::FinSpace::Environment resource represents an Amazon FinSpace     environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// The description of the FinSpace environment.
@@ -125,7 +125,7 @@ pub struct CfnEnvironment {
     pub att_status: CfnEnvironmentstatus,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EnvironmentFederationModeEnum {
     /// FEDERATED
     #[serde(rename = "FEDERATED")]
@@ -142,7 +142,7 @@ impl Default for EnvironmentFederationModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentawsaccountid;
 impl CfnEnvironmentawsaccountid {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnEnvironmentawsaccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentdedicatedserviceaccountid;
 impl CfnEnvironmentdedicatedserviceaccountid {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnEnvironmentdedicatedserviceaccountid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmentarn;
 impl CfnEnvironmentenvironmentarn {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnEnvironmentenvironmentarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmentid;
 impl CfnEnvironmentenvironmentid {
     pub fn att_name(&self) -> &'static str {
@@ -174,7 +174,7 @@ impl CfnEnvironmentenvironmentid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentenvironmenturl;
 impl CfnEnvironmentenvironmenturl {
     pub fn att_name(&self) -> &'static str {
@@ -182,7 +182,7 @@ impl CfnEnvironmentenvironmenturl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentsagemakerstudiodomainurl;
 impl CfnEnvironmentsagemakerstudiodomainurl {
     pub fn att_name(&self) -> &'static str {
@@ -190,7 +190,7 @@ impl CfnEnvironmentsagemakerstudiodomainurl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentstatus;
 impl CfnEnvironmentstatus {
     pub fn att_name(&self) -> &'static str {
@@ -287,7 +287,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 }
 
 /// The AttributeMapItems property type specifies Property description not available. for an AWS::FinSpace::Environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributeMapItems {
     /// Property description not available.
     ///
@@ -327,7 +327,7 @@ impl cfn_resources::CfnResource for AttributeMapItems {
 }
 
 /// Configuration information when authentication mode is FEDERATED.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FederationParameters {
     ///
     /// The redirect or sign-in URL that should be entered into the SAML 2.0 compliant identity provider configuration    (IdP).
@@ -536,7 +536,7 @@ impl cfn_resources::CfnResource for FederationParameters {
 }
 
 /// Configuration information for the superuser.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SuperuserParameters {
     ///
     /// The email address of the superuser.
@@ -680,7 +680,7 @@ impl cfn_resources::CfnResource for SuperuserParameters {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

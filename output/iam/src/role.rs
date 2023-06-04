@@ -1,5 +1,5 @@
 /// Creates a new role for your AWS account. For more information about roles, see         IAM         roles. For information about quotas for role names and the number of roles       you can create, see IAM and AWS STS quotas in the         IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRole {
     ///
     /// The trust policy that is associated with this role. Trust policies define which entities     can assume the role. You can associate only one trust policy with a role. For an example of     a policy that can be used to assume a role, see Template Examples. For more information about the elements that you can use in     an IAM policy, see IAM Policy       Elements Reference in the IAM User     Guide.
@@ -157,7 +157,7 @@ pub struct CfnRole {
     pub att_role_id: CfnRoleroleid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRolearn;
 impl CfnRolearn {
     pub fn att_name(&self) -> &'static str {
@@ -165,7 +165,7 @@ impl CfnRolearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoleroleid;
 impl CfnRoleroleid {
     pub fn att_name(&self) -> &'static str {
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for CfnRole {
 /// An attached policy is a managed policy that has been attached to a user, group, or     role.
 ///
 /// For more information about managed policies, refer to Managed Policies and Inline       Policies in the IAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Policy {
     ///
     /// The entire contents of the policy that defines permissions. For more information, see       Overview of JSON       policies.
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for Policy {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

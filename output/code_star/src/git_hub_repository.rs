@@ -1,5 +1,5 @@
 /// The AWS::CodeStar::GitHubRepository resource creates a GitHub       repository where users can store source code for use with AWS workflows. You must provide a location for       the source code ZIP file in the AWS CloudFormation template, so the       code can be uploaded to the created repository. You must have       created a personal access token in GitHub to provide in the AWS CloudFormation template. AWS uses this token to connect to GitHub on your behalf. For more information       about using a GitHub source repository with AWS CodeStar projects, see AWS CodeStar Project Files and Resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGitHubRepository {
     ///
     /// Information about code to be committed to a repository after it is created in an       AWS CloudFormation stack.
@@ -114,7 +114,7 @@ impl cfn_resources::CfnResource for CfnGitHubRepository {
 /// The Code property type specifies information about code to be       committed.
 ///
 /// Code is a property of the AWS::CodeStar::GitHubRepository       resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Code {
     ///
     /// Information about the Amazon S3 bucket that contains a ZIP file of code to be       committed to the repository.
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for Code {
 /// The S3 property type specifies information about the Amazon S3 bucket       that contains the code to be committed to the new repository.
 ///
 /// S3 is a property of the AWS::CodeStar::GitHubRepository       resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3 {
     ///
     /// The name of the Amazon S3 bucket that contains the ZIP file with the content to be       committed to the new repository.

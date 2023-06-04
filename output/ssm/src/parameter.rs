@@ -1,7 +1,7 @@
 /// The AWS::SSM::Parameter resource creates an SSM parameter in AWS Systems Manager Parameter Store.
 ///
 /// For information about valid values for parameters, see Requirements     and Constraints for Parameter Names in the AWS Systems Manager User     Guide and PutParameter in the     AWS Systems Manager API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnParameter {
     ///
     /// A regular expression used to validate the parameter value. For example, for String types    with values restricted to numbers, you can specify the following:     AllowedPattern=^\d+$
@@ -146,7 +146,7 @@ pub struct CfnParameter {
     pub att_value: CfnParametervalue,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParameterTierEnum {
     /// Advanced
     #[serde(rename = "Advanced")]
@@ -167,7 +167,7 @@ impl Default for ParameterTierEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ParameterTypeEnum {
     /// String
     #[serde(rename = "String")]
@@ -184,7 +184,7 @@ impl Default for ParameterTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnParametercfntype;
 impl CfnParametercfntype {
     pub fn att_name(&self) -> &'static str {
@@ -192,7 +192,7 @@ impl CfnParametercfntype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnParametervalue;
 impl CfnParametervalue {
     pub fn att_name(&self) -> &'static str {

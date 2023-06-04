@@ -1,7 +1,7 @@
 /// The AWS::MediaLive::Channel resource is a MediaLive resource type       that creates a channel.
 ///
 /// A MediaLive channel ingests and transcodes (decodes and encodes)       source content from the inputs that are attached to that channel,       and packages the new content into outputs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnChannel {
     ///
     /// Specification of CDI inputs for this channel.
@@ -150,7 +150,7 @@ pub struct CfnChannel {
     pub att_arn: CfnChannelarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnChannelarn;
 impl CfnChannelarn {
     pub fn att_name(&self) -> &'static str {
@@ -193,7 +193,7 @@ impl cfn_resources::CfnResource for CfnChannel {
 /// The settings for an AAC audio encode in the output.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AacSettings {
     ///
     /// The average bitrate in bits/second. Valid values depend on the       rate control mode and profile.
@@ -321,7 +321,7 @@ impl cfn_resources::CfnResource for AacSettings {
 /// The settings for an AC3 audio encode in the output.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ac3Settings {
     ///
     /// The average bitrate in bits/second. Valid bitrates depend on the       coding mode.
@@ -425,7 +425,7 @@ impl cfn_resources::CfnResource for Ac3Settings {
 /// Information about the ancillary captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AncillarySourceSettings {
     ///
     /// Specifies the number (1 to 4) of the captions channel you want to extract from the ancillary captions. If you plan to convert the ancillary captions to another format, complete this field. If you plan to choose Embedded as the captions destination in the output (to pass through all the channels in the ancillary captions), leave this field blank because MediaLive ignores the field.
@@ -457,7 +457,7 @@ impl cfn_resources::CfnResource for AncillarySourceSettings {
 /// Settings to configure the destination of an Archive output.
 ///
 /// The parent of this entity is ArchiveGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveCdnSettings {
     ///
     /// Sets up Amazon S3 as the destination for this Archive       output.
@@ -493,7 +493,7 @@ impl cfn_resources::CfnResource for ArchiveCdnSettings {
 /// The archive container settings.
 ///
 /// The parent of this entity is ArchiveOutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveContainerSettings {
     ///
     /// The settings for the M2TS in the archive output.
@@ -545,7 +545,7 @@ impl cfn_resources::CfnResource for ArchiveContainerSettings {
 /// The settings for an archive output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveGroupSettings {
     ///
     /// Settings to configure the destination of an Archive output.
@@ -609,7 +609,7 @@ impl cfn_resources::CfnResource for ArchiveGroupSettings {
 /// The archive output settings.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveOutputSettings {
     ///
     /// The settings that are specific to the container type of the       file.
@@ -669,7 +669,7 @@ impl cfn_resources::CfnResource for ArchiveOutputSettings {
 /// Sets up Amazon S3 as the destination for this Archive       output.
 ///
 /// The parent of this entity is ArchiveCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArchiveS3Settings {
     ///
     /// Specify the canned ACL to apply to each S3 request. Defaults to none.
@@ -701,7 +701,7 @@ impl cfn_resources::CfnResource for ArchiveS3Settings {
 /// The configuration of ARIB captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AribDestinationSettings {}
 
 impl cfn_resources::CfnResource for AribDestinationSettings {
@@ -721,7 +721,7 @@ impl cfn_resources::CfnResource for AribDestinationSettings {
 /// Information about the ARIB captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AribSourceSettings {}
 
 impl cfn_resources::CfnResource for AribSourceSettings {
@@ -741,7 +741,7 @@ impl cfn_resources::CfnResource for AribSourceSettings {
 /// The settings for remixing audio.
 ///
 /// The parent of this entity is RemixSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioChannelMapping {
     ///
     /// The indices and gain values for each input channel that should be       remixed into this output channel.
@@ -785,7 +785,7 @@ impl cfn_resources::CfnResource for AudioChannelMapping {
 /// The configuration of the audio codec in the audio output.
 ///
 /// The parent of this entity is AudioDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioCodecSettings {
     ///
     /// The setup of the AAC audio codec in the output.
@@ -916,7 +916,7 @@ impl cfn_resources::CfnResource for AudioCodecSettings {
 /// The encoding information for one output audio.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioDescription {
     ///
     /// The advanced audio normalization settings.
@@ -1082,7 +1082,7 @@ impl cfn_resources::CfnResource for AudioDescription {
 }
 
 /// The AudioDolbyEDecode property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioDolbyEDecode {
     /// Property description not available.
     ///
@@ -1113,7 +1113,7 @@ impl cfn_resources::CfnResource for AudioDolbyEDecode {
 /// Selector for HLS audio rendition.
 ///
 /// The parent of this entity is AudioSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioHlsRenditionSelection {
     ///
     /// Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
@@ -1157,7 +1157,7 @@ impl cfn_resources::CfnResource for AudioHlsRenditionSelection {
 /// Information about the audio language to extract.
 ///
 /// The parent of this entity is AudioSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioLanguageSelection {
     ///
     /// Selects a specific three-letter language code from within an audio       source.
@@ -1201,7 +1201,7 @@ impl cfn_resources::CfnResource for AudioLanguageSelection {
 /// The settings for normalizing video.
 ///
 /// The parent of this entity is AudioDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioNormalizationSettings {
     ///
     /// The audio normalization algorithm to use. itu17701 conforms to the       CALM Act specification. itu17702 conforms to the EBU R-128       specification.
@@ -1257,7 +1257,7 @@ impl cfn_resources::CfnResource for AudioNormalizationSettings {
 /// The configuration of an audio-only HLS output.
 ///
 /// The parent of this entity is HlsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioOnlyHlsSettings {
     ///
     /// Specifies the group that the audio rendition belongs to.
@@ -1329,7 +1329,7 @@ impl cfn_resources::CfnResource for AudioOnlyHlsSettings {
 /// Used to extract audio by The PID.
 ///
 /// The parent of this entity is AudioSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioPidSelection {
     ///
     /// Select the audio by this PID.
@@ -1361,7 +1361,7 @@ impl cfn_resources::CfnResource for AudioPidSelection {
 /// Information about one audio to extract from the input.
 ///
 /// The parent of this entity is InputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioSelector {
     ///
     /// A name for this AudioSelector.
@@ -1409,7 +1409,7 @@ impl cfn_resources::CfnResource for AudioSelector {
 /// Information about the audio to extract from the input.
 ///
 /// The parent of this entity is AudioSelector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioSelectorSettings {
     /// Selector for HLS audio rendition.
     ///
@@ -1491,7 +1491,7 @@ impl cfn_resources::CfnResource for AudioSelectorSettings {
 /// MediaLive will perform a failover if audio is not detected in this       input for the specified period.
 ///
 /// The parent of this entity is FailoverConditionSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioSilenceFailoverSettings {
     ///
     /// The name of the audio selector in the input that MediaLive should monitor to detect silence. Select your most important rendition. If you didn't create an audio selector in this input, leave blank.
@@ -1535,7 +1535,7 @@ impl cfn_resources::CfnResource for AudioSilenceFailoverSettings {
 /// Information about one audio track to extract. You can select       multiple tracks.
 ///
 /// The parent of this entity is AudioTrackSelection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioTrack {
     ///
     /// 1-based integer value that maps to a specific audio track
@@ -1567,7 +1567,7 @@ impl cfn_resources::CfnResource for AudioTrack {
 /// Information about the audio track to extract.
 ///
 /// The parent of this entity is AudioSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioTrackSelection {
     /// Property description not available.
     ///
@@ -1614,7 +1614,7 @@ impl cfn_resources::CfnResource for AudioTrackSelection {
 /// Audio Watermark Settings
 ///
 /// The parent of this entity is AudioDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AudioWatermarkSettings {
     ///
     /// Settings to configure Nielsen Watermarks in the audio encode
@@ -1650,7 +1650,7 @@ impl cfn_resources::CfnResource for AudioWatermarkSettings {
 /// Settings to configure the conditions that will define the input as       unhealthy and that will make MediaLive fail over to the other input       in the input failover pair.
 ///
 /// The parent of this entity is InputAttachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AutomaticInputFailoverSettings {
     ///
     /// This clear time defines the requirement a recovered input must meet to be considered healthy. The input must have no failover conditions for this length of time. Enter a time in milliseconds. This value is particularly important if the input_preference for the failover pair is set to PRIMARY_INPUT_PREFERRED, because after this time, MediaLive will switch back to the primary input.
@@ -1718,7 +1718,7 @@ impl cfn_resources::CfnResource for AutomaticInputFailoverSettings {
 /// The configuration of ad avail blanking in the output.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AvailBlanking {
     ///
     /// The blanking image to be used. Keep empty for solid black. Only       .bmp and .png images are supported.
@@ -1766,7 +1766,7 @@ impl cfn_resources::CfnResource for AvailBlanking {
 /// The setup of ad avail handling in the output.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AvailConfiguration {
     ///
     /// The setup of ad avail handling in the output.
@@ -1802,7 +1802,7 @@ impl cfn_resources::CfnResource for AvailConfiguration {
 /// The settings for the ad avail setup in the output.
 ///
 /// The parent of this entity is AvailConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AvailSettings {
     /// Property description not available.
     ///
@@ -1867,7 +1867,7 @@ impl cfn_resources::CfnResource for AvailSettings {
 /// The settings for a blackout slate.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlackoutSlate {
     ///
     /// The blackout slate image to be used. Keep empty for solid black.       Only .bmp and .png images are supported.
@@ -1955,7 +1955,7 @@ impl cfn_resources::CfnResource for BlackoutSlate {
 /// The settings for burn-in captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BurnInDestinationSettings {
     ///
     /// If no explicit xPosition or yPosition is provided, setting       alignment to centered places the captions at the bottom center of       the output. Similarly, setting a left alignment aligns captions to       the bottom left of the output. If x and y positions are specified in       conjunction with the alignment parameter, the font is justified       (either left or centered) relative to those coordinates. Selecting       "smart" justification left-justifies live subtitles and       center-justifies pre-recorded subtitles. All burn-in and DVB-Sub       font settings must match.
@@ -2181,7 +2181,7 @@ impl cfn_resources::CfnResource for BurnInDestinationSettings {
 /// The encoding information for output captions.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionDescription {
     /// Property description not available.
     ///
@@ -2276,7 +2276,7 @@ impl cfn_resources::CfnResource for CaptionDescription {
 /// The configuration of one captions encode in the output.
 ///
 /// The parent of this entity is CaptionDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionDestinationSettings {
     ///
     /// The configuration of one ARIB captions encode in the       output.
@@ -2503,7 +2503,7 @@ impl cfn_resources::CfnResource for CaptionDestinationSettings {
 /// Maps a captions channel to an ISO 693-2 language code       (http://www.loc.gov/standards/iso639-2), with an optional       description.
 ///
 /// The parent of this entity is HlsGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionLanguageMapping {
     ///
     /// The closed caption channel being described by this       CaptionLanguageMapping. Each channel mapping must have a unique       channel number (maximum of 4).
@@ -2559,7 +2559,7 @@ impl cfn_resources::CfnResource for CaptionLanguageMapping {
 /// Settings to configure the caption rectangle for an output captions       that will be created using this Teletext source captions.
 ///
 /// The parent of this entity is TeletextSourceSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionRectangle {
     ///
     /// See the description in leftOffset.
@@ -2635,7 +2635,7 @@ impl cfn_resources::CfnResource for CaptionRectangle {
 /// Information about one caption to extract from the input.
 ///
 /// The parent of this entity is InputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionSelector {
     ///
     /// When specified, this field indicates the three-letter language       code of the captions track to extract from the source.
@@ -2695,7 +2695,7 @@ impl cfn_resources::CfnResource for CaptionSelector {
 /// Captions Selector Settings
 ///
 /// The parent of this entity is CaptionSelector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptionSelectorSettings {
     ///
     /// Information about the ancillary captions to extract from the       input.
@@ -2827,7 +2827,7 @@ impl cfn_resources::CfnResource for CaptionSelectorSettings {
 /// The input specification for this channel. It specifies the key       characteristics of CDI inputs for this channel, when those       characteristics are different from other inputs.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CdiInputSpecification {
     ///
     /// Maximum CDI input resolution
@@ -2859,7 +2859,7 @@ impl cfn_resources::CfnResource for CdiInputSpecification {
 /// Passthrough applies no color space conversion to the output.
 ///
 /// The parents of this entity are H264ColorSpaceSettings and       H265ColorSpaceSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColorSpacePassthroughSettings {}
 
 impl cfn_resources::CfnResource for ColorSpacePassthroughSettings {
@@ -2877,7 +2877,7 @@ impl cfn_resources::CfnResource for ColorSpacePassthroughSettings {
 }
 
 /// The DolbyVision81Settings property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DolbyVision81Settings {}
 
 impl cfn_resources::CfnResource for DolbyVision81Settings {
@@ -2897,7 +2897,7 @@ impl cfn_resources::CfnResource for DolbyVision81Settings {
 /// The configuration of DVB NIT.
 ///
 /// The parent of this entity is M2tsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DvbNitSettings {
     ///
     /// The numeric value placed in the Network Information Table       (NIT).
@@ -2953,7 +2953,7 @@ impl cfn_resources::CfnResource for DvbNitSettings {
 /// A DVB Service Description Table (SDT).
 ///
 /// The parent of this entity is M2tsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DvbSdtSettings {
     ///
     /// Selects a method of inserting SDT information into an output       stream. The sdtFollow setting copies SDT information from input       stream to output stream. The sdtFollowIfPresent setting copies SDT       information from input stream to output stream if SDT information is       present in the input. Otherwise, it falls back on the user-defined       values. The sdtManual setting means that the user will enter the SDT       information. The sdtNone setting means that the output stream will       not contain SDT information.
@@ -3021,7 +3021,7 @@ impl cfn_resources::CfnResource for DvbSdtSettings {
 /// The settings for DVB Sub captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DvbSubDestinationSettings {
     ///
     /// If no explicit xPosition or yPosition is provided, setting the       alignment to centered places the captions at the bottom center of       the output. Similarly, setting a left alignment aligns captions to       the bottom left of the output. If x and y positions are specified in       conjunction with the alignment parameter, the font is justified       (either left or centered) relative to those coordinates. Selecting       "smart" justification left-justifies live subtitles and       center-justifies pre-recorded subtitles. This option is not valid       for source captions that are STL or 608/embedded. These source       settings are already pre-defined by the captions stream. All burn-in       and DVB-Sub font settings must match.
@@ -3247,7 +3247,7 @@ impl cfn_resources::CfnResource for DvbSubDestinationSettings {
 /// Information about the DVB Sub captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DvbSubSourceSettings {
     ///
     /// If you will configure a WebVTT caption description that references this caption selector, use this field to provide the language to consider when translating the image-based source to text.
@@ -3291,7 +3291,7 @@ impl cfn_resources::CfnResource for DvbSubSourceSettings {
 /// The DVB Time and Date Table (TDT).
 ///
 /// The parent of this entity is M2tsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DvbTdtSettings {
     ///
     /// The number of milliseconds between instances of this table in the       output transport stream.
@@ -3321,7 +3321,7 @@ impl cfn_resources::CfnResource for DvbTdtSettings {
 }
 
 /// The Eac3AtmosSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Eac3AtmosSettings {
     /// Property description not available.
     ///
@@ -3418,7 +3418,7 @@ impl cfn_resources::CfnResource for Eac3AtmosSettings {
 /// The settings for an EAC3 audio encode in the output.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Eac3Settings {
     ///
     /// When set to attenuate3Db, applies a 3 dB attenuation to the       surround channels. Used only for the 3/2 coding mode.
@@ -3678,7 +3678,7 @@ impl cfn_resources::CfnResource for Eac3Settings {
 /// Settings for EBU-TT captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EbuTtDDestinationSettings {
     ///
     /// Applies only if you plan to convert these source captions to EBU-TT-D or TTML in an output. Complete this field if you want to include the name of the copyright holder in the copyright metadata tag in the TTML
@@ -3746,7 +3746,7 @@ impl cfn_resources::CfnResource for EbuTtDDestinationSettings {
 /// The configuration of embedded captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EmbeddedDestinationSettings {}
 
 impl cfn_resources::CfnResource for EmbeddedDestinationSettings {
@@ -3766,7 +3766,7 @@ impl cfn_resources::CfnResource for EmbeddedDestinationSettings {
 /// The settings for embedded plus SCTE-20 captions in the       output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EmbeddedPlusScte20DestinationSettings {}
 
 impl cfn_resources::CfnResource for EmbeddedPlusScte20DestinationSettings {
@@ -3786,7 +3786,7 @@ impl cfn_resources::CfnResource for EmbeddedPlusScte20DestinationSettings {
 /// Information about the embedded captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EmbeddedSourceSettings {
     ///
     /// If this is upconvert, 608 data is both passed through the "608       compatibility bytes" fields of the 708 wrapper as well as translated       into 708. If 708 data is present in the source content, it is       discarded.
@@ -3854,7 +3854,7 @@ impl cfn_resources::CfnResource for EmbeddedSourceSettings {
 /// The settings for the encoding of outputs.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncoderSettings {
     ///
     /// The encoding information for output audio.
@@ -4048,7 +4048,7 @@ impl cfn_resources::CfnResource for EncoderSettings {
 }
 
 /// The Esam property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Esam {
     /// Property description not available.
     ///
@@ -4134,7 +4134,7 @@ impl cfn_resources::CfnResource for Esam {
 /// Failover Condition settings. There can be multiple failover       conditions inside AutomaticInputFailoverSettings.
 ///
 /// The parent of this entity is       AutomaticInputFailoverSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FailoverCondition {
     ///
     /// Settings for a specific failover condition.
@@ -4170,7 +4170,7 @@ impl cfn_resources::CfnResource for FailoverCondition {
 /// Settings for one failover condition.
 ///
 /// The parent of this entity is FailoverCondition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FailoverConditionSettings {
     ///
     /// MediaLive will perform a failover if the specified audio selector is silent for the specified period.
@@ -4238,7 +4238,7 @@ impl cfn_resources::CfnResource for FailoverConditionSettings {
 /// Settings to enable specific features. You can't configure these       features until you have enabled them in the channel.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FeatureActivations {
     ///
     /// Enables the Input Prepare feature. You can create Input Prepare actions in the schedule only if this feature is enabled. If you disable the feature on an existing schedule, make sure that you first delete all input prepare actions from the schedule.
@@ -4270,7 +4270,7 @@ impl cfn_resources::CfnResource for FeatureActivations {
 /// The settings for FEC.
 ///
 /// The parent of this entity is UdpOutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FecOutputSettings {
     ///
     /// The parameter D from SMPTE 2022-1. The height of the FEC       protection matrix. The number of transport stream packets per column       error correction packet. The number must be between 4 and 20,       inclusive.
@@ -4326,7 +4326,7 @@ impl cfn_resources::CfnResource for FecOutputSettings {
 /// Settings for the fMP4 containers.
 ///
 /// The parent of this entity is HlsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Fmp4HlsSettings {
     ///
     /// List all the audio groups that are used with the video output stream. Input all the audio GROUP-IDs that are associated to the video, separate by ','.
@@ -4382,7 +4382,7 @@ impl cfn_resources::CfnResource for Fmp4HlsSettings {
 /// Settings to configure the destination of a Frame Capture       output.
 ///
 /// The parent of this entity is FrameCaptureGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureCdnSettings {
     ///
     /// Sets up Amazon S3 as the destination for this Frame Capture       output.
@@ -4418,7 +4418,7 @@ impl cfn_resources::CfnResource for FrameCaptureCdnSettings {
 /// The settings for a frame capture output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureGroupSettings {
     ///
     /// The destination for the frame capture files. The destination is       either the URI for an Amazon S3 bucket and object, plus a file name       prefix (for example,       s3ssl://sportsDelivery/highlights/20180820/curling_) or the URI for       a MediaStore container, plus a file name prefix (for example,       mediastoressl://sportsDelivery/20180820/curling_). The final file       names consist of the prefix from the destination field (for example,       "curling_") + name modifier + the counter (5 digits, starting from       00001) + extension (which is always .jpg). For example,       curlingLow.00001.jpg.
@@ -4470,7 +4470,7 @@ impl cfn_resources::CfnResource for FrameCaptureGroupSettings {
 /// Settings for a frame capture output in an HLS output group.
 ///
 /// The parent of this entity is HlsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureHlsSettings {}
 
 impl cfn_resources::CfnResource for FrameCaptureHlsSettings {
@@ -4490,7 +4490,7 @@ impl cfn_resources::CfnResource for FrameCaptureHlsSettings {
 /// The frame capture output settings.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureOutputSettings {
     ///
     /// Required if the output group contains more than one output. This       modifier forms part of the output file name.
@@ -4522,7 +4522,7 @@ impl cfn_resources::CfnResource for FrameCaptureOutputSettings {
 /// Sets up Amazon S3 as the destination for this Frame Capture       output.
 ///
 /// The parent of this entity is FrameCaptureCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureS3Settings {
     ///
     /// Specify the canned ACL to apply to each S3 request. Defaults to       none.
@@ -4554,7 +4554,7 @@ impl cfn_resources::CfnResource for FrameCaptureS3Settings {
 /// The frame capture settings.
 ///
 /// The parent of this entity is VideoCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FrameCaptureSettings {
     ///
     /// The frequency, in seconds, for capturing frames for inclusion in       the output. For example, "10" means capture a frame every 10       seconds.
@@ -4613,7 +4613,7 @@ impl cfn_resources::CfnResource for FrameCaptureSettings {
 /// The configuration settings that apply to the entire       channel.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlobalConfiguration {
     ///
     /// The value to set the initial audio gain for the channel.
@@ -4709,7 +4709,7 @@ impl cfn_resources::CfnResource for GlobalConfiguration {
 /// Settings for configuring color space in an H264 video       encode.
 ///
 /// The parent of this entity is H264Settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H264ColorSpaceSettings {
     /// Passthrough applies no color space conversion to the output.
     ///
@@ -4776,7 +4776,7 @@ impl cfn_resources::CfnResource for H264ColorSpaceSettings {
 /// Settings to configure video filters that apply to the H264       codec.
 ///
 /// The parent of this entity is H264Settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H264FilterSettings {
     ///
     /// Settings for applying the temporal filter to the video.
@@ -4812,7 +4812,7 @@ impl cfn_resources::CfnResource for H264FilterSettings {
 /// The settings for the H.264 codec in the output.
 ///
 /// The parent of this entity is VideoCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H264Settings {
     ///
     /// The adaptive quantization. This allows intra-frame quantizers to       vary to improve visual quality.
@@ -5347,7 +5347,7 @@ impl cfn_resources::CfnResource for H264Settings {
 /// H265 Color Space Settings
 ///
 /// The parent of this entity is H265Settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H265ColorSpaceSettings {
     ///
     /// Passthrough applies no color space conversion to the output.
@@ -5446,7 +5446,7 @@ impl cfn_resources::CfnResource for H265ColorSpaceSettings {
 /// Settings to configure video filters that apply to the H265       codec.
 ///
 /// The parent of this entity is H265Settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H265FilterSettings {
     /// Settings for applying the temporal filter to the video.
     ///
@@ -5481,7 +5481,7 @@ impl cfn_resources::CfnResource for H265FilterSettings {
 /// H265 Settings
 ///
 /// The parent of this entity is VideoCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct H265Settings {
     ///
     /// Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
@@ -5872,7 +5872,7 @@ impl cfn_resources::CfnResource for H265Settings {
 /// Hdr10 Settings
 ///
 /// The parents of this entity are H265ColorSpaceSettings (for color       space settings in the output) and VideoSelectorColorSpaceSettings       (for color space settings in the input).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Hdr10Settings {
     ///
     /// Maximum Content Light Level An integer metadata value defining the maximum light level, in nits, of any single pixel within an encoded HDR video stream or file.
@@ -5916,7 +5916,7 @@ impl cfn_resources::CfnResource for Hdr10Settings {
 /// The Akamai settings in an HLS output.
 ///
 /// The parent of this entity is HlsCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsAkamaiSettings {
     ///
     /// The number of seconds to wait before retrying a connection to the       CDN if the connection is lost.
@@ -6020,7 +6020,7 @@ impl cfn_resources::CfnResource for HlsAkamaiSettings {
 /// The configuration of HLS Basic Put Settings.
 ///
 /// The parent of this entity is HlsCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsBasicPutSettings {
     ///
     /// The number of seconds to wait before retrying a connection to the       CDN if the connection is lost.
@@ -6088,7 +6088,7 @@ impl cfn_resources::CfnResource for HlsBasicPutSettings {
 /// The settings for the CDN of an HLS output.
 ///
 /// The parent of this entity is HlsGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsCdnSettings {
     ///
     /// Sets up Akamai as the downstream system for the HLS output       group.
@@ -6190,7 +6190,7 @@ impl cfn_resources::CfnResource for HlsCdnSettings {
 /// The settings for an HLS output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsGroupSettings {
     ///
     /// Chooses one or more ad marker types to pass SCTE35 signals through       to this group of Apple HLS outputs.
@@ -6737,7 +6737,7 @@ impl cfn_resources::CfnResource for HlsGroupSettings {
 /// Information about how to connect to the upstream system.
 ///
 /// The parent of this entity is NetworkInputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsInputSettings {
     ///
     /// When specified, the HLS stream with the m3u8 bandwidth that most       closely matches this value is chosen. Otherwise, the highest       bandwidth stream in the m3u8 is chosen. The bitrate is specified in       bits per second, as in an HLS manifest.
@@ -6817,7 +6817,7 @@ impl cfn_resources::CfnResource for HlsInputSettings {
 /// The configuration of a MediaStore container as the destination for       an HLS output.
 ///
 /// The parent of this entity is HlsCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsMediaStoreSettings {
     ///
     /// The number of seconds to wait before retrying a connection to the       CDN if the connection is lost.
@@ -6897,7 +6897,7 @@ impl cfn_resources::CfnResource for HlsMediaStoreSettings {
 /// The settings for an HLS output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsOutputSettings {
     ///
     /// Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
@@ -6969,7 +6969,7 @@ impl cfn_resources::CfnResource for HlsOutputSettings {
 /// Sets up Amazon S3 as the destination for this HLS output.
 ///
 /// The parent of this entity is HlsCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsS3Settings {
     ///
     /// Specify the canned ACL to apply to each S3 request. Defaults to none.
@@ -7001,7 +7001,7 @@ impl cfn_resources::CfnResource for HlsS3Settings {
 /// The settings for an HLS output.
 ///
 /// The parent of this entity is HlsOutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsSettings {
     ///
     /// The settings for an audio-only output.
@@ -7085,7 +7085,7 @@ impl cfn_resources::CfnResource for HlsSettings {
 /// The configuration of a WebDav server as the downstream system for       an HLS output.
 ///
 /// The parent of this entity is HlsCdnSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HlsWebdavSettings {
     ///
     /// The number of seconds to wait before retrying a connection to the       CDN if the connection is lost.
@@ -7165,7 +7165,7 @@ impl cfn_resources::CfnResource for HlsWebdavSettings {
 /// Settings to configure the motion graphics overlay to use an HTML       asset.
 ///
 /// The parent of this entity is MotionGraphicsSetting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HtmlMotionGraphicsSettings {}
 
 impl cfn_resources::CfnResource for HtmlMotionGraphicsSettings {
@@ -7185,7 +7185,7 @@ impl cfn_resources::CfnResource for HtmlMotionGraphicsSettings {
 /// An input to attach to this channel.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputAttachment {
     ///
     /// Settings to implement automatic input failover in this input.
@@ -7261,7 +7261,7 @@ impl cfn_resources::CfnResource for InputAttachment {
 /// The setting to remix the audio.
 ///
 /// The parent of this entity is AudioChannelMappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputChannelLevel {
     ///
     /// The remixing value. Units are in dB, and acceptable values are       within the range from -60 (mute) to 6 dB.
@@ -7305,7 +7305,7 @@ impl cfn_resources::CfnResource for InputChannelLevel {
 /// The input location.
 ///
 /// The parent of this entity is InputLossBehavior.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputLocation {
     ///
     /// The password parameter that holds the password for accessing the       downstream system. This applies only if the downstream system       requires credentials.
@@ -7361,7 +7361,7 @@ impl cfn_resources::CfnResource for InputLocation {
 /// The configuration of channel behavior when the input is       lost.
 ///
 /// The parent of this entity is GlobalConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputLossBehavior {
     ///
     /// On input loss, the number of milliseconds to substitute black into       the output before switching to the frame specified by       inputLossImageType. A value x, where 0 <= x <= 1,000,000 and a       value of 1,000,000, is interpreted as infinite.
@@ -7445,7 +7445,7 @@ impl cfn_resources::CfnResource for InputLossBehavior {
 /// MediaLive will perform a failover if content is not detected in       this input for the specified period.
 ///
 /// The parent of this entity is FailoverConditionSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputLossFailoverSettings {
     ///
     /// The amount of time (in milliseconds) that no input is detected. After that time, an input failover will occur.
@@ -7477,7 +7477,7 @@ impl cfn_resources::CfnResource for InputLossFailoverSettings {
 /// Information about extracting content from the input and about       handling the content.
 ///
 /// The parent of this entity is InputAttachment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputSettings {
     ///
     /// Information about the specific audio to extract from the       input.
@@ -7638,7 +7638,7 @@ impl cfn_resources::CfnResource for InputSettings {
 /// The input specification for this channel. It specifies the key       characteristics of the inputs for this channel: the maximum bitrate,       the resolution, and the codec.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputSpecification {
     ///
     /// The codec to include in the input specification for this       channel.
@@ -7694,7 +7694,7 @@ impl cfn_resources::CfnResource for InputSpecification {
 /// The configuration of key provider settings.
 ///
 /// The parent of this entity is HlsGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyProviderSettings {
     ///
     /// The configuration of static key settings.
@@ -7730,7 +7730,7 @@ impl cfn_resources::CfnResource for KeyProviderSettings {
 /// The configuration of the M2TS in the output.
 ///
 /// The parents of this entity are ArchiveContainerSettings and       UdpContainerSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct M2tsSettings {
     ///
     /// When set to drop, the output audio streams are removed from the       program if the selected input audio stream is removed from the       input. This allows the output audio configuration to dynamically       change based on the input configuration. If this is set to       encodeSilence, all output audio streams will output encoded silence       when not connected to an active input stream.
@@ -8337,7 +8337,7 @@ impl cfn_resources::CfnResource for M2tsSettings {
 /// Settings for the M3U8 container.
 ///
 /// The parent of this entity is StandardHlsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct M3u8Settings {
     ///
     /// The number of audio frames to insert for each PES packet.
@@ -8559,7 +8559,7 @@ impl cfn_resources::CfnResource for M3u8Settings {
 }
 
 /// The MaintenanceCreateSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceCreateSettings {
     /// Property description not available.
     ///
@@ -8599,7 +8599,7 @@ impl cfn_resources::CfnResource for MaintenanceCreateSettings {
 }
 
 /// The MaintenanceUpdateSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceUpdateSettings {
     /// Property description not available.
     ///
@@ -8652,7 +8652,7 @@ impl cfn_resources::CfnResource for MaintenanceUpdateSettings {
 /// The settings for the MediaPackage group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MediaPackageGroupSettings {
     ///
     /// The MediaPackage channel destination.
@@ -8688,7 +8688,7 @@ impl cfn_resources::CfnResource for MediaPackageGroupSettings {
 /// Destination settings for a MediaPackage output.
 ///
 /// The parent of this entity is OutputDestination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MediaPackageOutputDestinationSettings {
     ///
     /// The ID of the channel in MediaPackage that is the destination for       this output group. You don't need to specify the individual inputs       in MediaPackage; MediaLive handles the connection of the two       MediaLive pipelines to the two MediaPackage inputs. The MediaPackage       channel and MediaLive channel must be in the same Region.
@@ -8720,7 +8720,7 @@ impl cfn_resources::CfnResource for MediaPackageOutputDestinationSettings {
 /// The settings for a MediaPackage output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MediaPackageOutputSettings {}
 
 impl cfn_resources::CfnResource for MediaPackageOutputSettings {
@@ -8740,7 +8740,7 @@ impl cfn_resources::CfnResource for MediaPackageOutputSettings {
 /// Settings to enable and configure the motion graphics overlay       feature in the channel.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MotionGraphicsConfiguration {
     ///
     /// Enables or disables the motion graphics overlay feature in the       channel.
@@ -8788,7 +8788,7 @@ impl cfn_resources::CfnResource for MotionGraphicsConfiguration {
 /// Settings to enable and configure the motion graphics overlay       feature in the channel.
 ///
 /// The parent of this entity is MotionGraphicsConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MotionGraphicsSettings {
     ///
     /// Settings to configure the motion graphics overlay to use an HTML       asset.
@@ -8824,7 +8824,7 @@ impl cfn_resources::CfnResource for MotionGraphicsSettings {
 /// The configuration for this MP2 audio.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Mp2Settings {
     ///
     /// The average bitrate in bits/second.
@@ -8880,7 +8880,7 @@ impl cfn_resources::CfnResource for Mp2Settings {
 /// Settings to configure video filters that apply to the MPEG-2       codec.
 ///
 /// The parent of this entity is Mpeg2FilterSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Mpeg2FilterSettings {
     /// Settings for applying the temporal filter to the video.
     ///
@@ -8915,7 +8915,7 @@ impl cfn_resources::CfnResource for Mpeg2FilterSettings {
 /// The settings for the MPEG-2 codec in the output.
 ///
 /// The parent of this entity is VideoCodecSetting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Mpeg2Settings {
     ///
     /// Choose Off to disable adaptive quantization. Or choose another value to enable the quantizer and set its strength. The strengths are: Auto, Off, Low, Medium, High. When you enable this field, MediaLive allows intra-frame quantizers to vary, which might improve visual quality.
@@ -9146,7 +9146,7 @@ impl cfn_resources::CfnResource for Mpeg2Settings {
 /// The settings for a Microsoft Smooth output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MsSmoothGroupSettings {
     ///
     /// The value of the Acquisition Point Identity element that is used       in each message placed in the sparse track. Enabled only if       sparseTrackType is not "none."
@@ -9398,7 +9398,7 @@ impl cfn_resources::CfnResource for MsSmoothGroupSettings {
 /// Configuration of a Microsoft Smooth output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MsSmoothOutputSettings {
     ///
     /// Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
@@ -9442,7 +9442,7 @@ impl cfn_resources::CfnResource for MsSmoothOutputSettings {
 /// The settings for a Multiplex output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiplexGroupSettings {}
 
 impl cfn_resources::CfnResource for MultiplexGroupSettings {
@@ -9462,7 +9462,7 @@ impl cfn_resources::CfnResource for MultiplexGroupSettings {
 /// Configuration of a Multiplex output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiplexOutputSettings {
     ///
     /// Destination is a Multiplex.
@@ -9498,7 +9498,7 @@ impl cfn_resources::CfnResource for MultiplexOutputSettings {
 /// Destination settings for a Multiplex output.
 ///
 /// The parent of this entity is OutputDestination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MultiplexProgramChannelDestinationSettings {
     ///
     /// The ID of the Multiplex that the encoder is providing output to. You do not need to specify the individual inputs to the Multiplex; MediaLive will handle the connection of the two MediaLive pipelines to the two Multiplex instances. The Multiplex must be in the same region as the Channel.
@@ -9542,7 +9542,7 @@ impl cfn_resources::CfnResource for MultiplexProgramChannelDestinationSettings {
 /// Information about how to connect to the upstream system.
 ///
 /// The parent of this entity is InputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInputSettings {
     ///
     /// Information about how to connect to the upstream system.
@@ -9590,7 +9590,7 @@ impl cfn_resources::CfnResource for NetworkInputSettings {
 /// Complete these fields only if you want to insert watermarks of type Nielsen CBET
 ///
 /// The parent of this entity is NielsenWatermarksSettings
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NielsenCBET {
     ///
     /// Enter the CBET check digits to use in the watermark.
@@ -9646,7 +9646,7 @@ impl cfn_resources::CfnResource for NielsenCBET {
 /// The settings to configure Nielsen watermarks.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NielsenConfiguration {
     ///
     /// Enter the Distributor ID assigned to your organization by Nielsen.
@@ -9690,7 +9690,7 @@ impl cfn_resources::CfnResource for NielsenConfiguration {
 /// Complete these fields only if you want to insert watermarks of type Nielsen NAES II (N2) and Nielsen NAES VI (NW).
 ///
 /// The parent of this entity is NielsenWatermarksSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NielsenNaesIiNw {
     ///
     /// Enter the check digit string for the watermark
@@ -9745,7 +9745,7 @@ impl cfn_resources::CfnResource for NielsenNaesIiNw {
 /// Settings to configure Nielsen Watermarks in the audio encode.
 ///
 /// The parent of this entity is AudioWatermarkSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NielsenWatermarksSettings {
     ///
     /// Complete these fields only if you want to insert watermarks of type Nielsen CBET
@@ -9809,7 +9809,7 @@ impl cfn_resources::CfnResource for NielsenWatermarksSettings {
 /// The output settings.
 ///
 /// The parent of this entity is OutputGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Output {
     ///
     /// The names of the audio descriptions that are used as audio sources       for this output.
@@ -9893,7 +9893,7 @@ impl cfn_resources::CfnResource for Output {
 /// Configuration information for an output.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputDestination {
     ///
     /// The ID for this destination.
@@ -9965,7 +9965,7 @@ impl cfn_resources::CfnResource for OutputDestination {
 /// The configuration information for this output.
 ///
 /// The parent of this entity is OutputDestination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputDestinationSettings {
     ///
     /// The password parameter that holds the password for accessing the       downstream system. This password parameter applies only if the       downstream system requires credentials.
@@ -10033,7 +10033,7 @@ impl cfn_resources::CfnResource for OutputDestinationSettings {
 /// The settings for one output group.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputGroup {
     ///
     /// A custom output group name that you can optionally define. Only       letters, numbers, and the underscore character are allowed. The       maximum length is 32 characters.
@@ -10093,7 +10093,7 @@ impl cfn_resources::CfnResource for OutputGroup {
 /// The configuration of the output group.
 ///
 /// The parent of this entity is OutputGroup.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputGroupSettings {
     ///
     /// The configuration of an archive output group.
@@ -10242,7 +10242,7 @@ impl cfn_resources::CfnResource for OutputGroupSettings {
 /// A reference to an OutputDestination ID that is defined in the       channel.
 ///
 /// This entity is used by ArchiveGroupSettings,       FrameCaptureGroupSettings, HlsGroupSettings,       MediaPackageGroupSettings, MSSmoothGroupSettings,       RtmpOutputSettings, and UdpOutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputLocationRef {
     ///
     /// A reference ID for this destination.
@@ -10274,7 +10274,7 @@ impl cfn_resources::CfnResource for OutputLocationRef {
 /// The output settings.
 ///
 /// The parent of this entity is Output.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputSettings {
     ///
     /// The settings for an archive output.
@@ -10431,7 +10431,7 @@ impl cfn_resources::CfnResource for OutputSettings {
 /// The settings for passing through audio to the output.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PassThroughSettings {}
 
 impl cfn_resources::CfnResource for PassThroughSettings {
@@ -10451,7 +10451,7 @@ impl cfn_resources::CfnResource for PassThroughSettings {
 /// The container for WAV audio in the output group.
 ///
 /// The parent of this entity is ArchiveContainerSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RawSettings {}
 
 impl cfn_resources::CfnResource for RawSettings {
@@ -10471,7 +10471,7 @@ impl cfn_resources::CfnResource for RawSettings {
 /// Rec601 Settings
 ///
 /// The parents of this entity are H264ColorSpaceSettings and       H265ColorSpaceSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rec601Settings {}
 
 impl cfn_resources::CfnResource for Rec601Settings {
@@ -10491,7 +10491,7 @@ impl cfn_resources::CfnResource for Rec601Settings {
 /// Rec709 Settings
 ///
 /// The parents of this entity are H264ColorSpaceSettings and       H265ColorSpaceSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rec709Settings {}
 
 impl cfn_resources::CfnResource for Rec709Settings {
@@ -10511,7 +10511,7 @@ impl cfn_resources::CfnResource for Rec709Settings {
 /// The settings for remixing audio in the output.
 ///
 /// The parent of this entity is AudioDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RemixSettings {
     ///
     /// A mapping of input channels to output channels, with appropriate       gain adjustments.
@@ -10567,7 +10567,7 @@ impl cfn_resources::CfnResource for RemixSettings {
 /// The settings for RTMPCaptionInfo captions encode in the       output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RtmpCaptionInfoDestinationSettings {}
 
 impl cfn_resources::CfnResource for RtmpCaptionInfoDestinationSettings {
@@ -10587,7 +10587,7 @@ impl cfn_resources::CfnResource for RtmpCaptionInfoDestinationSettings {
 /// The configuration of an RTMP output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RtmpGroupSettings {
     ///
     /// Choose the ad marker type for this output group. MediaLive will create a message based on the content of each SCTE-35 message, format it for that marker type, and insert it in the datastream.
@@ -10691,7 +10691,7 @@ impl cfn_resources::CfnResource for RtmpGroupSettings {
 /// The settings for one RTMP output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RtmpOutputSettings {
     ///
     /// If set to verifyAuthenticity, verifies the TLS certificate chain       to a trusted certificate authority (CA). This causes RTMPS outputs       with self-signed certificates to fail.
@@ -10763,7 +10763,7 @@ impl cfn_resources::CfnResource for RtmpOutputSettings {
 /// The configuration of SCTE-20 plus embedded captions in the       output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte20PlusEmbeddedDestinationSettings {}
 
 impl cfn_resources::CfnResource for Scte20PlusEmbeddedDestinationSettings {
@@ -10783,7 +10783,7 @@ impl cfn_resources::CfnResource for Scte20PlusEmbeddedDestinationSettings {
 /// Information about the SCTE-20 captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte20SourceSettings {
     ///
     /// If upconvert, 608 data is both passed through the "608       compatibility bytes" fields of the 708 wrapper as well as translated       into 708. Any 708 data present in the source content is       discarded.
@@ -10827,7 +10827,7 @@ impl cfn_resources::CfnResource for Scte20SourceSettings {
 /// The configuration of SCTE-27 captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte27DestinationSettings {}
 
 impl cfn_resources::CfnResource for Scte27DestinationSettings {
@@ -10847,7 +10847,7 @@ impl cfn_resources::CfnResource for Scte27DestinationSettings {
 /// Information about the SCTE-27 captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte27SourceSettings {
     ///
     /// If you will configure a WebVTT caption description that references this caption selector, use this field to provide the language to consider when translating the image-based source to text.
@@ -10891,7 +10891,7 @@ impl cfn_resources::CfnResource for Scte27SourceSettings {
 /// The setup of SCTE-35 splice insert handling.
 ///
 /// The parent of this entity is AvailSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte35SpliceInsert {
     ///
     /// When specified, this offset (in milliseconds) is added to the       input ad avail PTS time. This applies only to embedded SCTE 104/35       messages. It doesn't apply to OOB messages.
@@ -10947,7 +10947,7 @@ impl cfn_resources::CfnResource for Scte35SpliceInsert {
 /// The settings for the SCTE-35 time signal APOS mode.
 ///
 /// The parent of this entity is AvailSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scte35TimeSignalApos {
     ///
     /// When specified, this offset (in milliseconds) is added to the       input ad avail PTS time. This applies only to embedded SCTE 104/35       messages. It doesn't apply to OOB messages.
@@ -11003,7 +11003,7 @@ impl cfn_resources::CfnResource for Scte35TimeSignalApos {
 /// The setup of SMPTE-TT captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SmpteTtDestinationSettings {}
 
 impl cfn_resources::CfnResource for SmpteTtDestinationSettings {
@@ -11023,7 +11023,7 @@ impl cfn_resources::CfnResource for SmpteTtDestinationSettings {
 /// The configuration of an HLS output that is a standard output (not       an audio-only output).
 ///
 /// The parent of this entity is HlsSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StandardHlsSettings {
     ///
     /// Lists all the audio groups that are used with the video output       stream. This inputs all the audio GROUP-IDs that are associated with       the video, separated by a comma (,).
@@ -11071,7 +11071,7 @@ impl cfn_resources::CfnResource for StandardHlsSettings {
 /// The static key settings.
 ///
 /// The parent of this entity is KeyProviderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StaticKeySettings {
     ///
     /// The URL of the license server that is used for protecting       content.
@@ -11119,7 +11119,7 @@ impl cfn_resources::CfnResource for StaticKeySettings {
 /// The settings for a Teletext captions output encode.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TeletextDestinationSettings {}
 
 impl cfn_resources::CfnResource for TeletextDestinationSettings {
@@ -11139,7 +11139,7 @@ impl cfn_resources::CfnResource for TeletextDestinationSettings {
 /// Information about the Teletext captions to extract from the       input.
 ///
 /// The parent of this entity is CaptionSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TeletextSourceSettings {
     ///
     /// Settings to configure the caption rectangle for an output captions       that will be created using this Teletext source captions.
@@ -11187,7 +11187,7 @@ impl cfn_resources::CfnResource for TeletextSourceSettings {
 /// Settings for the temporal filter to apply to the video.
 ///
 /// The parents of this entity are H264FilterSettings,       H265FilterSettings, and Mpeg2FilterSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TemporalFilterSettings {
     ///
     /// If you enable this filter, the results are the following: - If the source content is noisy (it contains excessive digital artifacts), the filter cleans up the source. - If the source content is already clean, the filter tends to decrease the bitrate, especially when the rate control mode is QVBR.
@@ -11229,7 +11229,7 @@ impl cfn_resources::CfnResource for TemporalFilterSettings {
 }
 
 /// The TimecodeBurninSettings property type specifies Property description not available. for an AWS::MediaLive::Channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimecodeBurninSettings {
     /// Property description not available.
     ///
@@ -11282,7 +11282,7 @@ impl cfn_resources::CfnResource for TimecodeBurninSettings {
 /// The configuration of the timecode in the output.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimecodeConfig {
     ///
     /// Identifies the source for the timecode that will be associated       with the channel outputs. Embedded (embedded): Initialize the output       timecode with timecode from the source. If no embedded timecode is       detected in the source, the system falls back to using "Start at 0"       (zerobased). System Clock (systemclock): Use the UTC time. Start at       0 (zerobased): The time of the first frame of the channel will be       00:00:00:00.
@@ -11326,7 +11326,7 @@ impl cfn_resources::CfnResource for TimecodeConfig {
 /// The setup of TTML captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TtmlDestinationSettings {
     ///
     /// When set to passthrough, passes through style and position       information from a TTML-like input source (TTML, SMPTE-TT, CFF-TT)       to the CFF-TT output or TTML output.
@@ -11358,7 +11358,7 @@ impl cfn_resources::CfnResource for TtmlDestinationSettings {
 /// The configuration of a UDP output.
 ///
 /// The parent of this entity is UdpOutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UdpContainerSettings {
     ///
     /// The M2TS configuration for this UDP output.
@@ -11394,7 +11394,7 @@ impl cfn_resources::CfnResource for UdpContainerSettings {
 /// The configuration of a UDP output group.
 ///
 /// The parent of this entity is OutputGroupSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UdpGroupSettings {
     ///
     /// Specifies the behavior of the last resort when the input video is       lost, and no more backup inputs are available. When dropTs is       selected, the entire transport stream stops emitting. When       dropProgram is selected, the program can be dropped from the       transport stream (and replaced with null packets to meet the TS       bitrate requirement). Or when emitProgram is selected, the transport       stream continues to be produced normally with repeat frames, black       frames, or slate frames substituted for the absent input       video.
@@ -11450,7 +11450,7 @@ impl cfn_resources::CfnResource for UdpGroupSettings {
 /// The settings for one UDP output.
 ///
 /// The parent of this entity is OutputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UdpOutputSettings {
     ///
     /// The UDP output buffering in milliseconds. Larger values increase       latency through the transcoder but simultaneously assist the       transcoder in maintaining a constant, low-jitter UDP/RTP output       while accommodating clock recovery, input switching, input       disruptions, picture reordering, and so on.
@@ -11530,7 +11530,7 @@ impl cfn_resources::CfnResource for UdpOutputSettings {
 /// MediaLive will perform a failover if content is considered black       for the specified period.
 ///
 /// The parent of this entity is FailoverConditionSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoBlackFailoverSettings {
     ///
     /// A value used in calculating the threshold below which MediaLive considers a pixel to be 'black'. For the input to be considered black, every pixel in a frame must be below this threshold. The threshold is calculated as a percentage (expressed as a decimal) of white. Therefore .1 means 10% white (or 90% black). Note how the formula works for any color depth. For example, if you set this field to 0.1 in 10-bit color depth: (1023*0.1=102.3), which means a pixel value of 102 or less is 'black'. If you set this field to .1 in an 8-bit color depth: (255*0.1=25.5), which means a pixel value of 25 or less is 'black'. The range is 0.0 to 1.0, with any number of decimal places.
@@ -11574,7 +11574,7 @@ impl cfn_resources::CfnResource for VideoBlackFailoverSettings {
 /// The settings for the video codec in the output.
 ///
 /// The parent of this entity is VideoDescription.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoCodecSettings {
     ///
     /// The settings for the video codec in a frame capture output.
@@ -11658,7 +11658,7 @@ impl cfn_resources::CfnResource for VideoCodecSettings {
 /// Encoding information for one output video.
 ///
 /// The parent of this entity is EncoderSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoDescription {
     ///
     /// The video codec settings.
@@ -11766,7 +11766,7 @@ impl cfn_resources::CfnResource for VideoDescription {
 /// Information about the video to extract from the input. An input       can contain only one video selector.
 ///
 /// The parent of this entity is InputSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoSelector {
     ///
     /// Specifies the color space of an input. This setting works in       tandem with colorSpaceConversion to determine if MediaLive will       perform any conversion.
@@ -11842,7 +11842,7 @@ impl cfn_resources::CfnResource for VideoSelector {
 /// Settings to configure color space settings in the incoming       video.
 ///
 /// The parent of this entity is VideoSelector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoSelectorColorSpaceSettings {
     ///
     /// Settings to configure color space settings in the incoming       video.
@@ -11878,7 +11878,7 @@ impl cfn_resources::CfnResource for VideoSelectorColorSpaceSettings {
 /// Selects a specific PID from within a video source.
 ///
 /// The parent of this entity is VideoSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoSelectorPid {
     ///
     /// Selects a specific PID from within a video source.
@@ -11910,7 +11910,7 @@ impl cfn_resources::CfnResource for VideoSelectorPid {
 /// Used to extract video by the program ID.
 ///
 /// The parent of this entity is VideoSelectorSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoSelectorProgramId {
     ///
     /// Selects a specific program from within a multi-program transport       stream. If the program doesn't exist, MediaLive selects the first       program within the transport stream by default.
@@ -11942,7 +11942,7 @@ impl cfn_resources::CfnResource for VideoSelectorProgramId {
 /// Information about the video to extract from the input.
 ///
 /// The parent of this entity is VideoSelector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VideoSelectorSettings {
     ///
     /// Used to extract video by PID.
@@ -11994,7 +11994,7 @@ impl cfn_resources::CfnResource for VideoSelectorSettings {
 /// Settings to enable VPC mode in the channel, so that the endpoints       for all outputs are in your VPC.
 ///
 /// This entity is at the top level in the channel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcOutputSettings {
     ///
     /// List of public address allocation IDs to associate with ENIs that       will be created in Output VPC. Must specify one for SINGLE_PIPELINE,       two for STANDARD channels
@@ -12050,7 +12050,7 @@ impl cfn_resources::CfnResource for VpcOutputSettings {
 /// The setup of WAV audio in the output.
 ///
 /// The parent of this entity is AudioCodecSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WavSettings {
     ///
     /// Bits per sample.
@@ -12106,7 +12106,7 @@ impl cfn_resources::CfnResource for WavSettings {
 /// The configuration of Web VTT captions in the output.
 ///
 /// The parent of this entity is CaptionDestinationSettings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebvttDestinationSettings {
     ///
     /// Controls whether the color and position of the source captions is passed through to the WebVTT output captions. PASSTHROUGH - Valid only if the source captions are EMBEDDED or TELETEXT. NO_STYLE_DATA - Don't pass through the style. The output captions will not contain any font styling information.

@@ -1,5 +1,5 @@
 /// The AWS::IoT1Click::Project resource creates an empty project with a placement template. A project contains zero or more placements that      adhere to the placement template defined in the project. For more information, see CreateProject     in the AWS IoT 1-Click Projects API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProject {
     ///
     /// The description of the project.
@@ -43,7 +43,7 @@ pub struct CfnProject {
     pub att_project_name: CfnProjectprojectname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectarn;
 impl CfnProjectarn {
     pub fn att_name(&self) -> &'static str {
@@ -51,7 +51,7 @@ impl CfnProjectarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnProjectprojectname;
 impl CfnProjectprojectname {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl cfn_resources::CfnResource for CfnProject {
 /// In AWS CloudFormation, use the DeviceTemplate property type to define the template for an AWS IoT 1-Click project.
 ///
 /// DeviceTemplate is a property of the AWS::IoT1Click::Project resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceTemplate {
     ///
     /// An optional AWS Lambda function to invoke instead of the default AWS Lambda function provided by    the placement template.
@@ -122,7 +122,7 @@ impl cfn_resources::CfnResource for DeviceTemplate {
 /// In AWS CloudFormation, use the PlacementTemplate property type to define the template for an AWS IoT 1-Click project.
 ///
 /// PlacementTemplate is a property of the AWS::IoT1Click::Project resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PlacementTemplate {
     ///
     /// The default attributes (key-value pairs) to be applied to all placements using this    template.

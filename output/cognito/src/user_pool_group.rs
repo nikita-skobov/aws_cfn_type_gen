@@ -1,7 +1,7 @@
 /// Specifies a new group in the identified user pool.
 ///
 /// Calling this action requires developer credentials.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolGroup {
     ///
     /// A string containing the description of the group.

@@ -1,5 +1,5 @@
 /// The AWS::AmplifyUIBuilder::Form resource specifies all of the information that is required to create a form.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnForm {
     ///
     /// The unique ID of the Amplify app associated with the form.
@@ -141,7 +141,7 @@ pub struct CfnForm {
     pub att_id: CfnFormid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFormid;
 impl CfnFormid {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for CfnForm {
 }
 
 /// The FieldConfig property specifies the configuration information for a field in a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldConfig {
     ///
     /// Specifies whether to hide a field.
@@ -256,7 +256,7 @@ impl cfn_resources::CfnResource for FieldConfig {
 }
 
 /// The FieldInputConfig property specifies the configuration for the default input values to display for a field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldInputConfig {
     ///
     /// Specifies whether a field has a default value.
@@ -471,7 +471,7 @@ impl cfn_resources::CfnResource for FieldInputConfig {
 }
 
 /// The FieldPosition property specifies the field position.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldPosition {
     /// Property description not available.
     ///
@@ -522,7 +522,7 @@ impl cfn_resources::CfnResource for FieldPosition {
 }
 
 /// The FieldValidationConfiguration property specifies the validation configuration for a field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldValidationConfiguration {
     ///
     /// The validation to perform on a number value.
@@ -587,7 +587,7 @@ impl cfn_resources::CfnResource for FieldValidationConfiguration {
 }
 
 /// The FileUploaderFieldConfig property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Form.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileUploaderFieldConfig {
     /// Property description not available.
     ///
@@ -669,7 +669,7 @@ impl cfn_resources::CfnResource for FileUploaderFieldConfig {
 }
 
 /// The FormButton property specifies the configuration for a button UI element that is a part of a form.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormButton {
     ///
     /// Describes the button's properties.
@@ -727,7 +727,7 @@ impl cfn_resources::CfnResource for FormButton {
 }
 
 /// The FormCTA property specifies the call to action button configuration for the form.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormCTA {
     ///
     /// Displays a cancel button.
@@ -799,7 +799,7 @@ impl cfn_resources::CfnResource for FormCTA {
 }
 
 /// The FormDataTypeConfig property specifies the data type configuration for the data source associated with a form.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormDataTypeConfig {
     ///
     /// The data source type, either an Amplify DataStore model or a custom data type.
@@ -839,7 +839,7 @@ impl cfn_resources::CfnResource for FormDataTypeConfig {
 }
 
 /// The FormInputValueProperty property specifies the configuration for an input field on a form. Use    FormInputValueProperty to specify the values to render or bind by    default.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormInputValueProperty {
     ///
     /// The value to assign to the input field.
@@ -869,7 +869,7 @@ impl cfn_resources::CfnResource for FormInputValueProperty {
 }
 
 /// The FormStyle property specifies the configuration for the form's style.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormStyle {
     ///
     /// The spacing for the horizontal gap.
@@ -935,7 +935,7 @@ impl cfn_resources::CfnResource for FormStyle {
 }
 
 /// The FormStyleConfig property specifies the configuration settings for the form's style properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FormStyleConfig {
     /// Property description not available.
     ///
@@ -975,7 +975,7 @@ impl cfn_resources::CfnResource for FormStyleConfig {
 }
 
 /// The SectionalElement property specifies the configuration information for a visual helper element for a form. A sectional    element can be a header, a text block, or a divider. These elements are static and not    associated with any data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SectionalElement {
     /// Property description not available.
     ///
@@ -1067,7 +1067,7 @@ impl cfn_resources::CfnResource for SectionalElement {
 }
 
 /// The ValueMapping property specifies the association between a complex object and a display value. Use ValueMapping to store    how to represent complex objects when they are displayed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValueMapping {
     ///
     /// The value to display for the complex object.
@@ -1114,7 +1114,7 @@ impl cfn_resources::CfnResource for ValueMapping {
 }
 
 /// The ValueMappings property specifies the data binding configuration for a value map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ValueMappings {
     ///
     /// The value and display value pairs.

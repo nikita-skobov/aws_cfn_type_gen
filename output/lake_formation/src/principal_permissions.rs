@@ -1,5 +1,5 @@
 /// The AWS::LakeFormation::PrincipalPermissions resource represents the permissions that a principal has on a Data Catalog resource (such as AWS Glue databases or AWS Glue tables).     When you create a PrincipalPermissions resource, the permissions are granted via the AWS Lake Formation GrantPermissions API operation. When you delete a PrincipalPermissions resource, the permissions on principal-resource pair are revoked via the AWS Lake Formation RevokePermissions API operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrincipalPermissions {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store.     It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
@@ -64,7 +64,7 @@ pub struct CfnPrincipalPermissions {
     pub att_resource_identifier: CfnPrincipalPermissionsresourceidentifier,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrincipalPermissionsprincipalidentifier;
 impl CfnPrincipalPermissionsprincipalidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -72,7 +72,7 @@ impl CfnPrincipalPermissionsprincipalidentifier {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPrincipalPermissionsresourceidentifier;
 impl CfnPrincipalPermissionsresourceidentifier {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl cfn_resources::CfnResource for CfnPrincipalPermissions {
 }
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnWildcard {
     ///
     /// Excludes column names. Any column with this name will be excluded.
@@ -129,7 +129,7 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 }
 
 /// A structure that describes certain columns on certain rows.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataCellsFilterResource {
     ///
     /// A database in the Data Catalog.
@@ -191,7 +191,7 @@ impl cfn_resources::CfnResource for DataCellsFilterResource {
 }
 
 /// The AWS Lake Formation principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLakePrincipal {
     ///
     /// An identifier for the AWS Lake Formation principal.
@@ -221,7 +221,7 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 }
 
 /// A structure for a data location object where permissions are granted or revoked.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataLocationResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
@@ -261,7 +261,7 @@ impl cfn_resources::CfnResource for DataLocationResource {
 }
 
 /// A structure for the database object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseResource {
     ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -301,7 +301,7 @@ impl cfn_resources::CfnResource for DatabaseResource {
 }
 
 /// The LF-tag key and values attached to a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LFTag {
     ///
     /// The key-name for the LF-tag.
@@ -343,7 +343,7 @@ impl cfn_resources::CfnResource for LFTag {
 }
 
 /// A structure containing an LF-tag key and values for a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LFTagKeyResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with Data Catalog.
@@ -396,7 +396,7 @@ impl cfn_resources::CfnResource for LFTagKeyResource {
 /// A list of LF-tag conditions that define a resource's LF-tag policy.
 ///
 /// A structure that allows an admin to grant user permissions on certain conditions. For example, granting a role access to all columns that do not have the LF-tag 'PII' in tables that have the LF-tag 'Prod'.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LFTagPolicyResource {
     ///
     /// The identifier for the Data Catalog. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -447,7 +447,7 @@ impl cfn_resources::CfnResource for LFTagPolicyResource {
 }
 
 /// A structure for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Resource {
     ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
@@ -585,7 +585,7 @@ impl cfn_resources::CfnResource for Resource {
 }
 
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableResource {
     /// Property description not available.
     ///
@@ -652,7 +652,7 @@ impl cfn_resources::CfnResource for TableResource {
 /// A structure for a table with columns object. This object is only used when granting a SELECT permission.
 ///
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableWithColumnsResource {
     ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.

@@ -1,5 +1,5 @@
 /// Create remote VPC connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcConnection {
     ///
     /// The type of private link authentication.
@@ -72,7 +72,7 @@ pub struct CfnVpcConnection {
     pub att_arn: CfnVpcConnectionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcConnectionarn;
 impl CfnVpcConnectionarn {
     pub fn att_name(&self) -> &'static str {

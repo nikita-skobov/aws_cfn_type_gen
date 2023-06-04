@@ -1,5 +1,5 @@
 /// Specifies the default version of a resource. The default version of a resource will be used in CloudFormation operations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefaultVersion {
     ///
     /// The name of the resource.
@@ -63,7 +63,7 @@ pub struct CfnResourceDefaultVersion {
     pub att_arn: CfnResourceDefaultVersionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefaultVersionarn;
 impl CfnResourceDefaultVersionarn {
     pub fn att_name(&self) -> &'static str {

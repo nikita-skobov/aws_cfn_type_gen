@@ -1,5 +1,5 @@
 /// The AWS::Location::TrackerConsumer resource specifies an association       between a geofence collection and a tracker resource. The geofence collection is       referred to as the consumer of the tracker. This allows the tracker resource       to communicate location data to the linked geofence collection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTrackerConsumer {
     ///
     /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker       resource. Used when you need to specify a resource across all AWS.

@@ -3,7 +3,7 @@
 /// Your AWS account comes with a default scheduler group. You associate a new schedule with the default group or with schedule groups that     you create and manage. You can create up to 500 schedule groups in your AWS account.     With EventBridge Scheduler, you apply tags to schedule groups, not to individual schedules to organize your resources.
 ///
 /// For more information about managing schedule groups, see Managing a schedule group     in the EventBridge Scheduler User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduleGroup {
     ///
     /// The name of the schedule group.
@@ -44,7 +44,7 @@ pub struct CfnScheduleGroup {
     pub att_state: CfnScheduleGroupstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduleGrouparn;
 impl CfnScheduleGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl CfnScheduleGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduleGroupcreationdate;
 impl CfnScheduleGroupcreationdate {
     pub fn att_name(&self) -> &'static str {
@@ -60,7 +60,7 @@ impl CfnScheduleGroupcreationdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduleGrouplastmodificationdate;
 impl CfnScheduleGrouplastmodificationdate {
     pub fn att_name(&self) -> &'static str {
@@ -68,7 +68,7 @@ impl CfnScheduleGrouplastmodificationdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnScheduleGroupstate;
 impl CfnScheduleGroupstate {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl cfn_resources::CfnResource for CfnScheduleGroup {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

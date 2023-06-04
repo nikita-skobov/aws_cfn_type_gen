@@ -1,7 +1,7 @@
 /// Use an AWS::WAFv2::RegexPatternSet to have AWS WAF inspect a web request component for a specific set of regular expression patterns.
 ///
 /// You use a regex pattern set by providing its Amazon Resource Name (ARN) to the rule statement RegexPatternSetReferenceStatement, when you add a rule to a rule group or web ACL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegexPatternSet {
     ///
     /// A description of the set that helps with identification.
@@ -84,7 +84,7 @@ pub struct CfnRegexPatternSet {
     pub att_id: CfnRegexPatternSetid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegexPatternSetarn;
 impl CfnRegexPatternSetarn {
     pub fn att_name(&self) -> &'static str {
@@ -92,7 +92,7 @@ impl CfnRegexPatternSetarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRegexPatternSetid;
 impl CfnRegexPatternSetid {
     pub fn att_name(&self) -> &'static str {
@@ -165,7 +165,7 @@ impl cfn_resources::CfnResource for CfnRegexPatternSet {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

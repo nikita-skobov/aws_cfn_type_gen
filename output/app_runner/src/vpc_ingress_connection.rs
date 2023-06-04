@@ -1,7 +1,7 @@
 /// The AWS::AppRunner::VpcIngressConnection resource is an AWS App Runner resource type that specifies an App Runner VPC    Ingress Connection.
 ///
 /// App Runner requires this resource when you want to associate your App Runner service to an Amazon VPC endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcIngressConnection {
     ///
     /// Specifications for the customer’s Amazon VPC and the related AWS PrivateLink VPC endpoint that are used to create the VPC Ingress Connection    resource.
@@ -71,7 +71,7 @@ pub struct CfnVpcIngressConnection {
     pub att_vpc_ingress_connection_arn: CfnVpcIngressConnectionvpcingressconnectionarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcIngressConnectiondomainname;
 impl CfnVpcIngressConnectiondomainname {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnVpcIngressConnectiondomainname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcIngressConnectionstatus;
 impl CfnVpcIngressConnectionstatus {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnVpcIngressConnectionstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVpcIngressConnectionvpcingressconnectionarn;
 impl CfnVpcIngressConnectionvpcingressconnectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
 }
 
 /// Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IngressVpcConfiguration {
     ///
     /// The ID of the VPC endpoint that your App Runner service connects to.
@@ -252,7 +252,7 @@ impl cfn_resources::CfnResource for IngressVpcConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,7 +1,7 @@
 /// The AWS::Chatbot::SlackChannelConfiguration resource configures a Slack channel to allow users to use AWS Chatbot with AWS CloudFormation templates.
 ///
 /// This resource requires some setup to be done in the AWS Chatbot console. To provide the required Slack workspace ID, you must perform the initial authorization flow with       Slack in the AWS Chatbot console, then copy and paste the workspace ID from the console.       For more details, see steps 1-4 in Setting Up AWS Chatbot with Slack in the AWS Chatbot User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSlackChannelConfiguration {
     ///
     /// The name of the configuration.
@@ -107,7 +107,7 @@ pub struct CfnSlackChannelConfiguration {
     pub att_arn: CfnSlackChannelConfigurationarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSlackChannelConfigurationarn;
 impl CfnSlackChannelConfigurationarn {
     pub fn att_name(&self) -> &'static str {

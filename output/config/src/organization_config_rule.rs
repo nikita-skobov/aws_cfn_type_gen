@@ -13,7 +13,7 @@
 /// AWS Config Custom Rules are rules that you create from scratch. There are two ways to create AWS Config custom rules: with Lambda functions       (AWS Lambda Developer Guide) and with Guard (Guard GitHub           Repository), a policy-as-code language.             AWS Config custom rules created with AWS Lambda       are called AWS Config Custom Lambda Rules and AWS Config custom rules created with       Guard are called AWS Config Custom Policy Rules.
 ///
 /// If you are adding a new AWS Config Custom Lambda rule, you first need to create an AWS Lambda function in the management account or a delegated       administrator that the rule invokes to evaluate your resources. You also need to create an IAM role in the managed account that can be assumed by the Lambda function.       When you use PutOrganizationConfigRule to add a Custom Lambda rule to AWS Config, you must       specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOrganizationConfigRule {
     ///
     /// A comma-separated list of accounts excluded from organization AWS Config rule.
@@ -134,7 +134,7 @@ impl cfn_resources::CfnResource for CfnOrganizationConfigRule {
 }
 
 /// The OrganizationCustomPolicyRuleMetadata property type specifies Property description not available. for an AWS::Config::OrganizationConfigRule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrganizationCustomPolicyRuleMetadata {
     /// Property description not available.
     ///
@@ -271,7 +271,7 @@ impl cfn_resources::CfnResource for OrganizationCustomPolicyRuleMetadata {
 }
 
 /// An object that specifies organization custom rule metadata such as resource type, resource ID of AWS resource, Lambda function ARN, 			and organization trigger types that trigger AWS Config to evaluate your AWS resources against a rule. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrganizationCustomRuleMetadata {
     ///
     /// The description that you provide for your organization AWS Config rule.
@@ -413,7 +413,7 @@ pub struct OrganizationCustomRuleMetadata {
     pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OrganizationCustomRuleMetadataMaximumExecutionFrequencyEnum {
     /// One_Hour
     #[serde(rename = "One_Hour")]
@@ -592,7 +592,7 @@ impl cfn_resources::CfnResource for OrganizationCustomRuleMetadata {
 }
 
 /// An object that specifies organization managed rule metadata such as resource type and ID of AWS resource along with the rule identifier. 			It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrganizationManagedRuleMetadata {
     ///
     /// The description that you provide for your organization AWS Config rule.
@@ -721,7 +721,7 @@ pub struct OrganizationManagedRuleMetadata {
     pub tag_value_scope: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OrganizationManagedRuleMetadataMaximumExecutionFrequencyEnum {
     /// One_Hour
     #[serde(rename = "One_Hour")]

@@ -1,5 +1,5 @@
 /// Associates an application to an entitlement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationEntitlementAssociation {
     /// The identifier of the application.
     ///

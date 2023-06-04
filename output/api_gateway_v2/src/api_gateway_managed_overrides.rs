@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::ApiGatewayManagedOverrides resource overrides the       default properties of API Gateway-managed resources that are implicitly configured for       you when you use quick create. When you create an API by using quick create, an         AWS::ApiGatewayV2::Route, AWS::ApiGatewayV2::Integration,       and AWS::ApiGatewayV2::Stage are created for you and associated with your         AWS::ApiGatewayV2::Api. The         AWS::ApiGatewayV2::ApiGatewayManagedOverrides resource enables you to       set, or override the properties of these implicit resources. Supported only for HTTP       APIs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiGatewayManagedOverrides {
     ///
     /// The ID of the API for which to override the configuration of API Gateway-managed resources.
@@ -72,7 +72,7 @@ impl cfn_resources::CfnResource for CfnApiGatewayManagedOverrides {
 }
 
 /// The AccessLogSettings property overrides the access log settings for an API Gateway-managed stage.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLogSettings {
     ///
     /// The ARN of the CloudWatch Logs log group to receive access logs.
@@ -114,7 +114,7 @@ impl cfn_resources::CfnResource for AccessLogSettings {
 }
 
 /// The IntegrationOverrides property overrides the integration settings for       an API Gateway-managed integration. If you remove this property, API Gateway restores the default values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegrationOverrides {
     ///
     /// The description of the integration.
@@ -180,7 +180,7 @@ impl cfn_resources::CfnResource for IntegrationOverrides {
 }
 
 /// The RouteOverrides property overrides the route configuration for an API       Gateway-managed route. If you remove this property, API Gateway restores the default values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RouteOverrides {
     ///
     /// The authorization scopes supported by this route.
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for RouteOverrides {
 }
 
 /// The RouteSettings property overrides the route settings for an API Gateway-managed route.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RouteSettings {
     ///
     /// Specifies whether (true) or not (false) data trace logging is enabled for this route. This property affects the log entries pushed to Amazon CloudWatch Logs. Supported only for WebSocket APIs.
@@ -336,7 +336,7 @@ impl cfn_resources::CfnResource for RouteSettings {
 }
 
 /// The StageOverrides property overrides the stage configuration for an API       Gateway-managed stage. If you remove this property, API Gateway restores the default values.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StageOverrides {
     ///
     /// Settings for logging access in a stage.

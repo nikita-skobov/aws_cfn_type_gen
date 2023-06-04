@@ -1,5 +1,5 @@
 /// Creates a self-service action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceAction {
     /// The language code.
     ///
@@ -73,7 +73,7 @@ pub struct CfnServiceAction {
     pub att_id: CfnServiceActionid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceActionDefinitionTypeEnum {
     /// SSM_AUTOMATION
     #[serde(rename = "SSM_AUTOMATION")]
@@ -86,7 +86,7 @@ impl Default for ServiceActionDefinitionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServiceActionid;
 impl CfnServiceActionid {
     pub fn att_name(&self) -> &'static str {
@@ -142,7 +142,7 @@ impl cfn_resources::CfnResource for CfnServiceAction {
 }
 
 /// The list of parameters in JSON format.    For example: [{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}] or [{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}].
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefinitionParameter {
     ///
     /// The parameter key.

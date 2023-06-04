@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Authorizer resource creates an authorizer for a       WebSocket API or an HTTP API. To learn more, see Controlling and managing access to a WebSocket API in API Gateway and         Controlling and         managing access to an HTTP API in API Gateway in the API Gateway         Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAuthorizer {
     ///
     /// The API identifier.
@@ -138,7 +138,7 @@ pub struct CfnAuthorizer {
     pub att_authorizer_id: CfnAuthorizerauthorizerid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAuthorizerauthorizerid;
 impl CfnAuthorizerauthorizerid {
     pub fn att_name(&self) -> &'static str {
@@ -165,7 +165,7 @@ impl cfn_resources::CfnResource for CfnAuthorizer {
 }
 
 /// The JWTConfiguration property specifies the configuration of a JWT          authorizer. Required for the JWT authorizer type. Supported only for          HTTP APIs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JWTConfiguration {
     ///
     /// A list of the intended recipients of the JWT. A valid JWT must provide an          aud that matches at least one entry in this list. See RFC 7519.        Required for the JWT authorizer type. Supported only for HTTP APIs.

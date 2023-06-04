@@ -1,5 +1,5 @@
 /// Creates a notification rule for a resource. The rule specifies the events you want       notifications about and the targets (such as AWS Chatbot topics or AWS Chatbot clients configured for Slack) where you want to receive       them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNotificationRule {
     /// Property description not available.
     ///
@@ -131,7 +131,7 @@ pub struct CfnNotificationRule {
     pub att_arn: CfnNotificationRulearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationRuleDetailTypeEnum {
     /// BASIC
     #[serde(rename = "BASIC")]
@@ -148,7 +148,7 @@ impl Default for NotificationRuleDetailTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationRuleStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -165,7 +165,7 @@ impl Default for NotificationRuleStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNotificationRulearn;
 impl CfnNotificationRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -219,7 +219,7 @@ impl cfn_resources::CfnResource for CfnNotificationRule {
 }
 
 /// Information about the AWS Chatbot topics or AWS Chatbot clients associated with a notification rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Target {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Chatbot topic or AWS Chatbot client.

@@ -1,5 +1,5 @@
 /// The AWS::SSM::MaintenanceWindowTask resource defines information about a     task for an AWS Systems Manager maintenance window. For more information, see RegisterTaskWithMaintenanceWindow in the AWS Systems Manager API       Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMaintenanceWindowTask {
     ///
     /// The specification for whether tasks should continue to run after the cutoff time specified  in the maintenance windows is reached.
@@ -224,7 +224,7 @@ pub struct CfnMaintenanceWindowTask {
     pub window_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaintenanceWindowTaskCutoffBehaviorEnum {
     /// CANCEL_TASK
     #[serde(rename = "CANCEL_TASK")]
@@ -241,7 +241,7 @@ impl Default for MaintenanceWindowTaskCutoffBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaintenanceWindowTaskTaskTypeEnum {
     /// AUTOMATION
     #[serde(rename = "AUTOMATION")]
@@ -439,7 +439,7 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
 }
 
 /// Configuration options for sending command output to Amazon CloudWatch Logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchOutputConfig {
     ///
     /// The name of the CloudWatch Logs log group where you want to send command output. If you  don't specify a group name, AWS Systems Manager automatically creates a log group for you. The log group  uses the following naming format:
@@ -505,7 +505,7 @@ impl cfn_resources::CfnResource for CloudWatchOutputConfig {
 /// The LoggingInfo property type specifies information about the Amazon S3    bucket to write instance-level logs to.
 ///
 /// LoggingInfo is a property of the AWS::SSM::MaintenanceWindowTask resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingInfo {
     ///
     /// The AWS Region where the S3 bucket is located.
@@ -626,7 +626,7 @@ impl cfn_resources::CfnResource for LoggingInfo {
 /// MaintenanceWindowAutomationParameters is a property of the TaskInvocationParameters property type.
 ///
 /// For information about available parameters in Automation runbooks, you can view the    content of the runbook itself in the Systems Manager console. For information, see View runbook content in the AWS Systems Manager User    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceWindowAutomationParameters {
     ///
     /// The version of an Automation runbook to use during task execution.
@@ -672,7 +672,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowAutomationParameters {
 /// The MaintenanceWindowLambdaParameters property type specifies the parameters    for a LAMBDA task type for a maintenance window task in AWS Systems Manager.
 ///
 /// MaintenanceWindowLambdaParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Client-specific information to pass to the AWS Lambda function that you're invoking. You can    then use the context variable to process the client information in your AWS Lambda    function.
@@ -786,7 +786,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowLambdaParameters {
 /// For information about available parameters in SSM Command documents, you can view the    content of the document itself in the Systems Manager console. For information, see Viewing SSM command     document content in the AWS Systems Manager User Guide.
 ///
 /// MaintenanceWindowRunCommandParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Configuration options for sending command output to Amazon CloudWatch Logs.
@@ -947,7 +947,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     pub timeout_seconds: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
     /// Sha1
     #[serde(rename = "Sha1")]
@@ -1056,7 +1056,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowRunCommandParameters {
 /// The MaintenanceWindowStepFunctionsParameters property type specifies the    parameters for the execution of a STEP_FUNCTIONS task in a Systems Manager    maintenance window.
 ///
 /// MaintenanceWindowStepFunctionsParameters is a property of the TaskInvocationParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// The inputs for the STEP_FUNCTIONS task.
@@ -1139,7 +1139,7 @@ impl cfn_resources::CfnResource for MaintenanceWindowStepFunctionsParameters {
 /// The NotificationConfig property type specifies configurations for sending    notifications for a maintenance window task in AWS Systems Manager.
 ///
 /// NotificationConfig is a property of the MaintenanceWindowRunCommandParameters property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotificationConfig {
     ///
     /// An Amazon Resource Name (ARN) for an Amazon Simple Notification Service (Amazon SNS) topic. Run  Command pushes notifications about command status changes to this topic.
@@ -1181,7 +1181,7 @@ pub struct NotificationConfig {
     pub notification_type: Option<NotificationConfigNotificationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NotificationConfigNotificationTypeEnum {
     /// Command
     #[serde(rename = "Command")]
@@ -1215,7 +1215,7 @@ impl cfn_resources::CfnResource for NotificationConfig {
 /// The Target property type specifies targets (either instances or window    target IDs). You specify instances by using Key=InstanceIds,Values=<instanceid1>,<instanceid2>. You specify window target IDs using    Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2> for a maintenance window task in AWS Systems Manager.
 ///
 /// Target is a property of the AWS::SSM::MaintenanceWindowTask property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Target {
     ///
     /// User-defined criteria for sending commands that target instances that meet the criteria.     Key can be InstanceIds or WindowTargetIds. For more    information about how to target instances within a maintenance window task, see About 'register-task-with-maintenance-window' Options and Values in the     AWS Systems Manager User Guide.
@@ -1296,7 +1296,7 @@ impl cfn_resources::CfnResource for Target {
 /// The TaskInvocationParameters property type specifies the task execution    parameters for a maintenance window task in AWS Systems Manager.
 ///
 /// TaskInvocationParameters is a property of the AWS::SSM::MaintenanceWindowTask property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TaskInvocationParameters {
     ///
     /// The parameters for an AUTOMATION task type.

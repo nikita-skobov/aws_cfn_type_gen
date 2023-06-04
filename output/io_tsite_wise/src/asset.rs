@@ -1,5 +1,5 @@
 /// Creates an asset from an existing asset model. For more information, see Creating assets in the       AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAsset {
     ///
     /// A description for the asset.
@@ -82,7 +82,7 @@ pub struct CfnAsset {
     pub att_asset_id: CfnAssetassetid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssetassetarn;
 impl CfnAssetassetarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnAssetassetarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssetassetid;
 impl CfnAssetassetid {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for CfnAsset {
 }
 
 /// Describes an asset hierarchy that contains a childAssetId and hierarchyLogicalId.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetHierarchy {
     ///
     /// The Id of the child asset.
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for AssetHierarchy {
 }
 
 /// Contains asset property information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetProperty {
     ///
     /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
@@ -234,7 +234,7 @@ impl cfn_resources::CfnResource for AssetProperty {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

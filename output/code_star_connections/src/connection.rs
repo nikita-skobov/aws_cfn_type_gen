@@ -1,7 +1,7 @@
 /// The AWS::CodeStarConnections::Connection resource can be used to connect external       source providers with services like AWS CodePipeline.
 ///
 /// Note: A connection created through AWS CloudFormation is in         PENDING status by default. You can make its status         AVAILABLE by updating the connection in the console.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnection {
     ///
     /// The name of the connection. Connection names must be unique in an AWS user account.
@@ -76,7 +76,7 @@ pub struct CfnConnection {
     pub att_owner_account_id: CfnConnectionowneraccountid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectionProviderTypeEnum {
     /// Bitbucket
     #[serde(rename = "Bitbucket")]
@@ -97,7 +97,7 @@ impl Default for ConnectionProviderTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectionconnectionarn;
 impl CfnConnectionconnectionarn {
     pub fn att_name(&self) -> &'static str {
@@ -105,7 +105,7 @@ impl CfnConnectionconnectionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectionconnectionstatus;
 impl CfnConnectionconnectionstatus {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl CfnConnectionconnectionstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectionowneraccountid;
 impl CfnConnectionowneraccountid {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl cfn_resources::CfnResource for CfnConnection {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

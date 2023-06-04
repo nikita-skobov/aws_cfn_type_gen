@@ -1,5 +1,5 @@
 /// The     AWS::Greengrass::ConnectorDefinitionVersion resource represents a connector definition version for AWS IoT Greengrass.     A connector definition version contains a list of connectors.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorDefinitionVersion {
     ///
     /// The ID of the connector definition associated with this version. This value is a GUID.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnConnectorDefinitionVersion {
 /// Connectors are modules that provide       built-in integration with local infrastructure, device protocols, AWS, and other cloud services. 	For more information, 	see Integrate with Services and Protocols Using Greengrass Connectors in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Connectors 		 property of the AWS::Greengrass::ConnectorDefinitionVersion resource contains a      list of Connector property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Connector {
     ///
     /// The Amazon Resource Name (ARN) of the connector.

@@ -1,5 +1,5 @@
 /// The AWS::IoTEvents::DetectorModel resource creates a detector model. You create a detector    model (a model of your equipment or process) using states. For each    state, you define conditional (Boolean) logic that evaluates the incoming inputs to detect significant    events. When an event is detected, it can change the state or trigger custom-built or predefined    actions using other AWS services. You can define additional events that trigger actions when entering    or exiting a state and, optionally, when a condition is met. For more information, see        How to Use AWS IoT Events in the AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDetectorModel {
     ///
     /// Information that defines how a detector operates.
@@ -108,7 +108,7 @@ pub struct CfnDetectorModel {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DetectorModelEvaluationMethodEnum {
     /// BATCH
     #[serde(rename = "BATCH")]
@@ -213,7 +213,7 @@ impl cfn_resources::CfnResource for CfnDetectorModel {
 }
 
 /// An action to be performed when the condition is TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Action {
     ///
     /// Information needed to clear the timer.
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for Action {
 /// You must use expressions for all parameters in AssetPropertyTimestamp. The    expressions accept literals, operators, functions, references, and substitution    templates.
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyTimestamp {
     ///
     /// The nanosecond offset converted from timeInSeconds. The valid range is    between 0-999999999.
@@ -482,7 +482,7 @@ impl cfn_resources::CfnResource for AssetPropertyTimestamp {
 /// You must use expressions for all parameters in AssetPropertyValue. The    expressions accept literals, operators, functions, references, and substitution    templates.
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyValue {
     ///
     /// The quality of the asset property value. The value must be 'GOOD',     'BAD', or 'UNCERTAIN'.
@@ -547,7 +547,7 @@ impl cfn_resources::CfnResource for AssetPropertyValue {
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 ///
 /// You must specify one of the following value types, depending on the dataType    of the specified asset property. For more information, see AssetProperty in the             AWS IoT SiteWise API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AssetPropertyVariant {
     ///
     /// The asset property value is a Boolean value that must be 'TRUE' or     'FALSE'. You must use an expression, and the evaluated result should be a    Boolean value.
@@ -613,7 +613,7 @@ impl cfn_resources::CfnResource for AssetPropertyVariant {
 }
 
 /// Information needed to clear the timer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClearTimer {
     ///
     /// The name of the timer to clear.
@@ -668,7 +668,7 @@ impl cfn_resources::CfnResource for ClearTimer {
 }
 
 /// Information that defines how a detector operates.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DetectorModelDefinition {
     ///
     /// The state that is entered at the creation of each detector (instance).
@@ -740,7 +740,7 @@ impl cfn_resources::CfnResource for DetectorModelDefinition {
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 ///
 /// If the defined payload type is a string, DynamoDBAction writes non-JSON data to    the DynamoDB table as binary data. The DynamoDB console displays the data as Base64-encoded text.    The value for the payloadField parameter is     <payload-field>_raw.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDB {
     ///
     /// The name of the hash key (also called the partition key). The hashKeyField    value must match the partition key of the target DynamoDB table.
@@ -899,7 +899,7 @@ impl cfn_resources::CfnResource for DynamoDB {
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
 ///
 /// The value for the type parameter in Payload must be     JSON.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynamoDBv2 {
     ///
     /// Information needed to configure the payload.
@@ -944,7 +944,7 @@ impl cfn_resources::CfnResource for DynamoDBv2 {
 }
 
 /// Specifies the actions to be performed when the condition    evaluates to TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Event {
     ///
     /// The actions to be performed.
@@ -1023,7 +1023,7 @@ impl cfn_resources::CfnResource for Event {
 }
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon Kinesis Data Firehose delivery stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Firehose {
     ///
     /// The name of the Kinesis Data Firehose delivery stream where the data is written.
@@ -1080,7 +1080,7 @@ impl cfn_resources::CfnResource for Firehose {
 }
 
 /// Sends an AWS IoT Events input, passing in information about the detector model instance and the    event that triggered the action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotEvents {
     ///
     /// The name of the AWS IoT Events input where the data is sent.
@@ -1157,7 +1157,7 @@ impl cfn_resources::CfnResource for IotEvents {
 /// You must specify either propertyAlias or both assetId and     propertyId to identify the target asset property in AWS IoT SiteWise.
 ///
 /// For more information,     see Expressions     in the         AWS IoT Events Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotSiteWise {
     ///
     /// The ID of the asset that has the specified property.
@@ -1236,7 +1236,7 @@ impl cfn_resources::CfnResource for IotSiteWise {
 }
 
 /// Information required to publish the MQTT message through the AWS IoT message broker.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IotTopicPublish {
     ///
     /// The MQTT topic of the message. You can use a string expression that includes variables     ($variable.<variable-name>) and input values     ($input.<input-name>.<path-to-datum>) as the topic string.
@@ -1305,7 +1305,7 @@ impl cfn_resources::CfnResource for IotTopicPublish {
 }
 
 /// Calls a Lambda function, passing in information about the detector model instance and the    event that triggered the action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Lambda {
     ///
     /// The ARN of the Lambda function that is executed.
@@ -1374,7 +1374,7 @@ impl cfn_resources::CfnResource for Lambda {
 }
 
 /// When entering this state, perform these actions if the condition    is TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnEnter {
     ///
     /// Specifies the actions that are performed when the state is entered and the     condition is TRUE.
@@ -1404,7 +1404,7 @@ impl cfn_resources::CfnResource for OnEnter {
 }
 
 /// When exiting this state, perform these actions if the specified     condition is TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnExit {
     ///
     /// Specifies the actions that are performed when the state is exited and the     condition is TRUE.
@@ -1434,7 +1434,7 @@ impl cfn_resources::CfnResource for OnExit {
 }
 
 /// Specifies the actions performed when the condition evaluates to TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnInput {
     ///
     /// Specifies the actions performed when the condition evaluates to TRUE.
@@ -1478,7 +1478,7 @@ impl cfn_resources::CfnResource for OnInput {
 /// Information needed to configure the payload.
 ///
 /// By default, AWS IoT Events generates a standard payload in JSON for any action. This action payload    contains all attribute-value pairs that have the information about the detector model instance    and the event triggered the action. To configure the action payload, you can use     contentExpression.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Payload {
     ///
     /// The content of the payload. You can use a string expression that includes quoted strings     ('<string>'), variables ($variable.<variable-name>),    input values ($input.<input-name>.<path-to-datum>), string    concatenations, and quoted strings that contain ${} as the content. The    recommended maximum size of a content expression is 1 KB.
@@ -1507,7 +1507,7 @@ pub struct Payload {
     pub cfn_type: PayloadTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PayloadTypeEnum {
     /// JSON
     #[serde(rename = "JSON")]
@@ -1550,7 +1550,7 @@ impl cfn_resources::CfnResource for Payload {
 }
 
 /// Information required to reset the timer. The timer is reset to the previously evaluated    result of the duration. The duration expression isn't reevaluated when you reset the    timer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResetTimer {
     ///
     /// The name of the timer to reset.
@@ -1605,7 +1605,7 @@ impl cfn_resources::CfnResource for ResetTimer {
 }
 
 /// Information needed to set the timer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SetTimer {
     ///
     /// The duration of the timer, in seconds. You can use a string expression that includes    numbers, variables ($variable.<variable-name>), and input values     ($input.<input-name>.<path-to-datum>) as the duration. The range of    the duration is 1-31622400 seconds. To ensure accuracy, the minimum duration is 60 seconds.    The evaluated result of the duration is rounded down to the nearest whole number.
@@ -1729,7 +1729,7 @@ impl cfn_resources::CfnResource for SetTimer {
 }
 
 /// Information about the variable and its new value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SetVariable {
     ///
     /// The new value of the variable.
@@ -1823,7 +1823,7 @@ impl cfn_resources::CfnResource for SetVariable {
 }
 
 /// Information required to publish the Amazon SNS message.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Sns {
     ///
     /// You can configure the action payload when you send a message as an Amazon SNS push    notification.
@@ -1892,7 +1892,7 @@ impl cfn_resources::CfnResource for Sns {
 }
 
 /// Sends information about the detector model instance and the event that triggered the    action to an Amazon SQS queue.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Sqs {
     ///
     /// You can configure the action payload when you send a message to an Amazon SQS    queue.
@@ -1947,7 +1947,7 @@ impl cfn_resources::CfnResource for Sqs {
 }
 
 /// Information that defines a state of a detector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct State {
     ///
     /// When entering this state, perform these actions if the condition    is TRUE.
@@ -2054,7 +2054,7 @@ impl cfn_resources::CfnResource for State {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2092,7 +2092,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies the actions performed and the next state entered when a condition    evaluates to TRUE.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransitionEvent {
     ///
     /// The actions to be performed.

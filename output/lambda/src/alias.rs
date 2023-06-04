@@ -1,7 +1,7 @@
 /// The AWS::Lambda::Alias resource creates an alias for a Lambda function version. Use aliases to    provide clients with a function identifier that you can update to invoke a different version.
 ///
 /// You can also map an alias to split invocation requests between two versions. Use the     RoutingConfig parameter to specify a second version and the percentage of invocation requests that    it receives.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlias {
     ///
     /// A description of the alias.
@@ -210,7 +210,7 @@ impl cfn_resources::CfnResource for CfnAlias {
 }
 
 /// The traffic-shifting configuration of a Lambda function alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AliasRoutingConfiguration {
     ///
     /// The second version, and the percentage of traffic that's routed to it.
@@ -239,7 +239,7 @@ impl cfn_resources::CfnResource for AliasRoutingConfiguration {
 }
 
 /// A provisioned concurrency configuration for a function's alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedConcurrencyConfiguration {
     ///
     /// The amount of provisioned concurrency to allocate for the alias.
@@ -268,7 +268,7 @@ impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
 }
 
 /// The traffic-shifting configuration of a Lambda function alias.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VersionWeight {
     ///
     /// The qualifier of the second version.

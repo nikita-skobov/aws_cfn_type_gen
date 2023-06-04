@@ -1,5 +1,5 @@
 /// Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageVirtualMachine {
     ///
     /// Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
@@ -93,7 +93,7 @@ pub struct CfnStorageVirtualMachine {
     pub att_uuid: CfnStorageVirtualMachineuuid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StorageVirtualMachineRootVolumeSecurityStyleEnum {
     /// MIXED
     #[serde(rename = "MIXED")]
@@ -114,7 +114,7 @@ impl Default for StorageVirtualMachineRootVolumeSecurityStyleEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageVirtualMachineresourcearn;
 impl CfnStorageVirtualMachineresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl CfnStorageVirtualMachineresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageVirtualMachinestoragevirtualmachineid;
 impl CfnStorageVirtualMachinestoragevirtualmachineid {
     pub fn att_name(&self) -> &'static str {
@@ -130,7 +130,7 @@ impl CfnStorageVirtualMachinestoragevirtualmachineid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStorageVirtualMachineuuid;
 impl CfnStorageVirtualMachineuuid {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for CfnStorageVirtualMachine {
 }
 
 /// Describes the self-managed Microsoft Active Directory to which you want to join the SVM.    Joining an Active Directory provides user authentication and access control for SMB clients,    including Microsoft Windows and macOS client accessing the file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActiveDirectoryConfiguration {
     ///
     /// The NetBIOS name of the Active Directory computer object that will be created for your SVM.
@@ -254,7 +254,7 @@ impl cfn_resources::CfnResource for ActiveDirectoryConfiguration {
 }
 
 /// The configuration that Amazon FSx uses to join a FSx for Windows File Server file system or an ONTAP storage virtual machine (SVM) to       a self-managed (including on-premises) Microsoft Active Directory (AD)       directory. For more information, see                Using Amazon FSx with your self-managed Microsoft Active Directory or       Managing SVMs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// A list of up to three IP addresses of DNS servers or domain controllers in the       self-managed AD directory.
@@ -491,7 +491,7 @@ impl cfn_resources::CfnResource for SelfManagedActiveDirectoryConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

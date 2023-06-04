@@ -1,5 +1,5 @@
 /// Creates a gateway, which is a virtual or edge device that delivers industrial data streams       from local servers to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the       AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGateway {
     ///
     /// A list of gateway capability summaries that each contain a namespace and status. Each    gateway capability defines data sources for the gateway. To retrieve a capability    configuration's definition, use DescribeGatewayCapabilityConfiguration.
@@ -53,7 +53,7 @@ pub struct CfnGateway {
     pub att_gateway_id: CfnGatewaygatewayid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewaygatewayid;
 impl CfnGatewaygatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -78,7 +78,7 @@ impl cfn_resources::CfnResource for CfnGateway {
 }
 
 /// Contains a summary of a gateway capability configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayCapabilitySummary {
     ///
     /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
@@ -121,7 +121,7 @@ impl cfn_resources::CfnResource for GatewayCapabilitySummary {
 }
 
 /// Contains a gateway's platform information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GatewayPlatform {
     ///
     /// A gateway that runs on AWS IoT Greengrass.
@@ -171,7 +171,7 @@ impl cfn_resources::CfnResource for GatewayPlatform {
 }
 
 /// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Greengrass {
     ///
     /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
@@ -200,7 +200,7 @@ impl cfn_resources::CfnResource for Greengrass {
 }
 
 /// Contains details for a gateway that runs on AWS IoT Greengrass V2. To create a gateway that runs on AWS IoT Greengrass    V2, you must deploy the IoT SiteWise Edge component to your gateway device. Your Greengrass     device role must use the AWSIoTSiteWiseEdgeAccess policy. For more    information, see Using AWS IoT SiteWise at the edge in the             AWS IoT SiteWise User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GreengrassV2 {
     ///
     /// The name of the AWS IoT thing for your AWS IoT Greengrass V2 core device.
@@ -235,7 +235,7 @@ impl cfn_resources::CfnResource for GreengrassV2 {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

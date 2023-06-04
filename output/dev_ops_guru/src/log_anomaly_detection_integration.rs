@@ -1,11 +1,11 @@
 /// Information about the integration of DevOps Guru with CloudWatch log groups for log anomaly detection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLogAnomalyDetectionIntegration {
     #[serde(skip_serializing)]
     pub att_account_id: CfnLogAnomalyDetectionIntegrationaccountid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLogAnomalyDetectionIntegrationaccountid;
 impl CfnLogAnomalyDetectionIntegrationaccountid {
     pub fn att_name(&self) -> &'static str {

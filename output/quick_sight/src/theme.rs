@@ -1,7 +1,7 @@
 /// Creates a theme.
 ///
 /// A theme is set of configuration options for color and layout. Themes apply to analyses and  dashboards. For more information, see Using Themes in Amazon QuickSight in the  Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTheme {
     ///
     /// The ID of the AWS account where you want to store the new theme.
@@ -155,7 +155,7 @@ pub struct CfnTheme {
     pub att_version_status: CfnThemeversionstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemearn;
 impl CfnThemearn {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnThemearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemecreatedtime;
 impl CfnThemecreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -171,7 +171,7 @@ impl CfnThemecreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemelastupdatedtime;
 impl CfnThemelastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl CfnThemelastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemecfntype;
 impl CfnThemecfntype {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl CfnThemecfntype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeversionarn;
 impl CfnThemeversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl CfnThemeversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeversionbasethemeid;
 impl CfnThemeversionbasethemeid {
     pub fn att_name(&self) -> &'static str {
@@ -203,7 +203,7 @@ impl CfnThemeversionbasethemeid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeversioncreatedtime;
 impl CfnThemeversioncreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -211,7 +211,7 @@ impl CfnThemeversioncreatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeversiondescription;
 impl CfnThemeversiondescription {
     pub fn att_name(&self) -> &'static str {
@@ -219,7 +219,7 @@ impl CfnThemeversiondescription {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeversionstatus;
 impl CfnThemeversionstatus {
     pub fn att_name(&self) -> &'static str {
@@ -371,7 +371,7 @@ impl cfn_resources::CfnResource for CfnTheme {
 }
 
 /// The display options for tile borders for visuals.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BorderStyle {
     ///
     /// The option to enable display of borders for visuals.
@@ -401,7 +401,7 @@ impl cfn_resources::CfnResource for BorderStyle {
 }
 
 /// The theme colors that are used for data colors in charts. The colors description is a       hexadecimal color code that consists of six alphanumerical characters, prefixed with         #, for example #37BFF5.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataColorPalette {
     ///
     /// The hexadecimal codes for the colors.
@@ -479,7 +479,7 @@ impl cfn_resources::CfnResource for DataColorPalette {
 }
 
 /// The Font property type specifies Property description not available. for an AWS::QuickSight::Theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Font {
     /// Property description not available.
     ///
@@ -508,7 +508,7 @@ impl cfn_resources::CfnResource for Font {
 }
 
 /// The display options for gutter spacing between tiles on a sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GutterStyle {
     ///
     /// This Boolean value controls whether to display a gutter space between sheet tiles.
@@ -538,7 +538,7 @@ impl cfn_resources::CfnResource for GutterStyle {
 }
 
 /// The display options for margins around the outside edge of sheets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MarginStyle {
     ///
     /// This Boolean value controls whether to display sheet margins.
@@ -568,7 +568,7 @@ impl cfn_resources::CfnResource for MarginStyle {
 }
 
 /// Permission for the resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourcePermission {
     ///
     /// The IAM action to grant or revoke permissions on.
@@ -610,7 +610,7 @@ impl cfn_resources::CfnResource for ResourcePermission {
 }
 
 /// The theme display options for sheets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SheetStyle {
     ///
     /// The display options for tiles.
@@ -664,7 +664,7 @@ impl cfn_resources::CfnResource for SheetStyle {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -702,7 +702,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The theme configuration. This configuration contains all of the display properties for       a theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThemeConfiguration {
     ///
     /// Color properties that apply to chart data colors.
@@ -781,7 +781,7 @@ impl cfn_resources::CfnResource for ThemeConfiguration {
 }
 
 /// Theme error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThemeError {
     ///
     /// The error message.
@@ -812,7 +812,7 @@ pub struct ThemeError {
     pub cfn_type: Option<ThemeErrorTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ThemeErrorTypeEnum {
     /// INTERNAL_FAILURE
     #[serde(rename = "INTERNAL_FAILURE")]
@@ -840,7 +840,7 @@ impl cfn_resources::CfnResource for ThemeError {
 }
 
 /// A version of a theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThemeVersion {
     ///
     /// The Amazon Resource Name (ARN) of the resource.
@@ -951,7 +951,7 @@ pub struct ThemeVersion {
     pub version_number: Option<f64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ThemeVersionStatusEnum {
     /// CREATION_FAILED
     #[serde(rename = "CREATION_FAILED")]
@@ -1051,7 +1051,7 @@ impl cfn_resources::CfnResource for ThemeVersion {
 }
 
 /// The display options for the layout of tiles on a sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TileLayoutStyle {
     ///
     /// The gutter settings that apply between tiles.
@@ -1097,7 +1097,7 @@ impl cfn_resources::CfnResource for TileLayoutStyle {
 }
 
 /// Display options related to tiles on a sheet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TileStyle {
     ///
     /// The border around a tile.
@@ -1129,7 +1129,7 @@ impl cfn_resources::CfnResource for TileStyle {
 }
 
 /// The Typography property type specifies Property description not available. for an AWS::QuickSight::Theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Typography {
     /// Property description not available.
     ///
@@ -1158,7 +1158,7 @@ impl cfn_resources::CfnResource for Typography {
 }
 
 /// The theme colors that apply to UI and to charts, excluding data colors. The colors description is a hexadecimal  color code that consists of six alphanumerical characters, prefixed with #, for example #37BFF5. For  more information, see Using Themes  in Amazon QuickSight in the Amazon QuickSight User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UIColorPalette {
     ///
     /// This color is that applies to selected states and buttons.

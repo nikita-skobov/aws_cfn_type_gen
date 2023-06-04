@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Method resource creates API Gateway methods that define the parameters and body that clients must send in their requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMethod {
     ///
     /// A boolean flag specifying whether a valid ApiKey is required to invoke this method.
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for CfnMethod {
 }
 
 /// Integration is a property of the AWS::ApiGateway::Method resource that specifies information about the target backend that a method calls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Integration {
     ///
     /// A list of request parameters whose values API Gateway caches. To be valid values for cacheKeyParameters, these parameters must also be specified for Method requestParameters.
@@ -359,7 +359,7 @@ pub struct Integration {
     pub uri: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegrationConnectionTypeEnum {
     /// INTERNET
     #[serde(rename = "INTERNET")]
@@ -376,7 +376,7 @@ impl Default for IntegrationConnectionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegrationContentHandlingEnum {
     /// CONVERT_TO_BINARY
     #[serde(rename = "CONVERT_TO_BINARY")]
@@ -393,7 +393,7 @@ impl Default for IntegrationContentHandlingEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegrationTypeEnum {
     /// AWS
     #[serde(rename = "AWS")]
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for Integration {
 }
 
 /// IntegrationResponse is a property of the Amazon API Gateway Method Integration property type that specifies the response that API Gateway sends after a method's backend finishes processing a request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IntegrationResponse {
     ///
     /// Specifies how to handle response payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
@@ -503,7 +503,7 @@ pub struct IntegrationResponse {
     pub status_code: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IntegrationResponseContentHandlingEnum {
     /// CONVERT_TO_BINARY
     #[serde(rename = "CONVERT_TO_BINARY")]
@@ -535,7 +535,7 @@ impl cfn_resources::CfnResource for IntegrationResponse {
 }
 
 /// Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MethodResponse {
     ///
     /// Specifies the Model resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a Model name as the value.

@@ -1,5 +1,5 @@
 /// An image pipeline is the automation configuration for building secure OS images on AWS.     The Image Builder image pipeline is associated with an image recipe that defines the build,     validation, and test phases for an image build lifecycle. An image pipeline can be     associated with an infrastructure configuration that defines where your image is built. You     can define attributes, such as instance type, subnets, security groups, logging, and other     infrastructure-related configurations. You can also associate your image pipeline with a     distribution configuration to define how you would like to deploy your image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImagePipeline {
     ///
     /// The Amazon Resource Name (ARN) of the container recipe that is used for this 			pipeline.
@@ -157,7 +157,7 @@ pub struct CfnImagePipeline {
     pub att_name: CfnImagePipelinename,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ImagePipelineStatusEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -174,7 +174,7 @@ impl Default for ImagePipelineStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImagePipelinearn;
 impl CfnImagePipelinearn {
     pub fn att_name(&self) -> &'static str {
@@ -182,7 +182,7 @@ impl CfnImagePipelinearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImagePipelinename;
 impl CfnImagePipelinename {
     pub fn att_name(&self) -> &'static str {
@@ -239,7 +239,7 @@ impl cfn_resources::CfnResource for CfnImagePipeline {
 }
 
 /// The EcrConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EcrConfiguration {
     /// Property description not available.
     ///
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for EcrConfiguration {
 }
 
 /// The ImageScanningConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::ImagePipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageScanningConfiguration {
     /// Property description not available.
     ///
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 }
 
 /// When you create an image or container recipe with Image Builder, you can add the build or   		test components that your image pipeline uses to create the final image. You must   		have at least one build component to create a recipe, but test components are not required.   		Your pipeline runs tests after it builds the image, to ensure that the target image is   		functional and can be used reliably for launching Amazon EC2 instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImageTestsConfiguration {
     ///
     /// Defines if tests should be executed when building this image. For example,       true or false.
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for ImageTestsConfiguration {
 }
 
 /// A schedule configures how often and when a pipeline will automatically create a new 			image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schedule {
     ///
     /// The condition configures when the pipeline should trigger a new image build. When the 	    pipelineExecutionStartCondition is set to 	    EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE, and you use semantic version 			filters on the base image or components in your image recipe, Image Builder will build a 			new image only when there are new versions of the image or components in your recipe that 			match the semantic version filter. When it is set to EXPRESSION_MATCH_ONLY, it 			will build a new image every time the CRON expression matches the current time. For semantic 			version syntax, see CreateComponent      	in the Image Builder API Reference.
@@ -424,7 +424,7 @@ pub struct Schedule {
     pub schedule_expression: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SchedulePipelineExecutionStartConditionEnum {
     /// EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE
     #[serde(rename = "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE")]

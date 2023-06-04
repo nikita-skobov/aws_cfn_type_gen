@@ -7,7 +7,7 @@
 /// When you create a metric stream, the stream is created in the running state. If you update an existing metric stream,     the state does not change.
 ///
 /// If you create a metric stream in an account that has been set up as a monitoring account in CloudWatch cross-account observability,   you can choose whether to include metrics from linked source accounts in the metric stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricStream {
     ///
     /// If you specify this parameter, the stream sends metrics from all metric namespaces except       for the namespaces that you specify here. You cannot specify both IncludeFilters       and ExcludeFilters in the same metric stream.
@@ -140,7 +140,7 @@ pub struct CfnMetricStream {
     pub att_state: CfnMetricStreamstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricStreamarn;
 impl CfnMetricStreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnMetricStreamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricStreamcreationdate;
 impl CfnMetricStreamcreationdate {
     pub fn att_name(&self) -> &'static str {
@@ -156,7 +156,7 @@ impl CfnMetricStreamcreationdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricStreamlastupdatedate;
 impl CfnMetricStreamlastupdatedate {
     pub fn att_name(&self) -> &'static str {
@@ -164,7 +164,7 @@ impl CfnMetricStreamlastupdatedate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricStreamstate;
 impl CfnMetricStreamstate {
     pub fn att_name(&self) -> &'static str {
@@ -189,7 +189,7 @@ impl cfn_resources::CfnResource for CfnMetricStream {
 /// This structure contains a metric namespace and optionally, a list of metric names, to either include in a metric '       stream or exclude from a metric stream.
 ///
 /// A metric stream's filters can include up to 1000 total names. This limit applies to the sum of namespace names       and metric names in the filters. For example, this could include 10 metric namespace filters with       99 metrics each, or 20 namespace filters with 49 metrics specified in each filter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStreamFilter {
     ///
     /// The names of the metrics to either include or exclude from the metric stream.
@@ -238,7 +238,7 @@ impl cfn_resources::CfnResource for MetricStreamFilter {
 /// This structure specifies a list of additional statistics to stream, and the metrics to stream those     additional statistics for.
 ///
 /// All metrics that match the combination of metric name and namespace will be streamed       with the additional statistics, no matter their dimensions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStreamStatisticsConfiguration {
     /// The     additional statistics to stream for the metrics listed in IncludeMetrics.
     ///
@@ -276,7 +276,7 @@ impl cfn_resources::CfnResource for MetricStreamStatisticsConfiguration {
 }
 
 /// A structure that specifies the   metric name and namespace for one metric that is going to have additional statistics included in the stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricStreamStatisticsMetric {
     /// The name of the metric.
     ///
@@ -320,7 +320,7 @@ impl cfn_resources::CfnResource for MetricStreamStatisticsMetric {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

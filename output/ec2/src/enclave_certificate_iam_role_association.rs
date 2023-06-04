@@ -3,7 +3,7 @@
 /// When the IAM role is associated with the ACM certificate, the certificate, certificate chain, and encrypted 			private key are placed in an Amazon S3 location that only the associated IAM role can access. The private key of the certificate 			is encrypted with an AWS managed key that has an attached attestation-based key policy.
 ///
 /// To enable the IAM role to access the Amazon S3 object, you must grant it permission to call s3:GetObject 			on the Amazon S3 bucket returned by the command. To enable the IAM role to access the KMS key, 			you must grant it permission to call kms:Decrypt on the KMS key returned by the command. 			For more information, see 				Grant the role permission to access the certificate and encryption key in the 			        AWS Nitro Enclaves User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnclaveCertificateIamRoleAssociation {
     ///
     /// The ARN of the ACM certificate with which to associate the IAM role.
@@ -39,7 +39,7 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
     pub att_encryption_kms_key_id: CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname;
 impl CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname {
     pub fn att_name(&self) -> &'static str {
@@ -47,7 +47,7 @@ impl CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey;
 impl CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey {
     pub fn att_name(&self) -> &'static str {
@@ -55,7 +55,7 @@ impl CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid;
 impl CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid {
     pub fn att_name(&self) -> &'static str {

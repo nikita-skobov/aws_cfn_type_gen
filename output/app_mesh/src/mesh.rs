@@ -3,7 +3,7 @@
 /// A service mesh is a logical boundary for network traffic between services that are     represented by resources within the mesh. After you create your service mesh, you can     create virtual services, virtual nodes, virtual routers, and routes to distribute traffic     between the applications in your mesh.
 ///
 /// For more information about service meshes, see Service meshes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMesh {
     ///
     /// The name to use for the service mesh.
@@ -63,7 +63,7 @@ pub struct CfnMesh {
     pub att_uid: CfnMeshuid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMesharn;
 impl CfnMesharn {
     pub fn att_name(&self) -> &'static str {
@@ -71,7 +71,7 @@ impl CfnMesharn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMeshmeshname;
 impl CfnMeshmeshname {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnMeshmeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMeshmeshowner;
 impl CfnMeshmeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnMeshmeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMeshresourceowner;
 impl CfnMeshresourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -95,7 +95,7 @@ impl CfnMeshresourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMeshuid;
 impl CfnMeshuid {
     pub fn att_name(&self) -> &'static str {
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for CfnMesh {
 }
 
 /// An object that represents the egress filter rules for a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EgressFilter {
     ///
     /// The egress filter type. By default, the type is DROP_ALL, which allows     egress only from virtual nodes to other defined resources in the service mesh (and any     traffic to *.amazonaws.com for AWS API calls). You can set the     egress filter type to ALLOW_ALL to allow egress to any endpoint inside or     outside of the service mesh.
@@ -169,7 +169,7 @@ pub struct EgressFilter {
     pub cfn_type: EgressFilterTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EgressFilterTypeEnum {
     /// ALLOW_ALL
     #[serde(rename = "ALLOW_ALL")]
@@ -201,7 +201,7 @@ impl cfn_resources::CfnResource for EgressFilter {
 }
 
 /// An object that represents the service discovery information for a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MeshServiceDiscovery {
     ///
     /// The IP version to use to control traffic within the mesh.
@@ -218,7 +218,7 @@ pub struct MeshServiceDiscovery {
     pub ip_preference: Option<MeshServiceDiscoveryIpPreferenceEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MeshServiceDiscoveryIpPreferenceEnum {
     /// IPv4_ONLY
     #[serde(rename = "IPv4_ONLY")]
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for MeshServiceDiscovery {
 }
 
 /// An object that represents the specification of a service mesh.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MeshSpec {
     ///
     /// The egress filter rules for the service mesh.
@@ -313,7 +313,7 @@ impl cfn_resources::CfnResource for MeshSpec {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

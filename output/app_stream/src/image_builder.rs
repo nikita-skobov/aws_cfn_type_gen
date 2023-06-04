@@ -1,7 +1,7 @@
 /// The AWS::AppStream::ImageBuilder resource creates an image builder for Amazon AppStream 2.0. An image builder is a virtual machine that is used to create an image.
 ///
 /// The initial state of the image builder is PENDING. When it is ready, the state is RUNNING.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageBuilder {
     ///
     /// The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image builder only through the specified endpoints.
@@ -185,7 +185,7 @@ pub struct CfnImageBuilder {
     pub att_streaming_url: CfnImageBuilderstreamingurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnImageBuilderstreamingurl;
 impl CfnImageBuilderstreamingurl {
     pub fn att_name(&self) -> &'static str {
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for CfnImageBuilder {
 }
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessEndpoint {
     ///
     /// The type of interface endpoint.
@@ -314,7 +314,7 @@ pub struct AccessEndpoint {
     pub vpce_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccessEndpointEndpointTypeEnum {
     /// STREAMING
     #[serde(rename = "STREAMING")]
@@ -353,7 +353,7 @@ impl cfn_resources::CfnResource for AccessEndpoint {
 }
 
 /// The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DomainJoinInfo {
     ///
     /// The fully qualified name of the directory (for example, corp.example.com).
@@ -411,7 +411,7 @@ impl cfn_resources::CfnResource for DomainJoinInfo {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -449,7 +449,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The VPC configuration for the image builder.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// The identifiers of the security groups for the image builder.

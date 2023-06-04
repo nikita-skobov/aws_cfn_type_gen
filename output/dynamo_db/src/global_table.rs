@@ -1,7 +1,7 @@
 /// The AWS::DynamoDB::GlobalTable resource enables you to create and manage       a Version 2019.11.21 global table. This resource cannot be used to create or manage a       Version 2017.11.29 global table. For more information, see Global       tables.
 ///
 /// You should be aware of the following behaviors when working with DynamoDB global       tables.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalTable {
     ///
     /// A list of attributes that describe the key schema for the global table and       indexes.
@@ -162,7 +162,7 @@ pub struct CfnGlobalTable {
     pub att_table_id: CfnGlobalTabletableid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GlobalTableBillingModeEnum {
     /// PAY_PER_REQUEST
     #[serde(rename = "PAY_PER_REQUEST")]
@@ -179,7 +179,7 @@ impl Default for GlobalTableBillingModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalTablearn;
 impl CfnGlobalTablearn {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl CfnGlobalTablearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalTablestreamarn;
 impl CfnGlobalTablestreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl CfnGlobalTablestreamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGlobalTabletableid;
 impl CfnGlobalTabletableid {
     pub fn att_name(&self) -> &'static str {
@@ -256,7 +256,7 @@ impl cfn_resources::CfnResource for CfnGlobalTable {
 }
 
 /// Describes the type and format of extension access. Only one of 				CustomObjectIdentifier or AccessMethodType may be 			provided. Providing both results in InvalidArgsException.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AttributeDefinition {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-attributedefinition.html#cfn-dynamodb-globaltable-attributedefinition-attributename
     #[serde(rename = "AttributeName")]
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for AttributeDefinition {
 }
 
 /// Configures a scalable target and an autoscaling policy for a table or global secondary       index's read or write capacity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityAutoScalingSettings {
     ///
     /// The maximum provisioned capacity units for the global table.
@@ -352,7 +352,7 @@ impl cfn_resources::CfnResource for CapacityAutoScalingSettings {
 }
 
 /// Configures contributor insights settings for a replica or one of its indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContributorInsightsSpecification {
     ///
     /// Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled       (false).
@@ -383,7 +383,7 @@ impl cfn_resources::CfnResource for ContributorInsightsSpecification {
 }
 
 /// Allows you to specify a global secondary index for the global table. The index will be       defined on all replicas.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GlobalSecondaryIndex {
     ///
     /// The name of the global secondary index. The name must be unique among all other       indexes on this table.
@@ -499,7 +499,7 @@ impl cfn_resources::CfnResource for GlobalSecondaryIndex {
 /// A KeySchemaElement represents exactly one attribute of the primary key.       For example, a simple primary key would be represented by one         KeySchemaElement (for the partition key). A composite primary key would       require one KeySchemaElement for the partition key, and another         KeySchemaElement for the sort key.
 ///
 /// A KeySchemaElement must be a scalar, top-level attribute (not a nested       attribute). The data type must be one of String, Number, or Binary. The attribute cannot       be nested within a List or a Map.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeySchema {
     ///
     /// The name of a key attribute.
@@ -534,7 +534,7 @@ pub struct KeySchema {
     pub key_type: KeySchemaKeyTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KeySchemaKeyTypeEnum {
     /// HASH
     #[serde(rename = "HASH")]
@@ -588,7 +588,7 @@ impl cfn_resources::CfnResource for KeySchema {
 }
 
 /// The Kinesis Data Streams configuration for the specified global table replica.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisStreamSpecification {
     ///
     /// The ARN for a specific Kinesis data stream.
@@ -643,7 +643,7 @@ impl cfn_resources::CfnResource for KinesisStreamSpecification {
 }
 
 /// Represents the properties of a local secondary index. A local secondary index can only       be created when its parent table is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocalSecondaryIndex {
     ///
     /// The name of the local secondary index. The name must be unique among all other indexes       on this table.
@@ -739,7 +739,7 @@ impl cfn_resources::CfnResource for LocalSecondaryIndex {
 }
 
 /// Represents the settings used to enable point in time recovery.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PointInTimeRecoverySpecification {
     ///
     /// Indicates whether point in time recovery is enabled (true) or disabled (false) on the       table.
@@ -769,7 +769,7 @@ impl cfn_resources::CfnResource for PointInTimeRecoverySpecification {
 }
 
 /// Represents attributes that are copied (projected) from the table into an index. These       are in addition to the primary key attributes and index key attributes, which are       automatically projected.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Projection {
     ///
     /// Represents the non-key attribute names which will be projected into the index.
@@ -804,7 +804,7 @@ pub struct Projection {
     pub projection_type: Option<ProjectionProjectionTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProjectionProjectionTypeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -849,7 +849,7 @@ impl cfn_resources::CfnResource for Projection {
 }
 
 /// Allows you to specify the read capacity settings for a replica table or a replica       global secondary index when the BillingMode is set to         PROVISIONED. You must specify a value for either         ReadCapacityUnits or ReadCapacityAutoScalingSettings, but       not both. You can switch between fixed capacity and auto scaling.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReadProvisionedThroughputSettings {
     ///
     /// Specifies auto scaling settings for the replica table or global secondary       index.
@@ -895,7 +895,7 @@ impl cfn_resources::CfnResource for ReadProvisionedThroughputSettings {
 }
 
 /// Represents the properties of a global secondary index that can be set on a per-replica       basis.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Updates the status for contributor insights for a specific table or index. CloudWatch       Contributor Insights for DynamoDB graphs display the partition key and (if applicable)       sort key of frequently accessed items and frequently throttled items in plaintext. If       you require the use of AWS Key Management Service (KMS) to encrypt this       table’s partition key and sort key data with an AWS managed key or       customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB       for this table.
@@ -984,7 +984,7 @@ impl cfn_resources::CfnResource for ReplicaGlobalSecondaryIndexSpecification {
 }
 
 /// Allows you to specify a KMS key identifier to be used for server-side encryption. The       key can be specified via ARN, key ID, or alias. The key must be created in the same       region as the replica.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicaSSESpecification {
     ///
     /// The AWS KMS key that should be used for the AWS KMS encryption.       To specify a key, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN.       Note that you should only provide this parameter if the key is different from the       default DynamoDB key alias/aws/dynamodb.
@@ -1013,7 +1013,7 @@ impl cfn_resources::CfnResource for ReplicaSSESpecification {
 }
 
 /// Defines settings specific to a single replica of a global table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicaSpecification {
     ///
     /// The settings used to enable or disable CloudWatch Contributor Insights for the       specified replica. When not specified, defaults to contributor insights disabled for the       replica.
@@ -1139,7 +1139,7 @@ pub struct ReplicaSpecification {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicaSpecificationTableClassEnum {
     /// STANDARD
     #[serde(rename = "STANDARD")]
@@ -1191,7 +1191,7 @@ impl cfn_resources::CfnResource for ReplicaSpecification {
 }
 
 /// Represents the settings used to enable server-side encryption.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SSESpecification {
     ///
     /// Indicates whether server-side encryption is performed using an AWS       managed key or an AWS owned key. If enabled (true), server-side       encryption type is set to KMS and an AWS managed key is used (AWS KMS charges apply). If disabled (false) or not specified,server-side       encryption is set to an AWS owned key. If you choose to use KMS       encryption, you can also use customer managed KMS keys by specifying them in the         ReplicaSpecification.SSESpecification object. You cannot mix AWS managed and customer managed KMS keys.
@@ -1221,7 +1221,7 @@ pub struct SSESpecification {
     pub ssetype: Option<SSESpecificationSSETypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SSESpecificationSSETypeEnum {
     /// AES256
     #[serde(rename = "AES256")]
@@ -1255,7 +1255,7 @@ impl cfn_resources::CfnResource for SSESpecification {
 /// Represents the DynamoDB Streams configuration for a table in DynamoDB.
 ///
 /// You can only modify this value if your AWS::DynamoDB::GlobalTable       contains only one entry in Replicas. You must specify a value for this       property if your AWS::DynamoDB::GlobalTable contains more than one       replica.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamSpecification {
     ///
     /// When an item in the table is modified, StreamViewType determines what       information is written to the stream for this table. Valid values for         StreamViewType are:
@@ -1273,7 +1273,7 @@ pub struct StreamSpecification {
     pub stream_view_type: StreamSpecificationStreamViewTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StreamSpecificationStreamViewTypeEnum {
     /// KEYS_ONLY
     #[serde(rename = "KEYS_ONLY")]
@@ -1319,7 +1319,7 @@ impl cfn_resources::CfnResource for StreamSpecification {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1357,7 +1357,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Defines a target tracking scaling policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Indicates whether scale in by the target tracking scaling policy is disabled. The       default value is false.
@@ -1422,7 +1422,7 @@ impl cfn_resources::CfnResource for TargetTrackingScalingPolicyConfiguration {
 }
 
 /// Represents the settings used to enable or disable Time to Live (TTL) for the specified       table. All replicas will have the same time to live configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TimeToLiveSpecification {
     ///
     /// The name of the attribute used to store the expiration time for items in the       table.
@@ -1491,7 +1491,7 @@ impl cfn_resources::CfnResource for TimeToLiveSpecification {
 }
 
 /// Specifies an auto scaling policy for write capacity. This policy will be applied to       all replicas. This setting must be specified if BillingMode is set to         PROVISIONED.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WriteProvisionedThroughputSettings {
     ///
     /// Specifies auto scaling settings for the replica table or global secondary       index.

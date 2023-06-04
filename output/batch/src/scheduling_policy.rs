@@ -1,5 +1,5 @@
 /// The AWS::Batch::SchedulingPolicy resource specifies the parameters for an AWS Batch  scheduling policy. For more information, see Scheduling Policies in the AWS Batch User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchedulingPolicy {
     ///
     /// The fair share policy of the scheduling policy.
@@ -43,7 +43,7 @@ pub struct CfnSchedulingPolicy {
     pub att_arn: CfnSchedulingPolicyarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchedulingPolicyarn;
 impl CfnSchedulingPolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -70,7 +70,7 @@ impl cfn_resources::CfnResource for CfnSchedulingPolicy {
 }
 
 /// The fair share policy for a scheduling policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FairsharePolicy {
     ///
     /// A value used to reserve some of the available maximum vCPU for fair share identifiers that  aren't already used.
@@ -130,7 +130,7 @@ impl cfn_resources::CfnResource for FairsharePolicy {
 }
 
 /// Specifies the weights for the fair share identifiers for the fair share policy. Fair share  identifiers that aren't included have a default weight of 1.0.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ShareAttributes {
     ///
     /// A fair share identifier or fair share identifier prefix. If the string ends with an asterisk  (*), this entry specifies the weight factor to use for fair share identifiers that start with  that prefix. The list of fair share identifiers in a fair share policy can't overlap. For  example, you can't have one that specifies a shareIdentifier of UserA*  and another that specifies a shareIdentifier of UserA-1.

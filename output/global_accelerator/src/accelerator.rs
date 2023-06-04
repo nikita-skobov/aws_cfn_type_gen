@@ -1,5 +1,5 @@
 /// The AWS::GlobalAccelerator::Accelerator resource is a Global Accelerator resource type that contains information about 	   		how you create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic 	   		to one or more endpoint groups, each of which includes endpoints, such as Application Load Balancers, Network Load Balancers, 	   		and Amazon EC2 instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccelerator {
     ///
     /// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
@@ -84,7 +84,7 @@ pub struct CfnAccelerator {
     pub att_dual_stack_dns_name: CfnAcceleratordualstackdnsname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AcceleratorIpAddressTypeEnum {
     /// DUAL_STACK
     #[serde(rename = "DUAL_STACK")]
@@ -101,7 +101,7 @@ impl Default for AcceleratorIpAddressTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAcceleratoracceleratorarn;
 impl CfnAcceleratoracceleratorarn {
     pub fn att_name(&self) -> &'static str {
@@ -109,7 +109,7 @@ impl CfnAcceleratoracceleratorarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAcceleratordnsname;
 impl CfnAcceleratordnsname {
     pub fn att_name(&self) -> &'static str {
@@ -117,7 +117,7 @@ impl CfnAcceleratordnsname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAcceleratordualstackdnsname;
 impl CfnAcceleratordualstackdnsname {
     pub fn att_name(&self) -> &'static str {
@@ -157,7 +157,7 @@ impl cfn_resources::CfnResource for CfnAccelerator {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Information about the stages and on-call rotation teams associated with an escalation     plan or engagement plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlan {
     ///
     /// The Amazon Resource Name (ARN) of the contact.
@@ -46,7 +46,7 @@ pub struct CfnPlan {
     pub att_arn: CfnPlanarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPlanarn;
 impl CfnPlanarn {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl cfn_resources::CfnResource for CfnPlan {
 }
 
 /// Information about the contact channel that Incident Manager uses to engage the     contact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChannelTargetInfo {
     ///
     /// The Amazon Resource Name (ARN) of the contact channel.
@@ -181,7 +181,7 @@ impl cfn_resources::CfnResource for ChannelTargetInfo {
 }
 
 /// The contact that Incident Manager is engaging during an incident.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContactTargetInfo {
     ///
     /// The Amazon Resource Name (ARN) of the contact.
@@ -249,7 +249,7 @@ impl cfn_resources::CfnResource for ContactTargetInfo {
 }
 
 /// A set amount of time that an escalation plan or engagement plan engages the specified     contacts or contact methods.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Stage {
     ///
     /// The time to wait until beginning the next stage. The duration can only be set to 0 if a     target is specified.
@@ -312,7 +312,7 @@ impl cfn_resources::CfnResource for Stage {
 }
 
 /// The contact or contact channel that's being engaged.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Targets {
     ///
     /// Information about the contact channel that Incident Manager engages.

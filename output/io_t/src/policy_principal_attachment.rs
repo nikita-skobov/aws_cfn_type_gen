@@ -1,7 +1,7 @@
 /// Use the AWS::IoT::PolicyPrincipalAttachment resource to attach an AWS IoT     policy to a principal (an X.509 certificate or other credential).
 ///
 /// For information about working with AWS IoT policies and principals, see Authorization in the AWS IoT Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPolicyPrincipalAttachment {
     ///
     /// The name of the AWS IoT policy.

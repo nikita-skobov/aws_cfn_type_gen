@@ -3,7 +3,7 @@
 /// To avoid streaming your content over the public internet, you can add up to two VPC       interfaces to your flow and use those connections to transfer content between your VPC       and MediaConnect.
 ///
 /// You can update an existing flow to add a VPC interface. If you haven’t created the       flow yet, you must create the flow with a temporary standard source by doing the       following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowVpcInterface {
     ///
     /// The Amazon Resource Name (ARN) of the flow.

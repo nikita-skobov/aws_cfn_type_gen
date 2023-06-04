@@ -1,5 +1,5 @@
 /// This resource associates the specified application with the specified fleet. This is only supported for Elastic fleets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationFleetAssociation {
     /// The ARN of the application.
     ///

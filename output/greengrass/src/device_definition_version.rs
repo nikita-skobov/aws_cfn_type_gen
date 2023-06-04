@@ -1,5 +1,5 @@
 /// The     AWS::Greengrass::DeviceDefinitionVersion resource represents a device definition version for AWS IoT Greengrass.      A device definition version contains a list of devices.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDeviceDefinitionVersion {
     ///
     /// The ID of the device definition associated with this version. This value is a GUID.
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
 /// A device is an AWS IoT device (thing) that's added to a Greengrass group. 	 Greengrass devices can communicate with the Greengrass core in the same group. 	 For more information, see What Is AWS IoT Greengrass? in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Devices 		 property of the AWS::Greengrass::DeviceDefinitionVersion resource contains a      list of Device property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Device {
     ///
     /// The ARN of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.

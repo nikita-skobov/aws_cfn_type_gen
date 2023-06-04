@@ -1,5 +1,5 @@
 /// The AWS::ElasticBeanstalk::ConfigurationTemplate resource is an AWS Elastic Beanstalk    resource type that specifies an Elastic Beanstalk configuration template, associated with a    specific Elastic Beanstalk application. You define application configuration settings in a    configuration template. You can then use the configuration template to deploy different    versions of the application with the same configuration settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationTemplate {
     ///
     /// The name of the Elastic Beanstalk application to associate with this configuration    template.
@@ -106,7 +106,7 @@ pub struct CfnConfigurationTemplate {
     pub att_template_name: CfnConfigurationTemplatetemplatename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationTemplatetemplatename;
 impl CfnConfigurationTemplatetemplatename {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl cfn_resources::CfnResource for CfnConfigurationTemplate {
 /// The OptionSettings property of the AWS::ElasticBeanstalk::ConfigurationTemplate    resource contains a list of ConfigurationOptionSetting property types.
 ///
 /// For a list of possible namespaces and option values, see Option Values in the     AWS Elastic Beanstalk Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationOptionSetting {
     ///
     /// A unique namespace that identifies the option's associated AWS resource.
@@ -260,7 +260,7 @@ impl cfn_resources::CfnResource for ConfigurationOptionSetting {
 }
 
 /// An AWS Elastic Beanstalk configuration template to base a new one on. You can use it to    define a AWS::ElasticBeanstalk::ConfigurationTemplate resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceConfiguration {
     ///
     /// The name of the application associated with the configuration.

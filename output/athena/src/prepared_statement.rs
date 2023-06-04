@@ -1,5 +1,5 @@
 /// Specifies a prepared statement for use with SQL queries in Athena.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPreparedStatement {
     ///
     /// The description of the prepared statement.

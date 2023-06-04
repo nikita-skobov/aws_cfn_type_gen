@@ -1,5 +1,5 @@
 /// OrganizationConformancePack deploys conformance packs across member accounts in an AWS Organizations.       OrganizationConformancePack enables organization service access for config-multiaccountsetup.amazonaws.com through the EnableAWSServiceAccess action and       creates a service linked role in the master account of your organization.       The service linked role is created only when the role does not exist in the master account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnOrganizationConformancePack {
     ///
     /// A list of ConformancePackInputParameter objects.
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for CfnOrganizationConformancePack {
 }
 
 /// Input parameters in the form of key-value pairs for the conformance pack, both of which you define. 			Keys can have a maximum character length of 255 characters, and values can have a maximum length of 4096 characters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConformancePackInputParameter {
     ///
     /// One part of a key-value pair.

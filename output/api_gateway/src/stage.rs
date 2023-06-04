@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::Stage resource creates a stage for a deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStage {
     ///
     /// Access log settings, including the access log format and access log destination ARN.
@@ -171,7 +171,7 @@ pub struct CfnStage {
     pub variables: Option<std::collections::HashMap<String, String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StageCacheClusterSizeEnum {
     /// 0.5
     #[serde(rename = "0.5")]
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for CfnStage {
 /// The AccessLogSetting property type specifies settings for logging access in this stage.
 ///
 /// AccessLogSetting is a property of the AWS::ApiGateway::Stage resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLogSetting {
     ///
     /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with amazon-apigateway-. This parameter is required to enable access logging.
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for AccessLogSetting {
 }
 
 /// Configuration settings of a canary deployment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CanarySetting {
     ///
     /// The ID of the canary deployment.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for CanarySetting {
 /// The MethodSetting property type configures settings for all methods in a stage.
 ///
 /// The MethodSettings property of the AWS::ApiGateway::Stage resource contains a list of MethodSetting property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MethodSetting {
     ///
     /// Specifies whether the cached responses are encrypted.
@@ -491,7 +491,7 @@ impl cfn_resources::CfnResource for MethodSetting {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,7 +1,7 @@
 /// Contains an optional backup plan display name and an array of BackupRule     objects, each of which specifies a backup rule. Each rule in a backup plan is a separate     scheduled task and can back up a different selection of AWS     resources.
 ///
 /// For a sample AWS CloudFormation template, see the AWS Backup Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupPlan {
     ///
     /// Uniquely identifies the backup plan to be associated with the selection of     resources.
@@ -36,7 +36,7 @@ pub struct CfnBackupPlan {
     pub att_version_id: CfnBackupPlanversionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupPlanbackupplanarn;
 impl CfnBackupPlanbackupplanarn {
     pub fn att_name(&self) -> &'static str {
@@ -44,7 +44,7 @@ impl CfnBackupPlanbackupplanarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupPlanbackupplanid;
 impl CfnBackupPlanbackupplanid {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl CfnBackupPlanbackupplanid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBackupPlanversionid;
 impl CfnBackupPlanversionid {
     pub fn att_name(&self) -> &'static str {
@@ -77,7 +77,7 @@ impl cfn_resources::CfnResource for CfnBackupPlan {
 }
 
 /// Specifies an object containing resource type and backup options. This is only supported     for Windows VSS backups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdvancedBackupSettingResourceType {
     ///
     /// The backup option for the resource. Each option is a key-value pair. This option is only     available for Windows VSS backup jobs.
@@ -127,7 +127,7 @@ impl cfn_resources::CfnResource for AdvancedBackupSettingResourceType {
 }
 
 /// Specifies an object containing properties used to create a backup plan.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BackupPlanResourceType {
     ///
     /// A list of backup options for each resource type.
@@ -179,7 +179,7 @@ impl cfn_resources::CfnResource for BackupPlanResourceType {
 }
 
 /// Specifies an object containing properties used to schedule a task to back up a selection     of resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BackupRuleResourceType {
     ///
     /// A value in minutes after a backup job is successfully started before it must be     completed or it is canceled by AWS Backup.
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for BackupRuleResourceType {
 }
 
 /// Copies backups created by a backup rule to another vault.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CopyActionResourceType {
     ///
     /// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for     the copied backup. For example,       arn:aws:backup:us-east-1:123456789012:vault:aBackupVault.
@@ -356,7 +356,7 @@ impl cfn_resources::CfnResource for CopyActionResourceType {
 }
 
 /// Specifies an object containing an array of Transition objects that     determine how long in days before a recovery point transitions to cold storage or is     deleted.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecycleResourceType {
     ///
     /// Specifies the number of days after creation that a recovery point is deleted. Must be     greater than MoveToColdStorageAfterDays.

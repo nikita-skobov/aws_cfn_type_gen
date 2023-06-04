@@ -1,5 +1,5 @@
 /// Describes a core network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetwork {
     ///
     /// The description of a core network.
@@ -78,7 +78,7 @@ pub struct CfnCoreNetwork {
     pub att_state: CfnCoreNetworkstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetworkcorenetworkarn;
 impl CfnCoreNetworkcorenetworkarn {
     pub fn att_name(&self) -> &'static str {
@@ -86,7 +86,7 @@ impl CfnCoreNetworkcorenetworkarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetworkcorenetworkid;
 impl CfnCoreNetworkcorenetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -94,7 +94,7 @@ impl CfnCoreNetworkcorenetworkid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetworkcreatedat;
 impl CfnCoreNetworkcreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -102,7 +102,7 @@ impl CfnCoreNetworkcreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetworkowneraccount;
 impl CfnCoreNetworkowneraccount {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl CfnCoreNetworkowneraccount {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCoreNetworkstate;
 impl CfnCoreNetworkstate {
     pub fn att_name(&self) -> &'static str {
@@ -177,7 +177,7 @@ impl cfn_resources::CfnResource for CfnCoreNetwork {
 }
 
 /// Describes a core network edge.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CoreNetworkEdge {
     ///
     /// The ASN of a core network edge.
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for CoreNetworkEdge {
 }
 
 /// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CoreNetworkSegment {
     ///
     /// The Regions where the edges are located.
@@ -347,7 +347,7 @@ impl cfn_resources::CfnResource for CoreNetworkSegment {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// The AWS::ElasticBeanstalk::Environment resource is an AWS Elastic Beanstalk resource     type that specifies an Elastic Beanstalk environment.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// The name of the application that is associated with this environment.
@@ -192,7 +192,7 @@ pub struct CfnEnvironment {
     pub att_endpoint_url: CfnEnvironmentendpointurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironmentendpointurl;
 impl CfnEnvironmentendpointurl {
     pub fn att_name(&self) -> &'static str {
@@ -364,7 +364,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 /// The OptionSettings property of the AWS::ElasticBeanstalk::Environment resource contains a list of     OptionSetting property types.
 ///
 /// For a list of possible namespaces and option values, see Option Values in the     AWS Elastic Beanstalk Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OptionSetting {
     ///
     /// A unique namespace that identifies the option's associated AWS resource.
@@ -460,7 +460,7 @@ impl cfn_resources::CfnResource for OptionSetting {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -498,7 +498,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the environment tier for an AWS::ElasticBeanstalk::Environment resource. For more information, see Environment Tiers in the AWS Elastic Beanstalk Developer    Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tier {
     ///
     /// The name of this environment tier.

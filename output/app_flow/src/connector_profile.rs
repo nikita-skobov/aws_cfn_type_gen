@@ -1,5 +1,5 @@
 /// The AWS::AppFlow::ConnectorProfile resource is an Amazon AppFlow resource    type that specifies the configuration profile for an instance of a connector. This includes    the provided name, credentials ARN, connection-mode, and so on. The fields that are common to    all types of connector profiles are explicitly specified under the Properties    field. The rest of the connector-specific properties are specified under     Properties/ConnectorProfileConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorProfile {
     ///
     /// Indicates the connection mode and if it is public or private.
@@ -95,7 +95,7 @@ pub struct CfnConnectorProfile {
     pub att_credentials_arn: CfnConnectorProfilecredentialsarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorProfileConnectionModeEnum {
     /// Private
     #[serde(rename = "Private")]
@@ -112,7 +112,7 @@ impl Default for ConnectorProfileConnectionModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectorProfileConnectorTypeEnum {
     /// Amplitude
     #[serde(rename = "Amplitude")]
@@ -217,7 +217,7 @@ impl Default for ConnectorProfileConnectorTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorProfileconnectorprofilearn;
 impl CfnConnectorProfileconnectorprofilearn {
     pub fn att_name(&self) -> &'static str {
@@ -225,7 +225,7 @@ impl CfnConnectorProfileconnectorprofilearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectorProfilecredentialsarn;
 impl CfnConnectorProfilecredentialsarn {
     pub fn att_name(&self) -> &'static str {
@@ -293,7 +293,7 @@ impl cfn_resources::CfnResource for CfnConnectorProfile {
 }
 
 /// The connector-specific credentials required when using Amplitude.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmplitudeConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -363,7 +363,7 @@ impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
 }
 
 /// The API key credentials required for API key authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApiKeyCredentials {
     ///
     /// The API key required for API key authentication.
@@ -434,7 +434,7 @@ impl cfn_resources::CfnResource for ApiKeyCredentials {
 }
 
 /// The basic auth credentials required for basic authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BasicAuthCredentials {
     ///
     /// The password to use to connect to a resource.
@@ -504,7 +504,7 @@ impl cfn_resources::CfnResource for BasicAuthCredentials {
 }
 
 /// Used by select connectors for which the OAuth workflow is supported, such as Salesforce,    Google Analytics, Marketo, Zendesk, and Slack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectorOAuthRequest {
     ///
     /// The code provided by the connector when it has been authenticated via the connected app.
@@ -576,7 +576,7 @@ impl cfn_resources::CfnResource for ConnectorOAuthRequest {
 }
 
 /// Defines the connector-specific configuration and credentials for the connector profile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectorProfileConfig {
     ///
     /// The connector-specific credentials required by each connector.
@@ -626,7 +626,7 @@ impl cfn_resources::CfnResource for ConnectorProfileConfig {
 }
 
 /// The connector-specific credentials required by a connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectorProfileCredentials {
     ///
     /// The connector-specific credentials required when using Amplitude.
@@ -919,7 +919,7 @@ impl cfn_resources::CfnResource for ConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required by each connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectorProfileProperties {
     ///
     /// The properties required by the custom connector.
@@ -1148,7 +1148,7 @@ impl cfn_resources::CfnResource for ConnectorProfileProperties {
 }
 
 /// The custom credentials required for custom authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomAuthCredentials {
     ///
     /// A map that holds custom authentication credentials.
@@ -1201,7 +1201,7 @@ impl cfn_resources::CfnResource for CustomAuthCredentials {
 }
 
 /// The connector-specific profile credentials that are required when using the custom    connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomConnectorProfileCredentials {
     ///
     /// The API keys required for the authentication of the user.
@@ -1265,7 +1265,7 @@ pub struct CustomConnectorProfileCredentials {
     pub oauth2: Option<OAuth2Credentials>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomConnectorProfileCredentialsAuthenticationTypeEnum {
     /// APIKEY
     #[serde(rename = "APIKEY")]
@@ -1313,7 +1313,7 @@ impl cfn_resources::CfnResource for CustomConnectorProfileCredentials {
 }
 
 /// The profile properties required by the custom connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomConnectorProfileProperties {
     ///
     /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
@@ -1359,7 +1359,7 @@ impl cfn_resources::CfnResource for CustomConnectorProfileProperties {
 }
 
 /// The connector-specific credentials required by Datadog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatadogConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -1429,7 +1429,7 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required by Datadog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatadogConnectorProfileProperties {
     ///
     /// The location of the Datadog resource.
@@ -1473,7 +1473,7 @@ impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required by Dynatrace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynatraceConnectorProfileCredentials {
     ///
     /// The API tokens used by Dynatrace API to authenticate various API calls.
@@ -1517,7 +1517,7 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required by Dynatrace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DynatraceConnectorProfileProperties {
     ///
     /// The location of the Dynatrace resource.
@@ -1561,7 +1561,7 @@ impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required by Google Analytics.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Google Analytics resources.
@@ -1701,7 +1701,7 @@ impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
 }
 
 /// The connector-specific profile credentials required by Infor Nexus.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InforNexusConnectorProfileCredentials {
     ///
     /// The Access Key portion of the credentials.
@@ -1823,7 +1823,7 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required by Infor Nexus.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InforNexusConnectorProfileProperties {
     ///
     /// The location of the Infor Nexus resource.
@@ -1867,7 +1867,7 @@ impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required by Marketo.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MarketoConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Marketo resources.
@@ -1980,7 +1980,7 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Marketo.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MarketoConnectorProfileProperties {
     ///
     /// The location of the Marketo resource.
@@ -2024,7 +2024,7 @@ impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
 }
 
 /// The OAuth 2.0 credentials required for OAuth 2.0 authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OAuth2Credentials {
     ///
     /// The access token used to access the connector on your behalf.
@@ -2165,7 +2165,7 @@ impl cfn_resources::CfnResource for OAuth2Credentials {
 }
 
 /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OAuth2Properties {
     ///
     /// The OAuth 2.0 grant type used by connector for OAuth 2.0 authentication.
@@ -2210,7 +2210,7 @@ pub struct OAuth2Properties {
     pub token_url_custom_properties: Option<std::collections::HashMap<String, String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OAuth2PropertiesOAuth2GrantTypeEnum {
     /// AUTHORIZATION_CODE
     #[serde(rename = "AUTHORIZATION_CODE")]
@@ -2257,7 +2257,7 @@ impl cfn_resources::CfnResource for OAuth2Properties {
 }
 
 /// The OAuth credentials required for OAuth type authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OAuthCredentials {
     ///
     /// The access token used to access protected SAPOData resources.
@@ -2398,7 +2398,7 @@ impl cfn_resources::CfnResource for OAuthCredentials {
 }
 
 /// The OAuth properties required for OAuth type authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OAuthProperties {
     ///
     /// The authorization code url required to redirect to SAP Login Page to fetch authorization    code for OAuth type authentication.
@@ -2482,7 +2482,7 @@ impl cfn_resources::CfnResource for OAuthProperties {
 }
 
 /// The PardotConnectorProfileCredentials property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PardotConnectorProfileCredentials {
     /// Property description not available.
     ///
@@ -2548,7 +2548,7 @@ impl cfn_resources::CfnResource for PardotConnectorProfileCredentials {
 }
 
 /// The PardotConnectorProfileProperties property type specifies Property description not available. for an AWS::AppFlow::ConnectorProfile.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PardotConnectorProfileProperties {
     /// Property description not available.
     ///
@@ -2598,7 +2598,7 @@ impl cfn_resources::CfnResource for PardotConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Amazon Redshift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -2670,7 +2670,7 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties when using Amazon Redshift.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RedshiftConnectorProfileProperties {
     ///
     /// A name for the associated Amazon S3 bucket.
@@ -2862,7 +2862,7 @@ impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using SAPOData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SAPODataConnectorProfileCredentials {
     ///
     /// The SAPOData basic authentication credentials.
@@ -2912,7 +2912,7 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using SAPOData.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SAPODataConnectorProfileProperties {
     ///
     /// The location of the SAPOData resource.
@@ -3119,7 +3119,7 @@ impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Salesforce.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Salesforce resources.
@@ -3263,7 +3263,7 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Salesforce.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceConnectorProfileProperties {
     ///
     /// The location of the Salesforce resource.
@@ -3331,7 +3331,7 @@ impl cfn_resources::CfnResource for SalesforceConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using ServiceNow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -3401,7 +3401,7 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using ServiceNow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowConnectorProfileProperties {
     ///
     /// The location of the ServiceNow resource.
@@ -3445,7 +3445,7 @@ impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Singular.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingularConnectorProfileCredentials {
     ///
     /// A unique alphanumeric identifier used to authenticate a user, developer, or calling    program to your API.
@@ -3489,7 +3489,7 @@ impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
 }
 
 /// The connector-specific profile credentials required when using Slack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SlackConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Slack resources.
@@ -3602,7 +3602,7 @@ impl cfn_resources::CfnResource for SlackConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Slack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SlackConnectorProfileProperties {
     ///
     /// The location of the Slack resource.
@@ -3646,7 +3646,7 @@ impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Snowflake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnowflakeConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -3716,7 +3716,7 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Snowflake.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SnowflakeConnectorProfileProperties {
     ///
     /// The name of the account.
@@ -3930,7 +3930,7 @@ impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Trend Micro.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TrendmicroConnectorProfileCredentials {
     ///
     /// The Secret Access Key portion of the credentials.
@@ -3974,7 +3974,7 @@ impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
 }
 
 /// The connector-specific profile credentials required when using Veeva.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VeevaConnectorProfileCredentials {
     ///
     /// The password that corresponds to the user name.
@@ -4044,7 +4044,7 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Veeva.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VeevaConnectorProfileProperties {
     ///
     /// The location of the Veeva resource.
@@ -4088,7 +4088,7 @@ impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
 }
 
 /// The connector-specific profile credentials required when using Zendesk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZendeskConnectorProfileCredentials {
     ///
     /// The credentials used to access protected Zendesk resources.
@@ -4201,7 +4201,7 @@ impl cfn_resources::CfnResource for ZendeskConnectorProfileCredentials {
 }
 
 /// The connector-specific profile properties required when using Zendesk.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ZendeskConnectorProfileProperties {
     ///
     /// The location of the Zendesk resource.

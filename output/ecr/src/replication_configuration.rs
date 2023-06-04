@@ -1,5 +1,5 @@
 /// The AWS::ECR::ReplicationConfiguration resource creates or updates the       replication configuration for a private registry. The first time a replication       configuration is applied to a private registry, a service-linked IAM role       is created in your account for the replication process. For more information, see Using         Service-Linked Roles for Amazon ECR in the Amazon Elastic         Container Registry User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationConfiguration {
     ///
     /// The replication configuration for a registry.
@@ -16,7 +16,7 @@ pub struct CfnReplicationConfiguration {
     pub att_registry_id: CfnReplicationConfigurationregistryid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationConfigurationregistryid;
 impl CfnReplicationConfigurationregistryid {
     pub fn att_name(&self) -> &'static str {
@@ -41,7 +41,7 @@ impl cfn_resources::CfnResource for CfnReplicationConfiguration {
 }
 
 /// The replication configuration for a registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationConfiguration {
     ///
     /// An array of objects representing the replication destinations and repository filters       for a replication configuration.
@@ -81,7 +81,7 @@ impl cfn_resources::CfnResource for ReplicationConfiguration {
 }
 
 /// An array of objects representing the destination for a replication rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationDestination {
     ///
     /// The Region to replicate to.
@@ -151,7 +151,7 @@ impl cfn_resources::CfnResource for ReplicationDestination {
 }
 
 /// An array of objects representing the replication destinations and repository filters       for a replication configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReplicationRule {
     ///
     /// An array of objects representing the destination for a replication rule.
@@ -214,7 +214,7 @@ impl cfn_resources::CfnResource for ReplicationRule {
 }
 
 /// The filter settings used with image replication. Specifying a repository filter to a       replication rule provides a method for controlling which repositories in a private       registry are replicated. If no filters are added, the contents of all repositories are       replicated.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RepositoryFilter {
     ///
     /// The repository filter details. When the PREFIX_MATCH filter type is       specified, this value is required and should be the repository name prefix to configure       replication for.
@@ -247,7 +247,7 @@ pub struct RepositoryFilter {
     pub filter_type: RepositoryFilterFilterTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RepositoryFilterFilterTypeEnum {
     /// PREFIX_MATCH
     #[serde(rename = "PREFIX_MATCH")]

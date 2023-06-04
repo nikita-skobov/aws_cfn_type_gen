@@ -1,5 +1,5 @@
 /// Creates a new attribute group as a container for user-defined attributes. This feature    enables users to have full control over their cloud application's metadata in a rich    machine-readable format to facilitate integration with automated workflows and third-party    tools.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroup {
     ///
     /// A nested object      in a JSON or YAML template      that supports arbitrary definitions.      Represents the attributes      in an attribute group      that describes an application and its components.
@@ -62,7 +62,7 @@ pub struct CfnAttributeGroup {
     pub att_id: CfnAttributeGroupid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGrouparn;
 impl CfnAttributeGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -70,7 +70,7 @@ impl CfnAttributeGrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAttributeGroupid;
 impl CfnAttributeGroupid {
     pub fn att_name(&self) -> &'static str {

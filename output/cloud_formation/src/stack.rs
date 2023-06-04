@@ -3,7 +3,7 @@
 /// You can add output values from a nested stack within the containing template. You use the GetAtt function with the nested stack's logical name and the name of the output value in the nested stack  in the format Outputs.NestedStackOutputName.
 ///
 /// When you apply template changes to update a top-level stack, CloudFormation updates the top-level stack  and initiates an update to its nested stacks. CloudFormation updates the resources of modified nested  stacks, but doesn't update the resources of unmodified nested stacks. For more information, see CloudFormation   stack updates.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStack {
     ///
     /// The Amazon Simple Notification Service (Amazon SNS) topic ARNs to publish stack related events. You can find your   Amazon SNS topic ARNs using the Amazon SNS console or your Command Line Interface (CLI).
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for CfnStack {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

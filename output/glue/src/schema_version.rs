@@ -1,5 +1,5 @@
 /// The AWS::Glue::SchemaVersion is an AWS Glue resource type that manages schema versions of schemas in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaVersion {
     ///
     /// The schema that includes the schema version.
@@ -27,7 +27,7 @@ pub struct CfnSchemaVersion {
     pub att_version_id: CfnSchemaVersionversionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaVersionversionid;
 impl CfnSchemaVersionversionid {
     pub fn att_name(&self) -> &'static str {
@@ -52,7 +52,7 @@ impl cfn_resources::CfnResource for CfnSchemaVersion {
 }
 
 /// A wrapper structure to contain schema identity fields. Either SchemaArn, or SchemaName and RegistryName has to be provided.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Schema {
     ///
     /// The name of the registry where the schema is stored. Either SchemaArn, or SchemaName and RegistryName has to be provided.

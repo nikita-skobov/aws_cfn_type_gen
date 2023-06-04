@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::Device resource is an Amazon SageMaker resource type       that allows you to register your Devices against an existing SageMaker Edge Manager       DeviceFleet. Each device must be listed individually in the CFN specification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDevice {
     ///
     /// Edge device you want to create.
@@ -93,7 +93,7 @@ impl cfn_resources::CfnResource for CfnDevice {
 }
 
 /// Information of a particular device.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Device {
     ///
     /// Description of the device.
@@ -223,7 +223,7 @@ impl cfn_resources::CfnResource for Device {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

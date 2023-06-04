@@ -1,5 +1,5 @@
 /// The AWS::MediaConnect::FlowOutput resource defines the destination address, protocol,       and port that AWS Elemental MediaConnect sends the ingested video to.       Each flow can have up to 50 outputs. An output can have the same protocol or a different       protocol from the source. The following protocols are supported: RIST, RTP, RTP-FEC, SRT-listener, SRT-caller, Zixi pull, Zixi push, and Fujitsu-QoS. CDI and ST 2110 JPEG XS protocols are not currently supported by AWS CloudFormation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowOutput {
     ///
     /// The range of IP addresses that are allowed to initiate output requests to this        flow. Format the IP addresses as a Classless Inter-Domain Routing (CIDR) block; for        example, 10.0.0.0/16.
@@ -171,7 +171,7 @@ pub struct CfnFlowOutput {
     pub att_output_arn: CfnFlowOutputoutputarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFlowOutputoutputarn;
 impl CfnFlowOutputoutputarn {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl cfn_resources::CfnResource for CfnFlowOutput {
 }
 
 /// Information about the encryption of the flow.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Encryption {
     ///
     /// The type of algorithm that is used for static key encryption (such as aes128, aes192, or       aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.
@@ -266,7 +266,7 @@ impl cfn_resources::CfnResource for Encryption {
 }
 
 /// The VPC interface that you want to send your output to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcInterfaceAttachment {
     ///
     /// The name of the VPC interface that you want to send your output to.

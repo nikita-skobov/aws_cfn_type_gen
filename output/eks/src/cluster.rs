@@ -7,7 +7,7 @@
 /// Amazon EKS nodes run in your AWS account and connect to your       cluster's control plane over the Kubernetes API server endpoint and a certificate file       that is created for your cluster.
 ///
 /// In most cases, it takes several minutes to create a cluster. After you create an         Amazon EKS cluster, you must configure your Kubernetes tooling to       communicate with the API server and launch nodes into your cluster. For more       information, see Managing Cluster Authentication and Launching           Amazon EKS nodes in the Amazon EKS User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// The encryption configuration for the cluster.
@@ -155,7 +155,7 @@ pub struct CfnCluster {
     pub att_open_id_connect_issuer_url: CfnClusteropenidconnectissuerurl,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterarn;
 impl CfnClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnClusterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClustercertificateauthoritydata;
 impl CfnClustercertificateauthoritydata {
     pub fn att_name(&self) -> &'static str {
@@ -171,7 +171,7 @@ impl CfnClustercertificateauthoritydata {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterclustersecuritygroupid;
 impl CfnClusterclustersecuritygroupid {
     pub fn att_name(&self) -> &'static str {
@@ -179,7 +179,7 @@ impl CfnClusterclustersecuritygroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterencryptionconfigkeyarn;
 impl CfnClusterencryptionconfigkeyarn {
     pub fn att_name(&self) -> &'static str {
@@ -187,7 +187,7 @@ impl CfnClusterencryptionconfigkeyarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterendpoint;
 impl CfnClusterendpoint {
     pub fn att_name(&self) -> &'static str {
@@ -195,7 +195,7 @@ impl CfnClusterendpoint {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterid;
 impl CfnClusterid {
     pub fn att_name(&self) -> &'static str {
@@ -203,7 +203,7 @@ impl CfnClusterid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterkubernetesnetworkconfigserviceipv6cidr;
 impl CfnClusterkubernetesnetworkconfigserviceipv6cidr {
     pub fn att_name(&self) -> &'static str {
@@ -211,7 +211,7 @@ impl CfnClusterkubernetesnetworkconfigserviceipv6cidr {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusteropenidconnectissuerurl;
 impl CfnClusteropenidconnectissuerurl {
     pub fn att_name(&self) -> &'static str {
@@ -277,7 +277,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// The cluster control plane logging configuration for your cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterLogging {
     ///
     /// The enabled control plane logs for your cluster. All log types are disabled if the       array is empty.
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for ClusterLogging {
 }
 
 /// The placement configuration for all the control plane instances of your local Amazon EKS cluster on an AWS Outpost. For more information, see         Capacity           considerations in the Amazon EKS User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ControlPlanePlacement {
     ///
     /// The name of the placement group for the Kubernetes control plane instances.
@@ -339,7 +339,7 @@ impl cfn_resources::CfnResource for ControlPlanePlacement {
 }
 
 /// The encryption configuration for the cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionConfig {
     ///
     /// The encryption provider for the cluster.
@@ -385,7 +385,7 @@ impl cfn_resources::CfnResource for EncryptionConfig {
 }
 
 /// The Kubernetes network configuration for the cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KubernetesNetworkConfig {
     ///
     /// Specify which IP family is used to assign Kubernetes pod and service IP addresses. If       you don't specify a value, ipv4 is used by default. You can only specify an       IP family when you create a cluster and can't change this value once the cluster is       created. If you specify ipv6, the VPC and subnets that you specify for       cluster creation must have both IPv4 and IPv6 CIDR blocks assigned to them. You can't       specify ipv6 for clusters in China Regions.
@@ -432,7 +432,7 @@ pub struct KubernetesNetworkConfig {
     pub service_ipv6_cidr: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum KubernetesNetworkConfigIpFamilyEnum {
     /// ipv4
     #[serde(rename = "ipv4")]
@@ -464,7 +464,7 @@ impl cfn_resources::CfnResource for KubernetesNetworkConfig {
 }
 
 /// Enable or disable exporting the Kubernetes control plane logs for your cluster to       CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch       Logs. For more information, see Amazon EKS Cluster control plane         logs in the         Amazon EKS User Guide       .
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logging {
     ///
     /// The cluster control plane logging configuration for your cluster.
@@ -498,7 +498,7 @@ impl cfn_resources::CfnResource for Logging {
 }
 
 /// The enabled logging type. For a list of the valid logging types, see the types property of LogSetup in the           Amazon EKS API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingTypeConfig {
     ///
     /// The name of the log type.
@@ -528,7 +528,7 @@ impl cfn_resources::CfnResource for LoggingTypeConfig {
 }
 
 /// The configuration of your local Amazon EKS cluster on an AWS       Outpost. Before creating a cluster on an Outpost, review Creating a local         cluster on an Outpost in the Amazon EKS User Guide. This API isn't available for         Amazon EKS clusters on the AWS cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutpostConfig {
     ///
     /// The Amazon EC2 instance type that you want to use for your local Amazon EKS cluster on Outposts. Choose an instance type based on the number of nodes       that your cluster will have. For more information, see Capacity         considerations in the Amazon EKS User Guide.
@@ -588,7 +588,7 @@ impl cfn_resources::CfnResource for OutpostConfig {
 }
 
 /// Identifies the AWS Key Management Service (AWS KMS) key used to encrypt the       secrets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Provider {
     ///
     /// Amazon Resource Name (ARN) or alias of the KMS key. The KMS key must be       symmetric and created in the same AWS Region as the cluster. If the         KMS key was created in a different account, the IAM principal must       have access to the KMS key. For more information, see Allowing         users in other accounts to use a KMS key in the                   AWS Key Management Service Developer Guide.
@@ -618,7 +618,7 @@ impl cfn_resources::CfnResource for Provider {
 }
 
 /// An object representing the VPC configuration to use for an Amazon EKS cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourcesVpcConfig {
     ///
     /// Set this value to true to enable private access for your cluster's       Kubernetes API server endpoint. If you enable private access, Kubernetes API requests       from within your cluster's VPC use the private VPC endpoint. The default value for this       parameter is false, which disables private access for your Kubernetes API       server. If you disable private access and you have nodes or AWS Fargate       pods in the cluster, then ensure that publicAccessCidrs includes the       necessary CIDR blocks for communication with the nodes or Fargate pods.       For more information, see Amazon EKS cluster endpoint access control in       the         Amazon EKS User Guide       .
@@ -701,7 +701,7 @@ impl cfn_resources::CfnResource for ResourcesVpcConfig {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

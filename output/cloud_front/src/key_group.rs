@@ -1,7 +1,7 @@
 /// A key group.
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyGroup {
     ///
     /// The key group configuration.
@@ -21,7 +21,7 @@ pub struct CfnKeyGroup {
     pub att_last_modified_time: CfnKeyGrouplastmodifiedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyGroupid;
 impl CfnKeyGroupid {
     pub fn att_name(&self) -> &'static str {
@@ -29,7 +29,7 @@ impl CfnKeyGroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnKeyGrouplastmodifiedtime;
 impl CfnKeyGrouplastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -56,7 +56,7 @@ impl cfn_resources::CfnResource for CfnKeyGroup {
 /// A key group configuration.
 ///
 /// A key group contains a list of public keys that you can use with CloudFront signed URLs and signed cookies.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyGroupConfig {
     ///
     /// A comment to describe the key group. The comment cannot be longer than 128 			characters.

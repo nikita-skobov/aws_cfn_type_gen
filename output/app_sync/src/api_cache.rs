@@ -1,5 +1,5 @@
 /// The AWS::AppSync::ApiCache resource represents the input of a CreateApiCache     operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApiCache {
     ///
     /// Caching behavior.

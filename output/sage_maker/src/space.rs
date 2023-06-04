@@ -1,5 +1,5 @@
 /// Creates a space used for real time collaboration in a Domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSpace {
     ///
     /// The ID of the associated Domain.
@@ -61,7 +61,7 @@ pub struct CfnSpace {
     pub att_space_arn: CfnSpacespacearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSpacespacearn;
 impl CfnSpacespacearn {
     pub fn att_name(&self) -> &'static str {
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for CfnSpace {
 }
 
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomImage {
     ///
     /// The name of the AppImageConfig.
@@ -225,7 +225,7 @@ impl cfn_resources::CfnResource for CustomImage {
 }
 
 /// The JupyterServer app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JupyterServerAppSettings {
     ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the JupyterServer app. If you use the LifecycleConfigArns parameter, then this parameter is also required.
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
 }
 
 /// The KernelGateway app settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KernelGatewayAppSettings {
     ///
     /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
@@ -318,7 +318,7 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
 }
 
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceSpec {
     ///
     /// The instance type that the image version runs on.
@@ -369,7 +369,7 @@ pub struct ResourceSpec {
     pub sage_maker_image_version_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceSpecInstanceTypeEnum {
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
@@ -649,7 +649,7 @@ impl cfn_resources::CfnResource for ResourceSpec {
 }
 
 /// A collection of space settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SpaceSettings {
     ///
     /// The JupyterServer app settings.
@@ -705,7 +705,7 @@ impl cfn_resources::CfnResource for SpaceSettings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

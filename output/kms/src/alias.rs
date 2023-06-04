@@ -7,7 +7,7 @@
 /// Regions
 ///
 /// AWS KMS CloudFormation resources are available in all AWS Regions in which AWS KMS and     AWS CloudFormation are supported.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAlias {
     ///
     /// Specifies the alias name. This value must begin with alias/ followed by a    name, such as alias/ExampleAlias.

@@ -1,5 +1,5 @@
 /// This resource creates an app block. App blocks store details about the virtual hard disk that     contains the files for the application in an S3 bucket. It also stores the setup script     with details about how to mount the virtual hard disk. App blocks are only supported for     Elastic fleets.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppBlock {
     /// The description of the app block.
     ///
@@ -79,7 +79,7 @@ pub struct CfnAppBlock {
     pub att_created_time: CfnAppBlockcreatedtime,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppBlockarn;
 impl CfnAppBlockarn {
     pub fn att_name(&self) -> &'static str {
@@ -87,7 +87,7 @@ impl CfnAppBlockarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAppBlockcreatedtime;
 impl CfnAppBlockcreatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -147,7 +147,7 @@ impl cfn_resources::CfnResource for CfnAppBlock {
 }
 
 /// The S3 location of the app block.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Location {
     ///
     /// The S3 bucket of the app block.
@@ -187,7 +187,7 @@ impl cfn_resources::CfnResource for S3Location {
 }
 
 /// The details of the script.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScriptDetails {
     ///
     /// The parameters used in the run path for the script.
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for ScriptDetails {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

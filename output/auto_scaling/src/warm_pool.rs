@@ -3,7 +3,7 @@
 /// When you create a warm pool, you can define a minimum size. When your Auto Scaling group    scales out and the size of the warm pool shrinks, Amazon EC2 Auto Scaling launches new    instances into the warm pool to maintain its minimum size.
 ///
 /// For more information, see Warm pools for Amazon EC2     Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWarmPool {
     ///
     /// The name of the Auto Scaling group.
@@ -75,7 +75,7 @@ pub struct CfnWarmPool {
     pub pool_state: Option<WarmPoolPoolStateEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WarmPoolPoolStateEnum {
     /// Hibernated
     #[serde(rename = "Hibernated")]
@@ -132,7 +132,7 @@ impl cfn_resources::CfnResource for CfnWarmPool {
 /// A structure that specifies an instance reuse policy for the     InstanceReusePolicy property of the AWS::AutoScaling::WarmPool resource.
 ///
 /// For more information, see Warm pools for Amazon EC2     Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceReusePolicy {
     ///
     /// Specifies whether instances in the Auto Scaling group can be returned to the warm pool on       scale in.

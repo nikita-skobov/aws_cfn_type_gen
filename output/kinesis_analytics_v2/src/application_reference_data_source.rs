@@ -1,7 +1,7 @@
 /// Adds a reference data source to an existing SQL-based Kinesis Data Analytics application.
 ///
 /// Kinesis Data Analytics reads reference data (that is, an Amazon S3 object) and creates an    in-application table within your application. In the request, you provide the source (S3    bucket name and object key name), name of the in-application table to create, and the    necessary mapping information that describes how data in an Amazon S3 object maps to columns    in the resulting in-application table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationReferenceDataSource {
     ///
     /// The name of the application.
@@ -75,7 +75,7 @@ impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
 /// "name1", "address1"
 ///
 /// "name2", "address2"
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CSVMappingParameters {
     ///
     /// The column delimiter. For example, in a CSV format, a comma (",") is the typical column    delimiter.
@@ -161,7 +161,7 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping    information when JSON is the record format on the streaming source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JSONMappingParameters {
     ///
     /// The path to the top-level parent that contains the records.
@@ -218,7 +218,7 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
 }
 
 /// When you configure a SQL-based Kinesis Data Analytics application's input at the    time of creating or updating an application, provides additional mapping information specific    to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the    streaming source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MappingParameters {
     ///
     /// Provides additional mapping information when the record format uses delimiters    (for example, CSV).
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for MappingParameters {
 /// For a SQL-based Kinesis Data Analytics application, describes the mapping of each    data element in the streaming source to the corresponding column in the in-application    stream.
 ///
 /// Also used to describe the format of the reference data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordColumn {
     ///
     /// A reference to the data element in the streaming input or the reference data    source.
@@ -402,7 +402,7 @@ impl cfn_resources::CfnResource for RecordColumn {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the record format    and relevant mapping information that should be applied to schematize the records on the    stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecordFormat {
     ///
     /// When you configure application input at the time of creating or updating an application,    provides additional mapping information specific to the record format (such as JSON, CSV, or    record fields delimited by some delimiter) on the streaming source.
@@ -430,7 +430,7 @@ pub struct RecordFormat {
     pub record_format_type: RecordFormatRecordFormatTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecordFormatRecordFormatTypeEnum {
     /// CSV
     #[serde(rename = "CSV")]
@@ -466,7 +466,7 @@ impl cfn_resources::CfnResource for RecordFormat {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the reference data    source by providing the source information (Amazon S3 bucket name and object key name), the    resulting in-application table name that is created, and the necessary schema to map the data    elements in the Amazon S3 object to the in-application table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceDataSource {
     ///
     /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
@@ -551,7 +551,7 @@ impl cfn_resources::CfnResource for ReferenceDataSource {
 }
 
 /// For a SQL-based Kinesis Data Analytics application, describes the format of the    data in the streaming source, and how each data element maps to corresponding columns created    in the in-application stream.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ReferenceSchema {
     ///
     /// A list of RecordColumn objects.
@@ -646,7 +646,7 @@ impl cfn_resources::CfnResource for ReferenceSchema {
 /// For an SQL-based Amazon Kinesis Data Analytics application, identifies the Amazon S3       bucket and object that contains the reference data.
 ///
 /// A Kinesis Data Analytics application loads reference data only once. If the data       changes, you call the UpdateApplication operation to trigger reloading of data into your       application.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3ReferenceDataSource {
     ///
     /// The Amazon Resource Name (ARN) of the S3 bucket.

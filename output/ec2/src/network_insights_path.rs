@@ -1,7 +1,7 @@
 /// Specifies a path to analyze for reachability.
 ///
 /// VPC Reachability Analyzer enables you to analyze and debug network reachability between     two resources in your virtual private cloud (VPC). For more information, see the Reachability Analyzer User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPath {
     ///
     /// The ID or ARN of the destination. If the resource is in another account, you must specify an ARN.
@@ -143,7 +143,7 @@ pub struct CfnNetworkInsightsPath {
     pub att_source_arn: CfnNetworkInsightsPathsourcearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkInsightsPathProtocolEnum {
     /// tcp
     #[serde(rename = "tcp")]
@@ -160,7 +160,7 @@ impl Default for NetworkInsightsPathProtocolEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPathcreateddate;
 impl CfnNetworkInsightsPathcreateddate {
     pub fn att_name(&self) -> &'static str {
@@ -168,7 +168,7 @@ impl CfnNetworkInsightsPathcreateddate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPathdestinationarn;
 impl CfnNetworkInsightsPathdestinationarn {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl CfnNetworkInsightsPathdestinationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPathnetworkinsightspatharn;
 impl CfnNetworkInsightsPathnetworkinsightspatharn {
     pub fn att_name(&self) -> &'static str {
@@ -184,7 +184,7 @@ impl CfnNetworkInsightsPathnetworkinsightspatharn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPathnetworkinsightspathid;
 impl CfnNetworkInsightsPathnetworkinsightspathid {
     pub fn att_name(&self) -> &'static str {
@@ -192,7 +192,7 @@ impl CfnNetworkInsightsPathnetworkinsightspathid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNetworkInsightsPathsourcearn;
 impl CfnNetworkInsightsPathsourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -285,7 +285,7 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsPath {
 }
 
 /// Describes a port range.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterPortRange {
     ///
     /// The first port in the range.
@@ -371,7 +371,7 @@ impl cfn_resources::CfnResource for FilterPortRange {
 }
 
 /// Describes a set of filters for a path analysis. Use path filters to scope the analysis when      there can be multiple resulting paths.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PathFilter {
     ///
     /// The destination IPv4 address.
@@ -504,7 +504,7 @@ impl cfn_resources::CfnResource for PathFilter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

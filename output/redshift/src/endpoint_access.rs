@@ -1,5 +1,5 @@
 /// Creates a Redshift-managed VPC endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccess {
     ///
     /// The cluster identifier of the cluster associated with the endpoint.
@@ -81,7 +81,7 @@ pub struct CfnEndpointAccess {
     pub att_vpc_endpoint_vpc_id: CfnEndpointAccessvpcendpointvpcid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccessaddress;
 impl CfnEndpointAccessaddress {
     pub fn att_name(&self) -> &'static str {
@@ -89,7 +89,7 @@ impl CfnEndpointAccessaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccessendpointcreatetime;
 impl CfnEndpointAccessendpointcreatetime {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl CfnEndpointAccessendpointcreatetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccessendpointstatus;
 impl CfnEndpointAccessendpointstatus {
     pub fn att_name(&self) -> &'static str {
@@ -105,7 +105,7 @@ impl CfnEndpointAccessendpointstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccessvpcendpointvpcendpointid;
 impl CfnEndpointAccessvpcendpointvpcendpointid {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl CfnEndpointAccessvpcendpointvpcendpointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAccessvpcendpointvpcid;
 impl CfnEndpointAccessvpcendpointvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -171,7 +171,7 @@ impl cfn_resources::CfnResource for CfnEndpointAccess {
 }
 
 /// Describes a network interface.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterface {
     ///
     /// The Availability Zone.
@@ -280,7 +280,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 }
 
 /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcEndpoint {
     ///
     /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
@@ -357,7 +357,7 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 }
 
 /// The security groups associated with the endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcSecurityGroup {
     ///
     /// The status of the endpoint.

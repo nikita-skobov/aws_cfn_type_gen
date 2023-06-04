@@ -1,7 +1,7 @@
 /// Creates a member within a Managed Blockchain network.
 ///
 /// Applies only to Hyperledger Fabric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMember {
     ///
     /// The unique identifier of the invitation to join the network sent to the account that creates the member.
@@ -61,7 +61,7 @@ pub struct CfnMember {
     pub att_network_id: CfnMembernetworkid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMembermemberid;
 impl CfnMembermemberid {
     pub fn att_name(&self) -> &'static str {
@@ -69,7 +69,7 @@ impl CfnMembermemberid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMembernetworkid;
 impl CfnMembernetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -122,7 +122,7 @@ impl cfn_resources::CfnResource for CfnMember {
 /// A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of YES votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.
 ///
 /// Applies only to Hyperledger Fabric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApprovalThresholdPolicy {
     ///
     /// The duration from the time that a proposal is created until it expires. If members cast neither the required number of YES votes to approve the proposal nor the number of NO votes required to reject it before the duration expires, the proposal is EXPIRED and ProposalActions aren't carried out.
@@ -171,7 +171,7 @@ pub struct ApprovalThresholdPolicy {
     pub threshold_percentage: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApprovalThresholdPolicyThresholdComparatorEnum {
     /// GREATER_THAN
     #[serde(rename = "GREATER_THAN")]
@@ -235,7 +235,7 @@ impl cfn_resources::CfnResource for ApprovalThresholdPolicy {
 /// Configuration properties of the member.
 ///
 /// Applies only to Hyperledger Fabric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemberConfiguration {
     ///
     /// An optional description of the member.
@@ -333,7 +333,7 @@ impl cfn_resources::CfnResource for MemberConfiguration {
 }
 
 /// Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemberFabricConfiguration {
     ///
     /// The password for the member's initial administrative user. The AdminPassword must be at least 8 characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quotation mark (‘), a double quotation marks (“), a forward slash(/), a backward slash(\), @, or a space.
@@ -429,7 +429,7 @@ impl cfn_resources::CfnResource for MemberFabricConfiguration {
 }
 
 /// Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MemberFrameworkConfiguration {
     /// Configuration properties for Hyperledger Fabric.
     ///
@@ -462,7 +462,7 @@ impl cfn_resources::CfnResource for MemberFrameworkConfiguration {
 }
 
 /// Configuration properties of the network to which the member belongs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfiguration {
     ///
     /// Attributes of the blockchain framework for the network.
@@ -547,7 +547,7 @@ pub struct NetworkConfiguration {
     pub voting_policy: VotingPolicy,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkConfigurationFrameworkEnum {
     /// ETHEREUM
     #[serde(rename = "ETHEREUM")]
@@ -640,7 +640,7 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 }
 
 /// Hyperledger Fabric configuration properties for the network.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkFabricConfiguration {
     ///
     /// The edition of Amazon Managed Blockchain that the network uses. Valid values are       standard and starter. For more information, see Amazon Managed Blockchain Pricing
@@ -656,7 +656,7 @@ pub struct NetworkFabricConfiguration {
     pub edition: NetworkFabricConfigurationEditionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkFabricConfigurationEditionEnum {
     /// STANDARD
     #[serde(rename = "STANDARD")]
@@ -688,7 +688,7 @@ impl cfn_resources::CfnResource for NetworkFabricConfiguration {
 }
 
 /// Configuration properties relevant to the network for the blockchain framework that the network uses.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkFrameworkConfiguration {
     ///
     /// Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
@@ -724,7 +724,7 @@ impl cfn_resources::CfnResource for NetworkFrameworkConfiguration {
 /// The voting rules for the network to decide if a proposal is accepted
 ///
 /// Applies only to Hyperledger Fabric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VotingPolicy {
     ///
     /// Defines the rules for the network for voting on proposals, such as the percentage of YES votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.

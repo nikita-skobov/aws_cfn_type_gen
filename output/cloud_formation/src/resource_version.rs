@@ -3,7 +3,7 @@
 /// For more information on how to develop resources and ready them for registration, see Creating Resource   Providers in the CloudFormation CLI User Guide.
 ///
 /// You can have a maximum of 50 resource versions registered at a time. This maximum is per account and per  Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersion {
     ///
     /// The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when  invoking the resource. If your resource calls AWS APIs in any of its handlers, you must create an   IAM execution   role that includes the necessary permissions to call those AWS APIs, and  provision that execution role in your account. When CloudFormation needs to invoke the resource type  handler, CloudFormation assumes this execution role to create a temporary session token, which it then  passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
@@ -91,7 +91,7 @@ pub struct CfnResourceVersion {
     pub att_visibility: CfnResourceVersionvisibility,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersionarn;
 impl CfnResourceVersionarn {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnResourceVersionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersionprovisioningtype;
 impl CfnResourceVersionprovisioningtype {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl CfnResourceVersionprovisioningtype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersiontypearn;
 impl CfnResourceVersiontypearn {
     pub fn att_name(&self) -> &'static str {
@@ -115,7 +115,7 @@ impl CfnResourceVersiontypearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersionversionid;
 impl CfnResourceVersionversionid {
     pub fn att_name(&self) -> &'static str {
@@ -123,7 +123,7 @@ impl CfnResourceVersionversionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceVersionvisibility;
 impl CfnResourceVersionvisibility {
     pub fn att_name(&self) -> &'static str {
@@ -210,7 +210,7 @@ impl cfn_resources::CfnResource for CfnResourceVersion {
 }
 
 /// Logging configuration information for a resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingConfig {
     ///
     /// The Amazon CloudWatch logs group to which CloudFormation sends error logging information when invoking  the type's handlers.

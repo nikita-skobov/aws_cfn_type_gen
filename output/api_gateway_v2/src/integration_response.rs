@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::IntegrationResponse resource updates an          integration response for an WebSocket API. For more information, see Set up WebSocket API Integration Responses in API Gateway in the             API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIntegrationResponse {
     ///
     /// The API identifier.
@@ -92,7 +92,7 @@ pub struct CfnIntegrationResponse {
     pub att_integration_response_id: CfnIntegrationResponseintegrationresponseid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIntegrationResponseintegrationresponseid;
 impl CfnIntegrationResponseintegrationresponseid {
     pub fn att_name(&self) -> &'static str {

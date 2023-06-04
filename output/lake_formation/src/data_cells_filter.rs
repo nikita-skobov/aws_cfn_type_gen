@@ -1,5 +1,5 @@
 /// A structure that represents a data cell filter with column-level, row-level, and/or cell-level security. Data cell filters belong to a specific table in a Data Catalog. During a stack operation,       AWS CloudFormation calls the AWS Lake Formation CreateDataCellsFilter API operation to create     a DataCellsFilter resource, and calls the DeleteDataCellsFilter API operation to delete it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataCellsFilter {
     ///
     /// An array of UTF-8 strings. A list of column names.
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for CfnDataCellsFilter {
 }
 
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnWildcard {
     ///
     /// Excludes column names. Any column with this name will be excluded.
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 }
 
 /// A PartiQL predicate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RowFilter {
     ///
     /// A wildcard for all rows.

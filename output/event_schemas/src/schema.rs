@@ -1,5 +1,5 @@
 /// Use the AWS::EventSchemas::Schema resource to specify an event       schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchema {
     ///
     /// The source of the schema definition.
@@ -82,7 +82,7 @@ pub struct CfnSchema {
     pub att_schema_version: CfnSchemaschemaversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaschemaarn;
 impl CfnSchemaschemaarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnSchemaschemaarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaschemaname;
 impl CfnSchemaschemaname {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl CfnSchemaschemaname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaschemaversion;
 impl CfnSchemaschemaversion {
     pub fn att_name(&self) -> &'static str {
@@ -121,7 +121,7 @@ impl cfn_resources::CfnResource for CfnSchema {
 }
 
 /// Tags to associate with the schema.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagsEntry {
     ///
     /// They key of a key-value pair.

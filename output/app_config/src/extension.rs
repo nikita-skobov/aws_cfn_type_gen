@@ -3,7 +3,7 @@
 /// You can create your own extensions or use the AWS authored extensions provided by       AWS AppConfig. For an AWS AppConfig extension that uses       AWS Lambda, you must create a Lambda function to perform any     computation and processing defined in the extension. If you plan to create custom versions     of the AWS authored notification extensions, you only need to specify an Amazon Resource     Name (ARN) in the Uri field for the new extension version.
 ///
 /// For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtension {
     ///
     /// The actions defined in the extension.
@@ -90,7 +90,7 @@ pub struct CfnExtension {
     pub att_id: CfnExtensionid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionarn;
 impl CfnExtensionarn {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl CfnExtensionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionid;
 impl CfnExtensionid {
     pub fn att_name(&self) -> &'static str {
@@ -165,7 +165,7 @@ impl cfn_resources::CfnResource for CfnExtension {
 }
 
 /// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Parameter {
     ///
     /// Information about the parameter.
@@ -238,7 +238,7 @@ impl cfn_resources::CfnResource for Parameter {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

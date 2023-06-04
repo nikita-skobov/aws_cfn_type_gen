@@ -7,7 +7,7 @@
 /// When you’re ready to use your function with a CloudFront distribution, publish the 			  function to the LIVE stage. You can do this in the CloudFront console, with         PublishFunction in the CloudFront API, or by updating the         AWS::CloudFront::Function resource with the AutoPublish         property set to true. When the function is published to the         LIVE stage, you can attach it to a distribution’s cache behavior, using the         function’s ARN.
 ///
 /// To automatically publish the function to the LIVE stage when it’s 				created, set the AutoPublish property to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunction {
     ///
     /// A flag that determines whether to automatically publish the function to the 			LIVE stage when it’s created. To automatically publish to the 			LIVE stage, set this property to true.
@@ -82,7 +82,7 @@ pub struct CfnFunction {
     pub att_stage: CfnFunctionstage,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionfunctionarn;
 impl CfnFunctionfunctionarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnFunctionfunctionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionfunctionmetadatafunctionarn;
 impl CfnFunctionfunctionmetadatafunctionarn {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl CfnFunctionfunctionmetadatafunctionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFunctionstage;
 impl CfnFunctionstage {
     pub fn att_name(&self) -> &'static str {
@@ -149,7 +149,7 @@ impl cfn_resources::CfnResource for CfnFunction {
 }
 
 /// Contains configuration information about a CloudFront function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunctionConfig {
     ///
     /// A comment to describe the function.
@@ -176,7 +176,7 @@ pub struct FunctionConfig {
     pub runtime: FunctionConfigRuntimeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FunctionConfigRuntimeEnum {
     /// cloudfront-js-1.0
     #[serde(rename = "cloudfront-js-1.0")]
@@ -204,7 +204,7 @@ impl cfn_resources::CfnResource for FunctionConfig {
 }
 
 /// Contains metadata about a CloudFront function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FunctionMetadata {
     ///
     /// The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the 			function.

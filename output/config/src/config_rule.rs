@@ -13,7 +13,7 @@
 /// If you are updating a rule that you added previously, you can      specify the rule by ConfigRuleName,      ConfigRuleId, or ConfigRuleArn in the      ConfigRule data type that you use in this      request.
 ///
 /// For more information about developing and using AWS Config      rules, see Evaluating Resources with AWS Config Rules      in the AWS Config Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigRule {
     ///
     /// A name for the AWS Config rule. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the rule name.       For more information, see Name Type.
@@ -118,7 +118,7 @@ pub struct CfnConfigRule {
     pub att_config_rule_id: CfnConfigRuleconfigruleid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfigRuleMaximumExecutionFrequencyEnum {
     /// One_Hour
     #[serde(rename = "One_Hour")]
@@ -147,7 +147,7 @@ impl Default for ConfigRuleMaximumExecutionFrequencyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigRulearn;
 impl CfnConfigRulearn {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl CfnConfigRulearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigRulecompliancetype;
 impl CfnConfigRulecompliancetype {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl CfnConfigRulecompliancetype {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigRuleconfigruleid;
 impl CfnConfigRuleconfigruleid {
     pub fn att_name(&self) -> &'static str {
@@ -234,7 +234,7 @@ impl cfn_resources::CfnResource for CfnConfigRule {
 }
 
 /// Provides the runtime system, policy definition, and whether debug logging enabled. You can 			specify the following CustomPolicyDetails parameter values 			only 			for AWS Config Custom Policy rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomPolicyDetails {
     ///
     /// The boolean expression for enabling debug logging for your AWS Config Custom Policy rule. The default value is false.
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for CustomPolicyDetails {
 }
 
 /// Defines which resources trigger an evaluation for an AWS Config 			rule. The scope can include one or more resource types, a 			combination of a tag key and value, or a combination of one resource 			type and one resource ID. Specify a scope to constrain which 			resources trigger an evaluation for a rule. Otherwise, evaluations 			for the rule are triggered when any resource in your recording group 			changes in configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scope {
     ///
     /// The ID of the only AWS resource that you want to trigger an 			evaluation for the rule. If you specify a resource ID, you must 			specify one resource type for 			ComplianceResourceTypes.
@@ -488,7 +488,7 @@ impl cfn_resources::CfnResource for Scope {
 }
 
 /// Provides the CustomPolicyDetails, the rule owner (        AWS       for managed rules, CUSTOM_POLICY for Custom Policy rules, and CUSTOM_LAMBDA for Custom Lambda rules), the rule 			identifier, and the events that cause the evaluation of your AWS 			resources.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Source {
     ///
     /// Provides the runtime system, policy definition, and whether debug logging is enabled. Required when owner is set to CUSTOM_POLICY.
@@ -556,7 +556,7 @@ pub struct Source {
     pub source_identifier: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceOwnerEnum {
     /// AWS
     #[serde(rename = "AWS")]
@@ -624,7 +624,7 @@ impl cfn_resources::CfnResource for Source {
 }
 
 /// Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also 			provides the frequency with which you want AWS Config to run 			evaluations for the rule if the trigger type is periodic. You can 			specify the parameter values for SourceDetail only for 			custom rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceDetail {
     ///
     /// The source of the event, such as an AWS service, that triggers 			AWS Config to evaluate your AWS resources.
@@ -673,7 +673,7 @@ pub struct SourceDetail {
     pub message_type: SourceDetailMessageTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceDetailEventSourceEnum {
     /// aws.config
     #[serde(rename = "aws.config")]
@@ -686,7 +686,7 @@ impl Default for SourceDetailEventSourceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceDetailMaximumExecutionFrequencyEnum {
     /// One_Hour
     #[serde(rename = "One_Hour")]
@@ -715,7 +715,7 @@ impl Default for SourceDetailMaximumExecutionFrequencyEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceDetailMessageTypeEnum {
     /// ConfigurationItemChangeNotification
     #[serde(rename = "ConfigurationItemChangeNotification")]

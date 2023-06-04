@@ -1,5 +1,5 @@
 /// The infrastructure configuration allows you to specify the infrastructure within which     to build and test your image. In the infrastructure configuration, you can specify instance     types, subnets, and security groups to associate with your instance. You can also associate     an Amazon EC2 key pair with the instance used to build your image. This allows you to log     on to your instance to troubleshoot if your build fails and you set     terminateInstanceOnFailure to false.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInfrastructureConfiguration {
     ///
     /// The description of the infrastructure configuration.
@@ -186,7 +186,7 @@ pub struct CfnInfrastructureConfiguration {
     pub att_name: CfnInfrastructureConfigurationname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInfrastructureConfigurationarn;
 impl CfnInfrastructureConfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -194,7 +194,7 @@ impl CfnInfrastructureConfigurationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnInfrastructureConfigurationname;
 impl CfnInfrastructureConfigurationname {
     pub fn att_name(&self) -> &'static str {
@@ -330,7 +330,7 @@ impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {
 }
 
 /// The instance metadata options that apply to the HTTP requests that pipeline builds use 			to launch EC2 build and test instances. For more information about instance metadata 			options, see Configure the instance metadata options in the 				        Amazon EC2 User Guide       for Linux instances, or Configure the instance metadata options in the 				        Amazon EC2 Windows Guide       for Windows instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceMetadataOptions {
     ///
     /// Limit the number of hops that an instance metadata request can traverse to reach its 			destination. The default is one hop. However, if HTTP tokens are required, container 			image builds need a minimum of two hops.
@@ -394,7 +394,7 @@ impl cfn_resources::CfnResource for InstanceMetadataOptions {
 }
 
 /// Logging configuration defines where Image Builder uploads your logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logging {
     ///
     /// The Amazon S3 logging configuration.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for Logging {
 }
 
 /// Amazon S3 logging configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Logs {
     ///
     /// The S3 bucket in which to store the logs.

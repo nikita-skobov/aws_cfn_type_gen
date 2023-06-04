@@ -1,7 +1,7 @@
 /// Creates a component. Components are software that run on AWS IoT Greengrass core devices.    After you develop and test a component on your core device, you can use this operation to    upload your component to AWS IoT Greengrass. Then, you can deploy the component to other    core devices.
 ///
 /// You can use this operation to do the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentVersion {
     ///
     /// The recipe to use to create the component. The recipe defines the component's metadata,    parameters, dependencies, lifecycle, artifacts, and platform compatibility.
@@ -57,7 +57,7 @@ pub struct CfnComponentVersion {
     pub att_component_version: CfnComponentVersioncomponentversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentVersionarn;
 impl CfnComponentVersionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnComponentVersionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentVersioncomponentname;
 impl CfnComponentVersioncomponentname {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnComponentVersioncomponentname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnComponentVersioncomponentversion;
 impl CfnComponentVersioncomponentversion {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl cfn_resources::CfnResource for CfnComponentVersion {
 }
 
 /// Contains information about a component dependency for a Lambda function    component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentDependencyRequirement {
     ///
     /// The type of this dependency. Choose from the following options:
@@ -148,7 +148,7 @@ impl cfn_resources::CfnResource for ComponentDependencyRequirement {
 }
 
 /// Contains information about a platform that a component supports.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ComponentPlatform {
     ///
     /// A dictionary of attributes for the platform. The AWS IoT Greengrass Core software defines    the os and platform by default. You can specify additional platform    attributes for a core device when you deploy the AWS IoT Greengrass nucleus component. For    more information, see the AWS IoT Greengrass     nucleus component in the AWS IoT Greengrass V2 Developer    Guide.
@@ -192,7 +192,7 @@ impl cfn_resources::CfnResource for ComponentPlatform {
 }
 
 /// Contains information about a container in which AWS Lambda functions run on     AWS IoT Greengrass core devices.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaContainerParams {
     ///
     /// The list of system devices that the container can access.
@@ -262,7 +262,7 @@ impl cfn_resources::CfnResource for LambdaContainerParams {
 }
 
 /// Contains information about a device that Linux processes in a container can access.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaDeviceMount {
     ///
     /// Whether or not to add the component's system user as an owner of the device.
@@ -320,7 +320,7 @@ impl cfn_resources::CfnResource for LambdaDeviceMount {
 }
 
 /// Contains information about an event source for an AWS Lambda function. The    event source defines the topics on which this Lambda function subscribes to    receive messages that run the function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaEventSource {
     ///
     /// The topic to which to subscribe to receive event messages.
@@ -364,7 +364,7 @@ impl cfn_resources::CfnResource for LambdaEventSource {
 }
 
 /// Contains parameters for a Lambda function that runs on AWS IoT Greengrass.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaExecutionParameters {
     ///
     /// The map of environment variables that are available to the Lambda function    when it runs.
@@ -524,7 +524,7 @@ impl cfn_resources::CfnResource for LambdaExecutionParameters {
 }
 
 /// Contains information about an AWS Lambda function to import to create a    component.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaFunctionRecipeSource {
     ///
     /// The component versions on which this Lambda function component    depends.
@@ -623,7 +623,7 @@ impl cfn_resources::CfnResource for LambdaFunctionRecipeSource {
 }
 
 /// Contains parameters for a Linux process that contains an AWS Lambda    function.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaLinuxProcessParams {
     ///
     /// The parameters for the container in which the Lambda function runs.
@@ -671,7 +671,7 @@ impl cfn_resources::CfnResource for LambdaLinuxProcessParams {
 }
 
 /// Contains information about a volume that Linux processes in a container can access. When    you define a volume, the AWS IoT Greengrass Core software mounts the source files to the    destination inside the container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaVolumeMount {
     ///
     /// Whether or not to add the AWS IoT Greengrass user group as an owner of the    volume.

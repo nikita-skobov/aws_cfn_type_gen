@@ -1,5 +1,5 @@
 /// An AWS Verified Access endpoint specifies the application that AWS Verified Access provides access to. It must be     attached to an AWS Verified Access group. An AWS Verified Access endpoint must also have an attached access policy     before you attached it to a group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpoint {
     ///
     /// The DNS name for users to reach your application.
@@ -177,7 +177,7 @@ pub struct CfnVerifiedAccessEndpoint {
     pub att_verified_access_instance_id: CfnVerifiedAccessEndpointverifiedaccessinstanceid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessEndpointAttachmentTypeEnum {
     /// vpc
     #[serde(rename = "vpc")]
@@ -190,7 +190,7 @@ impl Default for VerifiedAccessEndpointAttachmentTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerifiedAccessEndpointEndpointTypeEnum {
     /// load-balancer
     #[serde(rename = "load-balancer")]
@@ -207,7 +207,7 @@ impl Default for VerifiedAccessEndpointEndpointTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointcreationtime;
 impl CfnVerifiedAccessEndpointcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -215,7 +215,7 @@ impl CfnVerifiedAccessEndpointcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointdevicevalidationdomain;
 impl CfnVerifiedAccessEndpointdevicevalidationdomain {
     pub fn att_name(&self) -> &'static str {
@@ -223,7 +223,7 @@ impl CfnVerifiedAccessEndpointdevicevalidationdomain {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointendpointdomain;
 impl CfnVerifiedAccessEndpointendpointdomain {
     pub fn att_name(&self) -> &'static str {
@@ -231,7 +231,7 @@ impl CfnVerifiedAccessEndpointendpointdomain {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointlastupdatedtime;
 impl CfnVerifiedAccessEndpointlastupdatedtime {
     pub fn att_name(&self) -> &'static str {
@@ -239,7 +239,7 @@ impl CfnVerifiedAccessEndpointlastupdatedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointstatus;
 impl CfnVerifiedAccessEndpointstatus {
     pub fn att_name(&self) -> &'static str {
@@ -247,7 +247,7 @@ impl CfnVerifiedAccessEndpointstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointverifiedaccessendpointid;
 impl CfnVerifiedAccessEndpointverifiedaccessendpointid {
     pub fn att_name(&self) -> &'static str {
@@ -255,7 +255,7 @@ impl CfnVerifiedAccessEndpointverifiedaccessendpointid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVerifiedAccessEndpointverifiedaccessinstanceid;
 impl CfnVerifiedAccessEndpointverifiedaccessinstanceid {
     pub fn att_name(&self) -> &'static str {
@@ -286,7 +286,7 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
 }
 
 /// Describes the load balancer options when creating an AWS Verified Access endpoint using the       load-balancer type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoadBalancerOptions {
     ///
     /// The ARN of the load balancer.
@@ -343,7 +343,7 @@ pub struct LoadBalancerOptions {
     pub subnet_ids: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoadBalancerOptionsProtocolEnum {
     /// http
     #[serde(rename = "http")]
@@ -393,7 +393,7 @@ impl cfn_resources::CfnResource for LoadBalancerOptions {
 }
 
 /// Describes the network interface options when creating an AWS Verified Access endpoint using the       network-interface type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterfaceOptions {
     ///
     /// The ID of the network interface.
@@ -438,7 +438,7 @@ pub struct NetworkInterfaceOptions {
     pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NetworkInterfaceOptionsProtocolEnum {
     /// http
     #[serde(rename = "http")]
@@ -494,7 +494,7 @@ impl cfn_resources::CfnResource for NetworkInterfaceOptions {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

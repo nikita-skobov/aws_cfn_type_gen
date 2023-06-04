@@ -1,5 +1,5 @@
 /// Creates a Kinesis stream that captures and transports data records that are emitted       from data sources. For information about creating streams, see CreateStream in the Amazon Kinesis API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStream {
     ///
     /// The name of the Kinesis stream. If you don't specify a name, AWS       CloudFormation generates a unique physical ID and uses that ID for the stream name. For       more information, see Name Type.
@@ -87,7 +87,7 @@ pub struct CfnStream {
     pub att_arn: CfnStreamarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStreamarn;
 impl CfnStreamarn {
     pub fn att_name(&self) -> &'static str {
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for CfnStream {
 /// API Limits: You can successfully apply a new AWS KMS key for       server-side encryption 25 times in a rolling 24-hour period.
 ///
 /// Note: It can take up to 5 seconds after the stream is in an ACTIVE status       before all records written to the stream are encrypted. After you enable encryption, you       can verify that encryption is applied by inspecting the API response from         PutRecord or PutRecords.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamEncryption {
     ///
     /// The encryption type to use. The only valid value is KMS.
@@ -223,7 +223,7 @@ impl cfn_resources::CfnResource for StreamEncryption {
 }
 
 /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamModeDetails {
     ///
     /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
@@ -239,7 +239,7 @@ pub struct StreamModeDetails {
     pub stream_mode: StreamModeDetailsStreamModeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StreamModeDetailsStreamModeEnum {
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
@@ -277,7 +277,7 @@ impl cfn_resources::CfnResource for StreamModeDetails {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

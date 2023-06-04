@@ -1,5 +1,5 @@
 /// Creates a new MSK cluster. The following Python 3.6 examples shows how you can create a cluster that's distributed over two Availability Zones.         Before you run this Python script, replace the example subnet and security-group IDs with the IDs of your subnets and security group. When you create an MSK cluster, its brokers get evenly distributed over a number of Availability Zones that's equal to the number of subnets that you specify in the BrokerNodeGroupInfo parameter. In this example, you can add a third subnet to get a cluster that's distributed over three Availability Zones.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// Information about the broker nodes in the cluster.
@@ -157,7 +157,7 @@ pub struct CfnCluster {
     pub att_arn: CfnClusterarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterarn;
 impl CfnClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// The broker logs configuration for this MSK cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BrokerLogs {
     ///
     /// Details of the CloudWatch Logs destination for broker logs.
@@ -266,7 +266,7 @@ impl cfn_resources::CfnResource for BrokerLogs {
 }
 
 /// Describes the setup to be used for the broker nodes in the cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BrokerNodeGroupInfo {
     ///
     /// This parameter is currently not in use.
@@ -366,7 +366,7 @@ impl cfn_resources::CfnResource for BrokerNodeGroupInfo {
 }
 
 /// Includes all client authentication information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientAuthentication {
     ///
     /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
@@ -428,7 +428,7 @@ impl cfn_resources::CfnResource for ClientAuthentication {
 }
 
 /// Details of the CloudWatch Logs destination for broker logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogs {
     ///
     /// Specifies whether broker logs get sent to the specified CloudWatch Logs destination.
@@ -469,7 +469,7 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
 }
 
 /// Specifies the configuration to use for the brokers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationInfo {
     ///
     /// ARN of the configuration to use.
@@ -509,7 +509,7 @@ impl cfn_resources::CfnResource for ConfigurationInfo {
 }
 
 /// Broker access controls.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectivityInfo {
     ///
     /// Access control settings for the cluster's brokers.
@@ -559,7 +559,7 @@ impl cfn_resources::CfnResource for ConnectivityInfo {
 }
 
 /// Contains information about the EBS storage volumes attached to the broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EBSStorageInfo {
     ///
     /// EBS volume provisioned throughput information.
@@ -605,7 +605,7 @@ impl cfn_resources::CfnResource for EBSStorageInfo {
 }
 
 /// The data-volume encryption details. You can't update encryption at rest settings for existing clusters.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionAtRest {
     ///
     /// The ARN of the Amazon KMS key for encrypting data at rest. If you don't specify a KMS key, MSK creates one for you and uses it.
@@ -634,7 +634,7 @@ impl cfn_resources::CfnResource for EncryptionAtRest {
 }
 
 /// The settings for encrypting data in transit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionInTransit {
     ///
     /// Indicates the encryption setting for data in transit between clients and brokers. You must set it to one of the following values.
@@ -686,7 +686,7 @@ impl cfn_resources::CfnResource for EncryptionInTransit {
 }
 
 /// Includes encryption-related information, such as the Amazon KMS key used for encrypting data at rest and whether you want MSK to encrypt your data in transit.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionInfo {
     ///
     /// The data-volume encryption details.
@@ -736,7 +736,7 @@ impl cfn_resources::CfnResource for EncryptionInfo {
 }
 
 /// Firehose details for BrokerLogs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Firehose {
     ///
     /// The Kinesis Data Firehose delivery stream that is the destination for broker logs.
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for Firehose {
 }
 
 /// Details for SASL/IAM client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Iam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -806,7 +806,7 @@ impl cfn_resources::CfnResource for Iam {
 }
 
 /// Indicates whether you want to enable or disable the JMX Exporter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JmxExporter {
     ///
     /// Indicates whether you want to enable or disable the JMX Exporter.
@@ -835,7 +835,7 @@ impl cfn_resources::CfnResource for JmxExporter {
 }
 
 /// You can configure your MSK cluster to send broker logs to different destination types. This is a container for the configuration details related to broker logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingInfo {
     ///
     /// You can configure your MSK cluster to send broker logs to different destination types. This configuration specifies the details of these destinations.
@@ -866,7 +866,7 @@ impl cfn_resources::CfnResource for LoggingInfo {
 }
 
 /// Indicates whether you want to enable or disable the Node Exporter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeExporter {
     ///
     /// Indicates whether you want to enable or disable the Node Exporter.
@@ -895,7 +895,7 @@ impl cfn_resources::CfnResource for NodeExporter {
 }
 
 /// JMX and Node monitoring for the MSK cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenMonitoring {
     ///
     /// Prometheus exporter settings.
@@ -926,7 +926,7 @@ impl cfn_resources::CfnResource for OpenMonitoring {
 }
 
 /// Prometheus settings for open monitoring.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Prometheus {
     ///
     /// Indicates whether you want to enable or disable the JMX Exporter.
@@ -976,7 +976,7 @@ impl cfn_resources::CfnResource for Prometheus {
 }
 
 /// Contains information about provisioned throughput for EBS storage volumes attached to kafka broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProvisionedThroughput {
     ///
     /// Provisioned throughput is enabled or not.
@@ -1018,7 +1018,7 @@ impl cfn_resources::CfnResource for ProvisionedThroughput {
 }
 
 /// Broker access controls
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PublicAccess {
     ///
     /// DISABLED means that public access is turned off. SERVICE_PROVIDED_EIPS means that public access is turned on.
@@ -1048,7 +1048,7 @@ impl cfn_resources::CfnResource for PublicAccess {
 }
 
 /// The details of the Amazon S3 destination for broker logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3 {
     ///
     /// The name of the S3 bucket that is the destination for broker logs.
@@ -1101,7 +1101,7 @@ impl cfn_resources::CfnResource for S3 {
 }
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Sasl {
     ///
     /// Details for ClientAuthentication using IAM.
@@ -1147,7 +1147,7 @@ impl cfn_resources::CfnResource for Sasl {
 }
 
 /// Details for SASL/SCRAM client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Scram {
     ///
     /// SASL/SCRAM authentication is enabled or not.
@@ -1176,7 +1176,7 @@ impl cfn_resources::CfnResource for Scram {
 }
 
 /// Contains information about storage volumes attached to Amazon MSK broker nodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageInfo {
     ///
     /// EBS volume information.
@@ -1210,7 +1210,7 @@ impl cfn_resources::CfnResource for StorageInfo {
 }
 
 /// Details for client authentication using TLS.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tls {
     ///
     /// List of AWS Private CA ARNs.
@@ -1252,7 +1252,7 @@ impl cfn_resources::CfnResource for Tls {
 }
 
 /// Details for allowing no client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Unauthenticated {
     ///
     /// Unauthenticated is enabled or not.
@@ -1281,7 +1281,7 @@ impl cfn_resources::CfnResource for Unauthenticated {
 }
 
 /// VPC connection control settings for brokers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivity {
     ///
     /// VPC connection control settings for brokers.
@@ -1315,7 +1315,7 @@ impl cfn_resources::CfnResource for VpcConnectivity {
 }
 
 /// Includes all client authentication information for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivityClientAuthentication {
     ///
     /// Details for VpcConnectivity ClientAuthentication using SASL.
@@ -1361,7 +1361,7 @@ impl cfn_resources::CfnResource for VpcConnectivityClientAuthentication {
 }
 
 /// Details for SASL/IAM client authentication for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivityIam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -1390,7 +1390,7 @@ impl cfn_resources::CfnResource for VpcConnectivityIam {
 }
 
 /// Details for client authentication using SASL for VpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivitySasl {
     ///
     /// Details for ClientAuthentication using IAM for VpcConnectivity.
@@ -1436,7 +1436,7 @@ impl cfn_resources::CfnResource for VpcConnectivitySasl {
 }
 
 /// Details for SASL/SCRAM client authentication for vpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivityScram {
     ///
     /// SASL/SCRAM authentication is enabled or not.
@@ -1465,7 +1465,7 @@ impl cfn_resources::CfnResource for VpcConnectivityScram {
 }
 
 /// Details for client authentication using TLS for vpcConnectivity.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConnectivityTls {
     ///
     /// TLS authentication is enabled or not.

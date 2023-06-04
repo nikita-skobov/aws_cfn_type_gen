@@ -1,5 +1,5 @@
 /// Configure logging.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLogging {
     ///
     /// The account ID.
@@ -35,7 +35,7 @@ pub struct CfnLogging {
     pub role_arn: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LoggingDefaultLogLevelEnum {
     /// DEBUG
     #[serde(rename = "DEBUG")]

@@ -1,5 +1,5 @@
 /// The AWS::CodePipeline::Pipeline resource creates a CodePipeline pipeline    that describes how software changes go through a release process. For more information, see     What Is      CodePipeline? in the AWS CodePipeline User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipeline {
     ///
     /// The S3 bucket where artifacts for the pipeline are stored.
@@ -113,7 +113,7 @@ pub struct CfnPipeline {
     pub att_version: CfnPipelineversion,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPipelineversion;
 impl CfnPipelineversion {
     pub fn att_name(&self) -> &'static str {
@@ -173,7 +173,7 @@ impl cfn_resources::CfnResource for CfnPipeline {
 }
 
 /// Represents information about an action declaration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionDeclaration {
     ///
     /// Specifies the action type and the provider of the action.
@@ -426,7 +426,7 @@ impl cfn_resources::CfnResource for ActionDeclaration {
 }
 
 /// Represents information about an action type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ActionTypeId {
     ///
     /// A category defines what kind of action can be taken in the stage, and constrains the    provider type for the action. Valid categories are limited to one of the values    below.
@@ -490,7 +490,7 @@ impl cfn_resources::CfnResource for ActionTypeId {
 }
 
 /// The S3 bucket where artifacts for the pipeline are stored.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArtifactStore {
     ///
     /// The encryption key used to encrypt the data in the artifact store, such as an AWS Key    Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.    To see an example artifact store encryption key field, see the example structure here: AWS::CodePipeline::Pipeline.
@@ -535,7 +535,7 @@ pub struct ArtifactStore {
     pub cfn_type: ArtifactStoreTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ArtifactStoreTypeEnum {
     /// S3
     #[serde(rename = "S3")]
@@ -589,7 +589,7 @@ impl cfn_resources::CfnResource for ArtifactStore {
 }
 
 /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ArtifactStoreMap {
     ///
     /// Represents information about the S3 bucket where artifacts are stored for the       pipeline.
@@ -659,7 +659,7 @@ impl cfn_resources::CfnResource for ArtifactStoreMap {
 }
 
 /// Reserved for future use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockerDeclaration {
     ///
     /// Reserved for future use.
@@ -690,7 +690,7 @@ pub struct BlockerDeclaration {
     pub cfn_type: BlockerDeclarationTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BlockerDeclarationTypeEnum {
     /// Schedule
     #[serde(rename = "Schedule")]
@@ -742,7 +742,7 @@ impl cfn_resources::CfnResource for BlockerDeclaration {
 /// Represents information about the key used to encrypt data in the artifact store, such    as an AWS Key Management Service (AWS KMS) key.
 ///
 /// EncryptionKey is a property of the ArtifactStore property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionKey {
     ///
     /// The ID used to identify the key. For an AWS KMS key, you can use the key ID, the       key ARN, or the alias ARN.
@@ -784,7 +784,7 @@ impl cfn_resources::CfnResource for EncryptionKey {
 }
 
 /// Represents information about an artifact to be worked on, such as a test or build       artifact.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InputArtifact {
     ///
     /// The name of the artifact to be worked on (for example, "My App").
@@ -845,7 +845,7 @@ impl cfn_resources::CfnResource for InputArtifact {
 }
 
 /// Represents information about the output of an action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutputArtifact {
     ///
     /// The name of the output of an artifact, such as "My App".
@@ -906,7 +906,7 @@ impl cfn_resources::CfnResource for OutputArtifact {
 }
 
 /// Represents information about a stage and its definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StageDeclaration {
     ///
     /// The actions included in a stage.
@@ -986,7 +986,7 @@ impl cfn_resources::CfnResource for StageDeclaration {
 }
 
 /// The name of the pipeline in which you want to disable the flow of artifacts from       one stage to another.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StageTransition {
     ///
     /// The reason given to the user that a stage is disabled, such as waiting for manual       approval or manual tests. This message is displayed in the pipeline console       UI.
@@ -1088,7 +1088,7 @@ impl cfn_resources::CfnResource for StageTransition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

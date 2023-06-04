@@ -1,5 +1,5 @@
 /// Defines a resiliency policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResiliencyPolicy {
     ///
     /// Specifies a high-level geographical location constraint for where your resilience policy    data can be stored.
@@ -74,7 +74,7 @@ pub struct CfnResiliencyPolicy {
     pub att_policy_arn: CfnResiliencyPolicypolicyarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResiliencyPolicypolicyarn;
 impl CfnResiliencyPolicypolicyarn {
     pub fn att_name(&self) -> &'static str {
@@ -97,7 +97,7 @@ impl cfn_resources::CfnResource for CfnResiliencyPolicy {
 }
 
 /// Defines a failure policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FailurePolicy {
     ///
     /// The Recovery Point Objective (RPO), in seconds.

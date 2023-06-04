@@ -1,5 +1,5 @@
 /// The AWS::Glue::Connection resource specifies an AWS Glue connection to a       data source. For more information, see Adding a Connection to Your Data Store       and Connection Structure in the AWS Glue Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnection {
     ///
     /// The ID of the data catalog to create the catalog object in. Currently, this should be       the AWS account ID.
@@ -43,7 +43,7 @@ impl cfn_resources::CfnResource for CfnConnection {
 }
 
 /// A structure that is used to specify a connection to create or update.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionInput {
     ///
     /// These key-value pairs define parameters for the connection.
@@ -141,7 +141,7 @@ pub struct ConnectionInput {
     pub physical_connection_requirements: Option<PhysicalConnectionRequirements>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectionInputConnectionTypeEnum {
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
@@ -250,7 +250,7 @@ impl cfn_resources::CfnResource for ConnectionInput {
 }
 
 /// Specifies the physical requirements for a connection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PhysicalConnectionRequirements {
     ///
     /// The connection's Availability Zone. This field is redundant because the specified subnet    implies the Availability Zone to be used. Currently the field must be populated, but it will    be deprecated in the future.

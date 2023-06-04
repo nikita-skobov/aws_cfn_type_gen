@@ -1,5 +1,5 @@
 /// The AWS::DataSync::LocationHDFS resource specifies an endpoint for a Hadoop Distributed File System (HDFS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationHDFS {
     ///
     /// The Amazon Resource Names (ARNs) of the agents that are used to connect to the HDFS    cluster.
@@ -198,7 +198,7 @@ pub struct CfnLocationHDFS {
     pub att_location_uri: CfnLocationHDFSlocationuri,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationHDFSlocationarn;
 impl CfnLocationHDFSlocationarn {
     pub fn att_name(&self) -> &'static str {
@@ -206,7 +206,7 @@ impl CfnLocationHDFSlocationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLocationHDFSlocationuri;
 impl CfnLocationHDFSlocationuri {
     pub fn att_name(&self) -> &'static str {
@@ -358,7 +358,7 @@ impl cfn_resources::CfnResource for CfnLocationHDFS {
 }
 
 /// The    NameNode of the Hadoop Distributed File System (HDFS). The NameNode manages the file system's    namespace and performs operations such as opening, closing, and renaming files and    directories. The NameNode also contains the information to map blocks of data to the    DataNodes.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NameNode {
     ///
     /// The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain    Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this    hostname to communicate with the NameNode in the network.
@@ -449,7 +449,7 @@ impl cfn_resources::CfnResource for NameNode {
 
 /// The    Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer privacy settings    configured on the Hadoop Distributed File System (HDFS) cluster.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct QopConfiguration {
     ///
     /// The data transfer protection setting configured on the HDFS cluster. This setting    corresponds to your dfs.data.transfer.protection setting in the     hdfs-site.xml file on your Hadoop cluster.
@@ -480,7 +480,7 @@ pub struct QopConfiguration {
     pub rpc_protection: Option<QopConfigurationRpcProtectionEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum QopConfigurationDataTransferProtectionEnum {
     /// AUTHENTICATION
     #[serde(rename = "AUTHENTICATION")]
@@ -505,7 +505,7 @@ impl Default for QopConfigurationDataTransferProtectionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum QopConfigurationRpcProtectionEnum {
     /// AUTHENTICATION
     #[serde(rename = "AUTHENTICATION")]
@@ -551,7 +551,7 @@ impl cfn_resources::CfnResource for QopConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Use an AWS::WAFv2::WebACL to define a collection of rules to use to inspect and control web requests. Each rule has an action defined (allow, block, or count) for requests that match the statement of the rule. In the web ACL, you specify a default action to take (allow, block) for any request that doesn't match any of the rules. The rules in a web ACL can contain rule statements that you define explicitly and rule statements that reference rule groups and managed rule groups. You can associate a web ACL with one or more AWS resources to protect. The resources can be an Amazon CloudFront distribution, an Amazon API Gateway REST API, an Application Load Balancer, an AWS AppSync GraphQL API       , an Amazon Cognito user pool, or an AWS App Runner service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebACL {
     ///
     /// Specifies how AWS WAF should handle CAPTCHA evaluations for rules that don't have their own CaptchaConfig settings. If you don't specify this, AWS WAF uses its default settings for CaptchaConfig.
@@ -162,7 +162,7 @@ pub struct CfnWebACL {
     pub att_label_namespace: CfnWebACLlabelnamespace,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebACLarn;
 impl CfnWebACLarn {
     pub fn att_name(&self) -> &'static str {
@@ -170,7 +170,7 @@ impl CfnWebACLarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebACLid;
 impl CfnWebACLid {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl CfnWebACLid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWebACLlabelnamespace;
 impl CfnWebACLlabelnamespace {
     pub fn att_name(&self) -> &'static str {
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for CfnWebACL {
 }
 
 /// Details for your use of the account takeover prevention managed rule group, AWSManagedRulesATPRuleSet. This configuration is used in ManagedRuleGroupConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AWSManagedRulesATPRuleSet {
     ///
     /// The path of the login endpoint for your application. For example, for the URL       https://example.com/web/login, you would provide the path       /web/login.
@@ -324,7 +324,7 @@ impl cfn_resources::CfnResource for AWSManagedRulesATPRuleSet {
 }
 
 /// Details for your use of the Bot Control managed rule group, used in ManagedRuleGroupConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AWSManagedRulesBotControlRuleSet {
     ///
     /// The inspection level to use for the Bot Control rule group. The common level is the least expensive. The       targeted level includes all common level rules and adds rules with more advanced inspection criteria. For   details, see AWS WAF Bot Control rule group.
@@ -355,7 +355,7 @@ impl cfn_resources::CfnResource for AWSManagedRulesBotControlRuleSet {
 /// Specifies that AWS WAF should allow the request and optionally defines additional     custom handling for the request.
 ///
 /// This is used in the context of other settings, for example to specify values for a rule action or a web ACL default action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AllowAction {
     ///
     /// Defines custom handling for the web request.
@@ -391,7 +391,7 @@ impl cfn_resources::CfnResource for AllowAction {
 }
 
 /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AndStatement {
     ///
     /// The statements to combine with AND logic. You can use any statements that can be nested.
@@ -422,7 +422,7 @@ impl cfn_resources::CfnResource for AndStatement {
 /// Specifies that AWS WAF should block the request and optionally defines additional     custom handling for the response to the web request.
 ///
 /// This is used in the context of other settings, for example to specify values for a rule action or a web ACL default action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BlockAction {
     ///
     /// Defines a custom response for the web request.
@@ -460,7 +460,7 @@ impl cfn_resources::CfnResource for BlockAction {
 /// Inspect the body of the web request. The body immediately follows the request     headers.
 ///
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Body {
     ///
     /// What AWS WAF should do if the body is larger than AWS WAF can inspect.   AWS WAF does not support inspecting the entire contents of the web request body if the body   exceeds the limit for the resource type. If the body is larger than the limit, the underlying host service   only forwards the contents that are below the limit to AWS WAF for inspection.
@@ -487,7 +487,7 @@ pub struct Body {
     pub oversize_handling: Option<BodyOversizeHandlingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BodyOversizeHandlingEnum {
     /// CONTINUE
     #[serde(rename = "CONTINUE")]
@@ -523,7 +523,7 @@ impl cfn_resources::CfnResource for Body {
 }
 
 /// A rule statement that defines a string match search for AWS WAF to apply to web requests. The byte match statement provides the bytes to search for, the location in requests that you want AWS WAF to search, and other settings. The bytes to search for are typically a string that corresponds with ASCII characters. In the AWS WAF console and the developer guide, this is called a string match statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ByteMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -615,7 +615,7 @@ pub struct ByteMatchStatement {
     pub text_transformations: Vec<TextTransformation>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ByteMatchStatementPositionalConstraintEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -665,7 +665,7 @@ impl cfn_resources::CfnResource for ByteMatchStatement {
 /// You can configure the expiration time         in the CaptchaConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
 ///
 /// This action option is available for rules. It isn't available for web ACL default actions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptchaAction {
     ///
     /// Defines custom handling for the web request, used when the CAPTCHA inspection determines that the request's token is valid and unexpired.
@@ -701,7 +701,7 @@ impl cfn_resources::CfnResource for CaptchaAction {
 }
 
 /// Specifies how AWS WAF should handle CAPTCHA evaluations for rules that don't have their own CaptchaConfig settings. If you don't specify this, AWS WAF uses its default settings for CaptchaConfig.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CaptchaConfig {
     ///
     /// Determines how long a CAPTCHA timestamp in the token remains valid after the client     successfully solves a CAPTCHA puzzle.
@@ -739,7 +739,7 @@ impl cfn_resources::CfnResource for CaptchaConfig {
 /// You can configure the expiration time      in the ChallengeConfig       ImmunityTimeProperty setting at the rule and web ACL level. The rule setting overrides the web ACL setting.
 ///
 /// This action option is available for rules. It isn't available for web ACL default actions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChallengeAction {
     ///
     /// Defines custom handling for the web request, used when the challenge inspection determines that the request's token is valid and unexpired.
@@ -775,7 +775,7 @@ impl cfn_resources::CfnResource for ChallengeAction {
 }
 
 /// Specifies how AWS WAF should handle Challenge evaluations. This is     available at the web ACL level and in each rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ChallengeConfig {
     ///
     /// Determines how long a challenge timestamp in the token remains valid after the client     successfully responds to a challenge.
@@ -813,7 +813,7 @@ impl cfn_resources::CfnResource for ChallengeConfig {
 /// You must specify exactly one setting: either All, IncludedCookies, or ExcludedCookies.
 ///
 /// Example JSON: "MatchPattern": { "IncludedCookies": {"KeyToInclude1", "KeyToInclude2", "KeyToInclude3"} }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CookieMatchPattern {
     ///
     /// Inspect all cookies.
@@ -893,7 +893,7 @@ impl cfn_resources::CfnResource for CookieMatchPattern {
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 ///
 /// Example JSON: "Cookies": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Cookies {
     ///
     /// The filter to use to identify the subset of cookies to inspect in a web request.
@@ -941,7 +941,7 @@ pub struct Cookies {
     pub oversize_handling: CookiesOversizeHandlingEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CookiesMatchScopeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -962,7 +962,7 @@ impl Default for CookiesMatchScopeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CookiesOversizeHandlingEnum {
     /// CONTINUE
     #[serde(rename = "CONTINUE")]
@@ -1002,7 +1002,7 @@ impl cfn_resources::CfnResource for Cookies {
 /// Specifies that AWS WAF should count the request. Optionally defines additional custom     handling for the request.
 ///
 /// This is used in the context of other settings, for example to specify values for a rule action or a web ACL default action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CountAction {
     ///
     /// Defines custom handling for the web request.
@@ -1038,7 +1038,7 @@ impl cfn_resources::CfnResource for CountAction {
 }
 
 /// A custom header for custom request and response handling. This is used in CustomResponse and CustomRequestHandling.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomHTTPHeader {
     ///
     /// The name of the custom header.
@@ -1138,7 +1138,7 @@ impl cfn_resources::CfnResource for CustomHTTPHeader {
 /// Custom request handling behavior that inserts custom headers into a web request. You can    add custom request handling for AWS WAF to use when the rule action doesn't block the request.      For example, CaptchaAction for requests with valid t okens, and AllowAction.
 ///
 /// For information about customizing web requests and responses,       see Customizing web requests and responses in AWS WAF   in the         AWS WAF Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomRequestHandling {
     ///
     /// The HTTP headers to insert into the request. Duplicate header names are not allowed.
@@ -1171,7 +1171,7 @@ impl cfn_resources::CfnResource for CustomRequestHandling {
 /// A custom response to send to the client. You can define a custom response for rule     actions and default web ACL actions that are set to the block action.
 ///
 /// For information about customizing web requests and responses, see Customizing web requests and responses in AWS WAF in the      AWS WAF Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomResponse {
     ///
     /// References the response body that you want AWS WAF to return to the web request     client. You can define a custom response for a rule action or a default web ACL action that     is set to block. To do this, you first define the response body key and value in the       CustomResponseBodies setting for the AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup where you want to use it. Then, in the rule action or web ACL     default action BlockAction setting, you reference the response body using this     key.
@@ -1272,7 +1272,7 @@ impl cfn_resources::CfnResource for CustomResponse {
 }
 
 /// The response body to use in a custom response to a web request. This is referenced by     key from CustomResponse       CustomResponseBodyKey.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomResponseBody {
     ///
     /// The payload of the custom response.
@@ -1309,7 +1309,7 @@ pub struct CustomResponseBody {
     pub content_type: CustomResponseBodyContentTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CustomResponseBodyContentTypeEnum {
     /// APPLICATION_JSON
     #[serde(rename = "APPLICATION_JSON")]
@@ -1367,7 +1367,7 @@ impl cfn_resources::CfnResource for CustomResponseBody {
 }
 
 /// In a AWS::WAFv2::WebACL, this is the action that you want AWS WAF to perform     when a web request doesn't match any of the rules in the WebACL. The default     action must be a terminating action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DefaultAction {
     ///
     /// Specifies that AWS WAF should allow requests by default.
@@ -1413,7 +1413,7 @@ impl cfn_resources::CfnResource for DefaultAction {
 }
 
 /// Specifies a single rule in a rule group whose action you want to override to Count.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExcludedRule {
     ///
     /// The name of the rule whose action you want to override to Count.
@@ -1470,7 +1470,7 @@ impl cfn_resources::CfnResource for ExcludedRule {
 }
 
 /// The identifier of the username or password field, used in the ManagedRuleGroupConfig settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldIdentifier {
     ///
     /// The name of the username or password field, used in the ManagedRuleGroupConfig settings.
@@ -1511,7 +1511,7 @@ impl cfn_resources::CfnResource for FieldIdentifier {
 /// Example JSON for a Method field to match specification:
 ///
 /// "FieldToMatch": { "Method": { "Name": "DELETE" } }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldToMatch {
     ///
     /// Inspect all query arguments.
@@ -1689,7 +1689,7 @@ impl cfn_resources::CfnResource for FieldToMatch {
 /// This configuration is used for GeoMatchStatement and RateBasedStatement. For IPSetReferenceStatement, use IPSetForwardedIPConfig instead.
 ///
 /// AWS WAF only evaluates the first IP address found in the specified HTTP header.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ForwardedIPConfiguration {
     ///
     /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position.
@@ -1730,7 +1730,7 @@ pub struct ForwardedIPConfiguration {
     pub header_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ForwardedIPConfigurationFallbackBehaviorEnum {
     /// MATCH
     #[serde(rename = "MATCH")]
@@ -1792,7 +1792,7 @@ impl cfn_resources::CfnResource for ForwardedIPConfiguration {
 /// If you use a forwarded IP address, the label formats are awswaf:forwardedip:geo:region:<ISO country code>-<ISO region code> and awswaf:forwardedip:geo:country:<ISO country code>.
 ///
 /// For additional details, see Geographic match rule statement in the AWS WAF Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeoMatchStatement {
     ///
     /// An array of two-character country codes that you want to match against, for example, [ "US", "CN" ], from     the alpha-2 country ISO codes of the ISO 3166 international standard.
@@ -1846,7 +1846,7 @@ impl cfn_resources::CfnResource for GeoMatchStatement {
 /// You must specify exactly one setting: either All, IncludedHeaders, or ExcludedHeaders.
 ///
 /// Example JSON: "MatchPattern": { "ExcludedHeaders": {"KeyToExclude1", "KeyToExclude2"} }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HeaderMatchPattern {
     ///
     /// Inspect all headers.
@@ -1928,7 +1928,7 @@ impl cfn_resources::CfnResource for HeaderMatchPattern {
 /// If you want to inspect just the value of a single header, use the       SingleHeader       FieldToMatch setting instead.
 ///
 /// Example JSON: "Headers": { "MatchPattern": { "All": {} }, "MatchScope": "KEY",       "OversizeHandling": "MATCH" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Headers {
     ///
     /// The filter to use to identify the subset of headers to inspect in a web request.
@@ -1976,7 +1976,7 @@ pub struct Headers {
     pub oversize_handling: HeadersOversizeHandlingEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HeadersMatchScopeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -1997,7 +1997,7 @@ impl Default for HeadersMatchScopeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HeadersOversizeHandlingEnum {
     /// CONTINUE
     #[serde(rename = "CONTINUE")]
@@ -2037,7 +2037,7 @@ impl cfn_resources::CfnResource for Headers {
 /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.
 ///
 /// This configuration is used only for IPSetReferenceStatement. For GeoMatchStatement and RateBasedStatement, use ForwardedIPConfig instead.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IPSetForwardedIPConfiguration {
     ///
     /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position.
@@ -2095,7 +2095,7 @@ pub struct IPSetForwardedIPConfiguration {
     pub position: IPSetForwardedIPConfigurationPositionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IPSetForwardedIPConfigurationFallbackBehaviorEnum {
     /// MATCH
     #[serde(rename = "MATCH")]
@@ -2112,7 +2112,7 @@ impl Default for IPSetForwardedIPConfigurationFallbackBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum IPSetForwardedIPConfigurationPositionEnum {
     /// ANY
     #[serde(rename = "ANY")]
@@ -2172,7 +2172,7 @@ impl cfn_resources::CfnResource for IPSetForwardedIPConfiguration {
 /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. To use this, create an AWS::WAFv2::IPSet that specifies the addresses you want to detect, then use the ARN of that set in this statement.
 ///
 /// Each IP set rule statement references an IP set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct IPSetReferenceStatement {
     ///
     /// The Amazon Resource Name (ARN) of the AWS::WAFv2::IPSet that this statement     references.
@@ -2247,7 +2247,7 @@ impl cfn_resources::CfnResource for IPSetReferenceStatement {
 }
 
 /// Used for CAPTCHA and challenge token settings. Determines     how long a CAPTCHA or challenge timestamp remains valid after AWS WAF updates it for a successful CAPTCHA or challenge response.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ImmunityTimeProperty {
     ///
     /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default      setting is 300.
@@ -2284,7 +2284,7 @@ impl cfn_resources::CfnResource for ImmunityTimeProperty {
 /// Use the specifications in this object to indicate which parts of the JSON body to     inspect using the rule's inspection criteria. AWS WAF inspects only the parts of the JSON     that result from the matches that you indicate.
 ///
 /// Example JSON: "JsonBody": { "MatchPattern": { "All": {} }, "MatchScope": "ALL"       }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonBody {
     ///
     /// What AWS WAF should do if it fails to completely parse the JSON body. The options are     the following:
@@ -2359,7 +2359,7 @@ pub struct JsonBody {
     pub oversize_handling: Option<JsonBodyOversizeHandlingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JsonBodyInvalidFallbackBehaviorEnum {
     /// EVALUATE_AS_STRING
     #[serde(rename = "EVALUATE_AS_STRING")]
@@ -2380,7 +2380,7 @@ impl Default for JsonBodyInvalidFallbackBehaviorEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JsonBodyMatchScopeEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -2401,7 +2401,7 @@ impl Default for JsonBodyMatchScopeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum JsonBodyOversizeHandlingEnum {
     /// CONTINUE
     #[serde(rename = "CONTINUE")]
@@ -2439,7 +2439,7 @@ impl cfn_resources::CfnResource for JsonBody {
 }
 
 /// The patterns to look for in the JSON body. AWS WAF inspects the results of these     pattern matches against the rule inspection criteria. This is used with the FieldToMatch option JsonBody.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonMatchPattern {
     ///
     /// Match all of the elements. See also     MatchScope in the JsonBody FieldToMatch specification.
@@ -2489,7 +2489,7 @@ impl cfn_resources::CfnResource for JsonMatchPattern {
 }
 
 /// A single label container. This is used as an element of a label array in RuleLabels inside a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Label {
     ///
     /// The label string.
@@ -2548,7 +2548,7 @@ impl cfn_resources::CfnResource for Label {
 /// A rule statement to match against labels that have been added to the web request by rules that have already run in the web ACL.
 ///
 /// The label match statement provides the label or namespace string to search for. The label string can represent a part or all of the fully qualified label name that had been added to the web request. Fully qualified labels have a prefix, optional namespaces, and label name. The prefix identifies the rule group or web ACL context of the rule that added the label. If you do not provide the fully qualified name in your label match string, AWS WAF performs the search for labels that were added in the same context as the label match statement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LabelMatchStatement {
     ///
     /// The string to match against. The setting you provide for this depends on the match     statement's Scope setting:
@@ -2585,7 +2585,7 @@ pub struct LabelMatchStatement {
     pub scope: LabelMatchStatementScopeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LabelMatchStatementScopeEnum {
     /// LABEL
     #[serde(rename = "LABEL")]
@@ -2641,7 +2641,7 @@ impl cfn_resources::CfnResource for LabelMatchStatement {
 /// Additional information that's used by a managed rule group. Many managed rule groups don't require this.
 ///
 /// Use the AWSManagedRulesBotControlRuleSet configuration object to configure the     protection level that you want the Bot Control rule group to use.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManagedRuleGroupConfig {
     ///
     /// Additional configuration for using the account takeover prevention (ATP) managed rule group, AWSManagedRulesATPRuleSet.     Use this to provide login request information to the rule group. For web ACLs that protect CloudFront distributions, use this to also provide      the information about how your distribution responds to login requests.
@@ -2728,7 +2728,7 @@ pub struct ManagedRuleGroupConfig {
     pub username_field: Option<FieldIdentifier>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ManagedRuleGroupConfigPayloadTypeEnum {
     /// FORM_ENCODED
     #[serde(rename = "FORM_ENCODED")]
@@ -2800,7 +2800,7 @@ impl cfn_resources::CfnResource for ManagedRuleGroupConfig {
 /// A rule statement used to run the rules that are defined in a managed rule group. To use this, provide the vendor name and the name of the rule group in this statement.
 ///
 /// You cannot nest a ManagedRuleGroupStatement, for example for use inside a NotStatement or OrStatement. It can only be referenced as a top-level statement within a rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ManagedRuleGroupStatement {
     ///
     /// Rules in the referenced rule group whose actions are set to Count.
@@ -3007,7 +3007,7 @@ impl cfn_resources::CfnResource for ManagedRuleGroupStatement {
 }
 
 /// A logical rule statement used to negate the results of another rule statement. You provide one Statement within the NotStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotStatement {
     ///
     /// The statement to negate. You can use any statement that can be nested.
@@ -3038,7 +3038,7 @@ impl cfn_resources::CfnResource for NotStatement {
 }
 
 /// A logical rule statement used to combine other rule statements with OR logic. You provide more than one Statement within the OrStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OrStatement {
     ///
     /// The statements to combine with OR logic. You can use any statements that can be     nested.
@@ -3069,7 +3069,7 @@ impl cfn_resources::CfnResource for OrStatement {
 /// The action to use in the place of the action that results from the rule group evaluation. Set the override action to none to leave the result of the rule group alone. Set it to count to override the result to count only.
 ///
 /// You can only use this for rule statements that reference a rule group, like RuleGroupReferenceStatement and ManagedRuleGroupStatement.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OverrideAction {
     ///
     /// Override the rule group evaluation result to count only.
@@ -3133,7 +3133,7 @@ impl cfn_resources::CfnResource for OverrideAction {
 /// If you only aggregate on the individual IP address or forwarded IP address, you can retrieve the list of IP addresses that AWS WAF      is currently rate limiting for a rule through the API call GetRateBasedStatementManagedKeys. This option is not available    for other aggregation configurations.
 ///
 /// AWS WAF tracks and manages web requests separately for each instance of a rate-based rule that you use. For example, if you provide the same rate-based rule settings in two web ACLs, each of the two rule statements represents a separate instance of the rate-based rule and gets its own tracking and management by AWS WAF. If you define a rate-based rule inside a rule group, and then use that rule group in multiple places, each use creates a separate instance of the rate-based rule that gets its own tracking and management by AWS WAF.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RateBasedStatement {
     ///
     /// Setting that indicates how to aggregate the request counts.
@@ -3196,7 +3196,7 @@ pub struct RateBasedStatement {
     pub scope_down_statement: Option<Statement>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RateBasedStatementAggregateKeyTypeEnum {
     /// CONSTANT
     #[serde(rename = "CONSTANT")]
@@ -3244,7 +3244,7 @@ impl cfn_resources::CfnResource for RateBasedStatement {
 }
 
 /// A rule statement used to search web request components for a match against a single regular expression.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RegexMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -3327,7 +3327,7 @@ impl cfn_resources::CfnResource for RegexMatchStatement {
 /// A rule statement used to search web request components for matches with regular expressions. To use this, create a AWS::WAFv2::RegexPatternSet that specifies the expressions that you want to detect, then use that set in this statement. A web request matches the pattern set rule statement if the request component matches any of the patterns in the set.
 ///
 /// Each regex pattern set rule statement references a regex pattern set. You create and maintain the set independent of your rules. This allows you to use the single set in multiple rules. When you update the referenced set, AWS WAF automatically updates all rules that reference it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RegexPatternSetReferenceStatement {
     ///
     /// The Amazon Resource Name (ARN) of the AWS::WAFv2::RegexPatternSet that this     statement references.
@@ -3412,7 +3412,7 @@ impl cfn_resources::CfnResource for RegexPatternSetReferenceStatement {
 /// This is part of the AWSManagedRulesATPRuleSet configuration in ManagedRuleGroupConfig.
 ///
 /// In these settings, you specify how your application accepts login attempts      by providing the request payload type and the names of the fields       within the request body where the username and password are provided.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RequestInspection {
     ///
     /// Details about your login page password field.
@@ -3458,7 +3458,7 @@ pub struct RequestInspection {
     pub username_field: FieldIdentifier,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RequestInspectionPayloadTypeEnum {
     /// FORM_ENCODED
     #[serde(rename = "FORM_ENCODED")]
@@ -3500,7 +3500,7 @@ impl cfn_resources::CfnResource for RequestInspection {
 /// This is part of the AWSManagedRulesATPRuleSet configuration in ManagedRuleGroupConfig.
 ///
 /// Enable login response inspection by configuring exactly one component of the response to inspect. You can't configure more than one. If you don't configure any of the response inspection options, response inspection is disabled.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseInspection {
     ///
     /// Configures inspection of the response body. AWS WAF can inspect the first 65,536 bytes (64 KB) of the response body.
@@ -3578,7 +3578,7 @@ impl cfn_resources::CfnResource for ResponseInspection {
 }
 
 /// Configures inspection of the response body. AWS WAF can inspect the first 65,536 bytes (64 KB) of the response body. This is part of the ResponseInspection configuration for AWSManagedRulesATPRuleSet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseInspectionBodyContains {
     ///
     /// Strings in the body of the response that indicate a failed login attempt. To be counted as a failed login, the string can be anywhere in the body and must be an exact match, including case. Each string must be unique among the success and failure strings.
@@ -3644,7 +3644,7 @@ impl cfn_resources::CfnResource for ResponseInspectionBodyContains {
 }
 
 /// Configures inspection of the response header. This is part of the ResponseInspection configuration for AWSManagedRulesATPRuleSet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseInspectionHeader {
     ///
     /// Values in the response header with the specified name that indicate a failed login attempt. To be counted as a failed login, the value must be an exact match, including case. Each value must be unique among the success and failure values.
@@ -3751,7 +3751,7 @@ impl cfn_resources::CfnResource for ResponseInspectionHeader {
 }
 
 /// Configures inspection of the response JSON. AWS WAF can inspect the first 65,536 bytes (64 KB) of the response JSON. This is part of the ResponseInspection configuration for AWSManagedRulesATPRuleSet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseInspectionJson {
     ///
     /// Values for the specified identifier in the response JSON that indicate a failed login attempt. To be counted as a failed login, the value must be an exact match, including case. Each value must be unique among the success and failure values.
@@ -3858,7 +3858,7 @@ impl cfn_resources::CfnResource for ResponseInspectionJson {
 }
 
 /// Configures inspection of the response status code. This is part of the ResponseInspection configuration for AWSManagedRulesATPRuleSet.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResponseInspectionStatusCode {
     ///
     /// Status codes in the response that indicate a failed login attempt. To be counted as a failed login, the response status code must match one of these. Each code must be unique among the success and failure status codes.
@@ -3924,7 +3924,7 @@ impl cfn_resources::CfnResource for ResponseInspectionStatusCode {
 }
 
 /// A single rule, which you can use in a AWS::WAFv2::WebACL or AWS::WAFv2::RuleGroup to identify web requests that you want to allow, block, or count.     Each rule includes one top-level Statement that AWS WAF uses to     identify matching web requests, and parameters that govern how AWS WAF handles them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// The action that AWS WAF should take on a web request when it matches the rule's statement. Settings at the web ACL level can override the rule action setting.
@@ -4123,7 +4123,7 @@ impl cfn_resources::CfnResource for Rule {
 }
 
 /// The action that AWS WAF should take on a web request when it matches a rule's     statement. Settings at the web ACL level can override the rule action setting.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuleAction {
     ///
     /// Instructs AWS WAF to allow the web request.
@@ -4221,7 +4221,7 @@ impl cfn_resources::CfnResource for RuleAction {
 /// Action setting to use in the place of a rule action that is configured inside the rule group. You specify one override for each rule whose action you want to change.
 ///
 /// You can use overrides for testing, for example you can override all of rule actions to Count and then monitor the resulting count metrics to understand how the rule group would handle your web traffic. You can also permanently override some or all actions, to modify how the rule group manages your web traffic.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuleActionOverride {
     ///
     /// The override action to use, in place of the configured action of the rule in the rule group.
@@ -4265,7 +4265,7 @@ impl cfn_resources::CfnResource for RuleActionOverride {
 /// A rule statement used to run the rules that are defined in a AWS::WAFv2::RuleGroup. To use this, create a rule group with your rules, then provide the ARN of the rule group in this statement.
 ///
 /// You cannot nest a RuleGroupReferenceStatement, for example for use inside a NotStatement or OrStatement. You    can only use a rule group reference statement at the top level inside a web ACL.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuleGroupReferenceStatement {
     ///
     /// The Amazon Resource Name (ARN) of the entity.
@@ -4367,7 +4367,7 @@ impl cfn_resources::CfnResource for RuleGroupReferenceStatement {
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 ///
 /// Example JSON: "SingleHeader": { "Name": "haystack" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleHeader {
     ///
     /// The name of the query header to inspect.
@@ -4428,7 +4428,7 @@ impl cfn_resources::CfnResource for SingleHeader {
 /// This is used to indicate the web request component to inspect, in the FieldToMatch specification.
 ///
 /// Example JSON: "SingleQueryArgument": { "Name": "myArgument" }
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SingleQueryArgument {
     ///
     /// The name of the query argument to inspect.
@@ -4489,7 +4489,7 @@ impl cfn_resources::CfnResource for SingleQueryArgument {
 /// If you configure AWS WAF to inspect the request body, AWS WAF inspects only the number of bytes of the body up to the limit for the web ACL. By default, for regional web ACLs, this limit is 8 KB (8,192 kilobytes) and for CloudFront web ACLs, this limit is 16 KB (16,384 kilobytes). For CloudFront web ACLs, you can increase the limit in the web ACL AssociationConfig, for additional fees. If you know that the request body for your web requests should never exceed the inspection limit, you could use a size constraint statement to block requests that have a larger request body size.
 ///
 /// If you choose URI for the value of Part of the request to filter on, the slash (/) in the URI counts as one character. For example, the URI /logo.jpg is nine characters long.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SizeConstraintStatement {
     ///
     /// The operator to use to compare the request part to the size setting.
@@ -4538,7 +4538,7 @@ pub struct SizeConstraintStatement {
     pub text_transformations: Vec<TextTransformation>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SizeConstraintStatementComparisonOperatorEnum {
     /// EQ
     #[serde(rename = "EQ")]
@@ -4588,7 +4588,7 @@ impl cfn_resources::CfnResource for SizeConstraintStatement {
 }
 
 /// A rule statement that inspects for malicious SQL code. Attackers insert malicious SQL code into web requests to do things like modify your database or extract data from it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqliMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.
@@ -4633,7 +4633,7 @@ pub struct SqliMatchStatement {
     pub text_transformations: Vec<TextTransformation>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SqliMatchStatementSensitivityLevelEnum {
     /// HIGH
     #[serde(rename = "HIGH")]
@@ -4667,7 +4667,7 @@ impl cfn_resources::CfnResource for SqliMatchStatement {
 }
 
 /// The processing guidance for a rule, used by AWS WAF to determine whether a web request matches the rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Statement {
     ///
     /// A logical rule statement used to combine other rule statements with AND logic. You provide more than one Statement within the AndStatement.
@@ -4979,7 +4979,7 @@ impl cfn_resources::CfnResource for Statement {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -5017,7 +5017,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Text transformations eliminate some of the unusual formatting that attackers use in web     requests in an effort to bypass detection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TextTransformation {
     ///
     /// Sets the relative processing order for multiple transformations.     AWS WAF processes all transformations, from lowest priority to highest,     before inspecting the transformed content. The priorities don't need to be consecutive, but     they must all be different.
@@ -5096,7 +5096,7 @@ pub struct TextTransformation {
     pub cfn_type: TextTransformationTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TextTransformationTypeEnum {
     /// BASE64_DECODE
     #[serde(rename = "BASE64_DECODE")]
@@ -5213,7 +5213,7 @@ impl cfn_resources::CfnResource for TextTransformation {
 }
 
 /// Defines and enables Amazon CloudWatch metrics and web request sample collection.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VisibilityConfig {
     ///
     /// A boolean indicating whether the associated resource sends metrics to Amazon CloudWatch. For the     list of available metrics, see AWS WAF       Metrics in the         AWS WAF Developer Guide.
@@ -5294,7 +5294,7 @@ impl cfn_resources::CfnResource for VisibilityConfig {
 }
 
 /// A rule statement that inspects for cross-site scripting (XSS) attacks. In XSS attacks, the attacker uses vulnerabilities in a benign website as a vehicle to inject malicious client-site scripts into other legitimate web browsers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct XssMatchStatement {
     ///
     /// The part of the web request that you want AWS WAF to inspect.

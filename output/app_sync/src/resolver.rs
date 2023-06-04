@@ -1,5 +1,5 @@
 /// The AWS::AppSync::Resolver resource defines the logical GraphQL resolver that you attach to     fields in a schema. Request and response templates for resolvers are written in Apache Velocity Template     Language (VTL) format. For more information about resolvers, see Resolver Mapping Template       Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolver {
     ///
     /// The AWS AppSync GraphQL API to which you want to attach this resolver.
@@ -204,7 +204,7 @@ pub struct CfnResolver {
     pub att_type_name: CfnResolvertypename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverfieldname;
 impl CfnResolverfieldname {
     pub fn att_name(&self) -> &'static str {
@@ -212,7 +212,7 @@ impl CfnResolverfieldname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverresolverarn;
 impl CfnResolverresolverarn {
     pub fn att_name(&self) -> &'static str {
@@ -220,7 +220,7 @@ impl CfnResolverresolverarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolvertypename;
 impl CfnResolvertypename {
     pub fn att_name(&self) -> &'static str {
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for CfnResolver {
 }
 
 /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync     function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must     also be specified.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AppSyncRuntime {
     ///
     /// The name of the runtime to use. Currently, the only allowed value is     APPSYNC_JS.
@@ -297,7 +297,7 @@ impl cfn_resources::CfnResource for AppSyncRuntime {
 }
 
 /// The caching configuration for a resolver that has caching activated.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CachingConfig {
     ///
     /// The caching keys for a resolver that has caching activated.
@@ -342,7 +342,7 @@ impl cfn_resources::CfnResource for CachingConfig {
 }
 
 /// The LambdaConflictHandlerConfig when configuring LAMBDA as the Conflict Handler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConflictHandlerConfig {
     ///
     /// The Amazon Resource Name (ARN) for the Lambda function to use as the     Conflict Handler.
@@ -374,7 +374,7 @@ impl cfn_resources::CfnResource for LambdaConflictHandlerConfig {
 /// Use the PipelineConfig property type to specify PipelineConfig for an AWS AppSync resolver.
 ///
 /// PipelineConfig is a property of the AWS::AppSync::Resolver     resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PipelineConfig {
     ///
     /// A list of Function objects.
@@ -406,7 +406,7 @@ impl cfn_resources::CfnResource for PipelineConfig {
 /// Describes a Sync configuration for a resolver.
 ///
 /// Specifies which Conflict Detection strategy and Resolution strategy to use when the     resolver is invoked.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SyncConfig {
     ///
     /// The Conflict Detection strategy to use.

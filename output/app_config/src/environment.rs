@@ -3,7 +3,7 @@
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEnvironment {
     ///
     /// The application ID.
@@ -144,7 +144,7 @@ impl cfn_resources::CfnResource for CfnEnvironment {
 }
 
 /// Amazon CloudWatch alarms to monitor during the deployment process.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Monitors {
     ///
     /// Amazon Resource Name (ARN) of the Amazon CloudWatch alarm.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for Monitors {
 }
 
 /// Metadata to assign to the environment. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which     you define.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tags {
     ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.

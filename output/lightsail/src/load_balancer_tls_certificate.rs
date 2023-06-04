@@ -1,5 +1,5 @@
 /// The AWS::Lightsail::LoadBalancerTlsCertificate resource specifies a TLS     certificate that can be used with a Lightsail load balancer.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerTlsCertificate {
     ///
     /// An array of alternative domain names and subdomain names for your SSL/TLS     certificate.
@@ -82,7 +82,7 @@ pub struct CfnLoadBalancerTlsCertificate {
     pub att_status: CfnLoadBalancerTlsCertificatestatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn;
 impl CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLoadBalancerTlsCertificatestatus;
 impl CfnLoadBalancerTlsCertificatestatus {
     pub fn att_name(&self) -> &'static str {

@@ -1,5 +1,5 @@
 /// The AWS::Glue::Table resource specifies tabular data in the AWS Glue data       catalog. For more information, see Defining Tables in the AWS Glue Data         Catalog and Table Structure in the AWS Glue Developer       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTable {
     ///
     /// The ID of the Data Catalog in which to create the Table.
@@ -108,7 +108,7 @@ impl cfn_resources::CfnResource for CfnTable {
 }
 
 /// A column in a Table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Column {
     ///
     /// A free-form text comment.
@@ -245,7 +245,7 @@ impl cfn_resources::CfnResource for Column {
 }
 
 /// Specifies the sort order of a sorted column.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Order {
     ///
     /// The name of the column.
@@ -335,7 +335,7 @@ impl cfn_resources::CfnResource for Order {
 }
 
 /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaId {
     ///
     /// The name of the schema registry that contains the schema.
@@ -389,7 +389,7 @@ impl cfn_resources::CfnResource for SchemaId {
 }
 
 /// An object that references a schema stored in the AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaReference {
     ///
     /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
@@ -447,7 +447,7 @@ impl cfn_resources::CfnResource for SchemaReference {
 }
 
 /// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SerdeInfo {
     ///
     /// Name of the SerDe.
@@ -501,7 +501,7 @@ impl cfn_resources::CfnResource for SerdeInfo {
 }
 
 /// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SkewedInfo {
     ///
     /// A list of names of columns that contain skewed values.
@@ -555,7 +555,7 @@ impl cfn_resources::CfnResource for SkewedInfo {
 }
 
 /// Describes the physical storage of table data.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageDescriptor {
     ///
     /// A list of reducer grouping columns, clustering columns, and    bucketing columns in the table.
@@ -786,7 +786,7 @@ impl cfn_resources::CfnResource for StorageDescriptor {
 }
 
 /// A structure that describes a target table for resource linking.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableIdentifier {
     ///
     /// The ID of the Data Catalog in which the table resides.
@@ -840,7 +840,7 @@ impl cfn_resources::CfnResource for TableIdentifier {
 }
 
 /// A structure used to define a table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TableInput {
     ///
     /// A description of the table.

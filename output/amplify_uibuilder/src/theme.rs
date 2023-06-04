@@ -1,5 +1,5 @@
 /// The AWS::AmplifyUIBuilder::Theme resource specifies a theme within an Amplify app. A theme    is a collection of style settings that apply globally to the components associated with the    app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTheme {
     /// Property description not available.
     ///
@@ -73,7 +73,7 @@ pub struct CfnTheme {
     pub att_id: CfnThemeid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnThemeid;
 impl CfnThemeid {
     pub fn att_name(&self) -> &'static str {
@@ -96,7 +96,7 @@ impl cfn_resources::CfnResource for CfnTheme {
 }
 
 /// The ThemeValue property specifies the configuration of a theme's    properties.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThemeValue {
     ///
     /// A list of key-value pairs that define the theme's properties.
@@ -138,7 +138,7 @@ impl cfn_resources::CfnResource for ThemeValue {
 }
 
 /// The ThemeValues property specifies key-value pair that defines a property of a theme.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ThemeValues {
     ///
     /// The name of the property.

@@ -3,7 +3,7 @@
 /// By using custom data identifiers, you can supplement the managed data identifiers that         Macie provides and detect sensitive data that reflects your       particular scenarios, intellectual property, or proprietary data. For more information,       see Building custom data identifiers in the Amazon Macie         User Guide.
 ///
 /// An AWS::Macie::Session resource must exist for an AWS account before you can create an         AWS::Macie::CustomDataIdentifier resource for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomDataIdentifier {
     ///
     /// A custom description of the custom data identifier. The description can contain 1-512       characters.
@@ -92,7 +92,7 @@ pub struct CfnCustomDataIdentifier {
     pub att_id: CfnCustomDataIdentifierid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomDataIdentifierarn;
 impl CfnCustomDataIdentifierarn {
     pub fn att_name(&self) -> &'static str {
@@ -100,7 +100,7 @@ impl CfnCustomDataIdentifierarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCustomDataIdentifierid;
 impl CfnCustomDataIdentifierid {
     pub fn att_name(&self) -> &'static str {

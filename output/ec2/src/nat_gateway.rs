@@ -5,7 +5,7 @@
 /// If you add a default route (AWS::EC2::Route resource) that points to a NAT     gateway, specify the NAT gateway ID for the route's NatGatewayId     property.
 ///
 /// For more information, see NAT Gateways in the       Amazon VPC User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNatGateway {
     ///
     /// [Public NAT gateway only] The allocation ID of the Elastic IP address that's associated with the NAT gateway.      This property is required for a public NAT gateway and cannot be specified with a private NAT gateway.
@@ -132,7 +132,7 @@ pub struct CfnNatGateway {
     pub att_nat_gateway_id: CfnNatGatewaynatgatewayid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum NatGatewayConnectivityTypeEnum {
     /// private
     #[serde(rename = "private")]
@@ -149,7 +149,7 @@ impl Default for NatGatewayConnectivityTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnNatGatewaynatgatewayid;
 impl CfnNatGatewaynatgatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -202,7 +202,7 @@ impl cfn_resources::CfnResource for CfnNatGateway {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

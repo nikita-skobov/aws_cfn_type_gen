@@ -7,7 +7,7 @@
 /// If you grant permissions using an organization, then accounts in that organization must    specify a RoleArn with proper permissions when they use PutTarget to    add your account's event bus as a target. For more information, see Sending and     Receiving Events Between AWS Accounts in the Amazon EventBridge User     Guide.
 ///
 /// The permission policy on the event bus cannot exceed 10 KB in size.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventBusPolicy {
     ///
     /// The action that you are enabling the other account to perform.
@@ -222,7 +222,7 @@ impl cfn_resources::CfnResource for CfnEventBusPolicy {
 /// A JSON string which you can use to limit the event bus permissions you are granting to    only accounts that fulfill the condition. Currently, the only supported condition is    membership in a certain AWS organization. The string must contain Type,     Key, and Value fields. The Value field specifies the    ID of the AWS organization. Following is an example value for Condition:
 ///
 /// '{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value":     "o-1234567890"}'
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Condition {
     ///
     /// Specifies the key for the condition. Currently the only supported key is     aws:PrincipalOrgID.

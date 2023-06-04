@@ -1,5 +1,5 @@
 /// A CIDR provisioned to an IPAM pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolCidr {
     ///
     /// The CIDR provisioned to the IPAM pool. A CIDR is a representation of an IP address and its associated network mask (or netmask)      and refers to a range of IP addresses. An IPv4 CIDR example is 10.24.34.0/23. An IPv6 CIDR example is 2001:DB8::/32.
@@ -43,7 +43,7 @@ pub struct CfnIPAMPoolCidr {
     pub att_state: CfnIPAMPoolCidrstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolCidripampoolcidrid;
 impl CfnIPAMPoolCidripampoolcidrid {
     pub fn att_name(&self) -> &'static str {
@@ -51,7 +51,7 @@ impl CfnIPAMPoolCidripampoolcidrid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMPoolCidrstate;
 impl CfnIPAMPoolCidrstate {
     pub fn att_name(&self) -> &'static str {

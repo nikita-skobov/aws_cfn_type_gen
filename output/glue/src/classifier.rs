@@ -1,5 +1,5 @@
 /// The AWS::Glue::Classifier resource creates an AWS Glue classifier that       categorizes data sources and specifies schemas. For more information, see Adding Classifiers to         a Crawler and Classifier Structure in the AWS Glue Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClassifier {
     ///
     /// A classifier for comma-separated values (CSV).
@@ -81,7 +81,7 @@ impl cfn_resources::CfnResource for CfnClassifier {
 }
 
 /// A classifier for custom CSV content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CsvClassifier {
     ///
     /// Enables the processing of files that contain only one column.
@@ -194,7 +194,7 @@ pub struct CsvClassifier {
     pub quote_symbol: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CsvClassifierContainsHeaderEnum {
     /// ABSENT
     #[serde(rename = "ABSENT")]
@@ -296,7 +296,7 @@ impl cfn_resources::CfnResource for CsvClassifier {
 }
 
 /// A classifier that uses grok patterns.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrokClassifier {
     ///
     /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and    so on.
@@ -441,7 +441,7 @@ impl cfn_resources::CfnResource for GrokClassifier {
 }
 
 /// A classifier for JSON content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonClassifier {
     ///
     /// A JsonPath string defining the JSON data for the classifier to classify.       AWS Glue supports a subset of JsonPath, as described in Writing JsonPath         Custom Classifiers.
@@ -510,7 +510,7 @@ impl cfn_resources::CfnResource for JsonClassifier {
 }
 
 /// A classifier for XML content.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct XMLClassifier {
     ///
     /// An identifier of the data format that the classifier matches.

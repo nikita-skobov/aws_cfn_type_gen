@@ -1,5 +1,5 @@
 /// The AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation resource is a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociation {
     ///
     /// The ID of the query logging configuration that a VPC is associated with.
@@ -49,7 +49,7 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     pub att_status: CfnResolverQueryLoggingConfigAssociationstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociationcreationtime;
 impl CfnResolverQueryLoggingConfigAssociationcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -57,7 +57,7 @@ impl CfnResolverQueryLoggingConfigAssociationcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociationerror;
 impl CfnResolverQueryLoggingConfigAssociationerror {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnResolverQueryLoggingConfigAssociationerror {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociationerrormessage;
 impl CfnResolverQueryLoggingConfigAssociationerrormessage {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnResolverQueryLoggingConfigAssociationerrormessage {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociationid;
 impl CfnResolverQueryLoggingConfigAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnResolverQueryLoggingConfigAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverQueryLoggingConfigAssociationstatus;
 impl CfnResolverQueryLoggingConfigAssociationstatus {
     pub fn att_name(&self) -> &'static str {

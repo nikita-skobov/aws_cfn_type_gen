@@ -1,5 +1,5 @@
 /// The collection of compute resources in Amazon Redshift Serverless.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroup {
     ///
     /// The base compute capacity of the workgroup in Redshift Processing Units (RPUs).
@@ -142,7 +142,7 @@ pub struct CfnWorkgroup {
     pub att_workgroup_workgroup_name: CfnWorkgroupworkgroupworkgroupname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupcreationdate;
 impl CfnWorkgroupworkgroupcreationdate {
     pub fn att_name(&self) -> &'static str {
@@ -150,7 +150,7 @@ impl CfnWorkgroupworkgroupcreationdate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupendpointaddress;
 impl CfnWorkgroupworkgroupendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -158,7 +158,7 @@ impl CfnWorkgroupworkgroupendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupnamespacename;
 impl CfnWorkgroupworkgroupnamespacename {
     pub fn att_name(&self) -> &'static str {
@@ -166,7 +166,7 @@ impl CfnWorkgroupworkgroupnamespacename {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupstatus;
 impl CfnWorkgroupworkgroupstatus {
     pub fn att_name(&self) -> &'static str {
@@ -174,7 +174,7 @@ impl CfnWorkgroupworkgroupstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupworkgrouparn;
 impl CfnWorkgroupworkgroupworkgrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -182,7 +182,7 @@ impl CfnWorkgroupworkgroupworkgrouparn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupworkgroupid;
 impl CfnWorkgroupworkgroupworkgroupid {
     pub fn att_name(&self) -> &'static str {
@@ -190,7 +190,7 @@ impl CfnWorkgroupworkgroupworkgroupid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkgroupworkgroupworkgroupname;
 impl CfnWorkgroupworkgroupworkgroupname {
     pub fn att_name(&self) -> &'static str {
@@ -213,7 +213,7 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
 }
 
 /// A array of parameters to set for more control over a serverless database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigParameter {
     ///
     /// The key of the parameter. The   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
@@ -255,7 +255,7 @@ impl cfn_resources::CfnResource for ConfigParameter {
 }
 
 /// The VPC endpoint object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoint {
     ///
     /// The DNS address of the VPC endpoint.
@@ -309,7 +309,7 @@ impl cfn_resources::CfnResource for Endpoint {
 }
 
 /// Contains information about a network interface      in an Amazon Redshift Serverless managed VPC endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkInterface {
     ///
     /// The availability Zone.
@@ -381,7 +381,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -419,7 +419,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The connection endpoint for connecting to Amazon Redshift Serverless through the proxy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcEndpoint {
     ///
     /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
@@ -473,7 +473,7 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 }
 
 /// The collection of computing resources from which an endpoint is created.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Workgroup {
     ///
     /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).

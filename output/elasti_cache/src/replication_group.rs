@@ -5,7 +5,7 @@
 /// The node or shard limit can be increased to a maximum of 500 per cluster if the Redis engine version is 5.0.6 or higher. For example, you can choose to configure a 500 node cluster that ranges between    83 shards (one primary and 5 replicas per shard) and 500 shards (single primary and no replicas). Make sure there are enough available IP addresses to accommodate the increase.    Common pitfalls include the subnets in the subnet group have too small a CIDR range or the subnets are shared and heavily used by other clusters. For more information, see    Creating a Subnet Group. For versions below 5.0.6,      the limit is 250 per cluster.
 ///
 /// To request a limit increase, see    Amazon Service Limits    and choose the limit type Nodes per cluster per instance type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroup {
     ///
     /// A flag that enables encryption at rest when set to true.
@@ -599,7 +599,7 @@ pub struct CfnReplicationGroup {
     pub att_reader_end_point_port: CfnReplicationGroupreaderendpointport,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationGroupIpDiscoveryEnum {
     /// ipv4
     #[serde(rename = "ipv4")]
@@ -616,7 +616,7 @@ impl Default for ReplicationGroupIpDiscoveryEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationGroupNetworkTypeEnum {
     /// dual_stack
     #[serde(rename = "dual_stack")]
@@ -637,7 +637,7 @@ impl Default for ReplicationGroupNetworkTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationGroupTransitEncryptionModeEnum {
     /// preferred
     #[serde(rename = "preferred")]
@@ -654,7 +654,7 @@ impl Default for ReplicationGroupTransitEncryptionModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupconfigurationendpointaddress;
 impl CfnReplicationGroupconfigurationendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -662,7 +662,7 @@ impl CfnReplicationGroupconfigurationendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupconfigurationendpointport;
 impl CfnReplicationGroupconfigurationendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -670,7 +670,7 @@ impl CfnReplicationGroupconfigurationendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupprimaryendpointaddress;
 impl CfnReplicationGroupprimaryendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -678,7 +678,7 @@ impl CfnReplicationGroupprimaryendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupprimaryendpointport;
 impl CfnReplicationGroupprimaryendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -686,7 +686,7 @@ impl CfnReplicationGroupprimaryendpointport {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupreadendpointaddresses;
 impl CfnReplicationGroupreadendpointaddresses {
     pub fn att_name(&self) -> &'static str {
@@ -694,7 +694,7 @@ impl CfnReplicationGroupreadendpointaddresses {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupreadendpointports;
 impl CfnReplicationGroupreadendpointports {
     pub fn att_name(&self) -> &'static str {
@@ -702,7 +702,7 @@ impl CfnReplicationGroupreadendpointports {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupreaderendpointaddress;
 impl CfnReplicationGroupreaderendpointaddress {
     pub fn att_name(&self) -> &'static str {
@@ -710,7 +710,7 @@ impl CfnReplicationGroupreaderendpointaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnReplicationGroupreaderendpointport;
 impl CfnReplicationGroupreaderendpointport {
     pub fn att_name(&self) -> &'static str {
@@ -733,7 +733,7 @@ impl cfn_resources::CfnResource for CfnReplicationGroup {
 }
 
 /// The configuration details of the CloudWatch Logs destination. Note that this field is marked    as required but only if CloudWatch Logs was chosen as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CloudWatchLogsDestinationDetails {
     /// The name of the CloudWatch Logs log group.
     ///
@@ -761,7 +761,7 @@ impl cfn_resources::CfnResource for CloudWatchLogsDestinationDetails {
 }
 
 /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationDetails {
     /// The configuration details of the CloudWatch Logs destination. Note that this field is marked      as required but only if CloudWatch Logs was chosen as the destination.
     ///
@@ -809,7 +809,7 @@ impl cfn_resources::CfnResource for DestinationDetails {
 }
 
 /// The configuration details of the Kinesis Data Firehose destination. Note that this field is marked    as required but only if Kinesis Data Firehose was chosen as the destination.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KinesisFirehoseDestinationDetails {
     /// The name of the Kinesis Data Firehose delivery stream.
     ///
@@ -837,7 +837,7 @@ impl cfn_resources::CfnResource for KinesisFirehoseDestinationDetails {
 }
 
 /// Specifies the destination, format and type of the logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogDeliveryConfigurationRequest {
     /// Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.
     ///
@@ -897,7 +897,7 @@ impl cfn_resources::CfnResource for LogDeliveryConfigurationRequest {
 }
 
 /// NodeGroupConfiguration is a property of the AWS::ElastiCache::ReplicationGroup resource that configures an Amazon ElastiCache (ElastiCache) Redis cluster node group.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NodeGroupConfiguration {
     ///
     /// Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these       configuration values apply to.
@@ -1013,7 +1013,7 @@ impl cfn_resources::CfnResource for NodeGroupConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

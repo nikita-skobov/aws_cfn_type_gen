@@ -1,5 +1,5 @@
 /// Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance.     The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeer {
     /// Property description not available.
     ///
@@ -112,7 +112,7 @@ pub struct CfnConnectPeer {
     pub att_state: CfnConnectPeerstate,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeerconfigurationcorenetworkaddress;
 impl CfnConnectPeerconfigurationcorenetworkaddress {
     pub fn att_name(&self) -> &'static str {
@@ -120,7 +120,7 @@ impl CfnConnectPeerconfigurationcorenetworkaddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeerconfigurationpeeraddress;
 impl CfnConnectPeerconfigurationpeeraddress {
     pub fn att_name(&self) -> &'static str {
@@ -128,7 +128,7 @@ impl CfnConnectPeerconfigurationpeeraddress {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeerconfigurationprotocol;
 impl CfnConnectPeerconfigurationprotocol {
     pub fn att_name(&self) -> &'static str {
@@ -136,7 +136,7 @@ impl CfnConnectPeerconfigurationprotocol {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeerconnectpeerid;
 impl CfnConnectPeerconnectpeerid {
     pub fn att_name(&self) -> &'static str {
@@ -144,7 +144,7 @@ impl CfnConnectPeerconnectpeerid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeercorenetworkid;
 impl CfnConnectPeercorenetworkid {
     pub fn att_name(&self) -> &'static str {
@@ -152,7 +152,7 @@ impl CfnConnectPeercorenetworkid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeercreatedat;
 impl CfnConnectPeercreatedat {
     pub fn att_name(&self) -> &'static str {
@@ -160,7 +160,7 @@ impl CfnConnectPeercreatedat {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeeredgelocation;
 impl CfnConnectPeeredgelocation {
     pub fn att_name(&self) -> &'static str {
@@ -168,7 +168,7 @@ impl CfnConnectPeeredgelocation {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConnectPeerstate;
 impl CfnConnectPeerstate {
     pub fn att_name(&self) -> &'static str {
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
 }
 
 /// Describes the BGP options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BgpOptions {
     ///
     /// The Peer ASN of the BGP.
@@ -288,7 +288,7 @@ impl cfn_resources::CfnResource for BgpOptions {
 }
 
 /// Describes a core network BGP configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectPeerBgpConfiguration {
     ///
     /// The address of a core network.
@@ -407,7 +407,7 @@ impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
 }
 
 /// Describes a core network Connect peer configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectPeerConfiguration {
     ///
     /// The Connect peer BGP configurations.
@@ -484,7 +484,7 @@ pub struct ConnectPeerConfiguration {
     pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConnectPeerConfigurationProtocolEnum {
     /// GRE
     #[serde(rename = "GRE")]
@@ -559,7 +559,7 @@ impl cfn_resources::CfnResource for ConnectPeerConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

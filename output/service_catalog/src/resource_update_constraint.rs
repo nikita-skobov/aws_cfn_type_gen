@@ -1,5 +1,5 @@
 /// Specifies a RESOURCE_UPDATE constraint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceUpdateConstraint {
     ///
     /// The language code.

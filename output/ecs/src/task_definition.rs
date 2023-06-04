@@ -1,5 +1,5 @@
 /// The details of a task definition which describes the container and volume definitions 			of an Amazon Elastic Container Service task. You can specify which Docker images to use, the required 			resources, and other configurations related to launching the task definition through an 			Amazon ECS service or task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTaskDefinition {
     ///
     /// A list of container definitions in JSON format that describe the different containers 			that make up your task. For more information about container definition parameters and 			defaults, see Amazon ECS Task 				Definitions in the Amazon Elastic Container Service Developer Guide.
@@ -269,7 +269,7 @@ pub struct CfnTaskDefinition {
     pub att_task_definition_arn: CfnTaskDefinitiontaskdefinitionarn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskDefinitionIpcModeEnum {
     /// host
     #[serde(rename = "host")]
@@ -290,7 +290,7 @@ impl Default for TaskDefinitionIpcModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskDefinitionNetworkModeEnum {
     /// awsvpc
     #[serde(rename = "awsvpc")]
@@ -315,7 +315,7 @@ impl Default for TaskDefinitionNetworkModeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskDefinitionPidModeEnum {
     /// host
     #[serde(rename = "host")]
@@ -332,7 +332,7 @@ impl Default for TaskDefinitionPidModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTaskDefinitiontaskdefinitionarn;
 impl CfnTaskDefinitiontaskdefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for CfnTaskDefinition {
 }
 
 /// The authorization configuration details for the Amazon EFS file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AuthorizationConfig {
     ///
     /// The Amazon EFS access point ID to use. If an access point is specified, the root directory 			value specified in the EFSVolumeConfiguration must either be omitted or set 			to / which will enforce the path set on the EFS access point. If an access 			point is used, transit encryption must be on in the 				EFSVolumeConfiguration. For more information, see Working with Amazon 				EFS access points in the Amazon Elastic File System User Guide.
@@ -405,7 +405,7 @@ pub struct AuthorizationConfig {
     pub iam: Option<AuthorizationConfigIAMEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AuthorizationConfigIAMEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for AuthorizationConfig {
 }
 
 /// The ContainerDefinition property specifies a container definition. Container definitions are used  in task definitions to describe the different containers that are launched as part of a task.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerDefinition {
     ///
     /// The command that's passed to the container. This parameter maps to Cmd in 			the Create a container section of the Docker Remote API and the 				COMMAND parameter to docker 				run. For more information, see https://docs.docker.com/engine/reference/builder/#cmd. If there are multiple arguments, each 			argument is a separated string in the array.
@@ -1071,7 +1071,7 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 /// The ContainerDependency property specifies the dependencies defined for container startup and  shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for  container shutdown it is reversed.
 ///
 /// Your Amazon ECS container instances require at least version 1.26.0 of the container agent to enable container  dependencies. However, we recommend using the latest container agent version. For information about checking your  agent version and updating to the latest version, see Updating the Amazon ECS Container Agent in the   Amazon Elastic Container Service Developer Guide. If you are using an Amazon ECS-optimized  Linux AMI, your instance needs at least version 1.26.0-1 of the ecs-init package. If your container  instances are launched from version 20190301 or later, then they contain the required versions of the  container agent and ecs-init. For more information, see Amazon ECS-optimized Linux AMI in the   Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerDependency {
     ///
     /// The dependency condition of the container. The following are the available conditions 			and their behavior:
@@ -1102,7 +1102,7 @@ pub struct ContainerDependency {
     pub container_name: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ContainerDependencyConditionEnum {
     /// COMPLETE
     #[serde(rename = "COMPLETE")]
@@ -1142,7 +1142,7 @@ impl cfn_resources::CfnResource for ContainerDependency {
 }
 
 /// The Device property specifies an object representing a container instance host device.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Device {
     ///
     /// The path inside the container at which to expose the host device.
@@ -1196,7 +1196,7 @@ impl cfn_resources::CfnResource for Device {
 }
 
 /// The DockerVolumeConfiguration property specifies a Docker volume configuration and is used when you  use Docker volumes. Docker volumes are only supported when you are using the EC2 launch type. Windows containers only  support the use of the local driver. To use bind mounts, specify a host instead.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DockerVolumeConfiguration {
     ///
     /// If this value is true, the Docker volume is created if it doesn't already 			exist.
@@ -1263,7 +1263,7 @@ pub struct DockerVolumeConfiguration {
     pub scope: Option<DockerVolumeConfigurationScopeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DockerVolumeConfigurationScopeEnum {
     /// shared
     #[serde(rename = "shared")]
@@ -1295,7 +1295,7 @@ impl cfn_resources::CfnResource for DockerVolumeConfiguration {
 }
 
 /// This parameter is specified when you're using an Amazon Elastic File System file system for task 			storage. For more information, see Amazon EFS volumes in the 			Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EFSVolumeConfiguration {
     ///
     /// The authorization configuration details for the Amazon EFS file system.
@@ -1361,7 +1361,7 @@ pub struct EFSVolumeConfiguration {
     pub transit_encryption_port: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EFSVolumeConfigurationTransitEncryptionEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1401,7 +1401,7 @@ impl cfn_resources::CfnResource for EFSVolumeConfiguration {
 /// If there are environment variables specified using the environment 			parameter in a container definition, they take precedence over the variables contained 			within an environment file. If multiple environment files are specified that contain the 			same variable, they're processed from the top down. We recommend that you use unique 			variable names. For more information, see Specifying environment 				variables in the Amazon Elastic Container Service Developer Guide.
 ///
 /// This parameter is only supported for tasks hosted on Fargate using the 			following platform versions:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentFile {
     ///
     /// The file type to use. The only supported value is s3.
@@ -1430,7 +1430,7 @@ pub struct EnvironmentFile {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EnvironmentFileTypeEnum {
     /// s3
     #[serde(rename = "s3")]
@@ -1458,7 +1458,7 @@ impl cfn_resources::CfnResource for EnvironmentFile {
 }
 
 /// The amount of ephemeral storage to allocate for the task. This parameter is used to 			expand the total amount of ephemeral storage available, beyond the default amount, for 			tasks hosted on AWS Fargate. For more information, see Fargate task 				storage in the Amazon ECS User Guide for AWS Fargate       .
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EphemeralStorage {
     ///
     /// The total amount, in GiB, of ephemeral storage to set for the task. The minimum 			supported value is 21 GiB and the maximum supported value is 				200 GiB.
@@ -1488,7 +1488,7 @@ impl cfn_resources::CfnResource for EphemeralStorage {
 }
 
 /// The FireLens configuration for the container. This is used to specify and configure a 			log router for container logs. For more information, see Custom log routing 			in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FirelensConfiguration {
     ///
     /// The options to use when configuring the log router. This field is optional and can be used to add additional  metadata, such as the task, task definition, cluster, and container instance details to the log event.
@@ -1521,7 +1521,7 @@ pub struct FirelensConfiguration {
     pub cfn_type: Option<FirelensConfigurationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FirelensConfigurationTypeEnum {
     /// fluentbit
     #[serde(rename = "fluentbit")]
@@ -1557,7 +1557,7 @@ impl cfn_resources::CfnResource for FirelensConfiguration {
 /// If a task is run manually, and not as part of a service, the task will continue its   lifecycle regardless of its health status. For tasks that are part of a service, if the   task reports as unhealthy then the task will be stopped and the service scheduler will   replace it.
 ///
 /// The following are notes about container health check support:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheck {
     ///
     /// A string array representing the command that the container runs to determine if it is 			healthy. The string array must start with CMD to run the command arguments 			directly, or CMD-SHELL to run the command with the container's default 			shell.
@@ -1647,7 +1647,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 }
 
 /// The HostEntry property specifies a hostname and an IP address that are added to the   /etc/hosts file of a container through the extraHosts parameter of its   ContainerDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostEntry {
     ///
     /// The hostname to use in the /etc/hosts entry.
@@ -1689,7 +1689,7 @@ impl cfn_resources::CfnResource for HostEntry {
 }
 
 /// The HostVolumeProperties property specifies details on a container instance bind mount host  volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HostVolumeProperties {
     ///
     /// When the host parameter is used, specify a sourcePath to 			declare the path on the host container instance that's presented to the container. If 			this parameter is empty, then the Docker daemon has assigned a host path for you. If the 				host parameter contains a sourcePath file location, then 			the data volume persists at the specified location on the host container instance until 			you delete it manually. If the sourcePath value doesn't exist on the host 			container instance, the Docker daemon creates it. If the location does exist, the 			contents of the source path folder are exported.
@@ -1721,7 +1721,7 @@ impl cfn_resources::CfnResource for HostVolumeProperties {
 }
 
 /// Details on an Elastic Inference accelerator. For more information, see Working with Amazon Elastic Inference on 				Amazon ECS in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InferenceAccelerator {
     ///
     /// The Elastic Inference accelerator device name. The deviceName must also 			be referenced in a container definition as a ResourceRequirement.
@@ -1763,7 +1763,7 @@ impl cfn_resources::CfnResource for InferenceAccelerator {
 }
 
 /// The KernelCapabilities property specifies the Linux capabilities for the container that are added  to or dropped from the default configuration that is provided by Docker. For more information on the default  capabilities and the non-default available capabilities, see Runtime privilege and   Linux capabilities in the Docker run reference. For more detailed information on these  Linux capabilities, see the capabilities(7) Linux manual page.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KernelCapabilities {
     ///
     /// The Linux capabilities for the container that have been added to the default 			configuration provided by Docker. This parameter maps to CapAdd in the 			Create a container section of the Docker Remote API and the 				--cap-add option to docker 				run.
@@ -1811,7 +1811,7 @@ impl cfn_resources::CfnResource for KernelCapabilities {
 }
 
 /// A key-value pair object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyValuePair {
     ///
     /// The name of the key-value pair. For environment variables, this is the name of the 			environment variable.
@@ -1853,7 +1853,7 @@ impl cfn_resources::CfnResource for KeyValuePair {
 }
 
 /// The Linux-specific options that are applied to the container, such as Linux KernelCapabilities.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LinuxParameters {
     ///
     /// The Linux capabilities for the container that are added to or dropped from the default 			configuration provided by Docker.
@@ -1973,7 +1973,7 @@ impl cfn_resources::CfnResource for LinuxParameters {
 }
 
 /// The LogConfiguration property specifies log configuration options to send to a custom log driver  for the container.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LogConfiguration {
     ///
     /// The log driver to use for the container.
@@ -2023,7 +2023,7 @@ pub struct LogConfiguration {
     pub secret_options: Option<Vec<Secret>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LogConfigurationLogDriverEnum {
     /// awsfirelens
     #[serde(rename = "awsfirelens")]
@@ -2079,7 +2079,7 @@ impl cfn_resources::CfnResource for LogConfiguration {
 }
 
 /// The details for a volume mount point that's used in a container definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MountPoint {
     ///
     /// The path on the container to mount the host volume at.
@@ -2137,7 +2137,7 @@ impl cfn_resources::CfnResource for MountPoint {
 /// If you are using containers in a task with the awsvpc or host network mode, exposed  ports should be specified using containerPort. The hostPort can be left blank or it must be  the same value as the containerPort.
 ///
 /// After a task reaches the RUNNING status, manual and automatic host and container port assignments  are visible in the networkBindings section of DescribeTasks API responses.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortMapping {
     ///
     /// The application protocol that's used for the port mapping. This parameter only applies 			to Service Connect. We recommend that you set this parameter to be consistent with the 			protocol that your application uses. If you set this parameter, Amazon ECS adds 			protocol-specific connection handling to the Service Connect proxy. If you set this 			parameter, Amazon ECS adds protocol-specific telemetry in the Amazon ECS console and CloudWatch.
@@ -2244,7 +2244,7 @@ pub struct PortMapping {
     pub protocol: Option<PortMappingProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortMappingAppProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -2265,7 +2265,7 @@ impl Default for PortMappingAppProtocolEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortMappingProtocolEnum {
     /// tcp
     #[serde(rename = "tcp")]
@@ -2299,7 +2299,7 @@ impl cfn_resources::CfnResource for PortMapping {
 /// The configuration details for the App Mesh proxy.
 ///
 /// For tasks that use the EC2 launch type, the container instances require 			at least version 1.26.0 of the container agent and at least version 1.26.0-1 of the 				ecs-init package to use a proxy configuration. If your container 			instances are launched from the Amazon ECS optimized AMI version 20190301 or 			later, then they contain the required versions of the container agent and 				ecs-init. For more information, see Amazon ECS-optimized Linux AMI
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProxyConfiguration {
     ///
     /// The name of the container that will serve as the App Mesh proxy.
@@ -2341,7 +2341,7 @@ pub struct ProxyConfiguration {
     pub cfn_type: Option<ProxyConfigurationTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ProxyConfigurationTypeEnum {
     /// APPMESH
     #[serde(rename = "APPMESH")]
@@ -2369,7 +2369,7 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
 }
 
 /// The repository credentials for private registry authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RepositoryCredentials {
     ///
     /// The Amazon Resource Name (ARN) of the secret containing the private repository 			credentials.
@@ -2401,7 +2401,7 @@ impl cfn_resources::CfnResource for RepositoryCredentials {
 }
 
 /// The type and amount of a resource to assign to a container. The supported resource types are 			GPUs and Elastic Inference accelerators. For more information, see Working with 				GPUs on Amazon ECS or Working with 				Amazon Elastic Inference on Amazon ECS in the Amazon Elastic Container Service Developer Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceRequirement {
     ///
     /// The type of resource to assign to a container. The supported values are 				GPU or InferenceAccelerator.
@@ -2432,7 +2432,7 @@ pub struct ResourceRequirement {
     pub value: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ResourceRequirementTypeEnum {
     /// GPU
     #[serde(rename = "GPU")]
@@ -2466,7 +2466,7 @@ impl cfn_resources::CfnResource for ResourceRequirement {
 /// Information about the platform for the Amazon ECS service or task.
 ///
 /// For more information about RuntimePlatform, see RuntimePlatform in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RuntimePlatform {
     ///
     /// The CPU architecture.
@@ -2499,7 +2499,7 @@ pub struct RuntimePlatform {
     pub operating_system_family: Option<RuntimePlatformOperatingSystemFamilyEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuntimePlatformCpuArchitectureEnum {
     /// ARM64
     #[serde(rename = "ARM64")]
@@ -2516,7 +2516,7 @@ impl Default for RuntimePlatformCpuArchitectureEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RuntimePlatformOperatingSystemFamilyEnum {
     /// LINUX
     #[serde(rename = "LINUX")]
@@ -2574,7 +2574,7 @@ impl cfn_resources::CfnResource for RuntimePlatform {
 /// An object representing the secret to expose to your container. Secrets can be exposed 			to a container in the following ways:
 ///
 /// For more information, see Specifying 				sensitive data in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Secret {
     ///
     /// The name of the secret.
@@ -2620,7 +2620,7 @@ impl cfn_resources::CfnResource for Secret {
 /// A list of namespaced kernel parameters to set in the container. This parameter maps to 				Sysctls in the Create a container section of the 			Docker Remote API and the --sysctl option to docker run.
 ///
 /// We don't recommend that you specify network-related systemControls 			parameters for multiple containers in a single task. This task also uses either the 				awsvpc or host network mode. It does it for the following 			reasons.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SystemControl {
     ///
     /// The namespaced kernel parameter to set a value for.
@@ -2668,7 +2668,7 @@ impl cfn_resources::CfnResource for SystemControl {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2706,7 +2706,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// The constraint on task placement in the task definition. For more 			information, see Task placement constraints in the 			Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TaskDefinitionPlacementConstraint {
     ///
     /// A cluster query language expression to apply to the constraint. For more information, 			see Cluster query language in the Amazon Elastic Container Service Developer Guide.
@@ -2734,7 +2734,7 @@ pub struct TaskDefinitionPlacementConstraint {
     pub cfn_type: TaskDefinitionPlacementConstraintTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TaskDefinitionPlacementConstraintTypeEnum {
     /// memberOf
     #[serde(rename = "memberOf")]
@@ -2762,7 +2762,7 @@ impl cfn_resources::CfnResource for TaskDefinitionPlacementConstraint {
 }
 
 /// The container path, mount options, and size of the tmpfs mount.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tmpfs {
     ///
     /// The absolute file path where the tmpfs volume is to be mounted.
@@ -2821,7 +2821,7 @@ impl cfn_resources::CfnResource for Tmpfs {
 /// Amazon ECS tasks hosted on AWS Fargate use the default 							resource limit values set by the operating system with the exception of 							the nofile resource limit parameter which AWS Fargate 							overrides. The nofile resource limit sets a restriction on 							the number of open files that a container can use. The default 								nofile soft limit is 1024 and the default hard limit 							is 4096.
 ///
 /// You can specify the ulimit settings for a container in a task 			definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Ulimit {
     ///
     /// The hard limit for the ulimit type.
@@ -2859,7 +2859,7 @@ pub struct Ulimit {
     pub soft_limit: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UlimitNameEnum {
     /// core
     #[serde(rename = "core")]
@@ -2943,7 +2943,7 @@ impl cfn_resources::CfnResource for Ulimit {
 }
 
 /// The Volume property specifies a data volume used in a task definition. For tasks that use a Docker  volume, specify a DockerVolumeConfiguration. For tasks that use a bind mount host volume, specify a   host and optional sourcePath. For more information about host and optional   sourcePath, see Volumes and Using Data Volumes in   Tasks.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Volume {
     ///
     /// This parameter is specified when you use Docker volumes.
@@ -3025,7 +3025,7 @@ impl cfn_resources::CfnResource for Volume {
 }
 
 /// Details on a data volume from another container in the same task definition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VolumeFrom {
     ///
     /// If this value is true, the container has read-only access to the volume. 			If this value is false, then the container can write to the volume. The 			default value is false.

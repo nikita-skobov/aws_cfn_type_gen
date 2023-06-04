@@ -1,5 +1,5 @@
 /// The AWS::SageMaker::MonitoringSchedule resource is an Amazon SageMaker       resource type that regularly starts SageMaker processing Jobs to monitor the data       captured for a SageMaker endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitoringSchedule {
     ///
     /// The name of the endpoint using the monitoring schedule.
@@ -107,7 +107,7 @@ pub struct CfnMonitoringSchedule {
     pub att_monitoring_schedule_arn: CfnMonitoringSchedulemonitoringschedulearn,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringScheduleMonitoringScheduleStatusEnum {
     /// Failed
     #[serde(rename = "Failed")]
@@ -132,7 +132,7 @@ impl Default for MonitoringScheduleMonitoringScheduleStatusEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitoringSchedulecreationtime;
 impl CfnMonitoringSchedulecreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl CfnMonitoringSchedulecreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitoringSchedulelastmodifiedtime;
 impl CfnMonitoringSchedulelastmodifiedtime {
     pub fn att_name(&self) -> &'static str {
@@ -148,7 +148,7 @@ impl CfnMonitoringSchedulelastmodifiedtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMonitoringSchedulemonitoringschedulearn;
 impl CfnMonitoringSchedulemonitoringschedulearn {
     pub fn att_name(&self) -> &'static str {
@@ -207,7 +207,7 @@ impl cfn_resources::CfnResource for CfnMonitoringSchedule {
 }
 
 /// Baseline configuration used to validate that the data conforms to the specified       constraints and statistics.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BaselineConfig {
     ///
     /// The Amazon S3 URI for the constraints resource.
@@ -257,7 +257,7 @@ impl cfn_resources::CfnResource for BaselineConfig {
 }
 
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BatchTransformInput {
     /// Property description not available.
     ///
@@ -329,7 +329,7 @@ impl cfn_resources::CfnResource for BatchTransformInput {
 }
 
 /// Configuration for the cluster used to run model monitoring jobs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterConfig {
     ///
     /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
@@ -392,7 +392,7 @@ impl cfn_resources::CfnResource for ClusterConfig {
 }
 
 /// The Amazon S3 URI for the constraints resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConstraintsResource {
     ///
     /// The Amazon S3 URI for the constraints resource.
@@ -422,7 +422,7 @@ impl cfn_resources::CfnResource for ConstraintsResource {
 }
 
 /// The Csv property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Csv {
     /// Property description not available.
     ///
@@ -451,7 +451,7 @@ impl cfn_resources::CfnResource for Csv {
 }
 
 /// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatasetFormat {
     /// Property description not available.
     ///
@@ -506,7 +506,7 @@ impl cfn_resources::CfnResource for DatasetFormat {
 }
 
 /// Input object for the endpoint
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EndpointInput {
     ///
     /// An endpoint in customer's account which has enabled DataCaptureConfig     enabled.
@@ -567,7 +567,7 @@ pub struct EndpointInput {
     pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointInputS3DataDistributionTypeEnum {
     /// FullyReplicated
     #[serde(rename = "FullyReplicated")]
@@ -584,7 +584,7 @@ impl Default for EndpointInputS3DataDistributionTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EndpointInputS3InputModeEnum {
     /// File
     #[serde(rename = "File")]
@@ -638,7 +638,7 @@ impl cfn_resources::CfnResource for EndpointInput {
 }
 
 /// The Json property type specifies Property description not available. for an AWS::SageMaker::MonitoringSchedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Json {
     /// Property description not available.
     ///
@@ -667,7 +667,7 @@ impl cfn_resources::CfnResource for Json {
 }
 
 /// Container image configuration object for the monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringAppSpecification {
     ///
     /// An array of arguments for the container used to run the monitoring job.
@@ -805,7 +805,7 @@ impl cfn_resources::CfnResource for MonitoringAppSpecification {
 }
 
 /// Summary of information about the last monitoring job to run.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringExecutionSummary {
     ///
     /// The time at which the monitoring job was created.
@@ -917,7 +917,7 @@ pub struct MonitoringExecutionSummary {
     pub scheduled_time: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringExecutionSummaryMonitoringExecutionStatusEnum {
     /// Completed
     #[serde(rename = "Completed")]
@@ -1018,7 +1018,7 @@ impl cfn_resources::CfnResource for MonitoringExecutionSummary {
 }
 
 /// The inputs for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringInput {
     /// Property description not available.
     ///
@@ -1067,7 +1067,7 @@ impl cfn_resources::CfnResource for MonitoringInput {
 }
 
 /// Defines the monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringJobDefinition {
     ///
     /// Baseline configuration used to validate that the data conforms to the specified     constraints and statistics
@@ -1245,7 +1245,7 @@ impl cfn_resources::CfnResource for MonitoringJobDefinition {
 }
 
 /// The output object for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringOutput {
     ///
     /// The Amazon S3 storage location where the results of a monitoring job are saved.
@@ -1276,7 +1276,7 @@ impl cfn_resources::CfnResource for MonitoringOutput {
 }
 
 /// The output configuration for monitoring jobs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringOutputConfig {
     ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model     artifacts at rest using Amazon S3 server-side encryption.
@@ -1343,7 +1343,7 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
 }
 
 /// Identifies the resources to deploy for a monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringResources {
     ///
     /// The configuration for the cluster resources used to run the processing job.
@@ -1374,7 +1374,7 @@ impl cfn_resources::CfnResource for MonitoringResources {
 }
 
 /// Configures the monitoring schedule and defines the monitoring job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MonitoringScheduleConfig {
     ///
     /// Defines the monitoring job.
@@ -1433,7 +1433,7 @@ pub struct MonitoringScheduleConfig {
     pub schedule_config: Option<ScheduleConfig>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MonitoringScheduleConfigMonitoringTypeEnum {
     /// DataQuality
     #[serde(rename = "DataQuality")]
@@ -1497,7 +1497,7 @@ impl cfn_resources::CfnResource for MonitoringScheduleConfig {
 }
 
 /// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NetworkConfig {
     ///
     /// Whether to encrypt all communications between distributed processing jobs. Choose       True to encrypt communications. Encryption provides greater security for distributed       processing jobs, but the processing might take longer.
@@ -1555,7 +1555,7 @@ impl cfn_resources::CfnResource for NetworkConfig {
 }
 
 /// Information about where and how you want to store the results of a monitoring       job.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Output {
     ///
     /// The local path to the S3 storage location where SageMaker saves the results of a       monitoring job. LocalPath is an absolute path for the output data.
@@ -1607,7 +1607,7 @@ impl cfn_resources::CfnResource for S3Output {
 }
 
 /// Configuration details about the monitoring schedule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScheduleConfig {
     ///
     /// A cron expression that describes details about the monitoring schedule.
@@ -1680,7 +1680,7 @@ impl cfn_resources::CfnResource for ScheduleConfig {
 }
 
 /// The baseline statistics file in Amazon S3 that the current monitoring job should be       validated against.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StatisticsResource {
     ///
     /// The S3 URI for the statistics resource.
@@ -1714,7 +1714,7 @@ impl cfn_resources::CfnResource for StatisticsResource {
 /// To stop a training job, SageMaker sends the algorithm the SIGTERM signal,       which delays job termination for 120 seconds. Algorithms can use this 120-second window       to save the model artifacts, so the results of training are not lost.
 ///
 /// The training algorithms provided by SageMaker automatically save the intermediate results       of a model training job when possible. This attempt to save artifacts is only a best       effort case as model might not be in a state from which it can be saved. For example, if       training has just started, the model might not be ready to save. When saved, this       intermediate data is a valid model artifact. You can use it to create a model with         CreateModel.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StoppingCondition {
     ///
     /// The maximum length of time, in seconds, that a training or compilation job can run       before it is stopped.
@@ -1766,7 +1766,7 @@ impl cfn_resources::CfnResource for StoppingCondition {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -1804,7 +1804,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.

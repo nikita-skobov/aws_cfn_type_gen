@@ -1,7 +1,7 @@
 /// Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 ///
 /// A Connect attachment uses an existing VPC or AWS Direct Connect attachment as the underlying transport mechanism.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayConnect {
     ///
     /// The Connect attachment options.
@@ -52,7 +52,7 @@ pub struct CfnTransitGatewayConnect {
     pub att_transit_gateway_id: CfnTransitGatewayConnecttransitgatewayid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayConnectcreationtime;
 impl CfnTransitGatewayConnectcreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -60,7 +60,7 @@ impl CfnTransitGatewayConnectcreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayConnectstate;
 impl CfnTransitGatewayConnectstate {
     pub fn att_name(&self) -> &'static str {
@@ -68,7 +68,7 @@ impl CfnTransitGatewayConnectstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayConnecttransitgatewayattachmentid;
 impl CfnTransitGatewayConnecttransitgatewayattachmentid {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl CfnTransitGatewayConnecttransitgatewayattachmentid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayConnecttransitgatewayid;
 impl CfnTransitGatewayConnecttransitgatewayid {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -145,7 +145,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Describes the Connect attachment options.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TransitGatewayConnectOptions {
     ///
     /// The tunnel protocol.
@@ -162,7 +162,7 @@ pub struct TransitGatewayConnectOptions {
     pub protocol: Option<TransitGatewayConnectOptionsProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TransitGatewayConnectOptionsProtocolEnum {
     /// gre
     #[serde(rename = "gre")]

@@ -1,5 +1,5 @@
 /// The AWS::Amplify::Branch resource specifies a new branch within an app.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBranch {
     ///
     /// The unique ID for an Amplify app.
@@ -196,7 +196,7 @@ pub struct CfnBranch {
     pub att_branch_name: CfnBranchbranchname,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum BranchStageEnum {
     /// PRODUCTION
     #[serde(rename = "PRODUCTION")]
@@ -225,7 +225,7 @@ impl Default for BranchStageEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBrancharn;
 impl CfnBrancharn {
     pub fn att_name(&self) -> &'static str {
@@ -233,7 +233,7 @@ impl CfnBrancharn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBranchbranchname;
 impl CfnBranchbranchname {
     pub fn att_name(&self) -> &'static str {
@@ -260,7 +260,7 @@ impl cfn_resources::CfnResource for CfnBranch {
 }
 
 /// Use the BasicAuthConfig property type to set password protection for a specific    branch.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BasicAuthConfig {
     ///
     /// Enables basic authorization for the branch.
@@ -316,7 +316,7 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
 }
 
 /// The EnvironmentVariable property type sets environment variables for a specific branch.    Environment variables are key-value pairs that are available at build time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EnvironmentVariable {
     ///
     /// The environment variable name.
@@ -370,7 +370,7 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// Describes a user's SSH information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserProfile {
     ///
     /// Whether users can specify their own SSH public key through the My Settings page. For more    information, see Managing User     Permissions.
@@ -52,7 +52,7 @@ pub struct CfnUserProfile {
     pub att_ssh_username: CfnUserProfilesshusername,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserProfilesshusername;
 impl CfnUserProfilesshusername {
     pub fn att_name(&self) -> &'static str {

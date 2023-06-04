@@ -1,5 +1,5 @@
 /// The AWS::Glue::SchemaVersionMetadata is an AWS Glue resource type that defines the metadata key-value pairs for a schema version in AWS Glue Schema Registry.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSchemaVersionMetadata {
     ///
     /// A metadata key in a key-value pair for metadata.

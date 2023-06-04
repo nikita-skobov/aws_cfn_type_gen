@@ -1,7 +1,7 @@
 /// The AWS::QLDB::Ledger resource specifies a new Amazon Quantum Ledger Database     (Amazon QLDB) ledger in your AWS account. Amazon QLDB is a fully managed ledger database     that provides a transparent, immutable, and cryptographically verifiable transaction log     owned by a central trusted authority. You can use QLDB to track all application data     changes, and maintain a complete and verifiable history of changes over time.
 ///
 /// For more information, see CreateLedger in the       Amazon QLDB API Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnLedger {
     ///
     /// Specifies whether the ledger is protected from being deleted by any user. If not defined during    ledger creation, this feature is enabled (true) by default.
@@ -95,7 +95,7 @@ pub struct CfnLedger {
     pub tags: Option<Vec<Tag>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum LedgerPermissionsModeEnum {
     /// ALLOW_ALL
     #[serde(rename = "ALLOW_ALL")]
@@ -166,7 +166,7 @@ impl cfn_resources::CfnResource for CfnLedger {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

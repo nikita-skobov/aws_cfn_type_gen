@@ -13,7 +13,7 @@
 /// For more information about VPC security group limits, see Amazon VPC Limits.
 ///
 /// Use AWS::EC2::SecurityGroupIngress and       AWS::EC2::SecurityGroupEgress only when necessary, typically to allow     security groups to reference each other in ingress and egress rules. Otherwise, use the     embedded ingress and egress rules of the security group. For more information, see Amazon       EC2 Security Groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroupEgress {
     ///
     /// The IPv4 address range, in CIDR format.

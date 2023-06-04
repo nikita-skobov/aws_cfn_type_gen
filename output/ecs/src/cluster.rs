@@ -1,5 +1,5 @@
 /// The AWS::ECS::Cluster resource creates an Amazon Elastic Container Service (Amazon ECS)  cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCluster {
     ///
     /// The short name of one or more capacity providers to associate with the cluster. A 			capacity provider must be associated with a cluster before it can be included as part of 			the default capacity provider strategy of the cluster or used in a capacity provider 			strategy when calling the CreateService or RunTask 			actions.
@@ -103,7 +103,7 @@ pub struct CfnCluster {
     pub att_arn: CfnClusterarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnClusterarn;
 impl CfnClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl cfn_resources::CfnResource for CfnCluster {
 }
 
 /// The CapacityProviderStrategyItem property specifies the details of the default capacity provider  strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider  strategy specified, the default capacity provider strategy is used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CapacityProviderStrategyItem {
     ///
     /// The base value designates how many tasks, at a minimum, to run on 			the specified capacity provider. Only one capacity provider in a capacity provider 			strategy can have a base defined. If no value is specified, the 			default value of 0 is used.
@@ -245,7 +245,7 @@ impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
 }
 
 /// The execute command configuration for the cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterConfiguration {
     ///
     /// The details of the execute command configuration.
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for ClusterConfiguration {
 }
 
 /// The settings to use when creating a cluster. This parameter is used to turn on CloudWatch 			Container Insights for a cluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClusterSettings {
     ///
     /// The name of the cluster setting. The value is containerInsights .
@@ -310,7 +310,7 @@ pub struct ClusterSettings {
     pub value: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ClusterSettingsNameEnum {
     /// containerInsights
     #[serde(rename = "containerInsights")]
@@ -338,7 +338,7 @@ impl cfn_resources::CfnResource for ClusterSettings {
 }
 
 /// The details of the execute command configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExecuteCommandConfiguration {
     ///
     /// Specify an AWS Key Management Service key ID to encrypt the data between the local client 			and the container.
@@ -381,7 +381,7 @@ pub struct ExecuteCommandConfiguration {
     pub logging: Option<ExecuteCommandConfigurationLoggingEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExecuteCommandConfigurationLoggingEnum {
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
@@ -421,7 +421,7 @@ impl cfn_resources::CfnResource for ExecuteCommandConfiguration {
 }
 
 /// The log configuration for the results of the execute command actions. The logs can be 			sent to CloudWatch Logs or an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExecuteCommandLogConfiguration {
     ///
     /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption 			will be off.
@@ -505,7 +505,7 @@ impl cfn_resources::CfnResource for ExecuteCommandLogConfiguration {
 /// Use this parameter to set a default Service Connect namespace. After you set a default 	Service Connect namespace, any new services with Service Connect turned on that are created in the cluster are added as 	client services in the namespace. This setting only applies to new services that set the enabled parameter to 	true in the ServiceConnectConfiguration. 	You can set the namespace of each service individually in the ServiceConnectConfiguration to override this default 	parameter.
 ///
 /// Tasks that run in a namespace can use short names to connect 	to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. 	Tasks connect through a managed proxy container 	that collects logs and metrics for increased visibility. 	Only the tasks that Amazon ECS services create are supported with Service Connect. 	For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceConnectDefaults {
     ///
     /// The namespace name or full Amazon Resource Name (ARN) of the AWS Cloud Map namespace that's used when you create a service and don't specify 			a Service Connect configuration. The namespace name can include up to 1024 characters. 			The name is case-sensitive. The name can't include hyphens (-), tilde (~), greater than 			(>), less than (<), or slash (/).
@@ -549,7 +549,7 @@ impl cfn_resources::CfnResource for ServiceConnectDefaults {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

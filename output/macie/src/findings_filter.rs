@@ -1,7 +1,7 @@
 /// The AWS::Macie::FindingsFilter resource specifies a findings filter. In Amazon Macie, a         findings filter, also referred to as a filter         rule, is a set of custom criteria that specifies which findings to       include or exclude from the results of a query for findings. The criteria can help you       identify and focus on findings that have specific characteristics, such as severity,       type, or the name of an affected AWS resource. You can also configure a       findings filter to suppress (automatically archive) findings that match the filter's       criteria. For more information, see Filtering findings in       the Amazon Macie User Guide.
 ///
 /// An AWS::Macie::Session resource must exist for an AWS account before you can create an         AWS::Macie::FindingsFilter resource for the account. Use a DependsOn         attribute to ensure that an AWS::Macie::Session resource is       created before other Macie resources are created for an account. For       example, "DependsOn": "Session".
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFindingsFilter {
     ///
     /// The action to perform on findings that match the filter criteria         (FindingCriteria). Valid values are:
@@ -74,7 +74,7 @@ pub struct CfnFindingsFilter {
     pub att_id: CfnFindingsFilterid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFindingsFilterarn;
 impl CfnFindingsFilterarn {
     pub fn att_name(&self) -> &'static str {
@@ -82,7 +82,7 @@ impl CfnFindingsFilterarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnFindingsFilterid;
 impl CfnFindingsFilterid {
     pub fn att_name(&self) -> &'static str {
@@ -107,7 +107,7 @@ impl cfn_resources::CfnResource for CfnFindingsFilter {
 }
 
 /// Specifies a condition that defines the property, operator, and one or more values to       use in a findings filter. A findings filter, also referred to as a filter rule, is a       set of custom criteria that specifies which findings to include or exclude from the results of a query for findings. You can also       configure a findings filter to suppress (automatically archive) findings that match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CriterionAdditionalProperties {
     ///
     /// The value for the specified property matches (equals) the specified value. If you specify       multiple values, Amazon Macie uses OR logic to join the values.
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for CriterionAdditionalProperties {
 }
 
 /// Specifies, as a map, one or more property-based conditions for a findings filter. A findings filter, also referred       to as a filter rule, is a set of custom criteria that specifies which findings to include or exclude       from the results of a query for findings. You can also configure a findings filter to suppress (automatically archive) findings that       match the filter's criteria. For more information,       see Filtering findings in       the Amazon Macie User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FindingCriteria {
     ///
     /// Specifies a condition that defines the property, operator, and one or more values to       use to filter the results.

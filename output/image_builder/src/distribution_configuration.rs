@@ -1,5 +1,5 @@
 /// A distribution configuration allows you to specify the name and description of your 			output AMI, authorize other AWS accounts to launch the AMI, and replicate the AMI to other 			AWS Regions. It also allows you to export the AMI to Amazon S3.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistributionConfiguration {
     ///
     /// The description of this distribution configuration.
@@ -60,7 +60,7 @@ pub struct CfnDistributionConfiguration {
     pub att_name: CfnDistributionConfigurationname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistributionConfigurationarn;
 impl CfnDistributionConfigurationarn {
     pub fn att_name(&self) -> &'static str {
@@ -68,7 +68,7 @@ impl CfnDistributionConfigurationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDistributionConfigurationname;
 impl CfnDistributionConfigurationname {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
 }
 
 /// Define and configure the output AMIs of the pipeline.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmiDistributionConfiguration {
     ///
     /// The tags to apply to AMIs distributed to this Region.
@@ -298,7 +298,7 @@ impl cfn_resources::CfnResource for AmiDistributionConfiguration {
 }
 
 /// Container distribution settings for encryption, licensing, and sharing in a specific 			Region.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ContainerDistributionConfiguration {
     ///
     /// Tags that are attached to the container distribution configuration.
@@ -382,7 +382,7 @@ impl cfn_resources::CfnResource for ContainerDistributionConfiguration {
 }
 
 /// The distribution configuration distribution defines the settings for a specific Region 			in the Distribution Configuration. You must specify whether the distribution is for an AMI 			or a container image. To do so, include exactly one of the following data types for your 			distribution:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Distribution {
     ///
     /// The specific AMI settings, such as launch permissions and AMI tags. For details, 			see example schema below.
@@ -520,7 +520,7 @@ impl cfn_resources::CfnResource for Distribution {
 }
 
 /// The FastLaunchConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FastLaunchConfiguration {
     /// Property description not available.
     ///
@@ -601,7 +601,7 @@ impl cfn_resources::CfnResource for FastLaunchConfiguration {
 }
 
 /// The FastLaunchLaunchTemplateSpecification property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FastLaunchLaunchTemplateSpecification {
     /// Property description not available.
     ///
@@ -652,7 +652,7 @@ impl cfn_resources::CfnResource for FastLaunchLaunchTemplateSpecification {
 }
 
 /// The FastLaunchSnapshotConfiguration property type specifies Property description not available. for an AWS::ImageBuilder::DistributionConfiguration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FastLaunchSnapshotConfiguration {
     /// Property description not available.
     ///
@@ -681,7 +681,7 @@ impl cfn_resources::CfnResource for FastLaunchSnapshotConfiguration {
 }
 
 /// Describes the configuration for a launch permission. The launch permission 			modification request is sent to the Amazon EC2 				ModifyImageAttribute API on behalf of the user for each Region they have 			selected to distribute the AMI. To make an AMI public, set the launch permission 			authorized accounts to all. See the examples for making an AMI public at 				Amazon EC2 				ModifyImageAttribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchPermissionConfiguration {
     ///
     /// The ARN for an AWS Organization that you want to share your AMI with. For more 			information, see What is 				AWS Organizations?.
@@ -777,7 +777,7 @@ impl cfn_resources::CfnResource for LaunchPermissionConfiguration {
 }
 
 /// Identifies an Amazon EC2 launch template to use for a specific account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LaunchTemplateConfiguration {
     ///
     /// The account ID that this configuration applies to.
@@ -835,7 +835,7 @@ impl cfn_resources::CfnResource for LaunchTemplateConfiguration {
 }
 
 /// The container repository where the output container image is stored.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TargetContainerRepository {
     ///
     /// The name of the container repository where the output container image is stored. This 			name is prefixed by the repository location.
@@ -868,7 +868,7 @@ pub struct TargetContainerRepository {
     pub service: Option<TargetContainerRepositoryServiceEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TargetContainerRepositoryServiceEnum {
     /// ECR
     #[serde(rename = "ECR")]

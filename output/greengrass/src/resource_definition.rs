@@ -1,7 +1,7 @@
 /// The     AWS::Greengrass::ResourceDefinition resource represents a resource definition for AWS IoT Greengrass.   Resource definitions are used to organize your resource definition versions.
 ///
 /// Resource definitions can reference multiple resource definition versions. All resource definition versions      must be associated with a resource definition. Each resource definition version can contain one or more resources. 		(In AWS CloudFormation, resources are named resource instances.)
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefinition {
     ///
     /// The resource definition version to include when the resource definition is created.          A resource definition version contains a list of          resource instance property types.
@@ -57,7 +57,7 @@ pub struct CfnResourceDefinition {
     pub att_name: CfnResourceDefinitionname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefinitionarn;
 impl CfnResourceDefinitionarn {
     pub fn att_name(&self) -> &'static str {
@@ -65,7 +65,7 @@ impl CfnResourceDefinitionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefinitionid;
 impl CfnResourceDefinitionid {
     pub fn att_name(&self) -> &'static str {
@@ -73,7 +73,7 @@ impl CfnResourceDefinitionid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefinitionlatestversionarn;
 impl CfnResourceDefinitionlatestversionarn {
     pub fn att_name(&self) -> &'static str {
@@ -81,7 +81,7 @@ impl CfnResourceDefinitionlatestversionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResourceDefinitionname;
 impl CfnResourceDefinitionname {
     pub fn att_name(&self) -> &'static str {
@@ -110,7 +110,7 @@ impl cfn_resources::CfnResource for CfnResourceDefinition {
 /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process. You can give the permissions of the Linux group that 		owns the resource or choose another Linux group. These permissions are in addition to the function's RunAs permissions.
 ///
 /// In an AWS CloudFormation template, GroupOwnerSetting is a property of the 		 LocalDeviceResourceData  		 and LocalVolumeResourceData property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GroupOwnerSetting {
     ///
     /// Indicates whether to give the privileges of the Linux group that owns the resource to the Lambda process. This gives 	 the Lambda process the file access permissions of the Linux group.
@@ -153,7 +153,7 @@ impl cfn_resources::CfnResource for GroupOwnerSetting {
 /// Settings for a 		local device resource, which represents a file under /dev. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, LocalDeviceResourceData can be used in the ResourceDataContainer property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocalDeviceResourceData {
     ///
     /// Settings that define additional 		Linux OS group permissions to give to the Lambda function process.
@@ -200,7 +200,7 @@ impl cfn_resources::CfnResource for LocalDeviceResourceData {
 /// Settings for a 		local volume resource, which represents a file or directory on the root file system. 		 For more information,   see Access Local Resources with Lambda Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, LocalVolumeResourceData can be used in the ResourceDataContainer  		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LocalVolumeResourceData {
     ///
     /// The absolute local path of the resource in the Lambda environment.
@@ -258,7 +258,7 @@ impl cfn_resources::CfnResource for LocalVolumeResourceData {
 /// A container for resource data, which  		defines the resource type. The container takes only one of the following supported resource data types: 		LocalDeviceResourceData, LocalVolumeResourceData, SageMakerMachineLearningModelResourceData, 		S3MachineLearningModelResourceData, or SecretsManagerSecretResourceData.
 ///
 /// In an AWS CloudFormation template, ResourceDataContainer is a property of the ResourceInstance  		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceDataContainer {
     ///
     /// Settings for a local device resource.
@@ -359,7 +359,7 @@ impl cfn_resources::CfnResource for ResourceDataContainer {
 /// A resource definition version contains a list of resources. 		(In AWS CloudFormation, resources are named resource instances.)
 ///
 /// In an AWS CloudFormation template, ResourceDefinitionVersion is the property type of the InitialVersion property      in the AWS::Greengrass::ResourceDefinition resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceDefinitionVersion {
     ///
     /// The resources in this version.
@@ -390,7 +390,7 @@ impl cfn_resources::CfnResource for ResourceDefinitionVersion {
 /// The owner setting for a downloaded machine learning resource. For more information, see 	  Access Machine Learning Resources from Lambda 	  Functions in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, ResourceDownloadOwnerSetting is the property type of the OwnerSetting property for the S3MachineLearningModelResourceData and SageMakerMachineLearningModelResourceData property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceDownloadOwnerSetting {
     ///
     /// The group owner of the machine learning resource. This is the group ID (GID) of an existing Linux OS group on the system.     The group's permissions are added to the Lambda process.
@@ -432,7 +432,7 @@ impl cfn_resources::CfnResource for ResourceDownloadOwnerSetting {
 /// A local resource, 		machine learning resource, or secret resource. 	For more information,   see Access Local Resources with Lambda Functions, 	Perform Machine Learning Inference, and 	Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, the Resources 		 property of the AWS::Greengrass::ResourceDefinition resource contains a      list of ResourceInstance property types.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceInstance {
     ///
     /// A descriptive or arbitrary ID for the resource. This value must be unique within       the resource definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
@@ -489,7 +489,7 @@ impl cfn_resources::CfnResource for ResourceInstance {
 /// Settings for an 		Amazon S3 machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, S3MachineLearningModelResourceData can be used in the 		 ResourceDataContainer 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3MachineLearningModelResourceData {
     ///
     /// The absolute local path of the resource inside the Lambda environment.
@@ -547,7 +547,7 @@ impl cfn_resources::CfnResource for S3MachineLearningModelResourceData {
 /// Settings for an 		Secrets Manager machine learning resource. 		 For more information,   see Perform Machine Learning Inference in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, SageMakerMachineLearningModelResourceData can be used in the ResourceDataContainer 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// The absolute local path of the resource inside the Lambda environment.
@@ -605,7 +605,7 @@ impl cfn_resources::CfnResource for SageMakerMachineLearningModelResourceData {
 /// Settings for a secret resource, 		which references a secret from AWS Secrets Manager. AWS IoT Greengrass stores a local, encrypted copy of the secret on the Greengrass core, 		where it can be securely accessed by connectors and Lambda functions. 		For more information,   see Deploy Secrets to the AWS IoT Greengrass Core in the AWS IoT Greengrass Version 1 Developer Guide.
 ///
 /// In an AWS CloudFormation template, SecretsManagerSecretResourceData can be used in the 		 ResourceDataContainer 		 property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SecretsManagerSecretResourceData {
     ///
     /// The Amazon Resource Name (ARN) of the Secrets Manager secret to make available on the core. The value of the secret's 				 latest version (represented by the AWSCURRENT staging label) is included by default.

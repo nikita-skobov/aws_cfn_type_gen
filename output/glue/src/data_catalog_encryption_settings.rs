@@ -1,5 +1,5 @@
 /// Sets the security configuration for a specified catalog. After the configuration has been    set, the specified encryption is applied to every catalog write thereafter.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataCatalogEncryptionSettings {
     ///
     /// The ID of the Data Catalog in which the settings are created.
@@ -45,7 +45,7 @@ impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
 /// When a CreationConnection request arrives containing a password, the Data    Catalog first encrypts the password using your AWS KMS key. It then encrypts the whole    connection object again if catalog encryption is also enabled.
 ///
 /// This encryption requires that you set AWS KMS key permissions to enable or restrict access    on the password key according to your security requirements. For example, you might want only    administrators to have decrypt permission on the password key.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionPasswordEncryption {
     ///
     /// An AWS KMS key that is used to encrypt the connection password.
@@ -89,7 +89,7 @@ impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
 }
 
 /// Contains configuration information for maintaining Data Catalog security.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataCatalogEncryptionSettings {
     ///
     /// When connection password protection is enabled, the Data Catalog uses a customer-provided    key to encrypt the password as part of CreateConnection or     UpdateConnection and store it in the ENCRYPTED_PASSWORD field in    the connection properties. You can enable catalog encryption or only password    encryption.
@@ -139,7 +139,7 @@ impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
 }
 
 /// Specifies the encryption-at-rest configuration for the Data Catalog.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EncryptionAtRest {
     ///
     /// The encryption-at-rest mode for encrypting Data Catalog data.
@@ -174,7 +174,7 @@ pub struct EncryptionAtRest {
     pub sse_aws_kms_key_id: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EncryptionAtRestCatalogEncryptionModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]

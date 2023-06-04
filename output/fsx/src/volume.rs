@@ -1,5 +1,5 @@
 /// Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolume {
     ///
     /// Specifies the ID of the volume backup to use to create a new volume.
@@ -92,7 +92,7 @@ pub struct CfnVolume {
     pub att_volume_id: CfnVolumevolumeid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VolumeVolumeTypeEnum {
     /// ONTAP
     #[serde(rename = "ONTAP")]
@@ -109,7 +109,7 @@ impl Default for VolumeVolumeTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolumeresourcearn;
 impl CfnVolumeresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -117,7 +117,7 @@ impl CfnVolumeresourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolumeuuid;
 impl CfnVolumeuuid {
     pub fn att_name(&self) -> &'static str {
@@ -125,7 +125,7 @@ impl CfnVolumeuuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVolumevolumeid;
 impl CfnVolumevolumeid {
     pub fn att_name(&self) -> &'static str {
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnVolume {
 }
 
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientConfigurations {
     ///
     /// A value that specifies who can mount the file system. You can provide a wildcard       character (*), an IP address (0.0.0.0), or a CIDR address         (192.0.2.0/24). By default, Amazon FSx uses the wildcard       character when specifying the client.
@@ -259,7 +259,7 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 }
 
 /// The configuration object for mounting a Network File System (NFS) file system.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NfsExports {
     ///
     /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
@@ -299,7 +299,7 @@ impl cfn_resources::CfnResource for NfsExports {
 }
 
 /// Specifies the configuration of the ONTAP volume that you are creating.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OntapConfiguration {
     ///
     /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to       false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups       where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the       specified tags are copied to backups. If you specify one or more tags when creating a user-initiated       backup, no tags are copied from the volume, regardless of this value.
@@ -454,7 +454,7 @@ pub struct OntapConfiguration {
     pub tiering_policy: Option<TieringPolicy>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OntapConfigurationOntapVolumeTypeEnum {
     /// DP
     #[serde(rename = "DP")]
@@ -471,7 +471,7 @@ impl Default for OntapConfigurationOntapVolumeTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OntapConfigurationSecurityStyleEnum {
     /// MIXED
     #[serde(rename = "MIXED")]
@@ -590,7 +590,7 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 }
 
 /// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OpenZFSConfiguration {
     ///
     /// A Boolean value indicating whether tags for the volume should be copied to snapshots.       This value defaults to false. If it's set to true, all tags       for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true, and you specify one or more tags, only the specified tags       are copied to snapshots. If you specify one or more tags when creating the snapshot, no       tags are copied from the volume, regardless of this value.
@@ -754,7 +754,7 @@ pub struct OpenZFSConfiguration {
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OpenZFSConfigurationDataCompressionTypeEnum {
     /// LZ4
     #[serde(rename = "LZ4")]
@@ -882,7 +882,7 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 }
 
 /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OriginSnapshot {
     ///
     /// The strategy used when copying data from the snapshot to the new volume.
@@ -911,7 +911,7 @@ pub struct OriginSnapshot {
     pub snapshot_arn: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OriginSnapshotCopyStrategyEnum {
     /// CLONE
     #[serde(rename = "CLONE")]
@@ -949,7 +949,7 @@ impl cfn_resources::CfnResource for OriginSnapshot {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -989,7 +989,7 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent       tiering automatically transitions a volume's data between the file system's primary storage and capacity       pool storage based on your access patterns.
 ///
 /// Valid tiering policies are the following:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TieringPolicy {
     ///
     /// Specifies the number of days that user data in a volume must remain inactive before it is considered "cold"       and moved to the capacity pool. Used with the AUTO and SNAPSHOT_ONLY tiering policies.       Enter a whole number between 2 and 183. Default values are 31 days for AUTO and 2 days for       SNAPSHOT_ONLY.
@@ -1024,7 +1024,7 @@ pub struct TieringPolicy {
     pub name: Option<TieringPolicyNameEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum TieringPolicyNameEnum {
     /// ALL
     #[serde(rename = "ALL")]
@@ -1082,7 +1082,7 @@ impl cfn_resources::CfnResource for TieringPolicy {
 }
 
 /// An object specifying how much storage users or groups can use on the volume.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserAndGroupQuotas {
     ///
     /// The ID of the user or group.
@@ -1128,7 +1128,7 @@ pub struct UserAndGroupQuotas {
     pub cfn_type: UserAndGroupQuotasTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserAndGroupQuotasTypeEnum {
     /// GROUP
     #[serde(rename = "GROUP")]

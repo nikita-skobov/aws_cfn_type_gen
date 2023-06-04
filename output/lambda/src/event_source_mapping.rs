@@ -1,7 +1,7 @@
 /// The AWS::Lambda::EventSourceMapping resource creates a mapping between an event source and    an AWS Lambda function. Lambda reads items from the event source and triggers the function.
 ///
 /// For details about each event source type, see the following topics. In particular, each of the topics    describes the required and optional parameters for the specific event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventSourceMapping {
     ///
     /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
@@ -344,7 +344,7 @@ pub struct CfnEventSourceMapping {
     pub att_id: CfnEventSourceMappingid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEventSourceMappingid;
 impl CfnEventSourceMappingid {
     pub fn att_name(&self) -> &'static str {
@@ -525,7 +525,7 @@ impl cfn_resources::CfnResource for CfnEventSourceMapping {
 }
 
 /// Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AmazonManagedKafkaEventSourceConfig {
     ///
     /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
@@ -580,7 +580,7 @@ impl cfn_resources::CfnResource for AmazonManagedKafkaEventSourceConfig {
 }
 
 /// A configuration object that specifies the destination of an event after Lambda processes it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DestinationConfig {
     ///
     /// The destination configuration for failed invocations.
@@ -614,7 +614,7 @@ impl cfn_resources::CfnResource for DestinationConfig {
 }
 
 /// Specific configuration settings for a DocumentDB event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentDBEventSourceConfig {
     ///
     /// The name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
@@ -667,7 +667,7 @@ pub struct DocumentDBEventSourceConfig {
     pub full_document: Option<DocumentDBEventSourceConfigFullDocumentEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentDBEventSourceConfigFullDocumentEnum {
     /// Default
     #[serde(rename = "Default")]
@@ -743,7 +743,7 @@ impl cfn_resources::CfnResource for DocumentDBEventSourceConfig {
 }
 
 /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Endpoints {
     ///
     /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
@@ -773,7 +773,7 @@ impl cfn_resources::CfnResource for Endpoints {
 }
 
 /// A structure within a FilterCriteria object that defines an event filtering pattern.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     ///
     /// A filter pattern. For more information on the syntax of a filter pattern, see        Filter rule syntax.
@@ -831,7 +831,7 @@ impl cfn_resources::CfnResource for Filter {
 }
 
 /// An object that contains the filters for an event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterCriteria {
     ///
     /// A list of filters.
@@ -861,7 +861,7 @@ impl cfn_resources::CfnResource for FilterCriteria {
 }
 
 /// A destination for events that failed processing.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OnFailure {
     ///
     /// The Amazon Resource Name (ARN) of the destination resource.
@@ -919,7 +919,7 @@ impl cfn_resources::CfnResource for OnFailure {
 }
 
 /// (Amazon SQS only) The scaling configuration for the event source. To remove the configuration, pass an empty value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ScalingConfig {
     ///
     /// Limits the number of concurrent instances that the Amazon SQS event source can invoke.
@@ -971,7 +971,7 @@ impl cfn_resources::CfnResource for ScalingConfig {
 }
 
 /// The self-managed Apache Kafka cluster for your event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedEventSource {
     ///
     /// The list of bootstrap servers for your Kafka brokers in the following format: "KafkaBootstrapServers": ["abc.xyz.com:xxxx","abc2.xyz.com:xxxx"].
@@ -1005,7 +1005,7 @@ impl cfn_resources::CfnResource for SelfManagedEventSource {
 }
 
 /// Specific configuration settings for a self-managed Apache Kafka event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SelfManagedKafkaEventSourceConfig {
     ///
     /// The identifier for the Kafka consumer group to join. The consumer group ID must be unique among all your Kafka event sources.  After creating a Kafka event source mapping with the consumer group ID specified, you cannot update this value. For more information, see  Customizable consumer group ID.
@@ -1060,7 +1060,7 @@ impl cfn_resources::CfnResource for SelfManagedKafkaEventSourceConfig {
 }
 
 /// An array of the authentication protocol, VPC components, or virtual host to secure and define your event source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SourceAccessConfiguration {
     ///
     /// The type of authentication protocol, VPC components, or virtual host for your event source. For example: "Type":"SASL_SCRAM_512_AUTH".
@@ -1097,7 +1097,7 @@ pub struct SourceAccessConfiguration {
     pub uri: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SourceAccessConfigurationTypeEnum {
     /// BASIC_AUTH
     #[serde(rename = "BASIC_AUTH")]

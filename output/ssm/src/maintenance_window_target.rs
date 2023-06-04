@@ -1,5 +1,5 @@
 /// The AWS::SSM::MaintenanceWindowTarget resource registers a target with a    maintenance window for AWS Systems Manager. For more information, see     RegisterTargetWithMaintenanceWindow in the AWS Systems Manager API     Reference.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMaintenanceWindowTarget {
     ///
     /// A description for the target.
@@ -97,7 +97,7 @@ pub struct CfnMaintenanceWindowTarget {
     pub window_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MaintenanceWindowTargetResourceTypeEnum {
     /// INSTANCE
     #[serde(rename = "INSTANCE")]
@@ -225,7 +225,7 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindowTarget {
 /// The Targets property type specifies adding a target to a maintenance window    target in AWS Systems Manager.
 ///
 /// Targets is a property of the AWS::SSM::MaintenanceWindowTarget resource.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Targets {
     ///
     /// User-defined criteria for sending commands that target managed nodes that meet the  criteria.

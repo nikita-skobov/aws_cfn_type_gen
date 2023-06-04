@@ -1,5 +1,5 @@
 /// The AWS::ACMPCA::Certificate resource is used to issue a certificate       using your private certificate authority. For more information, see the IssueCertificate action.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificate {
     ///
     /// Specifies X.509 certificate information to be included in the issued certificate. An         APIPassthrough or APICSRPassthrough template variant must       be selected, or else this parameter is ignored.
@@ -100,7 +100,7 @@ pub struct CfnCertificate {
     pub att_certificate: CfnCertificatecertificate,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateSigningAlgorithmEnum {
     /// SHA256WITHECDSA
     #[serde(rename = "SHA256WITHECDSA")]
@@ -133,7 +133,7 @@ impl Default for CertificateSigningAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatearn;
 impl CfnCertificatearn {
     pub fn att_name(&self) -> &'static str {
@@ -141,7 +141,7 @@ impl CfnCertificatearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificatecertificate;
 impl CfnCertificatecertificate {
     pub fn att_name(&self) -> &'static str {
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for CfnCertificate {
 /// Contains X.509 certificate information to be placed in an issued certificate. An 				APIPassthrough or APICSRPassthrough template variant must 			be selected, or else this parameter is ignored.
 ///
 /// If conflicting or duplicate certificate information is supplied from other sources, 			AWS Private CA applies order of 				operation rules to determine what information is used.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApiPassthrough {
     ///
     /// Specifies X.509 extension information for a certificate.
@@ -224,7 +224,7 @@ impl cfn_resources::CfnResource for ApiPassthrough {
 }
 
 /// Defines the X.500 relative distinguished name (RDN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomAttribute {
     ///
     /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
@@ -323,7 +323,7 @@ impl cfn_resources::CfnResource for CustomAttribute {
 /// Specifies the X.509 extension information for a certificate.
 ///
 /// Extensions present in CustomExtensions follow the 				ApiPassthrough       template 				rules.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomExtension {
     ///
     ///
@@ -437,7 +437,7 @@ impl cfn_resources::CfnResource for CustomExtension {
 }
 
 /// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EdiPartyName {
     ///
     /// Specifies the name assigner.
@@ -529,7 +529,7 @@ impl cfn_resources::CfnResource for EdiPartyName {
 }
 
 /// Specifies additional purposes for which the certified public key may be used other 			than basic purposes indicated in the KeyUsage extension.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ExtendedKeyUsage {
     ///
     /// Specifies a custom ExtendedKeyUsage with an object identifier 			(OID).
@@ -564,7 +564,7 @@ pub struct ExtendedKeyUsage {
     pub extended_key_usage_type: Option<ExtendedKeyUsageExtendedKeyUsageTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ExtendedKeyUsageExtendedKeyUsageTypeEnum {
     /// CERTIFICATE_TRANSPARENCY
     #[serde(rename = "CERTIFICATE_TRANSPARENCY")]
@@ -640,7 +640,7 @@ impl cfn_resources::CfnResource for ExtendedKeyUsage {
 }
 
 /// Contains X.509 extension information for a certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Extensions {
     ///
     /// Contains a sequence of one or more policy information terms, each of which consists of 			an object identifier (OID) and optional qualifiers. For more information, see NIST's 			definition of Object 				Identifier (OID).
@@ -767,7 +767,7 @@ impl cfn_resources::CfnResource for Extensions {
 }
 
 /// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeneralName {
     ///
     /// Contains information about the certificate subject. The certificate can be one issued       by your private certificate authority (CA) or it can be your private CA certificate. The       Subject field in the certificate identifies the entity that owns or controls the public       key in the certificate. The entity can be a user, computer, device, or service. The       Subject must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN       must be unique for each entity, but your private CA can issue more than one certificate       with the same DN to the same entity.
@@ -1019,7 +1019,7 @@ impl cfn_resources::CfnResource for GeneralName {
 }
 
 /// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyUsage {
     ///
     /// Key can be used to sign CRLs.
@@ -1145,7 +1145,7 @@ impl cfn_resources::CfnResource for KeyUsage {
 }
 
 /// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OtherName {
     ///
     /// Specifies an OID.
@@ -1239,7 +1239,7 @@ impl cfn_resources::CfnResource for OtherName {
 }
 
 /// Defines the X.509 CertificatePolicies extension.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyInformation {
     ///
     /// Specifies the object identifier (OID) of the certificate policy under which the 			certificate was issued. For more information, see NIST's definition of Object Identifier 				(OID).
@@ -1319,7 +1319,7 @@ impl cfn_resources::CfnResource for PolicyInformation {
 }
 
 /// Modifies the CertPolicyId of a PolicyInformation object with 			a qualifier. AWS Private CA supports the certification practice statement (CPS) 			qualifier.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PolicyQualifierInfo {
     ///
     /// Identifies the qualifier modifying a CertPolicyId.
@@ -1346,7 +1346,7 @@ pub struct PolicyQualifierInfo {
     pub qualifier: Qualifier,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PolicyQualifierInfoPolicyQualifierIdEnum {
     /// CPS
     #[serde(rename = "CPS")]
@@ -1376,7 +1376,7 @@ impl cfn_resources::CfnResource for PolicyQualifierInfo {
 }
 
 /// Defines a PolicyInformation qualifier. AWS Private CA supports the certification 				practice statement (CPS) qualifier defined in RFC 5280.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Qualifier {
     ///
     /// Contains a pointer to a certification practice statement (CPS) published by the 			CA.
@@ -1431,7 +1431,7 @@ impl cfn_resources::CfnResource for Qualifier {
 }
 
 /// Contains information about the certificate subject. The Subject field in       the certificate identifies the entity that owns or controls the public key in the       certificate. The entity can be a user, computer, device, or service. The Subject       must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subject {
     ///
     /// For CA and end-entity certificates in a private PKI, the common name (CN) can be any       string within the length limit.
@@ -2004,7 +2004,7 @@ impl cfn_resources::CfnResource for Subject {
 }
 
 /// Length of time for which the certificate issued by your private certificate authority       (CA), or by the private CA itself, is valid in days, months, or years. You can issue a       certificate by calling the IssueCertificate operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Validity {
     ///
     /// Specifies whether the Value parameter represents days, months, or       years.
@@ -2031,7 +2031,7 @@ pub struct Validity {
     pub value: f64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ValidityTypeEnum {
     /// ABSOLUTE
     #[serde(rename = "ABSOLUTE")]

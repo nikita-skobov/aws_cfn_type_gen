@@ -1,5 +1,5 @@
 /// The AWS::ApiGateway::GatewayResponse resource creates a gateway response for your API. For more information, see API Gateway Responses in the API Gateway Developer Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayResponse {
     ///
     /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
@@ -65,7 +65,7 @@ pub struct CfnGatewayResponse {
     pub att_id: CfnGatewayResponseid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum GatewayResponseResponseTypeEnum {
     /// ACCESS_DENIED
     #[serde(rename = "ACCESS_DENIED")]
@@ -154,7 +154,7 @@ impl Default for GatewayResponseResponseTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGatewayResponseid;
 impl CfnGatewayResponseid {
     pub fn att_name(&self) -> &'static str {

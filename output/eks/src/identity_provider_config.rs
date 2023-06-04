@@ -1,7 +1,7 @@
 /// Associate an identity provider configuration to a cluster.
 ///
 /// If you want to authenticate identities using an identity provider, you can create an       identity provider configuration and associate it to your cluster. After configuring       authentication to your cluster you can create Kubernetes roles and         clusterroles to assign permissions to the roles, and then bind the       roles to the identities using Kubernetes rolebindings and         clusterrolebindings. For more information see Using RBAC         Authorization in the Kubernetes documentation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIdentityProviderConfig {
     ///
     /// The cluster that the configuration is associated to.
@@ -65,7 +65,7 @@ pub struct CfnIdentityProviderConfig {
     pub att_identity_provider_config_arn: CfnIdentityProviderConfigidentityproviderconfigarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIdentityProviderConfigidentityproviderconfigarn;
 impl CfnIdentityProviderConfigidentityproviderconfigarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl cfn_resources::CfnResource for CfnIdentityProviderConfig {
 }
 
 /// An object representing the configuration for an OpenID Connect (OIDC) identity       provider.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OidcIdentityProviderConfig {
     ///
     /// This is also known as audience. The ID of the client application       that makes authentication requests to the OIDC identity provider.
@@ -190,7 +190,7 @@ impl cfn_resources::CfnResource for OidcIdentityProviderConfig {
 }
 
 /// A key-value pair that describes a required claim in the identity token. If set, each       claim is verified to be present in the token with a matching value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RequiredClaim {
     ///
     /// The key to match from the token.
@@ -236,7 +236,7 @@ impl cfn_resources::CfnResource for RequiredClaim {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

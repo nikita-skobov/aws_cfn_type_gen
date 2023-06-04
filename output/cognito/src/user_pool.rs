@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPool resource creates an Amazon Cognito user pool. For    more information on working with Amazon Cognito user pools, see Amazon Cognito User     Pools and CreateUserPool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPool {
     ///
     /// Use this setting to define which verified available method a user can use to recover their    password when they call ForgotPassword. It allows you to define a preferred    method when a user has more than one method available. With this setting, SMS does not qualify    for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence    of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS    is preferred over email.
@@ -353,7 +353,7 @@ pub struct CfnUserPool {
     pub att_provider_url: CfnUserPoolproviderurl,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolDeletionProtectionEnum {
     /// ACTIVE
     #[serde(rename = "ACTIVE")]
@@ -370,7 +370,7 @@ impl Default for UserPoolDeletionProtectionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolMfaConfigurationEnum {
     /// OFF
     #[serde(rename = "OFF")]
@@ -391,7 +391,7 @@ impl Default for UserPoolMfaConfigurationEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolarn;
 impl CfnUserPoolarn {
     pub fn att_name(&self) -> &'static str {
@@ -399,7 +399,7 @@ impl CfnUserPoolarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolprovidername;
 impl CfnUserPoolprovidername {
     pub fn att_name(&self) -> &'static str {
@@ -407,7 +407,7 @@ impl CfnUserPoolprovidername {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolproviderurl;
 impl CfnUserPoolproviderurl {
     pub fn att_name(&self) -> &'static str {
@@ -569,7 +569,7 @@ impl cfn_resources::CfnResource for CfnUserPool {
 }
 
 /// Use this setting to define which verified available method a user can use to recover their    password when they call ForgotPassword. It allows you to define a preferred    method when a user has more than one method available. With this setting, SMS does not qualify    for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence    of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS    is preferred over email.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountRecoverySetting {
     ///
     /// The list of RecoveryOptionTypes.
@@ -610,7 +610,7 @@ impl cfn_resources::CfnResource for AccountRecoverySetting {
 }
 
 /// The configuration for AdminCreateUser requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AdminCreateUserConfig {
     ///
     /// Set to True if only the administrator is allowed to create user profiles.       Set to False if users can sign themselves up via an app.
@@ -688,7 +688,7 @@ impl cfn_resources::CfnResource for AdminCreateUserConfig {
 }
 
 /// A custom email sender AWS Lambda trigger.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomEmailSender {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Cognito triggers to send email notifications to users.
@@ -730,7 +730,7 @@ impl cfn_resources::CfnResource for CustomEmailSender {
 }
 
 /// A custom SMS sender AWS Lambda trigger.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomSMSSender {
     ///
     /// The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Cognito triggers to send SMS notifications to users.
@@ -774,7 +774,7 @@ impl cfn_resources::CfnResource for CustomSMSSender {
 /// The device-remembering configuration for a user pool. A         DescribeUserPool request returns a null value for this object when the user       pool isn't configured to remember devices. When device remembering is active, you can       remember a user's device with a ConfirmDevice API request. Additionally. when the property         DeviceOnlyRememberedOnUserPrompt is true, you must follow         ConfirmDevice with an UpdateDeviceStatus API request that sets the user's device to         remembered or not_remembered.
 ///
 /// To sign in with a remembered device, include DEVICE_KEY in the       authentication parameters in your user's         InitiateAuth request. If your app doesn't include a DEVICE_KEY       parameter, the response from Amazon Cognito includes newly-generated DEVICE_KEY and         DEVICE_GROUP_KEY values under NewDeviceMetadata. Store       these values to use in future device-authentication requests.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DeviceConfiguration {
     ///
     /// When true, a remembered device can sign in with device authentication instead of SMS       and time-based one-time password (TOTP) factors for multi-factor authentication       (MFA).
@@ -820,7 +820,7 @@ impl cfn_resources::CfnResource for DeviceConfiguration {
 }
 
 /// The email configuration of your user pool. The email configuration type sets your       preferred sending method, AWS Region, and sender for messages from your user       pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EmailConfiguration {
     ///
     /// The set of configuration rules that can be applied to emails sent using Amazon SES. A    configuration set is applied to an email by including a reference to the configuration set in    the headers of the email. Once applied, all of the rules in that configuration set are applied    to the email. Configuration sets can be used to apply the following types of rules to emails:
@@ -907,7 +907,7 @@ pub struct EmailConfiguration {
     pub source_arn: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum EmailConfigurationEmailSendingAccountEnum {
     /// COGNITO_DEFAULT
     #[serde(rename = "COGNITO_DEFAULT")]
@@ -985,7 +985,7 @@ impl cfn_resources::CfnResource for EmailConfiguration {
 /// The message template to be used for the welcome message to new users.
 ///
 /// See also Customizing User Invitation Messages.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InviteMessageTemplate {
     ///
     /// The message template for email messages. EmailMessage is allowed only if EmailSendingAccount is DEVELOPER.
@@ -1123,7 +1123,7 @@ impl cfn_resources::CfnResource for InviteMessageTemplate {
 }
 
 /// Specifies the configuration for AWS Lambda triggers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LambdaConfig {
     ///
     /// Creates an authentication challenge.
@@ -1555,7 +1555,7 @@ impl cfn_resources::CfnResource for LambdaConfig {
 }
 
 /// The minimum and maximum values of an attribute that is of the number data type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NumberAttributeConstraints {
     ///
     /// The maximum value of an attribute that is of the number data type.
@@ -1597,7 +1597,7 @@ impl cfn_resources::CfnResource for NumberAttributeConstraints {
 }
 
 /// The password policy type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PasswordPolicy {
     ///
     /// The minimum length of the password in the policy that you have set. This value can't       be less than 6.
@@ -1727,7 +1727,7 @@ impl cfn_resources::CfnResource for PasswordPolicy {
 }
 
 /// The policy associated with a user pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Policies {
     ///
     /// The password policy.
@@ -1761,7 +1761,7 @@ impl cfn_resources::CfnResource for Policies {
 }
 
 /// A map containing a priority as a key, and recovery method name as a value.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RecoveryOption {
     ///
     /// Specifies the recovery method for a user.
@@ -1794,7 +1794,7 @@ pub struct RecoveryOption {
     pub priority: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum RecoveryOptionNameEnum {
     /// admin_only
     #[serde(rename = "admin_only")]
@@ -1848,7 +1848,7 @@ impl cfn_resources::CfnResource for RecoveryOption {
 }
 
 /// Contains information about the schema attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SchemaAttribute {
     ///
     /// The attribute data type.
@@ -1947,7 +1947,7 @@ pub struct SchemaAttribute {
     pub string_attribute_constraints: Option<StringAttributeConstraints>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SchemaAttributeAttributeDataTypeEnum {
     /// Boolean
     #[serde(rename = "Boolean")]
@@ -2017,7 +2017,7 @@ impl cfn_resources::CfnResource for SchemaAttribute {
 }
 
 /// The SMS configuration type that includes the settings the Cognito User Pool needs to call    for the Amazon SNS service to send an SMS message from your AWS account. The    Cognito User Pool makes the request to the Amazon SNS Service by using an IAM    role that you provide for your AWS account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SmsConfiguration {
     ///
     /// The external ID is a value. We recommend you use ExternalIdto add security to    your IAM role, which is used to call Amazon SNS to send SMS messages for your user pool. If    you provide an ExternalId, the Cognito User Pool uses it when attempting to    assume your IAM role. You can also set your roles trust policy to require the     ExternalID. If you use the Cognito Management Console to create a role for SMS    MFA, Cognito creates a role with the required permissions and a trust policy that uses     ExternalId.
@@ -2127,7 +2127,7 @@ impl cfn_resources::CfnResource for SmsConfiguration {
 }
 
 /// The StringAttributeConstraints property type defines the string attribute    constraints of an Amazon Cognito user pool. StringAttributeConstraints is a    subproperty of the SchemaAttribute property type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StringAttributeConstraints {
     ///
     /// The maximum length.
@@ -2169,7 +2169,7 @@ impl cfn_resources::CfnResource for StringAttributeConstraints {
 }
 
 /// The settings for updates to user attributes. These settings include the property AttributesRequireVerificationBeforeUpdate, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see Verifying updates to email addresses and phone numbers.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserAttributeUpdateSettings {
     ///
     /// Requires that your user verifies their email address, phone number, or both before       Amazon Cognito updates the value of that attribute. When you update a user attribute that has       this option activated, Amazon Cognito sends a verification message to the new phone number or       email address. Amazon Cognito doesn’t change the value of the attribute until your user responds       to the verification message and confirms the new value.
@@ -2202,7 +2202,7 @@ impl cfn_resources::CfnResource for UserAttributeUpdateSettings {
 }
 
 /// The user pool add-ons type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserPoolAddOns {
     ///
     /// The advanced security mode.
@@ -2219,7 +2219,7 @@ pub struct UserPoolAddOns {
     pub advanced_security_mode: Option<UserPoolAddOnsAdvancedSecurityModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolAddOnsAdvancedSecurityModeEnum {
     /// AUDIT
     #[serde(rename = "AUDIT")]
@@ -2255,7 +2255,7 @@ impl cfn_resources::CfnResource for UserPoolAddOns {
 }
 
 /// The UsernameConfiguration property type specifies case sensitivity on the    username input for the selected sign-in option.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UsernameConfiguration {
     ///
     /// Specifies whether user name case sensitivity will be applied for all users in the user       pool through Amazon Cognito APIs. For most use cases, set case sensitivity to False       (case insensitive) as a best practice. When usernames and email addresses are case       insensitive, users can sign in as the same user when they enter a different       capitalization of their user name.
@@ -2289,7 +2289,7 @@ impl cfn_resources::CfnResource for UsernameConfiguration {
 }
 
 /// The template for verification messages.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VerificationMessageTemplate {
     ///
     /// The default email option.
@@ -2396,7 +2396,7 @@ pub struct VerificationMessageTemplate {
     pub sms_message: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VerificationMessageTemplateDefaultEmailOptionEnum {
     /// CONFIRM_WITH_CODE
     #[serde(rename = "CONFIRM_WITH_CODE")]

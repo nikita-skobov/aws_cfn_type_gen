@@ -1,5 +1,5 @@
 /// The AWS::MSK::ServerlessCluster resource Property description not available. for MSK.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServerlessCluster {
     /// Property description not available.
     ///
@@ -46,7 +46,7 @@ pub struct CfnServerlessCluster {
     pub att_arn: CfnServerlessClusterarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnServerlessClusterarn;
 impl CfnServerlessClusterarn {
     pub fn att_name(&self) -> &'static str {
@@ -71,7 +71,7 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
 }
 
 /// Includes all client authentication information.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientAuthentication {
     ///
     /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
@@ -102,7 +102,7 @@ impl cfn_resources::CfnResource for ClientAuthentication {
 }
 
 /// Details for SASL/IAM client authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Iam {
     ///
     /// SASL/IAM authentication is enabled or not.
@@ -131,7 +131,7 @@ impl cfn_resources::CfnResource for Iam {
 }
 
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Sasl {
     ///
     /// Details for ClientAuthentication using IAM.
@@ -162,7 +162,7 @@ impl cfn_resources::CfnResource for Sasl {
 }
 
 /// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfig {
     /// Property description not available.
     ///

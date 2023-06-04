@@ -3,7 +3,7 @@
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
 ///
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnConfigurationProfile {
     ///
     /// The application ID.
@@ -240,7 +240,7 @@ impl cfn_resources::CfnResource for CfnConfigurationProfile {
 }
 
 /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tags {
     ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for Tags {
 }
 
 /// A validator provides a syntactic or semantic check to ensure the configuration that you     want to deploy functions as intended. To validate your application configuration data, you     provide a schema or an AWS Lambda function that runs against the configuration. The     configuration deployment or update can only proceed when the configuration data is     valid.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Validators {
     ///
     /// Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda     function.
@@ -315,7 +315,7 @@ pub struct Validators {
     pub cfn_type: Option<ValidatorsTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ValidatorsTypeEnum {
     /// JSON_SCHEMA
     #[serde(rename = "JSON_SCHEMA")]

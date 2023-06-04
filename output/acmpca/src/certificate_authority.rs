@@ -1,5 +1,5 @@
 /// Use the AWS::ACMPCA::CertificateAuthority resource to create a private       CA. Once the CA exists, you can use the AWS::ACMPCA::Certificate resource       to issue a new CA certificate. Alternatively, you can issue a CA certificate using an       on-premises CA, and then use the         AWS::ACMPCA::CertificateAuthorityActivation resource to import the new       CA certificate and activate the CA.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificateAuthority {
     ///
     /// Specifies information to be added to the extension section of the certificate signing 			request (CSR).
@@ -132,7 +132,7 @@ pub struct CfnCertificateAuthority {
     pub att_certificate_signing_request: CfnCertificateAuthoritycertificatesigningrequest,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateAuthorityKeyAlgorithmEnum {
     /// EC_prime256v1
     #[serde(rename = "EC_prime256v1")]
@@ -157,7 +157,7 @@ impl Default for CertificateAuthorityKeyAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateAuthorityKeyStorageSecurityStandardEnum {
     /// FIPS_140_2_LEVEL_2_OR_HIGHER
     #[serde(rename = "FIPS_140_2_LEVEL_2_OR_HIGHER")]
@@ -174,7 +174,7 @@ impl Default for CertificateAuthorityKeyStorageSecurityStandardEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateAuthoritySigningAlgorithmEnum {
     /// SHA256WITHECDSA
     #[serde(rename = "SHA256WITHECDSA")]
@@ -207,7 +207,7 @@ impl Default for CertificateAuthoritySigningAlgorithmEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateAuthorityTypeEnum {
     /// ROOT
     #[serde(rename = "ROOT")]
@@ -224,7 +224,7 @@ impl Default for CertificateAuthorityTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CertificateAuthorityUsageModeEnum {
     /// GENERAL_PURPOSE
     #[serde(rename = "GENERAL_PURPOSE")]
@@ -241,7 +241,7 @@ impl Default for CertificateAuthorityUsageModeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificateAuthorityarn;
 impl CfnCertificateAuthorityarn {
     pub fn att_name(&self) -> &'static str {
@@ -249,7 +249,7 @@ impl CfnCertificateAuthorityarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnCertificateAuthoritycertificatesigningrequest;
 impl CfnCertificateAuthoritycertificatesigningrequest {
     pub fn att_name(&self) -> &'static str {
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for CfnCertificateAuthority {
 }
 
 /// Provides access information used by the authorityInfoAccess and 				subjectInfoAccess extensions described in RFC 5280.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessDescription {
     ///
     /// The location of AccessDescription information.
@@ -326,7 +326,7 @@ impl cfn_resources::CfnResource for AccessDescription {
 }
 
 /// Describes the type and format of extension access. Only one of 				CustomObjectIdentifier or AccessMethodType may be 			provided. Providing both results in InvalidArgsException.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessMethod {
     ///
     /// Specifies the AccessMethod.
@@ -361,7 +361,7 @@ pub struct AccessMethod {
     pub custom_object_identifier: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccessMethodAccessMethodTypeEnum {
     /// CA_REPOSITORY
     #[serde(rename = "CA_REPOSITORY")]
@@ -427,7 +427,7 @@ impl cfn_resources::CfnResource for AccessMethod {
 /// openssl crl -inform DER -text -in crl_path 			-noout
 ///
 /// For more information, see Planning a certificate revocation list 				(CRL) in the         AWS Private Certificate Authority User Guide
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CrlConfiguration {
     ///
     /// Name inserted into the certificate CRL Distribution         Points extension that enables the use of an alias for the CRL       distribution point. Use this value if you don't want the name of your S3 bucket to be       public.
@@ -593,7 +593,7 @@ impl cfn_resources::CfnResource for CrlConfiguration {
 }
 
 /// Describes the certificate extensions to be added to the certificate signing request 			(CSR).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CsrExtensions {
     ///
     /// Indicates the purpose of the certificate and of the key contained in the 			certificate.
@@ -639,7 +639,7 @@ impl cfn_resources::CfnResource for CsrExtensions {
 }
 
 /// Defines the X.500 relative distinguished name (RDN).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomAttribute {
     ///
     /// Specifies the object identifier (OID) of the attribute type of the relative 			distinguished name (RDN).
@@ -735,7 +735,7 @@ impl cfn_resources::CfnResource for CustomAttribute {
 }
 
 /// Describes an Electronic Data Interchange (EDI) entity as described in as defined in 				Subject Alternative 				Name in RFC 5280.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct EdiPartyName {
     ///
     /// Specifies the name assigner.
@@ -827,7 +827,7 @@ impl cfn_resources::CfnResource for EdiPartyName {
 }
 
 /// Describes an ASN.1 X.400 GeneralName as defined in RFC 5280. Only one of 			the following naming options should be provided. Providing more than one option results 			in an InvalidArgsException error.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GeneralName {
     ///
     /// Contains information about the certificate subject. The certificate can be one issued       by your private certificate authority (CA) or it can be your private CA certificate. The       Subject field in the certificate identifies the entity that owns or controls the public       key in the certificate. The entity can be a user, computer, device, or service. The       Subject must contain an X.500 distinguished name (DN). A DN is a sequence of relative       distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN       must be unique for each entity, but your private CA can issue more than one certificate       with the same DN to the same entity.
@@ -1079,7 +1079,7 @@ impl cfn_resources::CfnResource for GeneralName {
 }
 
 /// Defines one or more purposes for which the key contained in the certificate can be 			used. Default value for each option is false.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct KeyUsage {
     ///
     /// Key can be used to sign CRLs.
@@ -1205,7 +1205,7 @@ impl cfn_resources::CfnResource for KeyUsage {
 }
 
 /// Contains information to enable and configure Online Certificate Status Protocol (OCSP)       for validating certificate revocation status.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OcspConfiguration {
     ///
     /// Flag enabling use of the Online Certificate Status Protocol (OCSP) for validating       certificate revocation status.
@@ -1274,7 +1274,7 @@ impl cfn_resources::CfnResource for OcspConfiguration {
 }
 
 /// Defines a custom ASN.1 X.400 GeneralName using an object identifier (OID) 			and value. The OID must satisfy the regular expression shown below. For more 			information, see NIST's definition of Object Identifier 				(OID).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OtherName {
     ///
     /// Specifies an OID.
@@ -1368,7 +1368,7 @@ impl cfn_resources::CfnResource for OtherName {
 }
 
 /// Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions. Your private certificate authority (CA)       can configure Online Certificate Status Protocol (OCSP) support and/or maintain a       certificate revocation list (CRL). OCSP returns validation information about       certificates as requested by clients, and a CRL contains an updated list of certificates       revoked by your CA. For more information, see RevokeCertificate in the AWS Private CA API         Reference and Setting up a certificate         revocation method in the AWS Private CA User         Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RevocationConfiguration {
     ///
     /// Configuration of the certificate revocation list (CRL), if any, maintained by your       private CA.
@@ -1418,7 +1418,7 @@ impl cfn_resources::CfnResource for RevocationConfiguration {
 }
 
 /// ASN1 subject for the certificate authority.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Subject {
     ///
     /// Fully qualified domain name (FQDN) associated with the certificate subject.
@@ -1637,7 +1637,7 @@ impl cfn_resources::CfnResource for Subject {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

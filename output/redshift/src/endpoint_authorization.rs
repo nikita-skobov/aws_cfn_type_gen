@@ -1,5 +1,5 @@
 /// Describes an endpoint authorization for authorizing Redshift-managed VPC endpoint access to a cluster across AWS accounts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorization {
     ///
     /// The AWS account ID of either the cluster owner (grantor) or grantee.     If Grantee parameter is true, then the Account value is of the grantor.
@@ -67,7 +67,7 @@ pub struct CfnEndpointAuthorization {
     pub att_status: CfnEndpointAuthorizationstatus,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorizationauthorizetime;
 impl CfnEndpointAuthorizationauthorizetime {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl CfnEndpointAuthorizationauthorizetime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorizationclusterstatus;
 impl CfnEndpointAuthorizationclusterstatus {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnEndpointAuthorizationclusterstatus {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorizationgrantee;
 impl CfnEndpointAuthorizationgrantee {
     pub fn att_name(&self) -> &'static str {
@@ -91,7 +91,7 @@ impl CfnEndpointAuthorizationgrantee {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorizationgrantor;
 impl CfnEndpointAuthorizationgrantor {
     pub fn att_name(&self) -> &'static str {
@@ -99,7 +99,7 @@ impl CfnEndpointAuthorizationgrantor {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnEndpointAuthorizationstatus;
 impl CfnEndpointAuthorizationstatus {
     pub fn att_name(&self) -> &'static str {

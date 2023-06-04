@@ -1,5 +1,5 @@
 /// The AWS::Detective::MemberInvitation resource is an Amazon Detective       resource type that creates an invitation to join a Detective behavior graph. The       administrator account can choose whether to send an email notification of the invitation       to the root user email address of the AWS account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMemberInvitation {
     ///
     /// Whether to send an invitation email to the member account. If set to true, the member account does not receive an invitation email.

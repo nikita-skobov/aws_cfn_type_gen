@@ -1,5 +1,5 @@
 /// The Virtual Deliverability Manager (VDM) attributes that apply to your Amazon SES account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVdmAttributes {
     ///
     /// Specifies additional settings for your VDM configuration as applicable to the       Dashboard.
@@ -29,7 +29,7 @@ pub struct CfnVdmAttributes {
     pub att_vdm_attributes_resource_id: CfnVdmAttributesvdmattributesresourceid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVdmAttributesvdmattributesresourceid;
 impl CfnVdmAttributesvdmattributesresourceid {
     pub fn att_name(&self) -> &'static str {
@@ -60,7 +60,7 @@ impl cfn_resources::CfnResource for CfnVdmAttributes {
 }
 
 /// Settings for your VDM configuration as applicable to the Dashboard.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DashboardAttributes {
     ///
     /// Specifies the status of your VDM engagement metrics collection. Can be one of the       following:
@@ -92,7 +92,7 @@ impl cfn_resources::CfnResource for DashboardAttributes {
 }
 
 /// Settings for your VDM configuration as applicable to the Guardian.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GuardianAttributes {
     ///
     /// Specifies the status of your VDM optimized shared delivery. Can be one of the       following:

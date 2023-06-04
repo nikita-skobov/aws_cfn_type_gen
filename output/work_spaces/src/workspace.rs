@@ -1,7 +1,7 @@
 /// The AWS::WorkSpaces::Workspace resource specifies a WorkSpace.
 ///
 /// Updates are not supported for the BundleId, RootVolumeEncryptionEnabled,      UserVolumeEncryptionEnabled, or VolumeEncryptionKey properties. To update      these properties, you must also update a property that triggers a replacement, such as the      UserName property.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnWorkspace {
     ///
     /// The identifier of the bundle for the WorkSpace.
@@ -178,7 +178,7 @@ impl cfn_resources::CfnResource for CfnWorkspace {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -216,7 +216,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Information about a WorkSpace.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkspaceProperties {
     ///
     /// The compute type. For more information, see Amazon WorkSpaces     Bundles.
@@ -285,7 +285,7 @@ pub struct WorkspaceProperties {
     pub user_volume_size_gib: Option<i64>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WorkspacePropertiesComputeTypeNameEnum {
     /// GRAPHICS
     #[serde(rename = "GRAPHICS")]
@@ -330,7 +330,7 @@ impl Default for WorkspacePropertiesComputeTypeNameEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WorkspacePropertiesRunningModeEnum {
     /// ALWAYS_ON
     #[serde(rename = "ALWAYS_ON")]

@@ -7,7 +7,7 @@
 /// The response metadata for your new virtual node contains the arn that is     associated with the virtual node. Set this value to the full ARN; for example,       arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp)     as the APPMESH_RESOURCE_ARN environment variable for your task group's Envoy     proxy container in your task definition or pod spec. This is then mapped to the       node.id and node.cluster Envoy parameters.
 ///
 /// For more information about virtual nodes, see Virtual nodes. You must be using 1.15.0 or later of the Envoy image when     setting these variables. For more information aboutApp Mesh Envoy variables, see       Envoy       image in the AWS App Mesh User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNode {
     ///
     /// The name of the service mesh to create the virtual node in.
@@ -100,7 +100,7 @@ pub struct CfnVirtualNode {
     pub att_virtual_node_name: CfnVirtualNodevirtualnodename,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNodearn;
 impl CfnVirtualNodearn {
     pub fn att_name(&self) -> &'static str {
@@ -108,7 +108,7 @@ impl CfnVirtualNodearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNodemeshname;
 impl CfnVirtualNodemeshname {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnVirtualNodemeshname {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNodemeshowner;
 impl CfnVirtualNodemeshowner {
     pub fn att_name(&self) -> &'static str {
@@ -124,7 +124,7 @@ impl CfnVirtualNodemeshowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNoderesourceowner;
 impl CfnVirtualNoderesourceowner {
     pub fn att_name(&self) -> &'static str {
@@ -132,7 +132,7 @@ impl CfnVirtualNoderesourceowner {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNodeuid;
 impl CfnVirtualNodeuid {
     pub fn att_name(&self) -> &'static str {
@@ -140,7 +140,7 @@ impl CfnVirtualNodeuid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVirtualNodevirtualnodename;
 impl CfnVirtualNodevirtualnodename {
     pub fn att_name(&self) -> &'static str {
@@ -237,7 +237,7 @@ impl cfn_resources::CfnResource for CfnVirtualNode {
 }
 
 /// An object that represents the access logging information for a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessLog {
     ///
     /// The file object to send virtual node access logs to.
@@ -269,7 +269,7 @@ impl cfn_resources::CfnResource for AccessLog {
 }
 
 /// An object that represents the AWS Cloud Map attribute information for your     virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsCloudMapInstanceAttribute {
     ///
     /// The name of an AWS Cloud Map service instance attribute key. Any AWS Cloud Map service instance that contains the specified key and value is     returned.
@@ -365,7 +365,7 @@ impl cfn_resources::CfnResource for AwsCloudMapInstanceAttribute {
 }
 
 /// An object that represents the AWS Cloud Map service discovery information for     your virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AwsCloudMapServiceDiscovery {
     ///
     /// A string map that contains attributes with values that you can use to filter instances     by any custom attribute that you specified when you registered the instance. Only instances     that match all of the specified key/value pairs will be returned.
@@ -424,7 +424,7 @@ pub struct AwsCloudMapServiceDiscovery {
     pub service_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AwsCloudMapServiceDiscoveryIpPreferenceEnum {
     /// IPv4_ONLY
     #[serde(rename = "IPv4_ONLY")]
@@ -508,7 +508,7 @@ impl cfn_resources::CfnResource for AwsCloudMapServiceDiscovery {
 }
 
 /// An object that represents the backends that a virtual node is expected to send outbound     traffic to.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Backend {
     ///
     /// Specifies a virtual service to use as a backend.
@@ -542,7 +542,7 @@ impl cfn_resources::CfnResource for Backend {
 }
 
 /// An object that represents the default properties for a backend.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct BackendDefaults {
     ///
     /// A reference to an object that represents a client policy.
@@ -576,7 +576,7 @@ impl cfn_resources::CfnResource for BackendDefaults {
 }
 
 /// An object that represents a client policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientPolicy {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
@@ -608,7 +608,7 @@ impl cfn_resources::CfnResource for ClientPolicy {
 }
 
 /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientPolicyTls {
     ///
     /// A reference to an object that represents a client's TLS certificate.
@@ -679,7 +679,7 @@ impl cfn_resources::CfnResource for ClientPolicyTls {
 }
 
 /// An object that represents the client's certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ClientTlsCertificate {
     ///
     /// An object that represents a local file certificate. The certificate must meet specific     requirements and you must have proxy authorization enabled. For more information, see       Transport Layer Security (TLS).
@@ -725,7 +725,7 @@ impl cfn_resources::CfnResource for ClientTlsCertificate {
 }
 
 /// An object that represents the DNS service discovery information for your virtual     node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DnsServiceDiscovery {
     ///
     /// Specifies the DNS service discovery hostname for the virtual node.
@@ -767,7 +767,7 @@ pub struct DnsServiceDiscovery {
     pub response_type: Option<DnsServiceDiscoveryResponseTypeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DnsServiceDiscoveryIpPreferenceEnum {
     /// IPv4_ONLY
     #[serde(rename = "IPv4_ONLY")]
@@ -792,7 +792,7 @@ impl Default for DnsServiceDiscoveryIpPreferenceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DnsServiceDiscoveryResponseTypeEnum {
     /// ENDPOINTS
     #[serde(rename = "ENDPOINTS")]
@@ -824,7 +824,7 @@ impl cfn_resources::CfnResource for DnsServiceDiscovery {
 }
 
 /// An object that represents a duration of time.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Duration {
     ///
     /// A unit of time.
@@ -851,7 +851,7 @@ pub struct Duration {
     pub value: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DurationUnitEnum {
     /// ms
     #[serde(rename = "ms")]
@@ -883,7 +883,7 @@ impl cfn_resources::CfnResource for Duration {
 }
 
 /// An object that represents an access log file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FileAccessLog {
     ///
     /// The specified format for the logs. The format is either json_format or       text_format.
@@ -954,7 +954,7 @@ impl cfn_resources::CfnResource for FileAccessLog {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GrpcTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -1002,7 +1002,7 @@ impl cfn_resources::CfnResource for GrpcTimeout {
 }
 
 /// An object that represents the health check policy for a virtual node's listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HealthCheck {
     ///
     /// The number of consecutive successful health checks that must occur before declaring     listener healthy.
@@ -1098,7 +1098,7 @@ pub struct HealthCheck {
     pub unhealthy_threshold: i64,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HealthCheckProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -1192,7 +1192,7 @@ impl cfn_resources::CfnResource for HealthCheck {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HttpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -1240,7 +1240,7 @@ impl cfn_resources::CfnResource for HttpTimeout {
 }
 
 /// An object that represents the key value pairs for the JSON.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct JsonFormatRef {
     ///
     /// The specified key for the JSON.
@@ -1332,7 +1332,7 @@ impl cfn_resources::CfnResource for JsonFormatRef {
 }
 
 /// An object that represents a listener for a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Listener {
     ///
     /// The connection pool information for the listener.
@@ -1439,7 +1439,7 @@ impl cfn_resources::CfnResource for Listener {
 }
 
 /// An object that represents timeouts for different protocols.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTimeout {
     ///
     /// An object that represents types of timeouts.
@@ -1513,7 +1513,7 @@ impl cfn_resources::CfnResource for ListenerTimeout {
 }
 
 /// An object that represents the Transport Layer Security (TLS) properties for a listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTls {
     ///
     /// A reference to an object that represents a listener's Transport Layer Security (TLS) certificate.
@@ -1554,7 +1554,7 @@ pub struct ListenerTls {
     pub validation: Option<ListenerTlsValidationContext>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ListenerTlsModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
@@ -1596,7 +1596,7 @@ impl cfn_resources::CfnResource for ListenerTls {
 }
 
 /// An object that represents an AWS Certificate Manager certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsAcmCertificate {
     ///
     /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
@@ -1625,7 +1625,7 @@ impl cfn_resources::CfnResource for ListenerTlsAcmCertificate {
 }
 
 /// An object that represents a listener's Transport Layer Security (TLS) certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsCertificate {
     ///
     /// A reference to an object that represents an AWS Certificate Manager certificate.
@@ -1685,7 +1685,7 @@ impl cfn_resources::CfnResource for ListenerTlsCertificate {
 }
 
 /// An object that represents a local file certificate.     The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsFileCertificate {
     ///
     /// The certificate chain for the certificate.
@@ -1777,7 +1777,7 @@ impl cfn_resources::CfnResource for ListenerTlsFileCertificate {
 }
 
 /// An object that represents the listener's Secret Discovery Service certificate. The proxy     must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsSdsCertificate {
     ///
     /// A reference to an object that represents the name of the secret requested from the     Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or     certificate chain.
@@ -1806,7 +1806,7 @@ impl cfn_resources::CfnResource for ListenerTlsSdsCertificate {
 }
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a listener's Transport Layer Security (TLS) validation     context.
@@ -1853,7 +1853,7 @@ impl cfn_resources::CfnResource for ListenerTlsValidationContext {
 }
 
 /// An object that represents a listener's Transport Layer Security (TLS) validation context trust.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ListenerTlsValidationContextTrust {
     ///
     /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
@@ -1899,7 +1899,7 @@ impl cfn_resources::CfnResource for ListenerTlsValidationContextTrust {
 }
 
 /// An object that represents the logging information for a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Logging {
     ///
     /// The access log configuration for a virtual node.
@@ -1933,7 +1933,7 @@ impl cfn_resources::CfnResource for Logging {
 }
 
 /// An object that represents the format for the logs.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LoggingFormat {
     ///
     /// The logging format for JSON.
@@ -2001,7 +2001,7 @@ impl cfn_resources::CfnResource for LoggingFormat {
 }
 
 /// An object that represents the outlier detection for a virtual node's listener.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OutlierDetection {
     ///
     /// The base amount of time for which a host is ejected.
@@ -2089,7 +2089,7 @@ impl cfn_resources::CfnResource for OutlierDetection {
 }
 
 /// An object representing a virtual node or virtual router listener port mapping.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct PortMapping {
     ///
     /// The port used for the port mapping.
@@ -2120,7 +2120,7 @@ pub struct PortMapping {
     pub protocol: PortMappingProtocolEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum PortMappingProtocolEnum {
     /// grpc
     #[serde(rename = "grpc")]
@@ -2178,7 +2178,7 @@ impl cfn_resources::CfnResource for PortMapping {
 }
 
 /// An object that represents the service discovery information for a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceDiscovery {
     ///
     /// Specifies any AWS Cloud Map information for the virtual node.
@@ -2226,7 +2226,7 @@ impl cfn_resources::CfnResource for ServiceDiscovery {
 }
 
 /// An object that represents the methods by which a subject alternative name on a peer     Transport Layer Security (TLS) certificate can be matched.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubjectAlternativeNameMatchers {
     ///
     /// The values sent must match the specified values exactly.
@@ -2256,7 +2256,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
 }
 
 /// An object that represents the subject alternative names secured by the     certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SubjectAlternativeNames {
     ///
     /// An object that represents the criteria for determining a SANs match.
@@ -2293,7 +2293,7 @@ impl cfn_resources::CfnResource for SubjectAlternativeNames {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -2331,7 +2331,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// An object that represents types of timeouts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TcpTimeout {
     ///
     /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
@@ -2363,7 +2363,7 @@ impl cfn_resources::CfnResource for TcpTimeout {
 }
 
 /// An object that represents how the proxy will validate its peer during Transport Layer Security (TLS)     negotiation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsValidationContext {
     ///
     /// A reference to an object that represents the SANs for a Transport Layer Security (TLS) validation context. If you     don't specify SANs on the terminating mesh endpoint, the Envoy proxy     for that node doesn't verify the SAN on a peer client certificate. If you don't specify     SANs on the originating mesh endpoint, the SAN on the certificate     provided by the terminating endpoint must match the mesh endpoint service discovery     configuration. Since SPIRE vended certificates have a SPIFFE ID as a name, you must set the     SAN since the name doesn't match the service discovery name.
@@ -2410,7 +2410,7 @@ impl cfn_resources::CfnResource for TlsValidationContext {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager     certificate.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsValidationContextAcmTrust {
     ///
     /// One or more ACM Amazon Resource Name (ARN)s.
@@ -2450,7 +2450,7 @@ impl cfn_resources::CfnResource for TlsValidationContextAcmTrust {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust for a local file.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsValidationContextFileTrust {
     ///
     /// The certificate trust chain for a certificate stored on the file system of the virtual     node that the proxy is running on.
@@ -2505,7 +2505,7 @@ impl cfn_resources::CfnResource for TlsValidationContextFileTrust {
 }
 
 /// An object that represents a Transport Layer Security (TLS) Secret Discovery Service validation context trust. The     proxy must be configured with a local SDS provider via a Unix Domain Socket. See App Mesh     TLS       documentation for more info.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsValidationContextSdsTrust {
     ///
     /// A reference to an object that represents the name of the secret for a Transport Layer Security (TLS) Secret     Discovery Service validation context trust.
@@ -2534,7 +2534,7 @@ impl cfn_resources::CfnResource for TlsValidationContextSdsTrust {
 }
 
 /// An object that represents a Transport Layer Security (TLS) validation context trust.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TlsValidationContextTrust {
     ///
     /// A reference to an object that represents a Transport Layer Security (TLS) validation context trust for an AWS Certificate Manager certificate.
@@ -2599,7 +2599,7 @@ impl cfn_resources::CfnResource for TlsValidationContextTrust {
 ///
 /// If not present the default value for maxPendingRequests is       2147483647.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeConnectionPool {
     ///
     /// An object that represents a type of connection pool.
@@ -2673,7 +2673,7 @@ impl cfn_resources::CfnResource for VirtualNodeConnectionPool {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeGrpcConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -2713,7 +2713,7 @@ impl cfn_resources::CfnResource for VirtualNodeGrpcConnectionPool {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeHttp2ConnectionPool {
     ///
     /// Maximum number of inflight requests Envoy can concurrently support across hosts in     upstream cluster.
@@ -2753,7 +2753,7 @@ impl cfn_resources::CfnResource for VirtualNodeHttp2ConnectionPool {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeHttpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -2816,7 +2816,7 @@ impl cfn_resources::CfnResource for VirtualNodeHttpConnectionPool {
 }
 
 /// An object that represents the specification of a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeSpec {
     ///
     /// A reference to an object that represents the defaults for backends.
@@ -2906,7 +2906,7 @@ impl cfn_resources::CfnResource for VirtualNodeSpec {
 }
 
 /// An object that represents a type of connection pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualNodeTcpConnectionPool {
     ///
     /// Maximum number of outbound TCP connections Envoy can establish concurrently with all     hosts in upstream cluster.
@@ -2946,7 +2946,7 @@ impl cfn_resources::CfnResource for VirtualNodeTcpConnectionPool {
 }
 
 /// An object that represents a virtual service backend for a virtual node.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VirtualServiceBackend {
     ///
     /// A reference to an object that represents the client policy for a backend.

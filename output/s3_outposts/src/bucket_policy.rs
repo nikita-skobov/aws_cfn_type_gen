@@ -5,7 +5,7 @@
 /// If you don't have s3-outposts:PutBucketPolicy permissions,    S3 on Outposts returns a 403 Access Denied error.
 ///
 /// For more information, see the AWS::IAM::Policy    PolicyDocument resource description in this guide and        Access Policy Language Overview.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketPolicy {
     ///
     /// The name of the Amazon S3 Outposts bucket to which the policy applies.

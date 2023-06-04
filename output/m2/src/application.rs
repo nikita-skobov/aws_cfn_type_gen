@@ -1,7 +1,7 @@
 /// Specifies a new application with given parameters. Requires an existing runtime     environment and application definition file.
 ///
 /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplication {
     ///
     /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
@@ -91,7 +91,7 @@ pub struct CfnApplication {
     pub att_application_id: CfnApplicationapplicationid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ApplicationEngineTypeEnum {
     /// bluage
     #[serde(rename = "bluage")]
@@ -108,7 +108,7 @@ impl Default for ApplicationEngineTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapplicationarn;
 impl CfnApplicationapplicationarn {
     pub fn att_name(&self) -> &'static str {
@@ -116,7 +116,7 @@ impl CfnApplicationapplicationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnApplicationapplicationid;
 impl CfnApplicationapplicationid {
     pub fn att_name(&self) -> &'static str {
@@ -163,7 +163,7 @@ impl cfn_resources::CfnResource for CfnApplication {
 }
 
 /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Definition {
     ///
     /// The content of the application definition. This is a JSON object that contains the     resource configuration/definitions that identify an application.

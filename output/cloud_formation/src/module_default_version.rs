@@ -3,7 +3,7 @@
 /// To register a module version, use the AWS::CloudFormation::ModuleVersion resource.
 ///
 /// For more information using modules, see Using modules to encapsulate and reuse resource   configurations and Registering extensions in the   AWS CloudFormation User Guide. For information on developing modules, see Developing modules in the  AWS CloudFormation CLI User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnModuleDefaultVersion {
     ///
     /// The Amazon Resource Name (ARN) of the module version to set as the default version.

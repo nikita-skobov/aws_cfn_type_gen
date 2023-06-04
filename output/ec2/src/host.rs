@@ -1,5 +1,5 @@
 /// Allocates a fully dedicated physical server for launching EC2 instances. Because the     host is fully dedicated for your use, it can help you address compliance requirements and     reduce costs by allowing you to use your existing server-bound software licenses. For more     information, see Dedicated Hosts in     the Amazon EC2 User Guide for Linux Instances.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHost {
     ///
     /// Indicates whether the host accepts any untargeted instance launches that match its       instance type configuration, or if it only accepts Host tenancy instance launches that       specify its unique host ID. For more information, see Understanding auto-placement and affinity in the         Amazon EC2 User Guide.
@@ -98,7 +98,7 @@ pub struct CfnHost {
     pub att_host_id: CfnHosthostid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HostAutoPlacementEnum {
     /// off
     #[serde(rename = "off")]
@@ -115,7 +115,7 @@ impl Default for HostAutoPlacementEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HostHostMaintenanceEnum {
     /// off
     #[serde(rename = "off")]
@@ -132,7 +132,7 @@ impl Default for HostHostMaintenanceEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum HostHostRecoveryEnum {
     /// off
     #[serde(rename = "off")]
@@ -149,7 +149,7 @@ impl Default for HostHostRecoveryEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnHosthostid;
 impl CfnHosthostid {
     pub fn att_name(&self) -> &'static str {

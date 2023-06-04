@@ -1,7 +1,7 @@
 /// Creates a multicast domain using the specified transit gateway.
 ///
 /// The transit gateway must be in the available state before you create a domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomain {
     ///
     /// The options for the transit gateway multicast domain.
@@ -55,7 +55,7 @@ pub struct CfnTransitGatewayMulticastDomain {
         CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomaincreationtime;
 impl CfnTransitGatewayMulticastDomaincreationtime {
     pub fn att_name(&self) -> &'static str {
@@ -63,7 +63,7 @@ impl CfnTransitGatewayMulticastDomaincreationtime {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomainstate;
 impl CfnTransitGatewayMulticastDomainstate {
     pub fn att_name(&self) -> &'static str {
@@ -71,7 +71,7 @@ impl CfnTransitGatewayMulticastDomainstate {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn;
 impl CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn {
     pub fn att_name(&self) -> &'static str {
@@ -79,7 +79,7 @@ impl CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid;
 impl CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomain {
 }
 
 /// The options for the transit gateway multicast domain.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Options {
     ///
     /// Indicates whether to automatically accept cross-account subnet associations that are associated with the transit gateway multicast domain.
@@ -149,7 +149,7 @@ pub struct Options {
     pub static_sources_support: Option<OptionsStaticSourcesSupportEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsAutoAcceptSharedAssociationsEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -166,7 +166,7 @@ impl Default for OptionsAutoAcceptSharedAssociationsEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsIgmpv2SupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -183,7 +183,7 @@ impl Default for OptionsIgmpv2SupportEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum OptionsStaticSourcesSupportEnum {
     /// disable
     #[serde(rename = "disable")]
@@ -221,7 +221,7 @@ impl cfn_resources::CfnResource for Options {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

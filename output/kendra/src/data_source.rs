@@ -1,7 +1,7 @@
 /// Creates a data source connector that you want to use with an Amazon Kendra index.
 ///
 /// You specify a name, data source connector type and description for your data source. You also specify configuration information for the data source connector.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSource {
     ///
     /// Configuration information for altering document metadata and content during the document ingestion process.
@@ -133,7 +133,7 @@ pub struct CfnDataSource {
     pub att_id: CfnDataSourceid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DataSourceTypeEnum {
     /// ALFRESCO
     #[serde(rename = "ALFRESCO")]
@@ -218,7 +218,7 @@ impl Default for DataSourceTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourcearn;
 impl CfnDataSourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -226,7 +226,7 @@ impl CfnDataSourcearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnDataSourceid;
 impl CfnDataSourceid {
     pub fn att_name(&self) -> &'static str {
@@ -279,7 +279,7 @@ impl cfn_resources::CfnResource for CfnDataSource {
 }
 
 /// Specifies access control list files for the documents in a data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessControlListConfiguration {
     ///
     /// Path to the AWS S3 bucket that contains the access control list       files.
@@ -335,7 +335,7 @@ impl cfn_resources::CfnResource for AccessControlListConfiguration {
 }
 
 /// Provides information about the column that should be used for filtering the query       response by groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AclConfiguration {
     ///
     /// A list of groups, separated by semi-colons, that filters a query       response based on user context. The document is only returned to       users that are in one of the groups specified in the         UserContext field of the Query operation.
@@ -386,7 +386,7 @@ impl cfn_resources::CfnResource for AclConfiguration {
 }
 
 /// Provides information about how Amazon Kendra should use the columns of a database       in an index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ColumnConfiguration {
     ///
     /// One to five columns that indicate when a document in the database has changed.
@@ -555,7 +555,7 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
 }
 
 /// Configuration of attachment settings for the Confluence data source. Attachment       settings are optional, if you don't specify settings attachments, Amazon Kendra       won't index them.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceAttachmentConfiguration {
     ///
     /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -607,7 +607,7 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
 }
 
 /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confuence data source field names must exist in your Confluence custom metadata.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceAttachmentToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -660,7 +660,7 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     pub index_field_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum {
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
@@ -772,7 +772,7 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
 }
 
 /// Configuration of blog settings for the Confluence data source. Blogs are always       indexed unless filtered from the index by the ExclusionPatterns or         InclusionPatterns fields in the ConfluenceConfiguration       object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceBlogConfiguration {
     ///
     /// Maps attributes or field names of Confluence blogs to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -815,7 +815,7 @@ impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
 }
 
 /// Maps attributes or field names of Confluence blog to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceBlogToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -866,7 +866,7 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     pub index_field_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
@@ -970,7 +970,7 @@ impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
 }
 
 /// Provides the configuration information to connect to Confluence as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceConfiguration {
     ///
     /// Configuration information for indexing attachments to Confluence blogs and       pages.
@@ -1110,7 +1110,7 @@ pub struct ConfluenceConfiguration {
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfluenceConfigurationVersionEnum {
     /// CLOUD
     #[serde(rename = "CLOUD")]
@@ -1224,7 +1224,7 @@ impl cfn_resources::CfnResource for ConfluenceConfiguration {
 }
 
 /// Configuration of the page settings for the Confluence data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluencePageConfiguration {
     ///
     /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
@@ -1267,7 +1267,7 @@ impl cfn_resources::CfnResource for ConfluencePageConfiguration {
 }
 
 /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluencePageToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -1318,7 +1318,7 @@ pub struct ConfluencePageToIndexFieldMapping {
     pub index_field_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
@@ -1434,7 +1434,7 @@ impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
 }
 
 /// Configuration information for indexing Confluence spaces.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceSpaceConfiguration {
     ///
     /// TRUE to index archived spaces.
@@ -1525,7 +1525,7 @@ impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
 }
 
 /// Maps attributes or field names of Confluence spaces to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfluenceSpaceToIndexFieldMapping {
     ///
     /// The name of the field in the data source.
@@ -1576,7 +1576,7 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     pub index_field_name: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
     /// DISPLAY_URL
     #[serde(rename = "DISPLAY_URL")]
@@ -1660,7 +1660,7 @@ impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
 }
 
 /// Provides the configuration information that's required to connect to a       database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConnectionConfiguration {
     ///
     /// The name of the host for the database. Can be either a string       (host.subdomain.domain.tld) or an IPv4 or IPv6 address.
@@ -1867,7 +1867,7 @@ impl cfn_resources::CfnResource for ConnectionConfiguration {
 /// Provides the configuration information for altering document metadata and content       during the document ingestion process.
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CustomDocumentEnrichmentConfiguration {
     ///
     /// Configuration information to alter document attributes or metadata fields and content       when ingesting documents into Amazon Kendra.
@@ -1977,7 +1977,7 @@ impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
 }
 
 /// Provides the configuration information for an Amazon Kendra data source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceConfiguration {
     ///
     /// Provides the configuration information to connect to Confluence as your data    source.
@@ -2155,7 +2155,7 @@ impl cfn_resources::CfnResource for DataSourceConfiguration {
 }
 
 /// Maps a column or attribute in the data source to an index field.       You must first create the fields in the index using the UpdateIndex operation.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceToIndexFieldMapping {
     ///
     /// The name of the column or attribute in the data source.
@@ -2288,7 +2288,7 @@ impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
 }
 
 /// Provides the configuration information to connect to an Amazon VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DataSourceVpcConfiguration {
     ///
     /// A list of identifiers of security groups within your Amazon VPC. The security groups    should enable Amazon Kendra to connect to the data source.
@@ -2350,7 +2350,7 @@ impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
 }
 
 /// Provides the configuration information to connect to a index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DatabaseConfiguration {
     ///
     /// Information about the database column that provides information for user context       filtering.
@@ -2424,7 +2424,7 @@ pub struct DatabaseConfiguration {
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DatabaseConfigurationDatabaseEngineTypeEnum {
     /// RDS_AURORA_MYSQL
     #[serde(rename = "RDS_AURORA_MYSQL")]
@@ -2484,7 +2484,7 @@ impl cfn_resources::CfnResource for DatabaseConfiguration {
 /// For example, you can create the 'Department' target field and have it prefill       department names associated with the documents based on information in the 'Source_URI'       field. Set the condition that if the 'Source_URI' field contains 'financial' in its URI       value, then prefill the target field 'Department' with the target value 'Finance' for       the document.
 ///
 /// Amazon Kendra cannot create a target field if it has not already been created as       an index field. After you create your index field, you can create a document metadata       field using DocumentAttributeTarget. Amazon Kendra then will map your       newly created metadata field to your index field.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentAttributeCondition {
     ///
     /// The identifier of the document attribute used for the condition.
@@ -2537,7 +2537,7 @@ pub struct DocumentAttributeCondition {
     pub operator: DocumentAttributeConditionOperatorEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum DocumentAttributeConditionOperatorEnum {
     /// BeginsWith
     #[serde(rename = "BeginsWith")]
@@ -2631,7 +2631,7 @@ impl cfn_resources::CfnResource for DocumentAttributeCondition {
 /// Amazon Kendra cannot create a target field if it has not already been created as       an index field. After you create your index field, you can create a document metadata       field using DocumentAttributeTarget. Amazon Kendra then will map your       newly created metadata field to your index field.
 ///
 /// You can also use this with DocumentAttributeCondition.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentAttributeTarget {
     ///
     /// The identifier of the target document attribute or metadata field.
@@ -2714,7 +2714,7 @@ impl cfn_resources::CfnResource for DocumentAttributeTarget {
 }
 
 /// The value of a document attribute. You can only provide one value for a document       attribute.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentAttributeValue {
     ///
     /// A date expressed as an ISO 8601 string.
@@ -2808,7 +2808,7 @@ impl cfn_resources::CfnResource for DocumentAttributeValue {
 }
 
 /// Document metadata files that contain information such as the document access control       information, source URI, document author, and custom attributes. Each metadata file       contains metadata about a single document.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct DocumentsMetadataConfiguration {
     ///
     /// A prefix used to filter metadata configuration files in the AWS S3       bucket. The S3 bucket might contain multiple metadata files. Use S3Prefix       to include only the desired metadata files.
@@ -2864,7 +2864,7 @@ impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
 }
 
 /// Provides the configuration information to connect to Google Drive as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct GoogleDriveConfiguration {
     ///
     /// A list of MIME types to exclude from the index. All documents matching the specified       MIME type are excluded.
@@ -3057,7 +3057,7 @@ impl cfn_resources::CfnResource for GoogleDriveConfiguration {
 /// Provides the configuration information for invoking a Lambda function in AWS Lambda to alter document metadata and content when ingesting documents into         Amazon Kendra. You can configure your Lambda function using PreExtractionHookConfiguration if you want to apply advanced alterations on       the original or raw documents. If you want to apply advanced alterations on the Amazon Kendra structured documents, you must configure your Lambda function using         PostExtractionHookConfiguration. You can only invoke one Lambda function.       However, this function can invoke other functions it requires.
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct HookConfiguration {
     ///
     /// The condition used for when a Lambda function should be invoked.
@@ -3173,7 +3173,7 @@ impl cfn_resources::CfnResource for HookConfiguration {
 /// Provides the configuration information for applying basic logic to alter document       metadata and content when ingesting documents into Amazon Kendra. To apply advanced       logic, to go beyond what you can do with basic logic, see HookConfiguration.
 ///
 /// For more information, see Customizing document metadata         during the ingestion process.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InlineCustomDocumentEnrichmentConfiguration {
     ///
     /// Configuration of the condition used for the target document attribute or metadata       field when ingesting documents into Amazon Kendra.
@@ -3233,7 +3233,7 @@ impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration 
 }
 
 /// Provides the configuration information to connect to OneDrive as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OneDriveConfiguration {
     ///
     /// TRUE to disable local groups information.
@@ -3427,7 +3427,7 @@ impl cfn_resources::CfnResource for OneDriveConfiguration {
 }
 
 /// User accounts whose documents should be indexed.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct OneDriveUsers {
     ///
     /// A list of users whose documents should be indexed. Specify the user names in email       format, for example, username@tenantdomain. If you need to index the       documents of more than 100 users, use the OneDriveUserS3Path field to       specify the location of a file containing a list of users.
@@ -3484,7 +3484,7 @@ impl cfn_resources::CfnResource for OneDriveUsers {
 }
 
 /// Provides the configuration information for a web proxy to connect to website       hosts.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ProxyConfiguration {
     ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
@@ -3620,7 +3620,7 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
 }
 
 /// Provides the configuration information to connect to an Amazon S3       bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3DataSourceConfiguration {
     ///
     /// Provides the path to the S3 bucket that contains the user context filtering files for       the data source. For the format of the file, see Access control for S3 data       sources.
@@ -3786,7 +3786,7 @@ impl cfn_resources::CfnResource for S3DataSourceConfiguration {
 }
 
 /// Information required to find a specific file in an Amazon S3 bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3Path {
     ///
     /// The name of the S3 bucket that contains the file.
@@ -3880,7 +3880,7 @@ impl cfn_resources::CfnResource for S3Path {
 }
 
 /// The configuration information for syncing a Salesforce chatter feed. The contents of       the object comes from the Salesforce FeedItem table.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceChatterFeedConfiguration {
     ///
     /// The name of the column in the Salesforce FeedItem table that contains the content to       index. Typically this is the Body column.
@@ -4014,7 +4014,7 @@ impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
 }
 
 /// Provides the configuration information to connect to Salesforce as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceConfiguration {
     ///
     /// Configuration information for Salesforce chatter feeds.
@@ -4237,7 +4237,7 @@ impl cfn_resources::CfnResource for SalesforceConfiguration {
 }
 
 /// Provides the configuration information for indexing Salesforce custom articles.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     ///
     /// The name of the field in the custom knowledge article that contains the document data       to index.
@@ -4387,7 +4387,7 @@ impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfigur
 }
 
 /// Provides the configuration information for the knowledge article types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles and the       standard fields of knowledge articles, or the custom fields of custom knowledge       articles, but not both
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Configuration information for custom Salesforce knowledge articles.
@@ -4465,7 +4465,7 @@ impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
 }
 
 /// Provides the configuration information for standard Salesforce knowledge       articles.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     ///
     /// The name of the field that contains the document data to index.
@@ -4576,7 +4576,7 @@ impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfig
 }
 
 /// Provides the configuration information for processing attachments to Salesforce       standard objects.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceStandardObjectAttachmentConfiguration {
     ///
     /// The name of the field used for the document title.
@@ -4651,7 +4651,7 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfigurat
 }
 
 /// Specifies configuration information for indexing a single standard       object.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SalesforceStandardObjectConfiguration {
     ///
     /// The name of the field in the standard object table that contains the document       contents.
@@ -4716,7 +4716,7 @@ pub struct SalesforceStandardObjectConfiguration {
     pub name: SalesforceStandardObjectConfigurationNameEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SalesforceStandardObjectConfigurationNameEnum {
     /// ACCOUNT
     #[serde(rename = "ACCOUNT")]
@@ -4852,7 +4852,7 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
 }
 
 /// Provides the configuration information to connect to ServiceNow as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowConfiguration {
     ///
     /// The type of authentication used to connect to the ServiceNow instance. If you choose         HTTP_BASIC, Amazon Kendra is authenticated using the user name and       password provided in the AWS Secrets Manager secret in the SecretArn       field. If you choose OAUTH2, Amazon Kendra is authenticated using the       credentials of client ID, client secret, user name and password.
@@ -4942,7 +4942,7 @@ pub struct ServiceNowConfiguration {
     pub service_now_build_version: ServiceNowConfigurationServiceNowBuildVersionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceNowConfigurationAuthenticationTypeEnum {
     /// HTTP_BASIC
     #[serde(rename = "HTTP_BASIC")]
@@ -4959,7 +4959,7 @@ impl Default for ServiceNowConfigurationAuthenticationTypeEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ServiceNowConfigurationServiceNowBuildVersionEnum {
     /// LONDON
     #[serde(rename = "LONDON")]
@@ -5043,7 +5043,7 @@ impl cfn_resources::CfnResource for ServiceNowConfiguration {
 }
 
 /// Provides the configuration information for crawling knowledge articles in the       ServiceNow site.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowKnowledgeArticleConfiguration {
     ///
     /// TRUE to index attachments to knowledge articles.
@@ -5252,7 +5252,7 @@ impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
 }
 
 /// Provides the configuration information for crawling service catalog items in the       ServiceNow site
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ServiceNowServiceCatalogConfiguration {
     ///
     /// TRUE to index attachments to service catalog items.
@@ -5419,7 +5419,7 @@ impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
 }
 
 /// Provides the configuration information to connect to Microsoft SharePoint as your data       source.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SharePointConfiguration {
     ///
     /// TRUE to index document attachments.
@@ -5588,7 +5588,7 @@ pub struct SharePointConfiguration {
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum SharePointConfigurationSharePointVersionEnum {
     /// SHAREPOINT_2013
     #[serde(rename = "SHAREPOINT_2013")]
@@ -5710,7 +5710,7 @@ impl cfn_resources::CfnResource for SharePointConfiguration {
 }
 
 /// Provides information that configures Amazon Kendra to use a SQL       database.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct SqlConfiguration {
     ///
     /// Determines whether Amazon Kendra encloses SQL identifiers for       tables and column names in double quotes (") when making a database       query. You can set the value to DOUBLE_QUOTES or         NONE.
@@ -5752,7 +5752,7 @@ impl cfn_resources::CfnResource for SqlConfiguration {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -5790,7 +5790,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Provides the configuration information to connect to websites that require 		  user authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerAuthenticationConfiguration {
     ///
     /// The list of configuration information that's required to connect to and crawl a       website host using basic authentication credentials.
@@ -5833,7 +5833,7 @@ impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
 }
 
 /// Provides the configuration information to connect to websites that require basic user       authentication.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerBasicAuthentication {
     ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
@@ -5968,7 +5968,7 @@ impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
 }
 
 /// Provides the configuration information required for Amazon Kendra       Web Crawler.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerConfiguration {
     ///
     /// Configuration information required to connect to websites using authentication.
@@ -6211,7 +6211,7 @@ impl cfn_resources::CfnResource for WebCrawlerConfiguration {
 /// Provides the configuration information of the seed or starting point URLs to crawl.
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerSeedUrlConfiguration {
     ///
     /// The list of seed or starting point URLs of the websites you want to crawl.
@@ -6247,7 +6247,7 @@ pub struct WebCrawlerSeedUrlConfiguration {
     pub web_crawler_mode: Option<WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
     /// EVERYTHING
     #[serde(rename = "EVERYTHING")]
@@ -6294,7 +6294,7 @@ impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
 /// Provides the configuration information of the sitemap URLs to crawl.
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerSiteMapsConfiguration {
     ///
     /// The list of sitemap URLs of the websites you want to crawl.
@@ -6342,7 +6342,7 @@ impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
 /// You can only crawl websites that use the secure communication protocol,       Hypertext Transfer Protocol Secure (HTTPS). If you receive an error when       crawling a website, it could be that the website is blocked from crawling.
 ///
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra       web crawler to index your own webpages, or webpages that you have       authorization to index.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WebCrawlerUrls {
     ///
     /// Configuration of the seed or starting point URLs of the websites you want to       crawl.
@@ -6400,7 +6400,7 @@ impl cfn_resources::CfnResource for WebCrawlerUrls {
 /// Provides the configuration information to connect to Amazon WorkDocs       as your data source.
 ///
 /// Amazon WorkDocs connector is available in Oregon, North Virginia, Sydney, Singapore and Ireland       regions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct WorkDocsConfiguration {
     ///
     /// TRUE to include comments on documents       in your index. Including comments in your index means each comment       is a document that can be searched on.

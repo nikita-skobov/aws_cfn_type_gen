@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPoolIdentityProvider resource creates an identity    provider for a user pool.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolIdentityProvider {
     ///
     /// A mapping of IdP attributes to standard and custom user pool attributes.
@@ -89,7 +89,7 @@ pub struct CfnUserPoolIdentityProvider {
     pub user_pool_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserPoolIdentityProviderProviderTypeEnum {
     /// Facebook
     #[serde(rename = "Facebook")]

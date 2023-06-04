@@ -3,7 +3,7 @@
 /// S3 on Outposts buckets support the following:
 ///
 /// For a complete list of restrictions and Amazon S3 feature limitations on S3 on Outposts,     see     Amazon S3 on Outposts Restrictions and Limitations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucket {
     ///
     /// A name for the S3 on Outposts bucket. If you don't specify a name, AWS CloudFormation generates a    unique ID and uses that ID for the bucket name.    The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-)    and must follow     Amazon S3 bucket restrictions and limitations.    For more information, see Bucket     naming rules.
@@ -63,7 +63,7 @@ pub struct CfnBucket {
     pub att_arn: CfnBucketarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnBucketarn;
 impl CfnBucketarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl cfn_resources::CfnResource for CfnBucket {
 }
 
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 on Outposts waits    before permanently removing all parts of the upload. For more information, see Aborting Incomplete     Multipart Uploads Using a Bucket Lifecycle Policy.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AbortIncompleteMultipartUpload {
     ///
     /// Specifies the number of days after initiation that Amazon S3 on Outposts aborts an incomplete multipart upload.
@@ -119,7 +119,7 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
 }
 
 /// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Filter {
     /// Property description not available.
     ///
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for Filter {
 }
 
 /// The FilterAndOperator property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterAndOperator {
     /// Property description not available.
     ///
@@ -215,7 +215,7 @@ impl cfn_resources::CfnResource for FilterAndOperator {
 }
 
 /// The FilterTag property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FilterTag {
     /// Property description not available.
     ///
@@ -253,7 +253,7 @@ impl cfn_resources::CfnResource for FilterTag {
 }
 
 /// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct LifecycleConfiguration {
     ///
     /// The container for the lifecycle configuration rules for the objects stored in the S3 on Outposts bucket.
@@ -282,7 +282,7 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
 }
 
 /// A container for an Amazon S3 on Outposts bucket lifecycle rule.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Rule {
     ///
     /// The container for the abort incomplete multipart upload rule.
@@ -383,7 +383,7 @@ impl cfn_resources::CfnResource for Rule {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,5 +1,5 @@
 /// The AWS::Cognito::UserPoolResourceServer resource creates a new OAuth2.0    resource server and defines custom scopes in it.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolResourceServer {
     ///
     /// A unique resource server identifier for the resource server. This could be an HTTPS    endpoint where the resource server is located. For example:     https://my-weather-api.example.com.
@@ -157,7 +157,7 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
 }
 
 /// A resource server scope.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceServerScopeType {
     ///
     /// A description of the scope.

@@ -9,7 +9,7 @@
 /// You must specify a source security group (SourcePrefixListId,     SourceSecurityGroupId, or SourceSecurityGroupName) or a CIDR     range (CidrIp or CidrIpv6). If you do not specify one of these     parameters, the stack will launch successfully but the rule will not be added to the     security group.
 ///
 /// Rule changes are propagated to instances within the security group as quickly as     possible. However, a small delay might occur.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnSecurityGroupIngress {
     ///
     /// The IPv4 address range, in CIDR format.

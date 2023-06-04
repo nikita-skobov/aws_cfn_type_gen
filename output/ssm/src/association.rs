@@ -1,5 +1,5 @@
 /// The AWS::SSM::Association resource creates a State Manager association for    your managed instances. A State Manager association defines the state that you want to    maintain on your instances. For example, an association can specify that anti-virus software    must be installed and running on your instances, or that certain ports must be closed. For    static targets, the association specifies a schedule for when the configuration is reapplied.    For dynamic targets, such as an AWS Resource Groups or an AWS Auto Scaling Group, State Manager    applies the configuration when new instances are added to the group. The association also    specifies actions to take when applying the configuration. For example, an association for    anti-virus software might run once a day. If the software is not installed, then State Manager    installs it. If the software is installed, but the service is not running, then the    association might instruct State Manager to start the service.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssociation {
     ///
     /// By default, when you create a new association, the system runs it immediately after it is      created and then according to the schedule you specified. Specify this option if you don't want      an association to run immediately after you create it. This parameter is not supported for rate expressions.
@@ -264,7 +264,7 @@ pub struct CfnAssociation {
     pub att_association_id: CfnAssociationassociationid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssociationComplianceSeverityEnum {
     /// CRITICAL
     #[serde(rename = "CRITICAL")]
@@ -293,7 +293,7 @@ impl Default for AssociationComplianceSeverityEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AssociationSyncComplianceEnum {
     /// AUTO
     #[serde(rename = "AUTO")]
@@ -310,7 +310,7 @@ impl Default for AssociationSyncComplianceEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAssociationassociationid;
 impl CfnAssociationassociationid {
     pub fn att_name(&self) -> &'static str {
@@ -445,7 +445,7 @@ impl cfn_resources::CfnResource for CfnAssociation {
 /// InstanceAssociationOutputLocation is a property of the AWS::SSM::Association resource that specifies an Amazon S3 bucket where you want to    store the results of this association request.
 ///
 /// For the minimal permissions required to enable Amazon S3 output for an association, see Creating   associations in the Systems Manager User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct InstanceAssociationOutputLocation {
     ///
     /// S3OutputLocation is a property of the InstanceAssociationOutputLocation property that specifies an Amazon S3 bucket where    you want to store the results of this request.
@@ -479,7 +479,7 @@ impl cfn_resources::CfnResource for InstanceAssociationOutputLocation {
 }
 
 /// S3OutputLocation is a property of the AWS::SSM::Association resource that specifies an Amazon S3 bucket where you want to    store the results of this association request.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct S3OutputLocation {
     ///
     /// The name of the S3 bucket.
@@ -592,7 +592,7 @@ impl cfn_resources::CfnResource for S3OutputLocation {
 }
 
 /// Target is a property of the AWS::SSM::Association resource that specifies the targets for an SSM document in    Systems Manager. You can target all instances in an AWS account by specifying the InstanceIds key with a value of *. To view a JSON and a YAML example that targets all instances, see "Create an association for all managed instances in an AWS account" on the Examples page.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Target {
     ///
     /// User-defined criteria for sending commands that target managed nodes that meet the  criteria.

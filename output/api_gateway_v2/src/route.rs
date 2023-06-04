@@ -1,5 +1,5 @@
 /// The AWS::ApiGatewayV2::Route resource creates a route for an          API.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRoute {
     ///
     /// The API identifier.
@@ -147,7 +147,7 @@ pub struct CfnRoute {
     pub att_route_id: CfnRouterouteid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnRouterouteid;
 impl CfnRouterouteid {
     pub fn att_name(&self) -> &'static str {

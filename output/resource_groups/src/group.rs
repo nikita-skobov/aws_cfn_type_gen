@@ -3,7 +3,7 @@
 /// Minimum permissions
 ///
 /// To run this command, you must have the following permissions:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGroup {
     ///
     /// The service configuration currently associated with the resource group and in effect       for the members of the resource group. A Configuration consists of one or       more ConfigurationItem entries. For information about service       configurations for resource groups and how to construct them, see Service         configurations for resource groups in the AWS Resource Groups         User Guide.
@@ -86,7 +86,7 @@ pub struct CfnGroup {
     pub att_arn: CfnGrouparn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnGrouparn;
 impl CfnGrouparn {
     pub fn att_name(&self) -> &'static str {
@@ -113,7 +113,7 @@ impl cfn_resources::CfnResource for CfnGroup {
 }
 
 /// One of the items in the service configuration assigned to a resource group. A service       configuration can consist of one or more items. For details service configurations and       how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationItem {
     ///
     /// A collection of parameters for this configuration item. For the list of parameters       that you can use with each configuration item Type, see Supported resource types and parameters in the AWS Resource Groups User Guide.
@@ -155,7 +155,7 @@ impl cfn_resources::CfnResource for ConfigurationItem {
 }
 
 /// One parameter for a group configuration item. For details about service configurations       and how to construct them, see Service configurations for resource         groups in the AWS Resource Groups User       Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ConfigurationParameter {
     ///
     /// The name of the group configuration parameter. For the list of parameters that you can       use with each configuration item type, see Supported resource         types and parameters in the AWS Resource Groups User         Guide.
@@ -197,7 +197,7 @@ impl cfn_resources::CfnResource for ConfigurationParameter {
 }
 
 /// Specifies details within a ResourceQuery structure that determines the       membership of the resource group. The contents required in the Query       structure are determined by the Type property of the containing         ResourceQuery structure.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Query {
     ///
     /// Specifies limits to the types of resources that can be included in the resource group.       For example, if ResourceTypeFilters is ["AWS::EC2::Instance",         "AWS::DynamoDB::Table"], only EC2 instances or DynamoDB tables can be members       of this resource group. The default value is ["AWS::AllSupported"].
@@ -255,7 +255,7 @@ impl cfn_resources::CfnResource for Query {
 }
 
 /// The query used to dynamically define the members of a group. For more information       about how to construct a query, see Build queries and groups in           AWS Resource Groups.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ResourceQuery {
     ///
     /// The query that defines the membership of the group. This is a structure with       properties that depend on the Type.
@@ -311,7 +311,7 @@ impl cfn_resources::CfnResource for ResourceQuery {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -353,7 +353,7 @@ impl cfn_resources::CfnResource for Tag {
 /// A TagFilter object includes two properties: Key (a string)       and Values (a list of strings). Only resources in the account that are       tagged with a matching key-value pair are members of the group. The Values       property of TagFilter is optional, but specifying it narrows the query       results.
 ///
 /// As an example, suppose the TagFilters string is [{"Key": "Stage",         "Values": ["Test", "Beta"]}, {"Key": "Storage"}]. In this case, only       resources with all of the following tags are members of the group:
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct TagFilter {
     ///
     /// A string that defines a tag key. Only resources in the account that are tagged with a       specified tag key are members of the tag-based resource group.

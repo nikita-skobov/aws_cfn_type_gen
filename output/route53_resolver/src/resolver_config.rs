@@ -1,5 +1,5 @@
 /// A complex type that contains information about a Resolver configuration for a VPC.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverConfig {
     ///
     /// Represents the desired status of AutodefinedReverse. The only supported value on creation is DISABLE.       Deletion of this resource will return AutodefinedReverse to its default value of ENABLED.
@@ -37,7 +37,7 @@ pub struct CfnResolverConfig {
     pub att_owner_id: CfnResolverConfigownerid,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverConfigautodefinedreverse;
 impl CfnResolverConfigautodefinedreverse {
     pub fn att_name(&self) -> &'static str {
@@ -45,7 +45,7 @@ impl CfnResolverConfigautodefinedreverse {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverConfigid;
 impl CfnResolverConfigid {
     pub fn att_name(&self) -> &'static str {
@@ -53,7 +53,7 @@ impl CfnResolverConfigid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnResolverConfigownerid;
 impl CfnResolverConfigownerid {
     pub fn att_name(&self) -> &'static str {

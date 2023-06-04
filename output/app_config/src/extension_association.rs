@@ -1,5 +1,5 @@
 /// When you create an extension or configure an AWS authored extension, you     associate the extension with an AWS AppConfig application, environment, or     configuration profile. For example, you can choose to run the         AWS AppConfig       deployment events to Amazon SNS       AWS authored extension and receive notifications on an Amazon SNS     topic anytime a configuration deployment is started for a specific application. Defining     which extension to associate with an AWS AppConfig resource is called an       extension association. An extension association is a specified     relationship between an extension and an AWS AppConfig resource, such as an     application or a configuration profile. For more information about extensions and     associations, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionAssociation {
     ///
     /// The name, the ID, or the Amazon Resource Name (ARN) of the extension.
@@ -82,7 +82,7 @@ pub struct CfnExtensionAssociation {
     pub att_resource_arn: CfnExtensionAssociationresourcearn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionAssociationarn;
 impl CfnExtensionAssociationarn {
     pub fn att_name(&self) -> &'static str {
@@ -90,7 +90,7 @@ impl CfnExtensionAssociationarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionAssociationextensionarn;
 impl CfnExtensionAssociationextensionarn {
     pub fn att_name(&self) -> &'static str {
@@ -98,7 +98,7 @@ impl CfnExtensionAssociationextensionarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionAssociationid;
 impl CfnExtensionAssociationid {
     pub fn att_name(&self) -> &'static str {
@@ -106,7 +106,7 @@ impl CfnExtensionAssociationid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnExtensionAssociationresourcearn;
 impl CfnExtensionAssociationresourcearn {
     pub fn att_name(&self) -> &'static str {
@@ -173,7 +173,7 @@ impl cfn_resources::CfnResource for CfnExtensionAssociation {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

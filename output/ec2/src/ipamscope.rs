@@ -1,7 +1,7 @@
 /// In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.
 ///
 /// For more information, see How IPAM works in the Amazon VPC IPAM User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMScope {
     ///
     /// The description of the scope.
@@ -51,7 +51,7 @@ pub struct CfnIPAMScope {
     pub att_ipam_scope_type: CfnIPAMScopeipamscopetype,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMScopearn;
 impl CfnIPAMScopearn {
     pub fn att_name(&self) -> &'static str {
@@ -59,7 +59,7 @@ impl CfnIPAMScopearn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMScopeipamarn;
 impl CfnIPAMScopeipamarn {
     pub fn att_name(&self) -> &'static str {
@@ -67,7 +67,7 @@ impl CfnIPAMScopeipamarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMScopeipamscopeid;
 impl CfnIPAMScopeipamscopeid {
     pub fn att_name(&self) -> &'static str {
@@ -75,7 +75,7 @@ impl CfnIPAMScopeipamscopeid {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnIPAMScopeipamscopetype;
 impl CfnIPAMScopeipamscopetype {
     pub fn att_name(&self) -> &'static str {
@@ -104,7 +104,7 @@ impl cfn_resources::CfnResource for CfnIPAMScope {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

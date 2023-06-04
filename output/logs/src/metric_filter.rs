@@ -1,7 +1,7 @@
 /// The AWS::Logs::MetricFilter resource specifies a metric filter that describes how      CloudWatch Logs extracts information from logs and transforms it into Amazon CloudWatch metrics.     If you have multiple metric filters that are associated with a log group, all the filters are applied to the log streams in that group.
 ///
 /// The maximum number of metric filters that can be associated with a log group is    100.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnMetricFilter {
     ///
     /// The name of the metric filter.
@@ -135,7 +135,7 @@ impl cfn_resources::CfnResource for CfnMetricFilter {
 /// Because dimensions are part of the unique identifier for a metric, whenever a unique dimension name/value      pair is extracted from your logs, you are creating a new variation of that metric.
 ///
 /// For more information about publishing dimensions with metrics created by metric filters,      see       Publishing dimensions with metrics from values in JSON or space-delimited log events.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Dimension {
     ///
     /// The name for the CloudWatch metric dimension that the metric filter creates.
@@ -177,7 +177,7 @@ impl cfn_resources::CfnResource for Dimension {
 }
 
 /// MetricTransformation is a property of the AWS::Logs::MetricFilter resource that describes      how to transform log streams into a CloudWatch metric.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct MetricTransformation {
     ///
     /// (Optional) The value to emit when a filter pattern does not match a log event.    This value can be null.
@@ -257,7 +257,7 @@ pub struct MetricTransformation {
     pub unit: Option<MetricTransformationUnitEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum MetricTransformationUnitEnum {
     /// Bits
     #[serde(rename = "Bits")]

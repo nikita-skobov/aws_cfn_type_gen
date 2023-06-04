@@ -1,5 +1,5 @@
 /// Shares the specified portfolio with the specified account.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPortfolioShare {
     ///
     /// The language code.

@@ -1,7 +1,7 @@
 /// The AWS::Cognito::UserPoolRiskConfigurationAttachment resource sets the risk    configuration that is used for Amazon Cognito advanced security features.
 ///
 /// You can specify risk configuration for a single client (with a specific     clientId) or for all clients (by setting the clientId to     ALL). If you specify ALL, the default configuration is used for    every client that has had no risk configuration set previously. If you specify risk    configuration for a particular client, it no longer falls back to the ALL    configuration.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// The account takeover risk configuration object, including the         NotifyConfiguration object and Actions to take if there is       an account takeover.
@@ -146,7 +146,7 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
 }
 
 /// Account takeover action type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountTakeoverActionType {
     ///
     /// The action to take in response to the account takeover action. Valid values are as       follows:
@@ -175,7 +175,7 @@ pub struct AccountTakeoverActionType {
     pub notify: bool,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccountTakeoverActionTypeEventActionEnum {
     /// BLOCK
     #[serde(rename = "BLOCK")]
@@ -215,7 +215,7 @@ impl cfn_resources::CfnResource for AccountTakeoverActionType {
 }
 
 /// Account takeover actions type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountTakeoverActionsType {
     ///
     /// Action to take for a high risk.
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for AccountTakeoverActionsType {
 }
 
 /// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccountTakeoverRiskConfigurationType {
     ///
     /// Account takeover risk configuration actions.
@@ -328,7 +328,7 @@ impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
 }
 
 /// The compromised credentials actions type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CompromisedCredentialsActionsType {
     ///
     /// The event action.
@@ -344,7 +344,7 @@ pub struct CompromisedCredentialsActionsType {
     pub event_action: CompromisedCredentialsActionsTypeEventActionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum CompromisedCredentialsActionsTypeEventActionEnum {
     /// BLOCK
     #[serde(rename = "BLOCK")]
@@ -376,7 +376,7 @@ impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
 }
 
 /// The compromised credentials risk configuration type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CompromisedCredentialsRiskConfigurationType {
     ///
     /// The compromised credentials risk configuration actions.
@@ -419,7 +419,7 @@ impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType 
 }
 
 /// The notify configuration type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotifyConfigurationType {
     ///
     /// Email template used when a detected risk event is blocked.
@@ -548,7 +548,7 @@ impl cfn_resources::CfnResource for NotifyConfigurationType {
 }
 
 /// The notify email type.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct NotifyEmailType {
     ///
     /// The email HTML body.
@@ -685,7 +685,7 @@ impl cfn_resources::CfnResource for NotifyEmailType {
 }
 
 /// The type of the configuration to override the risk decision.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct RiskExceptionConfigurationType {
     ///
     /// Overrides the risk decision to always block the pre-authentication requests. The IP       range is in CIDR notation, a compact representation of an IP address and its routing       prefix.

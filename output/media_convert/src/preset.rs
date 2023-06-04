@@ -3,7 +3,7 @@
 /// When you declare this entity in your AWS CloudFormation template, you pass in your       transcoding job settings in JSON or YAML format. This settings specification must be       formed in a particular way that conforms to AWS Elemental MediaConvert job validation. For       more information about creating an output preset model for the SettingsJson       property, see the Remarks section later in this topic.
 ///
 /// For more information about output MediaConvert presets, see Working       with AWS Elemental MediaConvert Output Presets in the AWS Elemental MediaConvert User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPreset {
     ///
     /// The new category for the preset, if you are changing it.
@@ -75,7 +75,7 @@ pub struct CfnPreset {
     pub att_name: CfnPresetname,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPresetarn;
 impl CfnPresetarn {
     pub fn att_name(&self) -> &'static str {
@@ -83,7 +83,7 @@ impl CfnPresetarn {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnPresetname;
 impl CfnPresetname {
     pub fn att_name(&self) -> &'static str {

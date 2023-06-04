@@ -1,5 +1,5 @@
 /// The AWS::WAF::ByteMatchSet resource creates an AWS WAF ByteMatchSet that identifies a part of a web request that you want to inspect.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnByteMatchSet {
     ///
     /// Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
@@ -68,7 +68,7 @@ impl cfn_resources::CfnResource for CfnByteMatchSet {
 }
 
 /// The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ByteMatchTuple {
     ///
     /// The part of a web request that you want to inspect, such as a specified header or a query string.
@@ -202,7 +202,7 @@ pub struct ByteMatchTuple {
     pub text_transformation: ByteMatchTupleTextTransformationEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ByteMatchTuplePositionalConstraintEnum {
     /// CONTAINS
     #[serde(rename = "CONTAINS")]
@@ -231,7 +231,7 @@ impl Default for ByteMatchTuplePositionalConstraintEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum ByteMatchTupleTextTransformationEnum {
     /// CMD_LINE
     #[serde(rename = "CMD_LINE")]
@@ -281,7 +281,7 @@ impl cfn_resources::CfnResource for ByteMatchTuple {
 }
 
 /// Specifies where in a web request to look for TargetString.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct FieldToMatch {
     ///
     /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, 			for example, User-Agent or Referer. The name of the header is not case sensitive.
@@ -321,7 +321,7 @@ pub struct FieldToMatch {
     pub cfn_type: FieldToMatchTypeEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum FieldToMatchTypeEnum {
     /// ALL_QUERY_ARGS
     #[serde(rename = "ALL_QUERY_ARGS")]

@@ -1,5 +1,5 @@
 /// The AWS::AppStream::Stack resource creates a stack to start streaming applications to Amazon AppStream 2.0 users. A stack consists of an associated fleet, user access policies, and storage configurations.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnStack {
     ///
     /// The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
@@ -270,7 +270,7 @@ impl cfn_resources::CfnResource for CfnStack {
 }
 
 /// Describes an interface VPC endpoint (interface endpoint) that lets you create a private connection between the virtual private cloud (VPC) that you specify and AppStream 2.0. When you specify an interface endpoint for a stack, users of the stack can connect to AppStream 2.0 only through that endpoint. When you specify an interface endpoint for an image builder, administrators can connect to the image builder only through that endpoint.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct AccessEndpoint {
     ///
     /// The type of interface endpoint.
@@ -299,7 +299,7 @@ pub struct AccessEndpoint {
     pub vpce_id: cfn_resources::StrVal,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum AccessEndpointEndpointTypeEnum {
     /// STREAMING
     #[serde(rename = "STREAMING")]
@@ -338,7 +338,7 @@ impl cfn_resources::CfnResource for AccessEndpoint {
 }
 
 /// The persistent application settings for users of a stack.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct ApplicationSettings {
     ///
     /// Enables or disables persistent application settings for users during their streaming sessions.
@@ -392,7 +392,7 @@ impl cfn_resources::CfnResource for ApplicationSettings {
 }
 
 /// A connector that enables persistent storage for users.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StorageConnector {
     ///
     /// The type of storage connector.
@@ -434,7 +434,7 @@ pub struct StorageConnector {
     pub resource_identifier: Option<cfn_resources::StrVal>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StorageConnectorConnectorTypeEnum {
     /// GOOGLE_DRIVE
     #[serde(rename = "GOOGLE_DRIVE")]
@@ -479,7 +479,7 @@ impl cfn_resources::CfnResource for StorageConnector {
 }
 
 /// The streaming protocol that you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct StreamingExperienceSettings {
     /// The preferred protocol that you want to use while streaming your application.
     ///
@@ -495,7 +495,7 @@ pub struct StreamingExperienceSettings {
     pub preferred_protocol: Option<StreamingExperienceSettingsPreferredProtocolEnum>,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum StreamingExperienceSettingsPreferredProtocolEnum {
     /// TCP
     #[serde(rename = "TCP")]
@@ -533,7 +533,7 @@ impl cfn_resources::CfnResource for StreamingExperienceSettings {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
@@ -571,7 +571,7 @@ impl cfn_resources::CfnResource for Tag {
 }
 
 /// Specifies an action and whether the action is enabled or disabled for users during their streaming sessions.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct UserSetting {
     ///
     /// The action that is enabled or disabled.
@@ -600,7 +600,7 @@ pub struct UserSetting {
     pub permission: UserSettingPermissionEnum,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserSettingActionEnum {
     /// CLIPBOARD_COPY_FROM_LOCAL_DEVICE
     #[serde(rename = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE")]
@@ -637,7 +637,7 @@ impl Default for UserSettingActionEnum {
     }
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum UserSettingPermissionEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]

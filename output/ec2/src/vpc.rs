@@ -3,7 +3,7 @@
 /// You can optionally request an IPv6 CIDR block for the VPC. You can request an Amazon-provided      IPv6 CIDR block from Amazon's pool of IPv6 addresses, or an IPv6 CIDR block from an IPv6 address      pool that you provisioned through bring your own IP addresses (BYOIP).
 ///
 /// For more information, see Virtual private clouds (VPC) in the Amazon VPC User Guide.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPC {
     ///
     /// The IPv4 network range for the VPC, in CIDR notation. For example,     10.0.0.0/16. We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18, we modify it to 100.68.0.0/18.
@@ -114,7 +114,7 @@ pub struct CfnVPC {
     pub att_vpc_id: CfnVPCvpcid,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum VPCInstanceTenancyEnum {
     /// dedicated
     #[serde(rename = "dedicated")]
@@ -135,7 +135,7 @@ impl Default for VPCInstanceTenancyEnum {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCcidrblock;
 impl CfnVPCcidrblock {
     pub fn att_name(&self) -> &'static str {
@@ -143,7 +143,7 @@ impl CfnVPCcidrblock {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCdefaultnetworkacl;
 impl CfnVPCdefaultnetworkacl {
     pub fn att_name(&self) -> &'static str {
@@ -151,7 +151,7 @@ impl CfnVPCdefaultnetworkacl {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCdefaultsecuritygroup;
 impl CfnVPCdefaultsecuritygroup {
     pub fn att_name(&self) -> &'static str {
@@ -159,7 +159,7 @@ impl CfnVPCdefaultsecuritygroup {
     }
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnVPCvpcid;
 impl CfnVPCvpcid {
     pub fn att_name(&self) -> &'static str {
@@ -188,7 +188,7 @@ impl cfn_resources::CfnResource for CfnVPC {
 /// The aws: prefix is reserved for AWS use. This prefix is case-insensitive. If    you use this prefix in the Key or Value property, you can't update    or delete the tag. Tags with this prefix don't count toward the number of tags per    resource.
 ///
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct Tag {
     ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.

@@ -1,6 +1,6 @@
 /// The AWS::S3Outposts::AccessPoint resource specifies an access point and associates it with    the specified Amazon S3 on Outposts bucket. For more information, see Managing data access     with Amazon S3 access points.
 ///
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPoint {
     ///
     /// The Amazon Resource Name (ARN) of the S3 on Outposts bucket that is associated with this    access point.
@@ -51,7 +51,7 @@ pub struct CfnAccessPoint {
     pub att_arn: CfnAccessPointarn,
 }
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct CfnAccessPointarn;
 impl CfnAccessPointarn {
     pub fn att_name(&self) -> &'static str {
@@ -76,7 +76,7 @@ impl cfn_resources::CfnResource for CfnAccessPoint {
 }
 
 /// Contains the virtual private cloud (VPC) configuration for the specified access    point.
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct VpcConfiguration {
     ///
     /// The ID of the VPC configuration.
