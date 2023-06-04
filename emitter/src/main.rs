@@ -442,6 +442,7 @@ pub fn emit_struct(validations: &mut String, use_map_tracker: &mut HashMap<Strin
 format!("
 {doc_comment}
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct {} {{
 {fields}
 {attr_fields}
@@ -478,7 +479,7 @@ pub fn emit_field(
     // if its not required that means we wrap it with an Option, and in
     // that case we dont want to serialize if its none
     if !f.required {
-        skip_if_none = "    #[serde(skip_serializing_if = \"Option::is_none\")]";
+        skip_if_none = "    #[serde(skip_serializing_if = \"cfn_resources::wants_serialization\")]";
     }
 format!("
 {docs}
